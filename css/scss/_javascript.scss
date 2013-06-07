@@ -1,0 +1,106 @@
+/* ==========================================================================
+   JavaScript
+========================================================================== */
+.blur {
+	-webkit-filter    : blur(2px);
+	-moz-filter       : blur(2px);
+	-o-filter         : blur(2px);
+	filter            : blur(2px);
+	@include transition(500ms all cubic-bezier(0.250, 0.460, 0.450, 0.940));
+}
+
+/* ==========================================================================
+   $JavaScript Functions
+========================================================================== */
+/* -- Tabs -- */
+.tabs {
+	margin-bottom: 1em;
+	overflow: hidden;
+	.nav {
+		padding: 0 2em;
+		white-space: nowrap;
+	}
+	.nav li {
+		margin: 0 0 0 -4px;
+		border: 1px solid #EAEAEA;
+		border-bottom: 0;
+		@include inline-block;
+		position: relative;
+    	z-index: 1;
+		vertical-align: bottom;
+		background: rgb(255,255,255);
+		background: -moz-linear-gradient(top,  rgba(255,255,255,1) 57%, rgba(249,249,249,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(57%,rgba(255,255,255,1)), color-stop(100%,rgba(249,249,249,1)));
+		background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
+		background: -o-linear-gradient(top,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
+		background: -ms-linear-gradient(top,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
+		background: linear-gradient(to bottom,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
+        a {
+            padding: 0.5em 1em;
+            display: block;
+        }
+        &:first-child {
+            border-radius: $def_border_radius 0 0;
+        }
+        &:last-child {
+            border-radius: 0 $def_border_radius 0 0;
+        }
+        &.active {
+            bottom: -2px;
+    		z-index: 2;
+            border-radius: $def_border_radius $def_border_radius 0 0;
+            color: $def_color;
+            background: #FFF;
+        }
+        &.active a {
+            padding: 0.7em 1em;
+        }
+	}
+	.system {
+		padding: 1em;
+		border-radius: $def_border_radius;
+		border: 1px solid #EAEAEA;
+	}
+}
+
+/* -- Accordion -- */
+.accordion {
+	margin-bottom: 1em;
+	.accordion-title {
+		padding: 0.5em;
+		border: 1px solid #EAEAEA;
+		position: relative;
+		@include transition(color 500ms ease, background-color 500ms ease);
+	}
+	.accordion-title.arrow:after {
+		height: 0;
+		width: 0;
+		position: absolute;
+		top: 100%;
+
+		content: " ";
+		border: solid transparent;
+		pointer-events: none;
+	}
+	.accordion-title.arrow:after {
+		top: 41%;
+		right: 2%;
+		border-left-color: #EAEAEA;
+		border-width: 5px;
+	}
+	.accordion-title.arrow.active-title:after {
+		top: 45%;
+		right: 2.5%;
+		border-left-color: rgba(249,249,249,0.3);
+		border-top-color: #EAEAEA;
+		border-width: 5px;
+	}
+	.accordion-title:hover, .accordion-title.active-title {
+		color: $def_color;
+		background: rgba(249,249,249,0.3);
+	}
+	.accordion-content {
+		padding: 1em;
+		border: 1px solid #EAEAEA;
+	}
+}

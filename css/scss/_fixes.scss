@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Fixes
+   This file is for legacy browser fixes and hacks. Everything should
+   be documented and explained for later review.
+========================================================================== */
+
+// All old IE fixes
+.oldie {
+
+	/* -- Image Replacement -- */
+	.ir {
+		overflow: hidden;
+		text-indent: -999px;
+	}
+
+	/* -- Custom Inputs -- */
+	[class*='custom-'] {
+		input {
+		    width: auto;
+		    height: auto;
+		    visibility: visible;
+			position: static;
+			cursor: pointer;
+		}
+		label {
+			display: none;
+			&:after {
+				border: none;
+			}
+		}
+	}
+
+	/* -- Grid -- */
+	.grid {
+		.col + .col {
+			padding-right: 0;
+		}
+	}
+}

@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Call to Action
+========================================================================== */
+.cta {
+	padding: 0.5em 1em;
+	border: 1px solid !important; /* Important so alert.cta doesn't get an underline */
+	@include inline-block;
+
+	border-radius: $def_border_radius;
+	vertical-align: middle;
+	cursor: pointer;
+	font-size: 1em;
+	line-height: 1;
+	color: #FFF;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important; /* Important so alert.cta doesn't get an underline */
+
+	@include transition(background 500ms ease);
+	&.disabled {
+		@include opacity(0.7);
+		cursor: default;
+		background-image: none !important;
+	}
+	&.disabled:hover {
+		background-image: none !important;
+	}
+	&.disabled:active {
+		background-image: none !important;
+		box-shadow: none;
+	}
+	&:hover {
+		color: #FFF !important;
+		text-decoration: none;
+	}
+	&:active {
+		color: #FFF !important;
+		box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
+	}
+}
+
+/* -- Call to Action Standard -- */
+.cta {
+	&.standard {
+		background       : $def_blue;
+		background-image : -webkit-gradient(linear, 0 0, 0 100%, from(lighten($def_blue, 5%)), to(darken($def_blue, 10%)));
+		background-image : -webkit-linear-gradient(top, lighten($def_blue, 5%), darken($def_blue, 10%));
+		background-image : -o-linear-gradient(top, lighten($def_blue, 5%), darken($def_blue, 10%));
+		background-image : linear-gradient(to bottom, lighten($def_blue, 5%), darken($def_blue, 10%));
+		background-image : -moz-linear-gradient(top, lighten($def_blue, 5%), darken($def_blue, 10%));
+		background-repeat: repeat-x;
+		filter           : progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+		filter           : progid:dximagetransform.microsoft.gradient(enabled=false);
+	}
+	&.standard:hover {
+		background: darken($def_blue, 10%);
+	}
+	&.standard.disabled:hover {
+		background: $def_blue;
+	}
+}
+
+/* -- Call to Action Positive & Negative -- */
+.cta {
+	&.positive {
+		background      : $def_green;
+		background-image: -ms-linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(lighten($def_green, 5%)),to(darken($def_green, 10%)));
+		background-image: -webkit-linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
+		background-image: -o-linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
+		background-image: -moz-linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
+		background-image: linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
+		filter          : progid:dximagetransform.microsoft.gradient(startColorstr='lighten($def_green, 5%)',endColorstr='darken($def_green, 10%)',GradientType=0);
+		filter          : progid:dximagetransform.microsoft.gradient(enabled=false);
+	}
+	&.positive:hover {
+		background: darken($def_green, 10%);
+	}
+	&.positive.disabled:hover {
+		background: $def_green;
+	}
+	&.negative {
+		background      : $def_red;
+		background-image: -ms-linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(lighten($def_red, 5%)),to(darken($def_red, 10%)));
+		background-image: -webkit-linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
+		background-image: -o-linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
+		background-image: -moz-linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
+		background-image: linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
+		filter          : progid:dximagetransform.microsoft.gradient(startColorstr='lighten($def_red, 5%)',endColorstr='darken($def_red, 10%)',GradientType=0);
+		filter          : progid:dximagetransform.microsoft.gradient(enabled=false);
+	}
+	&.negative:hover {
+		background: darken($def_red, 10%);
+	}
+	&.negative.disabled:hover {
+		background: $def_red;
+	}
+}

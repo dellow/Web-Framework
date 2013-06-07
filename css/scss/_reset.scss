@@ -1,0 +1,85 @@
+/* ==========================================================================
+   Reset
+========================================================================== */
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing   : border-box;
+	-o-box-sizing     : border-box;
+	-ms-box-sizing    : border-box;
+	box-sizing        : border-box;
+}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, button, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, input, select, button, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+}
+input, select, textarea, button {
+	color: inherit;
+}
+button {
+    font-family: inherit;
+    line-height: inherit;
+}
+html, body, div, p, address, blockquote, ol, ul, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, pre, hr, menu, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+	display: block;
+}
+video {
+	cursor: pointer;
+}
+:focus {
+	outline: 0;
+}
+html, body  {
+	-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+td {
+	vertical-align: top;
+}
+th, strong, dt {
+	font-weight: bold;
+}
+del {
+	text-decoration: line-through;
+}
+blockquote, q, em, cite, dfn, cite, var, address {
+	font-style: italic;
+}
+blockquote {
+	position: relative;
+	padding: 0 2em;
+}
+blockquote:before, q:before, blockquote:after, q:after {
+	position: absolute;
+	font: 5em "Times New Roman";
+	opacity: 0.3;
+}
+blockquote:before, q:before {
+	content: "\201c";
+	left: -0.2em;
+	top: -0.225em;
+}
+blockquote:after, q:after {
+	content: "\201d";
+	right: -0.35em;
+	bottom: -0.65em;
+}
+img, object, embed {
+	max-width: 100%;
+	height: auto;
+}
+object, embed {
+	height: 100%;
+}
+img {
+    vertical-align: middle;
+	-ms-interpolation-mode: bicubic;
+}
+textarea {
+	resize: vertical;
+}

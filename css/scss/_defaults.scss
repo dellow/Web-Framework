@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Defaults
+========================================================================== */
+body {
+	font-family: $def_font;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	color: $def_text;
+	line-height: 1.4;
+	background: $bg_current;
+}
+textarea {
+	font-family: $def_font;
+}
+fieldset {
+	margin: 1em 0;
+}
+pre {
+	padding: 1em;
+	margin: 0.5em 0;
+	border: 1px solid;
+	position: relative;
+	border-color: #34495E; border-color: rgba(52, 73, 94, 0.2);
+	border-radius: $def_border_radius;
+	font: 400 1em/1 "source-code-pro", monospace;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap  : break-word;
+	/* &lt; = < &gt; = >  */
+}
+kbd {
+	padding: 0.5em 1em;
+	border: 1px solid #e6e6e6;
+	border-radius: $def_border_radius;
+	font-size: 1.2em;
+	line-height: 90%;
+	color: #666;
+	background-color: #fcfcfc;
+}
+ol.code {
+	margin: 0 0 0 3em;
+	font: 400 1em/1.7143 "source-code-pro", monospace;
+	color: #999;
+}
+ol.code li {
+	padding: 0 0.5em;
+	margin: 0 0 -1px 0;
+	border-top: 1px solid #fff;
+	list-style: decimal-leading-zero;
+	background: #f6f6f6;
+}
+ul {
+	list-style-type: disc;
+}
+ul ul {
+	margin-left: 1.2em;
+	list-style-type: circle;
+}
+ul li, ol li {
+	margin: 0.3em 0;
+}
+dl dd {
+	margin: 0.2em 0;
+	text-indent: 1em;
+}
+h1, h2, h3, h4, h5, h6 {
+	text-rendering: optimizelegibility;
+}
+hr {
+	margin: 2em 0;
+	border: 1px solid;
+	border-color: #EFEFEF; border-color: rgba(0, 0, 0, 0.085);
+}
+hr.dots {
+	height: 0;
+	margin: 1em 0 2em;
+	border: 0;
+	padding: 0;
+	display: block;
+	clear: both;
+	font-size: 3em;
+	line-height: 1;
+	text-align: center;
+}
+hr.dots:after {
+	content: "·········";
+	color: #ccc;
+	letter-spacing: 1em;
+	padding-left: 1em;
+	height: 0;
+}
+::-moz-selection {
+	background: $def_color;
+	color: #fff;
+	text-shadow: none;
+}
+::selection {
+	background: $def_color;
+	color: #fff;
+	text-shadow: none;
+}
+
+/*
+::-webkit-scrollbar {
+	width: 1em;
+}
+::-webkit-scrollbar-track-piece {
+	background: #e3f7fc;
+}
+::-webkit-scrollbar-thumb {
+	background: $def_color;
+	box-shadow: inset 0 0 2em rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-button {
+}
+::-webkit-scrollbar-trac {
+}
+::-webkit-scrollbar-corner {
+}
+::-webkit-resizer {
+}
+:horizontal
+:vertical
+:decrement
+:increment
+:start
+:end
+:double-button
+:single-button
+:no-button
+:corner-present
+:window-inactive
+*/
