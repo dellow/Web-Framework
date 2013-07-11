@@ -16,30 +16,22 @@ a {
 
 /* -- Paragraph Formatting -- */
 p, .column-layout {
-	margin-bottom: $nudge;
-	a {
-		text-decoration: underline;
-	}
-	&:last-child {
-		margin-bottom: 0;
-	}
+	margin: $nudge 0;
 }
 
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
-	margin: 0.6em 0 0.3em 0;
-	line-height: 1;
 	letter-spacing: -0.05em;
 }
 h1 {
-	font-size: em(32);
+	@include rem(font-size, 32px);
 }
 h2 {
-	font-size: em(24);
+	@include rem(font-size, 24px);
 }
 h3 {
-	font-size: em(20);
+	@include rem(font-size, 20px);
 }
 h4 {
-	font-size: em(16);
+	@include rem(font-size, 16px);
 }

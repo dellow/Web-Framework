@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Wordpress/Widgets
+========================================================================== */
+.widget {
+	margin: 0 0 1.5em 0;
+}
+
+/* -- Search -- */
+.widget_search {
+	label {
+		display: none;
+	}
+}
+
+/* -- Newsletter -- */
+.widget_newsletter {
+	.newsletter {
+		#sub_email {
+			width: 69%;
+		}
+		#sub_submit {
+			width: 29%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}

@@ -8,7 +8,7 @@
 	vertical-align: middle;
 	.tooldata {
 		width: 250px;
-		padding: 10px;
+		padding: $nudge;
 		visibility: hidden;
 		@include opacity(0);
 		@include transition(opacity 500ms ease);
@@ -22,10 +22,10 @@
 		// Using filters instead of box-shadow so it applies to
 		// the CSS arrow to.
 		-webkit-filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
-		-moz-filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
-		-ms-filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
-		-o-filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
-		filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
+		-moz-filter   : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
+		-ms-filter    : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
+		-o-filter     : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
+		filter        : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
 		p {
 			margin: 5px 0;
 		}

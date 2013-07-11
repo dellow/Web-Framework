@@ -2,11 +2,11 @@
    Responsive
 ========================================================================== */
 /**
- * Prevents the container from ever exceeding 75em / 1200px
+ * Prevents the container from ever exceeding 960px
 **/
-@media all and (min-width: 75em) {
+@media all and (min-width: 960px) {
 	.container {
-		max-width: 75em;
+		max-width: 960px;
 	}
 }
 
@@ -67,7 +67,7 @@
 		}
 		input, .input, select, textarea, .field-container, button, .button {
 			padding: 0.5em;
-			font-size: 1em;
+			@include rem(font-size, 16px);
 		}
 		button {
 			width: 100%;

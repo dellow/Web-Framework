@@ -1,0 +1,191 @@
+/* ==========================================================================
+   Classes
+========================================================================== */
+/* -- Alignment -- */
+.alignleft {
+	margin: 0 1em 1em 0;
+	float: left;
+}
+.alignright {
+	margin: 0 0 1em 1em;
+	float: right;
+}
+.aligncenter {
+	margin: 0 auto;
+}
+img.alignleft, img.alignright, img.aligncenter {
+	padding: 0.5em;
+	border: 2px solid #efefef;
+	border-radius: $def_border_radius;
+}
+
+/* -- Clearing -- */
+.cf {
+	@extend %cf;
+}
+.clear {
+	clear: both;
+}
+
+/* -- Sprites -- */
+.sprite {
+	background: url(#{$path_siteimages}sprite.jpg) no-repeat;
+}
+
+/* -- Resetting (This is a last resort) -- */
+.no-width {
+	width: auto;
+}
+.no-height {
+	height: auto;
+}
+.no-margin {
+	margin: 0 !important;
+}
+.no-padding {
+	padding: 0 !important;
+}
+.no-border {
+	border: 0 !important;
+}
+.no-bullet {
+	list-style: none !important;
+}
+
+/* -- Nudges -- */
+.nudge-top {
+	margin-top: $nudge;
+}
+.nudge-right {
+	margin-right: $nudge;
+}
+.nudge-bottom {
+	margin-bottom: $nudge;
+}
+.nudge-left {
+	margin-left: $nudge;
+}
+
+/* -- Image Replacement -- */
+.ir {
+	font: 0/0;
+	text-shadow: none;
+	color: transparent;
+}
+
+/* -- Hide Elements -- */
+.hidden {
+	display: none;
+}
+
+/* -- Vertical Alignment -- */
+.vert {
+	vertical-align: middle;
+}
+
+/* -- Structure -- */
+.inline {
+	display: inline;
+}
+.inline-block {
+	display: inline-block;
+}
+.block {
+	display: block;
+}
+
+/* -- Positioning -- */
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.static {
+	position: static;
+}
+.relative {
+	position: relative;
+}
+.fixed {
+	position: fixed;
+}
+.absolute {
+	position: absolute;
+}
+
+/* -- Lists -- */
+.inside {
+	margin-left: 1.2em;
+	ul, ol {
+		margin-left: 1.2em;
+	}
+}
+.no-bullet {
+	list-style: none;
+}
+ul.horizontal {
+	li {
+		display: inline;
+	}
+}
+ul.horizontal-block {
+	li {
+		@include inline-block;
+	}
+}
+
+/* -- Text -- */
+.text-small {
+	font-size: 75%;
+}
+.text-big {
+	font-size: 150%;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+
+/* -- Weights & Cases -- */
+.bold, th, strong, dt {
+	font-weight: bold;
+}
+.italic {
+	font-style: italic;
+}
+.nobold {
+	font-weight: normal;
+}
+.case-u {
+	text-transform: uppercase;
+}
+.case-l {
+	text-transform: lowercase;
+}
+.case-c {
+	text-transform: capitalize;
+}
+.case-n {
+	text-transform: none;
+}
+
+/* -- Fonts -- */
+.serif {
+	font-family: serif;
+}
+.sans-serif {
+	font-family: sans-serif;
+}
+
+/* -- CSS3 Columns -- */
+@for $i from 1 through 10 {
+	.columns-#{$i} {
+		-webkit-column-count: $i; -moz-column-count: $i; column-count: $i;
+	}
+}

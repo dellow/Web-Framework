@@ -2,14 +2,14 @@
    Buttons
 ========================================================================== */
 .btn {
+	height: auto;
 	padding: 0.5em 1em;
 	@include inline-block;
 	border: 0 !important; /* Important so alert.btn doesn't get an underline */
 	border-radius: $def_border_radius;
 	vertical-align: middle;
 	cursor: pointer;
-	font-size: 1em;
-	line-height: 1;
+	@include rem(font-size, 16px);
 	color: #FFF;
 	text-align: center;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);

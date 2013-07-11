@@ -14,18 +14,20 @@
 	}
 
 	/* -- Custom Inputs -- */
-	[class*='custom-'] {
-		input {
-		    width: auto;
-		    height: auto;
-		    visibility: visible;
-			position: static;
-			cursor: pointer;
-		}
-		label {
-			display: none;
-			&:after {
-				border: none;
+	form {
+		[class*='custom-'] {
+			input {
+			    width: auto;
+			    height: auto;
+			    visibility: visible;
+				position: static;
+				cursor: pointer;
+			}
+			label {
+				display: none;
+				&:after {
+					border: none;
+				}
 			}
 		}
 	}

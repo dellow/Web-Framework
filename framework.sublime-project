@@ -1,0 +1,28 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				// Standard
+				".gitignore",
+				"sftp-config.json",
+				"*.sublime-project",
+				"*.sublime-workspace"
+			],
+			"folder_exclude_patterns":
+			[
+				// Standard
+				".sass-cache",
+				".git",
+				"node_modules"
+			],
+			"name": "Framework",
+			"path": "/"
+		}
+	],
+	"settings":
+	{
+		"tab_size": 4
+	}
+}

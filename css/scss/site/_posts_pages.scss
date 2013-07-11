@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Wordpress/Posts & Pages
+========================================================================== */
+/* -- Titles -- */
+.entry-title {
+	margin-bottom: 0;
+}
+.entry-sub-title {
+	margin-top: 0;
+}
+
+/* -- Comments -- */
+.comments-disabled {
+	padding: $nudge 0;
+	margin: $nudge 0;
+	border: 1px dotted lighten($black, 80%);
+	border-left: 0;
+	border-right: 0;
+	font-style: italic;
+}
+
+/* -- Attachments -- */
+.attachment {
+	.post-details {
+		display: none;
+	}
+	.post-body {
+		margin-top: $nudge;
+	}
+}
+
+/* -- Articles & Tags -- */
+ul.post-list {
+	margin-left: 18px;
+}
+.post-details, .post-tags {
+	margin: 0 0 ($nudge / 2);
+	font-size: 90%;
+}
+
+/* -- Author -- */
+.author-posts {
+	margin-top: 20px;
+}
+p.entry-summary {
+	margin-bottom: $nudge;
+}
+.author-links {
+	margin: ($nudge / 2) 0;
+	li {
+		padding: 0 3px 0 6px;
+		border-left: 1px solid black;
+		display: inline;
+		&:first-child {
+			padding-left: 0;
+			border-left: 0;
+		}
+	}
+}

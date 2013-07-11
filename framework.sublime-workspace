@@ -1,0 +1,878 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"section-cu",
+				"section-cut-off-bottom"
+			],
+			[
+				"dis",
+				"display-box"
+			],
+			[
+				"target",
+				"target_url"
+			],
+			[
+				"section",
+				"section-cutoff"
+			],
+			[
+				"side",
+				"sidebar_text"
+			],
+			[
+				"comm",
+				"community_message"
+			],
+			[
+				"commi",
+				"community-message"
+			],
+			[
+				"promo",
+				"promo_blocks"
+			],
+			[
+				"get_s",
+				"get_sub_field"
+			],
+			[
+				"sidebar",
+				"sidebar_image"
+			],
+			[
+				"module",
+				"module-heading"
+			],
+			[
+				"acc",
+				"accordion-title"
+			],
+			[
+				"show",
+				"show"
+			],
+			[
+				"border",
+				"border-width"
+			],
+			[
+				"list-sty",
+				"list-style-image"
+			],
+			[
+				"border-ra",
+				"border-bottom-left-radius"
+			],
+			[
+				"sc",
+				"scrollTop"
+			],
+			[
+				"loca",
+				"localStorage"
+			],
+			[
+				"accord",
+				"accordion-content"
+			],
+			[
+				"def_",
+				"def_border_radius"
+			],
+			[
+				"err",
+				"errorBoxClass"
+			],
+			[
+				"def",
+				"def_border_radius"
+			],
+			[
+				"theme_s",
+				"current_theme_supports"
+			],
+			[
+				"extra",
+				"extra"
+			],
+			[
+				"prod",
+				"productArr"
+			],
+			[
+				"searc",
+				"search-results"
+			],
+			[
+				"vert",
+				"vertical-align"
+			],
+			[
+				"li",
+				"li"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/SASS Build/SASS - Compressed.sublime-build",
+	"command_palette":
+	{
+		"height": 338.0,
+		"selected_items":
+		[
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"disable",
+				"SublimeLinter: Disable Linting"
+			],
+			[
+				"disabl",
+				"SublimeLinter: Disable Linting"
+			],
+			[
+				"packeg",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git add ",
+				"Git: Add..."
+			],
+			[
+				"package control",
+				"Package Control: List Packages"
+			],
+			[
+				"git",
+				"Git: Init"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"packge c",
+				"Package Control: Install Package"
+			],
+			[
+				"packgeon ",
+				"Package Control: Remove Package"
+			],
+			[
+				"tidy html",
+				"Tidy HTML"
+			],
+			[
+				"tid",
+				"Tidy HTML"
+			],
+			[
+				"packge control",
+				"Package Control: Install Package"
+			],
+			[
+				"packge",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 496.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": false,
+		"show_minimap": true,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": true,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Stewart/Desktop/gruntProject/Gruntfile.js",
+		"/C/Users/Stewart/Desktop/gruntProject/css/scss/main.scss",
+		"/C/Users/Stewart/Desktop/gruntProject/css/main.css",
+		"/C/Users/Stewart/Desktop/gruntProject/package.json",
+		"/C/Users/Stewart/Desktop/gruntProject/js/site/global.js",
+		"/C/Users/Stewart/Desktop/gruntProject/js/site/site.js",
+		"/C/Users/Stewart/Desktop/gruntProject/css/config.rb",
+		"/C/Users/Stewart/Desktop/gruntProject/css/scss/site/_#site.scss",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/wp-content/themes/squaregate/snippets/header.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/wp-content/themes/squaregate/lib/media/js/site.js",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/wp-content/themes/squaregate/page-home.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/wp-content/themes/squaregate/templates/forms.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/wp-content/themes/squaregate/lib/media/css/styles.css",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/wp-content/themes/squaregate/header.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/wp-content/themes/squaregate/functions.php",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/.htaccess",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/wp-content/themes/squaregate/sftp-config.json",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/page-home.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/lib/media/js/site.js",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/functions.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/lib/media/css/styles.css",
+		"/C/Users/Stewart/Dropbox/www/Projects/r/remarkable-design.co.uk/Webroot/wp-content/themes/remarkableDesign/lib/media/js/site.js",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/lib/media/images/icons/expand.png",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/single-projects.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/single.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/templates/forms.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/header.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/comments.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/customFramework/lib/admin/js/admin.js",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/customFramework/lib/media/js/comments.js",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/customFramework/lib/media/js/comments.min.js",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/customFramework/sftp-config.json",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/header.phtml",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/view.phtml",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/index.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/templates/template-forms.php",
+		"/C/Users/Steve-W7/Dropbox/Programs/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Stewart/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Steve-W7/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/functions.php",
+		"/C/Users/Steve-W7/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/page-home.php",
+		"/C/Users/Steve-W7/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/templates/template-forms.php",
+		"/C/Users/Steve-W7/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/index.php",
+		"/C/Users/Steve-W7/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/lib/media/js/site.js",
+		"/C/Users/Steve-W7/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/header.php",
+		"/C/Users/Steve-W7/Dropbox/www/Projects/s/squaregate.co.uk/Square Gate.sublime-project",
+		"/C/Users/Steve-W7/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/footer.php",
+		"/C/Users/Steve-W7/AppData/Local/Temp/fz3temp-1/plugin-forms.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/customFramework/templates/template-forms.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/templates/index.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/lib/functions/customposttypes.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/lib/functions/customtaxonomies.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/footer.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Webroot/_new/wp-content/themes/squaregate/sftp-config.json",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Assets/Dev/index.html",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Assets/Dev/css/styles.css",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/wp-config.php",
+		"/C/Users/Stewart/Dropbox/www/Projects/s/squaregate.co.uk/Square Gate.sublime-project",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/sidebar.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/header.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/template-1col-no-sidebar.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/index.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/footer.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/css/scss/site/pages/_global.scss",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/css/styles.css",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/css/scss/site/includes/_footer.scss",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/js/site.js",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/header.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/page.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/template-2col-right-sidebar-no-tabs.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/functions.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/css/scss/site/includes/_header.scss",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/semantic-classes.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/customFramework/lib/functions/customoptions.php",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/functions.php",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/functions 2.php",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/single.php",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/template-blog.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/page-home.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/footer.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/lib/media/css/styles.css",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/functions.php",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/page-home.php",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/themeoptions.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/lib/media/js/site.js",
+		"/C/Users/Steve-W7/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/lib/media/css/styles.css",
+		"/C/Users/Steve-W7/AppData/Local/Temp/fz3temp-1/main.css",
+		"/C/Users/Steve-W7/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/sidebar.php",
+		"/C/Users/Steve-W7/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/page-blog.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/sftp-config.json",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/page-support.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/page-return-request-form.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/template-2col-right-sidebar.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/page-blog.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/TSRC/lib/inc/mailer.inc.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/customFramework/lib/docs/styleguide.html",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/css/scss/framework/_defaults.scss",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/css/scss/framework/_components.scss",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/css/scss/framework/_#framework.scss",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/styles.css",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_framework/wp-content/themes/customFramework/lib/admin/themeoptions.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/customFramework/lib/admin/themeoptions.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/css/scss/utilities/_colours.scss",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/townofirvingtonva/lib/media/css/scss/utilities/_defaults.scss",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/customFramework/lib/functions/functions.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/irvington/sftp-config.json",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/irvington/functions.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/irvington/lib/media/css/additional.css",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/irvington/style.css",
+		"/C/Users/Stewart/Dropbox/CV TEXT",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/styles 2.css",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/lib/media/css/styles.css",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/page.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/page-home.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/lib/media/js/site.js",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/sidebar.php",
+		"/C/Users/Stewart/AppData/Local/Temp/fz3temp-1/footer.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/single.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/archive.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/category.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/tag.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/template-news.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/page-blog.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/rxpartnership/page-contact.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/jsarcher/lib/media/css/styles.css",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/jsarcher/header.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/jsarcher/functions.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/jsarcher/lib/inc/mailer.inc.php",
+		"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/wp-content/themes/jsarcher/page-home.php"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"C:\\Users\\Stewart\\Dropbox\\www\\Platforms\\wp_multi\\\\wp-content\\themes\\jsarcher",
+			"C:\\Users\\Stewart\\Dropbox\\www\\Platforms\\wp_multi\\\\wp-content\\themes\\customFramework",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\Platforms\\wp_multi\\\\wp-content\\themes\\customFramework\\lib\\media\\css\\scss",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\Platforms\\wp_framework\\\\wp-content\\themes\\customFramework\\lib\\media\\css\\scss",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\Platforms\\wp_framework\\\\wp-content\\themes\\customFramework",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root\\css\\scss\\pages",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root\\css",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root\\css\\scss",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root\\css\\scss",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root\\css\\scss",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\BDM\\lettingaproperty.devserver7.co.uk\\root",
+			"C:\\Users\\Steve-W7\\Downloads\\OneStepCheckout-v4.0.8-Magento1.4\\app\\design\\frontend\\base\\default\\template\\onestepcheckout",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\Platforms\\wp\\\\wp-content\\themes\\customFramework\\lib\\media\\css\\scss",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\Platforms\\wp\\\\wp-content\\themes\\customFramework",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\Platforms\\wp\\",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\Platforms\\wp\\\\wp-content\\themes\\customFramework",
+			"C:\\Users\\Steve-W7\\Dropbox\\www\\Platforms\\wp\\\\wp-content\\themes\\stewartdellow\\lib\\media\\css",
+			"K:\\_domains\\concrete5.devserver7.co.uk\\blocks\\autonav",
+			"K:\\_clients\\CBJWT\\Total Fitness\\templates\\content\\health-club",
+			"K:\\_domains\\continentaltextiles.co.uk\\app\\code\\community\\AW",
+			"K:\\_domains\\continentaltextiles.co.uk\\app\\design\\frontend\\default\\southbeachswim",
+			"K:\\_domains\\continentaltextiles.co.uk\\app\\code\\community\\AW",
+			"K:\\_domains\\continentaltextiles.co.uk\\app\\",
+			"K:\\_domains\\continentaltextiles.co.uk\\app\\code\\community\\Netzarbeiter",
+			"K:\\_domains\\continentaltextiles.co.uk\\app\\",
+			"K:\\_domains\\continentaltextiles.co.uk\\app\\code\\community\\Netzarbeiter",
+			"K:\\_domains\\continentaltextiles.co.uk\\app\\design\\frontend\\base",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"script",
+			"section-cut-off-top",
+			"preloader",
+			"fadeNav",
+			"fn_center",
+			"Projectssadasadsadsazxccx",
+			"class",
+			"20",
+			"class=\"btn\">",
+			"$('.head-text-container')",
+			"scroll-more",
+			"form",
+			"fl",
+			"project",
+			"project-launch",
+			".news-block .news-head",
+			"getSingleName",
+			"post your comments",
+			"small",
+			"extended_height",
+			".news-block ",
+			"project",
+			"max-height",
+			"100%",
+			"ec6c48",
+			"scroll-more",
+			"background",
+			"transition",
+			"p",
+			"div",
+			"siteimages",
+			"header-title",
+			".main",
+			", line-height 400ms ease",
+			", color 400ms ease",
+			", height 400ms ease",
+			", height",
+			"background",
+			"transtion",
+			"%;\n",
+			"link",
+			"h1",
+			"div",
+			"\">",
+			"display-box",
+			" no-repeat center top",
+			".news-head:before",
+			"4",
+			"transition",
+			"div",
+			"\n								<li><a href=\"#\"><img src=\"<?php echo IMAGES . 'icons/twitter.png'; ?>\" alt=\"Tweet this!\"></a></li>\n								<li><a href=\"#\"><img src=\"<?php echo IMAGES . 'icons/facebook.png'; ?>\" alt=\"Like this!\"></a></li>",
+			"social-links",
+			"25",
+			"twitter",
+			"large",
+			"false",
+			"true",
+			", 'easeInQuad'",
+			"easeInOut",
+			"overlay",
+			".display-box .overlay",
+			"95",
+			"black",
+			"site",
+			"sitename",
+			"bloginfo",
+			"button",
+			"\n	line-height: 1.3;",
+			"AAA",
+			"header-mast",
+			"</a>",
+			"<a href=\"mailto:hello@squaregate.co.uk\">",
+			"\n	width: 30px;\n	height: 70px;\n	content: \"\";",
+			"n-",
+			"more-",
+			"Twitter",
+			"div",
+			".services ",
+			"service",
+			"col-1-2 ",
+			"service",
+			"div",
+			"0.04em",
+			"’",
+			"20",
+			"class",
+			"div",
+			"75em",
+			"parimary",
+			":",
+			"nav",
+			"186",
+			"htmlspecialchars",
+			"htmlentities",
+			"snippet-",
+			"lib",
+			"moreSiteOptions",
+			"themeOptions",
+			"1",
+			"\n				<?php endif; ?>",
+			"\n				<?php if(has_nav_menu('nav-secondary')) : ?>",
+			"\n							wp_nav_menu(array(\n								'sort_column'    => 'menu_order',\n								'theme_location' => 'nav-secondary',\n								'items_wrap'     => '<ul class=\"%2$s\" role=\"menu\">%3$s</ul>',\n								'menu_class'     => 'nav-secondary navigation',\n								'container'      => '',\n								'walker'         => new custom_walker\n							));",
+			"12",
+			"180",
+			"slider-view",
+			"<a href",
+			"[class*='custom-']",
+			"; }",
+			" }",
+			"}",
+			" }",
+			"  ",
+			" }",
+			"&&",
+			"== ",
+			"===",
+			"order_location",
+			"please_explain",
+			"your_name",
+			"company",
+			"new_return_request_form",
+			"===",
+			"!==",
+			"\n					$to = ",
+			"accordion",
+			"980px",
+			"75em",
+			"left"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"#212121",
+			"themeOption",
+			"$def_grey",
+			"$def_green",
+			"$def_blue",
+			"$def_red",
+			"content-body",
+			"",
+			"<br>",
+			"\n							<a class=\"btn\" href=\"<?php echo $location; ?>-trainers\" title=\"Meet The Team\">Meet The Team<span class=\"icons btn-ico\"></span></a>",
+			"<?php trainers_short(''); ?>",
+			"<?php trainers_list(''); ?>",
+			"Wilmslow",
+			"\n						<div id=\"map_canvas\">\n						</div>\n						<a href=\"#\" class=\"btn map-url\" target=\"_blank\" title=\"View on Google Maps\">View on Google Maps<span class=\"icons btn-ico\"></span></a>",
+			"\n						<p class=\"sub-heading null-padding\">",
+			"<div class=\"intro-text\">\n					<p>Maecenas pulvinar pharetra dolor a interdum. Mauris sit amet massa quam. Sed at volutpat dolor nec at lecturaesent porta justo ut arcu.Ut placerat dignissim felis.</p>\n					<p>Nam volutpat, mauris in ornare varius, enim libero placerat neque, a condimentum urna ipsum non sem. Etiam massa non leo facilisis lacinia non seurabitur nec libero mi. Donec ut risus ipsum, eu pretium duied sit amet mauris. </p>\n				</div>\n				<a href=\"/join\" title=\"Sign up today!\" class=\"promo-image\">\n					<img src=\"<?php echo IMAGES; ?>pages/home-header-signup.png\" alt=\"Sign up for only &pound;5\">\n				</a>",
+			"<div class=\"intro-text\">\n					<p>Donec eu elit erat, non congue maurisd venenatis condimentum nibh in euismod. Duis placerat diam non nisi congue fringilla. Morbi ut mauris lorem sodales rutrum. Duis rhoncus volutpat tempor. ndrerit fermentum augue, non porttitor orci consequat non. Sed pulvinar rutrum urna, eget vulputate ipsum posuere a uisque sodaisis neque in li.</p>\n					<p>Donec eu elit erat, non congue maurisd venenatis condimentum nibh in euismod. Duis placerat diam non nisi congue fringilla. Morbi ut mauris lorem sodales rutrum.</p>\n				</div>",
+			"<p class=\"intro-text\">Donec eu elit erat, non congue maurisd venenatis condimentum nibh in euismod. Duis placerat diam non nisi congue fringilla. Morbi ut mauris lorem sodales rutrum. Duis rhoncus volutpat tempor. ndrerit fermentum augue, non porttitor orci consequat non. Sed pulvinar rutrum urna, eget vulputate ipsum posuere a uisque sodaisis neque in li.</p>\n				<p>Donec eu elit erat, non congue maurisd venenatis condimentum nibh in euismod. Duis placerat diam non nisi congue fringilla. Morbi ut mauris lorem sodales rutrum.</p>",
+			"<div class=\"content-left\">\n				<hgroup>\n					<h1>Your Club</h1>\n					<h2>Altrincham</h2>\n				</hgroup>\n				<p class=\"intro-text\">Donec eu elit erat, non congue maurisd venenatis condimentum nibh in euismod. Duis placerat diam non nisi congue fringilla. Morbi ut mauris lorem sodales rutrum. Duis rhoncus volutpat tempor. ndrerit fermentum augue, non porttitor orci consequat non. Sed pulvinar rutrum urna, eget vulputate ipsum posuere a uisque sodaisis neque in li.<br/>\n				Donec eu elit erat, non congue maurisd venenatis condimentum nibh in euismod. Duis placerat diam non nisi congue fringilla. Morbi ut mauris lorem sodales rutrum.</p>\n			</div>",
+			"\n										<figure>\n											<?php if(file_exists(IMAGES_PATH . 'trainers/' . $v['image'])) : ?>\n												<img src=\"<?php echo IMAGES . 'trainers/' . $v['image']; ?>\" alt=\"<?php echo $k; ?>\">\n											<?php else : ?>\n												<img src=\"<?php echo IMAGES . 'placeholder.jpg'; ?>\" alt=\"Total Fitness\">\n											<?php endif; ?>\n										</figure>",
+			"<div class=\"page-content\">\n		<div class=\"container cf\">\n			<div class=\"content-left\">\n				<div class=\"cf content-wrapper\">\n					<div class=\"module large-content-box\">\n						<div class=\"inner\">\n							<a href=\"#\" title=\"#\">\n								<h3>Classes &amp; Facilities</h3>\n							</a>\n							<div class=\"cf\">\n								<figure>\n									<img src=\"<?php echo IMAGES . 'modules/female-movement-1.jpg'; ?>\" alt=\"Placeholder\">\n								</figure>\n								<div class=\"content\">\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris faucibus condimentum lectusuisque sed vehicula elitIn aliquet sollicitudin.</p>\n									<ul>\n										<li><a href=\"#\" title=\"List Item\">List Item</a></li>\n										<li><a href=\"#\" title=\"List Item\">List Item</a></li>\n										<li><a href=\"#\" title=\"List Item\">List Item</a></li>\n									</ul>\n								</div>\n							</div>\n							<a class=\"btn\" href=\"#\" title=\"View Facilities\">View Facilities<span class=\"icons btn-ico\"></span></a>\n							<a class=\"btn\" href=\"#\" title=\"View Classes\">View Classes<span class=\"icons btn-ico\"></span></a> \n							<div class=\"clear\"></div>\n						</div>\n					</div>\n				</div>\n				<div class=\"cf content-wrapper\">\n					<div class=\"module content-box\">\n						<div class=\"inner\">\n							<a href=\"#\" title=\"#\">\n								<h3>Your Local Gym Offers</h3>\n								<figure>\n									<img src=\"<?php echo IMAGES . 'modules/signup-blue.jpg'; ?>\" alt=\"Placeholder\">\n								</figure>\n							</a>\n							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris faucibus condimentum lectusuisque sed vehicula elitIn aliquet sollicitudin.</p>\n							<a class=\"btn\" href=\"#\" title=\"Find Out More\">Find Out More<span class=\"icons btn-ico\"></span></a>\n							<div class=\"clear\"></div>\n						</div>\n					</div>\n					<div class=\"module content-box\">\n						<div class=\"inner\">\n							<a href=\"#\" title=\"#\">\n								<h3>Your Local Gym Classes</h3>\n								<figure>\n									<img src=\"<?php echo IMAGES . 'modules/schedule.jpg'; ?>\" alt=\"Placeholder\">\n								</figure>\n							</a>\n							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris faucibus condimentum lectusuisque sed vehicula elitIn aliquet sollicitudin.</p>\n							<a class=\"btn\" href=\"#\" title=\"Download The Timetable\">Download The Timetable<span class=\"icons btn-ico\"></span></a>\n							<div class=\"clear\"></div>\n						</div>\n					</div>\n				</div>\n			</div>\n			<div class=\"content-right\">\n				<div class=\"content-wrapper\">\n					<div class=\"module selection-box\">\n						<div class=\"inner\">\n							<figure class=\"null-margin\">\n								<a href=\"/join\" title=\"Sign up now\"><img src=\"<?php echo IMAGES . 'modules/signup.jpg'; ?>\" alt=\"Sign up now\"></a>\n							</figure>\n							<figure>\n								<a href=\"/join\" title=\"Sign up for a free guest pass\"><img src=\"<?php echo IMAGES . 'modules/guest-pass.jpg'; ?>\" alt=\"Sign up for a free guest pass\"></a>\n							</figure>\n						</div>\n					</div>\n					<div class=\"module scroll-box\">\n						<div class=\"inner\">\n							<h3>Personal Trainers</h3>\n							<ul class=\"list\">\n								<?php foreach(trainer_list() as $k=>$v) : ?>\n									<li class=\"cf\">\n										<figure>\n											<img src=\"<?php echo IMAGES . 'trainers/' . $v['image']; ?>\" alt=\"<?php echo $k; ?>\">\n										</figure>\n										<div class=\"content\">\n											<h5><?php echo $k; ?></h5>\n											<a href=\"<?php echo $v['profile']; ?>\" title=\"View <?php echo $k; ?>'s Profile\">View Profile</a>\n											<a href=\"mailto:<?php echo $v['email']; ?>\" title=\"Send <?php echo $k; ?> an email\">Send E-mail</a>\n										</div>\n									</li>\n								<?php endforeach; ?>\n							</ul>\n							<a class=\"btn\" href=\"#\" title=\"Meet The Team\">Meet The Team<span class=\"icons btn-ico\"></span></a>\n							<div class=\"clear\"></div>\n						</div>\n					</div>\n				</div>\n			</div>\n		</div>\n	</div>",
+			"<div class=\"module large-content-box\">\n						<div class=\"inner\">\n							<a href=\"#\" title=\"#\">\n								<h3>Module Title</h3>\n							</a>\n							<div class=\"cf\">\n								<figure>\n									<img src=\"http://www.placehold.it/700x300\" alt=\"Placeholder\">\n								</figure>\n								<div class=\"content\">\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris faucibus condimentum lectusuisque sed vehicula elitIn aliquet sollicitudin.</p>\n									<ul>\n										<li><a href=\"#\" title=\"List Item\">List Item</a></li>\n										<li><a href=\"#\" title=\"List Item\">List Item</a></li>\n										<li><a href=\"#\" title=\"List Item\">List Item</a></li>\n									</ul>\n								</div>\n							</div>\n							<a class=\"btn\" href=\"#\" title=\"Button Text\">Button Text<span class=\"icons btn-ico\"></span></a> \n							<a class=\"btn\" href=\"#\" title=\"Button Text\">Button Text<span class=\"icons btn-ico\"></span></a>\n							<div class=\"clear\"></div>\n						</div>\n					</div>",
+			"\n					<div class=\"module large-content-box\">\n						<div class=\"inner\">\n							<a href=\"#\" title=\"#\">\n								<h3>Module Title</h3>\n							</a>\n							<div class=\"cf\">\n								<figure>\n									<img src=\"http://www.placehold.it/700x300\" alt=\"Placeholder\">\n								</figure>\n								<div class=\"content\">\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris faucibus condimentum lectusuisque sed vehicula elitIn aliquet sollicitudin.</p>\n									<ul>\n										<li><a href=\"#\" title=\"List Item\">List Item</a></li>\n										<li><a href=\"#\" title=\"List Item\">List Item</a></li>\n										<li><a href=\"#\" title=\"List Item\">List Item</a></li>\n									</ul>\n								</div>\n							</div>\n							<a class=\"btn\" href=\"#\" title=\"Button Text\">Button Text<span class=\"icons btn-ico\"></span></a> \n							<a class=\"btn\" href=\"#\" title=\"Button Text\">Button Text<span class=\"icons btn-ico\"></span></a>\n							<div class=\"clear\"></div>\n						</div>\n					</div>",
+			"em",
+			"\n			<div class=\"content-right\">\n				<div class=\"content-wrapper\">\n					<div class=\"module selection-box\">\n						<div class=\"inner\">\n							<figure>\n								<a href=\"/join\" title=\"Sign up now\"><img src=\"<?php echo IMAGES . 'modules/signup.jpg'; ?>\" alt=\"Sign up now\"></a>\n							</figure>\n							<figure>\n								<a href=\"/join\" title=\"Sign up for a free guest pass\"><img src=\"<?php echo IMAGES . 'modules/guest-pass.jpg'; ?>\" alt=\"Sign up for a free guest pass\"></a>\n							</figure>\n						</div>\n					</div>\n					<div class=\"module scroll-box\">\n						<div class=\"inner\">\n							<h3>Module Title</h3>\n							<ul class=\"list\">\n								<li class=\"cf\">\n									<figure>\n										<img src=\"http://www.placehold.it/100x80/000000\" alt=\"Placeholder\">\n									</figure>\n									<div class=\"content\">\n										<h5>Jane Smith</h5>\n										<a href=\"/profile/\" title=\"#\">View Profile</a>\n										<a href=\"mailto:\" title=\"#\">Send E-mail</a>\n									</div>\n								</li>\n								<li class=\"cf\">\n									<figure>\n										<img src=\"http://www.placehold.it/100x80/000000\" alt=\"Placeholder\">\n									</figure>\n									<div class=\"content\">\n										<h5>Jane Smith</h5>\n										<a href=\"/profile/\" title=\"#\">View Profile</a>\n										<a href=\"mailto:\" title=\"#\">Send E-mail</a>\n									</div>\n								</li>\n								<li class=\"cf\">\n									<figure>\n										<img src=\"http://www.placehold.it/100x80/000000\" alt=\"Placeholder\">\n									</figure>\n									<div class=\"content\">\n										<h5>Jane Smith</h5>\n										<a href=\"/profile/\" title=\"#\">View Profile</a>\n										<a href=\"mailto:\" title=\"#\">Send E-mail</a>\n									</div>\n								</li>\n								<li class=\"cf\">\n									<figure>\n										<img src=\"http://www.placehold.it/100x80/000000\" alt=\"Placeholder\">\n									</figure>\n									<div class=\"content\">\n										<h5>Jane Smith</h5>\n										<a href=\"/profile/\" title=\"#\">View Profile</a>\n										<a href=\"mailto:\" title=\"#\">Send E-mail</a>\n									</div>\n								</li>\n								<li class=\"cf\">\n									<figure>\n										<img src=\"http://www.placehold.it/100x80/000000\" alt=\"Placeholder\">\n									</figure>\n									<div class=\"content\">\n										<h5>Jane Smith</h5>\n										<a href=\"/profile/\" title=\"#\">View Profile</a>\n										<a href=\"mailto:\" title=\"#\">Send E-mail</a>\n									</div>\n								</li>\n							</ul>\n							<a class=\"btn\" href=\"#\" title=\"Button Text\">Button Text<span class=\"icons btn-ico\"></span></a>\n							<div class=\"clear\"></div>\n						</div>\n					</div>\n				</div>\n			</div>",
+			"\n				<p class=\"intro-text\">Donec eu elit erat, non congue maurisd venenatis condimentum nibh in euismod. Duis placerat diam non nisi congue fringilla. Morbi ut mauris lorem sodales rutrum. Duis rhoncus volutpat tempor. ndrerit fermentum augue, non porttitor orci consequat non. Sed pulvinar rutrum urna, eget vulputate ipsum posuere a uisque sodaisis neque in li.<br/>\n				Donec eu elit erat, non congue maurisd venenatis condimentum nibh in euismod. Duis placerat diam non nisi congue fringilla. Morbi ut mauris lorem sodales rutrum.</p>\n				<div class=\"hero\">\n					<img src=\"<?php echo IMAGES . 'pages/header-image-images.png'; ?>\" alt=\"Images\">\n				</div>",
+			"\n						<div class=\"inner\">\n							<figure>\n								<a href=\"/join\" title=\"Sign up now\"><img src=\"<?php echo IMAGES . 'modules/signup.jpg'; ?>\" alt=\"Sign up now\"></a>\n							</figure>\n							<figure>\n								<a href=\"/join\" title=\"Sign up for a free guest pass\"><img src=\"<?php echo IMAGES . 'modules/guest-pass.jpg'; ?>\" alt=\"Sign up for a free guest pass\"></a>\n							</figure>\n						</div>",
+			"$meta_title   = 'Your Club | ';",
+			"<?php \n\n	$meta_title   = 'Join Us';\n	$meta_desc    = '';\n	$meta_keyw    = '';\n	$meta_robo    = '';\n	$body_classes",
+			"<?php \n\n	$meta_title   = '';\n	$meta_desc    = '';\n	$meta_keyw    = '';\n	$meta_robo    = '';\n	$meta_title   = '';\n	$meta_desc    = '';\n	$meta_keyw    = '';\n	$meta_robo    = '';",
+			"\n	$meta_title   = '';\n	$meta_desc    = '';\n	$meta_keyw    = '';\n	$meta_robo    = '';",
+			"<?php \n\n\n	$meta_title   = '';\n	$meta_desc    = '';\n	$meta_keyw    = '';\n	$meta_robo    = '';",
+			"\n							<div class=\"address details\">\n								<h5>Address</h5>",
+			"<div id=\"map_canvas\">",
+			"Postcode: <span class=\"postcode\">",
+			"<?php echo IMAGES . 'modules/guest-pass.jpg'; ?>",
+			"<?php echo IMAGES . 'modules/signup.jpg'; ?>",
+			"include '../../footer.php';",
+			"include '../../header.php';",
+			"<li class",
+			"'"
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 100.0
+	},
+	"output.git":
+	{
+		"height": 106.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"sitemap",
+				"docs/sitemap.html"
+			],
+			[
+				"gener",
+				"generic-page.php"
+			],
+			[
+				"global",
+				"css/scss/pages/_global.scss"
+			],
+			[
+				"sty",
+				"docs/styleguide.html"
+			],
+			[
+				"global.scss",
+				"css/scss/pages/_global.scss"
+			],
+			[
+				"mixin",
+				"css/scss/_#mixins.scss"
+			],
+			[
+				"header.scss",
+				"css/scss/pages/_header.scss"
+			],
+			[
+				"main.css",
+				"css/main.css"
+			],
+			[
+				"style",
+				"docs/styleguide.html"
+			],
+			[
+				"buttons",
+				"css/scss/_buttons.scss"
+			],
+			[
+				"stylegui",
+				"docs/styleguide.html"
+			],
+			[
+				"defaults",
+				"css/scss/_defaults.scss"
+			],
+			[
+				"def",
+				"css/scss/_defaults.scss"
+			],
+			[
+				"defa",
+				"css/scss/_defaults.scss"
+			],
+			[
+				"defau",
+				"css/scss/_defaults.scss"
+			],
+			[
+				"compon",
+				"css/scss/_components.scss"
+			],
+			[
+				"styl",
+				"docs/styleguide.html"
+			],
+			[
+				"form",
+				"js/jquery.formval.js"
+			],
+			[
+				"footer",
+				"footer.php"
+			],
+			[
+				"icons.scss",
+				"css/scss/_icons.scss"
+			],
+			[
+				"header",
+				"css/scss/pages/_header.scss"
+			],
+			[
+				"pluggable",
+				"css/scss/_pluggable.scss"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"landl",
+				"landlord-home.php"
+			],
+			[
+				"java",
+				"css/scss/_javascript.scss"
+			],
+			[
+				"mixins",
+				"css/scss/_#mixins.scss"
+			],
+			[
+				"home.scss",
+				"css/scss/pages/_home.scss"
+			],
+			[
+				"pages/home.scss",
+				"css/scss/pages/_home.scss"
+			],
+			[
+				"index.",
+				"index.php"
+			],
+			[
+				"variables.scss",
+				"css/scss/_#variables.scss"
+			],
+			[
+				"core.scss",
+				"css/scss/_core.scss"
+			],
+			[
+				"core.scs",
+				".sass-cache/a719afa193cee89854901ec1a0a2168d3a73f8fe/_core.scssc"
+			],
+			[
+				"text.scss",
+				"css/scss/_text.scss"
+			],
+			[
+				"global.js",
+				"Wordpress/wp-content/themes/customFramework/lib/media/js/global.js"
+			],
+			[
+				"store.xml",
+				"themes/newburn/lib/media/js/stores.xml"
+			],
+			[
+				"eleme",
+				"elements.php"
+			],
+			[
+				"config",
+				"config.php"
+			],
+			[
+				"trainer",
+				"content/health-club/altrincham-trainers.php"
+			],
+			[
+				"classes",
+				"content/classes-home.php"
+			],
+			[
+				"faci",
+				"content/facilities-classes.php"
+			],
+			[
+				"clas",
+				"content/classes-home.php"
+			],
+			[
+				"fac",
+				"content/facilities-classes.php"
+			],
+			[
+				"class",
+				"content/classes-home.php"
+			],
+			[
+				"join-c",
+				"content/join-confirmation.php"
+			],
+			[
+				"elements",
+				"elements.php"
+			],
+			[
+				"facilit",
+				"content/facilities-classes.php"
+			],
+			[
+				"join",
+				"content/join-details.php"
+			],
+			[
+				"prenton",
+				"content/health-club/prenton-wirral.php"
+			],
+			[
+				"config.php",
+				"config.php"
+			],
+			[
+				"htaccess",
+				".htaccess"
+			],
+			[
+				"media.phtml",
+				"app/design/frontend/default/southbeachswim/template/catalog/product/view/media.phtml"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/Stewart/Dropbox/www/Platforms/wp_multi/Wordpress Multi.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 333.0,
+	"status_bar_visible": true
+}

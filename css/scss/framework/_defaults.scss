@@ -2,12 +2,8 @@
    Defaults
 ========================================================================== */
 body {
-	font-family: $def_font;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: normal;
 	color: $def_text;
-	line-height: 1.4;
+	font: normal normal normal 16px/1.4 $def_font;
 	background: $bg_current;
 }
 textarea {
@@ -34,7 +30,7 @@ kbd {
 	padding: 0.5em 1em;
 	border: 1px solid #e6e6e6;
 	border-radius: $def_border_radius;
-	font-size: 1.2em;
+	@include rem(font-size, 18px);
 	line-height: 90%;
 	color: #666;
 	background-color: #fcfcfc;
@@ -54,7 +50,7 @@ ol.code li {
 ul {
 	list-style-type: disc;
 }
-ul ul {
+ul ul, ol ol {
 	margin-left: 1.2em;
 	list-style-type: circle;
 }
@@ -80,8 +76,7 @@ hr.dots {
 	padding: 0;
 	display: block;
 	clear: both;
-	font-size: 3em;
-	line-height: 1;
+	@include rem(font-size, 40px);
 	text-align: center;
 }
 hr.dots:after {

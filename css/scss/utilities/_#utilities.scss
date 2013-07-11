@@ -1,5 +1,6 @@
-// Variables, Mixins & Themes
+// Import utilities
 @import 'mixins';
 @import 'colours';
-@import 'defaults';
+@import 'config';
+@import 'placeholders';
 @import 'themes';

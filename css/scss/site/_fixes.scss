@@ -1,3 +1,39 @@
 /* ==========================================================================
-   Fixes
+   Wordpress/Fixes
 ========================================================================== */
+/* -- No JavaScript -- */
+.no-js {
+	#comment-form .field input, #comment-form .field textarea {
+		padding: 5px 2%;
+		position: static;
+	}
+	#comment-form .field label {
+		left: 0;
+	}
+	#comment-form .field.field-textarea {
+		height: auto;
+		margin-bottom: 0.5em;
+	}
+	#comment-form .field.field-input {
+		height: auto;
+		position: relative;
+	}
+	#mod-results button {
+		display: inline;
+	}
+}
+
+/* -- Old Internet Explorer -- */
+.oldie {
+	.search-form .search-submit {
+		height: 28px;
+		overflow: hidden;
+		text-indent: -999px;
+	}
+	.navigation li:hover .sub-menu {
+		display: block;
+	}
+	.navigation li .sub-menu {
+		display: none;
+	}
+}

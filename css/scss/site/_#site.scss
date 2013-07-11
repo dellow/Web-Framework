@@ -1,10 +1,13 @@
-// Includes
 @import 'includes/header';
 @import 'includes/footer';
 
-// Pages
-@import 'pages/global';
-
-// Root
+@import 'assets';
+@import 'global';
+@import 'search';
+@import 'forms';
+@import 'plugins';
+@import 'javascript_plugins';
+@import 'posts_pages';
+@import 'widgets';
+@import 'responsive';
 @import 'fixes';
-@import 'text';

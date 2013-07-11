@@ -3,7 +3,7 @@
 ========================================================================== */
 /* -- Div Tables -- */
 div.table {
-	@extend .cf;
+	@extend %cf;
 	width: 100%;
 	.col {
 		width: 48%;
@@ -54,6 +54,21 @@ table.table {
 		padding: 0 2px;
 		display: inline;
 		position: relative;
+		&:first-child {
+			padding-left: 0;
+		}
+		&.current_page_item > a, &.current_page_parent > a {
+			font-weight: bold;
+		}
+	}
+}
+
+/* -- Primary Navigation -- */
+.primary-nav {
+	li {
+		&:hover > .sub-menu {
+			display: block;
+		}
 		.sub-menu {
 			padding: 0 12px;
 			margin-left: 0;
@@ -73,25 +88,18 @@ table.table {
 				}
 			}
 		}
-		&.current_page_item > a, &.current_page_parent > a {
-			font-weight: bold;
-		}
-		&:hover > .sub-menu {
-			display: block;
-		}
-		&:first-child {
-			padding-left: 0;
-		}
 	}
 }
 
 /* -- Pagination -- */
 .pagination {
-	font-size: 12px;
+	margin-top: ($nudge*2);
+	@include rem(font-size, 12px);
 	.page-numbers {
-		padding: 5px 13px;
-		margin-left: -0.33em;
+		padding: ($nudge/2) $nudge;
+		margin-left: -4px;
 		border: 1px solid #ccc;
+		@include inline-block;
 	}
 	.page-numbers:first-child {
 		margin-left: 0;
@@ -103,14 +111,14 @@ table.table {
 
 /* -- Grid System -- */
 .grid {
-	$gutter: 2%;
-	@extend .cf;
+	$gutter: 4%;
+	@extend %cf;
 	[class*='col-'] {
 		width: 100%;
 		float: left;
 		margin: 0 0 0 $gutter;
 		.module {
-			padding: 10px;
+			padding: $nudge;
 			border-radius: $def_border_radius;
 			background: #efefef;
 		}
@@ -147,34 +155,34 @@ table.table {
 
 	// Fluid widths
 	.col-1-3 { /* 1/3 */
-		width: 33.3% - $gutter;
+		width: 33.3% - ($gutter / 2);
 	}
 	.col-2-3 { /* 2/3 */
-		width: 66.6% - $gutter;
+		width: 66.6% - ($gutter / 2);
 	}
 	.col-1-2 { /* 1/2 */
-		width: 50% - $gutter;
+		width: 50% - ($gutter / 2);
 	}
 	.col-1-4 { /* 1/4 */
-		width: 25% - $gutter;
+		width: 25% - ($gutter / 2);
 	}
 	.col-3-4 { /* 3/4 */
-		width: 75% - $gutter;
+		width: 75% - ($gutter / 2);
 	}
 	.col-1-8 { /* 1/8 */
-		width: 12.5% - $gutter;
+		width: 12.5% - ($gutter / 2);
 	}
 	.col-1-12 { /* 1/16 */
-		width: 8.33% - $gutter;
+		width: 8.33% - ($gutter / 2);
 	}
 	.col-1-16 { /* 1/16 */
-		width: 6.25% - $gutter;
+		width: 6.25% - ($gutter / 2);
 	}
 }
 
 /* -- Gallery -- */
 .gallery {
-	@extend .cf;
+	@extend %cf;
 	margin: 1em 0;
 	dl dd {
 		text-indent: 0;

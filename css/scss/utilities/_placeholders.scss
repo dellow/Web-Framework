@@ -1,0 +1,23 @@
+// Clearing
+%cf {
+	zoom: 1;
+	&:before, &:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+// Vertically align elements with display: box;
+%vertical-align {
+	display           : -webkit-box;
+	-webkit-box-orient: vertical;
+
+	display           : -moz-box;
+	-moz-box-orient   : vertical;
+
+	display           : box;
+	box-orient        : vertical;
+}
