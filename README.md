@@ -4,5 +4,8 @@
 ## About
 A Grunt powered HTML Framework.
 
+## Usage
+Run 'grunt' on init.
+
 ## Changelog
 *  `v. 1.0.0`
