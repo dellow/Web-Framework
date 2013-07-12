@@ -4,7 +4,6 @@
 		{
 			"file_exclude_patterns":
 			[
-				// Standard
 				".gitignore",
 				"sftp-config.json",
 				"*.sublime-project",
@@ -12,13 +11,12 @@
 			],
 			"folder_exclude_patterns":
 			[
-				// Standard
 				".sass-cache",
 				".git",
 				"node_modules"
 			],
 			"name": "Framework",
-			"path": "/"
+			"path": ""
 		}
 	],
 	"settings":

@@ -1,4 +1,5 @@
 module.exports = function(grunt){
+    'use strict';
 
     grunt.initConfig({
 
@@ -11,7 +12,7 @@ module.exports = function(grunt){
             fontsPath: 'css/fonts'
         },
 
-        // Envionment
+        // Environment
         env: {
             options: {
 
@@ -26,7 +27,7 @@ module.exports = function(grunt){
 
         // JS Hint
         jshint: {
-            all: ['js/site/global.js']
+            all: ['<%= meta.jsPath %>/app/global.js', '<%= meta.jsPath %>/app/functions.js']
         },
 
         // Concat
@@ -35,8 +36,8 @@ module.exports = function(grunt){
                 separator: ';'
             },
             dist: {
-                src: ['js/site/global.js'],
-                dest: 'js/site.js'
+                src: ['<%= meta.jsPath %>/app/global.js', '<%= meta.jsPath %>/app/functions.js'],
+                dest: '<%= meta.jsPath %>/app/site.js'
             }
         },
 
@@ -44,7 +45,7 @@ module.exports = function(grunt){
         uglify: {
             js: {
                 files: {
-                    'js/site.js': ['js/site.js']
+                    '<%= meta.jsPath %>/app/site.js': ['<%= meta.jsPath %>/app/site.js']
                 }
             }
         },
@@ -57,7 +58,7 @@ module.exports = function(grunt){
                     sassDir       : '<%= meta.cssPath %>/scss',
                     cssDir        : '<%= meta.cssPath %>',
                     imagesDir     : '<%= meta.imgPath %>',
-                    javascriptsDir: '<%= meta.jsPath %>/site',
+                    javascriptsDir: '<%= meta.jsPath %>/app',
                     fontsDir      : '<%= meta.fontsPath %>',
                     outputStyle   : 'compressed', // :expanded, :nested, :compact or :compressed
                     raw           : 'preferred_syntax = :scss\n',
