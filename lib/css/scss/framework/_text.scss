@@ -16,22 +16,23 @@ a {
 
 /* -- Paragraph Formatting -- */
 p, .column-layout {
-	margin: $nudge 0;
+	padding: ($nudge / 2) 0;
 }
 
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
+	line-height: 1.6;
 	letter-spacing: -0.05em;
 }
 h1 {
-	@include rem(font-size, 32px);
+	@include rem(font-size, 36px);
 }
 h2 {
 	@include rem(font-size, 24px);
 }
 h3 {
-	@include rem(font-size, 20px);
+	@include rem(font-size, 21px);
 }
 h4 {
-	@include rem(font-size, 16px);
+	@include rem(font-size, 18px);
 }

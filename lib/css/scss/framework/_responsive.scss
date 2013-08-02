@@ -15,7 +15,7 @@
 		float: none !important;
 	}
 	body {
-		font-size: 80%;
+		font-size: 90%;
 	}
 
 	/* -- Container -- */
@@ -54,7 +54,10 @@
 	/* -- Grid -- */
 	.grid [class*="col-"] {
 		width: 100%;
-		padding: 0;
+		margin: 0;
+		&.right, &.left {
+			text-align: center;
+		}
 	}
 
 	/* -- Forms -- */
@@ -67,12 +70,10 @@
 		}
 		input, .input, select, textarea, .field-container, button, .button {
 			padding: 0.5em;
-			@include rem(font-size, 16px);
 		}
 		button {
 			width: 100%;
 			margin: 0.5em 0;
-			text-align: center;
 		}
 	}
 }

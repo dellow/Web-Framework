@@ -2,19 +2,20 @@
    Classes
 ========================================================================== */
 /* -- Alignment -- */
+.aligncenter, .alignnone {
+	margin: $nudge auto;
+	display: block;
+}
 .alignleft {
-	margin: 0 1em 1em 0;
+	margin: 0 $nudge $nudge 0;
 	float: left;
 }
 .alignright {
-	margin: 0 0 1em 1em;
+	margin: 0 0 $nudge $nudge;
 	float: right;
 }
-.aligncenter {
-	margin: 0 auto;
-}
-img.alignleft, img.alignright, img.aligncenter {
-	padding: 0.5em;
+img.alignleft, img.alignright, img.aligncenter, img.alignnone {
+	padding: ($nudge / 2);
 	border: 2px solid #efefef;
 	border-radius: $def_border_radius;
 }

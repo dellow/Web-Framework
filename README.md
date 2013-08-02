@@ -2,10 +2,21 @@
 ### By Stew Dellow | [hellostew.com](http://hellostew.com/ "Creative Web Developer")
 
 ## About
-A Grunt powered HTML Framework.
+A Grunt powered HTML Framework utilising SASS and RequireJS.
 
 ## Usage
-Run 'grunt' on init.
+* Run the default config (Compass compile, Concatenation JS)
+
+		grunt
+* Run the production config (Compass compile, Concatenation JS, Uglify JS)
+
+		grunt prod
+* Watch SASS folder
+
+		grunt watch
+* Compile SASS once
+
+		grunt compass
 
 ## Changelog
 *  `v. 1.0.0`

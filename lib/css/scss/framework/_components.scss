@@ -64,7 +64,7 @@ table.table {
 }
 
 /* -- Primary Navigation -- */
-.primary-nav {
+.nav-primary {
 	li {
 		&:hover > .sub-menu {
 			display: block;
@@ -111,19 +111,19 @@ table.table {
 
 /* -- Grid System -- */
 .grid {
-	$gutter: 4%;
+	$gutter: 6%;
+
+	width: 100% + ($gutter / 2);
 	@extend %cf;
-	[class*='col-'] {
-		width: 100%;
+	position: relative;
+	left: -($gutter / 2);
+	[class*="col-"] {
 		float: left;
-		margin: 0 0 0 $gutter;
+		margin: 0 0 1% ($gutter / 2);
 		.module {
 			padding: $nudge;
 			border-radius: $def_border_radius;
 			background: #efefef;
-		}
-		&:first-child {
-			margin-left: 0;
 		}
 		&.left {
 			text-align: left;
@@ -140,16 +140,17 @@ table.table {
 	}
 
 	// Fixed widths
+	$fixedgutter: 10px;
 	$fixedwidths: (
-		'960',
-		'640',
-		'320',
-		'160',
-		'80'
+		960,
+		640,
+		320,
+		160,
+		80
 	);
 	@each $width in $fixedwidths {
 		.col-#{$width} {
-			width: unquote($width + px);
+			width: $width - ($fixedgutter / 2);
 		}
 	}
 

@@ -6,10 +6,10 @@ module.exports = function(grunt){
         // Metadata
         meta: {
             basePath : '/',
-            jsPath   : 'js/',
-            imgPath  : 'images/',
-            cssPath  : 'css/',
-            fontsPath: 'css/fonts'
+            jsPath   : 'lib/js/',
+            imgPath  : 'lib/images/',
+            cssPath  : 'lib/css/',
+            fontsPath: 'lib/css/fonts'
         },
 
         // Environment
@@ -27,7 +27,12 @@ module.exports = function(grunt){
 
         // JS Hint
         jshint: {
-            all: ['<%= meta.jsPath %>/app/global.js', '<%= meta.jsPath %>/app/functions.js']
+            all: [
+                // JS File #1
+                '<%= meta.jsPath %>/global.js'
+                // JS File #2
+                // ....
+            ]
         },
 
         // Concat
@@ -36,8 +41,13 @@ module.exports = function(grunt){
                 separator: ';'
             },
             dist: {
-                src: ['<%= meta.jsPath %>/app/global.js', '<%= meta.jsPath %>/app/functions.js'],
-                dest: '<%= meta.jsPath %>/app/site.js'
+                src: [
+                    // JS File #1
+                    '<%= meta.jsPath %>/global.js'
+                    // JS File #2
+                    // ....
+                ],
+                dest: '<%= meta.jsPath %>/all.js'
             }
         },
 
@@ -45,7 +55,7 @@ module.exports = function(grunt){
         uglify: {
             js: {
                 files: {
-                    '<%= meta.jsPath %>/app/site.js': ['<%= meta.jsPath %>/app/site.js']
+                    '<%= meta.jsPath %>/all.js': ['<%= meta.jsPath %>/all.js']
                 }
             }
         },

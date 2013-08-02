@@ -1,7 +1,7 @@
 /* ==========================================================================
    JavaScript
 ========================================================================== */
-.blur {
+.js_blur {
 	-webkit-filter    : blur(2px);
 	-moz-filter       : blur(2px);
 	-o-filter         : blur(2px);
@@ -71,36 +71,41 @@
 		border: 1px solid #EAEAEA;
 		position: relative;
 		@include transition(color 500ms ease, background-color 500ms ease);
-	}
-	.accordion-title.arrow:after {
-		height: 0;
-		width: 0;
-		position: absolute;
-		top: 100%;
-
-		content: " ";
-		border: solid transparent;
-		pointer-events: none;
-	}
-	.accordion-title.arrow:after {
-		top: 41%;
-		right: 2%;
-		border-left-color: #EAEAEA;
-		border-width: 5px;
-	}
-	.accordion-title.arrow.active-title:after {
-		top: 45%;
-		right: 2.5%;
-		border-left-color: rgba(249,249,249,0.3);
-		border-top-color: #EAEAEA;
-		border-width: 5px;
-	}
-	.accordion-title:hover, .accordion-title.active-title {
-		color: $def_color;
-		background: rgba(249,249,249,0.3);
+		&.arrow {
+			&.active-title:after {
+				top: 45%;
+				right: 2.5%;
+				border-left-color: rgba(249,249,249,0.3);
+				border-top-color: #EAEAEA;
+				border-width: 5px;
+			}
+			&:after {
+				height: 0;
+				width: 0;
+				border-width: 5px;
+				border-left-color: #EAEAEA;
+				position: absolute;
+				top: 41%; right: 2%;
+				content: " ";
+				border: solid transparent;
+				pointer-events: none;
+			}
+		}
+		&:hover, .accordion-title.active-title {
+			color: $def_color;
+			background: rgba(249,249,249,0.3);
+		}
 	}
 	.accordion-content {
 		padding: 1em;
 		border: 1px solid #EAEAEA;
+	}
+}
+
+/* -- Google Map -- */
+#map_canvas {
+	margin: 1em 0;
+	img {
+		max-width: none;
 	}
 }

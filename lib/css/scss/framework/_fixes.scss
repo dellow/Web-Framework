@@ -13,12 +13,25 @@
 		text-indent: -999px;
 	}
 
+	/* -- Grid -- */
+	.grid {
+		.col + .col {
+			padding-right: 0;
+		}
+	}
+}
+
+.ie8 {
+	.container {
+		width: 960px;
+	}
+
 	/* -- Custom Inputs -- */
 	form {
 		[class*='custom-'] {
 			input {
-			    width: auto;
-			    height: auto;
+			    width: auto !important;
+			    height: auto !important;
 			    visibility: visible;
 				position: static;
 				cursor: pointer;
@@ -29,13 +42,6 @@
 					border: none;
 				}
 			}
-		}
-	}
-
-	/* -- Grid -- */
-	.grid {
-		.col + .col {
-			padding-right: 0;
 		}
 	}
 }
