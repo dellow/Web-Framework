@@ -21,3 +21,14 @@
 	display           : box;
 	box-orient        : vertical;
 }
+
+// Image Replacement
+%ir {
+	font: 0/0;
+	text-shadow: none;
+	color: transparent;
+}
+.oldie %ir {
+	overflow: hidden;
+	text-indent: -999px;
+}

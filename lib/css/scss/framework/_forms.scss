@@ -133,7 +133,7 @@ form {
 
 // General fields
 input, .input, select, textarea, .field-container, button, .button {
-	height: 35px;
+	height: $form_field_height;
 	padding: 0.4em 0.6em;
 	border: 1px solid #CCC;
 	border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;

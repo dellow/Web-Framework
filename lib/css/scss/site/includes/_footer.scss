@@ -1,26 +1,3 @@
 /* ==========================================================================
-   Wordpress/Footer
+   Includes/Footer
 ========================================================================== */
-/* -- Footer -- */
-.footer {
-	margin: $nudge 0 0;
-}
-
-/* -- Secondary Navigation -- */
-.nav-secondary .sub-menu {
-	display: none !important; /* Important to hide sub-menu in secondary menu */
-}
-
-/* -- Colophon -- */
-details.colophon {
-	margin-top: 7px;
-	font-size: 75%;
-	@include opacity(0.7);
-	@include transition(opacity 500ms ease);
-	&:hover {
-		@include opacity(1);
-	}
-}
-details.colophon[open] {
-	@include opacity(1);
-}

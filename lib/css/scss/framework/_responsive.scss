@@ -1,26 +1,12 @@
 /* ==========================================================================
    Responsive
 ========================================================================== */
-/**
- * Prevents the container from ever exceeding 960px
-**/
-@media all and (min-width: 960px) {
-	.container {
-		max-width: 960px;
-	}
-}
-
 @media all and (max-width: 48em) {
 	* {
 		float: none !important;
 	}
 	body {
 		font-size: 90%;
-	}
-
-	/* -- Container -- */
-	.container {
-		max-width: 90%;
 	}
 
 	/* -- Exclusions -- */
