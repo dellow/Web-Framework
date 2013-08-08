@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Cleaning framework"
+
+rm -rf .git/        && \
+rm -rf .sass-cache/ && \
+git init            && \
+git add .           && \
+rm clean
+
+echo "Framework successfully installed!"
+
+git status
