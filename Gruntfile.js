@@ -6,9 +6,9 @@ module.exports = function(grunt){
         // Metadata
         meta: {
             basePath : '/',
-            jsPath   : 'lib/js/',
-            imgPath  : 'lib/images/',
-            cssPath  : 'lib/css/',
+            jsPath   : 'lib/js',
+            imgPath  : 'lib/images',
+            cssPath  : 'lib/css',
             fontsPath: 'lib/css/fonts'
         },
 

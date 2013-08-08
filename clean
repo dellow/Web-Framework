@@ -1,9 +1,10 @@
 #!/bin/sh
 
-echo "Cleaning framework"
+echo "Cleaning in progress. Please wait..."
 
 rm -rf .git/        && \
 rm -rf .sass-cache/ && \
+rm -rf README.md    && \
 git init            && \
 git add .           && \
 rm clean
