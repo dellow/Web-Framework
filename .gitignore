@@ -1,0 +1,9 @@
+# Ignore Directories
+# ---------------------------
+.sass-cache
+
+# Ignore Files
+# ---------------------------
+#.gitignore
+*.sublime-project
+*.sublime-workspace
