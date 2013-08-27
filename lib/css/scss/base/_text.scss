@@ -1,6 +1,12 @@
 /* ==========================================================================
    Text
 ========================================================================== */
+/* -- Global -- */
+body {
+	color: $grey;
+	font: normal normal normal 16px/1.4 $font_def;
+}
+
 /* -- Links & Hover Styles -- */
 a {
 	color: inherit;
@@ -21,7 +27,7 @@ p, .column-layout {
 
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
-	line-height: 1.6;
+	line-height: 1.2;
 	letter-spacing: -0.05em;
 }
 h1 {

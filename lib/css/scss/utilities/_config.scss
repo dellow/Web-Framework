@@ -1,38 +1,24 @@
-// Default theme
-$bg_current           : $white;
-$def_color            : $red;
-$def_color_dark       : $red_opp;
-$def_text             : $grey;
-
-// Fonts
-$def_font             : "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, "Trebuchet MS", "Lucida Grande", Verdana, sans-serif;
-$serif                : Georgia, Times, serif;
-$sans-serif           : Arial, "Trebuchet MS", "Lucida Grande", Verdana, sans-serif;
-$arial                : Arial, sans-serif;
-$helvetica            : Helvetica, sans-serif;
-$georgia              : Georgia, serif;
-$times                : Times, serif;
-$myriad               : "MyriadPro", "Myriad Pro", Myriad, Arial, Helvetica, Tahoma, sans-serif;
-
-// Misc Defaults
-$legacy-support-for-ie: true;
-$form_field_height    : 35px;
-$def_border_radius    : 3px;
-$def_box_shadow       : 0 0 5px rgba(69, 18, 11, 0.15);
+// Defaults
+$form_field_height: 35px;
+$def_border_radius: 3px;
+$def_box_shadow   : 0 0 5px rgba(69, 18, 11, 0.15);
 
 // Nudge
-$nudge                : 0.825em;
+$nudge            : 0.825em;
+
+// Responsive
+$responsive       : true;
 
 // Breakpoints
-$iphone_portrait      : 20em;
-$iphone_landscape     : 30em;
-$ipad_portrait        : 48em;
-$ipad_landscape       : 64em;
-$desktop              : 60em;
-$desktop_large        : 90em;
+$iphone_portrait  : 20em;
+$iphone_landscape : 30em;
+$ipad_portrait    : 48em;
+$ipad_landscape   : 64em;
+$desktop          : 60em;
+$desktop_large    : 90em;
 
 // Paths
-$path_siteimages      : "../images/siteimages/"; // url(#{$path_siteimages}imagename.jpg)
-$path_icons           : "../images/icons/"; // url(#{$path_icons}imagename.jpg)
-$path_admin           : "../images/admin/"; // url(#{$path_admin}imagename.jpg)
-$path_fonts           : "/fonts/"; // url(#{$path_fonts}imagename.jpg)
+$path_siteimages  : "../globalimages/siteimages/"; // url(#{$path_siteimages}imagename.jpg)
+$path_icons       : "../globalimages/icons/"; // url(#{$path_icons}imagename.jpg)
+$path_other       : "../globalimages/other/"; // url(#{$path_other}imagename.jpg)
+$path_fonts       : "/fonts/"; // url(#{$path_fonts}imagename.jpg)

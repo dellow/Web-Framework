@@ -2,18 +2,16 @@
    Defaults
 ========================================================================== */
 body {
-	color: $def_text;
-	font: normal normal normal 16px/1.4 $def_font;
 	background: $bg_current;
 }
 textarea {
-	font-family: $def_font;
+	font-family: $font_def;
 }
 fieldset {
-	margin: 1em 0;
+	margin: $nudge 0;
 }
 pre {
-	padding: 1em;
+	padding: $nudge;
 	margin: 0.5em 0;
 	border: 1px solid;
 	position: relative;
@@ -27,7 +25,7 @@ pre {
 	/* &lt; = < &gt; = >  */
 }
 kbd {
-	padding: 0.5em 1em;
+	padding: 0.5em $nudge;
 	border: 1px solid #e6e6e6;
 	border-radius: $def_border_radius;
 	@include rem(font-size, 18px);
@@ -59,7 +57,7 @@ ul li, ol li {
 }
 dl dd {
 	margin: 0.2em 0;
-	text-indent: 1em;
+	text-indent: $nudge;
 }
 h1, h2, h3, h4, h5, h6 {
 	text-rendering: optimizelegibility;
@@ -71,7 +69,7 @@ hr {
 }
 hr.dots {
 	height: 0;
-	margin: 1em 0 2em;
+	margin: $nudge 0 2em;
 	border: 0;
 	padding: 0;
 	display: block;
@@ -82,8 +80,8 @@ hr.dots {
 hr.dots:after {
 	content: "·········";
 	color: #ccc;
-	letter-spacing: 1em;
-	padding-left: 1em;
+	letter-spacing: $nudge;
+	padding-left: $nudge;
 	height: 0;
 }
 ::-moz-selection {

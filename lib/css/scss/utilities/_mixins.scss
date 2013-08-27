@@ -43,9 +43,10 @@
  * .foo {@include rem(font-size height, 20px);}
  *
  */
+$legacy_support_for_ie: true;
 @mixin rem($selectors, $size) {
     @each $selector in $selectors {
-    	@if $legacy-support-for-ie {
+    	@if $legacy_support_for_ie {
             #{$selector}: $size;
         }
         #{$selector}: px-to-rem($size);
@@ -105,14 +106,6 @@
 @mixin inline-block() {
 	display: inline-block;
 	zoom: 1; *display: inline; /* IE Fix */
-}
-
-// Overflow ellipsis
-// .foo {@include ellipsis;}
-@mixin ellipsis() {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
 }
 
 // CSS Arrow

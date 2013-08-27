@@ -53,7 +53,7 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 	list-style: none !important;
 }
 
-/* -- Nudges -- */
+/* -- Nudge -- */
 .nudge-top {
 	margin-top: $nudge;
 }
@@ -65,6 +65,20 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 }
 .nudge-left {
 	margin-left: $nudge;
+}
+
+/* -- Pad -- */
+.pad-top {
+	padding-top: $nudge;
+}
+.pad-right {
+	padding-right: $nudge;
+}
+.pad-bottom {
+	padding-bottom: $nudge;
+}
+.pad-left {
+	padding-left: $nudge;
 }
 
 /* -- Image Replacement -- */

@@ -1,11 +1,13 @@
+@charset "UTF-8";
+
 // Fonts - Need to be included first so picked from the site directory
-@import 'site/fonts';
+@import 'site/font-face';
 
-// Utilities
-@import 'utilities/#utilities';
+// 1. Utilities
+@import 'utilities/#all';
 
-// Framework
-@import 'framework/#framework';
+// 2. Site specific styling
+@import 'site/#all';
 
-// Site specific styling
-@import 'site/#site';
+// 3. Base framework
+@import 'base/#all';

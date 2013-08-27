@@ -1,0 +1,19 @@
+// Fonts
+$font_arial          : Arial;
+$font_georgia        : Georgia;
+$font_helvetica      : "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue";
+$font_myriad         : "MyriadPro", "Myriad Pro", Myriad;
+$font_times          : Times;
+$font_trebuchet      : "Trebuchet MS";
+$font_verdana        : Verdana;
+$font_serif          : serif;
+$font_sans_serif     : sans-serif;
+$font_def            : $font_helvetica, $font_arial, $font_trebuchet, $font_verdana, $font_sans_serif;
+
+// Font Weights
+$font_weight_bold    : 700;
+$font_weight_semibold: 600;
+$font_weight_medium  : 400;
+$font_weight_regular : 400;
+$font_weight_light   : 300;
+$font_weight_thin    : 300;
