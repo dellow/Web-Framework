@@ -52,6 +52,9 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 .no-bullet {
 	list-style: none !important;
 }
+.no-float {
+	float: none;
+}
 
 /* -- Nudge -- */
 .nudge-top {

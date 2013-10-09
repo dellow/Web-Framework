@@ -2,10 +2,11 @@
    Forms
 ========================================================================== */
 /* -- Forms -- */
+// Default behaviour
 form {
 	position: relative;
 
-	// Specific Classes
+	// Positioning
 	.left {
 		width: 49%;
 		float: left;
@@ -14,38 +15,37 @@ form {
 		width: 49%;
 		float: right;
 	}
-	.progress {
-		box-shadow: none;
-		background: none;
-		button.bar {
-			width: auto;
-			height: auto;
-		}
+	// Validation message
+	.validationMessage {
+		display: none;
 	}
+	// Field containers
 	.field {
 		@extend %cf;
 		margin: 0 0 $nudge;
+		position: relative;
 	}
-	.full {
-		width: 100%;
+	// Input sizes
+	.col-1 {
+		width: 100% !important;
 	}
-	.half {
-		width: 50%;
+	.col-2 {
+		width: 49.5% !important;
 	}
-	.small {
-		width: 25%;
+	.col-3 {
+		width: 31.3% !important;
 	}
-	.v-small {
-		width: 15%;
+	.col-4 {
+		width: 22.7% !important;
 	}
-	.field-container {
-		@include inline-block;
-		vertical-align: middle;
+	.col-5 {
+		width: 17.6% !important;
 	}
-
-	/* -- General Custom Inputs -- */
+	.col-6 {
+		width: 14.15% !important;
+	}
+	// General Custom Inputs
 	[class*='custom-'] {
-		height: 30px;
 		margin-right: $nudge;
 		position: relative;
 		@include inline-block;
@@ -69,13 +69,13 @@ form {
 			position: absolute;
 			visibility: hidden;
 		}
-		.label {
+		span.label {
 			width: auto;
-			padding: 0 0 0 22px;
-			margin: 0;
+			margin: 0 0 0 25px;
+			display: block;
+			line-height: 1.1;
 		}
 	}
-
 	// Custom Checkbox Input
 	.custom-checkbox {
 		label {
@@ -106,7 +106,6 @@ form {
 			@include opacity(0.8);
 		}
 	}
-
 	// Custom Radio Input
 	.custom-radio {
 		label {
@@ -130,24 +129,90 @@ form {
 		}
 	}
 }
+// Display specific behaviours
+form.form-inline {
+	label, .label, input, .input, select, textarea, .field-container {
+		width: auto;
+		margin-left: 0.825em;
+		display: inline;
+		vertical-align: middle;
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+	span {
+		+ input, .input, select, textarea, .field-container {
+			margin: 0;
+		}
+	}
+}
+form.form-block {
+	input, .input, select, textarea, .field-container {
+		width: 100%;
+		display: block;
+	}
+	.field-container {
+		input, .input, select, textarea {
+			margin-left: 2%;
+			@include inline-block;
+			vertical-align: middle;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		span {
+			+ input, .input, select, textarea, .field-container {
+				margin: 0;
+			}
+		}
+	}
+}
+form.form-inline-block {
+	label, .label {
+		width: 30%;
+	}
+	input, .input, select, textarea, .field-container {
+		width: 65%;
+		margin-left: 2%;
+	}
+	.field-container {
+		input, .input, select, textarea {
+			margin-left: 2%;
+			@include inline-block;
+			vertical-align: middle;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		span {
+			+ input, .input, select, textarea, .field-container {
+				margin: 0;
+			}
+		}
+	}
+	label, .label, input, .input, select, textarea, .field-container {
+		@include inline-block;
+		vertical-align: middle;
+	}
+}
+
+// Labels
+label, .label {
+	position: relative;
+}
 
 // General fields
-input, .input, select, textarea, .field-container, button, .button {
+input, .input, select, textarea, button, .button {
 	height: $form_field_height;
 	padding: 0.4em 0.6em;
+	margin: 0.2em 0;
 	border: 1px solid #CCC;
+	vertical-align: top;
 	border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
 	border-radius: $def_border_radius;
-	vertical-align: top;
 	@include rem(font-size, 14px);
 	@include transition(color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease);
-}
-input, .input, select, textarea, .field-container {
-	width: 100%;
-}
-label, button, a.button, details, input[type="button"], input[type="submit"] {
-	cursor: pointer;
 }
 
 // Textareas
@@ -170,8 +235,8 @@ input[type="radio"], input[type="checkbox"] {
 
 // Buttons
 button, .button {
-	padding: 0.5em 2.5em;
-	@include inline-block;
+	height: $form_field_height;
+	padding-left: 2em; padding-right: 2em;
 	position: relative;
 	text-align: center;
 	cursor: pointer;
@@ -217,6 +282,12 @@ input, select, textarea {
 		box-shadow: none; // IE displays box-shadow on checkbox and radios
 	}
 }
+
+// Specific Fields
+/*
+#formid\:fieldname {
+}
+*/
 
 /* -- Placeholder -- */
 // Can't use opacity to change color. IE doesn't like this!

@@ -123,19 +123,15 @@ $legacy_support_for_ie: true;
 		content: " ";
 		pointer-events: none;
 		@if($position == left){
-			right: 100%;
 			border-right-color: $color;
 		}
 		@else if($position == right){
-			left: 100%;
 			border-left-color: $color;
 		}
 		@else if($position == top){
-			bottom: 100%;
 			border-bottom-color: $color;
 		}
 		@else if($position == bottom){
-			top: 100%;
 			border-top-color: $color;
 		}
 		border-width: $size;

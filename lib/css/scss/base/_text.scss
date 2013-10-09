@@ -22,12 +22,12 @@ a {
 
 /* -- Paragraph Formatting -- */
 p, .column-layout {
-	margin: $nudge 0;
+	margin: 0 0 $nudge 0;
 }
 
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
-	line-height: 1.2;
+	line-height: 1.6;
 	letter-spacing: -0.05em;
 }
 h1 {
@@ -41,4 +41,24 @@ h3 {
 }
 h4 {
 	@include rem(font-size, 18px);
+}
+
+/* -- Quotes -- */
+blockquote {
+	padding: 0 10px;
+	position: relative;
+	display: inline;
+	font-family: $font_serif;
+	font-style: italic;
+}
+blockquote:before, q:before, blockquote:after, q:after {
+	position: absolute;
+}
+blockquote:before, q:before {
+	content: "\201c";
+	left: 0;
+}
+blockquote:after, q:after {
+	content: "\201d";
+	right: 0;
 }

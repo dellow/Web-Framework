@@ -1,11 +1,21 @@
 @if $responsive == true {
-	/* ==========================================================================
-	   Responsive
-	========================================================================== */
-	@media all and (max-width: 48em) {
+
+	/* -- 320px & Below -- */
+	@media only screen and (max-width: 20em) {
+		body {
+			font-size: 75%;
+		}
+	}
+
+	/* -- 480px & Below -- */
+	@media only screen and (max-width: 30em) {
 		* {
 			float: none !important;
 		}
+	}
+
+	/* -- 768px & Below -- */
+	@media only screen and (max-width: 48em) {
 		body {
 			font-size: 90%;
 		}
@@ -69,9 +79,4 @@
 		}
 	}
 
-	@media all and (max-width: 22.5em) {
-		body {
-			font-size: 75%;
-		}
-	}
 }

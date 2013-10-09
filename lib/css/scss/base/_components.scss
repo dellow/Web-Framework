@@ -92,6 +92,16 @@ table.table {
 	}
 }
 
+/* -- Breadcrumb -- */
+.breadcrumb {
+	> a {
+		font-weight: bold;
+	}
+	a {
+		color: $def_color;
+	}
+}
+
 /* -- Pagination -- */
 .pagination {
 	margin-top: ($nudge*2);
@@ -112,13 +122,12 @@ table.table {
 
 /* -- Grid System -- */
 .grid {
-	$gutter: 6%;
-
 	width: 100% + ($gutter / 2);
 	@extend %cf;
 	position: relative;
 	left: -($gutter / 2);
 	[class*="col-"] {
+		width: 100% - ($gutter / 2);
 		float: left;
 		margin: 0 0 1% ($gutter / 2);
 		&.left {
@@ -126,6 +135,9 @@ table.table {
 		}
 		&.right {
 			text-align: right;
+		}
+		&.center {
+			text-align: center;
 		}
 		&.fl {
 			float: left;
@@ -136,7 +148,6 @@ table.table {
 	}
 
 	// Fixed widths
-	$fixedgutter: 10px;
 	$fixedwidths: (
 		960,
 		640,
