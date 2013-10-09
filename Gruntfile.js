@@ -1,9 +1,19 @@
+/**
+ * Grunt Powered HTML Framework
+ * http://hellostew.com
+ * @author Stewart Dellow
+**/
+
+'use strict';
+
 module.exports = function(grunt){
-    'use strict';
 
     grunt.initConfig({
 
-        // Metadata
+        /**
+         * meta
+         * Vars for later use.
+        **/
         meta: {
             basePath : '/',
             jsPath   : 'lib/js',
@@ -12,7 +22,10 @@ module.exports = function(grunt){
             fontsPath: 'lib/css/fonts'
         },
 
-        // Environment
+        /**
+         * env
+         * Environment.
+        **/
         env: {
             options: {
 
@@ -25,7 +38,10 @@ module.exports = function(grunt){
             }
         },
 
-        // JS Hint
+        /**
+         * jshint
+         * JS Hint.
+        **/
         jshint: {
             all: [
                 // JS File #1
@@ -35,7 +51,10 @@ module.exports = function(grunt){
             ]
         },
 
-        // Concat
+        /**
+         * concat
+         * Concatenates JavaScript.
+        **/
         concat: {
             options: {
                 separator: ';'
@@ -51,7 +70,10 @@ module.exports = function(grunt){
             }
         },
 
-        // Uglify
+        /**
+         * uglify
+         * Minify JavaScripts.
+        **/
         uglify: {
             js: {
                 files: {
@@ -60,7 +82,10 @@ module.exports = function(grunt){
             }
         },
 
-        // SASS & Compass
+        /**
+         * compass
+         * SASS & Compass.
+        **/
         compass: {
             dist: {
                 options: {
@@ -79,7 +104,10 @@ module.exports = function(grunt){
             }
         },
 
-		// Watch
+        /**
+         * watch
+         * Watch for changes to SASS files.
+        **/
 		watch: {
 		    scripts: {
 		        files: [
@@ -92,7 +120,9 @@ module.exports = function(grunt){
 
     });
 
-    // Load tasks
+    /**
+     * Load tasks
+    **/
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -100,7 +130,10 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    // Register tasks
+
+    /**
+     * Register tasks
+    **/
     grunt.registerTask('default', ['jshint', 'env:dev', 'compass', 'concat']);
     grunt.registerTask('prod', ['jshint', 'env:prod', 'compass', 'concat', 'uglify']);
 
