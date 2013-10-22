@@ -1,17 +1,15 @@
-// General styling
-@import 'reset';
-@import 'classes';
-@import 'defaults';
-@import 'core';
-@import 'text';
-@import 'colours';
-@import 'components';
-@import 'forms';
-@import 'functions';
-@import 'javascript';
-@import 'buttons';
-@import 'alerts';
-@import 'fixes';
-
-@import 'breakpoints';
-@import 'print';
+@import 'reset',
+		'classes',
+		'defaults',
+		'core',
+		'text',
+		'colours',
+		'components',
+		'forms',
+		'functions',
+		'javascript',
+		'buttons',
+		'alerts',
+		'fixes',
+		'breakpoints',
+		'print';

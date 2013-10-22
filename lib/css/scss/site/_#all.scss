@@ -1,15 +1,11 @@
-// UI
-@import 'ui/colours';
-@import 'ui/fonts';
-@import 'ui/themes';
-
-// Includes
-@import 'includes/header';
-@import 'includes/footer';
-
-// Pages
-@import 'pages/global';
-
-// Root
-@import 'fixes';
-@import 'text';
+@import 'ui/colours',
+		'ui/fonts',
+		'ui/themes',
+		// Includes
+		'includes/header',
+		'includes/footer',
+		// Pages
+		'pages/global',
+		// Root
+		'fixes',
+		'text';
