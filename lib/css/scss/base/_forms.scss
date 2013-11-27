@@ -174,25 +174,27 @@ form.form-inline-block {
 	input, .input, select, textarea, .field-container {
 		width: 65%;
 		margin-left: 2%;
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+	label, .label, input, .input, select, textarea, .field-container {
+		@include inline-block;
+		vertical-align: middle;
 	}
 	.field-container {
-		input, .input, select, textarea {
-			margin-left: 2%;
-			@include inline-block;
-			vertical-align: middle;
-			&:first-child {
-				margin-left: 0;
-			}
-		}
 		span {
 			+ input, .input, select, textarea, .field-container {
 				margin: 0;
 			}
 		}
 	}
-	label, .label, input, .input, select, textarea, .field-container {
-		@include inline-block;
-		vertical-align: middle;
+}
+
+// Reset the radios and checkboxes
+form.form-block, form.form-inline-block {
+	input[type="radio"], input[type="checkbox"] {
+		@extend %radio-checkbox;
 	}
 }
 
@@ -222,7 +224,7 @@ textarea {
 }
 
 // Radio & Checkboxes
-input[type="radio"], input[type="checkbox"] {
+%radio-checkbox, input[type="radio"], input[type="checkbox"] {
 	width: auto;
 	height: auto;
 	border: 0;

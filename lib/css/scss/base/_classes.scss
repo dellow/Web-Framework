@@ -134,9 +134,9 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 
 /* -- Lists -- */
 .inside {
-	margin-left: 1.2em;
+	margin-left: $def_ul_indent;
 	ul, ol {
-		margin-left: 1.2em;
+		margin-left: $def_ul_indent;
 	}
 }
 .no-bullet {
