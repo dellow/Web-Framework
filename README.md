@@ -24,5 +24,9 @@ This will remove the Git wrapper and replace with a fresh initialisation and rem
 
 		grunt compass
 
+* Use vanilla SASS
+
+		sh sass.sh
+
 ## Changelog
 *  `v. 1.0.0`
