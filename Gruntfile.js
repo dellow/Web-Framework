@@ -99,6 +99,7 @@ module.exports = function(grunt){
                     raw           : 'preferred_syntax = :scss\n',
                     relativeAssets: true,
                     noLineComments: false,
+                    sourcemap     : true,
                     environment   : 'development' // :development or :production
                 }
             }
@@ -108,15 +109,15 @@ module.exports = function(grunt){
          * watch
          * Watch for changes to SASS files.
         **/
-		watch: {
-		    scripts: {
-		        files: [
+        watch: {
+            scripts: {
+                files: [
                     '<%= meta.cssPath %>/*.scss',
                     '<%= meta.cssPath %>/**/*.scss'
-		        ],
-		        tasks: ['compass']
-		    }
-		}
+                ],
+                tasks: ['compass']
+            }
+        }
 
     });
 
