@@ -7,8 +7,8 @@ A Grunt powered HTML Framework utilising SASS and RequireJS.
 ## Install
 After cloning the repository simply run from your command line:
 
-	./clean
-This will remove the Git wrapper and replace with a fresh Git initialisation and remove any un-necessary files/directories
+	bash ./clean
+This will remove the Git wrapper and replace with a fresh Git initialisation and remove any un-necessary files/directories. All JavaScript to be added in /app and /helpers - this will be compiled by Grunt into a global build.js file.
 
 ## Usage
 * Run the default config in development mode
