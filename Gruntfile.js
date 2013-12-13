@@ -8,18 +8,31 @@
 
 module.exports = function(grunt){
 
+    /**
+     * globalConfig
+     * Variables.
+    **/
+    var globalConfig = {
+        basePath   : '/',
+        jsPath     : 'lib/js',
+        imgPath    : 'lib/images',
+        cssPath    : 'lib/css',
+        fontsPath  : 'lib/css/fonts'
+    };
+
+    /**
+     * grunt.initConfig
+     * Grunt config.
+    **/
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
 
         /**
-         * meta
-         * Vars for later use.
+         * localConfig
+         * Variables.
         **/
-        meta: {
-            basePath : '/',
-            jsPath   : 'lib/js',
-            imgPath  : 'lib/images',
-            cssPath  : 'lib/css',
-            fontsPath: 'lib/css/fonts'
+        localConfig: {
+            jsPath: globalConfig.jsPath
         },
 
         /**
@@ -28,32 +41,19 @@ module.exports = function(grunt){
         **/
         env: {
             options: {
-
             },
             dev: {
-                NODE_ENV: 'DEVELOPMENT'
+                ENV_MODE: 'development'
             },
             prod: {
-                NODE_ENV: 'PRODUCTION'
+                ENV_MODE: 'production'
             }
-        },
-
-        /**
-         * jshint
-         * JS Hint.
-        **/
-        jshint: {
-            all: [
-                // JS File #1
-                '<%= meta.jsPath %>/global.js'
-                // JS File #2
-                // ....
-            ]
         },
 
         /**
          * concat
          * Concatenates JavaScript.
+         * NOT CURRENTLY USED REQUIREJS DOES THIS
         **/
         concat: {
             options: {
@@ -61,23 +61,41 @@ module.exports = function(grunt){
             },
             dist: {
                 src: [
-                    // JS File #1
-                    '<%= meta.jsPath %>/global.js'
-                    // JS File #2
-                    // ....
+                    globalConfig.jsPath + '/app/site.js'
                 ],
-                dest: '<%= meta.jsPath %>/all.js'
+                //dest: globalConfig.jsPath + '/<%= pkg.name %>.js'
+                dest: globalConfig.jsPath + '/global.js'
             }
         },
 
         /**
          * uglify
          * Minify JavaScripts.
+         * NOT CURRENTLY USED REQUIREJS DOES THIS
         **/
         uglify: {
-            js: {
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+            },
+            dist: {
                 files: {
-                    '<%= meta.jsPath %>/all.js': ['<%= meta.jsPath %>/all.js']
+                    '<%= localConfig.jsPath %>global.min.js': ['<%= concat.dist.dest %>']
+                }
+            }
+        },
+
+        /**
+         * requirejs
+         * RequireJS loader and minfier.
+        **/
+        requirejs : {
+            compile: {
+                options: {
+                    name          : 'build/main',
+                    baseUrl       : globalConfig.jsPath,
+                    mainConfigFile: globalConfig.jsPath + '/build/main.js',
+                    out           : globalConfig.jsPath + '/build.js',
+                    optimize      : 'uglify'
                 }
             }
         },
@@ -90,30 +108,38 @@ module.exports = function(grunt){
             dist: {
                 options: {
                     httpPath      : '/',
-                    sassDir       : '<%= meta.cssPath %>/scss',
-                    cssDir        : '<%= meta.cssPath %>',
-                    imagesDir     : '<%= meta.imgPath %>',
-                    javascriptsDir: '<%= meta.jsPath %>/app',
-                    fontsDir      : '<%= meta.fontsPath %>',
+                    sassDir       : globalConfig.cssPath + '/scss',
+                    cssDir        : globalConfig.cssPath + '',
+                    imagesDir     : globalConfig.imgPath,
+                    javascriptsDir: globalConfig.jsPath + '/',
+                    fontsDir      : globalConfig.fontsPath,
                     outputStyle   : 'compressed', // :expanded, :nested, :compact or :compressed
                     raw           : 'preferred_syntax = :scss\n',
                     relativeAssets: true,
-                    noLineComments: false,
+                    noLineComments: true,
                     sourcemap     : true,
-                    environment   : 'development' // :development or :production
+                    environment   : process.env.ENV_MODE
                 }
             }
         },
 
         /**
          * watch
-         * Watch for changes to SASS files.
+         * Watch for changes to specific files.
         **/
         watch: {
             scripts: {
                 files: [
-                    '<%= meta.cssPath %>/*.scss',
-                    '<%= meta.cssPath %>/**/*.scss'
+                    globalConfig.jsPath + '/app/**.js',
+                    globalConfig.jsPath + '/build/**.js',
+                    globalConfig.jsPath + '/helpers/**.js'
+                ],
+                tasks: ['requirejs']
+            },
+            compass: {
+                files: [
+                    globalConfig.cssPath + '/*.scss',
+                    globalConfig.cssPath + '/**/*.scss'
                 ],
                 tasks: ['compass']
             }
@@ -124,18 +150,17 @@ module.exports = function(grunt){
     /**
      * Load tasks
     **/
-    grunt.loadNpmTasks('grunt-env');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    //grunt.loadNpmTasks('grunt-contrib-concat');
+    //grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-watch');
-
+    grunt.loadNpmTasks('grunt-env');
 
     /**
      * Register tasks
     **/
-    grunt.registerTask('default', ['jshint', 'env:dev', 'compass', 'concat']);
-    grunt.registerTask('prod', ['jshint', 'env:prod', 'compass', 'concat', 'uglify']);
+    grunt.registerTask('default', ['env:dev', 'compass', 'requirejs']);
+    grunt.registerTask('prod', ['env:prod', 'compass', 'requirejs']);
 
 }

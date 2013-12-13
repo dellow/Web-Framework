@@ -227,7 +227,9 @@ textarea {
 %radio-checkbox, input[type="radio"], input[type="checkbox"] {
 	width: auto;
 	height: auto;
+	margin: 0 5px 0 0;
 	border: 0;
+	display: inline;
 	vertical-align: middle;
 	& + label {
 		margin: 0 $nudge 0 0.2em;
