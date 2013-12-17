@@ -107,18 +107,19 @@ module.exports = function(grunt){
         compass: {
             dist: {
                 options: {
-                    httpPath      : '/',
-                    sassDir       : globalConfig.cssPath + '/scss',
-                    cssDir        : globalConfig.cssPath + '',
-                    imagesDir     : globalConfig.imgPath,
-                    javascriptsDir: globalConfig.jsPath + '/',
-                    fontsDir      : globalConfig.fontsPath,
-                    outputStyle   : 'compressed', // :expanded, :nested, :compact or :compressed
-                    raw           : 'preferred_syntax = :scss\n',
-                    relativeAssets: true,
-                    noLineComments: true,
-                    sourcemap     : true,
-                    environment   : process.env.ENV_MODE
+                    httpPath        : '/',
+                    sassDir         : globalConfig.cssPath + '/scss',
+                    cssDir          : globalConfig.cssPath + '',
+                    imagesDir       : globalConfig.imgPath,
+                    javascriptsDir  : globalConfig.jsPath + '/',
+                    fontsDir        : globalConfig.fontsPath,
+                    outputStyle     : 'compressed', // :expanded, :nested, :compact or :compressed
+                    raw             : 'preferred_syntax = :scss\n',
+                    relativeAssets  : true,
+                    noLineComments  : true,
+                    sourcemap       : true,
+                    assetCacheBuster: false
+                    environment     : process.env.ENV_MODE
                 }
             }
         },
