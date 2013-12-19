@@ -118,7 +118,7 @@ module.exports = function(grunt){
                     relativeAssets  : true,
                     noLineComments  : true,
                     sourcemap       : true,
-                    assetCacheBuster: false
+                    assetCacheBuster: false,
                     environment     : process.env.ENV_MODE
                 }
             }
@@ -135,14 +135,20 @@ module.exports = function(grunt){
                     globalConfig.jsPath + '/build/**.js',
                     globalConfig.jsPath + '/helpers/**.js'
                 ],
-                tasks: ['requirejs']
+                tasks: ['requirejs'],
+                options: {
+                    livereload: true
+                }
             },
             compass: {
                 files: [
                     globalConfig.cssPath + '/*.scss',
                     globalConfig.cssPath + '/**/*.scss'
                 ],
-                tasks: ['compass']
+                tasks: ['compass'],
+                options: {
+                    livereload: true
+                }
             }
         }
 
