@@ -15,7 +15,7 @@
 }
 .bx-wrapper .bx-loading {
     min-height: 50px;
-    background: url(../globalimages/plugins/bx-slider/bx-loader.gif) center center no-repeat #fff;
+    background: url(../images/plugins/bx-slider/bx-loader.gif) center center no-repeat #fff;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -55,11 +55,11 @@
 }
 .bx-wrapper .bx-prev {
     left: 10px;
-    background: url(../globalimages/plugins/bx-slider/bx-controls.png) no-repeat 0 -32px;
+    background: url(../images/plugins/bx-slider/bx-controls.png) no-repeat 0 -32px;
 }
 .bx-wrapper .bx-next {
     right: 10px;
-    background: url(../globalimages/plugins/bx-slider/bx-controls.png) no-repeat -43px -32px;
+    background: url(../images/plugins/bx-slider/bx-controls.png) no-repeat -43px -32px;
 }
 .bx-wrapper .bx-prev:hover {
     background-position: 0 0;
@@ -89,7 +89,7 @@
     width: 10px;
     height: 11px;
     outline: 0;
-    background: url(../globalimages/plugins/bx-slider/bx-controls.png) -86px -11px no-repeat;
+    background: url(../images/plugins/bx-slider/bx-controls.png) -86px -11px no-repeat;
     margin: 0 3px;
 }
 .bx-wrapper .bx-controls-auto .bx-start:hover,
@@ -102,7 +102,7 @@
     width: 9px;
     height: 11px;
     outline: 0;
-    background: url(../globalimages/plugins/bx-slider/bx-controls.png) -86px -44px no-repeat;
+    background: url(../images/plugins/bx-slider/bx-controls.png) -86px -44px no-repeat;
     margin: 0 3px;
 }
 .bx-wrapper .bx-controls-auto .bx-stop:hover,
