@@ -1,21 +1,28 @@
 @if $responsive == true {
 
-	/* -- 320px & Below -- */
-	@media only screen and (max-width: 20em) {
+	/**
+	 * Screen widths below 320px
+	**/
+	@include respond-to(320px){
 		body {
 			font-size: 75%;
 		}
 	}
 
-	/* -- 480px & Below -- */
-	@media only screen and (max-width: 30em) {
+	/**
+	 * Screen widths below 480px
+	**/
+	@include respond-to(480px){
 		* {
 			float: none !important;
 		}
 	}
 
-	/* -- 768px & Below -- */
-	@media only screen and (max-width: 48em) {
+	/**
+	 * Screen widths below 768px
+	 * Main responsive layout
+	**/
+	@include respond-to(768px){
 		body {
 			font-size: 90%;
 		}
