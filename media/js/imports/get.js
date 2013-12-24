@@ -5,5 +5,4 @@
 
 'use strict';
 
-// Parent theme JS
-require(['../../../framework/media/js/wp']);
+//require(['']);
