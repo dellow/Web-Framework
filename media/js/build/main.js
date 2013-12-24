@@ -6,7 +6,7 @@
 'use strict';
 
 require.config({
-    baseURL: 'lib/js/',
+    baseURL: 'media/js/',
     paths: {
 		// Libraries
 		jquery        : 'vendor/jquery.1.10.2.min',
