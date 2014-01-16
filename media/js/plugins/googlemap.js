@@ -74,7 +74,7 @@ var googlemap = {
         }
 
         // Cycle through our locations
-        for(var i = 0; i < locations.places.length; i++){
+        for(var i = 0, ii = locations.places.length; i < ii; i++){
             googlemap.geocoder.geocode({'address' : locations.places[i]}, googlemap.located(i));
         }
     },
@@ -86,7 +86,7 @@ var googlemap = {
                 googlemap.georesults.push(results[0].geometry.location);
 
                 if(googlemap.georesults.length === locations.places.length){
-                    for(var i = 0; i < googlemap.georesults.length; i++){
+                    for(var i = 0, ii = googlemap.georesults.length; i < ii; i++){
                         if(!animatebounds){
                             // Extend the bounds of the map for each location
                             googlemap.bounds.extend(googlemap.georesults[i]);
@@ -148,9 +148,9 @@ var googlemap = {
                         k++;
                     }
                 }
-                else{
-                    alert("Sorry can't find that location!");
-                }
+            }
+            else{
+                alert("Sorry can't find that location!");
             }
         }
     }

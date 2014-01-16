@@ -405,7 +405,7 @@
             app.resetForm = function(){
                 $('.' + settings.errorBoxClass, plg).remove();
                 $('option[selected="selected"]', plg).removeAttr('selected');
-                $('input, select, textarea, label', plg).removeClass(settings.errorClass).fn_error('clear').removeAttr('selected');
+                $('input, select, textarea, label, .label', plg).removeClass(settings.errorClass).fn_error('clear').removeAttr('selected');
             }
 
             /**

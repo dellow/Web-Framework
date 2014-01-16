@@ -150,6 +150,7 @@
             // Destroy method
             el.destroyExtPreloader = function(){
                 loader.kill();
+                $('#' + settings.loader).remove();
             }
         });
     }
