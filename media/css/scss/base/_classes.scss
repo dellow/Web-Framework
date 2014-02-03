@@ -20,6 +20,18 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 	border-radius: $def_border_radius;
 }
 
+/* -- MEssages -- */
+.msg-success, .msg-failure {
+}
+.msg-success {
+	color: rgba(138, 216, 54, 0.6);
+	@include rem(font-size, 12px);
+}
+.msg-failure {
+	color: rgba(255, 0, 0, 0.6);
+	@include rem(font-size, 12px);
+}
+
 /* -- Clearing -- */
 .cf {
 	@extend %cf;
@@ -30,7 +42,7 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 
 /* -- Sprites -- */
 .sprite {
-	background: url(#{$path_siteimages}sprite.jpg) no-repeat;
+	background: url(../images/siteimages/sprite.jpg) no-repeat;
 }
 
 /* -- Resetting (This is a last resort) -- */

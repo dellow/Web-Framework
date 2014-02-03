@@ -1,89 +1,85 @@
-@if $responsive == true {
+/**
+ * Screen widths below 320px
+**/
+@include respond-to(320px){
+	body {
+		font-size: 75%;
+	}
+}
 
-	/**
-	 * Screen widths below 320px
-	**/
-	@include respond-to(320px){
-		body {
-			font-size: 75%;
+/**
+ * Screen widths below 480px
+**/
+@include respond-to(480px){
+	* {
+		float: none !important;
+	}
+}
+
+/**
+ * Screen widths below 768px
+ * Main responsive layout
+**/
+@include respond-to(768px){
+	body {
+		font-size: 90%;
+	}
+
+	/* -- Exclusions -- */
+	$exlusions: (
+	);
+	@each $element in $exlusions {
+		#{$element} {
+			display: none;
 		}
 	}
 
-	/**
-	 * Screen widths below 480px
-	**/
-	@include respond-to(480px){
-		* {
-			float: none !important;
-		}
-	}
-
-	/**
-	 * Screen widths below 768px
-	 * Main responsive layout
-	**/
-	@include respond-to(768px){
-		body {
-			font-size: 90%;
-		}
-
-		/* -- Exclusions -- */
-		$exlusions: (
-		);
-		@each $element in $exlusions {
-			#{$element} {
-				display: none;
-			}
-		}
-
-		/* -- Full Width -- */
-		$fullwidth: (
-		);
-		@each $element in $fullwidth {
-			#{$element} {
-				width: 100%;
-			}
-		}
-
-		/* -- Reset -- */
-		$reset: (
-		);
-		@each $element in $reset {
-			#{$element} {
-				margin: 0;
-				padding: 0;
-			}
-		}
-
-		/* -- Grid -- */
-		.grid {
+	/* -- Full Width -- */
+	$fullwidth: (
+	);
+	@each $element in $fullwidth {
+		#{$element} {
 			width: 100%;
-			left: 0;
-			[class*="col-"] {
-				width: 100%;
-				margin: $nudge 0;
-				&.right, &.left {
-					text-align: center;
-				}
-			}
 		}
+	}
 
-		/* -- Forms -- */
-		form {
-			.left {
-				float: left !important;
-			}
-			.right {
-				float: right !important;
-			}
-			input, .input, select, textarea, .field-container, button, .button {
-				padding: 0.5em;
-			}
-			button {
-				width: 100%;
-				margin: 0.5em 0;
+	/* -- Reset -- */
+	$reset: (
+	);
+	@each $element in $reset {
+		#{$element} {
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	/* -- Grid -- */
+	.grid {
+		width: 100%;
+		left: 0;
+		[class*="col-"] {
+			width: 100%;
+			margin: $nudge 0;
+			&.right, &.left {
+				text-align: center;
 			}
 		}
 	}
 
+	/* -- Forms -- */
+	form {
+		.left {
+			float: left !important;
+		}
+		.right {
+			float: right !important;
+		}
+		input, .input, select, textarea, .field-container, button, .button {
+			padding: 0.5em;
+		}
+		button {
+			width: 100%;
+			margin: 0.5em 0;
+		}
+	}
 }

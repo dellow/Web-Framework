@@ -120,6 +120,40 @@ table.table {
 	}
 }
 
+/* -- Content Editable -- */
+.editable {
+	padding: 3px;
+	margin-left: -3px;
+	border-radius: 3px;
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+	@include transition(background 500ms ease, border-color 500ms ease);
+	// Disabled fields
+	&[contenteditable="false"]{
+		&:hover {
+			background: rgba(0, 0, 0, 0.2) !important; // Override hover and focus styles below
+		}
+		&:focus {
+			background: rgba(0, 0, 0, 0.4) !important; // Override hover and focus styles below
+		}
+	}
+	// Hover
+	&:hover {
+		background: rgba(64, 179, 232, 0.2) !important; // These are !important to overcome a bug with jQuery UI not resetting an animated background-color
+		border-left: 1px solid rgba(0,0,0,0.4);
+		border-right: 1px solid rgba(0,0,0,0.4);
+	}
+	// Focus
+	&:focus {
+		background: rgba(64, 179, 232, 0.4) !important; // These are !important to overcome a bug with jQuery UI not resetting an animated background-color
+	}
+	// When one editable field follows another
+	& + .editable {
+		padding-left: 2px;
+		margin-left: 2px;
+	}
+}
+
 /* -- Grid System -- */
 .grid {
 	width: 100% + ($gutter / 2);

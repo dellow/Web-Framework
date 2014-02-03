@@ -6,7 +6,7 @@ html {
 	font-size: 100%;
 }
 body {
-	color: $font_colour;
+	color: $grey;
 	font-family: $font_def;
 	line-height: 1.4;
 	word-wrap: break-word;
@@ -21,7 +21,7 @@ a {
 		color: $def_color;
 	}
 	&:active {
-		color: $def_color_dark;
+		color: $def_color_opp;
 	}
 }
 

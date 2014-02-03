@@ -200,6 +200,7 @@ form.form-block, form.form-inline-block {
 
 // Labels
 label, .label {
+	margin: 0;
 	position: relative;
 }
 
@@ -241,6 +242,7 @@ textarea {
 button, .button {
 	height: $form_field_height;
 	padding-left: 2em; padding-right: 2em;
+	margin: 0;
 	position: relative;
 	text-align: center;
 	cursor: pointer;

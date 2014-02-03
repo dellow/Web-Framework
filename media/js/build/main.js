@@ -58,7 +58,7 @@ require.config({
 
     	// Setup site
     	site: {
-            deps: ['helper', 'ui', 'extensions', 'imports']
+			deps: ['helper', 'ui', 'extensions', 'imports']
     	}
     }
 });

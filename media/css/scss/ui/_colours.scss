@@ -1,0 +1,31 @@
+// Default Colours
+$white        : #FFF;
+$black        : #000;
+$grey         : #333;
+$def_red      : #cd4b45;
+$def_red_opp  : darken($def_red, 10%);
+$def_blue     : #006dcc;
+$def_blue_opp : darken($def_blue, 10%);
+$def_green    : #5BB75B;
+$def_green_opp: darken($def_green, 10%);
+
+// Custom Colours
+$reds         : #c4122f;
+$reds_opp     : darken($reds, 20%);
+$orange       : #E67E22;
+$orange_opp   : darken($orange, 10%);
+$green        : #2ECC71;
+$green_opp    : darken($green, 10%);
+$blue         : #3498DB;
+$blue_opp     : darken($blue, 10%);
+$yellow       : #F1C40F;
+$yellow_opp   : darken($yellow, 10%);
+
+// Colour Array
+$colours: (
+	'red' $reds $reds_opp,
+	'orange' $orange $orange_opp,
+	'green' $green $green_opp,
+	'blue' $blue $blue_opp,
+	'yellow' $yellow $yellow_opp
+);

@@ -131,9 +131,8 @@ module.exports = function(grunt){
         watch: {
             scripts: {
                 files: [
-                    globalConfig.jsPath + '/app/**.js',
-                    globalConfig.jsPath + '/build/**.js',
-                    globalConfig.jsPath + '/helpers/**.js'
+                    globalConfig.jsPath + '/*.js',
+                    globalConfig.jsPath + '/**/*.js',
                 ],
                 tasks: ['requirejs'],
                 options: {

@@ -6,8 +6,10 @@
 'use strict';
 
 ;(function($, window, undefined){
-    /* -- Init -- */
+    // Init
     helper.init(); ui.init();
+    // Mobile menu
+    window.mobile_menu_active = true;
 
     /**
      * depTests

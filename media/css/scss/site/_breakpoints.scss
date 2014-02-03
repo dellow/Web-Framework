@@ -1,75 +1,71 @@
-@if $responsive == true {
+/**
+ * Screen widths below 1024px
+**/
+@include respond-to(1024px){
+}
 
-	/**
-	 * Screen widths below 1024px
-	**/
-	@include respond-to(1024px){
-	}
+/**
+ * Screen widths below 960px
+**/
+@include respond-to(960px){
+}
 
-	/**
-	 * Screen widths below 960px
-	**/
-	@include respond-to(960px){
-	}
+/**
+ * Screen widths below 768px
+**/
+@include respond-to(768px){
+}
 
-	/**
-	 * Screen widths below 768px
-	**/
-	@include respond-to(768px){
-	}
+/**
+ * Screen widths below 480px
+**/
+@include respond-to(480px){
+}
 
-	/**
-	 * Screen widths below 480px
-	**/
-	@include respond-to(480px){
-	}
+/**
+ * Screen widths below 320px
+**/
+@include respond-to(320px){
+}
 
-	/**
-	 * Screen widths below 320px
-	**/
-	@include respond-to(320px){
-	}
+/**
+ * Devices between 320px & 480px (Most smartphones)
+**/
+@media only screen and (min-device-width: 20em) and (max-device-width: 30em){
+}
 
-	/**
-	 * Devices between 320px & 480px (Most smartphones)
-	**/
-	@media only screen and (min-device-width: 20em) and (max-device-width: 30em){
-	}
+/**
+ * Devices between 320px & 480px & Landscape & @2 (iPhone4)
+**/
+@media only screen and (min-device-width : 20em) and (max-device-width : 30em) and (orientation: landscape) and (-webkit-min-device-pixel-ratio : 2){
+}
 
-	/**
-	 * Devices between 320px & 480px & Landscape & @2 (iPhone4)
-	**/
-	@media only screen and (min-device-width : 20em) and (max-device-width : 30em) and (orientation: landscape) and (-webkit-min-device-pixel-ratio : 2){
-	}
+/**
+ * Devices between 320px & 480px & Portrait & @2 (iPhone4)
+**/
+@media only screen and (min-device-width : 20em) and (max-device-width : 30em) and (orientation: portrait) and (-webkit-min-device-pixel-ratio : 2){
+}
 
-	/**
-	 * Devices between 320px & 480px & Portrait & @2 (iPhone4)
-	**/
-	@media only screen and (min-device-width : 20em) and (max-device-width : 30em) and (orientation: portrait) and (-webkit-min-device-pixel-ratio : 2){
-	}
+/**
+ * Devices between 768px & 1024px (iPad)
+**/
+@media only screen and (min-device-width : 48em) and (max-device-width : 64em){
+}
 
-	/**
-	 * Devices between 768px & 1024px (iPad)
-	**/
-	@media only screen and (min-device-width : 48em) and (max-device-width : 64em){
-	}
+/**
+ * Devices between 768px & 1024px & Landscape (iPad)
+**/
+@media only screen and (min-device-width : 48em) and (max-device-width : 64em) and (orientation: landscape){
+}
 
-	/**
-	 * Devices between 768px & 1024px & Landscape (iPad)
-	**/
-	@media only screen and (min-device-width : 48em) and (max-device-width : 64em) and (orientation: landscape){
-	}
+/**
+ * Devices between 768px & 1024px & Portrait (iPad)
+**/
+@media only screen and (min-device-width : 48em) and (max-device-width : 64em) and (orientation: portrait){
+}
 
-	/**
-	 * Devices between 768px & 1024px & Portrait (iPad)
-	**/
-	@media only screen and (min-device-width : 48em) and (max-device-width : 64em) and (orientation: portrait){
-	}
-
-	/**
-	 * Devices between 768px & 1024px & Landscape & @2 (iPad3)
-	**/
-	@media only screen and (min-device-width : 48em) and (max-device-width : 64em) and (orientation: landscape) and (-webkit-min-device-pixel-ratio : 2){
-	}
-
+/**
+ * Devices between 768px & 1024px & Landscape & @2 (iPad3)
+**/
+@media only screen and (min-device-width : 48em) and (max-device-width : 64em) and (orientation: landscape) and (-webkit-min-device-pixel-ratio : 2){
 }
