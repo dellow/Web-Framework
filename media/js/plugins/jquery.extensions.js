@@ -1,4 +1,92 @@
+/**
+ * extensions.js
+ * Extends jQuery with a few custom methods
+**/
+
+'use strict';
+
 ;(function($){
+
+    /**
+     * $.accordion
+     * Creates an accordion
+    **/
+    $.fn.accordion = function(options){
+        // Defaults
+        var defaults = {
+            openfirst           : true,
+            title_class         : 'accordion-title',
+            section_class       : 'accordion-content',
+            active_title_class  : 'active-title',
+            active_section_class: 'active-content'
+        };
+        // Settings
+        var settings = $.extend({}, defaults, options);
+        // Return instance
+        return this.each(function(){
+            var plg     = $(this),
+                title   = $('> .' + settings.title_class, plg),
+                content = $('> .' + settings.section_class, plg);
+
+            // Reset the accordion
+            $('.' + settings.active_section_class, plg).removeClass(settings.active_section_class);
+            $('.' + settings.active_title_class, plg).removeClass(settings.active_title_class);
+
+            title.css({'cursor': 'pointer'});
+            content.hide();
+            if(settings.openfirst){
+                title.first().show().addClass(settings.active_title_class);
+                content.first().show().addClass(settings.active_section_class);
+            }
+
+            title.on('click', function(){
+                if(!$(this).hasClass(settings.active_title_class)){
+                    $('.' + settings.active_section_class, plg).slideUp(500).removeClass(settings.active_section_class);
+                    $('.' + settings.active_title_class, plg).removeClass(settings.active_title_class);
+                    $(this).addClass(settings.active_title_class, plg).next().slideDown(500).addClass(settings.active_section_class);
+                }
+            });
+        });
+    }
+
+    /**
+     * $.tabs
+     * Creates tabs
+    **/
+    $.fn.tabs = function(options){
+        // Defaults
+        var defaults = {
+            tab_class       : 'tab',
+            nav_class       : 'nav',
+            target_data_attr: 'tab-target',
+            active_tab_class: 'active-tab'
+        };
+        // Settings
+        var settings = $.extend({}, defaults, options);
+        // Return instance
+        return this.each(function(){
+            var plg = $(this);
+
+            $('.' + settings.tab_class, plg).hide();
+            $('.' + settings.tab_class, plg).first().show().addClass(settings.active_tab_class);
+            $('.' + settings.nav_class + ' li', plg).first().addClass(settings.active_tab_class);
+
+            $('.' + settings.nav_class + ' li a', plg).on('click', function(e){
+                e.preventDefault();
+                var tab_nav    = plg.parent().parent(),
+                    tab_system = tab_nav.next();
+
+                if(!plg.parent().hasClass(settings.active_tab_class)){
+                    var target = plg.data(settings.target_data_attr);
+
+                    $('li.' + settings.active_tab_class, tab_nav).removeClass(settings.active_tab_class);
+                    $(this).parent().addClass(settings.active_tab_class);
+                    $('.' + settings.active_tab_class, tab_system).hide().removeClass(settings.active_tab_class);
+                    $('#' + target, tab_system).fadeIn(500).addClass(settings.active_tab_class);
+                }
+            });
+        });
+    }
 
     /**
      * $.extCenter
@@ -31,62 +119,6 @@
         }
         else{
             $.error('Method ' +  method + ' does not exist on jQuery.extCenter');
-        }
-    }
-
-    /**
-     * $.extBlur
-     * Adds a "blur" class to any element
-    **/
-    $.fn.extBlur = function(method){
-        var methods = {
-            on: function(){
-                this.addClass('js_blur');
-                return this;
-            },
-            off: function(){
-                this.removeClass('js_blur');
-                return this;
-            }
-        };
-        if(methods[method]){
-            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        }
-        else if(typeof method === 'object' || !method){
-            return methods.on.apply(this, arguments);
-        }
-        else{
-            $.error('Method ' +  method + ' does not exist on jQuery.extBlur');
-        }
-    }
-
-    /**
-     * $.extError
-     * Adds an error class to any element
-    **/
-    $.fn.extError = function(method){
-        var methods = {
-            on: function(){
-                this.each(function(){
-                    $(this).addClass('alert error');
-                });
-                return this;
-            },
-            off: function(){
-                this.each(function(){
-                    $(this).removeClass('alert error');
-                });
-                return this;
-            }
-        };
-        if(methods[method]){
-            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        }
-        else if(typeof method === 'object' || !method){
-            return methods.on.apply(this, arguments);
-        }
-        else{
-            $.error('Method ' +  method + ' does not exist on jQuery.extError');
         }
     }
 

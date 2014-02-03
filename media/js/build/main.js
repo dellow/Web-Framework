@@ -20,9 +20,9 @@ require.config({
 		// RequireJS Modules
 		req_async     : 'vendor/require/require.async',
 		// Plugins
-		extensions    : 'plugins/jquery.extensions.min',
-		formValidation: 'plugins/jquery.form-validation.min',
-		lightBox      : 'plugins/jquery.lightBox.min',
+		extensions    : 'plugins/jquery.extensions',
+		formValidation: 'plugins/jquery.form-validation',
+		lightBox      : 'plugins/jquery.lightBox',
 		scrollto      : 'plugins/jquery.scrollto.min',
 		slider        : 'plugins/jquery.bxslider.min',
         // Imports
