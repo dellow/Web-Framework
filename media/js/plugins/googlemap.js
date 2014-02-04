@@ -10,11 +10,15 @@
  * @todo: Strings and Titles are not outputted correctly
 **/
 
-var googlemap = {
-    init: function(){
+;(function(window, document, undefined){
+
+    /**
+     * googlemap.init
+     * null.
+    **/
+    googlemap.init = function(){
         // Convert string to lowercase
         googlemap.maptype = maptype.toLowerCase();
-
         // Set the map type
         switch(googlemap.maptype){
             case 'roadmap':
@@ -33,14 +37,17 @@ var googlemap = {
                 googlemap.map_type_setting = google.maps.MapTypeId.ROADMAP;
             break;
         }
-
         // Create an empty array for our Geocoded results
         googlemap.georesults = [];
-
+        // Start map
         googlemap.defaultMap();
+    }
 
-    },
-    defaultMap: function(){
+    /**
+     * googlemap.defaultMap
+     * null.
+    **/
+    googlemap.defaultMap = function(){
         // API Settings
         googlemap.settings = {
             mapTypeId             : googlemap.map_type_setting,
@@ -52,7 +59,6 @@ var googlemap = {
             draggable             : (draggable) ? true : false,
             center                : new google.maps.LatLng(0, 0)
         };
-
         // Init the Map Canvas
         googlemap.map      = new google.maps.Map(document.getElementById('map_canvas'), googlemap.settings);
         // Init the bounds
@@ -61,7 +67,6 @@ var googlemap = {
         googlemap.geocoder = new google.maps.Geocoder();
         // Init the streetview service
         googlemap.service  = new google.maps.StreetViewService();
-
         // Custom map style
         if(typeof(styles) !== 'undefined'){
             googlemap.styled_map = {
@@ -72,13 +77,17 @@ var googlemap = {
             googlemap.map.mapTypes.set('google_map', googlemap.restyled_map);
             googlemap.map.setMapTypeId('google_map');
         }
-
         // Cycle through our locations
         for(var i = 0, ii = locations.places.length; i < ii; i++){
             googlemap.geocoder.geocode({'address' : locations.places[i]}, googlemap.located(i));
         }
-    },
-    located: function(){
+    }
+
+    /**
+     * googlemap.located
+     * null.
+    **/
+    googlemap.located = function(){
         // Callback for the GeoCoder - gets round the asynchronous issue.
         return function(results, status){
             if(status === google.maps.GeocoderStatus.OK){
@@ -154,6 +163,7 @@ var googlemap = {
             }
         }
     }
-}
+    // Init
+    google.maps.event.addDomListener(window, 'load', googlemap.init());
 
-google.maps.event.addDomListener(window, "load", googlemap.init());
+})(window, document);
