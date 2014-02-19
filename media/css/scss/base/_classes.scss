@@ -17,7 +17,7 @@
 img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 	padding: ($nudge / 2);
 	border: 2px solid #efefef;
-	border-radius: $def_border_radius;
+	border-radius: $base_border_radius;
 }
 
 /* -- Messages -- */
@@ -146,9 +146,9 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 
 /* -- Lists -- */
 .inside {
-	margin-left: $def_ul_indent;
+	margin-left: $base_ul_indent;
 	ul, ol {
-		margin-left: $def_ul_indent;
+		margin-left: $base_ul_indent;
 	}
 }
 .no-bullet {

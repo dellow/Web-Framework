@@ -4,24 +4,23 @@
 ========================================================================== */
 /* -- Global -- */
 html {
-	font-size: 100%;
-}
-body {
-	font: $font_size_default/1.4 $font_family_def;
+    min-height:100%;
+    overflow-y:scroll;
+    font:#{$base_font_size}/#{$line_height_ratio} $base_font_family;
 	color: $darkgrey;
 	word-wrap: break-word;
 }
 
-/* -- Links & Hover Styles -- */
-a {
-	color: inherit;
+/* -- Links, Buttons & Hover Styles -- */
+a, button {
+	color: $base_link_colour;
 	text-decoration: none;
 	@include transition(color 500ms ease);
 	&:hover {
-		color: $def_link_colour;
+		color: $base_link_colour_opp;
 	}
 	&:active {
-		color: $def_link_colour_opp;
+		color: darken($base_link_colour_opp, 10%);
 	}
 }
 

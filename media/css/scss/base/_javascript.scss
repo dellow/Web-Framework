@@ -40,16 +40,16 @@
             display: block;
         }
         &:first-child {
-            border-radius: $def_border_radius 0 0;
+            border-radius: $base_border_radius 0 0;
         }
         &:last-child {
-            border-radius: 0 $def_border_radius 0 0;
+            border-radius: 0 $base_border_radius 0 0;
         }
         &.active {
             bottom: -2px;
     		z-index: 2;
-            border-radius: $def_border_radius $def_border_radius 0 0;
-            color: $def_link_colour;
+            border-radius: $base_border_radius $base_border_radius 0 0;
+            color: $base_link_colour;
             background: #FFF;
         }
         &.active a {
@@ -58,7 +58,7 @@
 	}
 	.system {
 		padding: 1em;
-		border-radius: $def_border_radius;
+		border-radius: $base_border_radius;
 		border: 1px solid #EAEAEA;
 	}
 }
@@ -92,7 +92,7 @@
 			}
 		}
 		&:hover, .accordion-title.active-title {
-			color: $def_link_colour;
+			color: $base_link_colour;
 			background: rgba(249,249,249,0.3);
 		}
 	}

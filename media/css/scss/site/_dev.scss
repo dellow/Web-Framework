@@ -2,6 +2,5 @@
    Dev
    CSS for the development environment only.
 ========================================================================== */
-@if compass-env() == 'development' {
-
+@if compass-env() == 'development' or $dev_mode {
 }
