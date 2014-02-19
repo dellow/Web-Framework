@@ -1,3 +1,7 @@
+/* ==========================================================================
+   Mixins
+   Framework mixins.
+========================================================================== */
 // Sprites from folder
 //@import "foldername/*.png";
 //@include all-foldername-sprites;
@@ -158,14 +162,19 @@ $legacy_support_for_ie: true;
  *
  * @include respond-to(768px){.foo {display: block;}}
 **/
-@mixin respond-to($breakpoint1, $breakpoint2: null, $up-to: true){
+@mixin respond-to($breakpoint1, $breakpoint2: null, $up-to: true, $device: false){
 	@if($up-to){
 		@media only screen and (max-width: px-to-rem($breakpoint1)){
 			@content
 		}
 	}
+	@else if($device){
+		@media only screen and (min-device-width: px-to-rem($breakpoint1)) and (max-device-width: px-to-rem($breakpoint2)){
+			@content
+		}
+	}
 	@else{
-		@media only screen and (min-width: $breakpoint1) and (max-width: $breakpoint2){
+		@media only screen and (min-width: px-to-rem($breakpoint1)) and (max-width: px-to-rem($breakpoint2)){
 			@content
 		}
 	}

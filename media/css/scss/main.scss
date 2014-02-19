@@ -3,14 +3,11 @@
 // Fonts - Need to be included first so picked from the site directory
 @import 'site/font-face';
 
-// 1. UI
-@import 'ui/#all';
-
-// 2. Utilities
+// 1. Utilities
 @import 'utilities/#all';
 
-// 3. Base
+// 2. Base
 @import 'base/#all';
 
-// 4. Site
+// 3. Site
 @import 'site/#all';

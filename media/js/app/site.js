@@ -8,6 +8,8 @@
 ;(function($, window, undefined){
     // Init
     helper.init(); ui.init();
+    // Mobile menu
+    window.mobile_menu_active = true;
 
     /**
      * depTests
@@ -27,9 +29,27 @@
 	}
 	depTests();
 
-	//require(['formValidation'], function(){});
+	// Form validation
+	require(['formValidation'], function(){
+        // General forms
+        if($('.validate').length){
+            $('.validate').formValidation({
+                // No options
+            });
+        }
+	});
+
+	// Lightbox
+	require(['lightBox'], function(){
+        // General Lightbox
+        if($('.lightbox').length){
+            $('.lightbox').lightBox({
+                // No options
+            });
+        }
+	});
+
 	//require(['slider'], function(){});
-	//require(['lightBox'], function(){});
 	//require(['scrollTo'], function(){});
 
 }(jQuery, window));

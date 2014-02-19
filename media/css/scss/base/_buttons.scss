@@ -44,64 +44,64 @@
 /* -- Call to Action Standard -- */
 .btn {
 	&.standard {
-		background: $def_blue;
+		background: $def_colour_blue;
 		&.grad {
-			background-image : -webkit-gradient(linear, 0 0, 0 100%, from(lighten($def_blue, 5%)), to(darken($def_blue, 10%)));
-			background-image : -webkit-linear-gradient(top, lighten($def_blue, 5%), darken($def_blue, 10%));
-			background-image : -o-linear-gradient(top, lighten($def_blue, 5%), darken($def_blue, 10%));
-			background-image : linear-gradient(to bottom, lighten($def_blue, 5%), darken($def_blue, 10%));
-			background-image : -moz-linear-gradient(top, lighten($def_blue, 5%), darken($def_blue, 10%));
+			background-image : -webkit-gradient(linear, 0 0, 0 100%, from(lighten($def_colour_blue, 5%)), to(darken($def_colour_blue, 10%)));
+			background-image : -webkit-linear-gradient(top, lighten($def_colour_blue, 5%), darken($def_colour_blue, 10%));
+			background-image : -o-linear-gradient(top, lighten($def_colour_blue, 5%), darken($def_colour_blue, 10%));
+			background-image : linear-gradient(to bottom, lighten($def_colour_blue, 5%), darken($def_colour_blue, 10%));
+			background-image : -moz-linear-gradient(top, lighten($def_colour_blue, 5%), darken($def_colour_blue, 10%));
 			background-repeat: repeat-x;
 			filter           : progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
 			filter           : progid:dximagetransform.microsoft.gradient(enabled=false);
 		}
 	}
 	&.standard:hover {
-		background: darken($def_blue, 10%);
+		background: darken($def_colour_blue, 10%);
 	}
 	&.standard.disabled:hover {
-		background: $def_blue;
+		background: $def_colour_blue;
 	}
 }
 
 /* -- Call to Action Positive & Negative -- */
 .btn {
 	&.positive {
-		background: $def_green;
+		background: $def_colour_green;
 		&.grad {
-			background-image: -ms-linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
-			background-image: -webkit-gradient(linear,0 0,0 100%,from(lighten($def_green, 5%)),to(darken($def_green, 10%)));
-			background-image: -webkit-linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
-			background-image: -o-linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
-			background-image: -moz-linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
-			background-image: linear-gradient(top,lighten($def_green, 5%),darken($def_green, 10%));
-			filter          : progid:dximagetransform.microsoft.gradient(startColorstr='lighten($def_green, 5%)',endColorstr='darken($def_green, 10%)',GradientType=0);
+			background-image: -ms-linear-gradient(top,lighten($def_colour_green, 5%),darken($def_colour_green, 10%));
+			background-image: -webkit-gradient(linear,0 0,0 100%,from(lighten($def_colour_green, 5%)),to(darken($def_colour_green, 10%)));
+			background-image: -webkit-linear-gradient(top,lighten($def_colour_green, 5%),darken($def_colour_green, 10%));
+			background-image: -o-linear-gradient(top,lighten($def_colour_green, 5%),darken($def_colour_green, 10%));
+			background-image: -moz-linear-gradient(top,lighten($def_colour_green, 5%),darken($def_colour_green, 10%));
+			background-image: linear-gradient(top,lighten($def_colour_green, 5%),darken($def_colour_green, 10%));
+			filter          : progid:dximagetransform.microsoft.gradient(startColorstr='lighten($def_colour_green, 5%)',endColorstr='darken($def_colour_green, 10%)',GradientType=0);
 			filter          : progid:dximagetransform.microsoft.gradient(enabled=false);
 		}
 	}
 	&.positive:hover {
-		background: darken($def_green, 10%);
+		background: darken($def_colour_green, 10%);
 	}
 	&.positive.disabled:hover {
-		background: $def_green;
+		background: $def_colour_green;
 	}
 	&.negative {
-		background: $def_red;
+		background: $def_colour_red;
 		&.grad {
-			background-image: -ms-linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
-			background-image: -webkit-gradient(linear,0 0,0 100%,from(lighten($def_red, 5%)),to(darken($def_red, 10%)));
-			background-image: -webkit-linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
-			background-image: -o-linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
-			background-image: -moz-linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
-			background-image: linear-gradient(top,lighten($def_red, 5%),darken($def_red, 10%));
-			filter          : progid:dximagetransform.microsoft.gradient(startColorstr='lighten($def_red, 5%)',endColorstr='darken($def_red, 10%)',GradientType=0);
+			background-image: -ms-linear-gradient(top,lighten($def_colour_red, 5%),darken($def_colour_red, 10%));
+			background-image: -webkit-gradient(linear,0 0,0 100%,from(lighten($def_colour_red, 5%)),to(darken($def_colour_red, 10%)));
+			background-image: -webkit-linear-gradient(top,lighten($def_colour_red, 5%),darken($def_colour_red, 10%));
+			background-image: -o-linear-gradient(top,lighten($def_colour_red, 5%),darken($def_colour_red, 10%));
+			background-image: -moz-linear-gradient(top,lighten($def_colour_red, 5%),darken($def_colour_red, 10%));
+			background-image: linear-gradient(top,lighten($def_colour_red, 5%),darken($def_colour_red, 10%));
+			filter          : progid:dximagetransform.microsoft.gradient(startColorstr='lighten($def_colour_red, 5%)',endColorstr='darken($def_colour_red, 10%)',GradientType=0);
 			filter          : progid:dximagetransform.microsoft.gradient(enabled=false);
 		}
 	}
 	&.negative:hover {
-		background: darken($def_red, 10%);
+		background: darken($def_colour_red, 10%);
 	}
 	&.negative.disabled:hover {
-		background: $def_red;
+		background: $def_colour_red;
 	}
 }

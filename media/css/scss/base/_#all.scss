@@ -1,4 +1,10 @@
-@import 'reset',
+/* ==========================================================================
+   All
+   Imports all the partials
+========================================================================== */
+@import '../site/vars',
+		'vars',
+		'reset',
 		'classes',
 		'defaults',
 		'core',
@@ -10,6 +16,8 @@
 		'javascript',
 		'buttons',
 		'alerts',
+		'plugins/form-validation',
+		'plugins/bx-slider',
 		'fixes',
 		'breakpoints',
 		'print';

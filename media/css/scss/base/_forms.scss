@@ -2,10 +2,8 @@
    Forms
 ========================================================================== */
 /* -- Forms -- */
-// Default behaviour
 form {
 	position: relative;
-
 	// Positioning
 	.left {
 		width: 49%;
@@ -14,10 +12,6 @@ form {
 	.right {
 		width: 49%;
 		float: right;
-	}
-	// Validation message
-	.validationMessage {
-		display: none;
 	}
 	// Field containers
 	.field {
@@ -52,9 +46,9 @@ form {
 		label {
 			width: 17px;
 			height: 17px;
+			border: 1px solid #e0e0e0;
 			position: absolute;
 			top: 0;
-			border: 1px solid #e0e0e0;
 			cursor: pointer;
 			white-space: nowrap;
 			text-indent: 1.5em;
@@ -84,8 +78,7 @@ form {
 				width: 7px;
 				height: 3px;
 				border: 3px solid #999;
-				border-top: none;
-				border-right: none;
+				border-top: none; border-right: none;
 				content: '';
 				position: absolute;
 				top: 4px; left: 3px;
@@ -128,33 +121,12 @@ form {
 			@include opacity(0.8);
 		}
 	}
-}
-// Display specific behaviours
-form.form-inline {
-	label, .label, input, .input, select, textarea, .field-container {
-		width: auto;
-		margin-left: 0.825em;
-		display: inline;
-		vertical-align: middle;
-		&:first-child {
-			margin-left: 0;
-		}
-	}
-	span {
-		+ input, .input, select, textarea, .field-container {
-			margin: 0;
-		}
-	}
-}
-form.form-block {
-	input, .input, select, textarea, .field-container {
-		width: 100%;
-		display: block;
-	}
-	.field-container {
-		input, .input, select, textarea {
-			margin-left: 2%;
-			@include inline-block;
+	// Display specific behaviours
+	&.form-inline {
+		label, .label, input, .input, select, textarea, .field-container {
+			width: auto;
+			margin-left: 0.825em;
+			display: inline;
 			vertical-align: middle;
 			&:first-child {
 				margin-left: 0;
@@ -166,134 +138,149 @@ form.form-block {
 			}
 		}
 	}
-}
-form.form-inline-block {
-	label, .label {
-		width: 30%;
-	}
-	input, .input, select, textarea, .field-container {
-		width: 65%;
-		margin-left: 2%;
-		&:first-child {
-			margin-left: 0;
+	&.form-block {
+		input, .input, select, textarea, .field-container {
+			width: 100%;
+			display: block;
 		}
-	}
-	label, .label, input, .input, select, textarea, .field-container {
-		@include inline-block;
-		vertical-align: middle;
-	}
-	.field-container {
-		span {
-			+ input, .input, select, textarea, .field-container {
-				margin: 0;
+		.field-container {
+			input, .input, select, textarea {
+				margin-left: 2%;
+				@include inline-block;
+				vertical-align: middle;
+				&:first-child {
+					margin-left: 0;
+				}
+			}
+			span {
+				+ input, .input, select, textarea, .field-container {
+					margin: 0;
+				}
 			}
 		}
 	}
-}
-
-// Reset the radios and checkboxes
-form.form-block, form.form-inline-block {
-	input[type="radio"], input[type="checkbox"] {
-		@extend %radio-checkbox;
-	}
-}
-
-// Labels
-label, .label {
-	margin: 0;
-	position: relative;
-}
-
-// General fields
-input, .input, select, textarea, button, .button {
-	height: $form_field_height;
-	padding: 0.4em 0.6em;
-	margin: 0.2em 0;
-	border: 1px solid #CCC;
-	vertical-align: top;
-	border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
-	border-radius: $def_border_radius;
-	@include rem(font-size, 14px);
-	@include transition(color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease);
-}
-
-// Textareas
-textarea {
-	min-height: 100px; // Degradable
-	height: 125px;
-}
-
-// Radio & Checkboxes
-%radio-checkbox, input[type="radio"], input[type="checkbox"] {
-	width: auto;
-	height: auto;
-	margin: 0 5px 0 0;
-	border: 0;
-	display: inline;
-	vertical-align: middle;
-	& + label {
-		margin: 0 $nudge 0 0.2em;
-		vertical-align: middle;
-	}
-}
-
-// Buttons
-button, .button {
-	height: $form_field_height;
-	padding-left: 2em; padding-right: 2em;
-	margin: 0;
-	position: relative;
-	text-align: center;
-	cursor: pointer;
-	background-color: #f5f5f5;
-	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-	background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-	background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-	&:active, &:hover {
-		color: inherit;
-		border-color: #AAA;
-		background-color: #ededed;
-	}
-	&:active {
-		border-color: #AAA;
-		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(230, 230, 230, 0.02);
-	}
-	&[disabled], &.disabled, &.disabled:hover, &.disabled:active {
-		box-shadow: none;
-		border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
-		cursor: default;
-		background-color: white;
-	}
-}
-
-// Field disabled & pseudo classes
-input, select, textarea {
-	&.disabled {
-		background: #ebebe4;
-		cursor: default;
-		&:focus, &:focus, &:focus {
-			border-color: #CCC;
+	&.form-inline-block {
+		label, .label {
+			width: 30%;
+		}
+		input, .input, select, textarea, .field-container {
+			width: 65%;
+			margin-left: 2%;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		label, .label, input, .input, select, textarea, .field-container {
+			@include inline-block;
+			vertical-align: middle;
+		}
+		.field-container {
+			span {
+				+ input, .input, select, textarea, .field-container {
+					margin: 0;
+				}
+			}
 		}
 	}
-	&:hover, &:hover, &:hover {
-		border-color: #CCC;
+	// Reset the radios and checkboxes
+	&.form-block, &.form-inline-block {
+		input[type="radio"], input[type="checkbox"] {
+			@extend %radio-checkbox;
+		}
 	}
-	&:focus, &:focus, &:focus {
-		border-color: #AAA;
-	}
-	&[type="checkbox"], &[type="radio"] {
-		box-shadow: none; // IE displays box-shadow on checkbox and radios
-	}
-}
 
-// Specific Fields
-/*
-#formid\:fieldname {
+	// Labels
+	label, .label {
+		margin: 0;
+		position: relative;
+	}
+
+	// General fields
+	input, .input, select, textarea {
+		height: $form_field_height;
+		padding: 0.4em 0.6em;
+		margin: 0.2em 0;
+		border: 1px solid #CCC;
+		vertical-align: top;
+		border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
+		border-radius: $def_border_radius;
+		@include rem(font-size, 14px);
+		@include transition(color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease);
+	}
+
+	// Textareas
+	textarea {
+		min-height: 100px; // Degradable
+		height: 125px;
+	}
+
+	// Radio & Checkboxes
+	%radio-checkbox, input[type="radio"], input[type="checkbox"] {
+		width: auto;
+		height: auto;
+		margin: 0 5px 0 0;
+		border: 0;
+		display: inline;
+		vertical-align: middle;
+		& + label {
+			margin: 0 $nudge 0 0.2em;
+			vertical-align: middle;
+		}
+	}
+
+	// Buttons
+	button, .button {
+		height: $form_field_height;
+		padding: 0.4em 2em;
+		margin: 0;
+		border: 1px solid #CCC;
+		position: relative;
+		text-align: center;
+		cursor: pointer;
+		background-color: #f5f5f5;
+		background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+		background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+		background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+		background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+		background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+		&:active, &:hover {
+			color: inherit;
+			border-color: #AAA;
+			background-color: #ededed;
+		}
+		&:active {
+			border-color: #AAA;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(230, 230, 230, 0.02);
+		}
+		&[disabled], &.disabled, &.disabled:hover, &.disabled:active {
+			box-shadow: none;
+			border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
+			cursor: default;
+			background-color: white;
+		}
+	}
+
+	// Field disabled & pseudo classes
+	input, select, textarea {
+		&.disabled {
+			background: #ebebe4;
+			cursor: default;
+			&:focus, &:focus, &:focus {
+				border-color: #CCC;
+			}
+		}
+		&:hover, &:hover, &:hover {
+			border-color: #CCC;
+		}
+		&:focus, &:focus, &:focus {
+			border-color: #AAA;
+		}
+		&[type="checkbox"], &[type="radio"] {
+			box-shadow: none; // IE displays box-shadow on checkbox and radios
+		}
+	}
 }
-*/
 
 /* -- Placeholder -- */
 // Can't use opacity to change color. IE doesn't like this!

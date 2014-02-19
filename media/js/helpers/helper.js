@@ -30,9 +30,15 @@
 	 * helper.log
 	 * Safe console log.
 	**/
-	helper.log = function(message){
-		if(console && console.log){
-			console.log(message)
+	helper.log = function(message, alertlog){
+		alertlog = (typeof alertlog === 'undefined') ? false : true;
+		if(typeof console === 'undefined' || typeof console.log === 'undefined'){
+			if(alertlog){
+				alert(message);
+			}
+		}
+		else {
+			console.log(message);
 		}
 	}
 

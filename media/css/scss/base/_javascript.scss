@@ -49,7 +49,7 @@
             bottom: -2px;
     		z-index: 2;
             border-radius: $def_border_radius $def_border_radius 0 0;
-            color: $def_color;
+            color: $def_link_colour;
             background: #FFF;
         }
         &.active a {
@@ -92,7 +92,7 @@
 			}
 		}
 		&:hover, .accordion-title.active-title {
-			color: $def_color;
+			color: $def_link_colour;
 			background: rgba(249,249,249,0.3);
 		}
 	}

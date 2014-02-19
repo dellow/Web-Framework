@@ -1,5 +1,6 @@
 /* ==========================================================================
-   Info
+   Docs
+   CSS examples and experimental features
 ========================================================================== */
 /**
  * em Conversion px / 16 = em
@@ -121,12 +122,12 @@
 	width        : calc(33% - 40px);
 }
 
-/* -- Negation psudo class -- */
+/* -- Negation pseudo class -- */
 .foo:nth-child(odd):not(:last-child){
 	color: #F00;
 }
 
-/* -- Matches psudo class -- */
+/* -- Matches pseudo class -- */
 .foo:matches(header, footer, aside) p {
 	color: #F00;
 }

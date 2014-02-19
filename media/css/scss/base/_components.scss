@@ -1,54 +1,7 @@
 /* ==========================================================================
    Components
+   Classes the make up a structural block such as a Grid or Navigation
 ========================================================================== */
-/* -- Div Tables -- */
-div.table {
-	@extend %cf;
-	width: 100%;
-	.col {
-		width: 48%;
-		padding: 0.5%;
-		margin-left: 1%;
-		float: left;
-	}
-	.col:first-child {
-		margin-left: 0;
-	}
-}
-
-/* -- Normal Tables -- */
-table.table {
-	width: 100%;
-	border: 1px solid #dddddd;
-	border-radius: $def_border_radius;
-	border-collapse: separate;
-  	border-spacing: 0;
-	thead {
-		th {
-			border-top: 0;
-		}
-	}
-	td, th {
-		padding: 5px;
-		border-left: 1px solid #f2f2f2;
-		border-top: 1px solid #d9d9d9;
-		text-align: center;
-		vertical-align: middle;
-		&:first-child {
-			border-left: 0;
-		}
-	}
-	&.table-striped {
-		tbody {
-			tr {
-				&:nth-child(odd) {
-					background: #f9f9f9;
-				}
-			}
-		}
-	}
-}
-
 /* -- All Navigation -- */
 .navigation {
 	li {
@@ -92,68 +45,6 @@ table.table {
 	}
 }
 
-/* -- Breadcrumb -- */
-.breadcrumb {
-	> a {
-		font-weight: bold;
-	}
-	a {
-		color: $def_color;
-	}
-}
-
-/* -- Pagination -- */
-.pagination {
-	margin-top: ($nudge*2);
-	@include rem(font-size, 12px);
-	.page-numbers {
-		padding: ($nudge/2) $nudge;
-		margin-left: -4px;
-		border: 1px solid #ccc;
-		@include inline-block;
-	}
-	.page-numbers:first-child {
-		margin-left: 0;
-	}
-	.page-numbers.current {
-		color: $def_color;
-	}
-}
-
-/* -- Content Editable -- */
-.editable {
-	padding: 3px;
-	margin-left: -3px;
-	border-radius: 3px;
-	border-left: 1px solid transparent;
-	border-right: 1px solid transparent;
-	@include transition(background 500ms ease, border-color 500ms ease);
-	// Disabled fields
-	&[contenteditable="false"]{
-		&:hover {
-			background: rgba(0, 0, 0, 0.2) !important; // Override hover and focus styles below
-		}
-		&:focus {
-			background: rgba(0, 0, 0, 0.4) !important; // Override hover and focus styles below
-		}
-	}
-	// Hover
-	&:hover {
-		background: rgba(64, 179, 232, 0.2) !important; // These are !important to overcome a bug with jQuery UI not resetting an animated background-color
-		border-left: 1px solid rgba(0,0,0,0.4);
-		border-right: 1px solid rgba(0,0,0,0.4);
-	}
-	// Focus
-	&:focus {
-		background: rgba(64, 179, 232, 0.4) !important; // These are !important to overcome a bug with jQuery UI not resetting an animated background-color
-	}
-	// When one editable field follows another
-	& + .editable {
-		padding-left: 2px;
-		margin-left: 2px;
-	}
-}
-
 /* -- Grid System -- */
 .grid {
 	width: 100% + ($gutter / 2);
@@ -163,7 +54,7 @@ table.table {
 	[class*="col-"] {
 		width: 100% - ($gutter / 2);
 		float: left;
-		margin: 0 0 1% ($gutter / 2);
+		margin: 0 0 0 ($gutter / 2);
 		&.left {
 			text-align: left;
 		}
@@ -181,44 +72,154 @@ table.table {
 		}
 	}
 
-	// Fixed widths
-	$fixedwidths: (
-		960,
-		640,
-		320,
-		160,
-		80
-	);
-	@each $width in $fixedwidths {
-		.col-#{$width} {
-			width: $width - ($fixedgutter / 2);
-		}
-	}
-
 	// Fluid widths
 	.col-1-3 { /* 1/3 */
-		width: 33.3% - ($gutter / 2);
+		width: $col_1-3 - ($gutter / 2);
 	}
 	.col-2-3 { /* 2/3 */
-		width: 66.6% - ($gutter / 2);
+		width: ($col_1-3 * 2) - ($gutter / 2);
 	}
+
 	.col-1-2 { /* 1/2 */
-		width: 50% - ($gutter / 2);
+		width: $col_1-2 - ($gutter / 2);
 	}
 	.col-1-4 { /* 1/4 */
-		width: 25% - ($gutter / 2);
+		width: $col_1-4 - ($gutter / 2);
+	}
+	.col-2-4 { /* 2/4 */
+		width: ($col_1-4 * 2) - ($gutter / 2);
 	}
 	.col-3-4 { /* 3/4 */
-		width: 75% - ($gutter / 2);
+		width: $col_3-4 - ($gutter / 2);
 	}
+
+	.col-1-5 { /* 1/5 */
+		width: $col_5 - ($gutter / 2);
+	}
+	.col-2-5 { /* 2/5 */
+		width: ($col_5 * 2) - ($gutter / 2);
+	}
+	.col-3-5 { /* 3/5 */
+		width: ($col_5 * 3) - ($gutter / 2);
+	}
+	.col-4-5 { /* 4/5 */
+		width: ($col_5 *4) - ($gutter / 2);
+	}
+
+	.col-1-6 { /* 1/6 */
+		width: $col_6 - ($gutter / 2);
+	}
+	.col-2-6 { /* 2/6 */
+		width: ($col_6 * 2) - ($gutter / 2);
+	}
+	.col-3-6 { /* 3/6 */
+		width: ($col_6 * 3) - ($gutter / 2);
+	}
+	.col-4-6 { /* 4/6 */
+		width: ($col_6 * 4) - ($gutter / 2);
+	}
+	.col-5-6 { /* 5/6 */
+		width: ($col_6 * 5) - ($gutter / 2);
+	}
+
+	.col-1-7 { /* 1/7 */
+		width: $col_7 - ($gutter / 2);
+	}
+	.col-2-7 { /* 2/7 */
+		width: ($col_7  * 2) - ($gutter / 2);
+	}
+	.col-3-7 { /* 3/7 */
+		width: ($col_7  * 3) - ($gutter / 2);
+	}
+	.col-4-7 { /* 4/7 */
+		width: ($col_7  * 4) - ($gutter / 2);
+	}
+	.col-5-7 { /* 5/7 */
+		width: ($col_7  * 5) - ($gutter / 2);
+	}
+	.col-6-7 { /* 6/7 */
+		width: ($col_7  * 6) - ($gutter / 2);
+	}
+
 	.col-1-8 { /* 1/8 */
-		width: 12.5% - ($gutter / 2);
+		width: $col_8 - ($gutter / 2);
 	}
-	.col-1-12 { /* 1/16 */
-		width: 8.33% - ($gutter / 2);
+	.col-2-8 { /* 2/8 */
+		width: ($col_8 * 2) - ($gutter / 2);
 	}
-	.col-1-16 { /* 1/16 */
-		width: 6.25% - ($gutter / 2);
+	.col-3-8 { /* 3/8 */
+		width: ($col_8 * 3) - ($gutter / 2);
+	}
+	.col-4-8 { /* 4/8 */
+		width: ($col_8 * 4) - ($gutter / 2);
+	}
+	.col-5-8 { /* 5/8 */
+		width: ($col_8 * 5) - ($gutter / 2);
+	}
+	.col-6-8 { /* 6/8 */
+		width: ($col_8 * 6) - ($gutter / 2);
+	}
+	.col-7-8 { /* 7/8 */
+		width: ($col_8 * 7) - ($gutter / 2);
+	}
+
+	.col-1-9 { /* 1/9 */
+		width: $col_9 - ($gutter / 2);
+	}
+	.col-2-9 { /* 2/9 */
+		width: ($col_9 * 2) - ($gutter / 2);
+	}
+	.col-3-9 { /* 3/9 */
+		width: ($col_9 * 3) - ($gutter / 2);
+	}
+	.col-4-9 { /* 4/9 */
+		width: ($col_9 * 4) - ($gutter / 2);
+	}
+	.col-5-9 { /* 5/9 */
+		width: ($col_9 * 5) - ($gutter / 2);
+	}
+	.col-6-9 { /* 6/9 */
+		width: ($col_9 * 6) - ($gutter / 2);
+	}
+	.col-7-9 { /* 7/9 */
+		width: ($col_9 * 7) - ($gutter / 2);
+	}
+	.col-8-9 { /* 7/9 */
+		width: ($col_9 * 7) - ($gutter / 2);
+	}
+
+	.col-1-12 { /* 1/12 */
+		width: $col_12 - ($gutter / 2);
+	}
+	.col-2-12 { /* 2/12 */
+		width: ($col_12 * 2) - ($gutter / 2);
+	}
+	.col-3-12 { /* 3/12 */
+		width: ($col_12 * 3) - ($gutter / 2);
+	}
+	.col-4-12 { /* 4/12 */
+		width: ($col_12 * 4) - ($gutter / 2);
+	}
+	.col-5-12 { /* 5/12 */
+		width: ($col_12 * 5) - ($gutter / 2);
+	}
+	.col-6-12 { /* 6/12 */
+		width: ($col_12 * 6) - ($gutter / 2);
+	}
+	.col-7-12 { /* 7/12 */
+		width: ($col_12 * 7) - ($gutter / 2);
+	}
+	.col-8-12 { /* 8/12 */
+		width: ($col_12 * 8) - ($gutter / 2);
+	}
+	.col-9-12 { /* 9/12 */
+		width: ($col_12 * 9) - ($gutter / 2);
+	}
+	.col-10-12 { /* 10/12 */
+		width: ($col_12 * 10) - ($gutter / 2);
+	}
+	.col-11-12 { /* 11/12 */
+		width: ($col_12 * 11) - ($gutter / 2);
 	}
 }
 
@@ -273,6 +274,112 @@ table.table {
 	}
 	&.image-row-6 .gallery-item, &.gallery-columns-6 .gallery-item {
 		width: 16.666%;
+	}
+}
+
+/* -- Breadcrumb -- */
+.breadcrumb {
+	> a {
+		font-weight: bold;
+	}
+}
+
+/* -- Pagination -- */
+.pagination {
+	margin-top: ($nudge * 2);
+	@include rem(font-size, 12px);
+	.page-numbers {
+		padding: ($nudge / 2) $nudge;
+		margin-left: -4px;
+		border: 1px solid #ccc;
+		@include inline-block;
+	}
+	.page-numbers:first-child {
+		margin-left: 0;
+	}
+	.page-numbers.current {
+		color: $def_link_colour
+	}
+}
+/* -- Div Tables -- */
+div.table {
+	@extend %cf;
+	width: 100%;
+	.col {
+		width: 48%;
+		padding: 0.5%;
+		margin-left: 1%;
+		float: left;
+	}
+	.col:first-child {
+		margin-left: 0;
+	}
+}
+
+/* -- Normal Tables -- */
+table.table {
+	width: 100%;
+	border: 1px solid $grey;
+	border-radius: $def_border_radius;
+	border-collapse: separate;
+  	border-spacing: 0;
+	thead {
+		th {
+			border-top: 0;
+		}
+	}
+	td, th {
+		padding: 5px;
+		border-left: 1px solid #f2f2f2;
+		border-top: 1px solid #d9d9d9;
+		text-align: center;
+		vertical-align: middle;
+		&:first-child {
+			border-left: 0;
+		}
+	}
+	&.table-striped {
+		tbody {
+			tr {
+				&:nth-child(odd) {
+					background: #f9f9f9;
+				}
+			}
+		}
+	}
+}
+
+/* -- Content Editable -- */
+.editable {
+	padding: 3px;
+	margin-left: -3px;
+	border-radius: 3px;
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+	@include transition(background 500ms ease, border-color 500ms ease);
+	// Disabled fields
+	&[contenteditable="false"]{
+		&:hover {
+			background: rgba(0, 0, 0, 0.2) !important; // Override hover and focus styles below
+		}
+		&:focus {
+			background: rgba(0, 0, 0, 0.4) !important; // Override hover and focus styles below
+		}
+	}
+	// Hover
+	&:hover {
+		background: rgba(64, 179, 232, 0.2) !important; // These are !important to overcome a bug with jQuery UI not resetting an animated background-color
+		border-left: 1px solid rgba(0,0,0,0.4);
+		border-right: 1px solid rgba(0,0,0,0.4);
+	}
+	// Focus
+	&:focus {
+		background: rgba(64, 179, 232, 0.4) !important; // These are !important to overcome a bug with jQuery UI not resetting an animated background-color
+	}
+	// When one editable field follows another
+	& + .editable {
+		padding-left: 2px;
+		margin-left: 2px;
 	}
 }
 

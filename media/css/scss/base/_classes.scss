@@ -20,7 +20,7 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 	border-radius: $def_border_radius;
 }
 
-/* -- MEssages -- */
+/* -- Messages -- */
 .msg-success, .msg-failure {
 }
 .msg-success {
@@ -47,10 +47,10 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 
 /* -- Resetting (This is a last resort) -- */
 .no-width {
-	width: auto;
+	width: auto !important;
 }
 .no-height {
-	height: auto;
+	height: auto !important;
 }
 .no-margin {
 	margin: 0 !important;
@@ -65,7 +65,7 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 	list-style: none !important;
 }
 .no-float {
-	float: none;
+	float: none !important;
 }
 
 /* -- Nudge -- */

@@ -7,23 +7,23 @@
 
 ;(function(global, $, undefined){
 
-    var ui;
+	var ui;
 
-    ui = global.ui || {};
+	ui = global.ui || {};
 
-    /**
-     * ui.init
-     * Init the ui module.
-    **/
-    ui.init = function(){
-        ui.shim_placeholder();
-    }
+	/**
+	 * ui.init
+	 * Init the ui module.
+	**/
+	ui.init = function(){
+		ui.shim_placeholder();
+	}
 
-    /**
-     * ui.shim_placeholder
-     * Adds the placeholder attribute to legacy browsers.
-    **/
-    ui.shim_placeholder = function(){
+	/**
+	 * ui.shim_placeholder
+	 * Adds the placeholder attribute to legacy browsers.
+	**/
+	ui.shim_placeholder = function(){
         $(function(){
             if(!('placeholder' in document.createElement('input'))){
                 var input = $(this);
@@ -45,9 +45,9 @@
                 });
             }
         });
-    }
+	}
 
-    // Export ui object for use.
-    window.ui = ui;
+	// Export ui object for use.
+	window.ui = ui;
 
 })(window, jQuery);

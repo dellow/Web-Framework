@@ -1,26 +1,5 @@
-/**
- * Screen widths below 320px
-**/
-@include respond-to(320px){
-	body {
-		font-size: 75%;
-	}
-}
-
-/**
- * Screen widths below 480px
-**/
-@include respond-to(480px){
-	* {
-		float: none !important;
-	}
-}
-
-/**
- * Screen widths below 768px
- * Main responsive layout
-**/
-@include respond-to(768px){
+// Respond to tablet
+@include respond-to($tablet){
 	body {
 		font-size: 90%;
 	}
@@ -54,12 +33,12 @@
 	}
 
 	/* -- Grid -- */
-	.grid {
+	.grid.rr {
 		width: 100%;
 		left: 0;
-		[class*="col-"] {
+		> [class*="col-"] {
 			width: 100%;
-			margin: $nudge 0;
+			margin: 0 0 $nudge 0;
 			&.right, &.left {
 				text-align: center;
 			}
@@ -68,12 +47,6 @@
 
 	/* -- Forms -- */
 	form {
-		.left {
-			float: left !important;
-		}
-		.right {
-			float: right !important;
-		}
 		input, .input, select, textarea, .field-container, button, .button {
 			padding: 0.5em;
 		}
@@ -81,5 +54,12 @@
 			width: 100%;
 			margin: 0.5em 0;
 		}
+	}
+}
+
+// Respond to mobile
+@include respond-to($mobile){
+	body {
+		font-size: 75%;
 	}
 }

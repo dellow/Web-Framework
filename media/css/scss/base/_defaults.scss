@@ -1,9 +1,6 @@
 /* ==========================================================================
    Defaults
 ========================================================================== */
-body {
-	background: $bg_color;
-}
 fieldset {
 	margin: $nudge 0;
 }
@@ -82,12 +79,12 @@ hr.dots:after {
 	height: 0;
 }
 ::-moz-selection {
-	background: $def_color;
+	background: $def_colour_red;
 	color: #fff;
 	text-shadow: none;
 }
 ::selection {
-	background: $def_color;
+	background: $def_colour_red;
 	color: #fff;
 	text-shadow: none;
 }
@@ -100,7 +97,7 @@ hr.dots:after {
 	background: #e3f7fc;
 }
 ::-webkit-scrollbar-thumb {
-	background: $def_color;
+	background: $def_colour_red;
 	box-shadow: inset 0 0 2em rgba(0, 0, 0, 0.2);
 }
 ::-webkit-scrollbar-button {

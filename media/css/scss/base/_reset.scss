@@ -15,6 +15,15 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 	outline: 0;
 	vertical-align: baseline;
 }
+sub, sup {
+	font-size: 80%;
+	vertical-align: baseline;
+	position: relative;
+	top: -0.4em;
+}
+sub {
+	top: 0.4em;
+}
 input, select, textarea, button {
 	color: inherit;
 }
