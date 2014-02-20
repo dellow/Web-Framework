@@ -1,19 +1,16 @@
 @charset "UTF-8";
 
-// 1. Site vars
-@import 'site/vars';
-
-// 2. Config vars
-@import 'config/vars';
-
-// 3. Font Face
+// 1. Font Face
 @import 'site/font-face';
 
-// 4. Config
+// 2. Config
 @import 'config/#all';
 
-// 5. Base
+// 3. Site vars
+@import 'site/vars';
+
+// 4. Base
 @import 'base/#all';
 
-// 6. Site
+// 5. Site
 @import 'site/#all';

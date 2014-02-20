@@ -114,7 +114,7 @@ td {
 	vertical-align: top;
 }
 th, strong, dt {
-	font-weight: bold;
+	font-weight: $font_weight_bold;
 }
 del {
 	text-decoration: line-through;

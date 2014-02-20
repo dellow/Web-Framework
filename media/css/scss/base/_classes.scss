@@ -184,7 +184,7 @@ ul.horizontal-block {
 
 /* -- Weights & Cases -- */
 .bold, th, strong, dt {
-	font-weight: bold;
+	font-weight: $font_weight_bold;
 }
 .italic {
 	font-style: italic;

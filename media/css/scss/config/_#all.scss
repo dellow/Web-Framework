@@ -2,6 +2,7 @@
    All
    Imports all the partials
 ========================================================================== */
-@import 'mixins',
+@import 'vars',
+		'mixins',
 		'placeholders',
 		'debug';

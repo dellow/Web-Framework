@@ -12,7 +12,7 @@
 			padding-left: 0;
 		}
 		&.current_page_item > a, &.current_page_parent > a {
-			font-weight: bold;
+			font-weight: $font_weight_bold;
 		}
 	}
 }
@@ -24,13 +24,14 @@
 			display: block;
 		}
 		.sub-menu {
-			padding: 0 12px;
+			$pad: 12px;
+			padding: 0 $pad;
 			margin-left: 0;
 			display: none;
 			position: absolute;
-			left: -12px; top: 100%;
+			left: -$pad; top: 100%;
 			z-index: 100;
-			background: #fff;
+			background: $white;
 			li {
 				padding: 0;
 				margin: 6px 0;
@@ -280,7 +281,7 @@
 /* -- Breadcrumb -- */
 .breadcrumb {
 	> a {
-		font-weight: bold;
+		font-weight: $font_weight_bold;
 	}
 }
 
@@ -450,7 +451,7 @@ table.table {
 	-ms-box-sizing    : border-box;
 	box-sizing        : border-box;
 
-	color: #FFF;
+	color: $white;
 	text-align: center;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
