@@ -1,7 +1,7 @@
 # -----------------------------------------------------
 #                                              REWRITES
 # -----------------------------------------------------
-# Replaces file extension. Default: .php
+## Replaces file extension. Default: .php
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteCond %{REQUEST_FILENAME} !-f
