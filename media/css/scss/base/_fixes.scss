@@ -3,9 +3,12 @@
    This file is for legacy browser fixes and hacks. Everything should
    be documented and explained for later review.
 ========================================================================== */
-
 // All old IE fixes
 .oldie {
+	/* -- Container -- */
+	.container {
+		width: 960px;
+	}
 
 	/* -- Image Replacement -- */
 	.ir {
@@ -36,10 +39,6 @@
 }
 
 .ie8 {
-	.container {
-		width: 960px;
-	}
-
 	/* -- Custom Inputs -- */
 	form {
 		[class*='custom-'] {

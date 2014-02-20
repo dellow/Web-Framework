@@ -185,7 +185,7 @@
 	.col-7-9 { /* 7/9 */
 		width: ($col_9 * 7) - ($gutter / 2);
 	}
-	.col-8-9 { /* 7/9 */
+	.col-8-9 { /* 8/9 */
 		width: ($col_9 * 7) - ($gutter / 2);
 	}
 
@@ -302,6 +302,7 @@
 		color: $base_link_colour
 	}
 }
+
 /* -- Div Tables -- */
 div.table {
 	@extend %cf;

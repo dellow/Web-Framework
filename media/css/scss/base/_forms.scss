@@ -1,5 +1,6 @@
 /* ==========================================================================
    Forms
+   Styling for elements within a form tag
 ========================================================================== */
 /* -- Forms -- */
 form {
@@ -15,9 +16,9 @@ form {
 	}
 	// Field containers
 	.field {
-		@extend %cf;
 		margin: 0 0 $nudge;
 		position: relative;
+		@extend %cf;
 	}
 	// Input sizes
 	.col-1 {
@@ -200,7 +201,7 @@ form {
 		height: $form_field_height;
 		padding: 0.4em 0.6em;
 		margin: 0.2em 0;
-		border: 1px solid #CCC;
+		border: 1px solid #CCCCCC;
 		vertical-align: top;
 		border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
@@ -234,7 +235,7 @@ form {
 		height: $form_field_height;
 		padding: 0.4em 2em;
 		margin: 0;
-		border: 1px solid #CCC;
+		border: 1px solid #CCCCCC;
 		position: relative;
 		vertical-align: top;
 		border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
@@ -252,11 +253,11 @@ form {
 		@include transition(color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease);
 		&:active, &:hover {
 			color: inherit;
-			border-color: #AAA;
+			border-color: $lightgrey;
 			background-color: #ededed;
 		}
 		&:active {
-			border-color: #AAA;
+			border-color: $lightgrey;
 			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(230, 230, 230, 0.02);
 		}
 		&[disabled], &.disabled, &.disabled:hover, &.disabled:active {
@@ -273,11 +274,11 @@ form {
 			background: #ebebe4;
 			cursor: default;
 			&:focus, &:focus, &:focus {
-				border-color: #CCC;
+				border-color: #CCCCCC;
 			}
 		}
 		&:hover, &:hover, &:hover {
-			border-color: #CCC;
+			border-color: #CCCCCC;
 		}
 		&:focus, &:focus, &:focus {
 			border-color: #AAA;
@@ -291,19 +292,19 @@ form {
 /* -- Placeholder -- */
 // Can't use opacity to change color. IE doesn't like this!
 ::-webkit-input-placeholder {
-	color: #AAA;
+	color: $lightgrey;
 }
 [placeholder]:focus::-webkit-input-placeholder {
   color: transparent;
 }
 :-moz-placeholder {
-	color: #AAA;
+	color: $lightgrey;
 }
 [placeholder]:focus:-moz-placeholder {
   color: transparent;
 }
 :-ms-input-placeholder {
-	color: #AAA;
+	color: $lightgrey;
 }
 [placeholder]:focus:-ms-input-placeholder {
   color: transparent;

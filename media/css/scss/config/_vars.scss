@@ -120,6 +120,7 @@ $font_family_trebuchet : "Trebuchet MS" !default;
 $font_family_verdana   : Verdana !default;
 $font_family_serif     : serif !default;
 $font_family_sans_serif: sans-serif !default;
+$font_monospaced       : "source-code-pro", monospace !default;
 $base_font_family      : $font_family_helvetica, $font_family_arial, $font_family_trebuchet, $font_family_verdana, $font_family_sans_serif !default;
 // Weights
 $font_weight_bold      : 700 !default;
@@ -161,6 +162,7 @@ $white                 : #FFFFFF !default;
 $black                 : #000000 !default;
 $grey                  : #DDDDDD !default;
 $lightgrey             : #EFEFEF !default;
+$mediumgrey            : #666666 !default;
 $darkgrey              : #333333 !default;
 $red                   : #C4122f !default;
 $red_opp               : darken($red, 20%) !default;

@@ -12,12 +12,11 @@ pre {
 	position: relative;
 	border-color: #34495E; border-color: rgba(52, 73, 94, 0.2);
 	border-radius: $base_border_radius;
-	font: 400 1em/1 "source-code-pro", monospace;
+	font: 400 1em/1 $font_monospaced;
 	white-space: pre-wrap;
 	white-space: -moz-pre-wrap;
 	white-space: -o-pre-wrap;
 	word-wrap  : break-word;
-	/* &lt; = < &gt; = >  */
 }
 kbd {
 	padding: 0.5em $nudge;
@@ -25,20 +24,20 @@ kbd {
 	border-radius: $base_border_radius;
 	@include rem(font-size, 18px);
 	line-height: 90%;
-	color: #666;
-	background-color: #fcfcfc;
+	color: $mediumgrey;
+	background-color: #f6f6f6;
 }
 ol.code {
 	margin: 0 0 0 3em;
-	font: 400 1em/1.7143 "source-code-pro", monospace;
-	color: #999;
+	font: 400 1em/1.7143 $font_monospaced;
+	color: $grey;
 }
 ol.code li {
 	padding: 0 0.5em;
 	margin: 0 0 -1px 0;
-	border-top: 1px solid #fff;
+	border-top: 1px solid $white;
 	list-style: decimal-leading-zero;
-	background: #f6f6f6;
+	background: #F6F6F6;
 }
 ul {
 	list-style-type: disc;
@@ -74,19 +73,19 @@ hr.dots {
 }
 hr.dots:after {
 	content: "·········";
-	color: #ccc;
+	color: $grey;
 	letter-spacing: $nudge;
 	padding-left: $nudge;
 	height: 0;
 }
 ::-moz-selection {
 	background: $base_red;
-	color: #fff;
+	color: $white;
 	text-shadow: none;
 }
 ::selection {
 	background: $base_red;
-	color: #fff;
+	color: $white;
 	text-shadow: none;
 }
 

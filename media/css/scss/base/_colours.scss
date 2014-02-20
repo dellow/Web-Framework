@@ -1,5 +1,7 @@
 /* ==========================================================================
    Colours
+   Takes all the colours from the colour array in vars and creates
+   a class for each of them for easy OO styling.
 ========================================================================== */
 /* -- Text colours -- */
 @each $color in $colours {
