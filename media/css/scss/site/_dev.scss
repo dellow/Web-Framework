@@ -1,6 +1,7 @@
 /* ==========================================================================
    Dev
-   CSS for the development environment only.
+   CSS for the development environment only. This can be used for
+   experimental styles and can be turned off with an environment var
 ========================================================================== */
 @if compass-env() == 'development' or $dev_mode {
 }
