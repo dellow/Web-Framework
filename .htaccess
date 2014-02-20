@@ -1,4 +1,14 @@
 # -----------------------------------------------------
+#                                              REWRITES
+# -----------------------------------------------------
+# Replaces file extension. Default: .php
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^([^\.]+)$ $1.php [NC,L]
+</IfModule>
+
+# -----------------------------------------------------
 #                                               HEADERS
 # -----------------------------------------------------
 <ifModule mod_headers.c>
