@@ -17,10 +17,10 @@ a, button {
 	text-decoration: none;
 	@include transition(color 500ms ease);
 	&:hover {
-		color: $base_link_colour_opp;
+		color: $base_link_colour_hover;
 	}
 	&:active {
-		color: darken($base_link_colour_opp, 10%);
+		color: darken($base_link_colour_hover, 15%);
 	}
 }
 
@@ -60,14 +60,15 @@ blockquote {
 	font-family: $font_family_serif;
 	font-style: italic;
 }
-blockquote:before, q:before, blockquote:after, q:after {
-	position: absolute;
-}
-blockquote:before, q:before {
-	content: "\201c";
-	left: 0;
-}
-blockquote:after, q:after {
-	content: "\201d";
-	right: 0;
+blockquote, q {
+	&:before, &:after {
+		position: absolute;
+		left: 0;
+	}
+	&:before {
+		content: "\201c";
+	}
+	&:after {
+		content: "\201d";
+	}
 }

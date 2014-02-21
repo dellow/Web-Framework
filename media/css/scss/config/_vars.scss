@@ -150,7 +150,7 @@ $line_height_ratio     : $base_line_height / $base_font_size !default;
 **/
 // Defaults
 $base_link_colour      : #CD4B45 !default;
-$base_link_colour_opp  : darken($base_link_colour, 10%) !default;
+$base_link_colour_hover: #006DCC !default;
 $base_red              : #CD4B45 !default;
 $base_red_opp          : darken($base_red, 10%) !default;
 $base_blue             : #006DCC !default;
