@@ -5,10 +5,7 @@
 A Grunt powered HTML Framework utilising SASS and RequireJS.
 
 ## Install
-After cloning the repository simply run from your command line:
-
-	bash ./clean
-This will remove the Git wrapper and replace with a fresh Git initialisation and remove any un-necessary files/directories.
+After cloning the repository simply run `bash ./clean` from your command line. This will remove the Git wrapper and replace with a fresh Git initialisation and remove any un-necessary files/directories.
 
 ## Styleguide
 There is a basic CSS styleguide in `media/styleguide.html`.
