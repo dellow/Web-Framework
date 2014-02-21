@@ -10,11 +10,14 @@ After cloning the repository simply run from your command line:
 	bash ./clean
 This will remove the Git wrapper and replace with a fresh Git initialisation and remove any un-necessary files/directories.
 
+## Styleguide
+There is a basic CSS styleguide in `media/styleguide.html`.
+
 ## Working with SCSS
 Any new SCSS partials should be added in the `site` directory. `base` and `config` should be left as is so they can be overwritten and updated. Use the `site/_vars` partial to override any of the default variables set in `config/_vars`.
 
 ### Debug Mode
-By default debug mode is on. Adapted from Harry Roberts' `inuit.css` this will provide hints for potentially incorrect markup. You can disable this by declaring `$debug_mode = false` in `site/vars`.
+By default debug mode is off. Adapted from Harry Roberts' `inuit.css` this will provide hints for potentially incorrect markup. You can enable this by declaring `$debug_mode = true` in `site/vars`.
 
 ### Responsive
 The framework comes with a `breakpoints` partial in both `base` and `site` these are only for global responsive changes and theoretically could be left untouched. You should use the `respond-to` mixin to create responsive styles at the bottom of the relevant partial file.

@@ -94,7 +94,7 @@
 	}
 
 	/* -- IDs --*/
-	[id] {
+	[id]:not(form):not(input):not(select):not(textarea) {
 		outline: $debug_outline_px solid yellow;
 	}
 

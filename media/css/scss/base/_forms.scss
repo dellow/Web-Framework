@@ -185,6 +185,16 @@ form {
 	}
 	// Reset the radios and checkboxes
 	&.form-block, &.form-inline-block {
+		label {
+			input[type="radio"], input[type="checkbox"] {
+				margin: -4px 2px 0 10px;
+			}
+			&:first-of-type {
+				input {
+					margin-left: 0;
+				}
+			}
+		}
 		input[type="radio"], input[type="checkbox"] {
 			@extend %radio-checkbox;
 		}
@@ -194,6 +204,11 @@ form {
 	label, .label {
 		margin: 0;
 		position: relative;
+	}
+
+	// All form elements
+	input, .input, select, textarea, button {
+		line-height: 1;
 	}
 
 	// General fields
@@ -292,19 +307,19 @@ form {
 /* -- Placeholder -- */
 // Can't use opacity to change color. IE doesn't like this!
 ::-webkit-input-placeholder {
-	color: $lightgrey;
+	color: $grey;
 }
 [placeholder]:focus::-webkit-input-placeholder {
   color: transparent;
 }
 :-moz-placeholder {
-	color: $lightgrey;
+	color: $grey;
 }
 [placeholder]:focus:-moz-placeholder {
   color: transparent;
 }
 :-ms-input-placeholder {
-	color: $lightgrey;
+	color: $grey;
 }
 [placeholder]:focus:-ms-input-placeholder {
   color: transparent;

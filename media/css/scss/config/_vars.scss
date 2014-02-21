@@ -6,13 +6,13 @@
 /**
  * Config
 **/
-$debug_mode            : true !default;
-$dev_mode              : true !default;
+$debug_mode            : false !default;
+$dev_mode              : false !default;
 
 /**
  * Essentials
 **/
-$gutter                : 6% !default;
+$gutter                : 2% !default;
 $fixedgutter           : 10px !default;
 $nudge                 : 0.825em !default;
 $form_field_height     : 35px !default;
