@@ -81,7 +81,7 @@
 				pointer-events: none;
 			}
 		}
-		&:hover, .accordion-title.active-title {
+		&:hover, &.active-title {
 			color: $base_link_colour;
 			background: rgba(249,249,249,0.3);
 		}

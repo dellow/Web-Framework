@@ -38,19 +38,6 @@
 		}
 	}
 
-	/* -- Grid -- */
-	.grid.rr {
-		width: 100%;
-		left: 0;
-		> [class*="col-"] {
-			width: 100%;
-			margin: 0 0 $nudge 0;
-			&.right, &.left {
-				text-align: center;
-			}
-		}
-	}
-
 	/* -- Forms -- */
 	form {
 		input, .input, select, textarea, .field-container, button, .button {
@@ -67,5 +54,13 @@
 @include respond-to($mobile){
 	body {
 		font-size: 75%;
+	}
+
+	/* -- Grid -- */
+	.grid {
+		[class*="col-"] {
+			width: 100%;
+			float: none;
+		}
 	}
 }

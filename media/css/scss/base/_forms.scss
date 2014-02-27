@@ -307,20 +307,11 @@ form {
 /* -- Placeholder -- */
 // Can't use opacity to change color. IE doesn't like this!
 ::-webkit-input-placeholder {
-	color: $grey;
-}
-[placeholder]:focus::-webkit-input-placeholder {
-  color: transparent;
+	color: #BBB3B3;
 }
 :-moz-placeholder {
-	color: $grey;
-}
-[placeholder]:focus:-moz-placeholder {
-  color: transparent;
+	color: #BBB3B3;
 }
 :-ms-input-placeholder {
-	color: $grey;
-}
-[placeholder]:focus:-ms-input-placeholder {
-  color: transparent;
+	color: #BBB3B3;
 }

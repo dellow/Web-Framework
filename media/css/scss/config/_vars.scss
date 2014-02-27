@@ -12,7 +12,7 @@ $dev_mode              : false !default;
 /**
  * Essentials
 **/
-$gutter                : 2% !default;
+$gutter                : 3% !default;
 $fixedgutter           : 10px !default;
 $nudge                 : 0.825em !default;
 $form_field_height     : 35px !default;
@@ -28,7 +28,7 @@ $base_box_shadow       : 0 0 5px rgba(69, 18, 11, 0.15) !default;
  * Breakpoints
 **/
 // Generic
-$mobile                : 320px !default;
+$mobile                : 460px !default;
 $tablet                : 768px !default;
 $desktop               : 960px !default;
 // iPhone 3
@@ -136,9 +136,9 @@ $font_size_large       : 20px !default;
 $font_size_h1          : 48px !default;
 $font_size_h2          : 36px !default;
 $font_size_h3          : 24px !default;
-$font_size_h4          : 21px !default;
-$font_size_h5          : 18px !default;
-$font_size_h6          : 16px !default;
+$font_size_h4          : 18px !default;
+$font_size_h5          : 16px !default;
+$font_size_h6          : 14px !default;
 // Line Height
 $base_line_height      : 24px !default;
 $base_spacing_unit     : $base_line_height !default;
@@ -149,6 +149,7 @@ $line_height_ratio     : $base_line_height / $base_font_size !default;
  * Colours
 **/
 // Defaults
+$base_text_colour      : #333333 !default;
 $base_link_colour      : #CD4B45 !default;
 $base_link_colour_hover: #006DCC !default;
 $base_red              : #CD4B45 !default;

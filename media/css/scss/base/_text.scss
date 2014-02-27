@@ -7,7 +7,7 @@ html {
     min-height:100%;
     overflow-y:scroll;
     font:#{$base_font_size}/#{$line_height_ratio} $base_font_family;
-	color: $darkgrey;
+	color: $base_text_colour;
 	word-wrap: break-word;
 }
 
