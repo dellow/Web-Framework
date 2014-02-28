@@ -9,6 +9,27 @@
  * Only use !important as a LAST RESORT
 **/
 
+/*-- SASS BEM -- */
+/* HTML
+<div class="test">
+	<div class="test__block">
+		<div class="test__block--modifier"></div>
+	</div>
+</div>
+*/
+.test {
+	padding: 10px;
+	background: red;
+	&__block {
+		padding: 10px;
+		background: blue;
+		&--modifier {
+			padding: 10px;
+			background: green;
+		}
+	}
+}
+
 /* -- Attributes: Use specific icon depending on link type -- */
 .foo li a
 {background: url(../images/icons/htm.gif) no-repeat; padding: 0.2% 0 0 2.5%;}

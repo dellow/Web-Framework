@@ -117,7 +117,7 @@ module.exports = function(grunt){
                     raw             : 'preferred_syntax = :scss\n',
                     relativeAssets  : true,
                     noLineComments  : true,
-                    sourcemap       : true,
+                    //sourcemap       : true,
                     assetCacheBuster: false,
                     environment     : process.env.ENV_MODE
                 }
