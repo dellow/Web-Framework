@@ -18,7 +18,7 @@ Run the default config in development mode:
 	grunt
 Run the production config production mode:
 
-	grunt prod
+	grunt production
 Watch for changes to the main JS and SASS files:
 
 	grunt watch
