@@ -14,10 +14,10 @@ module.exports = function(grunt){
     **/
     var globalConfig = {
         basePath   : '/',
-        jsPath     : 'media/js',
-        imgPath    : 'media/images',
-        cssPath    : 'media/css',
-        fontsPath  : 'media/css/fonts',
+        jsPath     : 'dist/js',
+        imgPath    : 'dist/images',
+        cssPath    : 'dist/css',
+        fontsPath  : 'dist/css/fonts',
         releaseDir : (new Date()).toISOString()
     };
 

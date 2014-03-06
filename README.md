@@ -10,7 +10,7 @@ After cloning the repository simply run `bash ./clean` from your command line. T
 You might want to review the .gitignore file. Sensitive files like `auth.json` which holds SSH connection details for Grunt-SSH should be ignored, along with any other files or directories.
 
 ## Styleguide
-There is a basic CSS styleguide in [`media/styleguide.html`](media/styleguide.html).
+There is a basic CSS styleguide in [`dist/docs/styleguide.html`](dist/docs/styleguide.html).
 
 ## Using Grunt
 Run the default config in development mode:
