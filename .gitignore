@@ -4,6 +4,7 @@
 
 # Ignore Files
 # ---------------------------
-#.gitignore
-*.sublime-project
-*.sublime-workspace
+# .gitignore
+# .auth.json
+# *.sublime-project
+# *.sublime-workspace

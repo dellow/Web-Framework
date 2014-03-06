@@ -17,7 +17,8 @@ module.exports = function(grunt){
         jsPath     : 'media/js',
         imgPath    : 'media/images',
         cssPath    : 'media/css',
-        fontsPath  : 'media/css/fonts'
+        fontsPath  : 'media/css/fonts',
+        releaseDir : (new Date()).toISOString()
     };
 
     /**
@@ -115,6 +116,57 @@ module.exports = function(grunt){
                     livereload: true
                 }
             }
+        },
+
+        /**
+         * sshexec
+         * Deployment with Grunt.
+        **/
+        auth: grunt.file.readJSON('auth.json'),
+        sshconfig: {
+            production: {
+                host    : '<%= auth.host %>',
+                username: '<%= auth.user %>',
+                password: '<%= auth.pass %>',
+                port    : 22,
+            }
+        },
+        sftp: {
+            deploy: {
+                files: {
+                    './': 'index.html'
+                },
+                options: {
+                    showProgress        : true,
+                    createDirectories   : false,
+                    directoryPermissions: parseInt(755, 8),
+                    path                : '<%= auth.path %>/releases/' + globalConfig.releaseDir
+                }
+            }
+        },
+        sshexec: {
+            'make-release': {
+                command: [
+                    'sudo mkdir -p <%= auth.path %>/releases/' + globalConfig.releaseDir
+                ]
+            },
+            'do-symlinks': {
+                command: [
+                    'rm -rf <%= auth.path %>/current',
+                    'ln -s <%= auth.path %>/releases/' + globalConfig.releaseDir + ' <%= auth.path %>/current'
+                ]
+            },
+            'permissions': {
+                command: [
+                    'sudo chown -R $USER:www-data <%= auth.path %>',
+                    'sudo chmod -R 755 <%= auth.path %>'
+                ]
+            },
+            options: {
+                pty         : true,
+                ignoreErrors: true,
+                path        : '<%= auth.path %>/releases'
+            }
         }
 
     });
@@ -131,7 +183,34 @@ module.exports = function(grunt){
     /**
      * Register tasks
     **/
-    grunt.registerTask('default', ['env:dev', 'compass', 'requirejs']);
-    grunt.registerTask('prod', ['env:prod', 'compass', 'requirejs']);
+    // Default task
+    // Command: grunt
+    grunt.registerTask('default', [
+        'env:development',
+        'compass',
+        'requirejs'
+    ]);
+
+    // Task for production
+    // Command: grunt production
+    grunt.registerTask('production', [
+        'env:production',
+        'compass',
+        'requirejs'
+    ]);
+
+    // Task for deployment
+    // Full deploy:
+    // Command: grunt deploy --config <site>
+    // Just run permissions task:
+    // Command: grunt sshexec:permissions --config <site>
+    // Just deploy files:
+    // Command grunt sftp:deploy --config <site>
+    grunt.registerTask('deploy', [
+        'sshexec:make-release',
+        'sftp:deploy',
+        'sshexec:do-symlinks',
+        'sshexec:permissions',
+    ]);
 
 }
