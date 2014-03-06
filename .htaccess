@@ -1,6 +1,6 @@
-# -----------------------------------------------------
-#                                              REWRITES
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# REWRITES
+# --------------------------------------------------------------------
 ## Replaces file extension. Default: .php
 <IfModule mod_rewrite.c>
 	RewriteEngine On
@@ -8,9 +8,9 @@
 	RewriteRule ^([^\.]+)$ $1.php [NC,L]
 </IfModule>
 
-# -----------------------------------------------------
-#                                               HEADERS
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# HEADERS
+# --------------------------------------------------------------------
 <ifModule mod_headers.c>
 	Header unset ETag
 	Header unset X-Powered-By
@@ -23,9 +23,9 @@
 </ifModule>
 FileETag None
 
-# -----------------------------------------------------
-#                                      SPECIFIC CACHING
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# SPECIFIC CACHING
+# --------------------------------------------------------------------
 <IfModule mod_expires.c>
 	ExpiresActive on
 	ExpiresDefault                          "access plus 1 month"
@@ -73,9 +73,9 @@ FileETag None
 	</IfModule>
 </IfModule>
 
-# -----------------------------------------------------
-#                                   CORS-ENABLED IMAGES
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# CORS-ENABLED IMAGES
+# --------------------------------------------------------------------
 <IfModule mod_setenvif.c>
 	<IfModule mod_headers.c>
 		# mod_headers, y u no match by Content-Type?!
@@ -86,18 +86,18 @@ FileETag None
 	</IfModule>
 </IfModule>
 
-# -----------------------------------------------------
-#                                        WEBFONT ACCESS
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# WEBFONT ACCESS
+# --------------------------------------------------------------------
 <IfModule mod_headers.c>
 	<FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css)$">
 		Header set Access-Control-Allow-Origin "*"
 	</FilesMatch>
 </IfModule>
 
-# -----------------------------------------------------
-#                               ENABLE GZIP COMPRESSION
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# ENABLE GZIP COMPRESSION
+# --------------------------------------------------------------------
 <IfModule mod_deflate.c>
 	<IfModule mod_setenvif.c>
 		<IfModule mod_headers.c>
@@ -136,9 +136,9 @@ FileETag None
 	</IfModule>
 </IfModule>
 
-# -----------------------------------------------------
-#               IMPROVE WEBSITE EXPERIENCE FOR IE USERS
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# IMPROVE WEBSITE EXPERIENCE FOR IE USERS
+# --------------------------------------------------------------------
 <IfModule mod_setenvif.c>
 	<IfModule mod_headers.c>
 		BrowserMatch MSIE ie
@@ -150,9 +150,9 @@ FileETag None
 	Header append Vary User-Agent
 </IfModule>
 
-# -----------------------------------------------------
-#                      CORRECT MIME TYPES FOR ALL FILES
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# CORRECT MIME TYPES FOR ALL FILES
+# --------------------------------------------------------------------
 ## AUDIO
 AddType audio/ogg                      oga ogg
 
@@ -180,9 +180,9 @@ AddType application/x-chrome-extension crx
 AddType application/x-xpinstall        xpi
 AddType application/octet-stream       safariextz
 
-# -----------------------------------------------------
-#                                              SECURITY
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# SECURITY
+# --------------------------------------------------------------------
 ## SECURE HTACCESS FILE
 <Files .htaccess>
 	order allow,deny
@@ -205,9 +205,9 @@ IndexIgnore *
 	php_flag magic_quotes_gpc off
 </ifmodule>
 
-# -----------------------------------------------------
-#                     INCREASE MAXIMUM FILE UPLOAD SIZE
-# -----------------------------------------------------
+# --------------------------------------------------------------------
+# INCREASE MAXIMUM FILE UPLOAD SIZE
+# --------------------------------------------------------------------
 # php_value upload_max_filesize 8M
 # php_value post_max_size 8M
 # php_value max_execution_time 300

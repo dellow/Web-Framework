@@ -1,10 +1,11 @@
 # Ignore Directories
 # ---------------------------
-.sass-cache
+.sass-cache/
 
 # Ignore Files
 # ---------------------------
 # .gitignore
-# .auth.json
+# auth.json
+# sftp-config.json
 # *.sublime-project
 # *.sublime-workspace
