@@ -51,40 +51,6 @@ module.exports = function(grunt){
         },
 
         /**
-         * concat
-         * Concatenates JavaScript.
-         * NOT CURRENTLY USED REQUIREJS DOES THIS
-        **/
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: [
-                    globalConfig.jsPath + '/app/site.js'
-                ],
-                //dest: globalConfig.jsPath + '/<%= pkg.name %>.js'
-                dest: globalConfig.jsPath + '/global.js'
-            }
-        },
-
-        /**
-         * uglify
-         * Minify JavaScripts.
-         * NOT CURRENTLY USED REQUIREJS DOES THIS
-        **/
-        uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-            },
-            dist: {
-                files: {
-                    '<%= localConfig.jsPath %>global.min.js': ['<%= concat.dist.dest %>']
-                }
-            }
-        },
-
-        /**
          * requirejs
          * RequireJS loader and minfier.
         **/
