@@ -134,7 +134,7 @@ module.exports = function(grunt){
         sftp: {
             deploy: {
                 files: {
-                    './': 'index.html'
+                    './': '/**'
                 },
                 options: {
                     showProgress        : true,
