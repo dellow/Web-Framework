@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Alerts
+   Styles for various success and error alerts
+========================================================================== */
+/* -- All -- */
+.alert {
+	&.box {
+		padding: $nudge;
+		margin: $nudge 0;
+		border: 1px solid; border-left: 7px solid;
+		position: relative;
+		border-radius: $base_border_radius;
+		h3 {
+			@include rem(font-size, 30px);
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+			border-bottom: 1px dotted;
+			&:hover {
+				color: inherit;
+				border-bottom-style: solid;
+			}
+		}
+	}
+}
+p.alert {
+	margin: 0;
+}
+
+/* -- Status (Blue) -- */
+.alert {
+	&.status {
+		color: #3a87ad;
+	}
+	&.box.status {
+		border-color: darken(#c7e0ec, 15%);
+		background: #c7e0ec;
+	}
+}
+input, select, textarea {
+	&.alert.status {
+		@extend .alert.box.status
+	}
+}
+
+/* -- Success (Green) -- */
+.alert {
+	&.success {
+		color: #468847;
+	}
+	&.box.success {
+		border-color: darken(#dfeedf, 15%);
+		background: #dfeedf;
+	}
+}
+input, select, textarea {
+	&.alert.success {
+		@extend .alert.box.success
+	}
+}
+
+/* -- Warning (Yellow) -- */
+.alert {
+	&.warning {
+		color: #c09853;
+	}
+	&.box.warning {
+		border-color: darken(#f7f1e8, 15%);
+		background: #f7f1e8;
+	}
+}
+input, select, textarea {
+	&.alert.warning {
+		@extend .alert.box.warning
+	}
+}
+
+/* -- Error (Red) -- */
+.alert {
+	&.error {
+		color: #b94a48;
+	}
+	&.box.error {
+		border-color: darken(#f1dcdc, 15%);
+		background: #f1dcdc;
+	}
+}
+input, select, textarea {
+	&.alert.error {
+		@extend .alert.box.error
+	}
+}
