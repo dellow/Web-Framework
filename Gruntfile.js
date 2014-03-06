@@ -122,12 +122,11 @@ module.exports = function(grunt){
     /**
      * Load tasks
     **/
-    //grunt.loadNpmTasks('grunt-contrib-concat');
-    //grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-env');
+    grunt.loadNpmTasks('grunt-ssh');
 
     /**
      * Register tasks
