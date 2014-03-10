@@ -128,7 +128,7 @@ module.exports = function(grunt){
                 host    : '<%= auth.host %>',
                 username: '<%= auth.user %>',
                 password: '<%= auth.pass %>',
-                port    : 22,
+                port    : 22
             }
         },
         sftp: {
