@@ -9,3 +9,10 @@
 # sftp-config.json
 # *.sublime-project
 # *.sublime-workspace
+
+# Temporary ignores
+dist/docs/ANALYTICS.md
+dist/docs/CRITICAL-PATH.md
+dist/docs/DEV-TOOLS.md
+dist/docs/GIT.md
+dist/docs/GUIDELINES.md
