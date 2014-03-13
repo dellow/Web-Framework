@@ -292,6 +292,7 @@
 /* -- Pagination -- */
 .pagination {
 	margin-top: ($nudge * 2);
+	@extend %cf;
 	@include rem(font-size, 12px);
 	.page-numbers {
 		padding: ($nudge / 2) $nudge;

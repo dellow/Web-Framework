@@ -43,10 +43,10 @@ module.exports = function(grunt){
         env: {
             options: {
             },
-            dev: {
+            development: {
                 ENV_MODE: 'development'
             },
-            prod: {
+            production: {
                 ENV_MODE: 'production'
             }
         },
