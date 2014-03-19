@@ -73,11 +73,11 @@
 
             $('.' + settings.nav_class + ' li a', plg).on('click', function(e){
                 e.preventDefault();
-                var tab_nav    = plg.parent().parent(),
+                var tab_nav    = $(this).parent().parent(),
                     tab_system = tab_nav.next();
 
-                if(!plg.parent().hasClass(settings.active_tab_class)){
-                    var target = plg.data(settings.target_data_attr);
+                if(!$(this).parent().hasClass(settings.active_tab_class)){
+                    var target = $(this).data(settings.target_data_attr);
 
                     $('li.' + settings.active_tab_class, tab_nav).removeClass(settings.active_tab_class);
                     $(this).parent().addClass(settings.active_tab_class);
