@@ -29,14 +29,6 @@ module.exports = function(grunt){
         pkg: grunt.file.readJSON('package.json'),
 
         /**
-         * localConfig
-         * Variables.
-        **/
-        localConfig: {
-            jsPath: globalConfig.jsPath
-        },
-
-        /**
          * env
          * Environment.
         **/
