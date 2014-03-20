@@ -60,6 +60,14 @@ module.exports = function(grunt){
         },
 
         /**
+         * qunit
+         * jQuery testing.
+        **/
+        qunit: {
+            all: ['*.html']
+        },
+
+        /**
          * compass
          * SASS & Compass.
         **/
@@ -169,6 +177,7 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-ssh');
 
@@ -180,7 +189,8 @@ module.exports = function(grunt){
     grunt.registerTask('default', [
         'env:development',
         'compass',
-        'requirejs'
+        'requirejs',
+        'qunit'
     ]);
 
     // Task for production
