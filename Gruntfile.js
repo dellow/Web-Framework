@@ -64,7 +64,7 @@ module.exports = function(grunt){
          * jQuery testing.
         **/
         qunit: {
-            all: ['*.html']
+            all: ['tests/**.html']
         },
 
         /**
@@ -101,7 +101,7 @@ module.exports = function(grunt){
                     globalConfig.jsPath + '/*.js',
                     globalConfig.jsPath + '/**/*.js',
                 ],
-                tasks: ['requirejs'],
+                tasks: ['requirejs', 'qunit'],
                 options: {
                     livereload: true
                 }

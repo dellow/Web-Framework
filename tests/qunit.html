@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if (IE 9)&!(IEMobile)]><html class="no-js ie9 oldie" lang="en"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<link rel="dns-prefetch" href="//ajax.googleapis.com">
+<link rel="dns-prefetch" href="//google-analytics.com">
+<title>QUnit Testing</title>
+<!-- ============================================================================== -->
+<!--                                                                      META DATA -->
+<!-- ============================================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="robots" content="INDEX, FOLLOW">
+<!-- ============================================================================== -->
+<!--                                                                         STYLES -->
+<!-- ============================================================================== -->
+<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.14.0.css" media="all">
+<link rel="stylesheet" href="../dist/css/main.css" media="all">
+<!-- ============================================================================== -->
+<!--                                                                        HELPERS -->
+<!-- ============================================================================== -->
+<script src="../dist/js/vendor/modernizr.min.js"></script>
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture">
+	<ul>
+		<li class="entry" id="post57">
+			<p>blah blah blah…</p>
+			<small class="extra">
+				Posted <span class="time"><a href="/2008/01/blah/57/" title="2008-01-28T20:24:17Z">January 28th, 2008</a></span>
+				by <span class="author"><a href="/john/">John Resig</a></span>
+			</small>
+		</li>
+		<li class="entry" id="post57">
+			<p>blah blah blah…</p>
+			<small class="extra">
+				Posted <span class="time"><a href="/2008/01/blah/57/" title="2008-01-27T22:24:17Z">January 27th, 2008</a></span>
+				by <span class="author"><a href="/john/">John Resig</a></span>
+			</small>
+		</li>
+	</ul>
+</div>
+<!-- ============================================================================== -->
+<!--                                                                     JAVASCRIPT -->
+<!-- ============================================================================== -->
+<script src="http://code.jquery.com/qunit/qunit-1.14.0.js"></script>
+<script src="../dist/js/vendor/require.min.js" data-main="../dist/js/build"></script>
+<script src="lib/tests.js"></script>
+</body>
+</html>
