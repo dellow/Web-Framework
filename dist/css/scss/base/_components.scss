@@ -53,6 +53,8 @@
 	position: relative;
 	left: -($gutter / 2);
 	&.no-gutter {
+		width: 100%;
+		left: 0;
 		[class*="col-"] {
 			$gutter: 0;
 		}
