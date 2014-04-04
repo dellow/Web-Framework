@@ -52,6 +52,11 @@
 	@extend %cf;
 	position: relative;
 	left: -($gutter / 2);
+	&.no-gutter {
+		[class*="col-"] {
+			$gutter: 0;
+		}
+	}
 	[class*="col-"] {
 		width: 100% - ($gutter / 2);
 		float: left;
