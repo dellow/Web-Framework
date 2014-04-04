@@ -208,7 +208,7 @@ form {
 
 	// All form elements
 	input, .input, select, textarea, button {
-		line-height: 1;
+		line-height: $base_line_height;
 	}
 
 	// General fields
