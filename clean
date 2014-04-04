@@ -6,7 +6,7 @@ rm -rf .git/        && \
 rm -rf .sass-cache/ && \
 rm -rf README.md    && \
 git init            && \
-git add -all        && \
+git add --all       && \
 rm clean
 
 echo "Framework successfully installed!"
