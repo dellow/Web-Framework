@@ -53,14 +53,14 @@
 	position: relative;
 	left: -$gutter_width;
 	&.no-gutter {
-		width: 100%;
+		width: $col_1;
 		left: 0;
 		[class*="col-"] {
 			margin: 0;
 		}
 	}
 	[class*="col-"] {
-		width: 100% - $gutter_width;
+		width: $col_1 - $gutter_width;
 		float: left;
 		margin: 0 0 0 $gutter_width;
 		&.left {
