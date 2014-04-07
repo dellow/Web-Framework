@@ -125,10 +125,11 @@ module.exports = function(grunt){
         auth: grunt.file.readJSON('auth.json'),
         sshconfig: {
             production: {
-                host    : '<%= auth.host %>',
-                username: '<%= auth.user %>',
-                password: '<%= auth.pass %>',
-                port    : 22
+                host        : '<%= auth.host %>',
+                username    : '<%= auth.user %>',
+                password    : '<%= auth.pass %>',
+                port        : 22,
+                readyTimeout: 99999
             }
         },
         sftp: {
