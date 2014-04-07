@@ -12,7 +12,7 @@ pre {
 	position: relative;
 	border-color: #34495E; border-color: rgba(52, 73, 94, 0.2);
 	border-radius: $base_border_radius;
-	font: 400 1em/1 $font_monospaced;
+	font: 400 1em/1 $font_family_monospaced;
 	white-space: pre-wrap;
 	white-space: -moz-pre-wrap;
 	white-space: -o-pre-wrap;
@@ -29,7 +29,7 @@ kbd {
 }
 ol.code {
 	margin: 0 0 0 3em;
-	font: 400 1em/1.7143 $font_monospaced;
+	font: 400 1em/1.7143 $font_family_monospaced;
 	color: $grey;
 }
 ol.code li {
