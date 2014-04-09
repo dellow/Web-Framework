@@ -56,6 +56,7 @@
 	form {
 		&.form-inline, &.form-inline-block, &.form-block {
 			label, .label {
+				width: 100%;
 				display: block;
 			}
 			input, .input, select, textarea, .field-container, button, .button {
