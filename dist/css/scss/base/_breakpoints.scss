@@ -40,12 +40,8 @@
 
 	/* -- Forms -- */
 	form {
-		input, .input, select, textarea, .field-container, button, .button {
-			padding: 0.5em;
-		}
 		button {
 			width: 100%;
-			margin: 0.5em 0;
 		}
 	}
 }
@@ -56,11 +52,17 @@
 		font-size: 75%;
 	}
 
-	/* -- Grid -- */
-	.grid {
-		[class*="col-"] {
-			width: 100%;
-			float: none;
+	/* -- Forms -- */
+	form {
+		&.form-inline, &.form-inline-block, &.form-block {
+			label, .label {
+				display: block;
+			}
+			input, .input, select, textarea, .field-container, button, .button {
+				width: 100%;
+				margin: 0;
+				display: block;
+			}
 		}
 	}
 }
