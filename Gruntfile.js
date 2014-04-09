@@ -125,30 +125,45 @@ module.exports = function(grunt){
         auth: grunt.file.readJSON('auth.json'),
         sshconfig: {
             production: {
+                // Server host
                 host        : '<%= auth.host %>',
+                // Server username
                 username    : '<%= auth.user %>',
+                // Server password
                 password    : '<%= auth.pass %>',
+                // SSH agent
+                //agent       : process.env.SSH_AUTH_SOCK,
+                // Deployment path
+                path        : '<%= auth.path %>/current',
+                // Port
                 port        : 22,
+                // Timeout
                 readyTimeout: 99999
             }
         },
         sftp: {
             deploy: {
                 files: {
-                    './': '/**'
+                    './': [
+                        '.htaccess',
+                        '*html',
+                        '*php',
+                        'dist/**'
+                    ]
                 },
                 options: {
                     showProgress        : true,
-                    createDirectories   : false,
-                    directoryPermissions: parseInt(755, 8),
-                    path                : '<%= auth.path %>/releases/' + globalConfig.releaseDir
+                    createDirectories   : true,
+                    directoryPermissions: parseInt(755, 8)
                 }
             }
         },
         sshexec: {
             'make-release': {
                 command: [
-                    'sudo mkdir -p <%= auth.path %>/releases/' + globalConfig.releaseDir
+                    'sudo mkdir -p <%= auth.path %>/releases/' + globalConfig.releaseDir,
+                    'sudo touch <%= auth.path %>/release_list',
+                    'sudo echo "' + globalConfig.releaseDir + '" >> <%= auth.path %>/release_list'
                 ]
             },
             'do-symlinks': {
@@ -163,10 +178,11 @@ module.exports = function(grunt){
                     'sudo chmod -R 755 <%= auth.path %>'
                 ]
             },
-            options: {
-                pty         : true,
-                ignoreErrors: true,
-                path        : '<%= auth.path %>/releases'
+            'rollback': {
+                command: [
+                    'rm -rf <%= auth.path %>/current',
+                    'ln -s <%= auth.path %>/releases/`tail -2 <%= auth.path %>/release_list | head -1` <%= auth.path %>/current'
+                ]
             }
         }
 
@@ -203,17 +219,18 @@ module.exports = function(grunt){
     ]);
 
     // Task for deployment
-    // Full deploy:
     // Command: grunt deploy --config <site>
-    // Just run permissions task:
-    // Command: grunt sshexec:permissions --config <site>
-    // Just deploy files:
-    // Command grunt sftp:deploy --config <site>
     grunt.registerTask('deploy', [
         'sshexec:make-release',
-        'sftp:deploy',
         'sshexec:do-symlinks',
+        'sftp:deploy',
         'sshexec:permissions',
+    ]);
+
+    // Task for rollback to previous release
+    // Command: grunt rollback --config <site>
+    grunt.registerTask('rollback', [
+        'sshexec:rollback'
     ]);
 
 }

@@ -31,6 +31,9 @@ The framework utilises Grunt-SSH for deploying your codebase. Update `auth.json`
 
 You can deploy your code from the terminal with `grunt deploy --config <site>` where `<site>` is the name of the site object in the Gruntfile.js - this is currently defaulted to `production` so `grunt deploy --config production` will deploy your code to the details set within the `production` object, you can specify more servers (staging, dev etc) if you so wish by creating new objects.
 
+### Rollback
+If your deployment breaks you can rollback to your last deployment with `grunt rollback --config <site>` where `<site>` is the name of the site object in the Gruntfile.js. Please note this currently only works once per deploy, after rolling back you cannot concurrently rollback again until you have done another deploy.
+
 ## Working with SCSS
 Any new SCSS partials should be added in the `site` directory. `base` and `config` should be left as is so they can be overwritten and updated. Use the `site/_vars` partial to override any of the default variables set in `config/_vars`.
 
