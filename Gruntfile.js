@@ -101,7 +101,7 @@ module.exports = function(grunt){
                     globalConfig.jsPath + '/*.js',
                     globalConfig.jsPath + '/**/*.js',
                 ],
-                tasks: ['requirejs', 'qunit'],
+                tasks: ['requirejs'],
                 options: {
                     livereload: true
                 }
