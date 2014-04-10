@@ -13,7 +13,11 @@ module.exports = function(grunt){
      * Grunt config.
     **/
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        /**
+         * Load external files.
+        **/
+        pkg : grunt.file.readJSON('package.json'),
+        auth: grunt.file.readJSON('auth.json'),
 
         /**
          * templates
@@ -124,12 +128,6 @@ module.exports = function(grunt){
         },
 
         /**
-         * auth
-         * Load authorisation file.
-        **/
-        auth: grunt.file.readJSON('auth.json'),
-
-        /**
          * sshexec
          * Deployment with Grunt.
         **/
@@ -199,14 +197,14 @@ module.exports = function(grunt){
     });
 
     /**
-     * Load tasks
+     * Load tasks using matchdep.
     **/
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     /**
-     * Register tasks
+     * Register tasks.
     **/
-    // Default task
+    // Default task.
     // Command: grunt
     grunt.registerTask('default', [
         'env:development',
@@ -215,7 +213,7 @@ module.exports = function(grunt){
         'qunit'
     ]);
 
-    // Task for production
+    // Task for production.
     // Command: grunt production
     grunt.registerTask('production', [
         'env:production',
@@ -223,7 +221,7 @@ module.exports = function(grunt){
         'requirejs'
     ]);
 
-    // Task for deployment
+    // Task for deployment.
     // Command: grunt deploy --config <site>
     grunt.registerTask('deploy', [
         'sshexec:make-release',
@@ -232,7 +230,7 @@ module.exports = function(grunt){
         'sshexec:permissions',
     ]);
 
-    // Task for rollback to previous release
+    // Task for rollback to previous release.
     // Command: grunt rollback --config <site>
     grunt.registerTask('rollback', [
         'sshexec:rollback'
