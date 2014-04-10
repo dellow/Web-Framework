@@ -9,24 +9,29 @@
 module.exports = function(grunt){
 
     /**
-     * globalConfig
-     * Variables.
-    **/
-    var globalConfig = {
-        basePath   : '/',
-        jsPath     : 'dist/js',
-        imgPath    : 'dist/images',
-        cssPath    : 'dist/css',
-        fontsPath  : 'dist/css/fonts',
-        releaseDir : (new Date()).toISOString()
-    };
-
-    /**
      * grunt.initConfig
      * Grunt config.
     **/
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+
+        /**
+         * templates
+         * Variables.
+        **/
+        templates: {
+            global: {
+                basePath : '/',
+                jsPath   : 'dist/js',
+                imgPath  : 'dist/images',
+                cssPath  : 'dist/css',
+                fontsPath: 'dist/css/fonts'
+            },
+            deploy: {
+                releaseDir: (new Date()).toISOString(),
+                config    : grunt.option('config')
+            }
+        },
 
         /**
          * env
@@ -51,9 +56,9 @@ module.exports = function(grunt){
             compile: {
                 options: {
                     name          : 'build/main',
-                    baseUrl       : globalConfig.jsPath,
-                    mainConfigFile: globalConfig.jsPath + '/build/main.js',
-                    out           : globalConfig.jsPath + '/build.js',
+                    baseUrl       : '<%= templates.global.jsPath %>',
+                    mainConfigFile: '<%= templates.global.jsPath %>/build/main.js',
+                    out           : '<%= templates.global.jsPath %>/build.js',
                     optimize      : 'uglify'
                 }
             }
@@ -75,11 +80,11 @@ module.exports = function(grunt){
             dist: {
                 options: {
                     httpPath        : '/',
-                    sassDir         : globalConfig.cssPath + '/scss',
-                    cssDir          : globalConfig.cssPath + '',
-                    imagesDir       : globalConfig.imgPath,
-                    javascriptsDir  : globalConfig.jsPath + '/',
-                    fontsDir        : globalConfig.fontsPath,
+                    sassDir         : '<%= templates.global.cssPath %>/scss',
+                    cssDir          : '<%= templates.global.cssPath %>',
+                    imagesDir       : '<%= templates.global.imgPath %>',
+                    javascriptsDir  : '<%= templates.global.jsPath %>/',
+                    fontsDir        : '<%= templates.global.fontsPath %>',
                     outputStyle     : 'compressed', // :expanded, :nested, :compact or :compressed
                     raw             : 'preferred_syntax = :scss\n',
                     relativeAssets  : true,
@@ -98,18 +103,18 @@ module.exports = function(grunt){
         watch: {
             scripts: {
                 files: [
-                    globalConfig.jsPath + '/*.js',
-                    globalConfig.jsPath + '/**/*.js',
+                    '<%= templates.global.jsPath %>/*.js',
+                    '<%= templates.global.jsPath %>/**/*.js',
                 ],
-                tasks: ['requirejs'],
+                tasks: ['requirejs', 'qunit'],
                 options: {
                     livereload: true
                 }
             },
             compass: {
                 files: [
-                    globalConfig.cssPath + '/*.scss',
-                    globalConfig.cssPath + '/**/*.scss'
+                    '<%= templates.global.cssPath %>/*.scss',
+                    '<%= templates.global.cssPath %>/**/*.scss'
                 ],
                 tasks: ['compass'],
                 options: {
@@ -119,10 +124,15 @@ module.exports = function(grunt){
         },
 
         /**
+         * auth
+         * Load authorisation file.
+        **/
+        auth: grunt.file.readJSON('auth.json'),
+
+        /**
          * sshexec
          * Deployment with Grunt.
         **/
-        auth: grunt.file.readJSON('auth.json'),
         sshconfig: {
             production: {
                 // Server host
@@ -161,15 +171,15 @@ module.exports = function(grunt){
         sshexec: {
             'make-release': {
                 command: [
-                    'sudo mkdir -p <%= auth.path %>/releases/' + globalConfig.releaseDir,
+                    'sudo mkdir -p <%= auth.path %>/releases/<%= templates.deploy.releaseDir %>',
                     'sudo touch <%= auth.path %>/release_list',
-                    'sudo echo "' + globalConfig.releaseDir + '" >> <%= auth.path %>/release_list'
+                    'sudo echo "<%= templates.deploy.releaseDir %>" >> <%= auth.path %>/release_list'
                 ]
             },
             'do-symlinks': {
                 command: [
                     'rm -rf <%= auth.path %>/current',
-                    'ln -s <%= auth.path %>/releases/' + globalConfig.releaseDir + ' <%= auth.path %>/current'
+                    'ln -s <%= auth.path %>/releases/<%= templates.deploy.releaseDir %> <%= auth.path %>/current'
                 ]
             },
             'permissions': {
