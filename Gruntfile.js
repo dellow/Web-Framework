@@ -201,12 +201,7 @@ module.exports = function(grunt){
     /**
      * Load tasks
     **/
-    grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
-    grunt.loadNpmTasks('grunt-env');
-    grunt.loadNpmTasks('grunt-ssh');
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     /**
      * Register tasks
