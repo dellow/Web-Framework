@@ -6,111 +6,136 @@
 /**
  * Config
 **/
-$debug_mode            : false !default;
-$dev_mode              : false !default;
+$debug_mode: false !default;
+$dev_mode  : false !default;
 
 /**
  * Essentials
 **/
-$gutter                : 3% !default;
-$gutter_width          : ($gutter / 2) !default;
-$fixedgutter           : 10px !default;
-$nudge                 : 0.825em !default;
-$form_field_height     : 35px !default;
+$gutter           : 3% !default;
+$gutter_width     : ($gutter / 2) !default;
+$fixedgutter      : 10px !default;
+$nudge            : 0.825em !default;
+$form_field_height: 35px !default;
 
 /**
  * Defaults
 **/
-$base_border_radius    : 3px !default;
-$base_ul_indent        : 1.2em !default;
-$base_box_shadow       : 0 0 5px rgba(69, 18, 11, 0.15) !default;
+$base_border_radius: 3px !default;
+$base_ul_indent    : 1.2em !default;
+$base_box_shadow   : 0 0 5px rgba(69, 18, 11, 0.15) !default;
 
 /**
- * Breakpoints
+ * Device sizes
+ * http://viewportsizes.com/
 **/
 // Generic
-$mobile                : 460px !default;
-$tablet                : 768px !default;
-$desktop               : 960px !default;
+$mobile                    : 460px !default;
+$tablet                    : 768px !default;
+$desktop                   : 960px !default;
 // iPhone 3
-$iphone3_landscape     : 480px !default;
-$iphone3_portrait      : 320px !default;
-$iphone3_dpi           : 163 !default;
-$iphone3_dppx          : 1 !default;
+$iphone3_dpi               : 163 !default;
+$iphone3_dppx              : 1 !default;
+$iphone3_landscape         : 480px !default;
+$iphone3_portrait          : 320px !default;
+$iphone3_landscape_true    : $iphone3_landscape * $iphone3_dppx !default;
+$iphone3_portrait_true     : $iphone3_portrait * $iphone3_dppx !default;
 // iPhone 4
-$iphone4_landscape     : 960px !default;
-$iphone4_portrait      : 640px !default;
-$iphone4_dpi           : 326 !default;
-$iphone4_dppx          : 2 !default;
+$iphone4_dpi               : 326 !default;
+$iphone4_dppx              : 2 !default;
+$iphone4_landscape         : 480px !default;
+$iphone4_portrait          : 320px !default;
+$iphone4_landscape_true    : $iphone4_landscape * $iphone4_dppx !default;
+$iphone4_portrait_true     : $iphone4_portrait * $iphone4_dppx !default;
 // iPhone 5
-$iphone5_landscape     : 1136px !default;
-$iphone5_portrait      : 640px !default;
-$iphone5_dpi           : 326 !default;
-$iphone5_dppx          : 2 !default;
+$iphone5_dpi               : 326 !default;
+$iphone5_dppx              : 2 !default;
+$iphone5_landscape         : 568px !default;
+$iphone5_portrait          : 320px !default;
+$iphone5_landscape_true    : $iphone5_landscape * $iphone5_dppx !default;
+$iphone5_portrait_true     : $iphone5_portrait * $iphone5_dppx !default;
 // iPad 1
-$ipad1_landscape       : 1024px !default;
-$ipad1_portrait        : 768px !default;
-$ipad1_dpi             : 132 !default;
-$ipad1_dppx            : 1 !default;
+$ipad1_dpi                 : 132 !default;
+$ipad1_dppx                : 1 !default;
+$ipad1_landscape           : 1024px !default;
+$ipad1_portrait            : 768px !default;
+$ipad1_landscape_true      : $ipad1_landscape * $ipad1_dppx !default;
+$ipad1_portrait_true       : $ipad1_portrait * $ipad1_dppx !default;
 // iPad 2
-$ipad2_landscape       : 1024px !default;
-$ipad2_portrait        : 768px !default;
-$ipad2_dpi             : 132 !default;
-$ipad2_dppx            : 1 !default;
+$ipad2_dpi                 : 132 !default;
+$ipad2_dppx                : 1 !default;
+$ipad2_landscape           : 1024px !default;
+$ipad2_portrait            : 768px !default;
+$ipad2_landscape_true      : $ipad2_landscape * $ipad2_dppx !default;
+$ipad2_portrait_true       : $ipad2_portrait * $ipad2_dppx !default;
 // iPad 3
-$ipad3_landscape       : 2048px !default;
-$ipad3_portrait        : 1536px !default;
-$ipad3_dpi             : 264 !default;
-$ipad3_dppx            : 2 !default;
+$ipad3_dpi                 : 264 !default;
+$ipad3_dppx                : 2 !default;
+$ipad3_landscape           : 1024px !default;
+$ipad3_portrait            : 768px !default;
+$ipad3_landscape_true      : $ipad3_landscape * $ipad3_dppx !default;
+$ipad3_portrait_true       : $ipad3_portrait * $ipad3_dppx !default;
 // iPad Mini
-$ipadmini_landscape    : 1024px !default;
-$ipadmini_portrait     : 768px !default;
-$ipadmini_dpi          : 163 !default;
-$ipadmini_dppx         : 2 !default;
+$ipadmini_dpi              : 163 !default;
+$ipadmini_dppx             : 2 !default;
+$ipadmini_landscape        : 1024px !default;
+$ipadmini_portrait         : 768px !default;
+$ipadmini_landscape_true   : $ipadmini_landscape * $ipadmini_dppx !default;
+$ipadmini_portrait_true    : $ipadmini_portrait * $ipadmini_dppx !default;
 // Nexus 4
-$nexus4_landscape      : 1280px !default;
-$nexus4_portrait       : 768px !default;
-$nexus4_dpi            : 318 !default;
-$nexus4_dppx           : 1 !default;
+$nexus4_dpi                : 318 !default;
+$nexus4_dppx               : 1 !default;
+$nexus4_landscape          : 598px !default;
+$nexus4_portrait           : 384px !default;
+$nexus4_landscape_true     : $nexus4_landscape * $nexus4_dppx !default;
+$nexus4_portrait_true      : $nexus4_portrait * $nexus4_dppx !default;
 // Nexus 5
-$nexus5_landscape      : 1920px !default;
-$nexus5_portrait       : 1080px !default;
-$nexus5_dpi            : 445 !default;
-$nexus5_dppx           : 1 !default;
+$nexus5_dpi                : 445 !default;
+$nexus5_dppx               : 1 !default;
+$nexus5_landscape          : 598px !default;
+$nexus5_portrait           : 360px !default;
+$nexus5_landscape_true     : $nexus5_landscape * $nexus5_dppx !default;
+$nexus5_portrait_true      : $nexus5_portrait * $nexus5_dppx !default;
 // Nexus 7 2012
-$nexus7_2012_landscape : 1280px !default;
-$nexus7_2012_portrait  : 800px !default;
-$nexus7_2012_dpi       : 216 !default;
-$nexus7_2012_dppx      : 1.325 !default;
+$nexus7_2012_dpi           : 216 !default;
+$nexus7_2012_dppx          : 1.325 !default;
+$nexus7_2012_landscape     : 601px !default;
+$nexus7_2012_portrait      : 962px !default;
+$nexus7_2012_landscape_true: $nexus7_2012_landscape * $nexus7_2012_dppx !default;
+$nexus7_2012_portrait_true : $nexus7_2012_portrait * $nexus7_2012_dppx !default;
 // Nexus 7 2013
-$nexus7_2013_landscape : 1920px !default;
-$nexus7_2013_portrait  : 1200px !default;
-$nexus7_2013_dpi       : 323 !default;
-$nexus7_2013_dppx      : 1 !default;
+$nexus7_2013_dpi           : 323 !default;
+$nexus7_2013_dppx          : 1 !default;
+$nexus7_2013_landscape     : 600px !default;
+$nexus7_2013_portrait      : 960px !default;
+$nexus7_2013_landscape_true: $nexus7_2013_landscape * $nexus7_2013_dppx !default;
+$nexus7_2013_portrait_true : $nexus7_2013_portrait * $nexus7_2013_dppx !default;
 // Nexus 10
-$nexus10_landscape     : 2560px !default;
-$nexus10_portrait      : 1600px !default;
-$nexus10_dpi           : 300 !default;
-$nexus10_dppx          : 2 !default;
+$nexus10_dpi               : 300 !default;
+$nexus10_dppx              : 2 !default;
+$nexus10_landscape         : 800px !default;
+$nexus10_portrait          : 1280px !default;
+$nexus10_landscape_true    : $nexus10_landscape * $nexus10_dppx !default;
+$nexus10_portrait_true     : $nexus10_portrait * $nexus10_dppx !default;
 
 /**
  * Percentage Column Widths
 **/
-$col_1                 : 100% !default;
-$col_1-3               : 33.33% !default;
-$col_2-3               : 66.66% !default;
-$col_1-2               : 50% !default;
-$col_1-4               : 25% !default;
-$col_2-4               : 50% !default;
-$col_3-4               : 75% !default;
-$col_5                 : 20% !default;
-$col_6                 : 16.66% !default;
-$col_7                 : 14.28% !default;
-$col_8                 : 12.5% !default;
-$col_9                 : 11.11% !default;
-$col_10                : 10% !default;
-$col_12                : 8.33% !default;
-$col_16                : 6.25% !default;
+$col_1  : 100% !default;
+$col_1-3: 33.33% !default;
+$col_2-3: 66.66% !default;
+$col_1-2: 50% !default;
+$col_1-4: 25% !default;
+$col_2-4: 50% !default;
+$col_3-4: 75% !default;
+$col_5  : 20% !default;
+$col_6  : 16.66% !default;
+$col_7  : 14.28% !default;
+$col_8  : 12.5% !default;
+$col_9  : 11.11% !default;
+$col_10 : 10% !default;
+$col_12 : 8.33% !default;
+$col_16 : 6.25% !default;
 
 /**
  * Typography
