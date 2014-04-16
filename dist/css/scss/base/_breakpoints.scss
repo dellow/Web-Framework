@@ -7,11 +7,12 @@
 // Respond to tablet
 @include respond-to($tablet){
 	body {
-		font-size: 90%;
+		font-size: 95%;
 	}
 
 	/* -- Exclusions -- */
 	$exlusions: (
+		'.tablet-hide'
 	);
 	@each $element in $exlusions {
 		#{$element} {
@@ -37,19 +38,22 @@
 			padding: 0;
 		}
 	}
-
-	/* -- Forms -- */
-	form {
-		button {
-			width: 100%;
-		}
-	}
 }
 
 // Respond to mobile
 @include respond-to($mobile){
 	body {
-		font-size: 75%;
+		font-size: 80%;
+	}
+
+	/* -- Exclusions -- */
+	$exlusions: (
+		'.mobile-hide'
+	);
+	@each $element in $exlusions {
+		#{$element} {
+			display: none;
+		}
 	}
 
 	/* -- Forms -- */
