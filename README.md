@@ -66,10 +66,10 @@ All custom JavaScript should be added in `app` directory - these files will be c
 ### Require new files
 The framework uses Require.js for including JS files. You can create new files in the `app` directory and require them from the primary JS file: `site.js` (or any other file) using the Require.js module loader (note the lack of file extension on the end):
 
-	require(['path/to/file']);
+	require(['app/file']);
 
-You can also perform various functions on if a file has been loaded:
+You can also load a module and run code depending on its existence:
 
 	require(['formValidation'], function(){
 		$('.form').formValidation();
-	})
+	});
