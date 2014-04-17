@@ -26,6 +26,104 @@ $base_ul_indent    : 1.2em !default;
 $base_box_shadow   : 0 0 5px rgba(69, 18, 11, 0.15) !default;
 
 /**
+ * Typography
+**/
+// Faces
+$font_family_arial     : Arial !default;
+$font_family_georgia   : Georgia !default;
+$font_family_helvetica : "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica" !default;
+$font_family_myriad    : "MyriadPro", "Myriad Pro", Myriad !default;
+$font_family_times     : Times !default;
+$font_family_trebuchet : "Trebuchet MS" !default;
+$font_family_verdana   : Verdana !default;
+$font_family_serif     : serif !default;
+$font_family_sans_serif: sans-serif !default;
+$font_family_monospaced: "source-code-pro", monospace !default;
+$base_font_family      : $font_family_helvetica, $font_family_arial, $font_family_trebuchet, $font_family_verdana, $font_family_sans_serif !default;
+// Weights
+$font_weight_bold      : 700 !default;
+$font_weight_semibold  : 600 !default;
+$font_weight_medium    : 400 !default;
+$font_weight_regular   : 400 !default;
+$font_weight_light     : 300 !default;
+$font_weight_thin      : 300 !default;
+// Sizes
+$base_font_size        : 16px !default;
+$font_size_small       : 12px !default;
+$font_size_large       : 20px !default;
+$font_size_h1          : 48px !default;
+$font_size_h2          : 36px !default;
+$font_size_h3          : 24px !default;
+$font_size_h4          : 18px !default;
+$font_size_h5          : 16px !default;
+$font_size_h6          : 14px !default;
+// Line Height
+$base_line_height      : 24px !default;
+$base_spacing_unit     : $base_line_height !default;
+$half_spacing_unit     : $base_spacing_unit / 2 !default;
+$line_height_ratio     : $base_line_height / $base_font_size !default;
+
+/**
+ * Colours
+**/
+// Defaults
+$base_text_colour      : #333333 !default;
+$base_link_colour      : #CD4B45 !default;
+$base_link_colour_hover: #006DCC !default;
+$base_red              : #CD4B45 !default;
+$base_red_opp          : darken($base_red, 10%) !default;
+$base_blue             : #006DCC !default;
+$base_blue_opp         : darken($base_blue, 10%) !default;
+$base_green            : #5BB75B !default;
+$base_green_opp        : darken($base_green, 10%) !default;
+$base_colour_odd       : #EDEDED !default;
+$base_colour_even      : #F4F4F4 !default;
+// Custom
+$white                 : #FFFFFF !default;
+$black                 : #000000 !default;
+$grey                  : #DDDDDD !default;
+$lightgrey             : #EFEFEF !default;
+$mediumgrey            : #666666 !default;
+$darkgrey              : #333333 !default;
+$red                   : #C4122f !default;
+$red_opp               : darken($red, 20%) !default;
+$orange                : #E67E22 !default;
+$orange_opp            : darken($orange, 10%) !default;
+$green                 : #2ECC71 !default;
+$green_opp             : darken($green, 10%) !default;
+$blue                  : #3498DB !default;
+$blue_opp              : darken($blue, 10%) !default;
+$yellow                : #F1C40F !default;
+$yellow_opp            : darken($yellow, 10%) !default;
+// Array
+$colours: (
+	'red' $red $red_opp,
+	'orange' $orange $orange_opp,
+	'green' $green $green_opp,
+	'blue' $blue $blue_opp,
+	'yellow' $yellow $yellow_opp
+) !default;
+
+/**
+ * Percentage Column Widths
+**/
+$col_1  : 100% !default;
+$col_1-3: 33.33% !default;
+$col_2-3: 66.66% !default;
+$col_1-2: 50% !default;
+$col_1-4: 25% !default;
+$col_2-4: 50% !default;
+$col_3-4: 75% !default;
+$col_5  : 20% !default;
+$col_6  : 16.66% !default;
+$col_7  : 14.28% !default;
+$col_8  : 12.5% !default;
+$col_9  : 11.11% !default;
+$col_10 : 10% !default;
+$col_12 : 8.33% !default;
+$col_16 : 6.25% !default;
+
+/**
  * Device sizes
  * http://viewportsizes.com
  * http://dpi.lv
@@ -118,101 +216,3 @@ $nexus10_landscape        : 800px !default;
 $nexus10_portrait         : 1280px !default;
 $nexus10_landscape_res    : $nexus10_landscape * $nexus10_dppx !default;
 $nexus10_portrait_res     : $nexus10_portrait * $nexus10_dppx !default;
-
-/**
- * Percentage Column Widths
-**/
-$col_1  : 100% !default;
-$col_1-3: 33.33% !default;
-$col_2-3: 66.66% !default;
-$col_1-2: 50% !default;
-$col_1-4: 25% !default;
-$col_2-4: 50% !default;
-$col_3-4: 75% !default;
-$col_5  : 20% !default;
-$col_6  : 16.66% !default;
-$col_7  : 14.28% !default;
-$col_8  : 12.5% !default;
-$col_9  : 11.11% !default;
-$col_10 : 10% !default;
-$col_12 : 8.33% !default;
-$col_16 : 6.25% !default;
-
-/**
- * Typography
-**/
-// Faces
-$font_family_arial     : Arial !default;
-$font_family_georgia   : Georgia !default;
-$font_family_helvetica : "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica" !default;
-$font_family_myriad    : "MyriadPro", "Myriad Pro", Myriad !default;
-$font_family_times     : Times !default;
-$font_family_trebuchet : "Trebuchet MS" !default;
-$font_family_verdana   : Verdana !default;
-$font_family_serif     : serif !default;
-$font_family_sans_serif: sans-serif !default;
-$font_family_monospaced: "source-code-pro", monospace !default;
-$base_font_family      : $font_family_helvetica, $font_family_arial, $font_family_trebuchet, $font_family_verdana, $font_family_sans_serif !default;
-// Weights
-$font_weight_bold      : 700 !default;
-$font_weight_semibold  : 600 !default;
-$font_weight_medium    : 400 !default;
-$font_weight_regular   : 400 !default;
-$font_weight_light     : 300 !default;
-$font_weight_thin      : 300 !default;
-// Sizes
-$base_font_size        : 16px !default;
-$font_size_small       : 12px !default;
-$font_size_large       : 20px !default;
-$font_size_h1          : 48px !default;
-$font_size_h2          : 36px !default;
-$font_size_h3          : 24px !default;
-$font_size_h4          : 18px !default;
-$font_size_h5          : 16px !default;
-$font_size_h6          : 14px !default;
-// Line Height
-$base_line_height      : 24px !default;
-$base_spacing_unit     : $base_line_height !default;
-$half_spacing_unit     : $base_spacing_unit / 2 !default;
-$line_height_ratio     : $base_line_height / $base_font_size !default;
-
-/**
- * Colours
-**/
-// Defaults
-$base_text_colour      : #333333 !default;
-$base_link_colour      : #CD4B45 !default;
-$base_link_colour_hover: #006DCC !default;
-$base_red              : #CD4B45 !default;
-$base_red_opp          : darken($base_red, 10%) !default;
-$base_blue             : #006DCC !default;
-$base_blue_opp         : darken($base_blue, 10%) !default;
-$base_green            : #5BB75B !default;
-$base_green_opp        : darken($base_green, 10%) !default;
-$base_colour_odd       : #EDEDED !default;
-$base_colour_even      : #F4F4F4 !default;
-// Custom
-$white                 : #FFFFFF !default;
-$black                 : #000000 !default;
-$grey                  : #DDDDDD !default;
-$lightgrey             : #EFEFEF !default;
-$mediumgrey            : #666666 !default;
-$darkgrey              : #333333 !default;
-$red                   : #C4122f !default;
-$red_opp               : darken($red, 20%) !default;
-$orange                : #E67E22 !default;
-$orange_opp            : darken($orange, 10%) !default;
-$green                 : #2ECC71 !default;
-$green_opp             : darken($green, 10%) !default;
-$blue                  : #3498DB !default;
-$blue_opp              : darken($blue, 10%) !default;
-$yellow                : #F1C40F !default;
-$yellow_opp            : darken($yellow, 10%) !default;
-// Array
-$colours: (
-	'red' $red $red_opp,
-	'orange' $orange $orange_opp,
-	'green' $green $green_opp,
-	'blue' $blue $blue_opp,
-	'yellow' $yellow $yellow_opp
-) !default;

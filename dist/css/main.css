@@ -30,39 +30,40 @@
  * Defaults
 **/
 /**
- * Device sizes
- * http://viewportsizes.com/
-**/
-/**
- * Percentage Column Widths
-**/
-/**
  * Typography
 **/
 /**
  * Colours
 **/
+/**
+ * Percentage Column Widths
+**/
+/**
+ * Device sizes
+ * http://viewportsizes.com
+ * http://dpi.lv
+**/
 /* ==========================================================================
    Mixins
-   Framework mixins.
+   Functions and mixins for various Framework operations.
 ========================================================================== */
 /**
  * em
- * EM font sizing
+ * EM font sizing.
  *
  * .foo {font-size: em(16);}
 **/
 /**
  * rem
- * REM font sizing
+ * REM font sizing.
  *
  * .foo {font-size: rem(16);}
 **/
 /**
  * px-to-rem
  * Takes a single value or a list of values and replaces px units with rem
- * Zero values will remain 0
- * Non-px values will not be modified
+ * Zero values will remain 0.
+ * Non-px values will not be modified.
 **/
 /**
  * rem
@@ -76,37 +77,43 @@
 **/
 /**
  * retina-image
- * Retina image replacement
+ * Retina image replacement.
  *
  * .foo {@include retina-image('logo', 'png', 100px, 25px);}
 **/
 /**
  * transition
- * Cross browser transition
+ * Cross browser transition.
  *
  * .foo {@include transition(color 500ms ease);}
 **/
 /**
  * opacity
- * Cross browser opacity
+ * Cross browser opacity.
  *
  * .foo {@include opacity(0.7);}
 **/
 /**
  * inline-block
- * Cross browser inline-block
+ * Cross browser inline-block.
  *
  * .foo {@include inline-block;}
 **/
 /**
+ * trigram
+ * Trigram for Heaven mobile icon.
+ *
+ * .foo {@include trigram(30px, 40px, #000000, #FF0000);}
+**/
+/**
  * arrow
- * CSS Arrow
+ * CSS Arrow.
  *
  * .foo {@include arrow(15px, #f9f7f3, 10px, null, left);}
 **/
 /**
  * respond-to
- * Responive breakpoints converted to em value
+ * Responive breakpoints converted to em value.
  *
  * @uses px-to-rem()
  *
@@ -129,7 +136,9 @@
 
 /* ==========================================================================
    Debug
-   Useful debug operations. Adapted from inuit.css by Harry Roberts
+   Useful debug operations. Adapted from inuit.css by Harry Roberts.
+   Compass environment must be in 'development' mode and the $debug_mode
+   var set to true for this to work.
 
    Red    == Error
    Yellow == Needs checking
