@@ -88,13 +88,13 @@ module.exports = function(grunt){
                     javascriptsDir  : '<%= vars.paths.jsPath %>/',
                     fontsDir        : '<%= vars.paths.fontsPath %>',
                     outputStyle     : '<%= vars.compass.outputStyle %>',
-                    //sourcemap       : '<%= vars.compass.sourcemap %>',
                     environment     : '<%= vars.compass.environment %>',
+                    //sourcemap       : '<%= vars.compass.sourcemap %>',
                     raw             : 'preferred_syntax = :scss\n',
                     force           : true,
                     relativeAssets  : true,
                     noLineComments  : true,
-                    assetCacheBuster: false,
+                    assetCacheBuster: false
                 }
             }
         },
@@ -109,7 +109,10 @@ module.exports = function(grunt){
                     '<%= vars.paths.jsPath %>/*.js',
                     '<%= vars.paths.jsPath %>/**/*.js',
                 ],
-                tasks: ['requirejs', 'qunit'],
+                tasks: [
+                    'requirejs',
+                    'qunit'
+                ],
                 options: {
                     livereload: true
                 }
@@ -119,7 +122,9 @@ module.exports = function(grunt){
                     '<%= vars.paths.cssPath %>/*.scss',
                     '<%= vars.paths.cssPath %>/**/*.scss'
                 ],
-                tasks: ['compass'],
+                tasks: [
+                    'compass'
+                ],
                 options: {
                     livereload: true
                 }

@@ -25,8 +25,6 @@ require.config({
 		lightBox      : 'plugins/jquery.lightBox',
 		scrollto      : 'plugins/jquery.scrollto.min',
 		slider        : 'plugins/jquery.bxslider.min',
-        // Imports
-        imports       : 'imports/get',
     	// Local
 		helper        : 'helpers/helper',
 		ui            : 'helpers/ui',
@@ -55,7 +53,7 @@ require.config({
 
     	// Setup site
     	site: {
-			deps: ['helper', 'ui', 'extensions', 'imports']
+			deps: ['helper', 'ui', 'extensions']
     	}
     }
 });
