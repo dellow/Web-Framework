@@ -11,7 +11,7 @@ rm -rf README.md    && \
 # Initialize a new Git instance
 git init            && \
 # Remove the clean file
-#rm clean
+rm clean
 # Add all current files
 git add --all       && \
 
