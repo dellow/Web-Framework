@@ -27,7 +27,7 @@ module.exports = function(grunt){
          * Variables.
         **/
         vars: {
-            global: {
+            paths: {
                 basePath : '/',
                 jsPath   : 'dist/js',
                 imgPath  : 'dist/images',
@@ -37,6 +37,11 @@ module.exports = function(grunt){
             deploy: {
                 releaseDir: (new Date()).toISOString(),
                 config    : grunt.option('config')
+            },
+            compass: {
+                sourcemap  : (grunt.config('env') == 'development') ? true : false,
+                outputStyle: (grunt.config('env') == 'development') ? 'expanded' : 'compressed', // expanded, nested, compact or compressed
+                environment: (grunt.config('env') == 'development') ? 'development' : 'production'
             },
             requireJS: {
                 optimize: (grunt.config('env') == 'development') ? 'none' : 'uglify'
@@ -52,9 +57,9 @@ module.exports = function(grunt){
                 options: {
                     name          : 'main',
                     excludeShallow: ['main'], // We don't want the main config file included in the build but we do want what it requires.
-                    baseUrl       : '<%= vars.global.jsPath %>',
-                    mainConfigFile: '<%= vars.global.jsPath %>/main.js',
-                    out           : '<%= vars.global.jsPath %>/build/build.js',
+                    baseUrl       : '<%= vars.paths.jsPath %>',
+                    mainConfigFile: '<%= vars.paths.jsPath %>/main.js',
+                    out           : '<%= vars.paths.jsPath %>/build/build.js',
                     optimize      : '<%= vars.requireJS.optimize %>'
                 }
             }
@@ -75,19 +80,21 @@ module.exports = function(grunt){
         compass: {
             dist: {
                 options: {
+                    app             : 'stand_alone',
                     httpPath        : '/',
-                    sassDir         : '<%= vars.global.cssPath %>/scss',
-                    cssDir          : '<%= vars.global.cssPath %>',
-                    imagesDir       : '<%= vars.global.imgPath %>',
-                    javascriptsDir  : '<%= vars.global.jsPath %>/',
-                    fontsDir        : '<%= vars.global.fontsPath %>',
-                    outputStyle     : 'compressed', // :expanded, :nested, :compact or :compressed
+                    sassDir         : '<%= vars.paths.cssPath %>/scss',
+                    cssDir          : '<%= vars.paths.cssPath %>',
+                    imagesDir       : '<%= vars.paths.imgPath %>',
+                    javascriptsDir  : '<%= vars.paths.jsPath %>/',
+                    fontsDir        : '<%= vars.paths.fontsPath %>',
+                    outputStyle     : '<%= vars.compass.outputStyle %>',
+                    //sourcemap       : '<%= vars.compass.sourcemap %>',
+                    environment     : '<%= vars.compass.environment %>',
                     raw             : 'preferred_syntax = :scss\n',
+                    force           : true,
                     relativeAssets  : true,
                     noLineComments  : true,
-                    //sourcemap       : true,
                     assetCacheBuster: false,
-                    environment     : grunt.config('env')
                 }
             }
         },
@@ -99,8 +106,8 @@ module.exports = function(grunt){
         watch: {
             scripts: {
                 files: [
-                    '<%= vars.global.jsPath %>/*.js',
-                    '<%= vars.global.jsPath %>/**/*.js',
+                    '<%= vars.paths.jsPath %>/*.js',
+                    '<%= vars.paths.jsPath %>/**/*.js',
                 ],
                 tasks: ['requirejs', 'qunit'],
                 options: {
@@ -109,8 +116,8 @@ module.exports = function(grunt){
             },
             compass: {
                 files: [
-                    '<%= vars.global.cssPath %>/*.scss',
-                    '<%= vars.global.cssPath %>/**/*.scss'
+                    '<%= vars.paths.cssPath %>/*.scss',
+                    '<%= vars.paths.cssPath %>/**/*.scss'
                 ],
                 tasks: ['compass'],
                 options: {
@@ -196,23 +203,23 @@ module.exports = function(grunt){
     /**
      * Register tasks.
     **/
-    // Default task.
-    // Command: grunt
+    // Task   : Default
+    // Command: `grunt`
     grunt.registerTask('default', [
         'compass',
         'requirejs',
         'qunit'
     ]);
 
-    // Task for production.
-    // Command: grunt production
+    // Task   : Production
+    // Command: `grunt production`
     grunt.registerTask('production', [
         'compass',
         'requirejs'
     ]);
 
-    // Task for deployment.
-    // Command: grunt deploy --config <site>
+    // Task   : Deployment
+    // Command: `grunt deploy --config <site>`
     grunt.registerTask('deploy', [
         'sshexec:make-release',
         'sshexec:do-symlinks',
@@ -220,8 +227,8 @@ module.exports = function(grunt){
         'sshexec:permissions',
     ]);
 
-    // Task for rollback to previous release.
-    // Command: grunt rollback --config <site>
+    // Task   : Rollback
+    // Command: `grunt rollback --config <site>`
     grunt.registerTask('rollback', [
         'sshexec:rollback'
     ]);
