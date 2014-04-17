@@ -1,6 +1,6 @@
 /* ==========================================================================
    Mixins
-   Framework mixins.
+   Functions and mixins for various Framework operations.
 ========================================================================== */
 // Sprites from folder
 //@import "foldername/*.png";
@@ -8,7 +8,7 @@
 
 /**
  * em
- * EM font sizing
+ * EM font sizing.
  *
  * .foo {font-size: em(16);}
 **/
@@ -18,7 +18,7 @@
 
 /**
  * rem
- * REM font sizing
+ * REM font sizing.
  *
  * .foo {font-size: rem(16);}
 **/
@@ -29,8 +29,8 @@
 /**
  * px-to-rem
  * Takes a single value or a list of values and replaces px units with rem
- * Zero values will remain 0
- * Non-px values will not be modified
+ * Zero values will remain 0.
+ * Non-px values will not be modified.
 **/
 @function px-to-rem($px){
     $return : ();
@@ -68,7 +68,7 @@ $legacy_support_for_ie: true;
 
 /**
  * retina-image
- * Retina image replacement
+ * Retina image replacement.
  *
  * .foo {@include retina-image('logo', 'png', 100px, 25px);}
 **/
@@ -86,7 +86,7 @@ $legacy_support_for_ie: true;
 
 /**
  * transition
- * Cross browser transition
+ * Cross browser transition.
  *
  * .foo {@include transition(color 500ms ease);}
 **/
@@ -99,7 +99,7 @@ $legacy_support_for_ie: true;
 
 /**
  * opacity
- * Cross browser opacity
+ * Cross browser opacity.
  *
  * .foo {@include opacity(0.7);}
 **/
@@ -111,7 +111,7 @@ $legacy_support_for_ie: true;
 
 /**
  * inline-block
- * Cross browser inline-block
+ * Cross browser inline-block.
  *
  * .foo {@include inline-block;}
 **/
@@ -121,8 +121,34 @@ $legacy_support_for_ie: true;
 }
 
 /**
+ * trigram
+ * Trigram for Heaven mobile icon.
+ *
+ * .foo {@include trigram(30px, 40px, #000000, #FF0000);}
+**/
+@mixin trigram($width, $size, $color, $hover){
+	position: relative;
+	padding-left: 1.25em;
+	font-size: $size;
+	&:before {
+		width: $width;
+		height: 0.15em;
+		content: "";
+		position: absolute;
+		left: 0;
+		box-shadow: 0 0.25em 0 0 $color, 0 0.5em 0 0 $color;
+		background: $color;
+		@include transition(500ms background ease, 500ms box-shadow ease);
+	}
+	&:hover:before {
+		box-shadow: 0 0.25em 0 0 $hover, 0 0.5em 0 0 $hover;
+		background: $hover;
+	}
+}
+
+/**
  * arrow
- * CSS Arrow
+ * CSS Arrow.
  *
  * .foo {@include arrow(15px, #f9f7f3, 10px, null, left);}
 **/
@@ -156,7 +182,7 @@ $legacy_support_for_ie: true;
 
 /**
  * respond-to
- * Responive breakpoints converted to em value
+ * Responive breakpoints converted to em value.
  *
  * @uses px-to-rem()
  *
