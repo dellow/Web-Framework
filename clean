@@ -2,12 +2,32 @@
 
 echo "Cleaning in progress. Please wait..."
 
+# Remove `.git` directory
 rm -rf .git/        && \
+# Remove the `.sass-cache` directory
 rm -rf .sass-cache/ && \
+# Remove the framework readme
 rm -rf README.md    && \
+# Initialize a new Git instance
 git init            && \
-git add --all       && \
+# Remove the clean file
 rm clean
+# Add all current files
+git add --all       && \
+# Sublime Text SFTP
+read -p "Do you need want to do an initial commit? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	# Initial commit
+	git commit -am "Initial commit"
+fi
+# Sublime Text SFTP
+read -p "Do you need the Sublime Text SFTP config? " -n 1 -r
+if [[ $REPLY =~ ^[Nn]$ ]]
+then
+	# Remove `sftp-config.json`
+	rm sftp-config.json
+fi
 
 echo "Framework successfully installed!"
 
