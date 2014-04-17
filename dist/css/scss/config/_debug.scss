@@ -1,12 +1,14 @@
 /* ==========================================================================
    Debug
-   Useful debug operations. Adapted from inuit.css by Harry Roberts
+   Useful debug operations. Adapted from inuit.css by Harry Roberts.
+   Compass environment must be in 'development' mode and the $debug_mode
+   var set to true for this to work.
 
    Red    == Error
    Yellow == Needs checking
    None   == No problemo!
 ========================================================================== */
-@if $debug_mode == true {
+@if compass-env() == 'development' and $debug_mode == true {
 	// Vars
 	$debug_outline_px: 2px;
 
