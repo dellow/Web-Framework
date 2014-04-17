@@ -8,8 +8,6 @@
 ;(function($, window, undefined){
     // Init
     helper.init(); ui.init();
-    // Mobile menu
-    window.mobile_menu_active = true;
 
     /**
      * depTests

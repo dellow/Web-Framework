@@ -8,6 +8,9 @@
 
 module.exports = function(grunt){
 
+    // Set the environment depending on the task name
+    grunt.config('env', (grunt.cli.tasks == '') ? 'development' : grunt.cli.tasks);
+
     /**
      * grunt.initConfig
      * Grunt config.
@@ -20,10 +23,10 @@ module.exports = function(grunt){
         auth: grunt.file.readJSON('auth.json'),
 
         /**
-         * templates
+         * vars
          * Variables.
         **/
-        templates: {
+        vars: {
             global: {
                 basePath : '/',
                 jsPath   : 'dist/js',
@@ -34,21 +37,9 @@ module.exports = function(grunt){
             deploy: {
                 releaseDir: (new Date()).toISOString(),
                 config    : grunt.option('config')
-            }
-        },
-
-        /**
-         * env
-         * Environment.
-        **/
-        env: {
-            options: {
             },
-            development: {
-                ENV_MODE: 'development'
-            },
-            production: {
-                ENV_MODE: 'production'
+            requireJS: {
+                optimize: (grunt.config('env') == 'development') ? 'none' : 'uglify'
             }
         },
 
@@ -59,11 +50,12 @@ module.exports = function(grunt){
         requirejs : {
             compile: {
                 options: {
-                    name          : 'build/main',
-                    baseUrl       : '<%= templates.global.jsPath %>',
-                    mainConfigFile: '<%= templates.global.jsPath %>/build/main.js',
-                    out           : '<%= templates.global.jsPath %>/build.js',
-                    optimize      : 'uglify'
+                    name          : 'main',
+                    excludeShallow: ['main'], // We don't want the main config file included in the build but we do want what it requires.
+                    baseUrl       : '<%= vars.global.jsPath %>',
+                    mainConfigFile: '<%= vars.global.jsPath %>/main.js',
+                    out           : '<%= vars.global.jsPath %>/build/build.js',
+                    optimize      : '<%= vars.requireJS.optimize %>'
                 }
             }
         },
@@ -84,18 +76,18 @@ module.exports = function(grunt){
             dist: {
                 options: {
                     httpPath        : '/',
-                    sassDir         : '<%= templates.global.cssPath %>/scss',
-                    cssDir          : '<%= templates.global.cssPath %>',
-                    imagesDir       : '<%= templates.global.imgPath %>',
-                    javascriptsDir  : '<%= templates.global.jsPath %>/',
-                    fontsDir        : '<%= templates.global.fontsPath %>',
+                    sassDir         : '<%= vars.global.cssPath %>/scss',
+                    cssDir          : '<%= vars.global.cssPath %>',
+                    imagesDir       : '<%= vars.global.imgPath %>',
+                    javascriptsDir  : '<%= vars.global.jsPath %>/',
+                    fontsDir        : '<%= vars.global.fontsPath %>',
                     outputStyle     : 'compressed', // :expanded, :nested, :compact or :compressed
                     raw             : 'preferred_syntax = :scss\n',
                     relativeAssets  : true,
                     noLineComments  : true,
                     //sourcemap       : true,
                     assetCacheBuster: false,
-                    environment     : process.env.ENV_MODE
+                    environment     : grunt.config('env')
                 }
             }
         },
@@ -107,8 +99,8 @@ module.exports = function(grunt){
         watch: {
             scripts: {
                 files: [
-                    '<%= templates.global.jsPath %>/*.js',
-                    '<%= templates.global.jsPath %>/**/*.js',
+                    '<%= vars.global.jsPath %>/*.js',
+                    '<%= vars.global.jsPath %>/**/*.js',
                 ],
                 tasks: ['requirejs', 'qunit'],
                 options: {
@@ -117,8 +109,8 @@ module.exports = function(grunt){
             },
             compass: {
                 files: [
-                    '<%= templates.global.cssPath %>/*.scss',
-                    '<%= templates.global.cssPath %>/**/*.scss'
+                    '<%= vars.global.cssPath %>/*.scss',
+                    '<%= vars.global.cssPath %>/**/*.scss'
                 ],
                 tasks: ['compass'],
                 options: {
@@ -169,15 +161,15 @@ module.exports = function(grunt){
         sshexec: {
             'make-release': {
                 command: [
-                    'sudo mkdir -p <%= auth.path %>/releases/<%= templates.deploy.releaseDir %>',
+                    'sudo mkdir -p <%= auth.path %>/releases/<%= vars.deploy.releaseDir %>',
                     'sudo touch <%= auth.path %>/release_list',
-                    'sudo echo "<%= templates.deploy.releaseDir %>" >> <%= auth.path %>/release_list'
+                    'sudo echo "<%= vars.deploy.releaseDir %>" >> <%= auth.path %>/release_list'
                 ]
             },
             'do-symlinks': {
                 command: [
                     'rm -rf <%= auth.path %>/current',
-                    'ln -s <%= auth.path %>/releases/<%= templates.deploy.releaseDir %> <%= auth.path %>/current'
+                    'ln -s <%= auth.path %>/releases/<%= vars.deploy.releaseDir %> <%= auth.path %>/current'
                 ]
             },
             'permissions': {
@@ -207,7 +199,6 @@ module.exports = function(grunt){
     // Default task.
     // Command: grunt
     grunt.registerTask('default', [
-        'env:development',
         'compass',
         'requirejs',
         'qunit'
@@ -216,7 +207,6 @@ module.exports = function(grunt){
     // Task for production.
     // Command: grunt production
     grunt.registerTask('production', [
-        'env:production',
         'compass',
         'requirejs'
     ]);

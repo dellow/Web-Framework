@@ -48,13 +48,7 @@
 	**/
 	helper.mobileMode = function(breakpoint){
 		var ww = window.innerWidth;
-
-		if(ww < breakpoint){
-			return true;
-		}
-		else{
-			return false;
-		}
+		return (ww < breakpoint) ? true : false;
 	}
 
 	// Export helper object for use.

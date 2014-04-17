@@ -34,9 +34,6 @@ require.config({
 		site          : 'app/site'
     },
     shim: {
-    	helper        : {
-    		// No dependencies
-    	},
     	ui            : {
     		deps: ['jquery']
     	},
