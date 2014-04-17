@@ -887,7 +887,7 @@ hr.dots:after {
 html {
   min-height: 100%;
   overflow-y: scroll;
-  font: 16px/1.5 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", Arial, "Trebuchet MS", Verdana, sans-serif;
+  font: 16px/1.5 "Helvetica", Arial, "Trebuchet MS", Verdana, sans-serif;
   color: #333333;
   word-wrap: break-word;
 }

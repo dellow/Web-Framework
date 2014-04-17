@@ -29,39 +29,39 @@ $base_box_shadow   : 0 0 5px rgba(69, 18, 11, 0.15) !default;
  * Typography
 **/
 // Faces
-$font_family_arial     : Arial !default;
-$font_family_georgia   : Georgia !default;
-$font_family_helvetica : "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica" !default;
-$font_family_myriad    : "MyriadPro", "Myriad Pro", Myriad !default;
-$font_family_times     : Times !default;
-$font_family_trebuchet : "Trebuchet MS" !default;
-$font_family_verdana   : Verdana !default;
-$font_family_serif     : serif !default;
-$font_family_sans_serif: sans-serif !default;
-$font_family_monospaced: "source-code-pro", monospace !default;
-$base_font_family      : $font_family_helvetica, $font_family_arial, $font_family_trebuchet, $font_family_verdana, $font_family_sans_serif !default;
+$font_family_arial          : Arial !default;
+$font_family_georgia        : Georgia !default;
+$font_family_helvetica      : 'Helvetica' !default;
+$font_family_times          : Times !default;
+$font_family_trebuchet      : 'Trebuchet MS' !default;
+$font_family_verdana        : Verdana !default;
+$font_family_serif          : serif !default;
+$font_family_sans_serif     : sans-serif !default;
+$font_family_monospaced     : 'source-code-pro', monospace !default;
+$base_serif_font_family     : $font_family_georgia, $font_family_times, $font_family_serif!default;
+$base_sans_serif_font_family: $font_family_helvetica, $font_family_arial, $font_family_trebuchet, $font_family_verdana, $font_family_sans_serif !default;
 // Weights
-$font_weight_bold      : 700 !default;
-$font_weight_semibold  : 600 !default;
-$font_weight_medium    : 400 !default;
-$font_weight_regular   : 400 !default;
-$font_weight_light     : 300 !default;
-$font_weight_thin      : 300 !default;
+$font_weight_bold           : 700 !default;
+$font_weight_semibold       : 600 !default;
+$font_weight_medium         : 400 !default;
+$font_weight_regular        : 400 !default;
+$font_weight_light          : 300 !default;
+$font_weight_thin           : 300 !default;
 // Sizes
-$base_font_size        : 16px !default;
-$font_size_small       : 12px !default;
-$font_size_large       : 20px !default;
-$font_size_h1          : 48px !default;
-$font_size_h2          : 36px !default;
-$font_size_h3          : 24px !default;
-$font_size_h4          : 18px !default;
-$font_size_h5          : 16px !default;
-$font_size_h6          : 14px !default;
+$base_font_size             : 16px !default;
+$font_size_small            : 12px !default;
+$font_size_large            : 20px !default;
+$font_size_h1               : 48px !default;
+$font_size_h2               : 36px !default;
+$font_size_h3               : 24px !default;
+$font_size_h4               : 18px !default;
+$font_size_h5               : 16px !default;
+$font_size_h6               : 14px !default;
 // Line Height
-$base_line_height      : 24px !default;
-$base_spacing_unit     : $base_line_height !default;
-$half_spacing_unit     : $base_spacing_unit / 2 !default;
-$line_height_ratio     : $base_line_height / $base_font_size !default;
+$base_line_height           : 24px !default;
+$base_spacing_unit          : $base_line_height !default;
+$half_spacing_unit          : $base_spacing_unit / 2 !default;
+$line_height_ratio          : $base_line_height / $base_font_size !default;
 
 /**
  * Colours
