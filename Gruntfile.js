@@ -9,7 +9,7 @@
 module.exports = function(grunt){
 
     // Set the environment depending on the task name
-    grunt.config('env', (grunt.cli.tasks == '') ? 'development' : grunt.cli.tasks);
+    grunt.config('env', (grunt.cli.tasks == 'production') ? 'production' : 'development');
 
     /**
      * grunt.initConfig
@@ -55,9 +55,10 @@ module.exports = function(grunt){
         requirejs : {
             compile: {
                 options: {
+                    baseUrl       : '<%= vars.paths.jsPath %>',
                     name          : 'main',
                     excludeShallow: ['main'], // We don't want the main config file included in the build but we do want what it requires.
-                    baseUrl       : '<%= vars.paths.jsPath %>',
+                    include       : [],
                     mainConfigFile: '<%= vars.paths.jsPath %>/main.js',
                     out           : '<%= vars.paths.jsPath %>/build/build.js',
                     optimize      : '<%= vars.requireJS.optimize %>'
