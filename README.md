@@ -28,6 +28,7 @@ Deploy codebase to default `production` environment:
 
 ## Watch
 You can automatically compile CSS and JS on save by 'watching'. Simply run `grunt watch` to automatically compile.
+
 __Please note:__ `watch` will run in development mode, so CSS and JS will not be minified for easier debugging. You should run `grunt production` to get a final minified output for your live environment.
 
 ## Working with SCSS
