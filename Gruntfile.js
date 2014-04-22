@@ -83,6 +83,7 @@ module.exports = function(grunt){
                 options: {
                     app             : 'stand_alone',
                     httpPath        : '/',
+                    importPath      : [],
                     sassDir         : '<%= vars.paths.cssPath %>/scss',
                     cssDir          : '<%= vars.paths.cssPath %>',
                     imagesDir       : '<%= vars.paths.imgPath %>',
