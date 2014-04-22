@@ -8,12 +8,14 @@
 ;(function($, window, undefined){
     // Init
     helper.init(); ui.init();
+    // Site object
+    var site = {};
 
     /**
-     * depTests
+     * dependency_tests
      * Test for dependencies. Delete this in production.
     **/
-    function depTests(){
+    site.dependency_tests = function(){
 	    var depMsg = [];
 	    depMsg.push((typeof $ !== undefined) ? 'jQuery is enabled.' : 'jQuery is disabled.'),
 	    depMsg.push(($.fn.formValidation !== undefined) ? 'formValidation is enabled' : 'formValidation is disabled'),
@@ -25,7 +27,7 @@
 	    	helper.log(depMsg[i]);
 	    }
 	}
-	depTests();
+	site.dependency_tests();
 
 	// Form validation
 	require(['formValidation'], function(){
@@ -46,8 +48,5 @@
             });
         }
 	});
-
-	//require(['slider'], function(){});
-	//require(['scrollTo'], function(){});
 
 }(jQuery, window));
