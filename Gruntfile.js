@@ -102,7 +102,6 @@ module.exports = function(grunt){
                         slider: {
                             deps: ['jquery']
                         },
-                        // Setup site
                         site: {
                             deps: ['helper', 'ui', 'extensions']
                         }
