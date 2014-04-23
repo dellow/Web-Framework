@@ -3,10 +3,7 @@
  * Extends jQuery with a few custom methods
 **/
 
-'use strict';
-
 ;(function($, window, document, undefined){
-
     /**
      * $.accordion
      * Creates an accordion

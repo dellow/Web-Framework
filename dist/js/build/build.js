@@ -1,12 +1,10 @@
+"use strict" ;
 /**
  * helper.js
  * File description goes here.
 **/
 
-
-
 ;(function(global){
-
 	var helper, config;
 
 	helper        = global.helper || {};
@@ -9175,10 +9173,7 @@ return jQuery;
  * UI functions.
 **/
 
-
-
 ;(function(global, $, undefined){
-
 	var ui;
 
 	ui = global.ui || {};
@@ -9231,10 +9226,7 @@ define("ui", ["jquery"], function(){});
  * Extends jQuery with a few custom methods
 **/
 
-
-
 ;(function($, window, document, undefined){
-
     /**
      * $.accordion
      * Creates an accordion
@@ -9646,8 +9638,6 @@ define("extensions", ["jquery"], function(){});
 **/
 
 ;(function($, window, document, undefined){
-    
-
     $.fn.formValidation = function(options){
         // Our application defaults
         var defaults = {
@@ -10329,8 +10319,6 @@ define("formValidation", ["jquery"], function(){});
 **/
 
 ;(function($, window, document, undefined){
-	
-
 	$.fn.lightBox = function(options){
 		/* -- Defaults -- */
 		// Our application defaults
@@ -10580,11 +10568,9 @@ define("formValidation", ["jquery"], function(){});
 define("lightBox", ["jquery"], function(){});
 
 /**
- * global.js
+ * site.js
  * Controller JS file.
 **/
-
-
 
 ;(function($, window, undefined){
     // Init

@@ -1,9 +1,7 @@
 /**
- * global.js
+ * site.js
  * Controller JS file.
 **/
-
-'use strict';
 
 ;(function($, window, undefined){
     // Init

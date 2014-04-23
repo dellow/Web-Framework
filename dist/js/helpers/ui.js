@@ -3,10 +3,7 @@
  * UI functions.
 **/
 
-'use strict';
-
 ;(function(global, $, undefined){
-
 	var ui;
 
 	ui = global.ui || {};

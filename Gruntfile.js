@@ -55,13 +55,58 @@ module.exports = function(grunt){
         requirejs : {
             compile: {
                 options: {
-                    baseUrl       : '<%= vars.paths.jsPath %>',
-                    name          : 'main',
-                    excludeShallow: ['main'], // We don't want the main config file included in the build but we do want what it requires.
-                    include       : [],
-                    mainConfigFile: '<%= vars.paths.jsPath %>/main.js',
+                    baseUrl       : '',
+                    name          : '<%= vars.paths.jsPath %>/main',
+                    excludeShallow: ['<%= vars.paths.jsPath %>/main'], // We don't want the main config file included in the build but we do want what it requires.
                     out           : '<%= vars.paths.jsPath %>/build/build.js',
-                    optimize      : '<%= vars.requireJS.optimize %>'
+                    optimize      : '<%= vars.requireJS.optimize %>',
+                    wrap: {
+                        start: '"use strict"\ ;\n'
+                    },
+                    paths: {
+                        // Libraries
+                        angular       : 'node_modules/angular/lib/angular.min',
+                        backbone      : 'node_modules/backbone/backbone',
+                        jquery        : 'node_modules/jquery/dist/jquery',
+                        jqueryui      : 'node_modules/jquery-ui/jquery-ui',
+                        // RequireJS Modules
+                        req_async     : '<%= vars.paths.jsPath %>/vendor/require/require.async',
+                        // Plugins
+                        extensions    : '<%= vars.paths.jsPath %>/plugins/jquery.extensions',
+                        formValidation: '<%= vars.paths.jsPath %>/plugins/jquery.form-validation',
+                        lightBox      : '<%= vars.paths.jsPath %>/plugins/jquery.lightBox',
+                        scrollto      : '<%= vars.paths.jsPath %>/plugins/jquery.scrollto.min',
+                        slider        : '<%= vars.paths.jsPath %>/plugins/jquery.bxslider.min',
+                        // Local
+                        helper        : '<%= vars.paths.jsPath %>/helpers/helper',
+                        ui            : '<%= vars.paths.jsPath %>/helpers/ui',
+                        // Functions
+                        site          : '<%= vars.paths.jsPath %>/app/site'
+                    },
+                    shim: {
+                        ui: {
+                            deps: ['jquery']
+                        },
+                        extensions: {
+                            deps: ['jquery']
+                        },
+                        formValidation: {
+                            deps: ['jquery']
+                        },
+                        lightBox: {
+                            deps: ['jquery']
+                        },
+                        scrollto: {
+                            deps: ['jquery']
+                        },
+                        slider: {
+                            deps: ['jquery']
+                        },
+                        // Setup site
+                        site: {
+                            deps: ['helper', 'ui', 'extensions']
+                        }
+                    }
                 }
             }
         },

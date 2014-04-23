@@ -3,10 +3,7 @@
  * File description goes here.
 **/
 
-'use strict';
-
 ;(function(global){
-
 	var helper, config;
 
 	helper        = global.helper || {};

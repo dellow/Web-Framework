@@ -24,8 +24,6 @@
 **/
 
 ;(function($, window, document, undefined){
-	'use strict';
-
 	$.fn.lightBox = function(options){
 		/* -- Defaults -- */
 		// Our application defaults

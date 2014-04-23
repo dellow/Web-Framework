@@ -30,8 +30,6 @@
 **/
 
 ;(function($, window, document, undefined){
-    'use strict';
-
     $.fn.formValidation = function(options){
         // Our application defaults
         var defaults = {
