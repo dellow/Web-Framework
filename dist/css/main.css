@@ -48,16 +48,10 @@
    Functions and mixins for various Framework operations.
 ========================================================================== */
 /**
- * em
- * EM font sizing.
- *
- * .foo {font-size: em(16);}
-**/
-/**
- * rem
- * REM font sizing.
- *
- * .foo {font-size: rem(16);}
+ * px-to-em
+ * Takes a single value or a list of values and replaces px units with em
+ * Zero values will remain 0
+ * Non-px values will not be modified
 **/
 /**
  * px-to-rem
@@ -113,9 +107,9 @@
 **/
 /**
  * respond-to
- * Responive breakpoints converted to em value.
+ * Responive breakpoints converted to em value
  *
- * @uses px-to-rem()
+ * @uses px-to-em()
  *
  * @include respond-to(768px){.foo {display: block;}}
 **/
@@ -2676,7 +2670,7 @@ p.alert {
    Use responsive mixin inside the correct partial for local responsive
    styles.
 ========================================================================== */
-@media only screen and (max-width: 48rem) {
+@media only screen and (max-width: 48em) {
   body {
     font-size: 95%;
   }
@@ -2689,7 +2683,7 @@ p.alert {
   /* -- Full Width -- */
   /* -- Reset -- */
 }
-@media only screen and (max-width: 28.75rem) {
+@media only screen and (max-width: 28.75em) {
   body {
     font-size: 80%;
   }
