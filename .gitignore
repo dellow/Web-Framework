@@ -4,6 +4,7 @@
 
 # Ignore Files
 # ---------------------------
+*.log
 # .gitignore
 # auth.json
 # sftp-config.json

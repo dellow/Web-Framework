@@ -8,14 +8,10 @@
 require.config({
     paths: {
 		// Libraries
-		jquery        : 'vendor/jquery.1.10.2.min',
-		jqueryui      : 'vendor/jquery-ui.1.10.3.min',
-		angularjs     : 'vendor/angularjs.1.0.8.min',
-		knockout      : 'vendor/knockout-2.3.0.min',
-		backbone      : 'vendor/backbone.min',
-		underscore    : 'vendor/underscore.min',
-		respond       : 'vendor/respond.min',
-		retina        : 'vendor/retina.min',
+        angular       : '../../node_modules/angular/lib/angular.min',
+        backbone      : '../../node_modules/backbone/backbone',
+		jquery        : '../../node_modules/jquery/dist/jquery',
+		jqueryui      : '../../node_modules/jquery-ui/jquery-ui',
 		// RequireJS Modules
 		req_async     : 'vendor/require/require.async',
 		// Plugins

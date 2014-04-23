@@ -1,13 +1,27 @@
 {
-  "name": "Framework",
-  "version": "0.0.1",
-  "devDependencies": {
-    "grunt": "0.4.4",
-    "grunt-contrib-compass": "~0.7.2",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-contrib-requirejs": "~0.4.3",
-    "grunt-ssh": "~0.11.1",
-    "grunt-contrib-qunit": "~0.4.0",
-    "matchdep": "^0.3.0"
-  }
+    "name"        : "Framework",
+    "description" : "A Grunt powered Framework for HTML projects. Includes SASS/Compass.",
+    "author"      : "Stew Dellow <stewart@hellostew.com>",
+    "version"     : "1.0.0",
+    "repository"  : {
+        "type": "git",
+        "url" : "https://github.com/sdellow/HTML-Framework.git"
+    },
+    "contributors": [
+        {"name" : "Stew Dellow", "email": "stewart@hellostew.com"}
+    ],
+    "devDependencies": {
+        "grunt"                  : "0.4.4",
+        "grunt-contrib-compass"  : "~0.7.2",
+        "grunt-contrib-watch"    : "~0.6.1",
+        "grunt-contrib-requirejs": "~0.4.3",
+        "grunt-ssh"              : "~0.11.1",
+        "grunt-contrib-qunit"    : "~0.4.0",
+        "matchdep"               : "^0.3.0",
+        "angularjs"              : "*",
+        "backbone"               : "*",
+        "jquery"                 : "*",
+        "jquery-ui"              : "*",
+        "requirejs"              : "*"
+    }
 }
