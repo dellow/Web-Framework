@@ -80,7 +80,7 @@ module.exports = function(grunt){
                         // Local
                         helper        : '<%= vars.paths.jsPath %>/helpers/helper',
                         ui            : '<%= vars.paths.jsPath %>/helpers/ui',
-                        // Functions
+                        // App
                         site          : '<%= vars.paths.jsPath %>/app/site'
                     },
                     shim: {
