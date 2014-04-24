@@ -4,8 +4,6 @@
  * @author Stewart Dellow
 **/
 
-'use strict';
-
 module.exports = function(grunt){
 
     // Set the environment depending on the task name
@@ -35,8 +33,8 @@ module.exports = function(grunt){
                 fontsPath: 'dist/css/fonts'
             },
             deploy: {
-                releaseDir: (new Date()).toISOString(),
-                config    : grunt.option('config')
+                release: (new Date()).toISOString().replace(/[^a-z0-9]/gi, '_').toLowerCase(),
+                config : grunt.option('config')
             },
             compass: {
                 sourcemap  : (grunt.config('env') == 'development') ? true : false,
@@ -156,8 +154,7 @@ module.exports = function(grunt){
                     '<%= vars.paths.jsPath %>/**/*.js',
                 ],
                 tasks: [
-                    'requirejs',
-                    'qunit'
+                    'requirejs'
                 ],
                 options: {
                     livereload: true
@@ -178,21 +175,56 @@ module.exports = function(grunt){
         },
 
         /**
+         * compress
+         * File compression for deployment.
+        **/
+        compress: {
+            main: {
+                options: {
+                    archive: 'tmp/deployment.tgz'
+                },
+                expand: true,
+                cwd   : './',
+                src   : [
+                    '*htaccess',
+                    '*html',
+                    '*php',
+                    'dist/css/addons/**',
+                    'dist/css/fonts/**',
+                    'dist/css/*',
+                    'dist/images/**',
+                    'dist/js/build/**',
+                    'dist/js/plugins/**'
+                ]
+            }
+        },
+
+        /**
+         * shell
+         * Various shell commands.
+        **/
+        shell: {
+            removeLocalTmp: {
+                command: 'rm -rf tmp'
+            }
+        },
+
+        /**
          * sshexec
          * Deployment with Grunt.
         **/
         sshconfig: {
-            production: {
+            live: {
                 // Server host
-                host        : '<%= auth.host %>',
+                host        : '<%= auth.live.host %>',
                 // Server username
-                username    : '<%= auth.user %>',
+                username    : '<%= auth.live.user %>',
                 // Server password
-                password    : '<%= auth.pass %>',
+                password    : '<%= auth.live.pass %>',
                 // SSH agent
                 //agent       : process.env.SSH_AUTH_SOCK,
                 // Deployment path
-                path        : '<%= auth.path %>/current',
+                path        : '<%= auth.live.path %>/current',
                 // Port
                 port        : 22,
                 // Timeout
@@ -202,11 +234,8 @@ module.exports = function(grunt){
         sftp: {
             deploy: {
                 files: {
-                    './': [
-                        '.htaccess',
-                        '*html',
-                        '*php',
-                        'dist/**'
+                    './releases': [
+                        'tmp/deployment.tgz',
                     ]
                 },
                 options: {
@@ -219,27 +248,36 @@ module.exports = function(grunt){
         sshexec: {
             'make-release': {
                 command: [
-                    'sudo mkdir -p <%= auth.path %>/releases/<%= vars.deploy.releaseDir %>',
-                    'sudo touch <%= auth.path %>/release_list',
-                    'sudo echo "<%= vars.deploy.releaseDir %>" >> <%= auth.path %>/release_list'
+                    'sudo mkdir -p <%= auth.live.path %>/releases/<%= vars.deploy.release %>',
+                    'sudo touch <%= auth.live.path %>/release_list',
+                    'sudo chown -R $USER:$USER <%= auth.live.path %>',
+                    'sudo echo "<%= vars.deploy.release %>" >> <%= auth.live.path %>/release_list'
+                ]
+            },
+            'uncompress': {
+                command: [
+                    'sudo tar -zxvf <%= auth.live.path %>/releases/<%= vars.deploy.release %>/tmp/deployment.tgz -C <%= auth.live.path %>/releases/<%= vars.deploy.release %>',
+                    'sudo rm -rf <%= auth.live.path %>/releases/<%= vars.deploy.release %>/tmp/'
                 ]
             },
             'do-symlinks': {
                 command: [
-                    'rm -rf <%= auth.path %>/current',
-                    'ln -s <%= auth.path %>/releases/<%= vars.deploy.releaseDir %> <%= auth.path %>/current'
+                    'sudo rm -rf <%= auth.live.path %>/current',
+                    'sudo ln -s <%= auth.live.path %>/releases/<%= vars.deploy.release %> <%= auth.live.path %>/current'
                 ]
             },
             'permissions': {
                 command: [
-                    'sudo chown -R $USER:www-data <%= auth.path %>',
-                    'sudo chmod -R 755 <%= auth.path %>'
+                    'sudo chown -R $USER:$USER <%= auth.live.path %>',
+                    'sudo chmod -R 755 <%= auth.live.path %>'
                 ]
             },
             'rollback': {
                 command: [
-                    'rm -rf <%= auth.path %>/current',
-                    'ln -s <%= auth.path %>/releases/`tail -2 <%= auth.path %>/release_list | head -1` <%= auth.path %>/current'
+                    'sudo rm -rf <%= auth.live.path %>/current',
+                    'sudo ln -s <%= auth.live.path %>/releases/`tail -2 <%= auth.live.path %>/release_list | head -1` <%= auth.live.path %>/current',
+                    'sudo rm -rf <%= auth.live.path %>/releases/`tail -1 <%= auth.live.path %>/release_list | head -1`',
+                    'sudo sed -i "$ d" <%= auth.live.path %>/release_list'
                 ]
             }
         }
@@ -272,10 +310,13 @@ module.exports = function(grunt){
     // Task   : Deployment
     // Command: `grunt deploy --config <site>`
     grunt.registerTask('deploy', [
+        'compress',
         'sshexec:make-release',
         'sshexec:do-symlinks',
         'sftp:deploy',
+        'sshexec:uncompress',
         'sshexec:permissions',
+        'shell:removeLocalTmp'
     ]);
 
     // Task   : Rollback

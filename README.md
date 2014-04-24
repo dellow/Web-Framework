@@ -27,9 +27,13 @@ Run the production config production mode:
 Watch for changes to the main JS and SASS files:
 
 	grunt watch
-Deploy codebase to default `production` environment:
+Deploy codebase to default `live` environment:
 
-	grunt deploy --config production
+	grunt deploy --config live
+
+Rollback `live` codebase to previous deployment
+
+	grunt rollback --config live
 
 ## Watch
 You can automatically compile CSS and JS on save by 'watching'. Simply run `grunt watch` to automatically compile.
@@ -83,9 +87,13 @@ You can also load a module and run code depending on its existence:
 ## Deployment
 The Framework utilises Grunt-SSH for deploying your codebase to a Unix environment. Update `auth.json` with your server details (remember to add this file to .gitignore!). The Framework will create a `releases` directory and `current` symlink in the path you provide. Each deployment will create a new timestamped directory inside `releases` and will update the `current` symlink to point to that timestamp. Your website docroot should point to the `current` symlink.
 
-You can deploy your code from the terminal with `grunt deploy --config <site>` where `<site>` is the name of the site object in the Gruntfile.js - this is currently defaulted to `production` so `grunt deploy --config production` will deploy your code to the details set within the `production` object, you can specify more servers (staging, dev etc) if you so wish by creating new objects.
+You can deploy your code from the terminal with `grunt deploy --config <site>` where `<site>` is the name of the site object in the Gruntfile.js - this is currently defaulted to `live` so `grunt deploy --config live` will deploy your code to the details set within the `live` object, you can specify more servers (staging, dev etc) if you so wish by creating new objects.
+
+You should use the `auth.json` file to set your environment details. This way the `auth.json` file can be ignored for version control.
 
 __Please note:__ Deployment is very much experimental and only been tested on a simple Ubuntu environment.
 
 ### Rollback
-If your deployment breaks you can rollback to your last deployment with `grunt rollback --config <site>` where `<site>` is the name of the site object in the Gruntfile.js. Please note this currently only works once per deploy, after rolling back you cannot concurrently rollback again until you have done another deploy.
+If your deployment breaks you can rollback to your last deployment with `grunt rollback --config <site>` where `<site>` is the name of the site object in the Gruntfile.js. This will remove all the files of the version you are rolling back from.
+
+You can do concurrent rollbacks by repeating the task.
