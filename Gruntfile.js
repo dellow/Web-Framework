@@ -194,7 +194,8 @@ module.exports = function(grunt){
                     'dist/css/*',
                     'dist/images/**',
                     'dist/js/build/**',
-                    'dist/js/plugins/**'
+                    'dist/js/plugins/**',
+                    'dist/js/vendor/**'
                 ]
             }
         },
