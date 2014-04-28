@@ -12,7 +12,7 @@ After cloning the repository simply run `bash install` from your command line. T
 - Get all dependencies, such as Grunt modules and JavaScript (You can not use Grunt until this step is complete).
 - Does an initial commit on the new Git initialisation.
 
-You might want to review the .gitignore file. Sensitive files like `auth.json` which holds SSH connection details for Grunt-SSH should be ignored, along with any other files or directories.
+You might want to review the .gitignore file. Sensitive files like `sftp-config.json` which holds SSH connection details for Grunt-SSH should be ignored, along with any other files or directories.
 
 ## Styleguide
 There is a basic CSS styleguide in [`dist/docs/styleguide.html`](dist/docs/styleguide.html).
@@ -91,7 +91,7 @@ The Framework utilises Grunt-SSH for deploying your codebase to a Unix environme
 You can deploy your code from the terminal with `grunt deploy --config <site>` where `<site>` is the name of the site object in the Gruntfile.js - this is currently defaulted to `live` so `grunt deploy --config live` will deploy your code to the details set within the `live` object, you can specify more servers (staging, dev etc) if you so wish by creating new objects.
 
 #### Environment details
-You should use the `auth.json` file to set the details for each environment. This means the `auth.json` file can be kept safe and ignored for version control.
+You should use the `sftp-config.json` file to set the details for each environment. This means the `sftp-config.json` file can be kept safe and ignored for version control. The `sftp-config.json` file also doubles up as the SFTP config for Sublime Text and the SFTP plugin.
 
 __Please note:__ Deployment is very much experimental and only been tested on a simple Ubuntu environment.
 
