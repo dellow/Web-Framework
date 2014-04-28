@@ -1,3 +1,6 @@
+# App Directories
+# ---------------------------
+
 # Ignore Directories
 # ---------------------------
 .sass-cache/
@@ -7,7 +10,6 @@ node_modules/
 # ---------------------------
 *.log
 # .gitignore
-# auth.json
 # sftp-config.json
 # *.sublime-project
 # *.sublime-workspace
