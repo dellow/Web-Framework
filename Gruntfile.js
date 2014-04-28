@@ -18,7 +18,7 @@ module.exports = function(grunt){
          * Load external files.
         **/
         pkg : grunt.file.readJSON('package.json'),
-        sftp: grunt.file.readJSON('sftp-config.json'),
+        auth: grunt.file.readJSON('sftp-config.json'),
 
         /**
          * vars
@@ -217,15 +217,15 @@ module.exports = function(grunt){
         sshconfig: {
             live: {
                 // Server host
-                host        : '<%= sftp.host %>',
+                host        : '<%= auth.host %>',
                 // Server username
-                username    : '<%= sftp.user %>',
+                username    : '<%= auth.user %>',
                 // Server password
-                password    : '<%= sftp.password %>',
+                password    : '<%= auth.password %>',
                 // SSH agent
                 //agent       : process.env.SSH_AUTH_SOCK,
                 // Deployment path
-                path        : '<%= sftp.remote_path %>/current',
+                path        : '<%= auth.remote_path %>/current',
                 // Port
                 port        : 22,
                 // Timeout
@@ -249,36 +249,36 @@ module.exports = function(grunt){
         sshexec: {
             'make-release': {
                 command: [
-                    'sudo mkdir -p <%= sftp.remote_path %>/releases/<%= vars.deploy.release %>',
-                    'sudo touch <%= sftp.remote_path %>/release_list',
-                    'sudo chown -R $USER:$USER <%= sftp.remote_path %>',
-                    'sudo echo "<%= vars.deploy.release %>" >> <%= sftp.remote_path %>/release_list'
+                    'sudo mkdir -p <%= auth.remote_path %>/releases/<%= vars.deploy.release %>',
+                    'sudo touch <%= auth.remote_path %>/release_list',
+                    'sudo chown -R $USER:$USER <%= auth.remote_path %>',
+                    'sudo echo "<%= vars.deploy.release %>" >> <%= auth.remote_path %>/release_list'
                 ]
             },
             'uncompress': {
                 command: [
-                    'sudo tar -zxvf <%= sftp.remote_path %>/releases/<%= vars.deploy.release %>/tmp/deployment.tgz -C <%= sftp.remote_path %>/releases/<%= vars.deploy.release %>',
-                    'sudo rm -rf <%= sftp.remote_path %>/releases/<%= vars.deploy.release %>/tmp/'
+                    'sudo tar -zxvf <%= auth.remote_path %>/releases/<%= vars.deploy.release %>/tmp/deployment.tgz -C <%= auth.remote_path %>/releases/<%= vars.deploy.release %>',
+                    'sudo rm -rf <%= auth.remote_path %>/releases/<%= vars.deploy.release %>/tmp/'
                 ]
             },
             'do-symlinks': {
                 command: [
-                    'sudo rm -rf <%= sftp.remote_path %>/current',
-                    'sudo ln -s <%= sftp.remote_path %>/releases/<%= vars.deploy.release %> <%= sftp.remote_path %>/current'
+                    'sudo rm -rf <%= auth.remote_path %>/current',
+                    'sudo ln -s <%= auth.remote_path %>/releases/<%= vars.deploy.release %> <%= auth.remote_path %>/current'
                 ]
             },
             'permissions': {
                 command: [
-                    'sudo chown -R $USER:$USER <%= sftp.remote_path %>',
-                    'sudo chmod -R 755 <%= sftp.remote_path %>'
+                    'sudo chown -R $USER:$USER <%= auth.remote_path %>',
+                    'sudo chmod -R 755 <%= auth.remote_path %>'
                 ]
             },
             'rollback': {
                 command: [
-                    'sudo rm -rf <%= sftp.remote_path %>/current',
-                    'sudo ln -s <%= sftp.remote_path %>/releases/`tail -2 <%= sftp.remote_path %>/release_list | head -1` <%= sftp.remote_path %>/current',
-                    'sudo rm -rf <%= sftp.remote_path %>/releases/`tail -1 <%= sftp.remote_path %>/release_list | head -1`',
-                    'sudo sed -i "$ d" <%= sftp.remote_path %>/release_list'
+                    'sudo rm -rf <%= auth.remote_path %>/current',
+                    'sudo ln -s <%= auth.remote_path %>/releases/`tail -2 <%= auth.remote_path %>/release_list | head -1` <%= auth.remote_path %>/current',
+                    'sudo rm -rf <%= auth.remote_path %>/releases/`tail -1 <%= auth.remote_path %>/release_list | head -1`',
+                    'sudo sed -i "$ d" <%= auth.remote_path %>/release_list'
                 ]
             }
         }
