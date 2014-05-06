@@ -270,7 +270,7 @@ module.exports = function(grunt){
             'permissions': {
                 command: [
                     'sudo chown -R $USER:$USER <%= auth.remote_path %>',
-                    'sudo chmod -R 755 <%= auth.remote_path %>'
+                    'sudo chmod -R 775 <%= auth.remote_path %>'
                 ]
             },
             'rollback': {
