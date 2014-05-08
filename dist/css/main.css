@@ -41,6 +41,7 @@
 /**
  * Device sizes
  * http://viewportsizes.com
+ * http://screensiz.es
  * http://dpi.lv
 **/
 /* ==========================================================================
@@ -2389,7 +2390,7 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
 ========================================================================== */
 /* -- All -- */
 .alert.box {
-  padding: 0.825em;
+  padding: 0.825em 0.825em 0.825em 14px;
   margin: 0.825em 0;
   border: 1px solid;
   border-left: 7px solid;
