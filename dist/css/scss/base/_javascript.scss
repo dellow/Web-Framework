@@ -30,16 +30,16 @@
             display: block;
         }
         &:first-child {
-            border-radius: $base_border_radius 0 0;
+            border-radius: $border_radius_base 0 0;
         }
         &:last-child {
-            border-radius: 0 $base_border_radius 0 0;
+            border-radius: 0 $border_radius_base 0 0;
         }
         &.active {
             bottom: -2px;
     		z-index: 2;
-            border-radius: $base_border_radius $base_border_radius 0 0;
-            color: $base_link_colour;
+            border-radius: $border_radius_base $border_radius_base 0 0;
+            color: $colour_text_link;
             background: #FFF;
         }
         &.active a {
@@ -48,7 +48,7 @@
 	}
 	.system {
 		padding: 1em;
-		border-radius: $base_border_radius;
+		border-radius: $border_radius_base;
 		border: 1px solid #EAEAEA;
 	}
 }
@@ -82,7 +82,7 @@
 			}
 		}
 		&:hover, &.active-title {
-			color: $base_link_colour;
+			color: $colour_text_link;
 			background: rgba(249,249,249,0.3);
 		}
 	}

@@ -9,7 +9,7 @@
 		margin: $nudge 0;
 		border: 1px solid; border-left: 7px solid;
 		position: relative;
-		border-radius: $base_border_radius;
+		border-radius: $border_radius_base;
 		h3 {
 			@include rem(font-size, 30px);
 		}

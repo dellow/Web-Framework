@@ -208,7 +208,7 @@ form {
 
 	// All form elements
 	input, .input, select, textarea, button {
-		line-height: $base_line_height;
+		line-height: $line_height_base;
 	}
 
 	// General fields
@@ -220,7 +220,7 @@ form {
 		vertical-align: top;
 		border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
-		border-radius: $base_border_radius;
+		border-radius: $border_radius_base;
 		@include rem(font-size, 14px);
 		@include transition(color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease);
 	}
@@ -255,7 +255,7 @@ form {
 		vertical-align: top;
 		border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
-		border-radius: $base_border_radius;
+		border-radius: $border_radius_base;
 		text-align: center;
 		cursor: pointer;
 		color: inherit;
@@ -268,11 +268,11 @@ form {
 		@include transition(color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease);
 		&:active, &:hover {
 			color: inherit;
-			border-color: $lightgrey;
+			border-color: $grey_light;
 			background-color: #ededed;
 		}
 		&:active {
-			border-color: $lightgrey;
+			border-color: $grey_light;
 			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(230, 230, 230, 0.02);
 		}
 		&[disabled], &.disabled, &.disabled:hover, &.disabled:active {

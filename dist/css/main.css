@@ -5,6 +5,35 @@
    first in the compiled stylesheet.
 ========================================================================== */
 /* ==========================================================================
+	Vars
+	The variables for use throughout the framework. These can
+	be overwritten from the site/vars partial.
+========================================================================== */
+/**
+* Config
+**/
+/**
+* Essentials
+**/
+/**
+* Defaults
+**/
+/**
+* Typography
+**/
+/**
+* Colours
+**/
+/**
+* Percentage Column Widths
+**/
+/**
+* Device sizes
+* http://viewportsizes.com
+* http://screensiz.es
+* http://dpi.lv
+**/
+/* ==========================================================================
    Vars
    You can overwrite any of the config vars from here.
 ========================================================================== */
@@ -15,35 +44,6 @@
    All
    Imports all the partials
 ========================================================================== */
-/* ==========================================================================
-   Vars
-   The variables for use throughout the framework. These can
-   be overwritten from the site/vars partial.
-========================================================================== */
-/**
- * Config
-**/
-/**
- * Essentials
-**/
-/**
- * Defaults
-**/
-/**
- * Typography
-**/
-/**
- * Colours
-**/
-/**
- * Percentage Column Widths
-**/
-/**
- * Device sizes
- * http://viewportsizes.com
- * http://screensiz.es
- * http://dpi.lv
-**/
 /* ==========================================================================
    Mixins
    Functions and mixins for various Framework operations.
@@ -59,6 +59,15 @@
  * Takes a single value or a list of values and replaces px units with rem
  * Zero values will remain 0.
  * Non-px values will not be modified.
+**/
+/**
+ * rhythm
+ * Outputs a perfect vertical rhythm for a particular font-size
+ * in a margin / line-height and font-size format
+ *
+ * @uses px-to-rem()
+ *
+ * .foo {@include rhythm(20px);}
 **/
 /**
  * rem
@@ -840,7 +849,7 @@ hr.dots:after {
 	background: #e3f7fc;
 }
 ::-webkit-scrollbar-thumb {
-	background: $base_red;
+	background: $blue_red;
 	box-shadow: inset 0 0 2em rgba(0, 0, 0, 0.2);
 }
 ::-webkit-scrollbar-button {
@@ -904,44 +913,65 @@ a:active, button:active {
 }
 
 /* -- Paragraph Formatting -- */
-p, .column-layout {
-  margin: 0 0 0.825em 0;
+p {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 /* -- Heading Formatting -- */
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  line-height: 1;
+h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
+  margin-bottom: 0.165em;
 }
 
 h1 {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-size: 48px;
   font-size: 3rem;
+  line-height: 1;
 }
 
 h2 {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-size: 36px;
   font-size: 2.25rem;
+  line-height: 1.33333;
 }
 
 h3 {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-size: 24px;
   font-size: 1.5rem;
+  line-height: 1;
 }
 
 h4 {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-size: 18px;
   font-size: 1.125rem;
+  line-height: 1.33333;
 }
 
 h5 {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-size: 16px;
   font-size: 1rem;
+  line-height: 1.5;
 }
 
 h6 {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-size: 14px;
   font-size: 0.875rem;
+  line-height: 1.71429;
 }
 
 /* -- Quotes -- */
@@ -949,7 +979,7 @@ blockquote {
   padding: 0 10px;
   position: relative;
   display: inline;
-  font-family: serif;
+  font-family: Georgia;
   font-style: italic;
 }
 
@@ -970,18 +1000,11 @@ blockquote:after, q:after {
    a class for each of them for easy OO styling.
 ========================================================================== */
 /* -- Text colours -- */
-.color-red {
-  color: #c4122f;
+.color-blue {
+  color: #3498db;
 }
-.color-red.opp {
-  color: #670919;
-}
-
-.color-orange {
-  color: #e67e22;
-}
-.color-orange.opp {
-  color: #bf6516;
+.color-blue.opp {
+  color: #217dbb;
 }
 
 .color-green {
@@ -991,11 +1014,18 @@ blockquote:after, q:after {
   color: #25a25a;
 }
 
-.color-blue {
-  color: #3498db;
+.color-orange {
+  color: #e67e22;
 }
-.color-blue.opp {
-  color: #217dbb;
+.color-orange.opp {
+  color: #bf6516;
+}
+
+.color-red {
+  color: #c4122f;
+}
+.color-red.opp {
+  color: #950e24;
 }
 
 .color-yellow {
@@ -1006,19 +1036,12 @@ blockquote:after, q:after {
 }
 
 /* -- Background colours -- */
-.bg.color-red {
+.bg.color-blue {
   color: inherit;
-  background: #c4122f;
+  background: #3498db;
 }
-.bg.color-red.opp {
-  background: #670919;
-}
-.bg.color-orange {
-  color: inherit;
-  background: #e67e22;
-}
-.bg.color-orange.opp {
-  background: #bf6516;
+.bg.color-blue.opp {
+  background: #217dbb;
 }
 .bg.color-green {
   color: inherit;
@@ -1027,12 +1050,19 @@ blockquote:after, q:after {
 .bg.color-green.opp {
   background: #25a25a;
 }
-.bg.color-blue {
+.bg.color-orange {
   color: inherit;
-  background: #3498db;
+  background: #e67e22;
 }
-.bg.color-blue.opp {
-  background: #217dbb;
+.bg.color-orange.opp {
+  background: #bf6516;
+}
+.bg.color-red {
+  color: inherit;
+  background: #c4122f;
+}
+.bg.color-red.opp {
+  background: #950e24;
 }
 .bg.color-yellow {
   color: inherit;
@@ -1047,21 +1077,16 @@ blockquote:after, q:after {
    Classes the make up a structural block such as a Grid or Navigation
 ========================================================================== */
 /* -- All Navigation -- */
-.navigation li {
-  padding: 0 2px;
-  display: inline;
-  position: relative;
-}
-.navigation li:first-child {
-  padding-left: 0;
-}
-.navigation li.current_page_item > a, .navigation li.current_page_parent > a {
-  font-weight: 700;
+/* -- Mobile Navigation -- */
+.mobile-menu {
+  display: none;
 }
 
 /* -- Primary Navigation -- */
-.nav-primary li:hover > .sub-menu {
-  display: block;
+.nav-primary li {
+  padding: 0 2px;
+  display: inline;
+  position: relative;
 }
 .nav-primary li .sub-menu {
   padding: 0 12px;
@@ -1082,6 +1107,15 @@ blockquote:after, q:after {
 .nav-primary li .sub-menu li .sub-menu {
   left: 100%;
   top: -5px;
+}
+.nav-primary li.current_page_item > a, .nav-primary li.current_page_parent > a {
+  font-weight: 700;
+}
+.nav-primary li:first-child {
+  padding-left: 0;
+}
+.nav-primary li:hover > .sub-menu {
+  display: block;
 }
 
 /* -- Grid System -- */
@@ -2355,7 +2389,7 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
   background-image: -o-linear-gradient(top, #6dbf6d, #449b44);
   background-image: -moz-linear-gradient(top, #6dbf6d, #449b44);
   background-image: linear-gradient(top, #6dbf6d, #449b44);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($base_green, 5%)',endColorstr='darken($base_green, 10%)',GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($blue_green, 5%)',endColorstr='darken($blue_green, 10%)',GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 .btn.positive:hover {
@@ -2374,7 +2408,7 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
   background-image: -o-linear-gradient(top, #d25e59, #b0352f);
   background-image: -moz-linear-gradient(top, #d25e59, #b0352f);
   background-image: linear-gradient(top, #d25e59, #b0352f);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($base_red, 5%)',endColorstr='darken($base_red, 10%)',GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($blue_red, 5%)',endColorstr='darken($blue_red, 10%)',GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 .btn.negative:hover {
@@ -2684,7 +2718,7 @@ p.alert {
   /* -- Full Width -- */
   /* -- Reset -- */
 }
-@media only screen and (max-width: 28.75em) {
+@media only screen and (max-width: 30em) {
   body {
     font-size: 80%;
   }
@@ -2692,6 +2726,11 @@ p.alert {
   /* -- Exclusions -- */
   .mobile-hide {
     display: none;
+  }
+
+  /* -- Navigation -- */
+  .mobile-menu {
+    display: block;
   }
 
   /* -- Forms -- */

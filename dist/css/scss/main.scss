@@ -3,14 +3,17 @@
 // 1. Font Face
 @import 'site/font-face';
 
-// 2. Site vars
+// 2. Config vars
+@import 'config/vars';
+
+// 3. Site vars
 @import 'site/vars';
 
-// 3. Config
+// 4. Config
 @import 'config/#all';
 
-// 4. Base
+// 5. Base
 @import 'base/#all';
 
-// 5. Site
+// 6. Site
 @import 'site/#all';

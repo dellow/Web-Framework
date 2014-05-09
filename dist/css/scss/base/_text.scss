@@ -4,53 +4,54 @@
 ========================================================================== */
 /* -- Global -- */
 html {
-    min-height:100%;
-    overflow-y:scroll;
-    font:#{$base_font_size}/#{$line_height_ratio} $base_sans_serif_font_family;
-	color: $base_text_colour;
+    min-height: 100%;
+    overflow-y: scroll;
+    font: #{$font_size_base}/#{$line_height_ratio} $font_family_sans_serif_base; // Hashed so SASS doesn't do a calculation
+	color: $colour_text;
 	word-wrap: break-word;
 }
 
 /* -- Links, Buttons & Hover Styles -- */
 a, button {
-	color: $base_link_colour;
+	color: $colour_text_link;
 	text-decoration: none;
 	@include transition(color 500ms ease);
 	&:hover {
-		color: $base_link_colour_hover;
+		color: $colour_text_link_hover;
 	}
 	&:active {
-		color: darken($base_link_colour_hover, 15%);
+		color: darken($colour_text_link_hover, 15%);
 	}
 }
 
 /* -- Paragraph Formatting -- */
-p, .column-layout {
-	margin: 0 0 $nudge 0;
+p {
+	@include rhythm($font_size_base);
 }
 
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-	line-height: 1;
+	&.collapse-margin {
+		margin-bottom: ($nudge / 5);
+	}
 }
 h1 {
-	@include rem(font-size, $font_size_h1);
+	@include rhythm($font_size_h1);
 }
 h2 {
-	@include rem(font-size, $font_size_h2);
+	@include rhythm($font_size_h2);
 }
 h3 {
-	@include rem(font-size, $font_size_h3);
+	@include rhythm($font_size_h3);
 }
 h4 {
-	@include rem(font-size, $font_size_h4);
+	@include rhythm($font_size_h4);
 }
 h5 {
-	@include rem(font-size, $font_size_h5);
+	@include rhythm($font_size_h5);
 }
 h6 {
-	@include rem(font-size, $font_size_h6);
+	@include rhythm($font_size_h6);
 }
 
 /* -- Quotes -- */

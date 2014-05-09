@@ -56,6 +56,11 @@
 		}
 	}
 
+	/* -- Navigation -- */
+	.mobile-menu {
+		display: block;
+	}
+
 	/* -- Forms -- */
 	form {
 		&.form-inline, &.form-inline-block, &.form-block {

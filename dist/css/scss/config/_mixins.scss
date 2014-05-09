@@ -47,6 +47,23 @@
 }
 
 /**
+ * rhythm
+ * Outputs a perfect vertical rhythm for a particular font-size
+ * in a margin / line-height and font-size format
+ *
+ * @uses px-to-rem()
+ *
+ * .foo {@include rhythm(20px);}
+**/
+@mixin rhythm($size){
+	margin-bottom: 0px + $line_height_base;
+	margin-bottom: ($line_height_base / $font_size_base) + rem;
+	font-size: 0px + $size;
+	font-size: px-to-rem($size);
+	line-height: ceil($size / $line_height_base) * ($line_height_base / $size);
+}
+
+/**
  * rem
  * Output a selector with px fallback and rem values, so that modern browsers will use the rem values.
  * Both multiple selectors and multiple sizes in multiple units can be provided.
