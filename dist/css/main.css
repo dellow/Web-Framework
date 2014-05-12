@@ -1999,22 +1999,21 @@ form.form-block .field-container input:first-child, form.form-block .field-conta
 form.form-block .field-container span + input, form.form-block .field-container span .input, form.form-block .field-container span select, form.form-block .field-container span textarea, form.form-block .field-container span .field-container {
   margin: 0;
 }
-form.form-inline-block label, form.form-inline-block .label {
-  width: 30%;
-}
-form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
-  width: 65%;
-  margin-left: 2%;
-}
-form.form-inline-block input:first-child, form.form-inline-block .input:first-child, form.form-inline-block select:first-child, form.form-inline-block textarea:first-child, form.form-inline-block .field-container:first-child {
-  margin-left: 0;
-}
 form.form-inline-block label, form.form-inline-block .label, form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
   display: inline-block;
   zoom: 1;
   *display: inline;
   /* IE Fix */
-  vertical-align: middle;
+}
+form.form-inline-block label, form.form-inline-block .label {
+  width: 30%;
+}
+form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
+  width: 65%;
+  margin: 0 0 0 2%;
+}
+form.form-inline-block input:first-child, form.form-inline-block .input:first-child, form.form-inline-block select:first-child, form.form-inline-block textarea:first-child, form.form-inline-block .field-container:first-child {
+  margin-left: 0;
 }
 form.form-inline-block .field-container span + input, form.form-inline-block .field-container span .input, form.form-inline-block .field-container span select, form.form-inline-block .field-container span textarea, form.form-inline-block .field-container span .field-container {
   margin: 0;
@@ -2030,6 +2029,7 @@ form label, form .label {
   position: relative;
 }
 form input, form .input, form select, form textarea, form button {
+  cursor: pointer;
   line-height: 24px;
 }
 form input, form .input, form select, form textarea {
@@ -2047,6 +2047,40 @@ form input, form .input, form select, form textarea {
   -moz-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
   -o-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
   transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+}
+form label.select:after {
+  width: 0;
+  height: 0;
+  margin-top: -.15rem;
+  border-top: .35rem solid;
+  border-right: .35rem solid transparent;
+  border-bottom: .35rem solid transparent;
+  border-left: .35rem solid transparent;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  right: 1.125rem;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  pointer-events: none;
+}
+form label.select select {
+  padding-right: 36px;
+  padding-right: 2.25rem;
+  margin: 0;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+form label.select select:hover, form label.select select:focus {
+  background-color: #ddd;
 }
 form textarea {
   min-height: 100px;

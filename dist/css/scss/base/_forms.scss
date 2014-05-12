@@ -161,19 +161,18 @@ form {
 		}
 	}
 	&.form-inline-block {
+		label, .label, input, .input, select, textarea, .field-container {
+			@include inline-block;
+		}
 		label, .label {
 			width: 30%;
 		}
 		input, .input, select, textarea, .field-container {
 			width: 65%;
-			margin-left: 2%;
+			margin: 0 0 0 2%;
 			&:first-child {
 				margin-left: 0;
 			}
-		}
-		label, .label, input, .input, select, textarea, .field-container {
-			@include inline-block;
-			vertical-align: middle;
 		}
 		.field-container {
 			span {
@@ -208,6 +207,7 @@ form {
 
 	// All form elements
 	input, .input, select, textarea, button {
+		cursor: pointer;
 		line-height: $line_height_base;
 	}
 
@@ -223,6 +223,35 @@ form {
 		border-radius: $border_radius_base;
 		@include rem(font-size, 14px);
 		@include transition(color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease);
+	}
+
+	// Selects
+	label.select {
+		&:after {
+			width: 0;
+			height: 0;
+			margin-top: -.15rem;
+			border-top: .35rem solid;
+			border-right: .35rem solid transparent;
+			border-bottom: .35rem solid transparent;
+			border-left: .35rem solid transparent;
+			content: "";
+			position: absolute;
+			top: 50%; @include rem(right, 18px);
+			@include inline-block;
+			pointer-events: none;
+		}
+		select {
+			@include rem(padding-right, 36px);
+			margin: 0;
+			@include inline-block;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			&:hover, &:focus {
+				background-color: #ddd;
+			}
+		}
 	}
 
 	// Textareas
