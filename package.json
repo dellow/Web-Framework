@@ -19,7 +19,9 @@
         "grunt-shell"            : "~0.6.4",
         "grunt-ssh"              : "~0.11.1",
         "grunt-contrib-watch"    : "~0.6.1",
-        "matchdep"               : "~0.3.0",
+        "matchdep"               : "~0.3.0"
+    },
+    "dependencies": {
         "angularjs"              : "*",
         "backbone"               : "*",
         "jquery"                 : "*",
