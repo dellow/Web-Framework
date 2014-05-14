@@ -22,10 +22,10 @@
         "matchdep"               : "~0.3.0"
     },
     "dependencies": {
-        "angularjs"              : "*",
-        "backbone"               : "*",
-        "jquery"                 : "*",
-        "jquery-ui"              : "*",
-        "requirejs"              : "*"
+        "angularjs": "*",
+        "backbone" : "*",
+        "jquery"   : "*",
+        "jquery-ui": "*",
+        "requirejs": "*"
     }
 }
