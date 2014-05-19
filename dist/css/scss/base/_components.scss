@@ -4,11 +4,76 @@
 ========================================================================== */
 /* -- All Navigation -- */
 .navigation {
+	padding: $nudge 0;
 }
 
 /* -- Mobile Navigation -- */
-.mobile-menu {
+.mobile-select-menu {
 	display: none;
+	position: relative;
+	span {
+		display: block;
+		&:after {
+			width: 0;
+			height: 0;
+			border-top: .95rem solid;
+			border-right: .95rem solid transparent;
+			border-bottom: .95rem solid transparent;
+			border-left: .95rem solid transparent;
+			content: "";
+			position: absolute;
+			top: 0%; @include rem(right, 8px);
+			@include inline-block;
+			pointer-events: none;
+			color: $grey;
+			@include opacity(0);
+			@include transition(top 500ms ease, opacity 500ms ease);
+		}
+	}
+	select {
+		width: 100%;
+		height: 36px;
+		padding: 0 2.25rem 0 1rem;
+		margin: 0;
+		border-radius: 0;
+		@include inline-block;
+		cursor: pointer;
+		color: $white;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background: $black;
+		@include transition(background 500ms ease);
+		&:hover, &:focus {
+			background-color: $grey;
+		}
+	}
+	&:after {
+		width: 0;
+		height: 0;
+		border-top: .35rem solid;
+		border-right: .35rem solid transparent;
+		border-bottom: .35rem solid transparent;
+		border-left: .35rem solid transparent;
+		content: "";
+		position: absolute;
+		top: 50%; @include rem(right, 18px);
+		@include inline-block;
+		pointer-events: none;
+		color: $white;
+			@include transition(top 500ms ease);
+	}
+	&:hover {
+		span {
+			&:after {
+				top: 100%;
+				@include opacity(1);
+			}
+		}
+		&:after {
+			top: 100%;
+		}
+	}
 }
 
 /* -- Primary Navigation -- */

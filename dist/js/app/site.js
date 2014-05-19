@@ -6,8 +6,8 @@
 ;(function($, window, undefined){
     // Init
     helper.init(); ui.init();
-    // Site object
-    var site = {};
+    // Object
+    var site = site || {};
 
     /**
      * dependency_tests
@@ -26,25 +26,5 @@
 	    }
 	}
 	site.dependency_tests();
-
-	// Form validation
-	require(['formValidation'], function(){
-        // General forms
-        if($('.validate').length){
-            $('.validate').formValidation({
-                // No options
-            });
-        }
-	});
-
-	// Lightbox
-	require(['lightBox'], function(){
-        // General Lightbox
-        if($('.lightbox').length){
-            $('.lightbox').lightBox({
-                // No options
-            });
-        }
-	});
 
 }(jQuery, window));

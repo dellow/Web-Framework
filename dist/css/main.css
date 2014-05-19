@@ -1122,9 +1122,99 @@ blockquote:after, q:after {
    Classes the make up a structural block such as a Grid or Navigation
 ========================================================================== */
 /* -- All Navigation -- */
+.navigation {
+  padding: 0.825em 0;
+}
+
 /* -- Mobile Navigation -- */
-.mobile-menu {
+.mobile-select-menu {
   display: none;
+  position: relative;
+}
+.mobile-select-menu span {
+  display: block;
+}
+.mobile-select-menu span:after {
+  width: 0;
+  height: 0;
+  border-top: .95rem solid;
+  border-right: .95rem solid transparent;
+  border-bottom: .95rem solid transparent;
+  border-left: .95rem solid transparent;
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 8px;
+  right: 0.5rem;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  pointer-events: none;
+  color: #dddddd;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(0))";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transition: top 500ms ease, opacity 500ms ease;
+  -moz-transition: top 500ms ease, opacity 500ms ease;
+  -o-transition: top 500ms ease, opacity 500ms ease;
+  transition: top 500ms ease, opacity 500ms ease;
+}
+.mobile-select-menu select {
+  width: 100%;
+  height: 36px;
+  padding: 0 2.25rem 0 1rem;
+  margin: 0;
+  border-radius: 0;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  cursor: pointer;
+  color: white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: black;
+  -webkit-transition: background 500ms ease;
+  -moz-transition: background 500ms ease;
+  -o-transition: background 500ms ease;
+  transition: background 500ms ease;
+}
+.mobile-select-menu select:hover, .mobile-select-menu select:focus {
+  background-color: #dddddd;
+}
+.mobile-select-menu:after {
+  width: 0;
+  height: 0;
+  border-top: .35rem solid;
+  border-right: .35rem solid transparent;
+  border-bottom: .35rem solid transparent;
+  border-left: .35rem solid transparent;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  right: 1.125rem;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  pointer-events: none;
+  color: white;
+  -webkit-transition: top 500ms ease;
+  -moz-transition: top 500ms ease;
+  -o-transition: top 500ms ease;
+  transition: top 500ms ease;
+}
+.mobile-select-menu:hover span:after {
+  top: 100%;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(100))";
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+.mobile-select-menu:hover:after {
+  top: 100%;
 }
 
 /* -- Primary Navigation -- */
@@ -2785,7 +2875,7 @@ p.alert {
    styles.
 ========================================================================== */
 @media only screen and (max-width: 48em) {
-  body {
+  html {
     font-size: 95%;
   }
 
@@ -2796,10 +2886,14 @@ p.alert {
 
   /* -- Full Width -- */
   /* -- Reset -- */
+  /* -- Images & Alignment -- */
+  .thumb {
+    max-width: 40%;
+  }
 }
 @media only screen and (max-width: 30em) {
-  body {
-    font-size: 80%;
+  html {
+    font-size: 100%;
   }
 
   /* -- Exclusions -- */
@@ -2807,8 +2901,34 @@ p.alert {
     display: none;
   }
 
-  /* -- Navigation -- */
-  .mobile-menu {
+  .nav-primary {
+    display: none;
+  }
+
+  /* -- Images & Alignment -- */
+  .thumb {
+    width: 100%;
+    max-width: none;
+    float: none;
+  }
+  .thumb.alignright {
+    margin-left: 0;
+  }
+  .thumb.alignleft {
+    margin-right: 0;
+  }
+  .thumb img {
+    width: 100%;
+  }
+
+  figure figcaption {
+    font-size: 14px;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  /* -- Mobile Menu -- */
+  .mobile-select-menu {
     display: block;
   }
 
