@@ -2,23 +2,35 @@
    Classes
    A library of classes to achieve various things.
 ========================================================================== */
-/* -- Alignment -- */
+/* -- Images & Alignment -- */
 .aligncenter, .alignnone {
 	margin: $nudge auto;
 	display: block;
 }
 .alignleft {
-	margin: 0 $nudge $nudge 0;
+	margin-right: $nudge;
 	float: left;
 }
 .alignright {
-	margin: 0 0 $nudge $nudge;
+	margin-left: $nudge;
 	float: right;
 }
-img.alignleft, img.alignright, img.aligncenter, img.alignnone {
-	padding: ($nudge / 2);
-	border: 2px solid #efefef;
-	border-radius: $border_radius_base;
+.thumb {
+	max-width: 20%;
+	display: block;
+	.thumb--image {
+		border: 4px solid #DFDFDF;
+	}
+	> a {
+		display: block;
+	}
+}
+img {
+	&.alignleft, &.alignright, &.aligncenter, &.alignnone {
+		padding: ($nudge / 2);
+		border: 2px solid #efefef;
+		border-radius: $border_radius_base;
+	}
 }
 
 /* -- Messages -- */

@@ -24,9 +24,24 @@ a, button {
 	}
 }
 
-/* -- Paragraph Formatting -- */
-p {
+/* -- Styling classes -- */
+.hatnote {
+	@include rem(padding-left, 20px);
 	@include rhythm($font_size_base);
+	font-style: italic;
+}
+
+/* -- Main content -- */
+.content {
+	/* -- General Formatting -- */
+	p, ul, ol, figure {
+		@include rhythm($font_size_base);
+	}
+
+	/* -- Lists -- */
+	ul, ol {
+		margin-left: $ul_indent_base;
+	}
 }
 
 /* -- Heading Formatting -- */

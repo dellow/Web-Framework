@@ -426,20 +426,31 @@ textarea {
    Classes
    A library of classes to achieve various things.
 ========================================================================== */
-/* -- Alignment -- */
+/* -- Images & Alignment -- */
 .aligncenter, .alignnone {
   margin: 0.825em auto;
   display: block;
 }
 
 .alignleft {
-  margin: 0 0.825em 0.825em 0;
+  margin-right: 0.825em;
   float: left;
 }
 
 .alignright {
-  margin: 0 0 0.825em 0.825em;
+  margin-left: 0.825em;
   float: right;
+}
+
+.thumb {
+  max-width: 20%;
+  display: block;
+}
+.thumb .thumb--image {
+  border: 4px solid #DFDFDF;
+}
+.thumb > a {
+  display: block;
 }
 
 img.alignleft, img.alignright, img.aligncenter, img.alignnone {
@@ -736,10 +747,12 @@ ul.horizontal-block li {
    Defaults
    Non-classed HTML elements
 ========================================================================== */
+/* -- Fieldset -- */
 fieldset {
   margin: 0.825em 0;
 }
 
+/* -- Source Formatting -- */
 pre {
   padding: 0.825em;
   margin: 0.5em 0;
@@ -766,12 +779,18 @@ kbd {
   background-color: #f6f6f6;
 }
 
+/* -- Images -- */
+figure figcaption {
+  margin-top: 0.4125em;
+  font-size: 12px;
+}
+
+/* -- Lists -- */
 ol.code {
   margin: 0 0 0 3em;
   font: 400 1em/1.7143 "source-code-pro", monospace;
   color: #dddddd;
 }
-
 ol.code li {
   padding: 0 0.5em;
   margin: 0 0 -1px 0;
@@ -784,13 +803,12 @@ ul {
   list-style-type: disc;
 }
 
-ul ul, ol ol {
+ul li, ul li, ol li, ol li {
+  margin: 0.3em 0;
+}
+ul ul, ul ol, ol ul, ol ol {
   margin-left: 1.2em;
   list-style-type: circle;
-}
-
-ul li, ol li {
-  margin: 0.3em 0;
 }
 
 dl dd {
@@ -798,17 +816,18 @@ dl dd {
   text-indent: 0.825em;
 }
 
+/* -- Headers -- */
 h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
 }
 
+/* -- Rules -- */
 hr {
   margin: 2em 0;
   border: 1px solid;
   border-color: #EFEFEF;
   border-color: rgba(0, 0, 0, 0.085);
 }
-
 hr.dots {
   height: 0;
   margin: 0.825em 0 2em;
@@ -820,7 +839,6 @@ hr.dots {
   font-size: 2.5rem;
   text-align: center;
 }
-
 hr.dots:after {
   content: "·········";
   color: #dddddd;
@@ -829,6 +847,7 @@ hr.dots:after {
   height: 0;
 }
 
+/* -- Selection -- */
 ::-moz-selection {
   background: #cd4b45;
   color: white;
@@ -841,6 +860,7 @@ hr.dots:after {
   text-shadow: none;
 }
 
+/* -- Scrollbars -- */
 /*
 ::-webkit-scrollbar {
 	width: 1em;
@@ -879,8 +899,14 @@ hr.dots:after {
 /* -- Container -- */
 .container {
   width: 90%;
+  max-width: 1280px;
   margin: 0 auto;
   position: relative;
+}
+
+/* -- Content -- */
+.content {
+  padding: 0.825em 0;
 }
 
 /* ==========================================================================
@@ -912,13 +938,32 @@ a:active, button:active {
   color: #004480;
 }
 
-/* -- Paragraph Formatting -- */
-p {
+/* -- Styling classes -- */
+.hatnote {
+  padding-left: 20px;
+  padding-left: 1.25rem;
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
+  font-style: italic;
+}
+
+/* -- Main content -- */
+.content {
+  /* -- General Formatting -- */
+  /* -- Lists -- */
+}
+.content p, .content ul, .content ol, .content figure {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.content ul, .content ol {
+  margin-left: 1.2em;
 }
 
 /* -- Heading Formatting -- */
