@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Tables
+   Description goes here.
+========================================================================== */
+/* -- Div Tables -- */
+div.table {
+	@extend %cf;
+	width: 100%;
+	.col {
+		width: 48%;
+		padding: 0.5%;
+		margin-left: 1%;
+		float: left;
+	}
+	.col:first-child {
+		margin-left: 0;
+	}
+}
+
+/* -- Normal Tables -- */
+table.table {
+	width: 100%;
+	border: 1px solid $grey;
+	border-radius: $border_radius_base;
+	border-collapse: separate;
+  	border-spacing: 0;
+	thead {
+		th {
+			border-top: 0;
+		}
+	}
+	td, th {
+		padding: 5px;
+		border-left: 1px solid #f2f2f2;
+		border-top: 1px solid #d9d9d9;
+		text-align: center;
+		vertical-align: middle;
+		&:first-child {
+			border-left: 0;
+		}
+	}
+	&.table-striped {
+		tbody {
+			tr {
+				&:nth-child(odd) {
+					background: #f9f9f9;
+				}
+			}
+		}
+	}
+}

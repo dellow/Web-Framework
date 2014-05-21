@@ -127,14 +127,14 @@
    Placeholders
    Some default placeholders for the framework.
 ========================================================================== */
-.cf, .grid, .gallery, .pagination, div.table, form .field {
+.cf, .gallery, .grid, .pagination, div.table, form .field {
   zoom: 1;
 }
-.cf:before, .grid:before, .gallery:before, .pagination:before, div.table:before, form .field:before, .cf:after, .grid:after, .gallery:after, .pagination:after, div.table:after, form .field:after {
+.cf:before, .gallery:before, .grid:before, .pagination:before, div.table:before, form .field:before, .cf:after, .gallery:after, .grid:after, .pagination:after, div.table:after, form .field:after {
   content: "";
   display: table;
 }
-.cf:after, .grid:after, .gallery:after, .pagination:after, div.table:after, form .field:after {
+.cf:after, .gallery:after, .grid:after, .pagination:after, div.table:after, form .field:after {
   clear: both;
 }
 
@@ -953,6 +953,7 @@ a:active, button:active {
 /* -- Main content -- */
 .content {
   /* -- General Formatting -- */
+  /* -- Paragraphs -- */
   /* -- Lists -- */
 }
 .content p, .content ul, .content ol, .content figure {
@@ -961,6 +962,13 @@ a:active, button:active {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
+}
+.content p:first-of-type {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.33333;
 }
 .content ul, .content ol {
   margin-left: 1.2em;
@@ -1118,142 +1126,112 @@ blockquote:after, q:after {
 }
 
 /* ==========================================================================
-   Components
-   Classes the make up a structural block such as a Grid or Navigation
+   Breadcrumb
+   Description goes here.
 ========================================================================== */
-/* -- All Navigation -- */
-.navigation {
-  padding: 0.825em 0;
-}
-
-/* -- Mobile Navigation -- */
-.mobile-select-menu {
-  display: none;
-  position: relative;
-}
-.mobile-select-menu span {
-  display: block;
-}
-.mobile-select-menu span:after {
-  width: 0;
-  height: 0;
-  border-top: .95rem solid;
-  border-right: .95rem solid transparent;
-  border-bottom: .95rem solid transparent;
-  border-left: .95rem solid transparent;
-  content: "";
-  position: absolute;
-  top: 0%;
-  right: 8px;
-  right: 0.5rem;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
-  pointer-events: none;
-  color: #dddddd;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(0))";
-  filter: alpha(opacity=0);
-  opacity: 0;
-  -webkit-transition: top 500ms ease, opacity 500ms ease;
-  -moz-transition: top 500ms ease, opacity 500ms ease;
-  -o-transition: top 500ms ease, opacity 500ms ease;
-  transition: top 500ms ease, opacity 500ms ease;
-}
-.mobile-select-menu select {
-  width: 100%;
-  height: 36px;
-  padding: 0 2.25rem 0 1rem;
-  margin: 0;
-  border-radius: 0;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
-  cursor: pointer;
-  color: white;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: black;
-  -webkit-transition: background 500ms ease;
-  -moz-transition: background 500ms ease;
-  -o-transition: background 500ms ease;
-  transition: background 500ms ease;
-}
-.mobile-select-menu select:hover, .mobile-select-menu select:focus {
-  background-color: #dddddd;
-}
-.mobile-select-menu:after {
-  width: 0;
-  height: 0;
-  border-top: .35rem solid;
-  border-right: .35rem solid transparent;
-  border-bottom: .35rem solid transparent;
-  border-left: .35rem solid transparent;
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 18px;
-  right: 1.125rem;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
-  pointer-events: none;
-  color: white;
-  -webkit-transition: top 500ms ease;
-  -moz-transition: top 500ms ease;
-  -o-transition: top 500ms ease;
-  transition: top 500ms ease;
-}
-.mobile-select-menu:hover span:after {
-  top: 100%;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(100))";
-  filter: alpha(opacity=100);
-  opacity: 1;
-}
-.mobile-select-menu:hover:after {
-  top: 100%;
-}
-
-/* -- Primary Navigation -- */
-.nav-primary li {
-  padding: 0 2px;
-  display: inline;
-  position: relative;
-}
-.nav-primary li .sub-menu {
-  padding: 0 12px;
-  margin-left: 0;
-  display: none;
-  position: absolute;
-  left: -12px;
-  top: 100%;
-  z-index: 100;
-  background: white;
-}
-.nav-primary li .sub-menu li {
-  padding: 0;
-  margin: 6px 0;
-  display: block;
-  white-space: nowrap;
-}
-.nav-primary li .sub-menu li .sub-menu {
-  left: 100%;
-  top: -5px;
-}
-.nav-primary li.current_page_item > a, .nav-primary li.current_page_parent > a {
+/* -- Breadcrumb -- */
+.breadcrumb > a {
   font-weight: 700;
 }
-.nav-primary li:first-child {
-  padding-left: 0;
+
+/* ==========================================================================
+   Content Editable
+   Description goes here.
+========================================================================== */
+/* -- Content Editable -- */
+.editable {
+  padding: 3px;
+  margin-left: -3px;
+  border-radius: 3px;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  -webkit-transition: background 500ms ease, border-color 500ms ease;
+  -moz-transition: background 500ms ease, border-color 500ms ease;
+  -o-transition: background 500ms ease, border-color 500ms ease;
+  transition: background 500ms ease, border-color 500ms ease;
 }
-.nav-primary li:hover > .sub-menu {
-  display: block;
+.editable[contenteditable="false"]:hover {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+.editable[contenteditable="false"]:focus {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+.editable:hover {
+  background: rgba(64, 179, 232, 0.2) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.4);
+  border-right: 1px solid rgba(0, 0, 0, 0.4);
+}
+.editable:focus {
+  background: rgba(64, 179, 232, 0.4) !important;
+}
+.editable + .editable {
+  padding-left: 2px;
+  margin-left: 2px;
 }
 
-/* -- Grid System -- */
+/* ==========================================================================
+   Gallery
+   Gallery images and captions.
+========================================================================== */
+/* -- Gallery -- */
+.gallery {
+  margin: 0.825em 0;
+}
+.gallery dl dd {
+  text-indent: 0;
+}
+.gallery .gallery-item {
+  width: 33.3333%;
+  /* Default width */
+  padding: 1%;
+  float: left;
+  overflow: hidden;
+  vertical-align: top;
+  list-style: none;
+  letter-spacing: normal;
+  text-align: center;
+}
+.gallery .gallery-item a {
+  display: block;
+}
+.gallery .gallery-item img {
+  border-radius: 3px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.gallery .gallery-item .gallery-caption {
+  text-align: center;
+}
+.gallery .gallery-item .gallery-caption a {
+  display: inline;
+}
+.gallery.image-row-1 .gallery-item, .gallery.gallery-columns-1 .gallery-item {
+  width: 100%;
+}
+.gallery.image-row-2 .gallery-item, .gallery.gallery-columns-2 .gallery-item {
+  width: 50%;
+}
+.gallery.image-row-3 .gallery-item, .gallery.gallery-columns-3 .gallery-item {
+  width: 33.333%;
+}
+.gallery.image-row-4 .gallery-item, .gallery.gallery-columns-4 .gallery-item {
+  width: 25%;
+}
+.gallery.image-row-5 .gallery-item, .gallery.gallery-columns-5 .gallery-item {
+  width: 20%;
+}
+.gallery.image-row-6 .gallery-item, .gallery.gallery-columns-6 .gallery-item {
+  width: 16.666%;
+}
+
+/* ==========================================================================
+   Grid
+   Grid layouts.
+========================================================================== */
+/* -- System -- */
 .grid {
   width: 101.5%;
   position: relative;
@@ -1623,65 +1601,146 @@ blockquote:after, q:after {
   width: 6.25%;
 }
 
-/* -- Gallery -- */
-.gallery {
-  margin: 0.825em 0;
+/* ==========================================================================
+   Menus
+   Styles for navigational menus.
+========================================================================== */
+/* -- All Navigation -- */
+.navigation {
+  padding: 0.825em 0;
 }
-.gallery dl dd {
-  text-indent: 0;
+
+/* -- Mobile Navigation -- */
+.mobile-select-menu {
+  display: none;
+  position: relative;
 }
-.gallery .gallery-item {
-  width: 33.3333%;
-  /* Default width */
-  padding: 1%;
-  float: left;
-  overflow: hidden;
-  vertical-align: top;
-  list-style: none;
-  letter-spacing: normal;
-  text-align: center;
-}
-.gallery .gallery-item a {
+.mobile-select-menu span {
   display: block;
 }
-.gallery .gallery-item img {
-  border-radius: 3px;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  -o-box-sizing: content-box;
-  -ms-box-sizing: content-box;
-  box-sizing: content-box;
+.mobile-select-menu span:after {
+  width: 0;
+  height: 0;
+  border-top: .95rem solid;
+  border-right: .95rem solid transparent;
+  border-bottom: .95rem solid transparent;
+  border-left: .95rem solid transparent;
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 8px;
+  right: 0.5rem;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  pointer-events: none;
+  color: #dddddd;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(0))";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transition: top 500ms ease, opacity 500ms ease;
+  -moz-transition: top 500ms ease, opacity 500ms ease;
+  -o-transition: top 500ms ease, opacity 500ms ease;
+  transition: top 500ms ease, opacity 500ms ease;
 }
-.gallery .gallery-item .gallery-caption {
-  text-align: center;
-}
-.gallery .gallery-item .gallery-caption a {
-  display: inline;
-}
-.gallery.image-row-1 .gallery-item, .gallery.gallery-columns-1 .gallery-item {
+.mobile-select-menu select {
   width: 100%;
+  height: 36px;
+  padding: 0 2.25rem 0 1rem;
+  margin: 0;
+  border-radius: 0;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  cursor: pointer;
+  color: white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: black;
+  -webkit-transition: background 500ms ease;
+  -moz-transition: background 500ms ease;
+  -o-transition: background 500ms ease;
+  transition: background 500ms ease;
 }
-.gallery.image-row-2 .gallery-item, .gallery.gallery-columns-2 .gallery-item {
-  width: 50%;
+.mobile-select-menu select:hover, .mobile-select-menu select:focus {
+  background-color: #dddddd;
 }
-.gallery.image-row-3 .gallery-item, .gallery.gallery-columns-3 .gallery-item {
-  width: 33.333%;
+.mobile-select-menu:after {
+  width: 0;
+  height: 0;
+  border-top: .35rem solid;
+  border-right: .35rem solid transparent;
+  border-bottom: .35rem solid transparent;
+  border-left: .35rem solid transparent;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  right: 1.125rem;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  pointer-events: none;
+  color: white;
+  -webkit-transition: top 500ms ease;
+  -moz-transition: top 500ms ease;
+  -o-transition: top 500ms ease;
+  transition: top 500ms ease;
 }
-.gallery.image-row-4 .gallery-item, .gallery.gallery-columns-4 .gallery-item {
-  width: 25%;
+.mobile-select-menu:hover span:after {
+  top: 100%;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(100))";
+  filter: alpha(opacity=100);
+  opacity: 1;
 }
-.gallery.image-row-5 .gallery-item, .gallery.gallery-columns-5 .gallery-item {
-  width: 20%;
-}
-.gallery.image-row-6 .gallery-item, .gallery.gallery-columns-6 .gallery-item {
-  width: 16.666%;
+.mobile-select-menu:hover:after {
+  top: 100%;
 }
 
-/* -- Breadcrumb -- */
-.breadcrumb > a {
+/* -- Primary Navigation -- */
+.nav-primary li {
+  padding: 0 2px;
+  display: inline;
+  position: relative;
+}
+.nav-primary li .sub-menu {
+  padding: 0 12px;
+  margin-left: 0;
+  display: none;
+  position: absolute;
+  left: -12px;
+  top: 100%;
+  z-index: 100;
+  background: white;
+}
+.nav-primary li .sub-menu li {
+  padding: 0;
+  margin: 6px 0;
+  display: block;
+  white-space: nowrap;
+}
+.nav-primary li .sub-menu li .sub-menu {
+  left: 100%;
+  top: -5px;
+}
+.nav-primary li.current_page_item > a, .nav-primary li.current_page_parent > a {
   font-weight: 700;
 }
+.nav-primary li:first-child {
+  padding-left: 0;
+}
+.nav-primary li:hover > .sub-menu {
+  display: block;
+}
 
+/* ==========================================================================
+   Pagination
+   Description goes here.
+========================================================================== */
 /* -- Pagination -- */
 .pagination {
   margin-top: 1.65em;
@@ -1704,76 +1763,10 @@ blockquote:after, q:after {
   color: #cd4b45;
 }
 
-/* -- Div Tables -- */
-div.table {
-  width: 100%;
-}
-div.table .col {
-  width: 48%;
-  padding: 0.5%;
-  margin-left: 1%;
-  float: left;
-}
-div.table .col:first-child {
-  margin-left: 0;
-}
-
-/* -- Normal Tables -- */
-table.table {
-  width: 100%;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-table.table thead th {
-  border-top: 0;
-}
-table.table td, table.table th {
-  padding: 5px;
-  border-left: 1px solid #f2f2f2;
-  border-top: 1px solid #d9d9d9;
-  text-align: center;
-  vertical-align: middle;
-}
-table.table td:first-child, table.table th:first-child {
-  border-left: 0;
-}
-table.table.table-striped tbody tr:nth-child(odd) {
-  background: #f9f9f9;
-}
-
-/* -- Content Editable -- */
-.editable {
-  padding: 3px;
-  margin-left: -3px;
-  border-radius: 3px;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  -webkit-transition: background 500ms ease, border-color 500ms ease;
-  -moz-transition: background 500ms ease, border-color 500ms ease;
-  -o-transition: background 500ms ease, border-color 500ms ease;
-  transition: background 500ms ease, border-color 500ms ease;
-}
-.editable[contenteditable="false"]:hover {
-  background: rgba(0, 0, 0, 0.2) !important;
-}
-.editable[contenteditable="false"]:focus {
-  background: rgba(0, 0, 0, 0.4) !important;
-}
-.editable:hover {
-  background: rgba(64, 179, 232, 0.2) !important;
-  border-left: 1px solid rgba(0, 0, 0, 0.4);
-  border-right: 1px solid rgba(0, 0, 0, 0.4);
-}
-.editable:focus {
-  background: rgba(64, 179, 232, 0.4) !important;
-}
-.editable + .editable {
-  padding-left: 2px;
-  margin-left: 2px;
-}
-
+/* ==========================================================================
+   Progress Bar
+   Description goes here.
+========================================================================== */
 /* -- Progress Bar -- */
 @-webkit-keyframes progress-bar-stripes {
   from {
@@ -1974,7 +1967,50 @@ table.table.table-striped tbody tr:nth-child(odd) {
 }
 
 /* ==========================================================================
-   Forms
+   Tables
+   Description goes here.
+========================================================================== */
+/* -- Div Tables -- */
+div.table {
+  width: 100%;
+}
+div.table .col {
+  width: 48%;
+  padding: 0.5%;
+  margin-left: 1%;
+  float: left;
+}
+div.table .col:first-child {
+  margin-left: 0;
+}
+
+/* -- Normal Tables -- */
+table.table {
+  width: 100%;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+table.table thead th {
+  border-top: 0;
+}
+table.table td, table.table th {
+  padding: 5px;
+  border-left: 1px solid #f2f2f2;
+  border-top: 1px solid #d9d9d9;
+  text-align: center;
+  vertical-align: middle;
+}
+table.table td:first-child, table.table th:first-child {
+  border-left: 0;
+}
+table.table.table-striped tbody tr:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* ==========================================================================
+   Base
    Styling for elements within a form tag
 ========================================================================== */
 /* -- Forms -- */
@@ -1993,24 +2029,162 @@ form .field {
   margin: 0 0 0.825em;
   position: relative;
 }
-form .col-1 {
-  width: 100% !important;
+form.form-inline label, form.form-inline .label, form.form-inline input, form.form-inline .input, form.form-inline select, form.form-inline textarea, form.form-inline .field-container {
+  width: auto;
+  margin: 0 0 0 0.825em;
+  display: inline;
+  vertical-align: middle;
 }
-form .col-2 {
-  width: 49.5% !important;
+form.form-inline label:first-child, form.form-inline .label:first-child, form.form-inline input:first-child, form.form-inline .input:first-child, form.form-inline select:first-child, form.form-inline textarea:first-child, form.form-inline .field-container:first-child {
+  margin-left: 0;
 }
-form .col-3 {
-  width: 31.3% !important;
+form.form-inline span + input, form.form-inline span .input, form.form-inline span select, form.form-inline span textarea, form.form-inline span .field-container {
+  margin: 0;
 }
-form .col-4 {
-  width: 22.7% !important;
+form.form-block input, form.form-block .input, form.form-block select, form.form-block textarea, form.form-block .field-container {
+  width: 100%;
+  display: block;
 }
-form .col-5 {
-  width: 17.6% !important;
+form.form-block .field-container input, form.form-block .field-container .input, form.form-block .field-container select, form.form-block .field-container textarea {
+  margin-left: 2%;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  vertical-align: middle;
 }
-form .col-6 {
-  width: 14.15% !important;
+form.form-block .field-container input:first-child, form.form-block .field-container .input:first-child, form.form-block .field-container select:first-child, form.form-block .field-container textarea:first-child {
+  margin-left: 0;
 }
+form.form-block .field-container span + input, form.form-block .field-container span .input, form.form-block .field-container span select, form.form-block .field-container span textarea, form.form-block .field-container span .field-container {
+  margin: 0;
+}
+form.form-inline-block label, form.form-inline-block .label, form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+}
+form.form-inline-block label, form.form-inline-block .label {
+  width: 30%;
+}
+form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
+  width: 65%;
+  margin: 0 0 0 2%;
+}
+form.form-inline-block input:first-child, form.form-inline-block .input:first-child, form.form-inline-block select:first-child, form.form-inline-block textarea:first-child, form.form-inline-block .field-container:first-child {
+  margin-left: 0;
+}
+form.form-inline-block .field-container span + input, form.form-inline-block .field-container span .input, form.form-inline-block .field-container span select, form.form-inline-block .field-container span textarea, form.form-inline-block .field-container span .field-container {
+  margin: 0;
+}
+form.form-block label input[type="radio"], form.form-block label input[type="checkbox"], form.form-inline-block label input[type="radio"], form.form-inline-block label input[type="checkbox"] {
+  margin: -4px 2px 0 10px;
+}
+form.form-block label:first-of-type input, form.form-inline-block label:first-of-type input {
+  margin-left: 0;
+}
+form label, form .label {
+  margin: 0;
+  position: relative;
+}
+form input, form .input, form select, form textarea, form button {
+  cursor: pointer;
+  line-height: 24px;
+}
+form input, form .input, form select, form textarea {
+  height: 35px;
+  padding: 0.4em 0.6em;
+  margin: 0.2em 0;
+  border: 1px solid #CCCCCC;
+  vertical-align: top;
+  border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
+  border-radius: 3px;
+  font-size: 14px;
+  font-size: 0.875rem;
+  -webkit-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+  -moz-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+  -o-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+  transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+}
+form textarea {
+  min-height: 100px;
+  height: 125px;
+}
+form.form-block input[type="radio"], form.form-block input[type="checkbox"], form.form-inline-block input[type="radio"], form.form-inline-block input[type="checkbox"], form input[type="radio"], form input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  margin: 0 5px 0 0;
+  border: 0;
+  display: inline;
+  vertical-align: middle;
+}
+form.form-block input[type="radio"] + label, form.form-block input[type="checkbox"] + label, form.form-inline-block input[type="radio"] + label, form.form-inline-block input[type="checkbox"] + label, form input[type="radio"] + label, form input[type="checkbox"] + label {
+  margin: 0 0.825em 0 0.2em;
+  vertical-align: middle;
+}
+form button, form .button {
+  height: 35px;
+  padding: 0.4em 2em;
+  margin: 0;
+  border: 1px solid #CCCCCC;
+  position: relative;
+  vertical-align: top;
+  border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+  color: inherit;
+  background-color: #f5f5f5;
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
+  -webkit-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+  -moz-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+  -o-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+  transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+}
+form button:active, form button:hover, form .button:active, form .button:hover {
+  color: inherit;
+  border-color: #efefef;
+  background-color: #ededed;
+}
+form button:active, form .button:active {
+  border-color: #efefef;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(230, 230, 230, 0.02);
+}
+form button[disabled], form button.disabled, form button.disabled:hover, form button.disabled:active, form .button[disabled], form .button.disabled, form .button.disabled:hover, form .button.disabled:active {
+  box-shadow: none;
+  border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
+  cursor: default;
+  background-color: white;
+}
+form input.disabled, form select.disabled, form textarea.disabled {
+  background: #ebebe4;
+  cursor: default;
+}
+form input.disabled:focus, form input.disabled:focus, form input.disabled:focus, form select.disabled:focus, form select.disabled:focus, form select.disabled:focus, form textarea.disabled:focus, form textarea.disabled:focus, form textarea.disabled:focus {
+  border-color: #CCCCCC;
+}
+form input:hover, form input:hover, form input:hover, form select:hover, form select:hover, form select:hover, form textarea:hover, form textarea:hover, form textarea:hover {
+  border-color: #CCCCCC;
+}
+form input:focus, form input:focus, form input:focus, form select:focus, form select:focus, form select:focus, form textarea:focus, form textarea:focus, form textarea:focus {
+  border-color: #AAA;
+}
+form input[type="checkbox"], form input[type="radio"], form select[type="checkbox"], form select[type="radio"], form textarea[type="checkbox"], form textarea[type="radio"] {
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   Customised
+   Custom form inputs.
+========================================================================== */
+/* -- Forms -- */
 form [class*='custom-'] {
   margin-right: 0.825em;
   position: relative;
@@ -2104,86 +2278,7 @@ form .custom-radio input[type=radio]:checked + label:after {
   filter: alpha(opacity=80);
   opacity: 0.8;
 }
-form.form-inline label, form.form-inline .label, form.form-inline input, form.form-inline .input, form.form-inline select, form.form-inline textarea, form.form-inline .field-container {
-  width: auto;
-  margin: 0 0 0 0.825em;
-  display: inline;
-  vertical-align: middle;
-}
-form.form-inline label:first-child, form.form-inline .label:first-child, form.form-inline input:first-child, form.form-inline .input:first-child, form.form-inline select:first-child, form.form-inline textarea:first-child, form.form-inline .field-container:first-child {
-  margin-left: 0;
-}
-form.form-inline span + input, form.form-inline span .input, form.form-inline span select, form.form-inline span textarea, form.form-inline span .field-container {
-  margin: 0;
-}
-form.form-block input, form.form-block .input, form.form-block select, form.form-block textarea, form.form-block .field-container {
-  width: 100%;
-  display: block;
-}
-form.form-block .field-container input, form.form-block .field-container .input, form.form-block .field-container select, form.form-block .field-container textarea {
-  margin-left: 2%;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
-  vertical-align: middle;
-}
-form.form-block .field-container input:first-child, form.form-block .field-container .input:first-child, form.form-block .field-container select:first-child, form.form-block .field-container textarea:first-child {
-  margin-left: 0;
-}
-form.form-block .field-container span + input, form.form-block .field-container span .input, form.form-block .field-container span select, form.form-block .field-container span textarea, form.form-block .field-container span .field-container {
-  margin: 0;
-}
-form.form-inline-block label, form.form-inline-block .label, form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
-}
-form.form-inline-block label, form.form-inline-block .label {
-  width: 30%;
-}
-form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
-  width: 65%;
-  margin: 0 0 0 2%;
-}
-form.form-inline-block input:first-child, form.form-inline-block .input:first-child, form.form-inline-block select:first-child, form.form-inline-block textarea:first-child, form.form-inline-block .field-container:first-child {
-  margin-left: 0;
-}
-form.form-inline-block .field-container span + input, form.form-inline-block .field-container span .input, form.form-inline-block .field-container span select, form.form-inline-block .field-container span textarea, form.form-inline-block .field-container span .field-container {
-  margin: 0;
-}
-form.form-block label input[type="radio"], form.form-block label input[type="checkbox"], form.form-inline-block label input[type="radio"], form.form-inline-block label input[type="checkbox"] {
-  margin: -4px 2px 0 10px;
-}
-form.form-block label:first-of-type input, form.form-inline-block label:first-of-type input {
-  margin-left: 0;
-}
-form label, form .label {
-  margin: 0;
-  position: relative;
-}
-form input, form .input, form select, form textarea, form button {
-  cursor: pointer;
-  line-height: 24px;
-}
-form input, form .input, form select, form textarea {
-  height: 35px;
-  padding: 0.4em 0.6em;
-  margin: 0.2em 0;
-  border: 1px solid #CCCCCC;
-  vertical-align: top;
-  border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
-  border-radius: 3px;
-  font-size: 14px;
-  font-size: 0.875rem;
-  -webkit-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
-  -moz-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
-  -o-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
-  transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
-}
-form label.select:after {
+form .custom-select:after {
   width: 0;
   height: 0;
   margin-top: -.15rem;
@@ -2202,7 +2297,7 @@ form label.select:after {
   /* IE Fix */
   pointer-events: none;
 }
-form label.select select {
+form .custom-select select {
   padding-right: 36px;
   padding-right: 2.25rem;
   margin: 0;
@@ -2214,81 +2309,14 @@ form label.select select {
   -moz-appearance: none;
   appearance: none;
 }
-form label.select select:hover, form label.select select:focus {
+form .custom-select select:hover, form .custom-select select:focus {
   background-color: #ddd;
 }
-form textarea {
-  min-height: 100px;
-  height: 125px;
-}
-form.form-block input[type="radio"], form.form-block input[type="checkbox"], form.form-inline-block input[type="radio"], form.form-inline-block input[type="checkbox"], form input[type="radio"], form input[type="checkbox"] {
-  width: auto;
-  height: auto;
-  margin: 0 5px 0 0;
-  border: 0;
-  display: inline;
-  vertical-align: middle;
-}
-form.form-block input[type="radio"] + label, form.form-block input[type="checkbox"] + label, form.form-inline-block input[type="radio"] + label, form.form-inline-block input[type="checkbox"] + label, form input[type="radio"] + label, form input[type="checkbox"] + label {
-  margin: 0 0.825em 0 0.2em;
-  vertical-align: middle;
-}
-form button, form .button {
-  height: 35px;
-  padding: 0.4em 2em;
-  margin: 0;
-  border: 1px solid #CCCCCC;
-  position: relative;
-  vertical-align: top;
-  border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
-  border-radius: 3px;
-  text-align: center;
-  cursor: pointer;
-  color: inherit;
-  background-color: #f5f5f5;
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-  -webkit-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
-  -moz-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
-  -o-transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
-  transition: color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
-}
-form button:active, form button:hover, form .button:active, form .button:hover {
-  color: inherit;
-  border-color: #efefef;
-  background-color: #ededed;
-}
-form button:active, form .button:active {
-  border-color: #efefef;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(230, 230, 230, 0.02);
-}
-form button[disabled], form button.disabled, form button.disabled:hover, form button.disabled:active, form .button[disabled], form .button.disabled, form .button.disabled:hover, form .button.disabled:active {
-  box-shadow: none;
-  border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
-  cursor: default;
-  background-color: white;
-}
-form input.disabled, form select.disabled, form textarea.disabled {
-  background: #ebebe4;
-  cursor: default;
-}
-form input.disabled:focus, form input.disabled:focus, form input.disabled:focus, form select.disabled:focus, form select.disabled:focus, form select.disabled:focus, form textarea.disabled:focus, form textarea.disabled:focus, form textarea.disabled:focus {
-  border-color: #CCCCCC;
-}
-form input:hover, form input:hover, form input:hover, form select:hover, form select:hover, form select:hover, form textarea:hover, form textarea:hover, form textarea:hover {
-  border-color: #CCCCCC;
-}
-form input:focus, form input:focus, form input:focus, form select:focus, form select:focus, form select:focus, form textarea:focus, form textarea:focus, form textarea:focus {
-  border-color: #AAA;
-}
-form input[type="checkbox"], form input[type="radio"], form select[type="checkbox"], form select[type="radio"], form textarea[type="checkbox"], form textarea[type="radio"] {
-  box-shadow: none;
-}
 
+/* ==========================================================================
+   Placeholders
+   Form placeholder styles.
+========================================================================== */
 /* -- Placeholder -- */
 ::-webkit-input-placeholder {
   color: #BBB3B3;
@@ -2303,8 +2331,8 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
 }
 
 /* ==========================================================================
-   Functions
-   HTML functions styling
+   Tooltips
+   Description goes here.
 ========================================================================== */
 /* -- Tooltip -- */
 .tooltip {
@@ -2341,9 +2369,6 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
   -o-filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
   filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
 }
-.tooltip .tooldata p {
-  margin: 5px 0;
-}
 .tooltip .tooldata:after {
   width: 0;
   height: 0;
@@ -2356,6 +2381,9 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
   border-right-color: rgba(0, 0, 0, 0.85);
   border-width: 10px;
 }
+.tooltip .tooldata p {
+  margin: 5px 0;
+}
 .tooltip:hover .tooldata {
   visibility: visible;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(100))";
@@ -2364,8 +2392,66 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
 }
 
 /* ==========================================================================
-   JavaScript
-   Styling for JavaScript elements
+   Accordion
+   JavaScript accordion styling.
+========================================================================== */
+/* -- Accordion -- */
+.accordion {
+  margin-bottom: 1em;
+}
+.accordion .accordion-title {
+  padding: 0.5em;
+  border: 1px solid #EAEAEA;
+  position: relative;
+  -webkit-transition: color 500ms ease, background-color 500ms ease;
+  -moz-transition: color 500ms ease, background-color 500ms ease;
+  -o-transition: color 500ms ease, background-color 500ms ease;
+  transition: color 500ms ease, background-color 500ms ease;
+}
+.accordion .accordion-title.arrow.active-title:after {
+  top: 45%;
+  right: 2.5%;
+  border-left-color: rgba(249, 249, 249, 0.3);
+  border-top-color: #EAEAEA;
+  border-width: 5px;
+}
+.accordion .accordion-title.arrow:after {
+  height: 0;
+  width: 0;
+  border-width: 5px;
+  border-left-color: #EAEAEA;
+  position: absolute;
+  top: 41%;
+  right: 2%;
+  content: " ";
+  border: solid transparent;
+  pointer-events: none;
+}
+.accordion .accordion-title:hover, .accordion .accordion-title.active-title {
+  color: #cd4b45;
+  background: rgba(249, 249, 249, 0.3);
+}
+.accordion .accordion-content {
+  padding: 1em;
+  border: 1px solid #EAEAEA;
+  display: none;
+}
+
+/* ==========================================================================
+   Maps
+   JavaScript maps styling.
+========================================================================== */
+/* -- Google Map -- */
+#map_canvas {
+  margin: 1em 0;
+}
+#map_canvas img {
+  max-width: none;
+}
+
+/* ==========================================================================
+   Tabs
+   JavaScript tabs styling.
 ========================================================================== */
 /* -- Tabs -- */
 .tabs {
@@ -2419,56 +2505,6 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
   padding: 1em;
   border-radius: 3px;
   border: 1px solid #EAEAEA;
-}
-
-/* -- Accordion -- */
-.accordion {
-  margin-bottom: 1em;
-}
-.accordion .accordion-title {
-  padding: 0.5em;
-  border: 1px solid #EAEAEA;
-  position: relative;
-  -webkit-transition: color 500ms ease, background-color 500ms ease;
-  -moz-transition: color 500ms ease, background-color 500ms ease;
-  -o-transition: color 500ms ease, background-color 500ms ease;
-  transition: color 500ms ease, background-color 500ms ease;
-}
-.accordion .accordion-title.arrow.active-title:after {
-  top: 45%;
-  right: 2.5%;
-  border-left-color: rgba(249, 249, 249, 0.3);
-  border-top-color: #EAEAEA;
-  border-width: 5px;
-}
-.accordion .accordion-title.arrow:after {
-  height: 0;
-  width: 0;
-  border-width: 5px;
-  border-left-color: #EAEAEA;
-  position: absolute;
-  top: 41%;
-  right: 2%;
-  content: " ";
-  border: solid transparent;
-  pointer-events: none;
-}
-.accordion .accordion-title:hover, .accordion .accordion-title.active-title {
-  color: #cd4b45;
-  background: rgba(249, 249, 249, 0.3);
-}
-.accordion .accordion-content {
-  padding: 1em;
-  border: 1px solid #EAEAEA;
-  display: none;
-}
-
-/* -- Google Map -- */
-#map_canvas {
-  margin: 1em 0;
-}
-#map_canvas img {
-  max-width: none;
 }
 
 /* ==========================================================================

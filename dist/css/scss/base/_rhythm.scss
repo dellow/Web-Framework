@@ -38,6 +38,13 @@ a, button {
 		@include rhythm($font_size_base);
 	}
 
+	/* -- Paragraphs -- */
+	p {
+		&:first-of-type {
+			@include rhythm($font_size_base * 1.125);
+		}
+	}
+
 	/* -- Lists -- */
 	ul, ol {
 		margin-left: $ul_indent_base;
