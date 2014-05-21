@@ -3,6 +3,7 @@
    Grid layouts.
 ========================================================================== */
 /* -- System -- */
+$gutter_width: ($gutter / 2);
 .grid {
 	width: 100% + $gutter_width;
 	@extend %cf;
