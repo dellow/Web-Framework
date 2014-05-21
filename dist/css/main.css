@@ -1126,6 +1126,189 @@ blockquote:after, q:after {
 }
 
 /* ==========================================================================
+   Buttons
+   Styles for buttons. These are not form buttons but clickable
+   anchors such as Call to Actions.
+========================================================================== */
+.btn {
+  height: auto;
+  padding: 0.5em 1em;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  border: 0 !important;
+  /* Important so alert.btn doesn't get an underline */
+  border-radius: 3px;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  -webkit-transition: background 500ms ease;
+  -moz-transition: background 500ms ease;
+  -o-transition: background 500ms ease;
+  transition: background 500ms ease;
+}
+.btn.grad {
+  border: 1px solid !important;
+  /* Important so alert.btn doesn't get an underline */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important;
+  /* Important so alert.btn doesn't get an underline */
+}
+.btn.disabled {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(70))";
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+  cursor: default;
+  background-image: none !important;
+}
+.btn.disabled:hover {
+  background-image: none !important;
+}
+.btn.disabled:active {
+  background-image: none !important;
+  box-shadow: none;
+}
+.btn:hover {
+  color: #FFF !important;
+  text-decoration: none;
+}
+.btn:active {
+  color: #FFF !important;
+  box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* -- Call to Action Standard -- */
+.btn.standard {
+  background: #006dcc;
+}
+.btn.standard.grad {
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#007be6), to(#005299));
+  background-image: -webkit-linear-gradient(top, #007be6, #005299);
+  background-image: -o-linear-gradient(top, #007be6, #005299);
+  background-image: linear-gradient(to bottom, #007be6, #005299);
+  background-image: -moz-linear-gradient(top, #007be6, #005299);
+  background-repeat: repeat-x;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.btn.standard:hover {
+  background: #005299;
+}
+.btn.standard.disabled:hover {
+  background: #006dcc;
+}
+
+/* -- Call to Action Positive & Negative -- */
+.btn.positive {
+  background: #5bb75b;
+}
+.btn.positive.grad {
+  background-image: -ms-linear-gradient(top, #6dbf6d, #449b44);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6dbf6d), to(#449b44));
+  background-image: -webkit-linear-gradient(top, #6dbf6d, #449b44);
+  background-image: -o-linear-gradient(top, #6dbf6d, #449b44);
+  background-image: -moz-linear-gradient(top, #6dbf6d, #449b44);
+  background-image: linear-gradient(top, #6dbf6d, #449b44);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($blue_green, 5%)',endColorstr='darken($blue_green, 10%)',GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.btn.positive:hover {
+  background: #449b44;
+}
+.btn.positive.disabled:hover {
+  background: #5bb75b;
+}
+.btn.negative {
+  background: #cd4b45;
+}
+.btn.negative.grad {
+  background-image: -ms-linear-gradient(top, #d25e59, #b0352f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d25e59), to(#b0352f));
+  background-image: -webkit-linear-gradient(top, #d25e59, #b0352f);
+  background-image: -o-linear-gradient(top, #d25e59, #b0352f);
+  background-image: -moz-linear-gradient(top, #d25e59, #b0352f);
+  background-image: linear-gradient(top, #d25e59, #b0352f);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($blue_red, 5%)',endColorstr='darken($blue_red, 10%)',GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.btn.negative:hover {
+  background: #b0352f;
+}
+.btn.negative.disabled:hover {
+  background: #cd4b45;
+}
+
+/* ==========================================================================
+   Alerts
+   Styles for various success and error alerts
+========================================================================== */
+/* -- All -- */
+.alert.box {
+  padding: 0.825em 0.825em 0.825em 14px;
+  margin: 0.825em 0;
+  border: 1px solid;
+  border-left: 7px solid;
+  position: relative;
+  border-radius: 3px;
+}
+.alert.box h3 {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+.alert.box a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+.alert.box a:hover {
+  color: inherit;
+  border-bottom-style: solid;
+}
+
+p.alert {
+  margin: 0;
+}
+
+/* -- Status (Blue) -- */
+.alert.status {
+  color: #3a87ad;
+}
+.alert.box.status, input.alert.status, select.alert.status, textarea.alert.status {
+  border-color: #8ec0d9;
+  background: #c7e0ec;
+}
+
+/* -- Success (Green) -- */
+.alert.success {
+  color: #468847;
+}
+.alert.box.success, input.alert.success, select.alert.success, textarea.alert.success {
+  border-color: #add3ad;
+  background: #dfeedf;
+}
+
+/* -- Warning (Yellow) -- */
+.alert.warning {
+  color: #c09853;
+}
+.alert.box.warning, input.alert.warning, select.alert.warning, textarea.alert.warning {
+  border-color: #e3ceaf;
+  background: #f7f1e8;
+}
+
+/* -- Error (Red) -- */
+.alert.error, .val-box {
+  color: #b94a48;
+}
+.alert.box.error, input.alert.error, input.val-box, select.alert.error, select.val-box, textarea.alert.error, textarea.val-box, .box.val-box {
+  border-color: #dba5a5;
+  background: #f1dcdc;
+}
+
+/* ==========================================================================
    Breadcrumb
    Description goes here.
 ========================================================================== */
@@ -2505,189 +2688,6 @@ form .custom-select select:hover, form .custom-select select:focus {
   padding: 1em;
   border-radius: 3px;
   border: 1px solid #EAEAEA;
-}
-
-/* ==========================================================================
-   Buttons
-   Styles for buttons. These are not form buttons but clickable
-   anchors such as Call to Actions.
-========================================================================== */
-.btn {
-  height: auto;
-  padding: 0.5em 1em;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
-  border: 0 !important;
-  /* Important so alert.btn doesn't get an underline */
-  border-radius: 3px;
-  vertical-align: middle;
-  cursor: pointer;
-  color: #FFF;
-  text-align: center;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  -webkit-transition: background 500ms ease;
-  -moz-transition: background 500ms ease;
-  -o-transition: background 500ms ease;
-  transition: background 500ms ease;
-}
-.btn.grad {
-  border: 1px solid !important;
-  /* Important so alert.btn doesn't get an underline */
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important;
-  /* Important so alert.btn doesn't get an underline */
-}
-.btn.disabled {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(70))";
-  filter: alpha(opacity=70);
-  opacity: 0.7;
-  cursor: default;
-  background-image: none !important;
-}
-.btn.disabled:hover {
-  background-image: none !important;
-}
-.btn.disabled:active {
-  background-image: none !important;
-  box-shadow: none;
-}
-.btn:hover {
-  color: #FFF !important;
-  text-decoration: none;
-}
-.btn:active {
-  color: #FFF !important;
-  box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* -- Call to Action Standard -- */
-.btn.standard {
-  background: #006dcc;
-}
-.btn.standard.grad {
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#007be6), to(#005299));
-  background-image: -webkit-linear-gradient(top, #007be6, #005299);
-  background-image: -o-linear-gradient(top, #007be6, #005299);
-  background-image: linear-gradient(to bottom, #007be6, #005299);
-  background-image: -moz-linear-gradient(top, #007be6, #005299);
-  background-repeat: repeat-x;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-}
-.btn.standard:hover {
-  background: #005299;
-}
-.btn.standard.disabled:hover {
-  background: #006dcc;
-}
-
-/* -- Call to Action Positive & Negative -- */
-.btn.positive {
-  background: #5bb75b;
-}
-.btn.positive.grad {
-  background-image: -ms-linear-gradient(top, #6dbf6d, #449b44);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6dbf6d), to(#449b44));
-  background-image: -webkit-linear-gradient(top, #6dbf6d, #449b44);
-  background-image: -o-linear-gradient(top, #6dbf6d, #449b44);
-  background-image: -moz-linear-gradient(top, #6dbf6d, #449b44);
-  background-image: linear-gradient(top, #6dbf6d, #449b44);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($blue_green, 5%)',endColorstr='darken($blue_green, 10%)',GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-}
-.btn.positive:hover {
-  background: #449b44;
-}
-.btn.positive.disabled:hover {
-  background: #5bb75b;
-}
-.btn.negative {
-  background: #cd4b45;
-}
-.btn.negative.grad {
-  background-image: -ms-linear-gradient(top, #d25e59, #b0352f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d25e59), to(#b0352f));
-  background-image: -webkit-linear-gradient(top, #d25e59, #b0352f);
-  background-image: -o-linear-gradient(top, #d25e59, #b0352f);
-  background-image: -moz-linear-gradient(top, #d25e59, #b0352f);
-  background-image: linear-gradient(top, #d25e59, #b0352f);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($blue_red, 5%)',endColorstr='darken($blue_red, 10%)',GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-}
-.btn.negative:hover {
-  background: #b0352f;
-}
-.btn.negative.disabled:hover {
-  background: #cd4b45;
-}
-
-/* ==========================================================================
-   Alerts
-   Styles for various success and error alerts
-========================================================================== */
-/* -- All -- */
-.alert.box {
-  padding: 0.825em 0.825em 0.825em 14px;
-  margin: 0.825em 0;
-  border: 1px solid;
-  border-left: 7px solid;
-  position: relative;
-  border-radius: 3px;
-}
-.alert.box h3 {
-  font-size: 30px;
-  font-size: 1.875rem;
-}
-.alert.box a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px dotted;
-}
-.alert.box a:hover {
-  color: inherit;
-  border-bottom-style: solid;
-}
-
-p.alert {
-  margin: 0;
-}
-
-/* -- Status (Blue) -- */
-.alert.status {
-  color: #3a87ad;
-}
-.alert.box.status, input.alert.status, select.alert.status, textarea.alert.status {
-  border-color: #8ec0d9;
-  background: #c7e0ec;
-}
-
-/* -- Success (Green) -- */
-.alert.success {
-  color: #468847;
-}
-.alert.box.success, input.alert.success, select.alert.success, textarea.alert.success {
-  border-color: #add3ad;
-  background: #dfeedf;
-}
-
-/* -- Warning (Yellow) -- */
-.alert.warning {
-  color: #c09853;
-}
-.alert.box.warning, input.alert.warning, select.alert.warning, textarea.alert.warning {
-  border-color: #e3ceaf;
-  background: #f7f1e8;
-}
-
-/* -- Error (Red) -- */
-.alert.error, .val-box {
-  color: #b94a48;
-}
-.alert.box.error, input.alert.error, input.val-box, select.alert.error, select.val-box, textarea.alert.error, textarea.val-box, .box.val-box {
-  border-color: #dba5a5;
-  background: #f1dcdc;
 }
 
 .val-message {

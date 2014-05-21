@@ -2,31 +2,37 @@
    All
    Imports all the partials
 ========================================================================== */
+// Core
 @import 'reset',
 		'classes',
 		'defaults',
 		'core',
 		'rhythm',
 		'colours',
-		'components/breadcrumbs',
+		'buttons',
+		'alerts';
+// Components
+@import 'components/breadcrumbs',
 		'components/content-editable',
 		'components/gallery',
 		'components/grid',
 		'components/menus',
 		'components/pagination',
 		'components/progress-bars',
-		'components/tables',
-		'forms/base',
+		'components/tables';
+// Forms
+@import 'forms/base',
 		'forms/customised',
-		'forms/placeholders',
-		'functions/tooltips',
-		'javascript/accordion',
+		'forms/placeholders';
+// Functions
+@import 'functions/tooltips';
+// JavaScript
+@import 'javascript/accordion',
 		'javascript/maps',
 		'javascript/tabs',
-		'buttons',
-		'alerts',
-		'plugins/form-validation',
-		'plugins/bx-slider',
-		'fixes',
+		'javascript/plugins/form-validation',
+		'javascript/plugins/bx-slider';
+// Misc
+@import 'fixes',
 		'breakpoints',
 		'print';
