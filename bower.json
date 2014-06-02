@@ -1,0 +1,11 @@
+{
+  "name": "Framework",
+  "version": "1.0.0",
+  "authors": [
+    "Stew Dellow <stewdellow@gmail.com>"
+  ],
+  "description": "A Grunt powered Framework for HTML projects. Includes SASS/Compass.",
+  "dependencies": {
+    "framework-library": "*"
+  }
+}

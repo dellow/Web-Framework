@@ -53,11 +53,17 @@ if [ -e *.sublime-project ]; then
 	printf "\n"
 fi
 # ------------------------------------------------------------------------
+# Update / get dependencies with Bower
+bower install                                    && \
+# ------------------------------------------------------------------------
 # Update / get dependencies with NPM
-npm update           && \
+npm install                                      && \
+# ------------------------------------------------------------------------
+# Move bower dependency
+cp -r bower_components/framework-library/dist .  && \
 # ------------------------------------------------------------------------
 # Add all current files
-git add --all        && \
+git add --all                                    && \
 # ------------------------------------------------------------------------
 # Check for a commit
 read -p "Do you want to do an initial commit? " -n 1 -r

@@ -9,7 +9,8 @@ After cloning the repository simply run `bash install` from your command line. T
 
 - Remove the Git wrapper and replace with a fresh Git initialisation.
 - Remove any un-necessary files/directories.
-- Get all dependencies, such as Grunt modules and JavaScript (You can not use Grunt until this step is complete).
+- Get all Bower dependencies.
+- Get all NPM dependencies, such as Grunt modules and JavaScript (You can not use Grunt until this step is complete).
 - Does an initial commit on the new Git initialisation.
 
 You might want to review the .gitignore file. Sensitive files like `sftp-config.json` which holds SSH connection details for Grunt-SSH should be ignored, along with any other files or directories.
