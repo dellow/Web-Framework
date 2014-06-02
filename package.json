@@ -1,19 +1,19 @@
 {
-    "name"        : "Framework Library",
-    "description" : "SASS/Compass and RequireJS Library for any Framework",
-    "author"      : "Stew Dellow <stewart@hellostew.com>",
-    "version"     : "1.0.0",
-    "repository"  : {
+    "name": "Library",
+    "description": "SASS/Compass and RequireJS Library for any Framework",
+    "author": "Stew Dellow <stewart@hellostew.com>",
+    "version": "1.0.0",
+    "repository": {
         "type": "git",
-        "url" : ""
+        "url": "git@github.com:sdellow/Framework-Library.git"
     },
     "contributors": [
         {"name" : "Stew Dellow", "email": "stewart@hellostew.com"}
     ],
     "dependencies": {
         "angularjs": "*",
-        "backbone" : "*",
-        "jquery"   : "*",
+        "backbone": "*",
+        "jquery": "*",
         "jquery-ui": "*",
         "requirejs": "*"
     }
