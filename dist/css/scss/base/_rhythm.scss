@@ -80,19 +80,19 @@ h6 {
 blockquote {
 	padding: 0 10px;
 	position: relative;
-	display: inline;
 	font-family: $font_family_serif;
 	font-style: italic;
 }
 blockquote, q {
 	&:before, &:after {
 		position: absolute;
-		left: 0;
 	}
 	&:before {
+		left: 0;
 		content: "\201c";
 	}
 	&:after {
+		right: 0;
 		content: "\201d";
 	}
 }

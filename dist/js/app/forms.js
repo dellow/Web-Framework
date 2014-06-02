@@ -8,11 +8,13 @@
     var forms = forms || {};
 
 	// Form validation
-	require(['formValidation'], function(){
+	require(['validation'], function(){
         // General forms
         if($('.validate').length){
-            $('.validate').formValidation({
-                // No options
+            $('.validate').validation({
+                preloaderSize: 20,
+                preloaderHEX : '#FFFFFF',
+                msgSep       : ''
             });
         }
 	});

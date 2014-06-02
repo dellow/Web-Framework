@@ -71,24 +71,20 @@ module.exports = function(grunt){
                         req_async     : '<%= vars.paths.jsPath %>/vendor/require/require.async',
                         // Plugins
                         extensions    : '<%= vars.paths.jsPath %>/plugins/jquery.extensions',
-                        formValidation: '<%= vars.paths.jsPath %>/plugins/jquery.form-validation',
+                        validation    : '<%= vars.paths.jsPath %>/plugins/jquery.validation',
                         lightBox      : '<%= vars.paths.jsPath %>/plugins/jquery.lightBox',
                         scrollto      : '<%= vars.paths.jsPath %>/plugins/jquery.scrollto.min',
                         slider        : '<%= vars.paths.jsPath %>/plugins/jquery.bxslider.min',
                         // Local
                         helper        : '<%= vars.paths.jsPath %>/helpers/helper',
-                        ui            : '<%= vars.paths.jsPath %>/helpers/ui',
                         // App
                         site          : '<%= vars.paths.jsPath %>/app/site'
                     },
                     shim: {
-                        ui: {
-                            deps: ['jquery']
-                        },
                         extensions: {
                             deps: ['jquery']
                         },
-                        formValidation: {
+                        validation: {
                             deps: ['jquery']
                         },
                         lightBox: {
@@ -101,7 +97,7 @@ module.exports = function(grunt){
                             deps: ['jquery']
                         },
                         site: {
-                            deps: ['helper', 'ui', 'extensions']
+                            deps: ['helper', 'extensions']
                         }
                     }
                 }

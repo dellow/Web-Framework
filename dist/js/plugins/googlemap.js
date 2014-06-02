@@ -95,6 +95,8 @@
                 googlemap.georesults.push(results[0].geometry.location);
 
                 if(googlemap.georesults.length === locations.places.length){
+                    var marker, k = 0;
+
                     for(var i = 0, ii = googlemap.georesults.length; i < ii; i++){
                         if(!animatebounds){
                             // Extend the bounds of the map for each location
@@ -109,8 +111,6 @@
                             addMarker(i);
                         }, i * 750);
                     }
-                    var marker;
-                    var k = 0;
 
                     function addMarker(){
                         var marker = new google.maps.Marker({

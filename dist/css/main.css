@@ -304,16 +304,16 @@ label, button, a.button, details, input[type="button"], input[type="submit"] {
   cursor: pointer;
 }
 
+button, select {
+  text-transform: uppercase;
+  font-weight: inherit;
+}
+
 button {
   font-family: inherit;
   line-height: inherit;
   overflow: visible;
   background: none;
-}
-
-button,
-select {
-  text-transform: none;
 }
 
 button,
@@ -1031,19 +1031,19 @@ h6 {
 blockquote {
   padding: 0 10px;
   position: relative;
-  display: inline;
   font-family: Georgia;
   font-style: italic;
 }
 
 blockquote:before, blockquote:after, q:before, q:after {
   position: absolute;
-  left: 0;
 }
 blockquote:before, q:before {
+  left: 0;
   content: "\201c";
 }
 blockquote:after, q:after {
+  right: 0;
   content: "\201d";
 }
 

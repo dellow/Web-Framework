@@ -43,15 +43,15 @@ input, select, textarea, button {
 label, button, a.button, details, input[type="button"], input[type="submit"] {
 	cursor: pointer;
 }
+button, select {
+	text-transform: uppercase;
+	font-weight: inherit;
+}
 button {
     font-family: inherit;
     line-height: inherit;
   	overflow: visible;
     background: none;
-}
-button,
-select {
-	text-transform: none;
 }
 button,
 html input[type="button"],

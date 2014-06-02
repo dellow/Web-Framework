@@ -4,10 +4,10 @@
 **/
 
 ;(function($, window, undefined){
-    // Init
-    helper.init(); ui.init();
     // Object
     var site = site || {};
+    // Helpers
+    helper.init();
 
     /**
      * dependency_tests
