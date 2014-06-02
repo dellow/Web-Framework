@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Debug
+   Useful debug operations. Adapted from inuit.css by Harry Roberts.
+   Compass environment must be in 'development' mode and the $debug_mode
+   var set to true for this to work.
+
+   Red    == Error
+   Yellow == Needs checking
+   None   == No problemo!
+========================================================================== */
+@if compass-env() == 'development' and $debug_mode == true {
+	// Vars
+	$debug_outline_px: 2px;
+
+	/* -- Empty elements --*/
+	:empty {
+	    outline: $debug_outline_px solid yellow;
+	}
+
+	/* -- Images --*/
+	img {
+	    outline: $debug_outline_px solid red;
+	}
+	img[alt] {
+	    outline: none;
+	}
+	img[alt=""] {
+	    outline: $debug_outline_px solid yellow;
+	}
+
+	/* -- Anchors --*/
+	a {
+	    outline: $debug_outline_px solid yellow;
+	}
+	a[title] {
+	    outline :none;
+	}
+	a[href="#"],
+	a[href*="javascript"] {
+	    outline: $debug_outline_px solid yellow;
+	}
+	a[target] {
+	    outline: $debug_outline_px solid yellow;
+	}
+
+	/* -- Lists --*/
+	ul, ol {
+	    > *:not(li) {
+	        outline: $debug_outline_px solid red;
+	    }
+	}
+
+	/* -- Tables --*/
+	th {
+	    outline: $debug_outline_px solid yellow;
+	}
+	th[scope] {
+	    outline: none;
+	}
+	table > tr {
+	    outline: $debug_outline_px solid yellow;
+	}
+	tbody + tfoot {
+	    outline: $debug_outline_px solid yellow;
+	}
+
+	/* -- Forms --*/
+	form {
+	    outline: $debug_outline_px solid red;
+	}
+	form[action] {
+	    outline: none;
+	}
+
+	/* -- Form fields --*/
+	textarea,
+	input {
+	    outline: $debug_outline_px solid red;
+	}
+	input[type] {
+	    outline: none;
+	}
+	textarea[rows][cols] {
+	    outline: none;
+	}
+	input[type=submit] {
+	    outline: $debug_outline_px solid red;
+	}
+	input[type=submit][value] {
+	    outline: none;
+	}
+
+	/* -- Inline styles --*/
+	[style]:not(html):not(body) {
+		outline: $debug_outline_px solid yellow;
+	}
+
+	/* -- IDs --*/
+	[id]:not(form):not(input):not(select):not(textarea) {
+		outline: $debug_outline_px solid yellow;
+	}
+
+}

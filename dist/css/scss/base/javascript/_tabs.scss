@@ -1,0 +1,54 @@
+/* ==========================================================================
+   Tabs
+   JavaScript tabs styling.
+========================================================================== */
+/* -- Tabs -- */
+.tabs {
+	margin-bottom: 1em;
+	overflow: hidden;
+	.nav {
+		padding: 0 2em;
+		white-space: nowrap;
+	}
+	.nav li {
+		margin: 0 0 0 -5px;
+		border: 1px solid #EAEAEA;
+		border-bottom: 0;
+		@include inline-block;
+		position: relative;
+    	z-index: 1;
+		vertical-align: bottom;
+		background: rgb(255,255,255);
+		background: -moz-linear-gradient(top,  rgba(255,255,255,1) 57%, rgba(249,249,249,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(57%,rgba(255,255,255,1)), color-stop(100%,rgba(249,249,249,1)));
+		background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
+		background: -o-linear-gradient(top,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
+		background: -ms-linear-gradient(top,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
+		background: linear-gradient(to bottom,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
+        a {
+            padding: 0.5em 1em;
+            display: block;
+        }
+        &:first-child {
+            border-radius: $border_radius_base 0 0;
+        }
+        &:last-child {
+            border-radius: 0 $border_radius_base 0 0;
+        }
+        &.active {
+            bottom: -2px;
+    		z-index: 2;
+            border-radius: $border_radius_base $border_radius_base 0 0;
+            color: $colour_text_link;
+            background: #FFF;
+        }
+        &.active a {
+            padding: 0.7em 1em;
+        }
+	}
+	.system {
+		padding: 1em;
+		border-radius: $border_radius_base;
+		border: 1px solid #EAEAEA;
+	}
+}

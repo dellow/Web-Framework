@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Pagination
+   Description goes here.
+========================================================================== */
+/* -- Pagination -- */
+.pagination {
+	margin-top: ($nudge * 2);
+	@extend %cf;
+	@include rem(font-size, 12px);
+	.page-numbers {
+		padding: ($nudge / 2) $nudge;
+		margin-left: -4px;
+		border: 1px solid #ccc;
+		@include inline-block;
+	}
+	.page-numbers:first-child {
+		margin-left: 0;
+	}
+	.page-numbers.current {
+		color: $colour_text_link
+	}
+}

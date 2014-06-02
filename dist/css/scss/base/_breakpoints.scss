@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Breakpoints
+   Responsive partial for global responsive styles.
+   Use responsive mixin inside the correct partial for local responsive
+   styles.
+========================================================================== */
+// Respond to tablet
+@include respond-to($tablet){
+	html {
+		font-size: 95%;
+	}
+
+	/* -- Exclusions -- */
+	$exlusions: (
+		'.tablet-hide'
+	);
+	@each $element in $exlusions {
+		#{$element} {
+			display: none;
+		}
+	}
+
+	/* -- Full Width -- */
+	$fullwidth: (
+	);
+	@each $element in $fullwidth {
+		#{$element} {
+			width: 100%;
+		}
+	}
+
+	/* -- Reset -- */
+	$reset: (
+	);
+	@each $element in $reset {
+		#{$element} {
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	/* -- Images & Alignment -- */
+	.thumb {
+		max-width: 40%;
+	}
+}
+
+// Respond to mobile
+@include respond-to($mobile){
+	html {
+		font-size: 100%;
+	}
+
+	/* -- Exclusions -- */
+	$exlusions: (
+		'.mobile-hide',
+		'.nav-primary'
+	);
+	@each $element in $exlusions {
+		#{$element} {
+			display: none;
+		}
+	}
+
+	/* -- Images & Alignment -- */
+	.thumb {
+		width: 100%;
+		max-width: none;
+		float: none;
+		&.alignright {
+			margin-left: 0;
+		}
+		&.alignleft {
+			margin-right: 0;
+		}
+		img {
+			width: 100%;
+		}
+	}
+
+	figure {
+		figcaption {
+			@include rem(font-size, 14px);
+			text-align: center;
+		}
+	}
+
+	/* -- Mobile Menu -- */
+	.mobile-select-menu {
+		display: block;
+	}
+
+	/* -- Forms -- */
+	form {
+		&.form-inline, &.form-inline-block, &.form-block {
+			label, .label {
+				width: 100%;
+				display: block;
+			}
+			input, .input, select, textarea, .field-container, button, .button {
+				width: 100%;
+				margin: 0;
+				display: block;
+			}
+		}
+	}
+}

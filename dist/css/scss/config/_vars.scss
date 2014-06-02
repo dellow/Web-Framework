@@ -1,0 +1,215 @@
+/* ==========================================================================
+	Vars
+	The variables for use throughout the framework. These can
+	be overwritten from the site/vars partial.
+========================================================================== */
+/**
+* Config
+**/
+// Debug mode - Compass environment must be in 'development' mode for this to work.
+$debug_mode                 : false !default;
+
+/**
+* Essentials
+**/
+$gutter                     : 3% !default;
+$fixedgutter                : 10px !default;
+$nudge                      : 0.825em !default;
+$form_field_height          : 35px !default;
+
+/**
+* Defaults
+**/
+$border_radius_base         : 3px !default;
+$ul_indent_base             : 1.2em !default;
+$box_shadow_base            : 0 0 5px rgba(69, 18, 11, 0.15) !default;
+
+/**
+* Typography
+**/
+// Faces
+$font_family_arial          : Arial !default;
+$font_family_georgia        : Georgia !default;
+$font_family_helvetica      : 'Helvetica' !default;
+$font_family_times          : Times !default;
+$font_family_trebuchet      : 'Trebuchet MS' !default;
+$font_family_verdana        : Verdana !default;
+$font_family_monospaced     : 'source-code-pro', monospace !default;
+$font_family_serif          : $font_family_georgia !default;
+$font_family_sans_serif     : $font_family_arial !default;
+$font_family_serif_base     : $font_family_georgia, $font_family_times, serif !default;
+$font_family_sans_serif_base: $font_family_helvetica, $font_family_arial, $font_family_trebuchet, $font_family_verdana, sans-serif !default;
+// Weights
+$font_weight_bold           : 700 !default;
+$font_weight_semibold       : 600 !default;
+$font_weight_medium         : 400 !default;
+$font_weight_regular        : 400 !default;
+$font_weight_light          : 300 !default;
+$font_weight_thin           : 300 !default;
+// Sizes
+$font_size_tiny             : 10px !default;
+$font_size_small            : 12px !default;
+$font_size_base             : 16px !default;
+$font_size_medium           : 20px !default;
+$font_size_large            : 24px !default;
+$font_size_xlarge           : 30px !default;
+// Headings
+$font_size_h1               : 48px !default;
+$font_size_h2               : 36px !default;
+$font_size_h3               : 24px !default;
+$font_size_h4               : 18px !default;
+$font_size_h5               : 16px !default;
+$font_size_h6               : 14px !default;
+// Line Height
+$line_height_base           : 24px !default;
+$spacing_unit_base          : $line_height_base !default;
+$half_spacing_unit          : $spacing_unit_base / 2 !default;
+$line_height_ratio          : $line_height_base / $font_size_base !default;
+
+/**
+* Colours
+**/
+// Defaults
+$colour_text                : #333333 !default;
+$colour_text_link           : #CD4B45 !default;
+$colour_text_link_hover     : #006DCC !default;
+// Base
+$colour_odd_base            : #EDEDED !default;
+$colour_even_base           : #F4F4F4 !default;
+$blue_base                  : #006DCC !default;
+$blue_green                 : #5BB75B !default;
+$blue_red                   : #CD4B45 !default;
+// Custom
+$black                      : #000000 !default;
+$white                      : #FFFFFF !default;
+$grey                       : #DDDDDD !default;
+$grey_light                 : #EFEFEF !default;
+$grey_medium                : #666666 !default;
+$grey_dark                  : #333333 !default;
+$blue                       : #3498DB !default;
+$green                      : #2ECC71 !default;
+$orange                     : #E67E22 !default;
+$red                        : #C4122f !default;
+$yellow                     : #F1C40F !default;
+// Array
+$colours: (
+	'blue' $blue darken($blue, 10%),
+	'green' $green darken($green, 10%),
+	'orange' $orange darken($orange, 10%),
+	'red' $red darken($red, 10%),
+	'yellow' $yellow darken($yellow, 10%)
+) !default;
+
+/**
+* Percentage Column Widths
+**/
+$col_1                      : 100% !default;
+$col_1-3                    : 33.33% !default;
+$col_2-3                    : 66.66% !default;
+$col_1-2                    : 50% !default;
+$col_1-4                    : 25% !default;
+$col_2-4                    : 50% !default;
+$col_3-4                    : 75% !default;
+$col_5                      : 20% !default;
+$col_6                      : 16.66% !default;
+$col_7                      : 14.28% !default;
+$col_8                      : 12.5% !default;
+$col_9                      : 11.11% !default;
+$col_10                     : 10% !default;
+$col_12                     : 8.33% !default;
+$col_16                     : 6.25% !default;
+
+/**
+* Device sizes
+* http://viewportsizes.com
+* http://screensiz.es
+* http://dpi.lv
+**/
+// Generic
+$mobile                     : 480px !default;
+$tablet                     : 768px !default;
+$desktop                    : 960px !default;
+// iPhone 3
+$iphone3_dpi                : 163 !default;
+$iphone3_dppx               : 1 !default;
+$iphone3_landscape          : 480px !default;
+$iphone3_portrait           : 320px !default;
+$iphone3_landscape_res      : $iphone3_landscape * $iphone3_dppx !default;
+$iphone3_portrait_res       : $iphone3_portrait * $iphone3_dppx !default;
+// iPhone 4
+$iphone4_dpi                : 326 !default;
+$iphone4_dppx               : 2 !default;
+$iphone4_landscape          : 480px !default;
+$iphone4_portrait           : 320px !default;
+$iphone4_landscape_res      : $iphone4_landscape * $iphone4_dppx !default;
+$iphone4_portrait_res       : $iphone4_portrait * $iphone4_dppx !default;
+// iPhone 5
+$iphone5_dpi                : 326 !default;
+$iphone5_dppx               : 2 !default;
+$iphone5_landscape          : 568px !default;
+$iphone5_portrait           : 320px !default;
+$iphone5_landscape_res      : $iphone5_landscape * $iphone5_dppx !default;
+$iphone5_portrait_res       : $iphone5_portrait * $iphone5_dppx !default;
+// iPad 1
+$ipad1_dpi                  : 132 !default;
+$ipad1_dppx                 : 1 !default;
+$ipad1_landscape            : 1024px !default;
+$ipad1_portrait             : 768px !default;
+$ipad1_landscape_res        : $ipad1_landscape * $ipad1_dppx !default;
+$ipad1_portrait_res         : $ipad1_portrait * $ipad1_dppx !default;
+// iPad 2
+$ipad2_dpi                  : 132 !default;
+$ipad2_dppx                 : 1 !default;
+$ipad2_landscape            : 1024px !default;
+$ipad2_portrait             : 768px !default;
+$ipad2_landscape_res        : $ipad2_landscape * $ipad2_dppx !default;
+$ipad2_portrait_res         : $ipad2_portrait * $ipad2_dppx !default;
+// iPad 3
+$ipad3_dpi                  : 264 !default;
+$ipad3_dppx                 : 2 !default;
+$ipad3_landscape            : 1024px !default;
+$ipad3_portrait             : 768px !default;
+$ipad3_landscape_res        : $ipad3_landscape * $ipad3_dppx !default;
+$ipad3_portrait_res         : $ipad3_portrait * $ipad3_dppx !default;
+// iPad Mini
+$ipadmini_dpi               : 163 !default;
+$ipadmini_dppx              : 2 !default;
+$ipadmini_landscape         : 1024px !default;
+$ipadmini_portrait          : 768px !default;
+$ipadmini_landscape_res     : $ipadmini_landscape * $ipadmini_dppx !default;
+$ipadmini_portrait_res      : $ipadmini_portrait * $ipadmini_dppx !default;
+// Nexus 4
+$nexus4_dpi                 : 318 !default;
+$nexus4_dppx                : 1 !default;
+$nexus4_landscape           : 598px !default;
+$nexus4_portrait            : 384px !default;
+$nexus4_landscape_res       : $nexus4_landscape * $nexus4_dppx !default;
+$nexus4_portrait_res        : $nexus4_portrait * $nexus4_dppx !default;
+// Nexus 5
+$nexus5_dpi                 : 445 !default;
+$nexus5_dppx                : 1 !default;
+$nexus5_landscape           : 598px !default;
+$nexus5_portrait            : 360px !default;
+$nexus5_landscape_res       : $nexus5_landscape * $nexus5_dppx !default;
+$nexus5_portrait_res        : $nexus5_portrait * $nexus5_dppx !default;
+// Nexus 7 2012
+$nexus7_2012_dpi            : 216 !default;
+$nexus7_2012_dppx           : 1.325 !default;
+$nexus7_2012_landscape      : 601px !default;
+$nexus7_2012_portrait       : 962px !default;
+$nexus7_2012_landscape_res  : $nexus7_2012_landscape * $nexus7_2012_dppx !default;
+$nexus7_2012_portrait_res   : $nexus7_2012_portrait * $nexus7_2012_dppx !default;
+// Nexus 7 2013
+$nexus7_2013_dpi            : 323 !default;
+$nexus7_2013_dppx           : 1 !default;
+$nexus7_2013_landscape      : 600px !default;
+$nexus7_2013_portrait       : 960px !default;
+$nexus7_2013_landscape_res  : $nexus7_2013_landscape * $nexus7_2013_dppx !default;
+$nexus7_2013_portrait_res   : $nexus7_2013_portrait * $nexus7_2013_dppx !default;
+// Nexus 10
+$nexus10_dpi                : 300 !default;
+$nexus10_dppx               : 2 !default;
+$nexus10_landscape          : 800px !default;
+$nexus10_portrait           : 1280px !default;
+$nexus10_landscape_res      : $nexus10_landscape * $nexus10_dppx !default;
+$nexus10_portrait_res       : $nexus10_portrait * $nexus10_dppx !default;

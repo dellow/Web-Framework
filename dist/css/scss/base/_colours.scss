@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Colours
+   Takes all the colours from the colour array in vars and creates
+   a class for each of them for easy OO styling.
+========================================================================== */
+/* -- Text colours -- */
+@each $color in $colours {
+	.color-#{nth($color, 1)} {
+		color: #{nth($color, 2)};
+		&.opp {
+			color: #{nth($color, 3)};
+		}
+	}
+}
+
+/* -- Background colours -- */
+.bg {
+	@each $color in $colours {
+		&.color-#{nth($color, 1)} {
+			color: inherit;
+			background: #{nth($color, 2)};
+			&.opp {
+				background: #{nth($color, 3)};
+			}
+		}
+	}
+}

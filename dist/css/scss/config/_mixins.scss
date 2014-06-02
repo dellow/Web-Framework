@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Mixins
+   Functions and mixins for various Framework operations.
+========================================================================== */
+// Sprites from folder
+//@import "foldername/*.png";
+//@include all-foldername-sprites;
+
+/**
+ * px-to-em
+ * Takes a single value or a list of values and replaces px units with em
+ * Zero values will remain 0
+ * Non-px values will not be modified
+**/
+@function px-to-em($px){
+    $return : ();
+
+    @each $var in $px {
+        @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
+            $return : append($return, #{$var/16px}em, space);
+        } @else {
+            $return : append($return, $var, space);
+        }
+    }
+
+    @return $return;
+}
+
+/**
+ * px-to-rem
+ * Takes a single value or a list of values and replaces px units with rem
+ * Zero values will remain 0.
+ * Non-px values will not be modified.
+**/
+@function px-to-rem($px){
+    $return : ();
+
+    @each $var in $px {
+        @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
+            $return : append($return, #{$var/16px}rem, space);
+        } @else {
+            $return : append($return, $var, space);
+        }
+    }
+
+    @return $return;
+}
+
+/**
+ * rhythm
+ * Outputs a perfect vertical rhythm for a particular font-size
+ * in a margin / line-height and font-size format
+ *
+ * @uses px-to-rem()
+ *
+ * .foo {@include rhythm(20px);}
+**/
+@mixin rhythm($size){
+	margin-bottom: 0px + $line_height_base;
+	margin-bottom: ($line_height_base / $font_size_base) + rem;
+	font-size: 0px + $size;
+	font-size: px-to-rem($size);
+	line-height: ceil($size / $line_height_base) * ($line_height_base / $size);
+}
+
+/**
+ * rem
+ * Output a selector with px fallback and rem values, so that modern browsers will use the rem values.
+ * Both multiple selectors and multiple sizes in multiple units can be provided.
+ *
+ * @uses px-to-rem()
+ *
+ * .foo {@include rem(font-size, 20px);}
+ * .foo {@include rem(font-size height, 20px);}
+**/
+$legacy_support_for_ie: true;
+@mixin rem($selectors, $size){
+    @each $selector in $selectors {
+    	@if $legacy_support_for_ie {
+            #{$selector}: $size;
+        }
+        #{$selector}: px-to-rem($size);
+    }
+}
+
+/**
+ * retina-image
+ * Retina image replacement.
+ *
+ * .foo {@include retina-image('logo', 'png', 100px, 25px);}
+**/
+@mixin retina-image($image, $type, $width, $height){
+	@media (min--moz-device-pixel-ratio: 1.3),
+	     (-o-min-device-pixel-ratio: 2.6/2),
+	     (-webkit-min-device-pixel-ratio: 1.3),
+	     (min-device-pixel-ratio: 1.3),
+	     (min-resolution: 1.3dppx){
+		background-image: url($image + '@2x.' + $type);
+		background-size: $width $height;
+	}
+	background-image: url($image + '.' + $type);
+}
+
+/**
+ * transition
+ * Cross browser transition.
+ *
+ * .foo {@include transition(color 500ms ease);}
+**/
+@mixin transition($pattern...){
+	-webkit-transition: $pattern;
+	-moz-transition   : $pattern;
+	-o-transition     : $pattern;
+	transition        : $pattern;
+}
+
+/**
+ * opacity
+ * Cross browser opacity.
+ *
+ * .foo {@include opacity(0.7);}
+**/
+@mixin opacity($opacity){
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(" + $opacity * 100 + "))";
+	filter    : alpha(opacity=$opacity * 100);
+	opacity   : $opacity;
+}
+
+/**
+ * inline-block
+ * Cross browser inline-block.
+ *
+ * .foo {@include inline-block;}
+**/
+@mixin inline-block(){
+	display: inline-block;
+	zoom: 1; *display: inline; /* IE Fix */
+}
+
+/**
+ * trigram
+ * Trigram for Heaven mobile icon.
+ *
+ * .foo {@include trigram(30px, 40px, #000000, #FF0000);}
+**/
+@mixin trigram($width, $size, $color, $hover){
+	position: relative;
+	padding-left: 1.25em;
+	font-size: $size;
+	&:before {
+		width: $width;
+		height: 0.15em;
+		content: "";
+		position: absolute;
+		left: 0;
+		box-shadow: 0 0.25em 0 0 $color, 0 0.5em 0 0 $color;
+		background: $color;
+		@include transition(500ms background ease, 500ms box-shadow ease);
+	}
+	&:hover:before {
+		box-shadow: 0 0.25em 0 0 $hover, 0 0.5em 0 0 $hover;
+		background: $hover;
+	}
+}
+
+/**
+ * arrow
+ * CSS Arrow.
+ *
+ * .foo {@include arrow(15px, #f9f7f3, 10px, null, left);}
+**/
+@mixin arrow($size, $color, $top, $left, $position){
+	&:after {
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: $top;
+		@if($left != null){
+			left: $left;
+		}
+		border: solid transparent;
+		content: " ";
+		pointer-events: none;
+		@if($position == left){
+			border-right-color: $color;
+		}
+		@else if($position == right){
+			border-left-color: $color;
+		}
+		@else if($position == top){
+			border-bottom-color: $color;
+		}
+		@else if($position == bottom){
+			border-top-color: $color;
+		}
+		border-width: $size;
+	}
+}
+
+/**
+ * respond-to
+ * Responive breakpoints converted to em value
+ *
+ * @uses px-to-em()
+ *
+ * @include respond-to(768px){.foo {display: block;}}
+**/
+@mixin respond-to($breakpoint1, $breakpoint2: null, $up-to: true, $device: false){
+	@if($up-to){
+		@media only screen and (max-width: px-to-em($breakpoint1)){
+			@content
+		}
+	}
+	@else if($device){
+		@media only screen and (min-device-width: px-to-em($breakpoint1)) and (max-device-width: px-to-em($breakpoint2)){
+			@content
+		}
+	}
+	@else{
+		@media only screen and (min-width: px-to-em($breakpoint1)) and (max-width: px-to-em($breakpoint2)){
+			@content
+		}
+	}
+}

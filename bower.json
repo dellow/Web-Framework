@@ -1,0 +1,31 @@
+{
+  "name": "Framework Library",
+  "version": "1.0.0",
+  "authors": [
+    "Stew Dellow <stewdellow@gmail.com>"
+  ],
+  "description": "SASS/Compass and RequireJS Library for any Framework",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "keywords": [
+    "sass",
+    "compass",
+    "require",
+    "amd",
+    "framework",
+    "css",
+    "html",
+    "jquery",
+    "javascript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

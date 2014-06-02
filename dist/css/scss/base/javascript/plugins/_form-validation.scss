@@ -1,0 +1,12 @@
+.val-box {
+	@extend .alert.error
+}
+.val-message {
+	display: none;
+}
+#suggestion {
+	display: none;
+}
+#alternate_email {
+	cursor: pointer;
+}
