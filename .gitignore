@@ -1,7 +1,5 @@
 # Ignore Directories
 # ---------------------------
 .sass-cache/
+bower_components/
 node_modules/
-
-# Ignore Files
-# ---------------------------
