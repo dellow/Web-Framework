@@ -3,7 +3,12 @@
  * Menu JS file.
 **/
 
+// jQuery
+var $ = jQuery = require('jquery');
+
 ;(function($, window, undefined){
+    'use strict';
+
     // Object
     var menu = menu || {};
 
@@ -66,5 +71,8 @@
     		menu.init($('.nav-primary'));
     	}
     });
+
+    // Export object for use.
+    window.menu  = menu;
 
 }(jQuery, window));

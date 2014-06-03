@@ -10,7 +10,10 @@
  * @todo: Strings and Titles are not outputted correctly
 **/
 
-;(function(window, document, undefined){
+;(function(window, undefined){
+
+    // Object
+    var googlemap = googlemap || {};
 
     /**
      * googlemap.init
@@ -40,14 +43,14 @@
         // Create an empty array for our Geocoded results
         googlemap.georesults = [];
         // Start map
-        googlemap.defaultMap();
+        googlemap.default_map();
     }
 
     /**
-     * googlemap.defaultMap
+     * googlemap.default_map
      * null.
     **/
-    googlemap.defaultMap = function(){
+    googlemap.default_map = function(){
         // API Settings
         googlemap.settings = {
             mapTypeId             : googlemap.map_type_setting,
@@ -108,11 +111,11 @@
                             googlemap.map.setZoom(zoom);
                         }
                         setTimeout(function(){
-                            addMarker(i);
+                            add_marker(i);
                         }, i * 750);
                     }
 
-                    function addMarker(){
+                    function add_marker(){
                         var marker = new google.maps.Marker({
                             position : googlemap.georesults[k],
                             map      : googlemap.map,
@@ -166,4 +169,4 @@
     // Init
     google.maps.event.addDomListener(window, 'load', googlemap.init());
 
-})(window, document);
+})(window);

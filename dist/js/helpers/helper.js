@@ -4,9 +4,9 @@
 **/
 
 ;(function(global, undefined){
-	var helper;
+	'use strict';
 
-	helper = global.helper || {};
+	var helper = global.helper || {};
 
 	/**
 	 * helper.log

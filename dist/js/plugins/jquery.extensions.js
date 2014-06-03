@@ -1,9 +1,36 @@
 /**
  * extensions.js
- * Extends jQuery with a few custom methods
+ * Adds some additional jQuery methods and a few common events.
 **/
 
-;(function($, window, document, undefined){
+;(function($, window, undefined){
+    'use strict';
+
+    /**
+     * Requests confirmation before completing action
+    **/
+    $('.js-confirm-action').on({
+        click: function(e){
+            var custom_message = $(this).data('confirm-message'),
+                message        = (custom_message !== undefined) ? custom_message : 'Are you sure?';
+
+            return confirm(message);
+        }
+    });
+
+    /**
+     * Buttonless form submittal
+    **/
+    $('.js-send').each(function(){
+        var jsform = $(this).offsetParent('form');
+        $('button', jsform).hide();
+        $(this).on({
+            change: function(){
+                jsform.submit();
+            }
+        });
+    });
+
     /**
      * $.accordion
      * Creates an accordion
@@ -185,31 +212,6 @@
     }
 
     /**
-     * Requests confirmation before completing action
-    **/
-    $('.confirm-action').on({
-        click: function(e){
-            var custom_message = $(this).data('confirm-message'),
-                message        = (custom_message !== undefined) ? custom_message : 'Are you sure?';
-
-            return confirm(message);
-        }
-    });
-
-    /**
-     * Buttonless form submittal
-    **/
-    $('.js-send').each(function(){
-        var jsform = $(this).offsetParent('form');
-        $('button', jsform).hide();
-        $(this).on({
-            change: function(){
-                jsform.submit();
-            }
-        });
-    });
-
-    /**
      * Viewport Selector by Mika Tuupola
     **/
     $.belowthefold = function(element, settings) {
@@ -379,4 +381,4 @@
         }
     });
 
-})(jQuery, window, document);
+})(jQuery, window);

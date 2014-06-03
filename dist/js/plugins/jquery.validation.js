@@ -25,7 +25,7 @@
  * customValidationMethod: Function. Function containing any custom methods to validate against. Must return the element.
 **/
 
-;(function($, window, document, undefined){
+;(function($, window, undefined){
     'use strict';
 
     $.fn.extend({
@@ -671,4 +671,4 @@
         }
     });
 
-})(jQuery, window, document);
+})(jQuery, window);

@@ -1,7 +1,7 @@
 /**
  *
- * jQuery lightBox plugin
- * $('.foo').lightBox();
+ * jQuery lightbox plugin
+ * $('.foo').lightbox();
  *
  * Options:
  * - parentlink: Boolean. Whether to use the href of the image parent or not.
@@ -23,8 +23,10 @@
  *
 **/
 
-;(function($, window, document, undefined){
-	$.fn.lightBox = function(options){
+;(function($, window, undefined){
+    'use strict';
+
+	$.fn.lightbox = function(options){
 		/* -- Defaults -- */
 		// Our application defaults
 		var defaults = {
@@ -268,4 +270,4 @@
 		});
 	};
 
-})(jQuery, window, document);
+})(jQuery, window);

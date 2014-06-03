@@ -102,12 +102,12 @@ hr {
 
 /* -- Selection -- */
 ::-moz-selection {
-	background: $blue_red;
+	background: $red_base;
 	color: $white;
 	text-shadow: none;
 }
 ::selection {
-	background: $blue_red;
+	background: $red_base;
 	color: $white;
 	text-shadow: none;
 }
@@ -121,7 +121,7 @@ hr {
 	background: #e3f7fc;
 }
 ::-webkit-scrollbar-thumb {
-	background: $blue_red;
+	background: $red_base;
 	box-shadow: inset 0 0 2em rgba(0, 0, 0, 0.2);
 }
 ::-webkit-scrollbar-button {
