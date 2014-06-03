@@ -10,15 +10,24 @@ var gulp       = require('gulp'),
 	source     = require('vinyl-source-stream');
 
 /* ================================================== */
+/* Handle Errors
+/* ================================================== */
+function handleError(err) {
+	console.log(err.toString());
+	this.emit('end');
+}
+
+/* ================================================== */
 /* Task
 /* ================================================== */
 gulp.task('browserify', function(){
-	var ret = browserify('./dist/js/app/')
+	var ret = browserify('./content/themes/frameworkChild/dist/js/app/')
 		.bundle()
 		.pipe(source('index.js'))
 		.pipe(gulpif(GLOBAL.is_production, streamify(uglify())))
 		.pipe(rename('build.js'))
-		ret.pipe(gulp.dest('./dist/js/build/'));
+		.on('error', handleError)
+		ret.pipe(gulp.dest('./content/themes/frameworkChild/dist/js/build/'));
 
 	return ret;
 });
