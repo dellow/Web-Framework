@@ -28,12 +28,12 @@ function handleError(err) {
 /* Task
 /* ================================================== */
 gulp.task('compass', function(){
-	var ret = gulp.src('./content/themes/frameworkChild/dist/css/scss/**/*.scss')
+	var ret = gulp.src('./dist/css/scss/**/*.scss')
 	.pipe(compass({
 		style           : minify,
 		environment     : environment,
-		css             : './content/themes/frameworkChild/dist/css',
-		sass            : './content/themes/frameworkChild/dist/css/scss',
+		css             : './dist/css',
+		sass            : './dist/css/scss',
 		force           : true,
 		relativeAssets  : true,
 		noLineComments  : true,
