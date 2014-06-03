@@ -93,7 +93,7 @@ module.exports = function(grunt){
         sftp: {
             deploy: {
                 files: {
-                    './releases' : (grunt.config('env') == 'staging') ? '<%= vars.deploy.files %>' : '<%= vars.deploy.archive %>'
+                    './releases' : (grunt.config('target') == 'staging') ? '<%= vars.deploy.files %>' : '<%= vars.deploy.archive %>'
                 },
                 options: {
                     showProgress        : true,

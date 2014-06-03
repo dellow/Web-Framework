@@ -8,10 +8,7 @@
     "url": "https://github.com/sdellow/HTML-Framework.git"
   },
   "contributors": [
-    {
-      "name": "Stew Dellow",
-      "email": "stewart@hellostew.com"
-    }
+    {"name": "Stew Dellow", "email": "stewart@hellostew.com"}
   ],
   "devDependencies": {
     "grunt": "0.4.4",
@@ -38,7 +35,6 @@
     "angularjs": "*",
     "backbone": "*",
     "jquery": "*",
-    "jquery-ui": "*",
-    "requirejs": "*"
+    "jquery-ui": "*"
   }
 }
