@@ -1,22 +1,17 @@
-# App Directories
-# ---------------------------
-
-# Ignore Directories
+# Base Directories
 # ---------------------------
 .sass-cache/
 node_modules/
+bower_components/
+dist/
 
-# Ignore Files
+# App Directories
+# ---------------------------
+
+# App Files
 # ---------------------------
 *.log
 # .gitignore
 # sftp-config.json
 # *.sublime-project
 # *.sublime-workspace
-
-# Temporary ignores
-dist/docs/Analytics.md
-dist/docs/Critical Path.md
-dist/docs/Chrome Dev Tools.md
-dist/docs/Git.md
-dist/docs/Guidelines.md

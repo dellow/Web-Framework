@@ -1,10 +1,10 @@
 {
   "name": "Framework",
   "version": "1.0.0",
+  "description": "A Framework for HTML projects. Includes SASS/Compass and Browserify for JavaScript.",
   "authors": [
     "Stew Dellow <stewdellow@gmail.com>"
   ],
-  "description": "A Grunt powered Framework for HTML projects. Includes SASS/Compass.",
   "dependencies": {
     "framework-library": "*"
   }

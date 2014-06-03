@@ -1,13 +1,14 @@
-/**
- * Grunt Powered HTML Framework
- * http://hellostew.com
- * @author Stewart Dellow
-**/
-
+/* ================================================== */
+/* Grunt
+/* ================================================== */
 module.exports = function(grunt){
 
+    // Target
+    var target = grunt.option('config') || 'staging';
     // Set the environment depending on the task name
     grunt.config('env', (grunt.cli.tasks == 'production') ? 'production' : 'development');
+    // Set the target based on the task target
+    grunt.config('target', target);
 
     /**
      * grunt.initConfig
@@ -26,147 +27,30 @@ module.exports = function(grunt){
         **/
         vars: {
             paths: {
-                basePath : '/',
-                jsPath   : 'dist/js',
-                imgPath  : 'dist/images',
-                cssPath  : 'dist/css',
-                fontsPath: 'dist/css/fonts'
+                base : '/',
+                css  : 'dist/css',
+                fonts: 'dist/css/fonts',
+                img  : 'dist/images',
+                js   : 'dist/js'
             },
             deploy: {
                 release: (new Date()).toISOString().replace(/[^a-z0-9]/gi, '_').toLowerCase(),
-                config : grunt.option('config')
-            },
-            compass: {
-                sourcemap  : (grunt.config('env') == 'development') ? true : false,
-                outputStyle: (grunt.config('env') == 'development') ? 'expanded' : 'compressed', // expanded, nested, compact or compressed
-                environment: (grunt.config('env') == 'development') ? 'development' : 'production'
-            },
-            requireJS: {
-                optimize: (grunt.config('env') == 'development') ? 'none' : 'uglify'
-            }
-        },
-
-        /**
-         * requirejs
-         * RequireJS loader and minfier.
-        **/
-        requirejs : {
-            compile: {
-                options: {
-                    baseUrl       : '',
-                    name          : '<%= vars.paths.jsPath %>/main',
-                    excludeShallow: ['<%= vars.paths.jsPath %>/main'], // We don't want the main config file included in the build but we do want what it requires.
-                    out           : '<%= vars.paths.jsPath %>/build/build.js',
-                    optimize      : '<%= vars.requireJS.optimize %>',
-                    wrap: {
-                        start: '"use strict"\ ;\n'
-                    },
-                    paths: {
-                        // Libraries
-                        angular       : 'node_modules/angular/lib/angular.min',
-                        backbone      : 'node_modules/backbone/backbone',
-                        jquery        : 'node_modules/jquery/dist/jquery',
-                        jqueryui      : 'node_modules/jquery-ui/jquery-ui',
-                        // RequireJS Modules
-                        req_async     : '<%= vars.paths.jsPath %>/vendor/require/require.async',
-                        // Plugins
-                        extensions    : '<%= vars.paths.jsPath %>/plugins/jquery.extensions',
-                        validation    : '<%= vars.paths.jsPath %>/plugins/jquery.validation',
-                        lightBox      : '<%= vars.paths.jsPath %>/plugins/jquery.lightBox',
-                        scrollto      : '<%= vars.paths.jsPath %>/plugins/jquery.scrollto.min',
-                        slider        : '<%= vars.paths.jsPath %>/plugins/jquery.bxslider.min',
-                        // Local
-                        helper        : '<%= vars.paths.jsPath %>/helpers/helper',
-                        // App
-                        site          : '<%= vars.paths.jsPath %>/app/site'
-                    },
-                    shim: {
-                        extensions: {
-                            deps: ['jquery']
-                        },
-                        validation: {
-                            deps: ['jquery']
-                        },
-                        lightBox: {
-                            deps: ['jquery']
-                        },
-                        scrollto: {
-                            deps: ['jquery']
-                        },
-                        slider: {
-                            deps: ['jquery']
-                        },
-                        site: {
-                            deps: ['helper', 'extensions']
-                        }
-                    }
-                }
-            }
-        },
-
-        /**
-         * qunit
-         * jQuery testing.
-        **/
-        qunit: {
-            all: ['tests/**.html']
-        },
-
-        /**
-         * compass
-         * SASS & Compass.
-        **/
-        compass: {
-            dist: {
-                options: {
-                    app             : 'stand_alone',
-                    httpPath        : '/',
-                    importPath      : [],
-                    sassDir         : '<%= vars.paths.cssPath %>/scss',
-                    cssDir          : '<%= vars.paths.cssPath %>',
-                    imagesDir       : '<%= vars.paths.imgPath %>',
-                    javascriptsDir  : '<%= vars.paths.jsPath %>/',
-                    fontsDir        : '<%= vars.paths.fontsPath %>',
-                    outputStyle     : '<%= vars.compass.outputStyle %>',
-                    environment     : '<%= vars.compass.environment %>',
-                    //sourcemap       : '<%= vars.compass.sourcemap %>',
-                    raw             : 'preferred_syntax = :scss\n',
-                    force           : true,
-                    relativeAssets  : true,
-                    noLineComments  : true,
-                    assetCacheBuster: false
-                }
-            }
-        },
-
-        /**
-         * watch
-         * Watch for changes to specific files.
-        **/
-        watch: {
-            scripts: {
-                files: [
-                    '<%= vars.paths.jsPath %>/*.js',
-                    '<%= vars.paths.jsPath %>/**/*.js',
+                config : grunt.option('config'),
+                archive: [
+                    'releases/deployment.tgz'
                 ],
-                tasks: [
-                    'requirejs'
-                ],
-                options: {
-                    livereload: true
-                }
-            },
-            compass: {
-                files: [
-                    '<%= vars.paths.cssPath %>/*.scss',
-                    '<%= vars.paths.cssPath %>/**/*.scss'
-                ],
-                tasks: [
-                    'compass'
-                ],
-                options: {
-                    livereload: true
-                }
+                files  : [
+                    '*htaccess',
+                    '*html',
+                    '*php',
+                    '<%= vars.paths.css %>/addons/**',
+                    '<%= vars.paths.css %>/fonts/**',
+                    '<%= vars.paths.css %>/*',
+                    '<%= vars.paths.img %>/**',
+                    '<%= vars.paths.js %>/build/**',
+                    '<%= vars.paths.js %>/plugins/**',
+                    '<%= vars.paths.js %>/vendor/**'
+                ]
             }
         },
 
@@ -177,32 +61,11 @@ module.exports = function(grunt){
         compress: {
             main: {
                 options: {
-                    archive: 'tmp/deployment.tgz'
+                    archive: 'releases/deployment.tgz'
                 },
                 expand: true,
                 cwd   : './',
-                src   : [
-                    '*htaccess',
-                    '*html',
-                    '*php',
-                    'dist/css/addons/**',
-                    'dist/css/fonts/**',
-                    'dist/css/*',
-                    'dist/images/**',
-                    'dist/js/build/**',
-                    'dist/js/plugins/**',
-                    'dist/js/vendor/**'
-                ]
-            }
-        },
-
-        /**
-         * shell
-         * Various shell commands.
-        **/
-        shell: {
-            removeLocalTmp: {
-                command: 'rm -rf tmp'
+                src   : '<%= vars.deploy.files %>'
             }
         },
 
@@ -211,29 +74,26 @@ module.exports = function(grunt){
          * Deployment with Grunt.
         **/
         sshconfig: {
-            live: {
-                // Server host
+            staging: {
+                host        : '',
+                username    : '',
+                password    : '',
+                path        : '',
+                readyTimeout: 99999
+            },
+            production: {
                 host        : '<%= auth.host %>',
-                // Server username
                 username    : '<%= auth.user %>',
-                // Server password
                 password    : '<%= auth.password %>',
-                // SSH agent
                 //agent       : process.env.SSH_AUTH_SOCK,
-                // Deployment path
                 path        : '<%= auth.remote_path %>/current',
-                // Port
-                port        : 22,
-                // Timeout
                 readyTimeout: 99999
             }
         },
         sftp: {
             deploy: {
                 files: {
-                    './releases': [
-                        'tmp/deployment.tgz',
-                    ]
+                    './releases' : (grunt.config('env') == 'staging') ? '<%= vars.deploy.files %>' : '<%= vars.deploy.archive %>'
                 },
                 options: {
                     showProgress        : true,
@@ -253,8 +113,8 @@ module.exports = function(grunt){
             },
             'uncompress': {
                 command: [
-                    'sudo tar -zxvf <%= auth.remote_path %>/releases/<%= vars.deploy.release %>/tmp/deployment.tgz -C <%= auth.remote_path %>/releases/<%= vars.deploy.release %>',
-                    'sudo rm -rf <%= auth.remote_path %>/releases/<%= vars.deploy.release %>/tmp/'
+                    'sudo tar -zxvf <%= auth.remote_path %>/releases/<%= vars.deploy.release %>/releases/deployment.tgz -C <%= auth.remote_path %>/releases/<%= vars.deploy.release %>',
+                    'sudo rm -rf <%= auth.remote_path %>/releases/<%= vars.deploy.release %>/releases/'
                 ]
             },
             'do-symlinks': {
@@ -286,35 +146,20 @@ module.exports = function(grunt){
     **/
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-    /**
-     * Register tasks.
-    **/
-    // Task   : Default
-    // Command: `grunt`
-    grunt.registerTask('default', [
-        'compass',
-        'requirejs',
-        'qunit'
-    ]);
-
-    // Task   : Production
-    // Command: `grunt production`
-    grunt.registerTask('production', [
-        'compass',
-        'requirejs'
-    ]);
-
     // Task   : Deployment
     // Command: `grunt deploy --config <site>`
-    grunt.registerTask('deploy', [
-        'compress',
-        'sshexec:make-release',
-        'sshexec:do-symlinks',
-        'sftp:deploy',
-        'sshexec:uncompress',
-        'sshexec:permissions',
-        'shell:removeLocalTmp'
-    ]);
+    grunt.registerTask('deploy', function(){
+        if(target == 'production'){
+            grunt.task.run('compress');
+            grunt.task.run('sshexec:make-release');
+            grunt.task.run('sshexec:do-symlinks');
+        }
+        grunt.task.run('sftp:deploy');
+        if(target == 'production'){
+            grunt.task.run('sshexec:uncompress');
+            grunt.task.run('sshexec:permissions');
+        }
+    });
 
     // Task   : Rollback
     // Command: `grunt rollback --config <site>`
