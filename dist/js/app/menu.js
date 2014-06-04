@@ -66,10 +66,16 @@ var $ = jQuery = require('jquery');
         });
     }
 
-    $(window).on('load resize', function(){
+    $(window).on('resize', function(){
         if(helper.mobile_mode(580)){
-    		menu.init($('.nav-primary'));
-    	}
+            menu.init($('.nav-primary'));
+        }
+    });
+
+    $(function(){
+        if(helper.mobile_mode(580)){
+            menu.init($('.nav-primary'));
+        }
     });
 
     // Export object for use.
