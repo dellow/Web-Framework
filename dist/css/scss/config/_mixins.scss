@@ -105,7 +105,7 @@ $legacy_support_for_ie: true;
  * transition
  * Cross browser transition.
  *
- * .foo {@include transition(color 500ms ease);}
+ * .foo {@include transition(color $animation ease);}
 **/
 @mixin transition($pattern...){
 	-webkit-transition: $pattern;
@@ -155,7 +155,7 @@ $legacy_support_for_ie: true;
 		left: 0;
 		box-shadow: 0 0.25em 0 0 $color, 0 0.5em 0 0 $color;
 		background: $color;
-		@include transition(500ms background ease, 500ms box-shadow ease);
+		@include transition($animation background ease, $animation box-shadow ease);
 	}
 	&:hover:before {
 		box-shadow: 0 0.25em 0 0 $hover, 0 0.5em 0 0 $hover;

@@ -120,7 +120,7 @@ form {
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
 		border-radius: $border_radius_base;
 		@include rem(font-size, 14px);
-		@include transition(color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease);
+		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease, box-shadow $animation ease);
 	}
 
 	// Textareas
@@ -163,7 +163,7 @@ form {
 		background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
 		background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
 		background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-		@include transition(color 500ms ease, background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease);
+		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease, box-shadow $animation ease);
 		&:active, &:hover {
 			color: inherit;
 			border-color: $grey_light;

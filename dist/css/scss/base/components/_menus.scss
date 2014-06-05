@@ -27,7 +27,7 @@
 			pointer-events: none;
 			color: $grey;
 			@include opacity(0);
-			@include transition(top 500ms ease, opacity 500ms ease);
+			@include transition(top $animation ease, opacity $animation ease);
 		}
 	}
 	select {
@@ -43,7 +43,7 @@
 		-moz-appearance: none;
 		appearance: none;
 		background: $black;
-		@include transition(background 500ms ease);
+		@include transition(background $animation ease);
 		&:hover, &:focus {
 			background-color: $grey;
 		}
@@ -61,7 +61,7 @@
 		@include inline-block;
 		pointer-events: none;
 		color: $white;
-			@include transition(top 500ms ease);
+			@include transition(top $animation ease);
 	}
 	&:hover {
 		span {

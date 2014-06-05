@@ -15,7 +15,7 @@ html {
 a, button {
 	color: $colour_text_link;
 	text-decoration: none;
-	@include transition(color 500ms ease);
+	@include transition(color $animation ease);
 	&:hover {
 		color: $colour_text_link_hover;
 	}

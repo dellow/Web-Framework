@@ -13,9 +13,6 @@
 * Config
 **/
 /**
-* Essentials
-**/
-/**
 * Defaults
 **/
 /**
@@ -89,7 +86,7 @@
  * transition
  * Cross browser transition.
  *
- * .foo {@include transition(color 500ms ease);}
+ * .foo {@include transition(color $animation ease);}
 **/
 /**
  * opacity
@@ -942,8 +939,8 @@ a:active, button:active {
 .hatnote {
   padding-left: 20px;
   padding-left: 1.25rem;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 13.71429px;
+  margin-bottom: 0.85714rem;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
@@ -957,15 +954,15 @@ a:active, button:active {
   /* -- Lists -- */
 }
 .content p, .content ul, .content ol, .content figure {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 13.71429px;
+  margin-bottom: 0.85714rem;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
 }
 .content p:first-of-type {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 13.71429px;
+  margin-bottom: 0.85714rem;
   font-size: 18px;
   font-size: 1.125rem;
   line-height: 1.33333;
@@ -980,48 +977,48 @@ h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, 
 }
 
 h1 {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 13.71429px;
+  margin-bottom: 0.85714rem;
   font-size: 48px;
   font-size: 3rem;
   line-height: 1;
 }
 
 h2 {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 13.71429px;
+  margin-bottom: 0.85714rem;
   font-size: 36px;
   font-size: 2.25rem;
   line-height: 1.33333;
 }
 
 h3 {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 13.71429px;
+  margin-bottom: 0.85714rem;
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 1;
 }
 
 h4 {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 13.71429px;
+  margin-bottom: 0.85714rem;
   font-size: 18px;
   font-size: 1.125rem;
   line-height: 1.33333;
 }
 
 h5 {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 13.71429px;
+  margin-bottom: 0.85714rem;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
 }
 
 h6 {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 13.71429px;
+  margin-bottom: 0.85714rem;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.71429;

@@ -14,7 +14,7 @@
 	color: #FFF;
 	text-align: center;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	@include transition(background 500ms ease);
+	@include transition(background $animation ease);
 
 	&.grad {
 		border: 1px solid !important; /* Important so alert.btn doesn't get an underline */

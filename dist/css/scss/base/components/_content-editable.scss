@@ -9,7 +9,7 @@
 	border-radius: 3px;
 	border-left: 1px solid transparent;
 	border-right: 1px solid transparent;
-	@include transition(background 500ms ease, border-color 500ms ease);
+	@include transition(background $animation ease, border-color $animation ease);
 	// Disabled fields
 	&[contenteditable="false"]{
 		&:hover {

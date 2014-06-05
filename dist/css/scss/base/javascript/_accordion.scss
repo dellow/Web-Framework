@@ -9,7 +9,7 @@
 		padding: 0.5em;
 		border: 1px solid #EAEAEA;
 		position: relative;
-		@include transition(color 500ms ease, background-color 500ms ease);
+		@include transition(color $animation ease, background-color $animation ease);
 		&.arrow {
 			&.active-title:after {
 				top: 45%;
