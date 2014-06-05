@@ -56,8 +56,8 @@
  * .foo {@include rhythm(20px);}
 **/
 @mixin rhythm($size){
-	margin-bottom: 0px + $line_height_base;
-	margin-bottom: ($line_height_base / $font_size_base) + rem;
+	margin-bottom: 0px + ($line_height_base / 1.75);
+	margin-bottom: px-to-rem($line_height_base / 1.75);
 	font-size: 0px + $size;
 	font-size: px-to-rem($size);
 	line-height: ceil($size / $line_height_base) * ($line_height_base / $size);
