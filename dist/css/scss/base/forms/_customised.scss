@@ -5,7 +5,7 @@
 /* -- Forms -- */
 form {
 	// General Custom Inputs
-	[class*='custom-'] {
+	.custom-checkbox, .custom-radio {
 		margin-right: $nudge;
 		position: relative;
 		@include inline-block;
@@ -111,9 +111,6 @@ form {
 			-webkit-appearance: none;
 			-moz-appearance: none;
 			appearance: none;
-			&:hover, &:focus {
-				background-color: #ddd;
-			}
 		}
 	}
 }
