@@ -608,6 +608,18 @@
                             form.prev('.form-success').fadeIn(300);
                         });
                     }
+                    else if(type == 'js'){
+                        e.preventDefault();
+                        $.ajax({
+                            type: 'POST',
+                            data: form.serialize(),
+                            success: function(){
+                                form.fadeOut(500, function(){
+                                    form.prev('.form-success').fadeIn(300);
+                                });
+                            }
+                        });
+                    }
                     else{
                         return true;
                     }

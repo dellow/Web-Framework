@@ -1,183 +1,11 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/**
- * forms.js
- * Forms JS file.
-**/
-
-// jQuery
-var $ = jQuery = require('jquery');
-// Form validation
-require('../plugins/jquery.validation');
-
-;(function($, window, undefined){
-    'use strict';
-
-    // Object
-    var forms = forms || {};
-
-	// Form validation
-    if($('.validate').length){
-        $('.validate').validation({
-            preloaderSize: 20,
-            preloaderHEX : '#FFFFFF',
-            msgSep       : ''
-        });
-    }
-
-    // Export object for use.
-    window.forms  = forms;
-
-}(jQuery, window));
-},{"../plugins/jquery.validation":8,"jquery":9}],2:[function(require,module,exports){
-/**
- * images.js
- * Images JS file.
-**/
-
-// jQuery
-var $ = jQuery = require('jquery');
-// Lightbox
-require('../plugins/jquery.lightbox');
-
-;(function($, window, undefined){
-    'use strict';
-
-    // Object
-    var images = images || {};
-
-	// Lightbox
-    if($('.lightbox').length){
-        $('.lightbox').lightbox({
-            // No options
-        });
-    }
-
-    // Export object for use.
-    window.images  = images;
-
-}(jQuery, window));
-},{"../plugins/jquery.lightbox":7,"jquery":9}],3:[function(require,module,exports){
-/**
- * index.js
- * Loads our app files.
-**/
-
-// Helper
-require('../helpers/helper');
-// Site
-require('./site');
-// Forms
-require('./forms');
-// Menu
-require('./menu');
-// Images
-require('./images');
-},{"../helpers/helper":6,"./forms":1,"./images":2,"./menu":4,"./site":5}],4:[function(require,module,exports){
-/**
- * menu.js
- * Menu JS file.
-**/
-
-// jQuery
-var $ = jQuery = require('jquery');
-
-;(function($, window, undefined){
-    'use strict';
-
-    // Object
-    var menu = menu || {};
-
-    /**
-     * menu.init
-     * Creates a mobile menu from the primary menu.
-    **/
-    menu.init = function(el){
-        var primary_nav = el,
-        	wrapper     = $('<div class="mobile-select-menu"></div>'),
-            select_nav  = $('<select class="nav-primary-mobile"></select>'),
-            select_box  = {
-                items: []
-            };
-
-        if(!$('.nav-primary-mobile').length){
-            $('li a', primary_nav).each(function(){
-                var anchor = $(this);
-                var a = anchor.text(),
-                    b = anchor.attr('href'),
-                    c = anchor.parent().parent().prev().html(),
-                    d = anchor.parent().attr('class');
-
-                select_box.items.push({
-                    'option_text'  : a,
-                    'option_value' : b,
-                    'parent_text'  : c,
-                    'is_parent'    : (anchor.next().hasClass('sub-menu')) ? true : false,
-                    'is_child'     : (anchor.parent().hasClass('child-item')) ? true : false,
-                    'this_class'   : (typeof d !== 'undefined' && d !== false) ? anchor.parent().attr('class').split(' ')[0] : '',
-                    'parent_class' : (anchor.parent().hasClass('child-item')) ? anchor.parent().parent().parent().attr('class').split(' ')[0] : ''
-                });
-
-            });
-            primary_nav.after(wrapper.append(select_nav));
-            select_nav.append('<option>Navigation</option>');
-            $.each(select_box.items, function(index, value){
-                var current = (document.URL == value.option_value) ? 'selected="selected"' : null;
-                if(value.is_parent){
-                    select_nav.append('<optgroup id="og-' + value.this_class + '" label="' + value.option_text + '"><option value="' + value.option_value + '" ' + current + '>' + value.option_text + '</option></optgroup>');
-                }
-                else if(value.is_child){
-                    $('optgroup#og-' + value.parent_class).append('<option value="' + value.option_value + '" ' + current + '>' + value.option_text + '</option>');
-                }
-                else {
-                    select_nav.append('<option value="' + value.option_value + '" ' + current + '>' + value.option_text + '</option>');
-                }
-            });
-            select_nav.wrap('<span></span>');
-        }
-        $('.nav-primary-mobile').change(function(){
-            if($(this).val() != ''){
-                window.location.href = $(this).val();
-            }
-        });
-    }
-
-    $(window).on('load resize', function(){
-        if(helper.mobile_mode(580)){
-    		menu.init($('.nav-primary'));
-    	}
-    });
-
-    // Export object for use.
-    window.menu  = menu;
-
-}(jQuery, window));
-},{"jquery":9}],5:[function(require,module,exports){
-/**
- * site.js
- * Controller JS file.
-**/
-
-// jQuery
-var $ = jQuery = require('jquery');
-
-;(function($, window, undefined){
-	'use strict';
-
-    // Object
-    var site = site || {};
-
-	// Export object for use.
-	window.site  = site;
-
-}(jQuery, window));
-},{"jquery":9}],6:[function(require,module,exports){
+"use strict" ;
 /**
  * helper.js
  * File description goes here.
 **/
 
 ;(function(global, undefined){
-	'use strict';
+	
 
 	var helper = global.helper || {};
 
@@ -210,957 +38,8 @@ var $ = jQuery = require('jquery');
 	window.helper = helper;
 
 })(window);
-},{}],7:[function(require,module,exports){
-/**
- *
- * jQuery lightbox plugin
- * $('.foo').lightbox();
- *
- * Options:
- * - parentlink: Boolean. Whether to use the href of the image parent or not.
- * - blurBG: Boolean. Whether to blur the background or not.
- * - overlay_background: String. Colour of the background overlay.
- * - modal_box_shadow: String. Colour of the modal box shadow.
- * - modal_border_radius: String. Border radius of the modal box.
- * - modal_border_style: String. Border style of the modal box.
- * - modal_background: String. Background colour of the modal box.
- * - modal_padding: String. Padding of the modal box.
- * - close_btn_text: String. Text for the close button.
- * - close_btn_padding: String. Padding for the close button.
- * - close_btn_color: String. Colour of the close button
- * - close_btn_bg: String. Background colour for the close button.
- * - close_btn_bg_hover: String. Background for the close button hover.
- * - close_btn_border_radius: String. Border radius for the close button.
- * - close_btn_shadow: String. Shadow for the close button.
- * - close_btn_font: String. Font for the close button.
- *
-**/
+define("helper", function(){});
 
-;(function($, window, undefined){
-    'use strict';
-
-	$.fn.lightbox = function(options){
-		/* -- Defaults -- */
-		// Our application defaults
-		var defaults = {
-			parentlink              : false,
-			blurBG				    : true,
-			overlay_background      : 'rgba(0, 0, 0, 0.6)',
-            modal_box_shadow        : '0 0 30px rgba(0, 0, 0, 0.6) ',
-            modal_border_radius     : '4px',
-            modal_border_style      : '3px solid #EFEFEF',
-            modal_background        : '#FFF',
-            modal_padding           : '1.8em',
-            close_btn_text          : 'Close',
-            close_btn_padding       : '10px 30px',
-            close_btn_color         : '#000',
-            close_btn_bg            : '#EFEFEF',
-            close_btn_bg_hover      : '#e2e0e0',
-            close_btn_border_radius : '0.25em',
-            close_btn_shadow        : '',
-            close_btn_font          : 'bold 0.9em Arial'
-		};
-
-		/* -- Settings -- */
-		// Combine the defaults and custom settings
-		var settings = $.extend({}, defaults, options);
-
-		/* -- Utilities -- */
-		// Center any element
-		$.fn.fn_center = function(method, element){
-			var el      = (element != null) ? $(element) : $(window);
-	        var methods = {
-	            all: function(){
-	                el.css('position', 'relative');
-	                this.css('position', 'absolute');
-	                if(this.outerWidth() > el.width()){
-		                var perc = (this.outerWidth() / 100) * 90;
-		                this.css('width', perc + 'px');
-		            }
-	                this.css('top', ((el.height() - this.outerHeight()) / 2) + el.scrollTop() + 'px');
-	                this.css('left', ((el.width() - this.outerWidth()) / 2) + el.scrollLeft() + 'px');
-	                return this;
-	            },
-	            vertical: function(){
-	                el.css('position', 'relative');
-	                this.css('position', 'absolute');
-	                this.css('top', ((el.height() - this.outerHeight()) / 2) + el.scrollTop() + 'px');
-	                return this;
-	            },
-	            horizontal: function(){
-	                el.css('position', 'relative');
-	                this.css('position', 'absolute');
-	                if(this.outerWidth() > el.width()){
-		                var perc = (this.outerWidth() / 100) * 90;
-		                this.css('width', perc + 'px');
-		            }
-	                this.css('left', ((el.width() - this.outerWidth()) / 2) + el.scrollLeft() + 'px');
-	                return this;
-	            }
-	        }
-	        if(methods[method]){
-	            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-	        }
-	        else if(typeof method === 'object' || !method){
-	            return methods.all.apply(this, arguments);
-	        }
-	        else{
-	            $.error('Method ' +  method + ' does not exist on jQuery.fn_center');
-	        }
-	    }
-
-	    // Add a blur class to any element
-	    // Requires a .blur class to be set up in CSS.
-	    $.fn.fn_blur = function(method){
-	    	if(settings.blurBG){
-		        var methods = {
-		            on: function(){
-		                this.nextUntil('div').addClass('blur');
-		                return this;
-		            },
-		            off: function(){
-		                this.nextUntil('div').removeClass('blur');
-		                return this;
-		            }
-		        };
-		        if(methods[method]){
-		            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-		        }
-		        else if(typeof method === 'object' || !method){
-		            return methods.on.apply(this, arguments);
-		        }
-		        else{
-		            $.error('Method ' +  method + ' does not exist on jQuery.fn_blur');
-		        }
-		    }
-		    else{
-		    	return false;
-		    }
-   		}
-
-		return this.each(function(){
-			var plg = $(this);
-
-			/* -- App methods -- */
-			var app = {
-				init: function(){
-					this.cacheElements();
-				},
-				cacheElements: function(){
-					this.dombody     = $('body');
-					this.target_src  = (settings.parentlink) ? plg.parent().attr('href') : plg.attr('href');
-					this.target_type = this.target_src.substr((this.target_src.lastIndexOf('.') +1));
-					this.overlay     = $('<div class="overlay"></div>').css({'width': '100%', 'height': '100%', 'position': 'absolute', 'z-index': '998', 'top': '0', 'left': '0', 'background': settings.overlay_background}).hide();
-					this.modal       = $('<div class="modal"></div>').css({'z-index': '999', 'overflow': 'hidden', 'border-radius': settings.modal_border_radius, 'box-shadow': settings.modal_box_shadow, 'padding': settings.modal_padding, 'border': settings.modal_border_style, 'background': settings.modal_background}).hide();
-					this.new_image   = $('<img>');
-					this.close_btn   = $('<a href="#" class="close-btn" title="Close">' + settings.close_btn_text + '</a>').css({'padding': settings.close_btn_padding, 'font': settings.close_btn_font, 'background': settings.close_btn_bg, 'color': settings.close_btn_color, 'border-radius': settings.close_btn_border_radius, 'position': 'absolute', 'top': '5px', 'right': '5px', 'box-shadow': settings.close_btn_shadow});
-					this.extensions  = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
-				},
-		        loadingAnimation: function(){
-		            $.getScript('http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.js', function(){
-		                var loader = new CanvasLoader('loader');
-		                loader.setShape('spiral');
-		                loader.setDiameter(30);
-		                loader.setDensity(15);
-		                loader.setRange(0.6);
-		                loader.setSpeed(1);
-		                loader.setColor('#FFFFFF');
-		                loader.show();
-		            });
-		        }
-			}
-
-			/* -- Custom methods -- */
-			var lightbox = {
-				loadImage: function(){
-                    this.window_width  = $(document).width();
-                    this.window_height = $(document).height();
-
-                    // Source is a file and extension is in allowed array
-					if($.inArray(app.target_type, app.extensions) != -1){
-	                    this.createModal();
-	                    app.modal.prepend(app.new_image);
-
-	                    app.new_image.attr('src', app.target_src).load(function(){
-	                    	var img = $(this);
-
-	                    	var tempImage = new Image();
-							tempImage.src = img.attr('src');
-
-	                    	if(tempImage.height > ($(window).height() - 200)){
-	                    		img.height(($(window).height() - 200));
-	                    	}
-	                    	lightbox.doModal();
-	                    });
-	                }
-	                // Source is a DOM element
-	                else if($('#' + app.target_type).length > 0 || $('.' + app.target_type).length > 0){
-	                    this.createModal();
-	                    this.contentLoad = ($('#' + app.target_type).length > 0) ? $('#' + app.target_type) : $('.' + app.target_type);
-	                    app.modal.prepend(this.contentLoad.html());
-	                    lightbox.doModal();
-	                }
-	                // None of the above alert the user
-	                else{
-	                    alert('Not a supported file type');
-	                }
-				},
-				createModal: function(){
-	                app.dombody.prepend(app.overlay.fadeIn(500));
-					app.overlay.css({
-						'width'				: this.window_width,
-						'height'			: this.window_height,
-						'padding-bottom'    : '5%',
-						'-webkit-box-sizing': 'content-box',
-						'-moz-box-sizing'	: 'content-box',
-						'-ms-box-sizing'	: 'content-box',
-						'box-sizing'		: 'content-box'
-					});
-                    app.overlay.before('<div id="loader"></div>');
-                    $('#loader').css({'z-index': '999'}).fn_center('all');
-                    app.loadingAnimation();
-
-					app.overlay.prepend(app.modal);
-
-					app.modal.prepend(app.close_btn);
-				},
-				doModal: function(){
-					$('#loader').fadeOut(250, function(){
-						$(this).remove();
-					})
-                    app.modal.fn_center('all').fadeIn(500);
-                    if(app.modal.position().top <= 25){
-                        app.modal.css({'top': '5%'});
-                    }
-                    if(app.overlay.height() <= app.modal.outerHeight()){
-                        app.overlay.css({'height': (app.modal.outerHeight() + parseFloat(app.modal.css('top'))) + 'px'});
-                    }
-                    app.overlay.fn_blur('on');
-				},
-				removeModal: function(){
-                    app.modal.fadeOut(500, function(){
-                        app.overlay.fadeOut(300, function(){
-                            app.overlay.fn_blur('off');
-                            app.overlay.remove();
-                        });
-                    });
-				}
-			}
-
-			/* -- Click events -- */
-			plg.on('click', function(e){
-				e.preventDefault();
-
-				// Initialise the application
-				app.init();
-
-				// Load our lightbox image
-				lightbox.loadImage();
-
-				// Close button click event
-	            app.close_btn.on({
-	                click: function(e){
-	                    e.preventDefault();
-						lightbox.removeModal();
-	                },
-	                mouseover: function(){
-	                    app.close_btn.css({'background': settings.close_btn_bg_hover});
-	                },
-	                mouseout: function(){
-	                    app.close_btn.css({'background': settings.close_btn_bg});
-	                }
-	            });
-
-	            // ESC button event
-	            $(document).on({
-	            	keyup: function(e){
-	                    if(e.keyCode == 27){
-							lightbox.removeModal();
-						}
-	            	}
-	            });
-			});
-		});
-	};
-
-})(jQuery, window);
-
-},{}],8:[function(require,module,exports){
-/**
- * validation.js
- * $('.form').validation();
- *
- * domains               : Array. Adds to default array of top level domains for the email checker to spell check against.
- * localStorage          : Boolean. Whether to use localStorage to save the field values if the page gets refreshed.
- * serverValidation      : Boolean. Whether to use server validation or not.
- * serverID              : String. Post var to send to server side to identify AJAX response.
- * emailRegEx            : String. RegEx to check email addresses against.
- * passRegEx             : String. RegEx to check passwords against.
- * urlRegEx              : String. RegEx to check URLs against.
- * errorBoxClass         : String. Class to apply to the error box.
- * errorClass            : String. Class to apply to fields with an error.
- * successClass          : String. Description.
- * msgSep                : String. Used to separate the field label and the error message.
- * defaultErrorMsg       : String. Field error message if one isn't supplied in the HTML.
- * defaultSuccessMsg     : String. Form success message if one isn't supplied in the HTML.
- * defaultSuggestText    : String. Email suggestion text.
- * errorBoxElement       : String. HTML element type that wraps the error message.
- * preloaderHEX          : String. HEX value for the colour of the preloader spinner. Must be a full 6 character HEX value.
- * preloaderSize         : Integer. Pixel size of the preloader spinner.
- * preloaderDensity      : Integer. Density of the preloader spinner.
- * validationMessage     : jQuery Element. A valid jQuery element that holds the error message.
- * successFunction       : Function. Function to run on successful validation.
- * customValidationMethod: Function. Function containing any custom methods to validate against. Must return the element.
-**/
-
-;(function($, window, undefined){
-    'use strict';
-
-    $.fn.extend({
-        validation: function(options){
-            // Default settings
-            this.defaults = {
-                domains               : [],
-                localStorage          : true,
-                serverValidation      : true,
-                serverID              : 'ajaxrequest',
-                emailRegEx            : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
-                passRegEx             : /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
-                urlRegEx              : /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
-                errorBoxClass         : 'error-box',
-                errorClass            : 'error',
-                successClass          : 'success',
-                msgSep                : ' -',
-                defaultErrorMsg       : 'Please enter a value',
-                defaultSuccessMsg     : 'Form successfully submitted',
-                defaultSuggestText    : 'Did you mean',
-                errorBoxElement       : '<span/>',
-                preloaderHEX          : '#333333',
-                preloaderSize         : 15,
-                preloaderDensity      : 15,
-                validationMessage     : $('.error-message'),
-                successFunction       : null,
-                customValidationMethod: null
-            };
-            // Create a settings object
-            var settings = $.extend({}, this.defaults, options);
-            // Set up plugin object
-            var plugin = {};
-            // Set up utilities object
-            var utilities = {};
-            // Set up email_suggester object
-            var email_suggester = {};
-            // Array of default domains
-            var default_domains = [
-                'aol.com',
-                'bellsouth.net',
-                'btinternet.com',
-                'btopenworld.com',
-                'blueyonder.co.uk',
-                'comcast.net',
-                'cox.net',
-                'gmail.com',
-                'google.com',
-                'googlemail.com',
-                'hotmail.co.uk',
-                'hotmail.com',
-                'hotmail.fr',
-                'hotmail.it',
-                'icloud.com',
-                'live.com',
-                'mac.com',
-                'mail.com',
-                'me.com',
-                'msn.com',
-                'o2.co.uk',
-                'orange.co.uk',
-                'outlook.com',
-                'outlook.co.uk',
-                'sbcglobal.net',
-                'verizon.net',
-                'virginmedia.com',
-                'yahoo.com',
-                'yahoo.co.uk',
-                'yahoo.com.tw',
-                'yahoo.es',
-                'yahoo.fr'
-            ];
-            // Extend the domains array with those from the plugin settings
-            var domains = $.extend(true, default_domains, settings.domains);
-
-            /**
-             * email_suggester.init
-             * null.
-            **/
-            email_suggester.init = function(el){
-                var email_val  = el.val(),
-                    match_val  = email_suggester.get_match(email_val);
-
-                this.suggestion = el.next('.suggestion');
-                this.reveal_suggestion(el, match_val);
-            }
-
-            /**
-             * email_suggester.get_match
-             * null.
-            **/
-            email_suggester.get_match = function(query){
-                var limit   = 99,
-                    query   = query.split('@');
-
-                for(var i = 0, ii = domains.length; i < ii; i++){
-                    var distance = email_suggester.levenshtein_distance(domains[i], query[1]);
-                    if(distance < limit){
-                        limit = distance;
-                        var domain = domains[i];
-                    }
-                }
-                if(limit <= 2 && domain !== null && domain !== query[1]){
-                    return{
-                        address: query[0],
-                        domain: domain
-                    }
-                }
-                else{
-                    return false;
-                }
-            }
-
-            /**
-             * email_suggester.levenshtein_distance
-             * null.
-            **/
-            email_suggester.levenshtein_distance = function(a, b){
-                var c = 0,
-                    d = 0,
-                    e = 0,
-                    f = 0,
-                    g = 5;
-
-                if(a == null || a.length === 0){
-                    if(b == null || b.length === 0){
-                        return 0
-                    }
-                    else{
-                        return b.length
-                    }
-                }
-                if(b == null || b.length === 0){
-                    return a.length
-                }
-
-                while(c + d < a.length && c + e < b.length){
-                    if(a[c + d] == b[c + e]){
-                        f++
-                    }
-                    else{
-                        d = 0;
-                        e = 0;
-                        for(var h = 0; h < g; h++){
-                            if(c + h < a.length && a[c + h] == b[c]){
-                                d = h;
-                                break
-                            }
-                            if(c + h < b.length && a[c] == b[c + h]){
-                                e = h;
-                                break
-                            }
-                        }
-                    }
-                    c++
-                }
-                return (a.length + b.length) / 2 - f
-            }
-
-            /**
-             * email_suggester.reveal_suggestion
-             * null.
-            **/
-            email_suggester.reveal_suggestion = function(el, result){
-                if(result){
-                    $('.address', this.suggestion).text(result.address);
-                    $('.domain', this.suggestion).text(result.domain);
-                    this.suggestion.stop(true, false).slideDown(350);
-
-                    $('.alternative-email').on('click', function(e){
-                        e.preventDefault();
-                        el.val(result.address + '@' + result.domain);
-                        email_suggester.suggestion.stop(true, false).slideUp(350);
-                    });
-                }
-            }
-
-            /**
-             * utilities.setup_email_field
-             * Add the email suggestion div after the email field.
-            **/
-            utilities.setup_email_field = function(el){
-                el.after($('<div class="suggestion">' + settings.defaultSuggestText + ' <a href="#" class="alternative-email"><span class="address">address</span>@<span class="domain">domain.com</span></a>?</div>').hide());
-
-                el.on('blur', function(){
-                    email_suggester.init(el);
-                });
-            }
-
-            /**
-             * utilities.setup_url_field
-             * Adds 'http://' to URL fields.
-            **/
-            utilities.setup_url_field = function(el){
-                el.on('blur', function(){
-                    var value = el.val();
-                    if(value !== '' && !value.match(/^http([s]?):\/\/.*/)){
-                        el.val('http://' + value);
-                    }
-                });
-            }
-
-            /**
-             * utilities.reset_errors
-             * Remove all errors
-            **/
-            utilities.reset_errors = function(form){
-                // Remove current classes
-                $('.' + settings.errorClass, form).removeClass(settings.errorClass);
-                $('.' + settings.errorBoxClass, form).remove();
-            }
-
-            /**
-             * utilities.set_errors
-             * Adds the error class and message to each field.
-            **/
-            utilities.set_errors = function(arr, form){
-                // Remove errors
-                utilities.reset_errors(form);
-                // Add new ones
-                $.each(arr, function(){
-                    var a = $(this);
-                    var el = a[0].input;
-                    // Get error message
-                    var error = a[0].msg;
-                    // Separator
-                    var message = (settings.msgSep) ? (error) ? settings.msgSep + ' <span class="msg">' + error + '</span>' : '' : '<span class="msg">' + error + '</span>';
-                    // Apply error class to field
-                    el.addClass(settings.errorClass);
-                    // Field specific actions
-                    if(el.attr('type') === 'checkbox' || el.attr('type') === 'radio'){
-                        // Add error element to field
-                        //el.offsetParent('.field').first().before($(settings.errorBoxElement).addClass(settings.errorBoxClass).html(message));
-                        el.closest('.field').find('label, .label').first().append($(settings.errorBoxElement).addClass(settings.errorBoxClass).html(message));
-                        // Apply to nearest label if checkbox or radio
-                        el.closest('label').addClass(settings.errorClass);
-                    }
-                    else{
-                        // Add error element to field
-                        el.parent().find('label, .label').append($(settings.errorBoxElement).addClass(settings.errorBoxClass).html(message));
-                    }
-                });
-            }
-
-            /**
-             * utilities.remove_duplicates
-             * Remove duplicates from an array
-            **/
-            utilities.remove_duplicates = function(array){
-                var result = [];
-                $.each(array, function(i, e){
-                    if($.inArray(e, result) == -1){
-                        result.push(e);
-                    }
-                });
-
-                return result;
-            }
-
-            /**
-             * utilities.loading_animation
-             * Creates a spinning loading animation.
-            **/
-            utilities.loading_animation = function(){
-                // Generate an element name with a random number
-                var el = 'loader-' + Math.random() * (100 - 1) + 1;
-                // Generate the preloader
-                $.getScript('http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.js', function(){
-                    var loader = new CanvasLoader(el);
-                    loader.setShape('spiral');
-                    loader.setDiameter(settings.preloaderSize);
-                    loader.setDensity(settings.preloaderDensity);
-                    loader.setRange(0.6);
-                    loader.setSpeed(1);
-                    loader.setColor(settings.preloaderHEX);
-                    loader.show();
-                });
-
-                // Return a loader element
-                return $('<div style="display: inline-block;" id="' + el + '"></div>');
-            }
-
-            /**
-             * utilities.message
-             * Returns a cross-browser safe message in the console.
-            **/
-            utilities.message = function(message, alertlog){
-                alertlog = (typeof alertlog === 'undefined') ? false : true;
-                if(typeof console === 'undefined' || typeof console.log === 'undefined'){
-                    if(alertlog){
-                        alert(message);
-                    }
-                }
-                else {
-                    console.log(message);
-                }
-            }
-
-            // Return the plugin instance to allow chaining
-            return this.each(function(){
-                // Global arrays
-                var error_array, group_array,
-                    // Cache the form element
-                    form          = $(this),
-                    // Action for the form
-                    form_action   = form.data('action'),
-                    // Cache fields
-                    fields        = $('input, select, textarea', form),
-                    // Cache the reset button element
-                    reset         = $('button[type="reset"], input[type="reset"]', form),
-                    // Cache the submit button element
-                    button        = $('button[type="submit"], input[type="submit"]', form),
-                    // Get button text for later
-                    button_name   = button.text(),
-                    // Put all required fields into array
-                    fields_array  = $('[required]', form).map(function(){
-                        return $(this).attr('name');
-                    }),
-                    // Remove duplicates (jQuery.unique only works on DOM elements, we can't use DOM elements because they are ALL unique despite the same name)
-                    fields_array  = utilities.remove_duplicates(fields_array),
-                    // Reverts the fields_array into an array of DOM elements
-                    element_array = $.map(fields_array, function(field, i){
-                        return $('[name="' + field + '"]', form);
-                    });
-
-                /**
-                 * plugin.init
-                 * Null
-                **/
-                plugin.init = function(){
-                    // Add 'novalidate' attribute to form
-                    form.attr('novalidate', 'novalidate');
-                    // Disable the submit button
-                    //plugin.disable_stuff(true);
-                    // Hide all error messages if not done with CSS already
-                    form.children(settings.validationMessage.hide());
-                    // Process fields
-                    plugin.process_fields();
-                    // Get localStorage
-                    plugin.get_localStorage();
-                }
-
-                /**
-                 * plugin.process_fields
-                 * Null
-                **/
-                plugin.process_fields = function(){
-                    $.each(element_array, function(){
-                        // Field type specific actions
-                        switch($(this).attr('type')){
-                            case 'email':
-                                utilities.setup_email_field($(this));
-                            break;
-                            case 'url':
-                                utilities.setup_url_field($(this));
-                            break;
-                        }
-                    });
-                }
-
-                /**
-                 * plugin.setup
-                 * Setup arrays
-                **/
-                plugin.setup = function(){
-                    // Global error array
-                    error_array = [];
-                    // Create an array for checkboxes and radio inputs
-                    group_array = [];
-                }
-
-                /**
-                 * plugin.disable_stuff
-                 * Disable stuff
-                **/
-                plugin.disable_stuff = function(disable){
-                    // Reset errors
-                    utilities.reset_errors(form);
-                    if(disable){
-                        // Disable the submit button
-                        button.attr('disabled', 'disabled');
-                    }
-                    else{
-                        // Enable the submmit button and re-apply the button name
-                        button.removeAttr('disabled').html(button_name);
-                    }
-                }
-
-                /**
-                 * plugin.clear_localStorage
-                 * Clears all localStorage values
-                **/
-                plugin.clear_localStorage = function(){
-                    fields.each(function(){
-                        localStorage.removeItem($(this).attr('name'));
-                    });
-                }
-
-                /**
-                 * plugin.get_localStorage
-                 * Retrieves field values from localStorage
-                **/
-                plugin.get_localStorage = function(){
-                    if(settings.localStorage && typeof(Storage) !== 'undefined'){
-                        fields.each(function(){
-                            // Vars
-                            var input_name = $(this).attr('name');
-
-                            if(localStorage[input_name]){
-                                if($(this).is('select')){
-                                    $('option[selected="selected"]', this).removeAttr('selected');
-                                    $('option[value="' + localStorage[input_name] + '"]', this).prop('selected', true);
-                                }
-                                else if($(this).is('input[type="radio"]')){
-                                    if($(this).val() == localStorage[input_name]){
-                                        $(this).prop('checked', true);
-                                    }
-                                }
-                                else if($(this).is('input[type="checkbox"]')){
-                                    var checkboxes = localStorage[input_name].split(',');
-                                    $('input[name="' + input_name + '"]').each(function(i){
-                                        if(checkboxes[i] != '' && $(this).val() == checkboxes[i]){
-                                            $(this).prop('checked', true);
-                                        }
-                                    });
-                                }
-                                else{
-                                    $(this).val(localStorage[input_name]);
-                                }
-                            };
-                        });
-                    }
-                }
-
-                /**
-                 * plugin.save_to_localStorage
-                 * Saves field entries to localStorage
-                **/
-                plugin.save_to_localStorage = function(el){
-                    if(settings.localStorage && typeof(Storage) !== 'undefined'){
-                        // Vars
-                        var input_name = el.attr('name');
-
-                        if(el.is('input[type="checkbox"]')){
-                            // Vars
-                            var checkbox_array = [];
-
-                            $('input[name="' + input_name + '"]').each(function(i){
-                                if($(this).is(':checked')){
-                                    checkbox_array.push($(this).val());
-                                }
-                                else{
-                                    checkbox_array.push('');
-                                }
-                            });
-                            localStorage[input_name] = checkbox_array;
-                        }
-                        else{
-                            localStorage[input_name] = el.val();
-                        }
-                    }
-                }
-
-                /**
-                 * plugin.js_validate_fields
-                 * Uses jQuery to check state of fields
-                **/
-                plugin.js_validate_fields = function(){
-                    // Put all empty fields into array
-                    error_array = $.map(element_array, function(field, i){
-                        var obj,
-                            msg = field.closest('.field').find(settings.validationMessage).val() || field.closest('.field').find(settings.validationMessage).text();
-
-                        // Checkboxes and radio
-                        if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){
-                            return obj = {
-                                input: field,
-                                msg  : msg
-                            }
-                        }
-                        // Email fields
-                        else if(field.attr('type') === 'email' && !settings.emailRegEx.test(field.val())){
-                            return obj = {
-                                input: field,
-                                msg  : msg
-                            }
-                        }
-                        // URL fields
-                        else if(field.attr('type') === 'url' && !settings.urlRegEx.test(field.val())){
-                            return obj = {
-                                input: field,
-                                msg  : msg
-                            }
-                        }
-                        // Check for existence
-                        else if(field.val() === '' || field.val() === 'undefined' || field.val() === undefined){
-                            return obj = {
-                                input: field,
-                                msg  : msg
-                            }
-                        }
-                    });
-                    // Custom validation method
-                    if($.isFunction(settings.customValidationMethod)){
-                        error_array.push(settings.customValidationMethod());
-                    }
-
-                    return (error_array.length === 0) ? true : false;
-                }
-
-                /**
-                 * plugin.server_validate_fields
-                 * Uses AJAX to get a server response on field validation
-                **/
-                plugin.server_validate_fields = function(){
-                    // Check for a form action
-                    if(form_action !== ''){
-                        // Use ajax to check server response
-                        $.ajax({
-                            type    : 'POST',
-                            url     : form_action,
-                            data    : form.serialize() + '&' + settings.serverID + '=true',
-                            dataType: 'JSON',
-                            cache   : false,
-                            async   : false, // Important, this has to finish first!
-                            beforeSend: function(){
-                                // Add a preloader
-                                button.html(utilities.loading_animation());
-                            },
-                            success: function(response){
-                                // Un-disable stuff
-                                plugin.disable_stuff(false);
-                                // If error
-                                if(response.error){
-                                    // Reverts the fields_array into an array of DOM elements
-                                    for(var key in response){
-                                        var a = response[key];
-                                        if(a.field !== undefined){
-                                            var obj = {
-                                                input: $('[name="' + a.field + '"]', form),
-                                                msg  : a.msg
-                                            }
-                                            error_array.push(obj);
-                                        }
-                                    }
-                                }
-                            },
-                            error: function(xhr, ajaxOptions, thrownError){
-                                // Un-disable stuff
-                                plugin.disable_stuff(false);
-                                // Server error
-                                var error = (xhr.responseText !== '') ? xhr.responseText : thrownError;
-                                //form.before().html(error).fadeIn(500);
-                            }
-                        });
-
-                        return (error_array.length === 0) ? true : false;
-                    }
-                    // No form action
-                    else{
-                        // Error message
-                        utilities.message("You must have an action defined on your form in order to use server validation.");
-
-                        return false;
-                    }
-                }
-
-                /**
-                 * plugin.success
-                 * Form validated successfully
-                **/
-                plugin.success = function(type, e){
-                    // Un-disable stuff
-                    plugin.disable_stuff(false);
-                    // Clear localStorage
-                    plugin.clear_localStorage();
-                    // If we have a custom post function
-                    if(type == 'server' || type == 'js'){
-                        e.preventDefault();
-                        form.fadeOut(500, function(){
-                            form.prev('.form-success').fadeIn(300);
-                        });
-                    }
-                    else{
-                        return true;
-                    }
-                }
-
-                /**
-                 * plugin.failure
-                 * Form validation failed
-                **/
-                plugin.failure = function(){
-                    // Set errors
-                    utilities.set_errors(error_array, form);
-                }
-
-                /**
-                 * plugin.process
-                 * Process the fields
-                **/
-                plugin.process = function(e){
-                    // Run setup plugin
-                    plugin.setup();
-                    // If we are doing server validation
-                    if(settings.serverValidation && plugin.server_validate_fields()){
-                        plugin.success('server', e);
-                    }
-                    // If we are not doing server validation check if form has passed validation
-                    else if(!settings.serverValidation && plugin.js_validate_fields()){
-                        plugin.success('js', e);
-                    }
-                    // Not validated, display errors
-                    else{
-                        e.preventDefault();
-                        plugin.failure();
-                    }
-                }
-
-                /**
-                 * plugin.reset
-                 * Reset the form
-                **/
-                plugin.reset = function(){
-                    // Un-disable stuff
-                    plugin.disable_stuff(false);
-                    // Remove errors
-                    utilities.reset_errors(form);
-                    // Clear localStorage
-                    plugin.clear_localStorage();
-                }
-
-                // On load
-                plugin.init();
-                // On submit
-                form.on('submit', plugin.process);
-                // On reset
-                reset.on('click', plugin.reset);
-                // On field change
-                fields.change(function(){
-                    plugin.save_to_localStorage($(this));
-                });
-            });
-        }
-    });
-
-})(jQuery, window);
-},{}],9:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
@@ -10352,4 +9231,555 @@ return jQuery;
 
 }));
 
-},{}]},{},[3])
+/**
+ * extensions.js
+ * Adds some additional jQuery methods and a few common events.
+**/
+
+;(function($, window, undefined){
+    
+
+    /**
+     * Requests confirmation before completing action
+    **/
+    $('.js-confirm-action').on({
+        click: function(e){
+            var custom_message = $(this).data('confirm-message'),
+                message        = (custom_message !== undefined) ? custom_message : 'Are you sure?';
+
+            return confirm(message);
+        }
+    });
+
+    /**
+     * Buttonless form submittal
+    **/
+    $('.js-send').each(function(){
+        var jsform = $(this).offsetParent('form');
+        $('button', jsform).hide();
+        $(this).on({
+            change: function(){
+                jsform.submit();
+            }
+        });
+    });
+
+    /**
+     * $.accordion
+     * Creates an accordion
+    **/
+    $.fn.accordion = function(options){
+        // Defaults
+        var defaults = {
+            openfirst           : true,
+            title_class         : 'accordion-title',
+            section_class       : 'accordion-content',
+            active_title_class  : 'active-title',
+            active_section_class: 'active-content'
+        };
+        // Settings
+        var settings = $.extend({}, defaults, options);
+        // Return instance
+        return this.each(function(){
+            var plg     = $(this),
+                title   = $('> .' + settings.title_class, plg),
+                content = $('> .' + settings.section_class, plg);
+
+            // Reset the accordion
+            $('.' + settings.active_section_class, plg).removeClass(settings.active_section_class);
+            $('.' + settings.active_title_class, plg).removeClass(settings.active_title_class);
+
+            title.css({'cursor': 'pointer'});
+            content.hide();
+            if(settings.openfirst){
+                title.first().show().addClass(settings.active_title_class);
+                content.first().show().addClass(settings.active_section_class);
+            }
+
+            title.on('click', function(){
+                if(!$(this).hasClass(settings.active_title_class)){
+                    $('.' + settings.active_section_class, plg).slideUp(500).removeClass(settings.active_section_class);
+                    $('.' + settings.active_title_class, plg).removeClass(settings.active_title_class);
+                    $(this).addClass(settings.active_title_class, plg).next().slideDown(500).addClass(settings.active_section_class);
+                }
+            });
+        });
+    }
+
+    /**
+     * $.tabs
+     * Creates tabs
+    **/
+    $.fn.tabs = function(options){
+        // Defaults
+        var defaults = {
+            tab_class       : 'tab',
+            nav_class       : 'nav',
+            target_data_attr: 'tab-target',
+            active_tab_class: 'active-tab'
+        };
+        // Settings
+        var settings = $.extend({}, defaults, options);
+        // Return instance
+        return this.each(function(){
+            var plg = $(this);
+
+            $('.' + settings.tab_class, plg).hide();
+            $('.' + settings.tab_class, plg).first().show().addClass(settings.active_tab_class);
+            $('.' + settings.nav_class + ' li', plg).first().addClass(settings.active_tab_class);
+
+            $('.' + settings.nav_class + ' li a', plg).on('click', function(e){
+                e.preventDefault();
+                var tab_nav    = $(this).parent().parent(),
+                    tab_system = tab_nav.next();
+
+                if(!$(this).parent().hasClass(settings.active_tab_class)){
+                    var target = $(this).data(settings.target_data_attr);
+
+                    $('li.' + settings.active_tab_class, tab_nav).removeClass(settings.active_tab_class);
+                    $(this).parent().addClass(settings.active_tab_class);
+                    $('.' + settings.active_tab_class, tab_system).hide().removeClass(settings.active_tab_class);
+                    $('#' + target, tab_system).fadeIn(500).addClass(settings.active_tab_class);
+                }
+            });
+        });
+    }
+
+    /**
+     * $.extCenter
+     * Centers any element vertically, horizontally or both can pass an element to center relative to that element
+    **/
+    $.fn.extCenter = function(method, element){
+        var el = (typeof element !== 'undefined') ? element : $(window);
+        el.css({'position': 'relative'});
+        this.css({'position': 'absolute', 'z-index': '999'});
+        var methods = {
+            all: function(){
+                this.css('top', ((el.height() - this.outerHeight()) / 2) + el.scrollTop() + 'px');
+                this.css('left', ((el.width() - this.outerWidth()) / 2) + el.scrollLeft() + 'px');
+                return this;
+            },
+            vertical: function(){
+                this.css('top', ((el.height() - this.outerHeight()) / 2) + el.scrollTop() + 'px');
+                return this;
+            },
+            horizontal: function(){
+                this.css('left', ((el.width() - this.outerWidth()) / 2) + el.scrollLeft() + 'px');
+                return this;
+            }
+        }
+        if(methods[method]){
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        }
+        else if(typeof method === 'object' || !method){
+            return methods.all.apply(this, arguments);
+        }
+        else{
+            $.error('Method ' +  method + ' does not exist on jQuery.extCenter');
+        }
+    }
+
+    /**
+     * $.extPreloader
+     * Creates a preloading animation
+    **/
+    $.fn.extPreloader = function(options){
+        var loader,
+            el = this,
+            rn = parseInt(Math.random() * (100 - 1) + 1, 10),
+            defaults = {
+                loader     : 'loader-' + rn,
+                loadershape: 'spiral',
+                loadersize : 30,
+                loaderhex  : '#333',
+                loadmethod : 'html',
+                loaderstyle: 'display: inline-block;'
+            }
+
+        // Extend the defaults
+        var settings = $.extend({}, defaults, options);
+
+        // Return each instance
+        return this.each(function(){
+
+            // Adding the loader
+            switch(settings.loadmethod){
+                case 'html' :
+                    el.html('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
+                break;
+                case 'after' :
+                    el.after('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
+                break;
+                case 'before' :
+                    el.before('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
+                break;
+                case 'prepend' :
+                    el.prepend('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
+                break;
+                case 'append' :
+                    el.append('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
+                break;
+                default :
+                    el.html('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
+                break;
+            }
+
+            // Get the canvas loader
+            $.getScript('http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.js', function(){
+                loader = new CanvasLoader(settings.loader);
+                loader.setShape(settings.loadershape);
+                loader.setDiameter(settings.loadersize);
+                loader.setDensity(13);
+                loader.setRange(0.6);
+                loader.setSpeed(1);
+                loader.setColor(settings.loaderhex);
+                loader.show();
+            });
+
+            // Destroy method
+            el.destroyExtPreloader = function(){
+                loader.kill();
+                $('#' + settings.loader).remove();
+            }
+        });
+    }
+
+    /**
+     * Viewport Selector by Mika Tuupola
+    **/
+    $.belowthefold = function(element, settings) {
+        var fold = $(window).height() + $(window).scrollTop();
+        return fold <= $(element).offset().top - settings.threshold;
+    };
+    $.abovethetop = function(element, settings) {
+        var top = $(window).scrollTop();
+        return top >= $(element).offset().top + $(element).height() - settings.threshold;
+    };
+    $.rightofscreen = function(element, settings) {
+        var fold = $(window).width() + $(window).scrollLeft();
+        return fold <= $(element).offset().left - settings.threshold;
+    };
+    $.leftofscreen = function(element, settings) {
+        var left = $(window).scrollLeft();
+        return left >= $(element).offset().left + $(element).width() - settings.threshold;
+    };
+    $.inviewport = function(element, settings) {
+        return !$.rightofscreen(element, settings) && !$.leftofscreen(element, settings) && !$.belowthefold(element, settings) && !$.abovethetop(element, settings);
+    };
+    $.extend($.expr[':'], {
+        "below-the-fold": function(a, i, m) {
+            return $.belowthefold(a, {threshold : 0});
+        },
+        "above-the-top": function(a, i, m) {
+            return $.abovethetop(a, {threshold : 0});
+        },
+        "left-of-screen": function(a, i, m) {
+            return $.leftofscreen(a, {threshold : 0});
+        },
+        "right-of-screen": function(a, i, m) {
+            return $.rightofscreen(a, {threshold : 0});
+        },
+        "in-viewport": function(a, i, m) {
+            return $.inviewport(a, {threshold : 0});
+        }
+    });
+
+    /**
+     * jQuery Easing
+    **/
+    $.extend($.easing,{
+        easeInQuad: function (x, t, b, c, d){
+            return c*(t/=d)*t + b;
+        },
+        easeOutQuad: function (x, t, b, c, d){
+            return -c *(t/=d)*(t-2) + b;
+        },
+        easeInOutQuad: function (x, t, b, c, d){
+            if ((t/=d/2) < 1) return c/2*t*t + b;
+            return -c/2 * ((--t)*(t-2) - 1) + b;
+        },
+        easeInCubic: function (x, t, b, c, d){
+            return c*(t/=d)*t*t + b;
+        },
+        easeOutCubic: function (x, t, b, c, d){
+            return c*((t=t/d-1)*t*t + 1) + b;
+        },
+        easeInOutCubic: function (x, t, b, c, d){
+            if ((t/=d/2) < 1) return c/2*t*t*t + b;
+            return c/2*((t-=2)*t*t + 2) + b;
+        },
+        easeInQuart: function (x, t, b, c, d){
+            return c*(t/=d)*t*t*t + b;
+        },
+        easeOutQuart: function (x, t, b, c, d){
+            return -c * ((t=t/d-1)*t*t*t - 1) + b;
+        },
+        easeInOutQuart: function (x, t, b, c, d){
+            if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+            return -c/2 * ((t-=2)*t*t*t - 2) + b;
+        },
+        easeInQuint: function (x, t, b, c, d){
+            return c*(t/=d)*t*t*t*t + b;
+        },
+        easeOutQuint: function (x, t, b, c, d){
+            return c*((t=t/d-1)*t*t*t*t + 1) + b;
+        },
+        easeInOutQuint: function (x, t, b, c, d){
+            if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+            return c/2*((t-=2)*t*t*t*t + 2) + b;
+        },
+        easeInSine: function (x, t, b, c, d){
+            return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
+        },
+        easeOutSine: function (x, t, b, c, d){
+            return c * Math.sin(t/d * (Math.PI/2)) + b;
+        },
+        easeInOutSine: function (x, t, b, c, d){
+            return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
+        },
+        easeInExpo: function (x, t, b, c, d){
+            return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
+        },
+        easeOutExpo: function (x, t, b, c, d){
+            return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+        },
+        easeInOutExpo: function (x, t, b, c, d){
+            if (t==0) return b;
+            if (t==d) return b+c;
+            if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+            return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+        },
+        easeInCirc: function (x, t, b, c, d){
+            return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
+        },
+        easeOutCirc: function (x, t, b, c, d){
+            return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+        },
+        easeInOutCirc: function (x, t, b, c, d){
+            if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
+            return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+        },
+        easeInElastic: function (x, t, b, c, d){
+            var s=1.70158;var p=0;var a=c;
+            if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+            if (a < Math.abs(c)){ a=c; var s=p/4; }
+            else var s = p/(2*Math.PI) * Math.asin (c/a);
+            return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+        },
+        easeOutElastic: function (x, t, b, c, d){
+            var s=1.70158;var p=0;var a=c;
+            if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+            if (a < Math.abs(c)){ a=c; var s=p/4; }
+            else var s = p/(2*Math.PI) * Math.asin (c/a);
+            return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
+        },
+        easeInOutElastic: function (x, t, b, c, d){
+            var s=1.70158;var p=0;var a=c;
+            if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
+            if (a < Math.abs(c)){ a=c; var s=p/4; }
+            else var s = p/(2*Math.PI) * Math.asin (c/a);
+            if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+            return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
+        },
+        easeInBack: function (x, t, b, c, d, s){
+            if (s == undefined) s = 1.70158;
+            return c*(t/=d)*t*((s+1)*t - s) + b;
+        },
+        easeOutBack: function (x, t, b, c, d, s){
+            if (s == undefined) s = 1.70158;
+            return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+        },
+        easeInOutBack: function (x, t, b, c, d, s){
+            if (s == undefined) s = 1.70158;
+            if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+            return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+        },
+        easeInBounce: function (x, t, b, c, d){
+            return c - $.easing.easeOutBounce (x, d-t, 0, c, d) + b;
+        },
+        easeOutBounce: function (x, t, b, c, d){
+            if ((t/=d) < (1/2.75)){
+                return c*(7.5625*t*t) + b;
+            } else if (t < (2/2.75)){
+                return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+            } else if (t < (2.5/2.75)){
+                return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+            } else{
+                return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+            }
+        },
+        easeInOutBounce: function (x, t, b, c, d){
+            if (t < d/2) return $.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
+            return $.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
+        }
+    });
+
+})(jQuery, window);
+define("extensions", ["jquery"], function(){});
+
+/**
+ * site.js
+ * Controller JS file.
+**/
+
+// jQuery
+var $ = jQuery = require('jquery');
+
+;(function($, window, undefined){
+	
+
+    // Object
+    var site = site || {};
+
+	// Export object for use.
+	window.site  = site;
+
+}(jQuery, window));
+define("site", ["helper","extensions"], function(){});
+
+/**
+ * menu.js
+ * Menu JS file.
+**/
+
+// jQuery
+var $ = jQuery = require('jquery');
+
+;(function($, window, undefined){
+    
+
+    // Object
+    var menu = menu || {};
+
+    /**
+     * menu.init
+     * Creates a mobile menu from the primary menu.
+    **/
+    menu.init = function(el){
+        var primary_nav = el,
+        	wrapper     = $('<div class="mobile-select-menu"></div>'),
+            select_nav  = $('<select class="nav-primary-mobile"></select>'),
+            select_box  = {
+                items: []
+            };
+
+        if(!$('.nav-primary-mobile').length){
+            $('li a', primary_nav).each(function(){
+                var anchor = $(this);
+                var a = anchor.text(),
+                    b = anchor.attr('href'),
+                    c = anchor.parent().parent().prev().html(),
+                    d = anchor.parent().attr('class');
+
+                select_box.items.push({
+                    'option_text'  : a,
+                    'option_value' : b,
+                    'parent_text'  : c,
+                    'is_parent'    : (anchor.next().hasClass('sub-menu')) ? true : false,
+                    'is_child'     : (anchor.parent().hasClass('child-item')) ? true : false,
+                    'this_class'   : (typeof d !== 'undefined' && d !== false) ? anchor.parent().attr('class').split(' ')[0] : '',
+                    'parent_class' : (anchor.parent().hasClass('child-item')) ? anchor.parent().parent().parent().attr('class').split(' ')[0] : ''
+                });
+
+            });
+            primary_nav.after(wrapper.append(select_nav));
+            select_nav.append('<option>Navigation</option>');
+            $.each(select_box.items, function(index, value){
+                var current = (document.URL == value.option_value) ? 'selected="selected"' : null;
+                if(value.is_parent){
+                    select_nav.append('<optgroup id="og-' + value.this_class + '" label="' + value.option_text + '"><option value="' + value.option_value + '" ' + current + '>' + value.option_text + '</option></optgroup>');
+                }
+                else if(value.is_child){
+                    $('optgroup#og-' + value.parent_class).append('<option value="' + value.option_value + '" ' + current + '>' + value.option_text + '</option>');
+                }
+                else {
+                    select_nav.append('<option value="' + value.option_value + '" ' + current + '>' + value.option_text + '</option>');
+                }
+            });
+            select_nav.wrap('<span></span>');
+        }
+        $('.nav-primary-mobile').change(function(){
+            if($(this).val() != ''){
+                window.location.href = $(this).val();
+            }
+        });
+    }
+
+    $(window).on('resize', function(){
+        if(helper.mobile_mode(580)){
+            menu.init($('.nav-primary'));
+        }
+    });
+
+    $(function(){
+        if(helper.mobile_mode(580)){
+            menu.init($('.nav-primary'));
+        }
+    });
+
+    // Export object for use.
+    window.menu  = menu;
+
+}(jQuery, window));
+define("dist/js/app/menu", function(){});
+
+/**
+ * forms.js
+ * Forms JS file.
+**/
+
+// jQuery
+var $ = jQuery = require('jquery');
+// Form validation
+require('../plugins/jquery.validation');
+
+;(function($, window, undefined){
+    
+
+    // Object
+    var forms = forms || {};
+
+	// Form validation
+    if($('.validate').length){
+        $('.validate').validation({
+            preloaderSize: 20,
+            preloaderHEX : '#FFFFFF',
+            msgSep       : ''
+        });
+    }
+
+    // Export object for use.
+    window.forms  = forms;
+
+}(jQuery, window));
+define("dist/js/app/forms", function(){});
+
+/**
+ * images.js
+ * Images JS file.
+**/
+
+// jQuery
+var $ = jQuery = require('jquery');
+// Lightbox
+require('../plugins/jquery.lightbox');
+
+;(function($, window, undefined){
+    
+
+    // Object
+    var images = images || {};
+
+	// Lightbox
+    if($('.lightbox').length){
+        $('.lightbox').lightbox({
+            // No options
+        });
+    }
+
+    // Export object for use.
+    window.images  = images;
+
+}(jQuery, window));
+define("dist/js/app/images", function(){});
+
