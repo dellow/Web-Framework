@@ -1,19 +1,22 @@
 @charset "UTF-8";
 
-// 1. Font Face
+// 1. Mixins
+@import 'mixins/#all';
+
+// 2. Font Face
 @import 'site/font-face';
 
-// 2. Config vars
+// 3. Config vars
 @import 'config/vars';
 
-// 3. Site vars
+// 4. Site vars
 @import 'site/vars';
 
-// 4. Config
+// 5. Config
 @import 'config/#all';
 
-// 5. Base
+// 6. Base
 @import 'base/#all';
 
-// 6. Site
+// 7. Site
 @import 'site/#all';

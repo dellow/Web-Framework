@@ -45,7 +45,7 @@
 }
 .progress {
 	height: 20px;
-	margin: 0 0 $nudge 0;
+	@include nudge(margin-bottom, 1);
 	overflow: hidden;
 
 	border-radius: $border_radius_base;

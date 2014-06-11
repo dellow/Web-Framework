@@ -2,5 +2,6 @@
    All
    Imports all the partials
 ========================================================================== */
-@import 'placeholders',
-		'debug';
+@import 'mixins/misc',
+		'mixins/responsive',
+		'mixins/rhythm';

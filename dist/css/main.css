@@ -1,43 +1,5 @@
 @charset "UTF-8";
 /* ==========================================================================
-   Font Face
-   Any font-face rules should be placed here. These will be called
-   first in the compiled stylesheet.
-========================================================================== */
-/* ==========================================================================
-	Vars
-	The variables for use throughout the framework. These can
-	be overwritten from the site/vars partial.
-========================================================================== */
-/**
-* Config
-**/
-/**
-* Defaults
-**/
-/**
-* Typography
-**/
-/**
-* Colours
-**/
-/**
-* Percentage Column Widths
-**/
-/**
-* Device sizes
-* http://viewportsizes.com
-* http://screensiz.es
-* http://dpi.lv
-**/
-/* ==========================================================================
-   Vars
-   You can overwrite any of the config vars from here.
-========================================================================== */
-/**
- * Config
-**/
-/* ==========================================================================
    All
    Imports all the partials
 ========================================================================== */
@@ -98,16 +60,11 @@
    Font size and typesetting mixins.
 ========================================================================== */
 /**
- * px-to-em
- * Takes a single value or a list of values and replaces px units with em
- * Zero values will remain 0
- * Non-px values will not be modified
-**/
-/**
  * px-to-rem
  * Takes a single value or a list of values and replaces px units with rem
  * Zero values will remain 0.
  * Non-px values will not be modified.
+ * You can return an em value by passing the $unit var as 'em'
 **/
 /**
  * rhythm
@@ -115,6 +72,8 @@
  * in a margin / line-height and font-size format
  *
  * @uses px-to-rem()
+ * @uses $line_height_base
+ * @uses $mn
  *
  * .foo {@include rhythm(20px);}
 **/
@@ -128,6 +87,60 @@
  * .foo {@include rem(font-size, 20px);}
  * .foo {@include rem(font-size height, 20px);}
 **/
+/**
+ * nudge
+ * Primarily for use with Margin and Padding. Outputs an even spacing based on the Magic Number
+ * in REM units with a PX fallback for legacy browsers.
+ * Any value supplied will be multipled by the Magic Number. If the value is supplied with a
+ * PX value it will be left as is.
+ *
+ * @uses px-to-rem()
+ * @uses $mn
+ *
+ * .foo {@include nudge(margin, 1 1.5 2 1);}
+**/
+/* ==========================================================================
+   Font Face
+   Any font-face rules should be placed here. These will be called
+   first in the compiled stylesheet.
+========================================================================== */
+/* ==========================================================================
+	Vars
+	The variables for use throughout the framework. These can
+	be overwritten from the site/vars partial.
+========================================================================== */
+/**
+* Config
+**/
+/**
+* Defaults
+**/
+/**
+* Typography
+**/
+/**
+* Colours
+**/
+/**
+* Percentage Column Widths
+**/
+/**
+* Device sizes
+* http://viewportsizes.com
+* http://screensiz.es
+* http://dpi.lv
+**/
+/* ==========================================================================
+   Vars
+   You can overwrite any of the config vars from here.
+========================================================================== */
+/**
+ * Config
+**/
+/* ==========================================================================
+   All
+   Imports all the partials
+========================================================================== */
 /* ==========================================================================
    Placeholders
    Some default placeholders for the framework.
@@ -433,17 +446,19 @@ textarea {
 ========================================================================== */
 /* -- Images & Alignment -- */
 .aligncenter, .alignnone {
-  margin: 0.825em auto;
+  margin: 24px auto;
   display: block;
 }
 
 .alignleft {
-  margin-right: 0.825em;
+  margin-right: 24px;
+  margin-right: 1.5rem;
   float: left;
 }
 
 .alignright {
-  margin-left: 0.825em;
+  margin-left: 24px;
+  margin-left: 1.5rem;
   float: right;
 }
 
@@ -459,22 +474,22 @@ textarea {
 }
 
 img.alignleft, img.alignright, img.aligncenter, img.alignnone {
-  padding: 0.4125em;
   border: 2px solid #efefef;
   border-radius: 3px;
 }
 
 /* -- Messages -- */
-.msg-success {
-  color: rgba(138, 216, 54, 0.6);
+.msg-success, .msg-failure {
   font-size: 12px;
   font-size: 0.75rem;
 }
 
+.msg-success {
+  color: rgba(138, 216, 54, 0.6);
+}
+
 .msg-failure {
   color: rgba(255, 0, 0, 0.6);
-  font-size: 12px;
-  font-size: 0.75rem;
 }
 
 /* -- Clearing -- */
@@ -518,36 +533,44 @@ img.alignleft, img.alignright, img.aligncenter, img.alignnone {
 
 /* -- Nudge -- */
 .nudge-top {
-  margin-top: 0.825em;
+  margin-top: 24px;
+  margin-top: 1.5rem;
 }
 
 .nudge-right {
-  margin-right: 0.825em;
+  margin-right: 24px;
+  margin-right: 1.5rem;
 }
 
 .nudge-bottom {
-  margin-bottom: 0.825em;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .nudge-left {
-  margin-left: 0.825em;
+  margin-left: 24px;
+  margin-left: 1.5rem;
 }
 
 /* -- Pad -- */
 .pad-top {
-  padding-top: 0.825em;
+  padding-top: 24px;
+  padding-top: 1.5rem;
 }
 
 .pad-right {
-  padding-right: 0.825em;
+  padding-right: 24px;
+  padding-right: 1.5rem;
 }
 
 .pad-bottom {
-  padding-bottom: 0.825em;
+  padding-bottom: 24px;
+  padding-bottom: 1.5rem;
 }
 
 .pad-left {
-  padding-left: 0.825em;
+  padding-left: 24px;
+  padding-left: 1.5rem;
 }
 
 /* -- Image Replacement -- */
@@ -650,7 +673,7 @@ ul.horizontal-block li {
 }
 
 /* -- Weights & Cases -- */
-.bold, th, strong, dt {
+.bold {
   font-weight: 700;
 }
 
@@ -754,7 +777,8 @@ ul.horizontal-block li {
 ========================================================================== */
 /* -- Source Formatting -- */
 pre {
-  padding: 0.825em;
+  padding: 24px;
+  padding: 1.5rem;
   margin: 0.5em 0;
   border: 1px solid;
   position: relative;
@@ -769,7 +793,8 @@ pre {
 }
 
 kbd {
-  padding: 0.5em 0.825em;
+  padding: 12px 24px;
+  padding: 0.75rem 1.5rem;
   border: 1px solid #e6e6e6;
   border-radius: 3px;
   font-size: 18px;
@@ -781,7 +806,8 @@ kbd {
 
 /* -- Images -- */
 figure figcaption {
-  margin-top: 0.4125em;
+  margin-top: 12px;
+  margin-top: 0.75rem;
   font-size: 12px;
 }
 
@@ -812,7 +838,8 @@ ul ul, ul ol, ol ul, ol ol {
 
 dl dd {
   margin: 0.3em 0;
-  text-indent: 0.825em;
+  text-indent: 24px;
+  text-indent: 1.5rem;
 }
 
 /* -- Rules -- */
@@ -824,7 +851,8 @@ hr {
 }
 hr.dots {
   height: 0;
-  margin: 0.825em 0 2em;
+  margin: 24px 0px 48px;
+  margin: 1.5rem 0px 3rem;
   border: 0;
   padding: 0;
   display: block;
@@ -834,11 +862,13 @@ hr.dots {
   text-align: center;
 }
 hr.dots:after {
+  height: 0;
+  padding-left: 24px;
+  padding-left: 1.5rem;
   content: "·········";
   color: #dddddd;
-  letter-spacing: 0.825em;
-  padding-left: 0.825em;
-  height: 0;
+  letter-spacing: 24px;
+  letter-spacing: 1.5rem;
 }
 
 /* -- Selection -- */
@@ -896,11 +926,6 @@ hr.dots:after {
   max-width: 1280px;
   margin: 0 auto;
   position: relative;
-}
-
-/* -- Content -- */
-.content {
-  padding-bottom: 0.825em;
 }
 
 /* ==========================================================================
@@ -967,7 +992,8 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
 }
 h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
-  margin-bottom: 0.165em;
+  margin-bottom: 2.4px;
+  margin-bottom: 0.15rem;
 }
 
 h1 {
@@ -1238,8 +1264,10 @@ blockquote:after, q:after {
 ========================================================================== */
 /* -- All -- */
 .alert.box {
-  padding: 0.825em 0.825em 0.825em 14px;
-  margin: 0.825em 0;
+  padding: 24px 24px 24px 14px;
+  padding: 1.5rem 1.5rem 1.5rem 14px;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   border: 1px solid;
   border-left: 7px solid;
   position: relative;
@@ -1349,7 +1377,8 @@ p.alert {
 ========================================================================== */
 /* -- Gallery -- */
 .gallery {
-  margin: 0.825em 0;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 .gallery dl dd {
   text-indent: 0;
@@ -1781,7 +1810,8 @@ p.alert {
 ========================================================================== */
 /* -- All Navigation -- */
 .navigation {
-  padding: 0.825em 0;
+  padding: 24px 0px;
+  padding: 1.5rem 0px;
 }
 
 /* -- Mobile Navigation -- */
@@ -1917,12 +1947,14 @@ p.alert {
 ========================================================================== */
 /* -- Pagination -- */
 .pagination {
-  margin-top: 1.65em;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-size: 12px;
   font-size: 0.75rem;
 }
 .pagination .page-numbers {
-  padding: 0.4125em 0.825em;
+  padding: 12px 24px;
+  padding: 0.75rem 1.5rem;
   margin-left: -4px;
   border: 1px solid #ccc;
   display: inline-block;
@@ -1994,7 +2026,8 @@ p.alert {
 
 .progress {
   height: 20px;
-  margin: 0 0 0.825em 0;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   overflow: hidden;
   border-radius: 3px;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -2200,7 +2233,8 @@ form .right {
   float: right;
 }
 form .field {
-  margin: 0 0 0.825em;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   position: relative;
 }
 form.form-inline label, form.form-inline .label, form.form-inline input, form.form-inline .input, form.form-inline select, form.form-inline textarea, form.form-inline .field-container {
@@ -2295,7 +2329,8 @@ form.form-block input[type="radio"], form.form-block input[type="checkbox"], for
   vertical-align: middle;
 }
 form.form-block input[type="radio"] + label, form.form-block input[type="checkbox"] + label, form.form-inline-block input[type="radio"] + label, form.form-inline-block input[type="checkbox"] + label, form input[type="radio"] + label, form input[type="checkbox"] + label {
-  margin: 0 0.825em 0 0.2em;
+  margin: 0px 24px 0px 4.8px;
+  margin: 0px 1.5rem 0px 0.3rem;
   vertical-align: middle;
 }
 form button, form .button {
@@ -2360,7 +2395,8 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
 ========================================================================== */
 /* -- Forms -- */
 form .custom-checkbox, form .custom-radio {
-  margin-right: 0.825em;
+  margin-right: 24px;
+  margin-right: 1.5rem;
   position: relative;
   display: inline-block;
   zoom: 1;
@@ -2518,7 +2554,8 @@ form .custom-select select {
 .tooltip .tooldata {
   width: auto;
   min-width: 100px;
-  padding: 0.825em;
+  padding: 24px;
+  padding: 1.5rem;
   visibility: hidden;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(0))";
   filter: alpha(opacity=0);
@@ -2898,7 +2935,7 @@ form .custom-select select {
    Use responsive mixin inside the correct partial for local responsive
    styles.
 ========================================================================== */
-@media only screen and (max-width: 48em) {
+@media only screen and (max-width: px-to-em(768px)) {
   html {
     font-size: 95%;
   }
@@ -2915,7 +2952,7 @@ form .custom-select select {
     max-width: 40%;
   }
 }
-@media only screen and (max-width: 32.5em) {
+@media only screen and (max-width: px-to-em(520px)) {
   html {
     font-size: 100%;
   }

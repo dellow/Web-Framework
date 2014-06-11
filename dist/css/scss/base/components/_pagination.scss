@@ -4,11 +4,11 @@
 ========================================================================== */
 /* -- Pagination -- */
 .pagination {
-	margin-top: ($nudge * 2);
+	@include nudge(margin-bottom, 1);
 	@extend %cf;
 	@include rem(font-size, 12px);
 	.page-numbers {
-		padding: ($nudge / 2) $nudge;
+		@include nudge(padding, 0.5 1);
 		margin-left: -4px;
 		border: 1px solid #ccc;
 		@include inline-block;

@@ -4,15 +4,15 @@
 ========================================================================== */
 /* -- Images & Alignment -- */
 .aligncenter, .alignnone {
-	margin: $nudge auto;
+	margin: $mn auto;
 	display: block;
 }
 .alignleft {
-	margin-right: $nudge;
+	@include nudge(margin-right, 1);
 	float: left;
 }
 .alignright {
-	margin-left: $nudge;
+	@include nudge(margin-left, 1);
 	float: right;
 }
 .thumb {
@@ -27,7 +27,6 @@
 }
 img {
 	&.alignleft, &.alignright, &.aligncenter, &.alignnone {
-		padding: ($nudge / 2);
 		border: 2px solid #efefef;
 		border-radius: $border_radius_base;
 	}
@@ -35,14 +34,13 @@ img {
 
 /* -- Messages -- */
 .msg-success, .msg-failure {
+	@include rem(font-size, 12px);
 }
 .msg-success {
 	color: rgba(138, 216, 54, 0.6);
-	@include rem(font-size, 12px);
 }
 .msg-failure {
 	color: rgba(255, 0, 0, 0.6);
-	@include rem(font-size, 12px);
 }
 
 /* -- Clearing -- */
@@ -83,30 +81,30 @@ img {
 
 /* -- Nudge -- */
 .nudge-top {
-	margin-top: $nudge;
+	@include nudge(margin-top, 1);
 }
 .nudge-right {
-	margin-right: $nudge;
+	@include nudge(margin-right, 1);
 }
 .nudge-bottom {
-	margin-bottom: $nudge;
+	@include nudge(margin-bottom, 1);
 }
 .nudge-left {
-	margin-left: $nudge;
+	@include nudge(margin-left, 1);
 }
 
 /* -- Pad -- */
 .pad-top {
-	padding-top: $nudge;
+	@include nudge(padding-top, 1);
 }
 .pad-right {
-	padding-right: $nudge;
+	@include nudge(padding-right, 1);
 }
 .pad-bottom {
-	padding-bottom: $nudge;
+	@include nudge(padding-bottom, 1);
 }
 .pad-left {
-	padding-left: $nudge;
+	@include nudge(padding-left, 1);
 }
 
 /* -- Image Replacement -- */
@@ -196,7 +194,7 @@ ul.horizontal-block {
 }
 
 /* -- Weights & Cases -- */
-.bold, th, strong, dt {
+.bold {
 	font-weight: $font_weight_bold;
 }
 .italic {

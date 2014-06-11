@@ -6,7 +6,7 @@
 form {
 	// General Custom Inputs
 	.custom-checkbox, .custom-radio {
-		margin-right: $nudge;
+		@include nudge(margin-right, 1);
 		position: relative;
 		@include inline-block;
 		label {

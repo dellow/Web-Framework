@@ -12,9 +12,9 @@ $debug_mode                 : false !default;
 /**
 * Defaults
 **/
+$mn               			: 24px; // Three is not the magic number. Don't believe Del La Soul
 $gutter                     : 3% !default;
 $fixedgutter                : 10px !default;
-$nudge                      : 0.825em !default;
 $form_field_height          : 35px !default;
 $border_radius_base         : 3px !default;
 $ul_indent_base             : 1.2em !default;
@@ -58,7 +58,7 @@ $font_size_h4               : 18px !default;
 $font_size_h5               : 16px !default;
 $font_size_h6               : 14px !default;
 // Line Height
-$line_height_base           : 24px !default;
+$line_height_base           : $mn !default;
 $line_height_ratio          : $line_height_base / $font_size_base !default;
 
 /**

@@ -4,7 +4,7 @@
 ========================================================================== */
 /* -- Source Formatting -- */
 pre {
-	padding: $nudge;
+	@include nudge(padding, 1);
 	margin: 0.5em 0;
 	border: 1px solid;
 	position: relative;
@@ -17,7 +17,7 @@ pre {
 	word-wrap  : break-word;
 }
 kbd {
-	padding: 0.5em $nudge;
+	@include nudge(padding, 0.5 1);
 	border: 1px solid #e6e6e6;
 	border-radius: $border_radius_base;
 	@include rem(font-size, 18px);
@@ -29,7 +29,7 @@ kbd {
 /* -- Images -- */
 figure {
 	figcaption {
-		margin-top: ($nudge / 2);
+		@include nudge(margin-top, 0.5);
 		font-size: $font_size_small;
 	}
 }
@@ -63,7 +63,7 @@ ul, ol {
 dl {
 	dd {
 		margin: 0.3em 0;
-		text-indent: $nudge;
+		@include nudge(text-indent, 1);
 	}
 }
 
@@ -74,7 +74,7 @@ hr {
 	border-color: #EFEFEF; border-color: rgba(0, 0, 0, 0.085);
 	&.dots {
 		height: 0;
-		margin: $nudge 0 2em;
+		@include nudge(margin, 1 0 2);
 		border: 0;
 		padding: 0;
 		display: block;
@@ -82,11 +82,11 @@ hr {
 		@include rem(font-size, 40px);
 		text-align: center;
 		&:after {
+			height: 0;
+			@include nudge(padding-left, 1);
 			content: "·········";
 			color: $grey;
-			letter-spacing: $nudge;
-			padding-left: $nudge;
-			height: 0;
+			@include nudge(letter-spacing, 1);
 		}
 	}
 }

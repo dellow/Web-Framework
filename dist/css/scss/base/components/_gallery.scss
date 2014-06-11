@@ -5,7 +5,7 @@
 /* -- Gallery -- */
 .gallery {
 	@extend %cf;
-	margin: $nudge 0;
+	@include nudge(margin-bottom, 1);
 	dl dd {
 		text-indent: 0;
 	}

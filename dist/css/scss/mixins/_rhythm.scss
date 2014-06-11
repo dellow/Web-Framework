@@ -3,39 +3,21 @@
    Font size and typesetting mixins.
 ========================================================================== */
 /**
- * px-to-em
- * Takes a single value or a list of values and replaces px units with em
- * Zero values will remain 0
- * Non-px values will not be modified
-**/
-@function px-to-em($px){
-    $return : ();
-
-    @each $var in $px {
-        @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
-            $return : append($return, #{$var/16px}em, space);
-        } @else {
-            $return : append($return, $var, space);
-        }
-    }
-
-    @return $return;
-}
-
-/**
  * px-to-rem
  * Takes a single value or a list of values and replaces px units with rem
  * Zero values will remain 0.
  * Non-px values will not be modified.
+ * You can return an em value by passing the $unit var as 'em'
 **/
-@function px-to-rem($px){
-    $return : ();
+@function px-to-rem($px, $unit: rem){
+    $return: ();
 
     @each $var in $px {
         @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
-            $return : append($return, #{$var/16px}rem, space);
-        } @else {
-            $return : append($return, $var, space);
+            $return: append($return, #{$var/16px}$unit, space);
+        }
+        @else {
+            $return: append($return, $var, space);
         }
     }
 
@@ -48,12 +30,14 @@
  * in a margin / line-height and font-size format
  *
  * @uses px-to-rem()
+ * @uses $line_height_base
+ * @uses $mn
  *
  * .foo {@include rhythm(20px);}
 **/
 @mixin rhythm($size){
-	margin-bottom: 0px + ($line_height_base / 1.75);
-	margin-bottom: px-to-rem($line_height_base / 1.75);
+	margin-bottom: 0px + ($mn / 1.75);
+	margin-bottom: px-to-rem($mn / 1.75);
 	font-size: 0px + $size;
 	font-size: px-to-rem($size);
 	line-height: ceil($size / $line_height_base) * ($line_height_base / $size);
@@ -74,4 +58,35 @@
         #{$selector}: $size;
         #{$selector}: px-to-rem($size);
     }
+}
+
+/**
+ * nudge
+ * Primarily for use with Margin and Padding. Outputs an even spacing based on the Magic Number
+ * in REM units with a PX fallback for legacy browsers.
+ * Any value supplied will be multipled by the Magic Number. If the value is supplied with a
+ * PX value it will be left as is.
+ *
+ * @uses px-to-rem()
+ * @uses $mn
+ *
+ * .foo {@include nudge(margin, 1 1.5 2 1);}
+**/
+@mixin nudge($selector, $sizes){
+    $rem_sizes: ();
+    $px_sizes: ();
+
+    @each $size in $sizes {
+        @if unit($size) == 'px' {
+            $rem_sizes: append($rem_sizes, $size);
+            $px_sizes: append($px_sizes, $size);
+        }
+        @else {
+            $rem_sizes: append($rem_sizes, px-to-rem($size * $mn));
+            $px_sizes: append($px_sizes, $size * $mn);
+        }
+    }
+
+    #{$selector}: $px_sizes;
+    #{$selector}: $rem_sizes;
 }
