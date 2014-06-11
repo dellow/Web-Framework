@@ -27,32 +27,29 @@ a, button {
 /* -- Styling classes -- */
 .hatnote {
 	@include rem(padding-left, 20px);
-	@include rhythm($font_size_base);
 	font-style: italic;
 }
 
-/* -- Main content -- */
-.content {
-	/* -- General Formatting -- */
-	p, ul, ol, figure {
-		@include rhythm($font_size_base);
-	}
+/* -- General Formatting -- */
+ul, ol, dl, blockquote, p, address, table, fieldset, figure, pre, .hatnote {
+	@include rhythm($font_size_base);
+}
 
-	/* -- Paragraphs -- */
-	p {
-		&:first-of-type {
-			@include rhythm($font_size_base * 1.125);
-		}
+/* -- Paragraphs -- */
+p {
+	&:first-of-type {
+		@include rhythm($font_size_base * 1.125);
 	}
+}
 
-	/* -- Lists -- */
-	ul, ol {
-		margin-left: $ul_indent_base;
-	}
+/* -- Lists -- */
+ul, ol, dl {
+	margin-left: $ul_indent_base;
 }
 
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
+	text-rendering: optimizelegibility;
 	&.collapse-margin {
 		margin-bottom: ($nudge / 5);
 	}

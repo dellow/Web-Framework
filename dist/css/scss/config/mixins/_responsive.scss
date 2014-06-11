@@ -1,0 +1,29 @@
+/* ==========================================================================
+   Mixins > Responsive
+   Responsive mixins.
+========================================================================== */
+/**
+ * respond-to
+ * Responive breakpoints converted to em value
+ *
+ * @uses px-to-em()
+ *
+ * @include respond-to(768px){.foo {display: block;}}
+**/
+@mixin respond-to($breakpoint1, $breakpoint2: null, $up-to: true, $device: false){
+	@if($up-to){
+		@media only screen and (max-width: px-to-em($breakpoint1)){
+			@content
+		}
+	}
+	@else if($device){
+		@media only screen and (min-device-width: px-to-em($breakpoint1)) and (max-device-width: px-to-em($breakpoint2)){
+			@content
+		}
+	}
+	@else{
+		@media only screen and (min-width: px-to-em($breakpoint1)) and (max-width: px-to-em($breakpoint2)){
+			@content
+		}
+	}
+}

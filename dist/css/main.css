@@ -42,40 +42,9 @@
    Imports all the partials
 ========================================================================== */
 /* ==========================================================================
-   Mixins
+   Mixins > Misc
    Functions and mixins for various Framework operations.
 ========================================================================== */
-/**
- * px-to-em
- * Takes a single value or a list of values and replaces px units with em
- * Zero values will remain 0
- * Non-px values will not be modified
-**/
-/**
- * px-to-rem
- * Takes a single value or a list of values and replaces px units with rem
- * Zero values will remain 0.
- * Non-px values will not be modified.
-**/
-/**
- * rhythm
- * Outputs a perfect vertical rhythm for a particular font-size
- * in a margin / line-height and font-size format
- *
- * @uses px-to-rem()
- *
- * .foo {@include rhythm(20px);}
-**/
-/**
- * rem
- * Output a selector with px fallback and rem values, so that modern browsers will use the rem values.
- * Both multiple selectors and multiple sizes in multiple units can be provided.
- *
- * @uses px-to-rem()
- *
- * .foo {@include rem(font-size, 20px);}
- * .foo {@include rem(font-size height, 20px);}
-**/
 /**
  * retina-image
  * Retina image replacement.
@@ -112,6 +81,10 @@
  *
  * .foo {@include arrow(15px, #f9f7f3, 10px, null, left);}
 **/
+/* ==========================================================================
+   Mixins > Responsive
+   Responsive mixins.
+========================================================================== */
 /**
  * respond-to
  * Responive breakpoints converted to em value
@@ -119,6 +92,41 @@
  * @uses px-to-em()
  *
  * @include respond-to(768px){.foo {display: block;}}
+**/
+/* ==========================================================================
+   Mixins > Typography
+   Font size and typesetting mixins.
+========================================================================== */
+/**
+ * px-to-em
+ * Takes a single value or a list of values and replaces px units with em
+ * Zero values will remain 0
+ * Non-px values will not be modified
+**/
+/**
+ * px-to-rem
+ * Takes a single value or a list of values and replaces px units with rem
+ * Zero values will remain 0.
+ * Non-px values will not be modified.
+**/
+/**
+ * rhythm
+ * Outputs a perfect vertical rhythm for a particular font-size
+ * in a margin / line-height and font-size format
+ *
+ * @uses px-to-rem()
+ *
+ * .foo {@include rhythm(20px);}
+**/
+/**
+ * rem
+ * Output a selector with px fallback and rem values, so that modern browsers will use the rem values.
+ * Both multiple selectors and multiple sizes in multiple units can be provided.
+ *
+ * @uses px-to-rem()
+ *
+ * .foo {@include rem(font-size, 20px);}
+ * .foo {@include rem(font-size height, 20px);}
 **/
 /* ==========================================================================
    Placeholders
@@ -742,13 +750,8 @@ ul.horizontal-block li {
 
 /* ==========================================================================
    Defaults
-   Non-classed HTML elements
+   HTML elements
 ========================================================================== */
-/* -- Fieldset -- */
-fieldset {
-  margin: 0.825em 0;
-}
-
 /* -- Source Formatting -- */
 pre {
   padding: 0.825em;
@@ -800,22 +803,16 @@ ul {
   list-style-type: disc;
 }
 
-ul li, ul li, ol li, ol li {
+ul li, ol li {
   margin: 0.3em 0;
 }
 ul ul, ul ol, ol ul, ol ol {
-  margin-left: 1.2em;
   list-style-type: circle;
 }
 
 dl dd {
-  margin: 0.2em 0;
+  margin: 0.3em 0;
   text-indent: 0.825em;
-}
-
-/* -- Headers -- */
-h1, h2, h3, h4, h5, h6 {
-  text-rendering: optimizelegibility;
 }
 
 /* -- Rules -- */
@@ -939,39 +936,36 @@ a:active, button:active {
 .hatnote {
   padding-left: 20px;
   padding-left: 1.25rem;
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.5;
   font-style: italic;
 }
 
-/* -- Main content -- */
-.content {
-  /* -- General Formatting -- */
-  /* -- Paragraphs -- */
-  /* -- Lists -- */
-}
-.content p, .content ul, .content ol, .content figure {
+/* -- General Formatting -- */
+ul, ol, dl, blockquote, p, address, table, fieldset, figure, pre, .hatnote {
   margin-bottom: 13.71429px;
   margin-bottom: 0.85714rem;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
 }
-.content p:first-of-type {
+
+/* -- Paragraphs -- */
+p:first-of-type {
   margin-bottom: 13.71429px;
   margin-bottom: 0.85714rem;
   font-size: 18px;
   font-size: 1.125rem;
   line-height: 1.33333;
 }
-.content ul, .content ol {
+
+/* -- Lists -- */
+ul, ol, dl {
   margin-left: 1.2em;
 }
 
 /* -- Heading Formatting -- */
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizelegibility;
+}
 h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
   margin-bottom: 0.165em;
 }
@@ -2365,7 +2359,7 @@ form input[type="checkbox"], form input[type="radio"], form select[type="checkbo
    Custom form inputs.
 ========================================================================== */
 /* -- Forms -- */
-form [class*='custom-'] {
+form .custom-checkbox, form .custom-radio {
   margin-right: 0.825em;
   position: relative;
   display: inline-block;
@@ -2373,7 +2367,7 @@ form [class*='custom-'] {
   *display: inline;
   /* IE Fix */
 }
-form [class*='custom-'] label {
+form .custom-checkbox label, form .custom-radio label {
   width: 17px;
   height: 17px;
   border: 1px solid #e0e0e0;
@@ -2384,16 +2378,16 @@ form [class*='custom-'] label {
   text-indent: 1.5em;
   box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.08);
 }
-form [class*='custom-'] label:active {
+form .custom-checkbox label:active, form .custom-radio label:active {
   box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
 }
-form [class*='custom-'] input {
+form .custom-checkbox input, form .custom-radio input {
   width: 0 !important;
   height: 0 !important;
   position: absolute;
   visibility: hidden;
 }
-form [class*='custom-'] span.label {
+form .custom-checkbox span.label, form .custom-radio span.label {
   width: auto;
   margin: 0 0 0 25px;
   display: block;
@@ -2488,9 +2482,6 @@ form .custom-select select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
-form .custom-select select:hover, form .custom-select select:focus {
-  background-color: #ddd;
 }
 
 /* ==========================================================================
@@ -2924,7 +2915,7 @@ form .custom-select select:hover, form .custom-select select:focus {
     max-width: 40%;
   }
 }
-@media only screen and (max-width: 30em) {
+@media only screen and (max-width: 32.5em) {
   html {
     font-size: 100%;
   }

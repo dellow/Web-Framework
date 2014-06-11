@@ -59,8 +59,6 @@ $font_size_h5               : 16px !default;
 $font_size_h6               : 14px !default;
 // Line Height
 $line_height_base           : 24px !default;
-$spacing_unit_base          : $line_height_base !default;
-$half_spacing_unit          : $spacing_unit_base / 2 !default;
 $line_height_ratio          : $line_height_base / $font_size_base !default;
 
 /**
@@ -123,9 +121,9 @@ $col_16                     : 6.25% !default;
 * http://dpi.lv
 **/
 // Generic
-$mobile                     : 480px !default;
+$mobile                     : 520px !default;
 $tablet                     : 768px !default;
-$desktop                    : 960px !default;
+$desktop                    : 1280px !default;
 // iPhone 3
 $iphone3_dpi                : 163 !default;
 $iphone3_dppx               : 1 !default;

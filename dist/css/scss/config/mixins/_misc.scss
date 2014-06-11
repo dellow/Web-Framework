@@ -1,87 +1,10 @@
 /* ==========================================================================
-   Mixins
+   Mixins > Misc
    Functions and mixins for various Framework operations.
 ========================================================================== */
 // Sprites from folder
 //@import "foldername/*.png";
 //@include all-foldername-sprites;
-
-/**
- * px-to-em
- * Takes a single value or a list of values and replaces px units with em
- * Zero values will remain 0
- * Non-px values will not be modified
-**/
-@function px-to-em($px){
-    $return : ();
-
-    @each $var in $px {
-        @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
-            $return : append($return, #{$var/16px}em, space);
-        } @else {
-            $return : append($return, $var, space);
-        }
-    }
-
-    @return $return;
-}
-
-/**
- * px-to-rem
- * Takes a single value or a list of values and replaces px units with rem
- * Zero values will remain 0.
- * Non-px values will not be modified.
-**/
-@function px-to-rem($px){
-    $return : ();
-
-    @each $var in $px {
-        @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
-            $return : append($return, #{$var/16px}rem, space);
-        } @else {
-            $return : append($return, $var, space);
-        }
-    }
-
-    @return $return;
-}
-
-/**
- * rhythm
- * Outputs a perfect vertical rhythm for a particular font-size
- * in a margin / line-height and font-size format
- *
- * @uses px-to-rem()
- *
- * .foo {@include rhythm(20px);}
-**/
-@mixin rhythm($size){
-	margin-bottom: 0px + ($line_height_base / 1.75);
-	margin-bottom: px-to-rem($line_height_base / 1.75);
-	font-size: 0px + $size;
-	font-size: px-to-rem($size);
-	line-height: ceil($size / $line_height_base) * ($line_height_base / $size);
-}
-
-/**
- * rem
- * Output a selector with px fallback and rem values, so that modern browsers will use the rem values.
- * Both multiple selectors and multiple sizes in multiple units can be provided.
- *
- * @uses px-to-rem()
- *
- * .foo {@include rem(font-size, 20px);}
- * .foo {@include rem(font-size height, 20px);}
-**/
-$legacy_support_for_ie: true;
-@mixin rem($selectors, $size){
-    @each $selector in $selectors {
-    	@if $legacy_support_for_ie {
-            #{$selector}: $size;
-        }
-        #{$selector}: px-to-rem($size);
-    }
-}
 
 /**
  * retina-image
@@ -194,31 +117,5 @@ $legacy_support_for_ie: true;
 			border-top-color: $color;
 		}
 		border-width: $size;
-	}
-}
-
-/**
- * respond-to
- * Responive breakpoints converted to em value
- *
- * @uses px-to-em()
- *
- * @include respond-to(768px){.foo {display: block;}}
-**/
-@mixin respond-to($breakpoint1, $breakpoint2: null, $up-to: true, $device: false){
-	@if($up-to){
-		@media only screen and (max-width: px-to-em($breakpoint1)){
-			@content
-		}
-	}
-	@else if($device){
-		@media only screen and (min-device-width: px-to-em($breakpoint1)) and (max-device-width: px-to-em($breakpoint2)){
-			@content
-		}
-	}
-	@else{
-		@media only screen and (min-width: px-to-em($breakpoint1)) and (max-width: px-to-em($breakpoint2)){
-			@content
-		}
 	}
 }

@@ -1,12 +1,7 @@
 /* ==========================================================================
    Defaults
-   Non-classed HTML elements
+   HTML elements
 ========================================================================== */
-/* -- Fieldset -- */
-fieldset {
-	margin: $nudge 0;
-}
-
 /* -- Source Formatting -- */
 pre {
 	padding: $nudge;
@@ -58,22 +53,18 @@ ul {
 	list-style-type: disc;
 }
 ul, ol {
-	li, li {
+	li {
 		margin: 0.3em 0;
 	}
 	ul, ol {
-		margin-left: $ul_indent_base;
 		list-style-type: circle;
 	}
 }
-dl dd {
-	margin: 0.2em 0;
-	text-indent: $nudge;
-}
-
-/* -- Headers -- */
-h1, h2, h3, h4, h5, h6 {
-	text-rendering: optimizelegibility;
+dl {
+	dd {
+		margin: 0.3em 0;
+		text-indent: $nudge;
+	}
 }
 
 /* -- Rules -- */
