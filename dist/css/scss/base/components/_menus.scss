@@ -5,6 +5,9 @@
 /* -- All Navigation -- */
 .navigation {
 	@include nudge(padding, 1 0);
+	ul {
+		margin-left: 0;
+	}
 }
 
 /* -- Mobile Navigation -- */

@@ -1813,6 +1813,9 @@ p.alert {
   padding: 24px 0px;
   padding: 1.5rem 0px;
 }
+.navigation ul {
+  margin-left: 0;
+}
 
 /* -- Mobile Navigation -- */
 .mobile-select-menu {
