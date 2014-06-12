@@ -15,8 +15,12 @@ After cloning the repository simply run `bash install` from your command line. T
 
 You might want to review the .gitignore file. Sensitive files like `sftp-config.json` which hold SSH connection details for Grunt-SSH should be ignored, along with any other files or directories.
 
-## Styleguide
-There is a basic CSS styleguide in [`dist/docs/styleguide.html`](dist/docs/styleguide.html). Please disable Debug mode to view this correctly.
+## Styleguide & Examples
+There is a CSS styleguide in [`dist/.help/examples/styleguide.html`](dist/.help/examples/styleguide.html) which outlines some of the styled elements in the framework. You can also test the vertical rhythm [`dist/.help/examples/rhythm.html`](dist/.help/examples/rhythm.html).
+
+These serve as ongoing platforms to test any changes you might make to framework CSS.
+
+__Please note:__ You will need to disable Debug mode to view Styleguides and Examples correctly.
 
 ## Using Gulp
 Run the default config in development mode:
