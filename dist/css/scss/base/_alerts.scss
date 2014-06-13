@@ -24,70 +24,47 @@
 		}
 	}
 }
-p.alert {
-	margin: 0;
+
+/* -- Error (Red) -- */
+.alert {
+	&.error {
+		color: $color_error;
+	}
+	&.box.error {
+		border-color: lighten($color_error, 25%);
+		background: lighten($color_error, 40%);
+	}
 }
 
 /* -- Status (Blue) -- */
 .alert {
 	&.status {
-		color: #3a87ad;
+		color: $color_status;
 	}
 	&.box.status {
-		border-color: darken(#c7e0ec, 15%);
-		background: #c7e0ec;
-	}
-}
-input, select, textarea {
-	&.alert.status {
-		@extend .alert.box.status
+		border-color: lighten($color_status, 25%);
+		background: lighten($color_status, 40%);
 	}
 }
 
 /* -- Success (Green) -- */
 .alert {
 	&.success {
-		color: #468847;
+		color: $color_success;
 	}
 	&.box.success {
-		border-color: darken(#dfeedf, 15%);
-		background: #dfeedf;
-	}
-}
-input, select, textarea {
-	&.alert.success {
-		@extend .alert.box.success
+		border-color: lighten($color_success, 25%);
+		background: lighten($color_success, 40%);
 	}
 }
 
 /* -- Warning (Yellow) -- */
 .alert {
 	&.warning {
-		color: #c09853;
+		color: $color_warning;
 	}
 	&.box.warning {
-		border-color: darken(#f7f1e8, 15%);
-		background: #f7f1e8;
-	}
-}
-input, select, textarea {
-	&.alert.warning {
-		@extend .alert.box.warning
-	}
-}
-
-/* -- Error (Red) -- */
-.alert {
-	&.error {
-		color: #b94a48;
-	}
-	&.box.error {
-		border-color: darken(#f1dcdc, 15%);
-		background: #f1dcdc;
-	}
-}
-input, select, textarea {
-	&.alert.error {
-		@extend .alert.box.error
+		border-color: lighten($color_warning, 25%);
+		background: lighten($color_warning, 40%);
 	}
 }

@@ -39,7 +39,7 @@
                 emailRegEx            : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
                 passRegEx             : /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
                 urlRegEx              : /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
-                errorBoxClass         : 'error-box',
+                errorBoxClass         : 'error',
                 errorClass            : 'error',
                 successClass          : 'success',
                 msgSep                : ' -',
@@ -330,7 +330,7 @@
                     // Cache the form element
                     form          = $(this),
                     // Action for the form
-                    form_action   = form.data('action'),
+                    form_action   = (form.data('action')) ? form.data('action') : null,
                     // Cache fields
                     fields        = $('input, select, textarea', form),
                     // Cache the reset button element
@@ -606,18 +606,6 @@
                         e.preventDefault();
                         form.fadeOut(500, function(){
                             form.prev('.form-success').fadeIn(300);
-                        });
-                    }
-                    else if(type == 'js'){
-                        e.preventDefault();
-                        $.ajax({
-                            type: 'POST',
-                            data: form.serialize(),
-                            success: function(){
-                                form.fadeOut(500, function(){
-                                    form.prev('.form-success').fadeIn(300);
-                                });
-                            }
                         });
                     }
                     else{

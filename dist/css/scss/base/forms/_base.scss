@@ -117,10 +117,9 @@ form {
 		border: 1px solid #CCCCCC;
 		vertical-align: top;
 		border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
 		border-radius: $border_radius_base;
 		@include rem(font-size, 14px);
-		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease, box-shadow $animation ease);
+		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease);
 	}
 
 	// Textareas
@@ -152,7 +151,6 @@ form {
 		position: relative;
 		vertical-align: top;
 		border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(230, 230, 230, 0.05);
 		border-radius: $border_radius_base;
 		text-align: center;
 		cursor: pointer;
@@ -163,7 +161,7 @@ form {
 		background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
 		background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
 		background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(230, 230, 230, 0.2));
-		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease, box-shadow $animation ease);
+		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease);
 		&:active, &:hover {
 			color: inherit;
 			border-color: $grey_light;
@@ -171,10 +169,8 @@ form {
 		}
 		&:active {
 			border-color: $grey_light;
-			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(230, 230, 230, 0.02);
 		}
 		&[disabled], &.disabled, &.disabled:hover, &.disabled:active {
-			box-shadow: none;
 			border-color: #E6E6E6 #E6E6E6 #d8d6d6 #E6E6E6;
 			cursor: default;
 			background-color: white;
@@ -195,9 +191,6 @@ form {
 		}
 		&:focus, &:focus, &:focus {
 			border-color: #AAA;
-		}
-		&[type="checkbox"], &[type="radio"] {
-			box-shadow: none; // IE displays box-shadow on checkbox and radios
 		}
 	}
 }

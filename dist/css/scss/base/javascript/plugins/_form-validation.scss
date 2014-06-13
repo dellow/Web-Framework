@@ -1,12 +1,9 @@
-.val-box {
-	@extend .alert.error
-}
-.val-message {
+.suggestion {
 	display: none;
 }
-#suggestion {
-	display: none;
-}
-#alternate_email {
+.alternative-email {
 	cursor: pointer;
+}
+.form-success {
+	display: none;
 }
