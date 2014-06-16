@@ -39,28 +39,30 @@ form {
 			}
 		}
 	}
-	// Messages
-	.msg {
-		@include rem(font-size, 10px);
-	}
-	.error {
+	// Response
+	.response {
 		.msg {
-			color: $color_error;
+			@include rem(font-size, 14px);
 		}
-	}
-	.status {
-		.msg {
-			color: $color_status;
+		&.response--error {
+			.msg {
+				color: $color_error;
+			}
 		}
-	}
-	.success {
-		.msg {
-			color: $color_success;
+		&.response--status {
+			.msg {
+				color: $color_status;
+			}
 		}
-	}
-	.warning {
-		.msg {
-			color: $color_warning;
+		&.response--success {
+			.msg {
+				color: $color_success;
+			}
+		}
+		&.response--warning {
+			.msg {
+				color: $color_warning;
+			}
 		}
 	}
 }

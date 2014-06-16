@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Reset
+   Reset styles
+========================================================================== */
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing   : border-box;
+	-o-box-sizing     : border-box;
+	-ms-box-sizing    : border-box;
+	box-sizing        : border-box;
+}
+*:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing   : border-box;
+	-o-box-sizing     : border-box;
+	-ms-box-sizing    : border-box;
+	box-sizing        : border-box;
+}
+html, body  {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, button, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, input, select, button, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+}
+sub, sup {
+	font-size: 80%;
+	vertical-align: baseline;
+	position: relative;
+	top: -0.4em;
+}
+sub {
+	top: 0.4em;
+}
+input, select, textarea, button {
+	color: inherit;
+	font-size: inherit;
+}
+label, button, a.button, details, input[type="button"], input[type="submit"] {
+	cursor: pointer;
+}
+button, select {
+	text-transform: none;
+	font-weight: inherit;
+}
+button {
+    font-family: inherit;
+    line-height: inherit;
+  	overflow: visible;
+    background: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+	cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+input {
+	line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+input[type="search"] {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+html, body, div, p, address, blockquote, ol, ul, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, pre, hr, menu, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+	display: block;
+}
+video {
+	cursor: pointer;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden], template {
+  display: none;
+}
+:focus {
+	outline: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+td {
+	vertical-align: top;
+}
+th, strong, dt {
+	font-weight: $font_weight_bold;
+}
+del {
+	text-decoration: line-through;
+}
+blockquote, q, em, cite, dfn, cite, var, address {
+	font-style: italic;
+}
+img, object, embed {
+	max-width: 100%;
+	height: auto;
+}
+object, embed {
+	height: 100%;
+}
+img {
+    vertical-align: middle;
+	-ms-interpolation-mode: bicubic;
+}
+textarea {
+	resize: vertical;
+}

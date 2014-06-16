@@ -20,6 +20,7 @@
  * preloaderHEX          : String. HEX value for the colour of the preloader spinner. Must be a full 6 character HEX value.
  * preloaderSize         : Integer. Pixel size of the preloader spinner.
  * preloaderDensity      : Integer. Density of the preloader spinner.
+ * successElement        : jQuery Element. A valid jQuery element that holds the success message.
  * validationMessage     : jQuery Element. A valid jQuery element that holds the error message.
  * successFunction       : Function. Function to run on successful validation.
  * customValidationMethod: Function. Function containing any custom methods to validate against. Must return the element.
@@ -39,7 +40,7 @@
                 emailRegEx            : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
                 passRegEx             : /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
                 urlRegEx              : /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
-                errorBoxClass         : 'error',
+                errorBoxClass         : 'response response--error',
                 errorClass            : 'error',
                 successClass          : 'success',
                 msgSep                : ' -',
@@ -50,6 +51,7 @@
                 preloaderHEX          : '#333333',
                 preloaderSize         : 15,
                 preloaderDensity      : 15,
+                successElement        : $('.form-success'),
                 validationMessage     : $('.error-message'),
                 successFunction       : null,
                 customValidationMethod: null
@@ -330,7 +332,7 @@
                     // Cache the form element
                     form          = $(this),
                     // Action for the form
-                    form_action   = (form.data('action')) ? form.data('action') : null,
+                    form_action   = form.data('action'),
                     // Cache fields
                     fields        = $('input, select, textarea', form),
                     // Cache the reset button element
@@ -602,10 +604,22 @@
                     // Clear localStorage
                     plugin.clear_localStorage();
                     // If we have a custom post function
-                    if(type == 'server' || type == 'js'){
+                    if(type == 'server'){
                         e.preventDefault();
                         form.fadeOut(500, function(){
-                            form.prev('.form-success').fadeIn(300);
+                            form.prev(settings.successElement).fadeIn(300);
+                        });
+                    }
+                    else if(type == 'js'){
+                        e.preventDefault();
+                        $.ajax({
+                            type: 'POST',
+                            data: form.serialize(),
+                            success: function(){
+                                form.fadeOut(500, function(){
+                                    form.prev(settings.successElement).fadeIn(300);
+                                });
+                            }
                         });
                     }
                     else{

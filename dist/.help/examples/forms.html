@@ -16,29 +16,30 @@
 <body>
 <div class="container">
 	<div class="form-success">
-		<h2>Thanks for submitting the form!</h2>
+		<p>Thanks for submitting the form!</p>
 	</div>
-	<form id="formid" class="validate form-block" data-action="url/to/server/side/validation" method="post">
+	<form class="form validate form-block" data-action="url/to/server/side/validation" method="post">
 		<div class="field">
-			<label for="formid--name">Name</label>
-			<input type="text" name="fields[name]" id="formid--name" placeholder="e.g. John Smith" value="<?php echo (isset($_POST['name'])) ? $_POST['name'] : null; ?>" required>
-			<input type="hidden" name="validationmessage[name]" class="error-message" value="Please enter your name">
-			<input type="hidden" name="validationfilter[name]" value="existence">
+			<label for="form__fullname">Name</label>
+			<input type="text" name="fields[fullname]" id="form__fullname" placeholder="e.g. John Smith" value="<?php echo (isset($_POST['fullname'])) ? $_POST['fullname'] : null; ?>" required>
+			<input type="hidden" name="validationmessage[fullname]" class="error-message" value="Please enter your name">
+			<input type="hidden" name="validationfilter[fullname]" value="existence">
 		</div>
 		<div class="field">
-			<label for="formid--email">Email Address</label>
-			<input type="email" name="fields[email]" id="formid--email" placeholder="e.g. john.smith@hotmail.com" value="<?php echo (isset($_POST['email'])) ? $_POST['email'] : null; ?>" required>
-			<input type="hidden" name="validationmessage[email]" class="error-message" value="Please enter a valid email address">
-			<input type="hidden" name="validationfilter[email]" value="email">
+			<label for="form__emailaddress">Email Address</label>
+			<input type="email" name="fields[email]" id="form__emailaddress" placeholder="e.g. john.smith@hotmail.com" value="<?php echo (isset($_POST['emailaddress'])) ? $_POST['emailaddress'] : null; ?>" required>
+			<input type="hidden" name="validationmessage[emailaddress]" class="error-message" value="Please enter a valid email address">
+			<input type="hidden" name="validationfilter[emailaddress]" value="email">
 		</div>
 		<div class="field">
-			<label for="formid--message">Message</label>
-			<textarea name="fields[message]" id="formid--message" required><?php echo (isset($_POST['message'])) ? $_POST['message'] : null; ?></textarea>
+			<label for="form__message">Message</label>
+			<textarea name="fields[message]" id="form__message" required><?php echo (isset($_POST['message'])) ? $_POST['message'] : null; ?></textarea>
 			<input type="hidden" name="validationmessage[message]" class="error-message" value="Please enter a message">
 			<input type="hidden" name="validationfilter[message]" value="existence">
 		</div>
 		<button type="submit">Submit</button>
 	</form>
 </div>
+<script src="../../js/build/build.js"></script>
 </body>
 </html>
