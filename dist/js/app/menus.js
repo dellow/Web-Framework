@@ -1,6 +1,6 @@
 /**
- * menu.js
- * Menu JS file.
+ * menus.js
+ * Menus JS file.
 **/
 
 // jQuery
@@ -10,13 +10,13 @@ var $ = jQuery = require('jquery');
     'use strict';
 
     // Object
-    var menu = menu || {};
+    var menus = menus || {};
 
     /**
-     * menu.init
+     * menus.init
      * Creates a mobile menu from the primary menu.
     **/
-    menu.init = function(el){
+    menus.init = function(el){
         var primary_nav = el,
         	wrapper     = $('<div class="mobile-select-menu"></div>'),
             select_nav  = $('<select class="nav-primary-mobile"></select>'),
@@ -68,17 +68,17 @@ var $ = jQuery = require('jquery');
 
     $(window).on('resize', function(){
         if(helper.mobile_mode(580)){
-            menu.init($('.nav-primary'));
+            menus.init($('.nav-primary'));
         }
     });
 
     $(function(){
         if(helper.mobile_mode(580)){
-            menu.init($('.nav-primary'));
+            menus.init($('.nav-primary'));
         }
     });
 
     // Export object for use.
-    window.menu  = menu;
+    window.menus = menus;
 
 }(jQuery, window));

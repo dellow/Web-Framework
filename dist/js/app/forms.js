@@ -24,6 +24,6 @@ require('../plugins/jquery.validation');
     }
 
     // Export object for use.
-    window.forms  = forms;
+    window.forms = forms;
 
 }(jQuery, window));

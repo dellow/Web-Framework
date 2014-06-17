@@ -22,6 +22,6 @@ require('../plugins/jquery.lightbox');
     }
 
     // Export object for use.
-    window.images  = images;
+    window.images = images;
 
 }(jQuery, window));

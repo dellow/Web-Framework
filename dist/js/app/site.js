@@ -13,6 +13,6 @@ var $ = jQuery = require('jquery');
     var site = site || {};
 
 	// Export object for use.
-	window.site  = site;
+	window.site = site;
 
 }(jQuery, window));

@@ -5,11 +5,13 @@
 
 // Helper
 require('../helpers/helper');
+// Polyfills
+require('./polyfills');
 // Site
 require('./site');
 // Forms
 require('./forms');
-// Menu
-require('./menu');
+// Menus
+require('./menus');
 // Images
 require('./images');

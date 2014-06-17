@@ -25,10 +25,10 @@ require('../plugins/jquery.validation');
     }
 
     // Export object for use.
-    window.forms  = forms;
+    window.forms = forms;
 
 }(jQuery, window));
-},{"../plugins/jquery.validation":8,"jquery":9}],2:[function(require,module,exports){
+},{"../plugins/jquery.validation":10,"jquery":11}],2:[function(require,module,exports){
 /**
  * images.js
  * Images JS file.
@@ -53,10 +53,10 @@ require('../plugins/jquery.lightbox');
     }
 
     // Export object for use.
-    window.images  = images;
+    window.images = images;
 
 }(jQuery, window));
-},{"../plugins/jquery.lightbox":7,"jquery":9}],3:[function(require,module,exports){
+},{"../plugins/jquery.lightbox":8,"jquery":11}],3:[function(require,module,exports){
 /**
  * index.js
  * Loads our app files.
@@ -64,18 +64,20 @@ require('../plugins/jquery.lightbox');
 
 // Helper
 require('../helpers/helper');
+// Polyfills
+require('./polyfills');
 // Site
 require('./site');
 // Forms
 require('./forms');
-// Menu
-require('./menu');
+// Menus
+require('./menus');
 // Images
 require('./images');
-},{"../helpers/helper":6,"./forms":1,"./images":2,"./menu":4,"./site":5}],4:[function(require,module,exports){
+},{"../helpers/helper":7,"./forms":1,"./images":2,"./menus":4,"./polyfills":5,"./site":6}],4:[function(require,module,exports){
 /**
- * menu.js
- * Menu JS file.
+ * menus.js
+ * Menus JS file.
 **/
 
 // jQuery
@@ -85,13 +87,13 @@ var $ = jQuery = require('jquery');
     'use strict';
 
     // Object
-    var menu = menu || {};
+    var menus = menus || {};
 
     /**
-     * menu.init
+     * menus.init
      * Creates a mobile menu from the primary menu.
     **/
-    menu.init = function(el){
+    menus.init = function(el){
         var primary_nav = el,
         	wrapper     = $('<div class="mobile-select-menu"></div>'),
             select_nav  = $('<select class="nav-primary-mobile"></select>'),
@@ -143,21 +145,47 @@ var $ = jQuery = require('jquery');
 
     $(window).on('resize', function(){
         if(helper.mobile_mode(580)){
-            menu.init($('.nav-primary'));
+            menus.init($('.nav-primary'));
         }
     });
 
     $(function(){
         if(helper.mobile_mode(580)){
-            menu.init($('.nav-primary'));
+            menus.init($('.nav-primary'));
         }
     });
 
     // Export object for use.
-    window.menu  = menu;
+    window.menus = menus;
 
 }(jQuery, window));
-},{"jquery":9}],5:[function(require,module,exports){
+},{"jquery":11}],5:[function(require,module,exports){
+/**
+ * polyfills.js
+ * Polyfills JS file.
+**/
+
+// jQuery
+var $ = jQuery = require('jquery');
+// Placeholder
+require('../plugins/jquery.placeholder');
+
+;(function($, window, undefined){
+    'use strict';
+
+    // Object
+    var polyfills = polyfills || {};
+
+	// Placeholder polyfill
+    if(!Modernizr.input.placeholder){
+        $('input, textarea').placeholder();
+    }
+
+    // Export object for use.
+    window.polyfills = polyfills;
+
+}(jQuery, window));
+},{"../plugins/jquery.placeholder":9,"jquery":11}],6:[function(require,module,exports){
 /**
  * site.js
  * Controller JS file.
@@ -173,10 +201,10 @@ var $ = jQuery = require('jquery');
     var site = site || {};
 
 	// Export object for use.
-	window.site  = site;
+	window.site = site;
 
 }(jQuery, window));
-},{"jquery":9}],6:[function(require,module,exports){
+},{"jquery":11}],7:[function(require,module,exports){
 /**
  * helper.js
  * File description goes here.
@@ -216,7 +244,7 @@ var $ = jQuery = require('jquery');
 	window.helper = helper;
 
 })(window);
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  *
  * jQuery lightbox plugin
@@ -491,7 +519,193 @@ var $ = jQuery = require('jquery');
 
 })(jQuery, window);
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
+/*! http://mths.be/placeholder v2.0.8 by @mathias */
+;(function(window, document, $) {
+
+	// Opera Mini v7 doesn’t support placeholder although its DOM seems to indicate so
+	var isOperaMini = Object.prototype.toString.call(window.operamini) == '[object OperaMini]';
+	var isInputSupported = 'placeholder' in document.createElement('input') && !isOperaMini;
+	var isTextareaSupported = 'placeholder' in document.createElement('textarea') && !isOperaMini;
+	var prototype = $.fn;
+	var valHooks = $.valHooks;
+	var propHooks = $.propHooks;
+	var hooks;
+	var placeholder;
+
+	if (isInputSupported && isTextareaSupported) {
+
+		placeholder = prototype.placeholder = function() {
+			return this;
+		};
+
+		placeholder.input = placeholder.textarea = true;
+
+	} else {
+
+		placeholder = prototype.placeholder = function() {
+			var $this = this;
+			$this
+				.filter((isInputSupported ? 'textarea' : ':input') + '[placeholder]')
+				.not('.placeholder')
+				.bind({
+					'focus.placeholder': clearPlaceholder,
+					'blur.placeholder': setPlaceholder
+				})
+				.data('placeholder-enabled', true)
+				.trigger('blur.placeholder');
+			return $this;
+		};
+
+		placeholder.input = isInputSupported;
+		placeholder.textarea = isTextareaSupported;
+
+		hooks = {
+			'get': function(element) {
+				var $element = $(element);
+
+				var $passwordInput = $element.data('placeholder-password');
+				if ($passwordInput) {
+					return $passwordInput[0].value;
+				}
+
+				return $element.data('placeholder-enabled') && $element.hasClass('placeholder') ? '' : element.value;
+			},
+			'set': function(element, value) {
+				var $element = $(element);
+
+				var $passwordInput = $element.data('placeholder-password');
+				if ($passwordInput) {
+					return $passwordInput[0].value = value;
+				}
+
+				if (!$element.data('placeholder-enabled')) {
+					return element.value = value;
+				}
+				if (value == '') {
+					element.value = value;
+					// Issue #56: Setting the placeholder causes problems if the element continues to have focus.
+					if (element != safeActiveElement()) {
+						// We can't use `triggerHandler` here because of dummy text/password inputs :(
+						setPlaceholder.call(element);
+					}
+				} else if ($element.hasClass('placeholder')) {
+					clearPlaceholder.call(element, true, value) || (element.value = value);
+				} else {
+					element.value = value;
+				}
+				// `set` can not return `undefined`; see http://jsapi.info/jquery/1.7.1/val#L2363
+				return $element;
+			}
+		};
+
+		if (!isInputSupported) {
+			valHooks.input = hooks;
+			propHooks.value = hooks;
+		}
+		if (!isTextareaSupported) {
+			valHooks.textarea = hooks;
+			propHooks.value = hooks;
+		}
+
+		$(function() {
+			// Look for forms
+			$(document).delegate('form', 'submit.placeholder', function() {
+				// Clear the placeholder values so they don't get submitted
+				var $inputs = $('.placeholder', this).each(clearPlaceholder);
+				setTimeout(function() {
+					$inputs.each(setPlaceholder);
+				}, 10);
+			});
+		});
+
+		// Clear placeholder values upon page reload
+		$(window).bind('beforeunload.placeholder', function() {
+			$('.placeholder').each(function() {
+				this.value = '';
+			});
+		});
+
+	}
+
+	function args(elem) {
+		// Return an object of element attributes
+		var newAttrs = {};
+		var rinlinejQuery = /^jQuery\d+$/;
+		$.each(elem.attributes, function(i, attr) {
+			if (attr.specified && !rinlinejQuery.test(attr.name)) {
+				newAttrs[attr.name] = attr.value;
+			}
+		});
+		return newAttrs;
+	}
+
+	function clearPlaceholder(event, value) {
+		var input = this;
+		var $input = $(input);
+		if (input.value == $input.attr('placeholder') && $input.hasClass('placeholder')) {
+			if ($input.data('placeholder-password')) {
+				$input = $input.hide().next().show().attr('id', $input.removeAttr('id').data('placeholder-id'));
+				// If `clearPlaceholder` was called from `$.valHooks.input.set`
+				if (event === true) {
+					return $input[0].value = value;
+				}
+				$input.focus();
+			} else {
+				input.value = '';
+				$input.removeClass('placeholder');
+				input == safeActiveElement() && input.select();
+			}
+		}
+	}
+
+	function setPlaceholder() {
+		var $replacement;
+		var input = this;
+		var $input = $(input);
+		var id = this.id;
+		if (input.value == '') {
+			if (input.type == 'password') {
+				if (!$input.data('placeholder-textinput')) {
+					try {
+						$replacement = $input.clone().attr({ 'type': 'text' });
+					} catch(e) {
+						$replacement = $('<input>').attr($.extend(args(this), { 'type': 'text' }));
+					}
+					$replacement
+						.removeAttr('name')
+						.data({
+							'placeholder-password': $input,
+							'placeholder-id': id
+						})
+						.bind('focus.placeholder', clearPlaceholder);
+					$input
+						.data({
+							'placeholder-textinput': $replacement,
+							'placeholder-id': id
+						})
+						.before($replacement);
+				}
+				$input = $input.removeAttr('id').hide().prev().attr('id', id).show();
+				// Note: `$input[0] != input` now!
+			}
+			$input.addClass('placeholder');
+			$input[0].value = $input.attr('placeholder');
+		} else {
+			$input.removeClass('placeholder');
+		}
+	}
+
+	function safeActiveElement() {
+		// Avoid IE9 `document.activeElement` of death
+		// https://github.com/mathiasbynens/jquery-placeholder/pull/99
+		try {
+			return document.activeElement;
+		} catch (exception) {}
+	}
+
+}(this, document, jQuery));
+},{}],10:[function(require,module,exports){
 /**
  * validation.js
  * $('.form').validation();
@@ -1180,7 +1394,7 @@ var $ = jQuery = require('jquery');
     });
 
 })(jQuery, window);
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
