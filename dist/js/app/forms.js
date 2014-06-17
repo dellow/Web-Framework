@@ -17,7 +17,7 @@ require('../plugins/jquery.validation');
 	// Form validation
     if($('.validate').length){
         $('.validate').validation({
-            serverValidation: false,
+            serverValidation: true,
             preloaderSize   : 20,
             preloaderHEX    : '#000000'
         });

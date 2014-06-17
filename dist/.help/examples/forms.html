@@ -1,3 +1,15 @@
+<?php
+
+	include('mailer.php');
+	$args['recipient'] = 'recipient@sitedomain.com';
+	$args['bcc']       = 'bcc@sitedomain.com';
+	$args['reply-to']  = 'reply@sitedomain.com';
+	$args['subject']   = 'Subject';
+	$args['title']     = 'Site Title';
+	$args['domain']    = 'http://sitedomain.com';
+	$form              = new mailer('mail', 'fields', $args);
+
+?>
 <!DOCTYPE html>
 <!--[if IEMobile 7]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
@@ -30,6 +42,7 @@
 		<p>Thanks for submitting the form!</p>
 	</div>
 	<form class="form validate form-block" action="" method="post">
+		<div><?php echo $form->response(); ?></div>
 		<!-- Text input -->
 		<div class="field">
 			<label for="form__fullname">Name</label>
@@ -46,7 +59,7 @@
 		<!-- Disabled Input -->
 		<div class="field">
 			<label for="form_disabled">Disabled Input</label>
-			<input type="text" name="fields[disabled]" id="form_disabled"  value="A disabled value" disabled>
+			<input type="text" name="fields[disabled]" id="form_disabled" value="A disabled value" disabled>
 		</div>
 		<!-- Email input -->
 		<div class="field">

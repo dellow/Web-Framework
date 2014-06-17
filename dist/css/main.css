@@ -1533,8 +1533,8 @@ blockquote:after, q:after {
 /* -- All -- */
 /* line 7, scss/base/_alerts.scss */
 .alert.box {
-  padding: 24px 24px 24px 14px;
-  padding: 1.5rem 1.5rem 1.5rem 14px;
+  padding: 12px 12px 12px 14px;
+  padding: 0.75rem 0.75rem 0.75rem 14px;
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
   border: 1px solid;
@@ -1559,45 +1559,57 @@ blockquote:after, q:after {
   border-bottom-style: solid;
 }
 
-/* -- Error (Red) -- */
+/* -- Alerts as a list -- */
 /* line 30, scss/base/_alerts.scss */
+ul.alert.box {
+  padding-left: 14px;
+  margin-left: 0;
+}
+/* line 33, scss/base/_alerts.scss */
+ul.alert.box li {
+  margin: 0;
+  list-style: none;
+}
+
+/* -- Error (Red) -- */
+/* line 42, scss/base/_alerts.scss */
 .alert.error {
   color: #b94a48;
 }
-/* line 33, scss/base/_alerts.scss */
+/* line 45, scss/base/_alerts.scss */
 .alert.box.error {
   border-color: #dca5a4;
   background: #f1dcdc;
 }
 
 /* -- Status (Blue) -- */
-/* line 41, scss/base/_alerts.scss */
+/* line 53, scss/base/_alerts.scss */
 .alert.status {
   color: #3a87ad;
 }
-/* line 44, scss/base/_alerts.scss */
+/* line 56, scss/base/_alerts.scss */
 .alert.box.status {
   border-color: #8ec0d9;
   background: #c7e0ec;
 }
 
 /* -- Success (Green) -- */
-/* line 52, scss/base/_alerts.scss */
+/* line 64, scss/base/_alerts.scss */
 .alert.success {
   color: #468847;
 }
-/* line 55, scss/base/_alerts.scss */
+/* line 67, scss/base/_alerts.scss */
 .alert.box.success {
   border-color: #8ac38b;
   background: #bdddbd;
 }
 
 /* -- Warning (Yellow) -- */
-/* line 63, scss/base/_alerts.scss */
+/* line 75, scss/base/_alerts.scss */
 .alert.warning {
   color: #c09853;
 }
-/* line 66, scss/base/_alerts.scss */
+/* line 78, scss/base/_alerts.scss */
 .alert.box.warning {
   border-color: #e2d0b0;
   background: #f7f1e8;

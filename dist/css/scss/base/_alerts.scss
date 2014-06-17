@@ -5,7 +5,7 @@
 /* -- All -- */
 .alert {
 	&.box {
-		@include nudge(padding, 1 1 1 14px);
+		@include nudge(padding, 0.5 0.5 0.5 14px);
 		@include nudge(margin-bottom, 1);
 		border: 1px solid; border-left: 7px solid;
 		position: relative;
@@ -21,6 +21,18 @@
 				color: inherit;
 				border-bottom-style: solid;
 			}
+		}
+	}
+}
+
+/* -- Alerts as a list -- */
+ul.alert {
+	&.box {
+		padding-left: 14px;
+		margin-left: 0;
+		li {
+			margin: 0;
+			list-style: none;
 		}
 	}
 }

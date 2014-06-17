@@ -22,47 +22,16 @@ class mailer{
 	 * @since 1.0.0
 	 * @version 1.0.0
 	 * @param $type - String. Either 'mail', 'login', 'account', 'register'. Default: 'mail'.
-	 * @param $json - Boolean. Return a JSON response, otherwise return PHP string. Default: false.
+	 * @param $field_id - String. The array the mailer should expect. Default 'fields'.
+	 * @param $args - Array. Options like domain, site title and headers.
 	**/
-	public function __construct($type = 'mail', $field_id = 'field', $args = array(), $json = false){
+	public function __construct($type = 'mail', $field_id = 'fields', $args = array()){
         // Response array
         $this->response = array();
+        // Form ID
+        $this->id = $field_id;
         // Action the form
-        $this->process($field_id, $args);
-	}
-
-	/**
-	 * process
-	 * Process the form or return a response
-	 *
-	 * @since 1.0.0
-	 * @version 1.0.0
-	 * @param $field_id - String. ID of the fields.
-	 * @param $args - Array.
-	**/
-	public function process($field_id, $args){
-		// Get response
-		$response = $this->process_fields();
-		// If we have a response return it
-		if($response['error']){
-			// Ajax
-			if(isset($_POST['ajaxrequest'])){
-			    echo json_encode($response);
-			    exit;
-			}
-			// PHP
-			else{
-				unset($response[0]);
-				foreach($response as $error){
-					echo $error['msg'] . '<br>';
-				}
-				exit;
-			}
-		}
-		// If ok send!
-		else{
-			$this->{$type}($field_id, $args);
-		}
+        $this->{$type}($args);
 	}
 
 	/**
@@ -71,15 +40,11 @@ class mailer{
 	 *
 	 * @since 1.0.0
 	 * @version 1.0.0
-	 * @param $id - String. Post field parameter.
 	**/
-	public function process_fields($id){
+	public function process_fields(){
 		// Success var
 		$success = true;
 		// Functions
-		function return_field($key, $value){
-			return (!is_array($value)) ? 'field[' . $key . ']' : 'field[' . $key . '][]';
-		}
 		function safe_key($value){
 			return str_replace('-', '_', $value);
 		}
@@ -92,20 +57,13 @@ class mailer{
 		function check_password($value){
 			return (preg_match('/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/', $value)) ? $value : false;
 		}
-		function check_password_confirmation($value){
-			//return () ? $value : false;
-		}
-		function check_captcha($value){
-			return (strtolower($value) === 'hot') ? $value : false;
-		}
 		function check_array($value){
 			if(is_array($value)){
 				// Check for a dummy value and unset
 				if(isset($value['dummy'])){unset($value['dummy']);}
 				// Check existence
 				if(!empty($value)){
-					// Value must be serialized for WordPress DB function
-					return serialize($value);
+					return true;
 				}
 			}
 			return false;
@@ -114,7 +72,7 @@ class mailer{
 			return (!empty($value)) ? strip_tags($value) : false;
 		}
 		// Cycle through fields
-		foreach($_POST[$id] as $key=>$value){
+		foreach($_POST[$this->id] as $key=>$value){
 			$valid = true;
 			if(isset($_POST['validationfilter'][$key])){
 				$include = true;
@@ -132,14 +90,6 @@ class mailer{
 					case 'password':
 						$valid = check_password($value);
 					break;
-					case 'password_confirmation':
-						$valid = check_password_confirmation($value);
-						$include = false;
-					break;
-					case 'captcha':
-						$valid = check_captcha($value);
-						$include = false;
-					break;
 					case 'array':
 						$valid = check_array($value);
 					break;
@@ -155,11 +105,23 @@ class mailer{
 			// Field is not valid
 			elseif(!empty($_POST['validationmessage'][$key])){
 				$success = false;
-				$this->response['error']['msg'][] = $_POST['validationmessage'][$key];
+				$this->response[$this->id]['error'][$key]['msg'] = $_POST['validationmessage'][$key];
+				if(is_array($value)){
+					$this->response[$this->id]['error'][$key]['field'] = $this->id . '[' . $key . '][]';
+				}
+				else{
+					$this->response[$this->id]['error'][$key]['field'] = $this->id . '[' . $key . ']';
+				}
 			}
 		}
 
-		return ($success) ? $fields : false;
+		if($success){
+			return $fields;
+		}
+		else{
+			$this->ajax_response();
+			return false;
+		}
 	}
 
 	/**
@@ -168,12 +130,11 @@ class mailer{
 	 *
 	 * @since 1.0.0
 	 * @version 1.0.0
-	 * @param $id - String. Post field parameter.
 	 * @param $args - Array. Settings.
 	**/
-	public function mail($id, $args){
+	public function mail($args){
 		// Check form is posted.
-		if(!isset($_POST[$id])){ return; }
+		if(!isset($_POST[$this->id])){ return; }
 
 		/**
 		 * get_domain
@@ -201,16 +162,16 @@ class mailer{
 		 * @version 1.0.0
 		**/
 		function get_mail_headers($args){
-			$headers['headers']  = 'MIME-Version: 1.0' . "\n";
-			$headers['headers'] .= 'Content-type: text/html; charset=UTF-8' . "\n";
-			$headers['headers'] .= 'From: ' . $args['title'] . ' <noreply@' . get_domain($args['domain']) . '>' . "\n";
-			$headers['headers'] .= 'Reply-To: test <' . $args['reply-to'] . '>' . "\n";
+			$headers  = 'MIME-Version: 1.0' . "\n";
+			$headers .= 'Content-type: text/html; charset=UTF-8' . "\n";
+			$headers .= 'From: ' . $args['title'] . ' <noreply@' . get_domain($args['domain']) . '>' . "\n";
+			$headers .= 'Reply-To: test <' . $args['reply-to'] . '>' . "\n";
 
 			return $headers;
 		}
 
 		// Fields
-		$fields = $this->process_fields($id);
+		$fields = $this->process_fields();
 		// If fields is valid
 		if($fields){
 			// Recipient
@@ -267,11 +228,11 @@ class mailer{
 			</html>';
 
 			// Send the email
-			if(@mail($recipient, $subject, $message, $headers['headers'])){
-				$this->response['success']['msg'][] = 'Mail sent';
+			if(@mail($recipient, $subject, $message, $headers)){
+				$this->response['form']['success']['msg'][] = 'Mail sent';
 			}
 			else {
-				$this->response['error']['msg'][] = 'Mail sending failed';
+				$this->response['form']['error']['msg'][] = 'Mail sending failed';
 			}
 		}
 	}
@@ -282,10 +243,9 @@ class mailer{
 	 *
 	 * @since 1.0.0
 	 * @version 1.0.0
-	 * @param $id - String. Post field parameter.
 	 * @param $args - Array. Settings.
 	**/
-	public function login($id, $args){
+	public function login($args){
 	}
 
 	/**
@@ -294,10 +254,9 @@ class mailer{
 	 *
 	 * @since 1.0.0
 	 * @version 1.0.0
-	 * @param $id - String. Post field parameter.
 	 * @param $args - Array. Settings.
 	**/
-	public function account($id, $args){
+	public function account($args){
 	}
 
 	/**
@@ -306,28 +265,46 @@ class mailer{
 	 *
 	 * @since 1.0.0
 	 * @version 1.0.0
-	 * @param $id - String. Post field parameter.
 	 * @param $args - Array. Settings.
 	**/
-	public function register($id, $args){
+	public function register($args){
+	}
+
+	/**
+	 * ajax_response
+	 * Return a response for Ajax.
+	 *
+	 * @since 1.0.0
+	 * @version 1.0.0
+	**/
+	public function ajax_response(){
+		// If we have a response return it for Ajax
+		if(!empty($this->response) && isset($_REQUEST['ajaxrequest'])){
+		    echo json_encode($this->response);
+		    exit;
+		}
 	}
 
 	/**
 	 * response
-	 * Returns a final response either in PHP or JSON format.
+	 * Called from the template to output the response messages.
 	 *
 	 * @since 1.0.0
 	 * @version 1.0.0
 	**/
 	public function response(){
-		// Get response
 		if($this->response){
-			foreach($this->response as $k=>$v) : ?>
-				<div class="alert box <?php echo $k; ?>"><?php echo implode('<br>', $v['msg']); ?></div>
-			<?php endforeach;
+			foreach($this->response as $response){
+				foreach($response as $k=>$v) : ?>
+					<ul class="alert box <?php echo $k; ?>">
+						<?php foreach($v as $error) : ?>
+							<li><?php echo $error['msg']; ?></li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endforeach;
+			}
 		}
 	}
-
 }
 
 ?>

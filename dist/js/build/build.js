@@ -18,7 +18,7 @@ require('../plugins/jquery.validation');
 	// Form validation
     if($('.validate').length){
         $('.validate').validation({
-            serverValidation: false,
+            serverValidation: true,
             preloaderSize   : 20,
             preloaderHEX    : '#000000'
         });
@@ -1267,13 +1267,14 @@ var $ = jQuery = require('jquery');
                                 button.html(utilities.loading_animation());
                             },
                             success: function(response){
+                                response = response.fields;
                                 // Un-disable stuff
                                 plugin.disable_stuff(false);
                                 // If error
                                 if(response.error){
-                                    // Reverts the fields_array into an array of DOM elements
-                                    for(var key in response){
-                                        var a = response[key];
+                                    // Cycles through the response and adds them to the error_array
+                                    for(var key in response.error){
+                                        var a = response.error[key];
                                         if(a.field !== undefined){
                                             var obj = {
                                                 input: $('[name="' + a.field + '"]', form),
@@ -1348,6 +1349,7 @@ var $ = jQuery = require('jquery');
                  * Form validation failed
                 **/
                 plugin.failure = function(){
+                    console.log(error_array);
                     // Set errors
                     utilities.set_errors(error_array, form);
                 }
