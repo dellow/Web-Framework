@@ -19,7 +19,7 @@ require('../plugins/jquery.validation');
         $('.validate').validation({
             serverValidation: false,
             preloaderSize   : 20,
-            preloaderHEX    : '#FFFFFF'
+            preloaderHEX    : '#000000'
         });
     }
 

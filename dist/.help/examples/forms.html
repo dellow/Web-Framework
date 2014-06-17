@@ -12,32 +12,117 @@
 <!--                                                                         STYLES -->
 <!-- ============================================================================== -->
 <link rel="stylesheet" href="../../css/main.css" media="all">
+<style>
+	/**
+	 * These styles are just for the benefit of this
+	 * styleguide. Do not use these in production
+	**/
+	.container {width: 80%; padding: 20px 0 50px;}
+</style>
+<!-- ============================================================================== -->
+<!--                                                                        HELPERS -->
+<!-- ============================================================================== -->
+<script src="../../js/vendor/modernizr.min.js"></script>
 </head>
-<body>
+<body class="no-debug">
 <div class="container">
 	<div class="form-success">
 		<p>Thanks for submitting the form!</p>
 	</div>
 	<form class="form validate form-block" data-action="url/to/server/side/validation" method="post">
+		<!-- Text input -->
 		<div class="field">
 			<label for="form__fullname">Name</label>
-			<input type="text" name="fields[fullname]" id="form__fullname" placeholder="e.g. John Smith" value="<?php echo (isset($_POST['fullname'])) ? $_POST['fullname'] : null; ?>" required>
+			<input type="text" name="fields[fullname]" id="form__fullname" placeholder="e.g. John Smith" required>
+			<!-- Validation & Filter -->
 			<input type="hidden" name="validationmessage[fullname]" class="error-message" value="Please enter your name">
 			<input type="hidden" name="validationfilter[fullname]" value="existence">
 		</div>
+		<!-- Readonly Input -->
+		<div class="field">
+			<label for="form__readonly">Readonly Input</label>
+			<input type="text" name="fields[readonly]" id="form__readonly" value="A readonly value" readonly>
+		</div>
+		<!-- Disabled Input -->
+		<div class="field">
+			<label for="form_disabled">Disabled Input</label>
+			<input type="text" name="fields[disabled]" id="form_disabled"  value="A disabled value" disabled>
+		</div>
+		<!-- Email input -->
 		<div class="field">
 			<label for="form__emailaddress">Email Address</label>
-			<input type="email" name="fields[email]" id="form__emailaddress" placeholder="e.g. john.smith@hotmail.com" value="<?php echo (isset($_POST['emailaddress'])) ? $_POST['emailaddress'] : null; ?>" required>
+			<input type="email" name="fields[emailaddress]" id="form__emailaddress" placeholder="e.g. john.smith@hotmail.com" required>
+			<!-- Validation & Filter -->
 			<input type="hidden" name="validationmessage[emailaddress]" class="error-message" value="Please enter a valid email address">
 			<input type="hidden" name="validationfilter[emailaddress]" value="email">
 		</div>
+		<!-- Checkbox input -->
+		<div class="field">
+			<div class="label">Please choose a checkbox option</div>
+			<div class="field-container">
+				<label for="form__checkbox_option1">
+					<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option1" value="Option #1" required>
+					Option #1
+				</label>
+				<label for="form__checkbox_option2">
+					<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option2" value="Option #2" required>
+					Option #2
+				</label>
+				<label for="form__checkbox_option3">
+					<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option3" value="Option #3" required>
+					Option #3
+				</label>
+				<!-- Validation & Filter -->
+				<input type="hidden" name="validationmessage[checkbox_option]" class="error-message" value="Please choose a checkbox option">
+				<input type="hidden" name="validationfilter[checkbox_option]" value="existence">
+			</div>
+		</div>
+		<!-- Radio input -->
+		<div class="field">
+			<div class="label">Please choose a radio option</div>
+			<div class="field-container">
+				<label for="form__radio_option1">
+					<input type="radio" name="fields[radio_option]" id="form__radio_option1" value="Option #1" required>
+					Option #1
+				</label>
+				<label for="form__radio_option2">
+					<input type="radio" name="fields[radio_option]" id="form__radio_option2" value="Option #2" required>
+					Option #2
+				</label>
+				<label for="form__radio_option3">
+					<input type="radio" name="fields[radio_option]" id="form__radio_option3" value="Option #3" required>
+					Option #3
+				</label>
+				<!-- Validation & Filter -->
+				<input type="hidden" name="validationmessage[radio_option]" class="error-message" value="Please choose a radio option">
+				<input type="hidden" name="validationfilter[radio_option]" value="existence">
+			</div>
+		</div>
+		<!-- Select box -->
+		<div class="field">
+			<label for="form__select_option">Please choose a select option</label>
+			<select name="fields[select_option]" id="form__select_option" required>
+				<option value="">Please Select</option>
+				<option value="Option #1">Option #1</option>
+				<option value="Option #2">Option #2</option>
+				<option value="Option #3">Option #3</option>
+				<option value="Option #4">Option #4</option>
+			</select>
+			<!-- Validation & Filter -->
+			<input type="hidden" name="validationmessage[select_option]" class="error-message" value="Please choose a select option">
+			<input type="hidden" name="validationfilter[select_option]" value="existence">
+		</div>
+		<!-- Textarea -->
 		<div class="field">
 			<label for="form__message">Message</label>
-			<textarea name="fields[message]" id="form__message" required><?php echo (isset($_POST['message'])) ? $_POST['message'] : null; ?></textarea>
+			<textarea name="fields[message]" id="form__message" required></textarea>
+			<!-- Validation & Filter -->
 			<input type="hidden" name="validationmessage[message]" class="error-message" value="Please enter a message">
 			<input type="hidden" name="validationfilter[message]" value="existence">
 		</div>
 		<button type="submit">Submit</button>
+		<button type="reset">Reset</button>
+		<button type="submit" disabled>Disabled</button>
 	</form>
 </div>
 <script src="../../js/build/build.js"></script>

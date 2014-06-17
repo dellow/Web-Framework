@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Form Inline Block
+   Inline Block level forms
+========================================================================== */
+/* -- Forms -- */
+form {
+	&.form-inline-block {
+		label, .label, input, .input, select, textarea, .field-container {
+			@include inline-block;
+		}
+		label, .label {
+			width: 30%;
+			input[type="radio"], input[type="checkbox"] {
+				margin: -4px 2px 0 10px;
+			}
+			&:first-of-type {
+				input {
+					margin-left: 0;
+				}
+			}
+		}
+		input, .input, select, textarea, .field-container {
+			width: 65%;
+			margin: 0 0 0 2%;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		input[type="radio"], input[type="checkbox"] {
+			@extend %radio-checkbox;
+		}
+		.field-container {
+			span {
+				+ input, .input, select, textarea, .field-container {
+					margin: 0;
+				}
+			}
+		}
+		.field-container {
+			height: $form_field_height;
+		}
+	}
+}

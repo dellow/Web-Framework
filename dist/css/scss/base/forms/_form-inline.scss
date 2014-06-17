@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Form Inline
+   Inline forms
+========================================================================== */
+/* -- Forms -- */
+form {
+	&.form-inline {
+		label, .label, input, .input, select, textarea, .field-container {
+			width: auto;
+			margin: 0 0 0 0.825em;
+			display: inline;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		span {
+			+ input, .input, select, textarea, .field-container {
+				margin: 0;
+			}
+		}
+		.field-container {
+			height: $form_field_height;
+		}
+	}
+}

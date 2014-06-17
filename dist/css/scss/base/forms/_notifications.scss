@@ -39,30 +39,43 @@ form {
 			}
 		}
 	}
+	// Label errors
+	label {
+		&.error {
+			color: $color_error;
+		}
+		&.status {
+			color: $color_status;
+		}
+		&.success {
+			color: $color_success;
+		}
+		&.warning {
+			color: $color_warning;
+		}
+	}
 	// Response
-	.response {
+	.msg {
+		@include rem(font-size, 14px);
+	}
+	.response--error {
 		.msg {
-			@include rem(font-size, 14px);
+			color: $color_error;
 		}
-		&.response--error {
-			.msg {
-				color: $color_error;
-			}
+	}
+	.response--status {
+		.msg {
+			color: $color_status;
 		}
-		&.response--status {
-			.msg {
-				color: $color_status;
-			}
+	}
+	.response--success {
+		.msg {
+			color: $color_success;
 		}
-		&.response--success {
-			.msg {
-				color: $color_success;
-			}
-		}
-		&.response--warning {
-			.msg {
-				color: $color_warning;
-			}
+	}
+	.response--warning {
+		.msg {
+			color: $color_warning;
 		}
 	}
 }

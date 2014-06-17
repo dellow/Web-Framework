@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Form Block
+   Block level forms
+========================================================================== */
+/* -- Forms -- */
+form {
+	&.form-block {
+		label {
+			input[type="radio"], input[type="checkbox"] {
+				margin: -4px 2px 0 10px;
+			}
+			&:first-of-type {
+				input {
+					margin-left: 0;
+				}
+			}
+		}
+		input, .input, select, textarea, .field-container {
+			width: 100%;
+			display: block;
+		}
+		input[type="radio"], input[type="checkbox"] {
+			@extend %radio-checkbox;
+		}
+		.field-container {
+			input, .input, select, textarea {
+				margin-left: 2%;
+				@include inline-block;
+				vertical-align: middle;
+				&:first-child {
+					margin-left: 0;
+				}
+			}
+			span {
+				+ input, .input, select, textarea, .field-container {
+					margin: 0;
+				}
+			}
+		}
+	}
+}

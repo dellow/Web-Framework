@@ -29,12 +29,6 @@ form {
 			position: absolute;
 			visibility: hidden;
 		}
-		span.label {
-			width: auto;
-			margin: 0 0 0 25px;
-			display: block;
-			line-height: 1.1;
-		}
 	}
 
 	// Custom Checkbox Input
@@ -52,16 +46,15 @@ form {
 				@include opacity(0);
 				background: transparent;
 				-webkit-transform: rotate(-45deg);
-				-moz-transform: rotate(-45deg);
-				-o-transform: rotate(-45deg);
-				-ms-transform: rotate(-45deg);
-				transform: rotate(-45deg);
+				-moz-transform   : rotate(-45deg);
+				-o-transform     : rotate(-45deg);
+				-ms-transform    : rotate(-45deg);
+				transform        : rotate(-45deg);
 			}
 			&:hover:after {
 				@include opacity(0.3);
 			}
 		}
-
 		input[type=checkbox]:checked + label:after {
 			@include opacity(0.8);
 		}
@@ -109,8 +102,13 @@ form {
 			margin: 0;
 			@include inline-block;
 			-webkit-appearance: none;
-			-moz-appearance: none;
-			appearance: none;
+			-moz-appearance   : none;
+			-ms-appearance    : none;
+			-o-appearance     : none;
+			appearance        : none;
+		}
+		select::-ms-expand {
+		    display: none;
 		}
 	}
 }

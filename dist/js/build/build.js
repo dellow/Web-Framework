@@ -20,7 +20,7 @@ require('../plugins/jquery.validation');
         $('.validate').validation({
             serverValidation: false,
             preloaderSize   : 20,
-            preloaderHEX    : '#FFFFFF'
+            preloaderHEX    : '#000000'
         });
     }
 
@@ -748,12 +748,12 @@ var $ = jQuery = require('jquery');
                 emailRegEx            : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
                 passRegEx             : /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
                 urlRegEx              : /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
-                errorBoxClass         : 'response response--error',
+                errorBoxClass         : 'response--error',
                 errorClass            : 'error',
                 successClass          : 'success',
                 msgSep                : ' -',
                 defaultErrorMsg       : 'Please enter a value',
-                defaultSuccessMsg     : 'Form successfully submitted',
+                defaultSuccessMsg     : 'The form has been successfully submitted.',
                 defaultSuggestText    : 'Did you mean',
                 errorBoxElement       : '<span/>',
                 preloaderHEX          : '#333333',
@@ -959,7 +959,7 @@ var $ = jQuery = require('jquery');
                     var a = $(this);
                     var el = a[0].input;
                     // Get error message
-                    var error = a[0].msg;
+                    var error = (a[0].msg !== '') ? a[0].msg : settings.defaultErrorMsg;
                     // Separator
                     var message = (settings.msgSep) ? (error) ? settings.msgSep + ' <span class="msg">' + error + '</span>' : '' : '<span class="msg">' + error + '</span>';
                     // Apply error class to field
@@ -1014,7 +1014,7 @@ var $ = jQuery = require('jquery');
                 });
 
                 // Return a loader element
-                return $('<div style="display: inline-block;" id="' + el + '"></div>');
+                return $('<div style="display: inline-block; vertical-align: middle;" id="' + el + '"></div>');
             }
 
             /**
@@ -1049,6 +1049,8 @@ var $ = jQuery = require('jquery');
                     button        = $('button[type="submit"], input[type="submit"]', form),
                     // Get button text for later
                     button_name   = button.text(),
+                    // Success element
+                    success_element = (settings.successElement.length) ? settings.successElement : form.before($('<div class="form-success">' + settings.defaultSuccessMsg + '</div>')),
                     // Put all required fields into array
                     fields_array  = $('[required]', form).map(function(){
                         return $(this).attr('name');
@@ -1315,17 +1317,23 @@ var $ = jQuery = require('jquery');
                     if(type == 'server'){
                         e.preventDefault();
                         form.fadeOut(500, function(){
-                            form.prev(settings.successElement).fadeIn(300);
+                            form.prev(success_element).fadeIn(300);
                         });
                     }
                     else if(type == 'js'){
                         e.preventDefault();
                         $.ajax({
-                            type: 'POST',
-                            data: form.serialize(),
+                            type : 'POST',
+                            data : form.serialize(),
+                            cache: false,
+                            async: false,
+                            beforeSend: function(){
+                                // Add a preloader
+                                button.html(utilities.loading_animation());
+                            },
                             success: function(){
                                 form.fadeOut(500, function(){
-                                    form.prev(settings.successElement).fadeIn(300);
+                                    form.prev(success_element).fadeIn(300);
                                 });
                             }
                         });
