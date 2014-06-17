@@ -332,7 +332,7 @@
                     // Cache the form element
                     form          = $(this),
                     // Action for the form
-                    form_action   = form.data('action'),
+                    form_action   = (form.data('action')) ? form.data('action') : form.attr('action'),
                     // Cache fields
                     fields        = $('input, select, textarea', form),
                     // Cache the reset button element
