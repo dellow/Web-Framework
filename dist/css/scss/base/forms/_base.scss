@@ -21,6 +21,9 @@ form {
 		@include nudge(margin-bottom, 0.5);
 		position: relative;
 		@extend %cf;
+		&.left, &.right {
+			margin-bottom: 0;
+		}
 	}
 
 	// Labels

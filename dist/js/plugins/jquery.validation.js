@@ -641,7 +641,6 @@
                  * Form validation failed
                 **/
                 plugin.failure = function(){
-                    console.log(error_array);
                     // Set errors
                     utilities.set_errors(error_array, form);
                 }

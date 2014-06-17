@@ -10,8 +10,8 @@ form {
 		}
 		label, .label {
 			width: 30%;
-			input[type="radio"], input[type="checkbox"] {
-				margin: -4px 2px 0 10px;
+			input[type="checkbox"], input[type="radio"] {
+				margin: -2px 2px 0 0;
 			}
 			&:first-of-type {
 				input {
@@ -21,15 +21,19 @@ form {
 		}
 		input, .input, select, textarea, .field-container {
 			width: 65%;
-			margin: 0 0 0 2%;
+			@include nudge(margin-left, 2);
 			&:first-child {
 				margin-left: 0;
 			}
 		}
-		input[type="radio"], input[type="checkbox"] {
+		input[type="checkbox"], input[type="radio"] {
 			@extend %radio-checkbox;
 		}
 		.field-container {
+			label {
+				width: auto;
+				@include nudge(margin-right, 0.25);
+			}
 			span {
 				+ input, .input, select, textarea, .field-container {
 					margin: 0;

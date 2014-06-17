@@ -6,23 +6,21 @@
 form {
 	&.form-block {
 		label {
-			input[type="radio"], input[type="checkbox"] {
-				margin: -4px 2px 0 10px;
-			}
-			&:first-of-type {
-				input {
-					margin-left: 0;
-				}
+			input[type="checkbox"], input[type="radio"] {
+				margin: -2px 2px 0 0;
 			}
 		}
 		input, .input, select, textarea, .field-container {
 			width: 100%;
 			display: block;
 		}
-		input[type="radio"], input[type="checkbox"] {
+		input[type="checkbox"], input[type="radio"] {
 			@extend %radio-checkbox;
 		}
 		.field-container {
+			label {
+				@include nudge(margin-right, 0.25);
+			}
 			input, .input, select, textarea {
 				margin-left: 2%;
 				@include inline-block;

@@ -42,7 +42,7 @@
 		<p>Thanks for submitting the form!</p>
 	</div>
 	<form class="form validate form-block" action="" method="post">
-		<div><?php echo $form->response(); ?></div>
+		<!-- <div><?php echo $form->response(); ?></div> -->
 		<!-- Text input -->
 		<div class="field">
 			<label for="form__fullname">Name</label>
@@ -53,13 +53,15 @@
 		</div>
 		<!-- Readonly Input -->
 		<div class="field">
-			<label for="form__readonly">Readonly Input</label>
-			<input type="text" name="fields[readonly]" id="form__readonly" value="A readonly value" readonly>
-		</div>
-		<!-- Disabled Input -->
-		<div class="field">
-			<label for="form_disabled">Disabled Input</label>
-			<input type="text" name="fields[disabled]" id="form_disabled" value="A disabled value" disabled>
+			<div class="field left">
+				<label for="form__readonly">Readonly Input</label>
+				<input type="text" name="fields[readonly]" id="form__readonly" value="A readonly value" readonly>
+			</div>
+			<!-- Disabled Input -->
+			<div class="field right">
+				<label for="form_disabled">Disabled Input</label>
+				<input type="text" name="fields[disabled]" id="form_disabled" value="A disabled value" disabled>
+			</div>
 		</div>
 		<!-- Email input -->
 		<div class="field">
