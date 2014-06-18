@@ -17,6 +17,7 @@
 	 * These styles are just for the benefit of this
 	 * styleguide. Do not use these in production
 	**/
+	ul {margin: 0;}
 	.container {width: 80%; padding: 20px 0 50px;}
 	.preloaderwrapper {height: 125px; float: left; margin-left: 10px; position: relative; border: 1px solid #efefef; padding: 10px;}
 	.preloaderwrapper .caption {width: 100%; text-align: center; position: absolute; bottom: 10px; left: 0;}
@@ -24,6 +25,10 @@
 	.preloaderwrapper:first-child {margin-left: 0;}
 	.table {margin-bottom: 25px;}
 	.grid .module {padding: 10px; margin: 5px 0; background: #efefef;}
+	.color-swatches li {width: 9.5%; display: inline-block; vertical-align: top;}
+	.color-swatches li .bg {height: 50px;}
+	.color-swatches li .bg:after {content: attr(class); display: block; color: white; font-size: 11px; text-align: center; line-height: 50px; -webkit-opacity: 0.2; -moz-opacity: 0.2; -o-opacity: 0.2; opacity: 0.2; -webkit-transition: opacity 500ms ease; -moz-transition: opacity 500ms ease; -o-transition: opacity 500ms ease; transition: opacity 500ms ease;}
+	.color-swatches li .bg:hover:after {-webkit-opacity: 0.7; -moz-opacity: 0.7; -o-opacity: 0.7; opacity: 0.7;}
 </style>
 </head>
 <body class="no-debug">
@@ -276,26 +281,26 @@
 
 	<h2>Colour Swatches</h2>
 	<section>
-		<ul class="no-bullet">
-			<li style="width: 9.5%" class="inline-block">
-				<div style="height: 50px;" class="bg color-red"></div>
-				<div style="height: 50px;" class="bg color-red opp"></div>
+		<ul class="color-swatches">
+			<li>
+				<div class="bg color-red"></div>
+				<div class="bg color-red opp"></div>
 			</li>
-			<li style="width: 9.5%" class="inline-block">
-				<div style="height: 50px;" class="bg color-orange"></div>
-				<div style="height: 50px;" class="bg color-orange opp"></div>
+			<li>
+				<div class="bg color-orange"></div>
+				<div class="bg color-orange opp"></div>
 			</li>
-			<li style="width: 9.5%" class="inline-block">
-				<div style="height: 50px;" class="bg color-green"></div>
-				<div style="height: 50px;" class="bg color-green opp"></div>
+			<li>
+				<div class="bg color-green"></div>
+				<div class="bg color-green opp"></div>
 			</li>
-			<li style="width: 9.5%" class="inline-block">
-				<div style="height: 50px;" class="bg color-blue"></div>
-				<div style="height: 50px;" class="bg color-blue opp"></div>
+			<li>
+				<div class="bg color-blue"></div>
+				<div class="bg color-blue opp"></div>
 			</li>
-			<li style="width: 9.5%" class="inline-block">
-				<div style="height: 50px;" class="bg color-yellow"></div>
-				<div style="height: 50px;" class="bg color-yellow opp"></div>
+			<li>
+				<div class="bg color-yellow"></div>
+				<div class="bg color-yellow opp"></div>
 			</li>
 		</ul>
 	</section>
@@ -304,24 +309,22 @@
 
 	<h2>Forms</h2>
 	<section>
-		<form id="sample-form" class="form-block" action="" method="post">
-			<div class="cf">
-				<div class="field left">
-					<label for="sample-form__firstname">Your first name:</label>
-					<input type="text" name="fields[firstname]" id="sample-form__firstname" placeholder="Your first name" tabindex="1">
-				</div>
-				<div class="field right">
-					<label for="sample-form__lastname">Your last name:</label>
-					<input type="text" name="fields[lastname]" id="sample-form__lastname" placeholder="Your last name" tabindex="2">
-				</div>
+		<form class="form-block">
+			<div class="field">
+				<label>Text Input</label>
+				<input type="text">
 			</div>
 			<div class="field">
-				<label for="sample-form__emailaddress">Your email address:</label>
-				<input type="email" name="fields[emailaddress]" id="sample-form__emailaddress" placeholder="Your email address" tabindex="3">
+				<label>Readonly Text Input</label>
+				<input type="text" value="Field value" readonly>
 			</div>
 			<div class="field">
-				<label for="sample-form__selectoption">Select an option:</label>
-				<select name="fields[selectoption]" id="sample-form__selectoption" tabindex="4">
+				<label>Disabled Text Input</label>
+				<input type="text" value="Field value" disabled>
+			</div>
+			<div class="field">
+				<label>Select Field</label>
+				<select>
 					<option value="">Please Select</option>
 					<option value="Option #1">Option #1</option>
 					<option value="Option #2">Option #2</option>
@@ -329,23 +332,24 @@
 				</select>
 			</div>
 			<div class="field">
-				<p class="label">Please select an option:</p>
-				<label for="sample-form__radiogroup1"><input type="radio" name="fields[radiogroup]" id="sample-form__radiogroup1" value="Option #1" tabindex="5"> Option #1</label>
-				<label for="sample-form__radiogroup2"><input type="radio" name="fields[radiogroup]" id="sample-form__radiogroup2" value="Option #2" tabindex="6"> Option #2</label>
-				<label for="sample-form__radiogroup3"><input type="radio" name="fields[radiogroup]" id="sample-form__radiogroup3" value="Option #3" tabindex="7"> Option #3</label>
+				<div class="label">Checkbox Inputs</div>
+				<label><input type="checkbox"> Option #1</label>
+				<label><input type="checkbox"> Option #2</label>
+				<label><input type="checkbox"> Option #3</label>
 			</div>
 			<div class="field">
-				<p class="label">Please make a choice:</p>
-				<label for="sample-form__checkbox1"><input type="checkbox" name="fields[checkbox]" id="sample-form__checkbox1" value="Choice #1" tabindex="8"> Choice #1</label>
-				<label for="sample-form__checkbox2"><input type="checkbox" name="fields[checkbox]" id="sample-form__checkbox2" value="Choice #2" tabindex="9"> Choice #2</label>
-				<label for="sample-form__checkbox3"><input type="checkbox" name="fields[checkbox]" id="sample-form__checkbox3" value="Choice #3" tabindex="10"> Choice #3</label>
+				<div class="label">Radio Inputs</div>
+				<label><input type="radio"> Option #1</label>
+				<label><input type="radio"> Option #2</label>
+				<label><input type="radio"> Option #3</label>
 			</div>
 			<div class="field">
-				<label for="sample-form__message">Please enter a message:</label>
-				<textarea name="fields[message]" id="sample-form__message" placeholder="Please enter a message" tabindex="11"></textarea>
+				<label>Textarea</label>
+				<textarea></textarea>
 			</div>
-			<button type="submit">Submit</button>
-			<button type="reset">Reset</button>
+			<button type="submit">Submit Button</button>
+			<button type="submit" disabled>Disabled Button</button>
+			<button type="reset">Reset Button</button>
 		</form>
 	</section>
 
