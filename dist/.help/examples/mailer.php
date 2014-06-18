@@ -164,8 +164,35 @@ class mailer{
 		function get_mail_headers($args){
 			$headers  = 'MIME-Version: 1.0' . "\n";
 			$headers .= 'Content-type: text/html; charset=UTF-8' . "\n";
-			$headers .= 'From: ' . $args['title'] . ' <noreply@' . get_domain($args['domain']) . '>' . "\n";
-			$headers .= 'Reply-To: test <' . $args['reply-to'] . '>' . "\n";
+			$headers .= 'From: ' . $args['title'] . ' &lt;noreply@' . get_domain($args['domain']) . '&gt;' . "\n";
+			$headers .= (!empty($args['reply-to'])) ? 'Reply-To: ' . $args['reply-to'][0] . ' &lt;' . $args['reply-to'][1] . '&gt;' . "\n" : null;
+			// Reply to
+			if(!empty($args['reply_to'])){
+				$string = '';
+				foreach($args['reply_to'] as $reply_to){
+					$string .= $reply_to[0] . ' &lt;' . $reply_to[1] . '&gt;';
+					if(each($args['reply_to'])) $string .= '; ';
+				}
+				$headers .= (!empty($args['reply_to'])) ? 'Reply-To: ' . $string . "\n" : null;
+			}
+			// CC
+			if(!empty($args['cc'])){
+				$string = '';
+				foreach($args['cc'] as $cc){
+					$string .= $cc[0] . ' &lt;' . $cc[1] . '&gt;';
+					if(each($args['cc'])) $string .= '; ';
+				}
+				$headers .= (!empty($args['cc'])) ? 'Cc: ' . $string . "\n" : null;
+			}
+			// BCC
+			if(!empty($args['bcc'])){
+				$string = '';
+				foreach($args['bcc'] as $bcc){
+					$string .= $bcc[0] . ' &lt;' . $bcc[1] . '&gt;';
+					if(each($args['bcc'])) $string .= '; ';
+				}
+				$headers .= (!empty($args['bcc'])) ? 'Bcc: ' . $string . "\n" : null;
+			}
 
 			return $headers;
 		}
@@ -215,7 +242,7 @@ class mailer{
 
 				    		$message .= '
 				    		<tr height="25" style="background: ' . $bgcolor . '">
-					    		<td valign="top" style="padding: 3px;"><strong>' . ucwords(str_replace('_', ' ', $k)) . ':</strong></td>
+					    		<td valign="top" style="padding: 3px;"><strong>' . ucwords(str_replace(array('_', '-'), ' ', $k)) . ':</strong></td>
 					    		<td width="5"></td>
 					    		<td valign="top" style="padding: 3px;">' . $v . '</td>
 				    		</tr>';
@@ -229,10 +256,10 @@ class mailer{
 
 			// Send the email
 			if(@mail($recipient, $subject, $message, $headers)){
-				$this->response['form']['success']['msg'][] = 'Mail sent';
+				$this->response['form']['success']['all']['msg'] = 'Mail sent';
 			}
 			else {
-				$this->response['form']['error']['msg'][] = 'Mail sending failed';
+				$this->response['form']['error']['all']['msg'] = 'Mail sending failed';
 			}
 		}
 	}

@@ -2,12 +2,21 @@
 
 	include('mailer.php');
 	$args['recipient'] = 'recipient@sitedomain.com';
-	$args['bcc']       = 'bcc@sitedomain.com';
-	$args['reply-to']  = 'reply@sitedomain.com';
-	$args['subject']   = 'Subject';
+	$args['subject']   = 'Form Subject';
 	$args['title']     = 'Site Title';
 	$args['domain']    = 'http://sitedomain.com';
-	$form              = new mailer('mail', 'fields', $args);
+	$args['cc'] = array(
+		array('Name', 'cc@sitedomain.com'),
+		array('Name', 'cc@sitedomain.com')
+	);
+	$args['bcc'] = array(
+		array('Name', 'bcc@sitedomain.com'),
+		array('Name', 'bcc@sitedomain.com')
+	);
+	$args['reply_to'] = array(
+		array('Name', 'reply@sitedomain.com')
+	);
+	$form = new mailer('mail', 'fields', $args);
 
 ?>
 <!DOCTYPE html>
@@ -87,9 +96,11 @@
 					<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option3" value="Option #3" required>
 					Option #3
 				</label>
+				<!-- Dummy -->
+				<input type="hidden" name="fields[checkbox_option][dummy]" value="">
 				<!-- Validation & Filter -->
 				<input type="hidden" name="validationmessage[checkbox_option]" class="error-message" value="Please choose a checkbox option">
-				<input type="hidden" name="validationfilter[checkbox_option]" value="existence">
+				<input type="hidden" name="validationfilter[checkbox_option]" value="array">
 			</div>
 		</div>
 		<!-- Radio input -->
@@ -108,9 +119,11 @@
 					<input type="radio" name="fields[radio_option]" id="form__radio_option3" value="Option #3" required>
 					Option #3
 				</label>
+				<!-- Dummy -->
+				<input type="hidden" name="fields[radio_option][dummy]" value="">
 				<!-- Validation & Filter -->
 				<input type="hidden" name="validationmessage[radio_option]" class="error-message" value="Please choose a radio option">
-				<input type="hidden" name="validationfilter[radio_option]" value="existence">
+				<input type="hidden" name="validationfilter[radio_option]" value="array">
 			</div>
 		</div>
 		<!-- Select box -->
