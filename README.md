@@ -20,8 +20,6 @@ There is a CSS styleguide in [`dist/.help/examples/styleguide.html`](dist/.help/
 
 These serve as ongoing platforms to test any changes you might make to framework CSS.
 
-__Please note:__ You will need to disable Debug mode to view Styleguides and Examples correctly.
-
 ## Using Gulp
 Run the default config in development mode:
 
@@ -44,7 +42,7 @@ Any new SCSS partials should be added in the `site` directory. `base` and `confi
 Running Gulp in development mode with `gulp` will compile the CSS in expanded mode for easier debugging. Likewise `gulp --config production` will compile the final CSS file in nested mode.
 
 ### Debug Mode
-By default debug mode is on but will only work in the default Gulp environment which is `development` mode. Adapted from [Harry Roberts' inuit.css](https://github.com/csswizardry/inuit.css), this will provide hints for potentially incorrect markup.
+By default debug mode is on but will only work in the default Gulp environment which is `development` mode. Adapted from [Harry Roberts' inuit.css](https://github.com/csswizardry/inuit.css), this will provide hints for potentially incorrect markup. You can override debug mode for a particular file by adding the `no-debug` class to the body.
 
 ### Dev Mode
 The `site/_dev` partial is for experimental CSS that is only compiled in the default Gulp environment which is `development` mode. Any CSS in here will not compile on `gulp --config production`.

@@ -1,14 +1,16 @@
 /* ================================================== */
 /* Require
 /* ================================================== */
-var gulp = require('gulp');
+var gulp    = require('gulp'),
+	csslint = require('gulp-csslint');
 
 /* ================================================== */
 /* Task
 /* ================================================== */
-gulp.task('default', [
-	'browserify',
-	'compass',
-	'csslint',
-	'jasmine'
-]);
+gulp.task('csslint', function(){
+	var ret = gulp.src('./dist/css/*.css')
+    .pipe(csslint())
+    .pipe(csslint.reporter());
+
+	return ret;
+});
