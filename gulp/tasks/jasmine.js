@@ -1,14 +1,15 @@
 /* ================================================== */
 /* Require
 /* ================================================== */
-var gulp = require('gulp');
+var gulp    = require('gulp'),
+	jasmine = require('gulp-jasmine');
 
 /* ================================================== */
 /* Task
 /* ================================================== */
-gulp.task('default', [
-	'browserify',
-	'compass',
-	'csslint',
-	'jasmine'
-]);
+gulp.task('jasmine', function(){
+	var ret = gulp.src('./dist/js/spec/test.js')
+        .pipe(jasmine());
+
+	return ret;
+});
