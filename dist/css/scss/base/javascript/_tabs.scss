@@ -48,8 +48,9 @@
         }
 	}
 	.system {
-		padding: 1em;
+		@include nudge(padding, 1);
 		border-radius: $border_radius_base;
 		border: 1px solid #EAEAEA;
+		background: $white;
 	}
 }
