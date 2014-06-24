@@ -4,10 +4,11 @@
 ========================================================================== */
 /* -- Tabs -- */
 .tabs {
-	margin-bottom: 1em;
+	@include nudge(margin-bottom, 1);
 	overflow: hidden;
 	.nav {
-		padding: 0 2em;
+		@include nudge(padding, 0 2);
+		margin: 0;
 		white-space: nowrap;
 	}
 	.nav li {
@@ -25,7 +26,7 @@
 		background: -o-linear-gradient(top,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
 		background: -ms-linear-gradient(top,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
 		background: linear-gradient(to bottom,  rgba(255,255,255,1) 57%,rgba(249,249,249,1) 100%);
-        a {
+        button {
             padding: 0.5em 1em;
             display: block;
         }
@@ -35,14 +36,14 @@
         &:last-child {
             border-radius: 0 $border_radius_base 0 0;
         }
-        &.active {
+        &.active-tab {
             bottom: -2px;
     		z-index: 2;
             border-radius: $border_radius_base $border_radius_base 0 0;
             color: $colour_text_link;
             background: #FFF;
         }
-        &.active a {
+        &.active-tab button {
             padding: 0.7em 1em;
         }
 	}

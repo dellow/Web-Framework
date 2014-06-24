@@ -95,7 +95,7 @@
             $('.' + settings.tab_class, plg).first().show().addClass(settings.active_tab_class);
             $('.' + settings.nav_class + ' li', plg).first().addClass(settings.active_tab_class);
 
-            $('.' + settings.nav_class + ' li a', plg).on('click', function(e){
+            $('.' + settings.nav_class + ' li button', plg).on('click', function(e){
                 e.preventDefault();
                 var tab_nav    = $(this).parent().parent(),
                     tab_system = tab_nav.next();
