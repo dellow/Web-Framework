@@ -29,7 +29,7 @@
 		-ms-filter    : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
 		-o-filter     : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
 		filter        : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
-		@include arrow(10px, rgba($black, 0.85), 10px, -20px, left);
+		@include arrow(10px, rgba($black, 0.85), 10px, -20px, null, left);
 		p {
 			margin: 5px 0;
 		}

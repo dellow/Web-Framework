@@ -41,7 +41,7 @@
  * arrow
  * CSS Arrow.
  *
- * .foo {@include arrow(15px, #f9f7f3, 10px, null, left);}
+ * .foo {@include arrow(15px, #f9f7f3, 10px, null, 5px, left);}
 **/
 /* ==========================================================================
    Mixins > Responsive
@@ -3301,15 +3301,18 @@ form .response--warning .msg {
 /* -- Tabs -- */
 /* line 6, scss/base/javascript/_tabs.scss */
 .tabs {
-  margin-bottom: 1em;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   overflow: hidden;
 }
 /* line 9, scss/base/javascript/_tabs.scss */
 .tabs .nav {
-  padding: 0 2em;
+  padding: 0px 48px;
+  padding: 0px 3rem;
+  margin: 0;
   white-space: nowrap;
 }
-/* line 13, scss/base/javascript/_tabs.scss */
+/* line 14, scss/base/javascript/_tabs.scss */
 .tabs .nav li {
   margin: 0 0 0 -5px;
   border: 1px solid #EAEAEA;
@@ -3329,36 +3332,38 @@ form .response--warning .msg {
   background: -ms-linear-gradient(top, white 57%, #f9f9f9 100%);
   background: linear-gradient(to bottom, #ffffff 57%, #f9f9f9 100%);
 }
-/* line 28, scss/base/javascript/_tabs.scss */
-.tabs .nav li a {
+/* line 29, scss/base/javascript/_tabs.scss */
+.tabs .nav li button {
   padding: 0.5em 1em;
   display: block;
 }
-/* line 32, scss/base/javascript/_tabs.scss */
+/* line 33, scss/base/javascript/_tabs.scss */
 .tabs .nav li:first-child {
   border-radius: 3px 0 0;
 }
-/* line 35, scss/base/javascript/_tabs.scss */
+/* line 36, scss/base/javascript/_tabs.scss */
 .tabs .nav li:last-child {
   border-radius: 0 3px 0 0;
 }
-/* line 38, scss/base/javascript/_tabs.scss */
-.tabs .nav li.active {
+/* line 39, scss/base/javascript/_tabs.scss */
+.tabs .nav li.active-tab {
   bottom: -2px;
   z-index: 2;
   border-radius: 3px 3px 0 0;
   color: #cd4b45;
   background: #FFF;
 }
-/* line 45, scss/base/javascript/_tabs.scss */
-.tabs .nav li.active a {
+/* line 46, scss/base/javascript/_tabs.scss */
+.tabs .nav li.active-tab button {
   padding: 0.7em 1em;
 }
-/* line 49, scss/base/javascript/_tabs.scss */
+/* line 50, scss/base/javascript/_tabs.scss */
 .tabs .system {
-  padding: 1em;
+  padding: 24px;
+  padding: 1.5rem;
   border-radius: 3px;
   border: 1px solid #EAEAEA;
+  background: white;
 }
 
 /* line 1, scss/base/javascript/plugins/_form-validation.scss */

@@ -90,9 +90,9 @@
  * arrow
  * CSS Arrow.
  *
- * .foo {@include arrow(15px, #f9f7f3, 10px, null, left);}
+ * .foo {@include arrow(15px, #f9f7f3, 10px, null, 5px, left);}
 **/
-@mixin arrow($size, $color, $top, $left, $position){
+@mixin arrow($size, $color, $top, $left, $margin, $position){
 	&:after {
 		width: 0;
 		height: 0;
@@ -105,15 +105,27 @@
 		content: " ";
 		pointer-events: none;
 		@if($position == left){
+			@if($margin != null){
+				margin-right: $margin;
+			}
 			border-right-color: $color;
 		}
 		@else if($position == right){
+			@if($margin != null){
+				margin-left: $margin;
+			}
 			border-left-color: $color;
 		}
 		@else if($position == top){
+			@if($margin != null){
+				margin-bottom: $margin;
+			}
 			border-bottom-color: $color;
 		}
 		@else if($position == bottom){
+			@if($margin != null){
+				margin-top: $margin;
+			}
 			border-top-color: $color;
 		}
 		border-width: $size;
