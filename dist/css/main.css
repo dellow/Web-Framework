@@ -2897,7 +2897,8 @@ form.form-inline-block .field-container {
 /* line 8, scss/base/forms/_form-inline.scss */
 form.form-inline label, form.form-inline .label, form.form-inline input, form.form-inline .input, form.form-inline select, form.form-inline textarea, form.form-inline .field-container {
   width: auto;
-  margin: 0 0 0 0.825em;
+  margin: 0px 0px 0px 12px;
+  margin: 0px 0px 0px 0.75rem;
   display: inline;
 }
 /* line 12, scss/base/forms/_form-inline.scss */

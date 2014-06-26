@@ -7,7 +7,7 @@ form {
 	&.form-inline {
 		label, .label, input, .input, select, textarea, .field-container {
 			width: auto;
-			margin: 0 0 0 0.825em;
+			@include nudge(margin, 0 0 0 0.5);
 			display: inline;
 			&:first-child {
 				margin-left: 0;
