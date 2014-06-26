@@ -1,6 +1,6 @@
 # Framework installer by Stewart Dellow
-# How to: `bash install`
-# Installs dependencies with NPM and cleans redundant files.
+# Installs dependencies with NPM and Bower and cleans redundant files.
+# How to: `bash install.sh`
 #!/bin/bash
 
 echo "Installation in progress. Please wait..."
@@ -11,14 +11,21 @@ rm -rf .git/         && \
 # Remove the `.sass-cache` directory
 rm -rf .sass-cache/  && \
 # ------------------------------------------------------------------------
-# Remove the framework Readme
-rm -rf README.md     && \
-# ------------------------------------------------------------------------
 # Initialize a new Git instance
 git init             && \
 # ------------------------------------------------------------------------
 # Remove the clean file
 rm install           && \
+# ------------------------------------------------------------------------
+# README
+if [ -e README.md ]; then
+	read -p "Do you need the Readme file? " -n 1 -r
+	if [[ $REPLY =~ ^[Nn]$ ]]; then
+		# Remove `README.md`
+		rm README.md
+	fi
+	printf "\n"
+fi
 # ------------------------------------------------------------------------
 # htaccess
 if [ -e .htaccess ]; then
