@@ -394,7 +394,6 @@
     Plugin.prototype.go = function(){
         // Cache this
         Plugin.w = this;
-        console.log(Plugin.w);
         // Cache the extended options.
         Plugin.config = this.config;
         // Add 'novalidate' attribute to form

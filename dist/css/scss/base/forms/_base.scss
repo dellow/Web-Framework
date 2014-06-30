@@ -21,6 +21,9 @@ form {
 		@include nudge(margin-bottom, 0.5);
 		position: relative;
 		@extend %cf;
+		.note {
+			@include opacity(0.65);
+		}
 		&.left, &.right {
 			margin-bottom: 0;
 		}
@@ -30,6 +33,9 @@ form {
 	label, .label {
 		margin: 0;
 		position: relative;
+		abbr {
+			color: $red;
+		}
 	}
 
 	// All form elements

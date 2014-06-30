@@ -54,11 +54,12 @@
 		<!-- <div><?php echo $form->response(); ?></div> -->
 		<!-- Text input -->
 		<div class="field">
-			<label for="form__fullname">Name</label>
+			<label for="form__fullname">Name <abbr title="Required">*</abbr></label>
 			<input type="text" name="fields[fullname]" id="form__fullname" placeholder="e.g. John Smith" required>
 			<!-- Validation & Filter -->
 			<input type="hidden" name="validationmessage[fullname]" class="error-message" value="Please enter your name">
 			<input type="hidden" name="validationfilter[fullname]" value="existence">
+			<small class="note">Note about this field</small>
 		</div>
 		<!-- Readonly Input -->
 		<div class="field">

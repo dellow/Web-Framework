@@ -7,9 +7,12 @@ form {
 	&.form-inline-block {
 		label, .label, input, .input, select, textarea, .field-container {
 			@include inline-block;
+			vertical-align: top;
 		}
 		label, .label {
-			width: 30%;
+			width: 35%;
+			padding-right: 5%;
+			line-height: 1.3;
 			input[type="checkbox"], input[type="radio"] {
 				margin: -2px 2px 0 0;
 			}
@@ -21,9 +24,9 @@ form {
 		}
 		input, .input, select, textarea, .field-container {
 			width: 65%;
-			@include nudge(margin-left, 2);
-			&:first-child {
-				margin-left: 0;
+			margin: 0 0 0 -4px;
+			+ .note {
+				margin-left: 35%;
 			}
 		}
 		input[type="checkbox"], input[type="radio"] {
