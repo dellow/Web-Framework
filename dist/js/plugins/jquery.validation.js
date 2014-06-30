@@ -1,5 +1,5 @@
 /**
- * validation.js
+ * jquery.validation.js
  * $('.form').validation();
  *
  * domains               : Array. Adds to default array of top level domains for the email checker to spell check against.
@@ -30,44 +30,46 @@
 ;(function($, window, undefined){
     'use strict';
 
-    $.fn.extend({
-        validation: function(options){
-            // Default settings
-            this.defaults = {
-                domains               : [],
-                localStorage          : true,
-                serverValidation      : true,
-                onlyVisibleFields     : true,
-                serverID              : 'ajaxrequest',
-                emailRegEx            : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
-                passRegEx             : /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
-                urlRegEx              : /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
-                errorBoxClass         : 'response--error',
-                errorClass            : 'error',
-                successClass          : 'success',
-                msgSep                : ' -',
-                defaultErrorMsg       : 'Please enter a value',
-                defaultSuccessMsg     : 'The form has been successfully submitted.',
-                defaultSuggestText    : 'Did you mean',
-                errorBoxElement       : '<span/>',
-                preloaderHEX          : '#333333',
-                preloaderSize         : 15,
-                preloaderDensity      : 15,
-                successElement        : $('.form-success'),
-                validationMessage     : $('.error-message'),
-                successFunction       : null,
-                customValidationMethod: null
-            };
-            // Create a settings object
-            var settings = $.extend({}, this.defaults, options);
-            // Set up plugin object
-            var plugin = {};
-            // Set up utilities object
-            var utilities = {};
-            // Set up email_suggester object
-            var email_suggester = {};
-            // Array of default domains
-            var default_domains = [
+    var Plugin = function(elem, options){
+        this.elem     = elem;
+        this.$elem    = $(elem);
+        this.options  = options;
+        this.metadata = this.$elem.data('plugin-options');
+    };
+
+    Plugin.prototype = {
+        defaults: {
+            domains               : [],
+            localStorage          : true,
+            serverValidation      : true,
+            onlyVisibleFields     : true,
+            serverID              : 'ajaxrequest',
+            emailRegEx            : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
+            passRegEx             : /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
+            urlRegEx              : /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
+            errorBoxClass         : 'response--error',
+            errorClass            : 'error',
+            successClass          : 'success',
+            msgSep                : ' -',
+            defaultErrorMsg       : 'Please enter a value',
+            defaultSuccessMsg     : 'The form has been successfully submitted.',
+            defaultSuggestText    : 'Did you mean',
+            errorBoxElement       : '<span/>',
+            preloaderHEX          : '#333333',
+            preloaderSize         : 15,
+            preloaderDensity      : 15,
+            successElement        : $('.form-success'),
+            validationMessage     : $('.error-message'),
+            successFunction       : null,
+            customValidationMethod: null
+        },
+        init: function(){
+            // Cache this.
+            var plg = this;
+            // Config.
+            plg.config = $.extend({}, plg.defaults, plg.options, plg.metadata);
+            // Set any vars here.
+            plg.default_domains = [
                 'aol.com',
                 'bellsouth.net',
                 'btinternet.com',
@@ -102,612 +104,635 @@
                 'yahoo.fr'
             ];
             // Extend the domains array with those from the plugin settings
-            var domains = $.extend(true, default_domains, settings.domains);
+            plg.domains = $.extend(true, this.default_domains, this.config.domains);
+            // Global arrays
+            plg.error_array; plg.group_array;
+            // Cache the form element
+            plg.form = this.$elem;
+            // Action for the form
+            plg.form_action = (plg.form.data('action')) ? plg.form.data('action') : plg.form.attr('action');
+            // Cache fields
+            plg.fields = $('input, select, textarea', plg.form);
+            // Cache the reset button element
+            plg.reset = $('button[type="reset"], input[type="reset"]', plg.form);
+            // Cache the submit button element
+            plg.button = $('button[type="submit"], input[type="submit"]', plg.form);
+            // Get button text for later
+            plg.button_name = plg.button.text();
+            // Success element
+            plg.success_element = (this.config.successElement.length) ? this.config.successElement : plg.form.before($('<div class="form-success">' + this.config.defaultSuccessMsg + '</div>'));
+            // Let's go.
+            plg.go();
 
-            /**
-             * email_suggester.init
-             * null.
-            **/
-            email_suggester.init = function(el){
-                var email_val  = el.val(),
-                    match_val  = email_suggester.get_match(email_val);
-
-                this.suggestion = el.next('.suggestion');
-                this.reveal_suggestion(el, match_val);
-            }
-
-            /**
-             * email_suggester.get_match
-             * null.
-            **/
-            email_suggester.get_match = function(query){
-                var limit   = 99,
-                    query   = query.split('@');
-
-                for(var i = 0, ii = domains.length; i < ii; i++){
-                    var distance = email_suggester.levenshtein_distance(domains[i], query[1]);
-                    if(distance < limit){
-                        limit = distance;
-                        var domain = domains[i];
-                    }
-                }
-                if(limit <= 2 && domain !== null && domain !== query[1]){
-                    return{
-                        address: query[0],
-                        domain: domain
-                    }
-                }
-                else{
-                    return false;
-                }
-            }
-
-            /**
-             * email_suggester.levenshtein_distance
-             * null.
-            **/
-            email_suggester.levenshtein_distance = function(a, b){
-                var c = 0,
-                    d = 0,
-                    e = 0,
-                    f = 0,
-                    g = 5;
-
-                if(a == null || a.length === 0){
-                    if(b == null || b.length === 0){
-                        return 0
-                    }
-                    else{
-                        return b.length
-                    }
-                }
-                if(b == null || b.length === 0){
-                    return a.length
-                }
-
-                while(c + d < a.length && c + e < b.length){
-                    if(a[c + d] == b[c + e]){
-                        f++
-                    }
-                    else{
-                        d = 0;
-                        e = 0;
-                        for(var h = 0; h < g; h++){
-                            if(c + h < a.length && a[c + h] == b[c]){
-                                d = h;
-                                break
-                            }
-                            if(c + h < b.length && a[c] == b[c + h]){
-                                e = h;
-                                break
-                            }
-                        }
-                    }
-                    c++
-                }
-                return (a.length + b.length) / 2 - f
-            }
-
-            /**
-             * email_suggester.reveal_suggestion
-             * null.
-            **/
-            email_suggester.reveal_suggestion = function(el, result){
-                if(result){
-                    $('.address', this.suggestion).text(result.address);
-                    $('.domain', this.suggestion).text(result.domain);
-                    this.suggestion.stop(true, false).slideDown(350);
-
-                    $('.alternative-email').on('click', function(e){
-                        e.preventDefault();
-                        el.val(result.address + '@' + result.domain);
-                        email_suggester.suggestion.stop(true, false).slideUp(350);
-                    });
-                }
-            }
-
-            /**
-             * utilities.setup_email_field
-             * Add the email suggestion div after the email field.
-            **/
-            utilities.setup_email_field = function(el){
-                el.after($('<div class="suggestion">' + settings.defaultSuggestText + ' <a href="#" class="alternative-email"><span class="address">address</span>@<span class="domain">domain.com</span></a>?</div>').hide());
-
-                el.on('blur', function(){
-                    email_suggester.init(el);
-                });
-            }
-
-            /**
-             * utilities.setup_url_field
-             * Adds 'http://' to URL fields.
-            **/
-            utilities.setup_url_field = function(el){
-                el.on('blur', function(){
-                    var value = el.val();
-                    if(value !== '' && !value.match(/^http([s]?):\/\/.*/)){
-                        el.val('http://' + value);
-                    }
-                });
-            }
-
-            /**
-             * utilities.reset_errors
-             * Remove all errors
-            **/
-            utilities.reset_errors = function(form){
-                // Remove current classes
-                $('.' + settings.errorClass, form).removeClass(settings.errorClass);
-                $('.' + settings.errorBoxClass, form).remove();
-            }
-
-            /**
-             * utilities.set_errors
-             * Adds the error class and message to each field.
-            **/
-            utilities.set_errors = function(arr, form){
-                // Remove errors
-                utilities.reset_errors(form);
-                // Add new ones
-                $.each(arr, function(){
-                    var a = $(this);
-                    var el = a[0].input;
-                    // Get error message
-                    var error = (a[0].msg !== '') ? a[0].msg : settings.defaultErrorMsg;
-                    // Separator
-                    var message = (settings.msgSep) ? (error) ? settings.msgSep + ' <span class="msg">' + error + '</span>' : '' : '<span class="msg">' + error + '</span>';
-                    // Apply error class to field
-                    el.addClass(settings.errorClass);
-                    // Field specific actions
-                    if(el.attr('type') === 'checkbox' || el.attr('type') === 'radio'){
-                        // Add error element to field
-                        //el.offsetParent('.field').first().before($(settings.errorBoxElement).addClass(settings.errorBoxClass).html(message));
-                        el.closest('.field').find('label, .label').first().append($(settings.errorBoxElement).addClass(settings.errorBoxClass).html(message));
-                        // Apply to nearest label if checkbox or radio
-                        el.closest('label').addClass(settings.errorClass);
-                    }
-                    else{
-                        // Add error element to field
-                        el.parent().find('label, .label').append($(settings.errorBoxElement).addClass(settings.errorBoxClass).html(message));
-                    }
-                });
-            }
-
-            /**
-             * utilities.remove_duplicates
-             * Remove duplicates from an array
-            **/
-            utilities.remove_duplicates = function(array){
-                var result = [];
-                $.each(array, function(i, e){
-                    if($.inArray(e, result) == -1){
-                        result.push(e);
-                    }
-                });
-
-                return result;
-            }
-
-            /**
-             * utilities.loading_animation
-             * Creates a spinning loading animation.
-            **/
-            utilities.loading_animation = function(){
-                // Generate an element name with a random number
-                var el = 'loader-' + Math.random() * (100 - 1) + 1;
-                // Generate the preloader
-                $.getScript('http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.js', function(){
-                    var loader = new CanvasLoader(el);
-                    loader.setShape('spiral');
-                    loader.setDiameter(settings.preloaderSize);
-                    loader.setDensity(settings.preloaderDensity);
-                    loader.setRange(0.6);
-                    loader.setSpeed(1);
-                    loader.setColor(settings.preloaderHEX);
-                    loader.show();
-                });
-
-                // Return a loader element
-                return $('<div style="display: inline-block; vertical-align: middle;" id="' + el + '"></div>');
-            }
-
-            /**
-             * utilities.message
-             * Returns a cross-browser safe message in the console.
-            **/
-            utilities.message = function(message, alertlog){
-                alertlog = (typeof alertlog === 'undefined') ? false : true;
-                if(typeof console === 'undefined' || typeof console.log === 'undefined'){
-                    if(alertlog){
-                        alert(message);
-                    }
-                }
-                else {
-                    console.log(message);
-                }
-            }
-
-            // Return the plugin instance to allow chaining
-            return this.each(function(){
-                // Global arrays
-                var error_array, group_array,
-                    // Cache the form element
-                    form          = $(this),
-                    // Action for the form
-                    form_action   = (form.data('action')) ? form.data('action') : form.attr('action'),
-                    // Cache fields
-                    fields        = $('input, select, textarea', form),
-                    // Cache the reset button element
-                    reset         = $('button[type="reset"], input[type="reset"]', form),
-                    // Cache the submit button element
-                    button        = $('button[type="submit"], input[type="submit"]', form),
-                    // Get button text for later
-                    button_name   = button.text(),
-                    // Success element
-                    success_element = (settings.successElement.length) ? settings.successElement : form.before($('<div class="form-success">' + settings.defaultSuccessMsg + '</div>')),
-                    // Put all required fields into array
-                    fields_array  = $('[required]', form).map(function(){
-                        if(settings.onlyVisibleFields){
-                            if($(this).is(':visible')){
-                                return $(this).attr('name');
-                            }
-                        }
-                        else{
+            // On submit
+            plg.form.on('submit', function(e){
+                // Put all required fields into array
+                plg.fields_array = $('[required]', plg.form).map(function(){
+                    if(plg.config.onlyVisibleFields){
+                        if($(this).is(':visible')){
                             return $(this).attr('name');
                         }
-                    }),
-                    // Remove duplicates (jQuery.unique only works on DOM elements, we can't use DOM elements because they are ALL unique despite the same name)
-                    fields_array  = utilities.remove_duplicates(fields_array),
-                    // Reverts the fields_array into an array of DOM elements
-                    element_array = $.map(fields_array, function(field, i){
-                        return $('[name="' + field + '"]', form);
-                    });
-
-                /**
-                 * plugin.init
-                 * Null
-                **/
-                plugin.init = function(){
-                    // Add 'novalidate' attribute to form
-                    form.attr('novalidate', 'novalidate');
-                    // Disable the submit button
-                    //plugin.disable_stuff(true);
-                    // Hide all error messages if not done with CSS already
-                    form.children(settings.validationMessage.hide());
-                    // Process fields
-                    plugin.process_fields();
-                    // Get localStorage
-                    plugin.get_localStorage();
-                }
-
-                /**
-                 * plugin.process_fields
-                 * Null
-                **/
-                plugin.process_fields = function(){
-                    $.each(element_array, function(){
-                        // Field type specific actions
-                        switch($(this).attr('type')){
-                            case 'email':
-                                utilities.setup_email_field($(this));
-                            break;
-                            case 'url':
-                                utilities.setup_url_field($(this));
-                            break;
-                        }
-                    });
-                }
-
-                /**
-                 * plugin.setup
-                 * Setup arrays
-                **/
-                plugin.setup = function(){
-                    // Global error array
-                    error_array = [];
-                    // Create an array for checkboxes and radio inputs
-                    group_array = [];
-                }
-
-                /**
-                 * plugin.disable_stuff
-                 * Disable stuff
-                **/
-                plugin.disable_stuff = function(disable){
-                    // Reset errors
-                    utilities.reset_errors(form);
-                    if(disable){
-                        // Disable the submit button
-                        button.attr('disabled', 'disabled');
                     }
                     else{
-                        // Enable the submmit button and re-apply the button name
-                        button.removeAttr('disabled').html(button_name);
+                        return $(this).attr('name');
                     }
-                }
-
-                /**
-                 * plugin.clear_localStorage
-                 * Clears all localStorage values
-                **/
-                plugin.clear_localStorage = function(){
-                    fields.each(function(){
-                        localStorage.removeItem($(this).attr('name'));
-                    });
-                }
-
-                /**
-                 * plugin.get_localStorage
-                 * Retrieves field values from localStorage
-                **/
-                plugin.get_localStorage = function(){
-                    if(settings.localStorage && typeof(Storage) !== 'undefined'){
-                        fields.each(function(){
-                            // Vars
-                            var input_name = $(this).attr('name');
-
-                            if(localStorage[input_name]){
-                                if($(this).is('select')){
-                                    $('option[selected="selected"]', this).removeAttr('selected');
-                                    $('option[value="' + localStorage[input_name] + '"]', this).prop('selected', true);
-                                }
-                                else if($(this).is('input[type="radio"]')){
-                                    if($(this).val() == localStorage[input_name]){
-                                        $(this).prop('checked', true);
-                                    }
-                                }
-                                else if($(this).is('input[type="checkbox"]')){
-                                    var checkboxes = localStorage[input_name].split(',');
-                                    $('input[name="' + input_name + '"]').each(function(i){
-                                        if(checkboxes[i] != '' && $(this).val() == checkboxes[i]){
-                                            $(this).prop('checked', true);
-                                        }
-                                    });
-                                }
-                                else{
-                                    $(this).val(localStorage[input_name]);
-                                }
-                            };
-                        });
-                    }
-                }
-
-                /**
-                 * plugin.save_to_localStorage
-                 * Saves field entries to localStorage
-                **/
-                plugin.save_to_localStorage = function(el){
-                    if(settings.localStorage && typeof(Storage) !== 'undefined'){
-                        // Vars
-                        var input_name = el.attr('name');
-
-                        if(el.is('input[type="checkbox"]')){
-                            // Vars
-                            var checkbox_array = [];
-
-                            $('input[name="' + input_name + '"]').each(function(i){
-                                if($(this).is(':checked')){
-                                    checkbox_array.push($(this).val());
-                                }
-                                else{
-                                    checkbox_array.push('');
-                                }
-                            });
-                            localStorage[input_name] = checkbox_array;
-                        }
-                        else{
-                            localStorage[input_name] = el.val();
-                        }
-                    }
-                }
-
-                /**
-                 * plugin.js_validate_fields
-                 * Uses jQuery to check state of fields
-                **/
-                plugin.js_validate_fields = function(){
-                    // Put all empty fields into array
-                    error_array = $.map(element_array, function(field, i){
-                        var obj,
-                            msg = field.closest('.field').find(settings.validationMessage).val() || field.closest('.field').find(settings.validationMessage).text();
-
-                        // Checkboxes and radio
-                        if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){
-                            return obj = {
-                                input: field,
-                                msg  : msg
-                            }
-                        }
-                        // Email fields
-                        else if(field.attr('type') === 'email' && !settings.emailRegEx.test(field.val())){
-                            return obj = {
-                                input: field,
-                                msg  : msg
-                            }
-                        }
-                        // URL fields
-                        else if(field.attr('type') === 'url' && !settings.urlRegEx.test(field.val())){
-                            return obj = {
-                                input: field,
-                                msg  : msg
-                            }
-                        }
-                        // Select fields
-                        else if(field.attr('type') === 'select' && field.val() === '' || field.val() === 'undefined' || field.val() === undefined || field.val() === '-'){
-                            return obj = {
-                                input: field,
-                                msg  : msg
-                            }
-                        }
-                        // Check for existence
-                        else if(field.val() === '' || field.val() === 'undefined' || field.val() === undefined){
-                            return obj = {
-                                input: field,
-                                msg  : msg
-                            }
-                        }
-                    });
-                    // Custom validation method
-                    if($.isFunction(settings.customValidationMethod)){
-                        error_array.push(settings.customValidationMethod());
-                    }
-
-                    return (error_array.length === 0) ? true : false;
-                }
-
-                /**
-                 * plugin.server_validate_fields
-                 * Uses AJAX to get a server response on field validation
-                **/
-                plugin.server_validate_fields = function(){
-                    // Check for a form action
-                    if(form_action !== ''){
-                        // Use ajax to check server response
-                        $.ajax({
-                            type    : 'POST',
-                            url     : form_action,
-                            data    : form.serialize() + '&' + settings.serverID + '=true',
-                            dataType: 'JSON',
-                            cache   : false,
-                            async   : false, // Important, this has to finish first!
-                            beforeSend: function(){
-                                // Add a preloader
-                                button.html(utilities.loading_animation());
-                            },
-                            success: function(response){
-                                response = response.fields;
-                                // Un-disable stuff
-                                plugin.disable_stuff(false);
-                                // If error
-                                if(response.error){
-                                    // Cycles through the response and adds them to the error_array
-                                    for(var key in response.error){
-                                        var a = response.error[key];
-                                        if(a.field !== undefined){
-                                            var obj = {
-                                                input: $('[name="' + a.field + '"]', form),
-                                                msg  : a.msg
-                                            }
-                                            error_array.push(obj);
-                                        }
-                                    }
-                                }
-                            },
-                            error: function(xhr, ajaxOptions, thrownError){
-                                // Un-disable stuff
-                                plugin.disable_stuff(false);
-                                // Server error
-                                var error = (xhr.responseText !== '') ? xhr.responseText : thrownError;
-                                //form.before().html(error).fadeIn(500);
-                            }
-                        });
-
-                        return (error_array.length === 0) ? true : false;
-                    }
-                    // No form action
-                    else{
-                        // Error message
-                        utilities.message("You must have an action defined on your form in order to use server validation.");
-
-                        return false;
-                    }
-                }
-
-                /**
-                 * plugin.success
-                 * Form validated successfully
-                **/
-                plugin.success = function(type, e){
-                    // Un-disable stuff
-                    plugin.disable_stuff(false);
-                    // Clear localStorage
-                    plugin.clear_localStorage();
-                    // If we have a custom post function
-                    if(type == 'server'){
-                        e.preventDefault();
-                        form.fadeOut(500, function(){
-                            form.prev(success_element).fadeIn(300);
-                        });
-                    }
-                    else if(type == 'js'){
-                        e.preventDefault();
-                        $.ajax({
-                            type : 'POST',
-                            data : form.serialize(),
-                            cache: false,
-                            async: false,
-                            beforeSend: function(){
-                                // Add a preloader
-                                button.html(utilities.loading_animation());
-                            },
-                            success: function(){
-                                form.fadeOut(500, function(){
-                                    form.prev(success_element).fadeIn(300);
-                                });
-                            }
-                        });
-                    }
-                    else{
-                        return true;
-                    }
-                }
-
-                /**
-                 * plugin.failure
-                 * Form validation failed
-                **/
-                plugin.failure = function(){
-                    // Set errors
-                    utilities.set_errors(error_array, form);
-                }
-
-                /**
-                 * plugin.process
-                 * Process the fields
-                **/
-                plugin.process = function(e){
-                    // Run setup plugin
-                    plugin.setup();
-                    // If we are doing server validation
-                    if(settings.serverValidation && plugin.server_validate_fields()){
-                        plugin.success('server', e);
-                    }
-                    // If we are not doing server validation check if form has passed validation
-                    else if(!settings.serverValidation && plugin.js_validate_fields()){
-                        plugin.success('js', e);
-                    }
-                    // Not validated, display errors
-                    else{
-                        e.preventDefault();
-                        plugin.failure();
-                    }
-                }
-
-                /**
-                 * plugin.reset
-                 * Reset the form
-                **/
-                plugin.reset = function(){
-                    // Un-disable stuff
-                    plugin.disable_stuff(false);
-                    // Remove errors
-                    utilities.reset_errors(form);
-                    // Clear localStorage
-                    plugin.clear_localStorage();
-                }
-
-                // On load
-                plugin.init();
-                // On submit
-                form.on('submit', plugin.process);
-                // On reset
-                reset.on('click', plugin.reset);
-                // On field change
-                fields.change(function(){
-                    plugin.save_to_localStorage($(this));
                 });
+                // Remove duplicates (jQuery.unique only works on DOM elements, we can't use DOM elements because they are ALL unique despite the same name)
+                plg.fields_array = helper.remove_duplicates(plg.fields_array);
+                // Reverts the fields_array into an array of DOM elements
+                plg.element_array = $.map(plg.fields_array, function(field, i){
+                    return $('[name="' + field + '"]', plg.form);
+                });
+
+                plg.process(e);
+            });
+            // On reset
+            plg.reset.on('click', function(e){
+                plg.reset_form(e)
+            });
+            // On field change
+            plg.fields.change(function(){
+                plugin.save_to_localStorage($(this));
+            });
+
+            return plg;
+        }
+    }
+
+    // Set helper.
+    var helper = {};
+    // Set up email_suggester object
+    var email_suggester = {};
+
+    /**
+     * email_suggester.init
+     * null.
+    **/
+    email_suggester.init = function(el){
+        var email_val  = el.val(),
+            match_val  = email_suggester.get_match(email_val);
+
+        this.suggestion = el.next('.suggestion');
+        this.reveal_suggestion(el, match_val);
+    }
+
+    /**
+     * email_suggester.get_match
+     * null.
+    **/
+    email_suggester.get_match = function(query){
+        var limit   = 99,
+            query   = query.split('@');
+
+        for(var i = 0, ii = domains.length; i < ii; i++){
+            var distance = email_suggester.levenshtein_distance(domains[i], query[1]);
+            if(distance < limit){
+                limit = distance;
+                var domain = domains[i];
+            }
+        }
+        if(limit <= 2 && domain !== null && domain !== query[1]){
+            return{
+                address: query[0],
+                domain: domain
+            }
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * email_suggester.levenshtein_distance
+     * null.
+    **/
+    email_suggester.levenshtein_distance = function(a, b){
+        var c = 0,
+            d = 0,
+            e = 0,
+            f = 0,
+            g = 5;
+
+        if(a == null || a.length === 0){
+            if(b == null || b.length === 0){
+                return 0
+            }
+            else{
+                return b.length
+            }
+        }
+        if(b == null || b.length === 0){
+            return a.length
+        }
+
+        while(c + d < a.length && c + e < b.length){
+            if(a[c + d] == b[c + e]){
+                f++
+            }
+            else{
+                d = 0;
+                e = 0;
+                for(var h = 0; h < g; h++){
+                    if(c + h < a.length && a[c + h] == b[c]){
+                        d = h;
+                        break
+                    }
+                    if(c + h < b.length && a[c] == b[c + h]){
+                        e = h;
+                        break
+                    }
+                }
+            }
+            c++
+        }
+        return (a.length + b.length) / 2 - f
+    }
+
+    /**
+     * email_suggester.reveal_suggestion
+     * null.
+    **/
+    email_suggester.reveal_suggestion = function(el, result){
+        if(result){
+            $('.address', this.suggestion).text(result.address);
+            $('.domain', this.suggestion).text(result.domain);
+            this.suggestion.stop(true, false).slideDown(350);
+
+            $('.alternative-email').on('click', function(e){
+                e.preventDefault();
+                el.val(result.address + '@' + result.domain);
+                email_suggester.suggestion.stop(true, false).slideUp(350);
             });
         }
-    });
+    }
+
+    /**
+     * helper.setup_email_field
+     * Add the email suggestion div after the email field.
+    **/
+    helper.setup_email_field = function(el){
+        el.after($('<div class="suggestion">' + Plugin.config.defaultSuggestText + ' <a href="#" class="alternative-email"><span class="address">address</span>@<span class="domain">domain.com</span></a>?</div>').hide());
+
+        el.on('blur', function(){
+            email_suggester.init(el);
+        });
+    }
+
+    /**
+     * helper.setup_url_field
+     * Adds 'http://' to URL fields.
+    **/
+    helper.setup_url_field = function(el){
+        el.on('blur', function(){
+            var value = el.val();
+            if(value !== '' && !value.match(/^http([s]?):\/\/.*/)){
+                el.val('http://' + value);
+            }
+        });
+    }
+
+    /**
+     * helper.reset_errors
+     * Remove all errors
+    **/
+    helper.reset_errors = function(form){
+        // Remove current classes
+        $('.' + Plugin.config.errorClass, form).removeClass(Plugin.config.errorClass);
+        $('.' + Plugin.config.errorBoxClass, form).remove();
+    }
+
+    /**
+     * helper.set_errors
+     * Adds the error class and message to each field.
+    **/
+    helper.set_errors = function(arr, form){
+        // Remove errors
+        helper.reset_errors(form);
+        // Add new ones
+        $.each(arr, function(){
+            var a = $(this);
+            var el = a[0].input;
+            // Get error message
+            var error = (a[0].msg !== '') ? a[0].msg : Plugin.config.defaultErrorMsg;
+            // Separator
+            var message = (Plugin.config.msgSep) ? (error) ? Plugin.config.msgSep + ' <span class="msg">' + error + '</span>' : '' : '<span class="msg">' + error + '</span>';
+            // Apply error class to field
+            el.addClass(Plugin.config.errorClass);
+            // Field specific actions
+            if(el.attr('type') === 'checkbox' || el.attr('type') === 'radio'){
+                // Add error element to field
+                //el.offsetParent('.field').first().before($(Plugin.config.errorBoxElement).addClass(Plugin.config.errorBoxClass).html(message));
+                el.closest('.field').find('label, .label').first().append($(Plugin.config.errorBoxElement).addClass(Plugin.config.errorBoxClass).html(message));
+                // Apply to nearest label if checkbox or radio
+                el.closest('label').addClass(Plugin.config.errorClass);
+            }
+            else{
+                // Add error element to field
+                el.parent().find('label, .label').append($(Plugin.config.errorBoxElement).addClass(Plugin.config.errorBoxClass).html(message));
+            }
+        });
+    }
+
+    /**
+     * helper.remove_duplicates
+     * Remove duplicates from an array
+    **/
+    helper.remove_duplicates = function(array){
+        var result = [];
+        $.each(array, function(i, e){
+            if($.inArray(e, result) == -1){
+                result.push(e);
+            }
+        });
+
+        return result;
+    }
+
+    /**
+     * helper.loading_animation
+     * Creates a spinning loading animation.
+    **/
+    helper.loading_animation = function(){
+        // Generate an element name with a random number
+        var el = 'loader-' + Math.random() * (100 - 1) + 1;
+        // Generate the preloader
+        $.getScript('http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.js', function(){
+            var loader = new CanvasLoader(el);
+            loader.setShape('spiral');
+            loader.setDiameter(Plugin.config.preloaderSize);
+            loader.setDensity(Plugin.config.preloaderDensity);
+            loader.setRange(0.6);
+            loader.setSpeed(1);
+            loader.setColor(Plugin.config.preloaderHEX);
+            loader.show();
+        });
+
+        // Return a loader element
+        return $('<div style="display: inline-block; vertical-align: middle;" id="' + el + '"></div>');
+    }
+
+    /**
+     * helper.message
+     * Returns a cross-browser safe message in the console.
+    **/
+    helper.message = function(message, alertlog){
+        alertlog = (typeof alertlog === 'undefined') ? false : true;
+        if(typeof console === 'undefined' || typeof console.log === 'undefined'){
+            if(alertlog){
+                alert(message);
+            }
+        }
+        else {
+            console.log(message);
+        }
+    }
+
+    /**
+     * plugin.go
+     * Our initial function.
+    **/
+    Plugin.prototype.go = function(){
+        // Cache this
+        Plugin.w = this;
+        console.log(Plugin.w);
+        // Cache the extended options.
+        Plugin.config = this.config;
+        // Add 'novalidate' attribute to form
+        Plugin.w.form.attr('novalidate', 'novalidate');
+        // Disable the submit button
+        //Plugin.prototype.disable_stuff(true);
+        // Hide all error messages if not done with CSS already
+        Plugin.w.form.children(Plugin.config.validationMessage.hide());
+        // Get localStorage
+        Plugin.prototype.get_localStorage();
+    }
+
+    /**
+     * Plugin.prototype.process_fields
+     * Null
+    **/
+    Plugin.prototype.process_fields = function(){
+        $.each(Plugin.w.element_array, function(){
+            // Field type specific actions
+            switch($(this).attr('type')){
+                case 'email':
+                    helper.setup_email_field($(this));
+                break;
+                case 'url':
+                    helper.setup_url_field($(this));
+                break;
+            }
+        });
+    }
+
+    /**
+     * Plugin.prototype.setup
+     * Setup arrays
+    **/
+    Plugin.prototype.setup = function(){
+        // Global error array
+        Plugin.w.error_array = [];
+        // Create an array for checkboxes and radio inputs
+        Plugin.w.group_array = [];
+    }
+
+    /**
+     * Plugin.prototype.disable_stuff
+     * Disable stuff
+    **/
+    Plugin.prototype.disable_stuff = function(disable){
+        // Reset errors
+        helper.reset_errors(Plugin.w.form);
+        if(disable){
+            // Disable the submit button
+            Plugin.w.button.attr('disabled', 'disabled');
+        }
+        else{
+            // Enable the submmit button and re-apply the button name
+            Plugin.w.button.removeAttr('disabled').html(Plugin.w.button_name);
+        }
+    }
+
+    /**
+     * Plugin.prototype.clear_localStorage
+     * Clears all localStorage values
+    **/
+    Plugin.prototype.clear_localStorage = function(){
+        Plugin.w.fields.each(function(){
+            localStorage.removeItem($(this).attr('name'));
+        });
+    }
+
+    /**
+     * Plugin.prototype.get_localStorage
+     * Retrieves field values from localStorage
+    **/
+    Plugin.prototype.get_localStorage = function(){
+        if(Plugin.config.localStorage && typeof(Storage) !== 'undefined'){
+            Plugin.w.fields.each(function(){
+                // Vars
+                var input_name = $(this).attr('name');
+
+                if(localStorage[input_name]){
+                    if($(this).is('select')){
+                        $('option[selected="selected"]', this).removeAttr('selected');
+                        $('option[value="' + localStorage[input_name] + '"]', this).prop('selected', true);
+                    }
+                    else if($(this).is('input[type="radio"]')){
+                        if($(this).val() == localStorage[input_name]){
+                            $(this).prop('checked', true);
+                        }
+                    }
+                    else if($(this).is('input[type="checkbox"]')){
+                        var checkboxes = localStorage[input_name].split(',');
+                        $('input[name="' + input_name + '"]').each(function(i){
+                            if(checkboxes[i] != '' && $(this).val() == checkboxes[i]){
+                                $(this).prop('checked', true);
+                            }
+                        });
+                    }
+                    else{
+                        $(this).val(localStorage[input_name]);
+                    }
+                };
+            });
+        }
+    }
+
+    /**
+     * Plugin.prototype.save_to_localStorage
+     * Saves field entries to localStorage
+    **/
+    Plugin.prototype.save_to_localStorage = function(el){
+        if(Plugin.config.localStorage && typeof(Storage) !== 'undefined'){
+            // Vars
+            var input_name = el.attr('name');
+
+            if(el.is('input[type="checkbox"]')){
+                // Vars
+                var checkbox_array = [];
+
+                $('input[name="' + input_name + '"]').each(function(i){
+                    if($(this).is(':checked')){
+                        checkbox_array.push($(this).val());
+                    }
+                    else{
+                        checkbox_array.push('');
+                    }
+                });
+                localStorage[input_name] = checkbox_array;
+            }
+            else{
+                localStorage[input_name] = el.val();
+            }
+        }
+    }
+
+    /**
+     * Plugin.prototype.js_validate_fields
+     * Uses jQuery to check state of fields
+    **/
+    Plugin.prototype.js_validate_fields = function(){
+        // Put all empty fields into array
+        Plugin.w.error_array = $.map(Plugin.w.element_array, function(field, i){
+            var obj,
+                msg = field.closest('.field').find(Plugin.config.validationMessage).val() || field.closest('.field').find(Plugin.config.validationMessage).text();
+
+            // Checkboxes and radio
+            if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // Email fields
+            else if(field.attr('type') === 'email' && !Plugin.config.emailRegEx.test(field.val())){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // URL fields
+            else if(field.attr('type') === 'url' && !Plugin.config.urlRegEx.test(field.val())){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // Select fields
+            else if(field.attr('type') === 'select' && field.val() === '' || field.val() === 'undefined' || field.val() === undefined || field.val() === '-'){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // Check for existence
+            else if(field.val() === '' || field.val() === 'undefined' || field.val() === undefined){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+        });
+        // Custom validation method
+        if($.isFunction(Plugin.config.customValidationMethod)){
+            Plugin.w.error_array.push(Plugin.config.customValidationMethod());
+        }
+
+        return (Plugin.w.error_array.length === 0) ? true : false;
+    }
+
+    /**
+     * Plugin.prototype.server_validate_fields
+     * Uses AJAX to get a server response on field validation
+    **/
+    Plugin.prototype.server_validate_fields = function(){
+        // Check for a form action
+        if(Plugin.config.form_action !== ''){
+            // Use ajax to check server response
+            $.ajax({
+                type    : 'POST',
+                url     : Plugin.config.form_action,
+                data    : Plugin.w.form.serialize() + '&' + Plugin.config.serverID + '=true',
+                dataType: 'JSON',
+                cache   : false,
+                async   : false, // Important, this has to finish first!
+                beforeSend: function(){
+                    // Add a preloader
+                    Plugin.w.button.html(helper.loading_animation());
+                },
+                success: function(response){
+                    response = response.fields;
+                    // Un-disable stuff
+                    Plugin.prototype.disable_stuff(false);
+                    // If error
+                    if(response.error){
+                        // Cycles through the response and adds them to the error_array
+                        for(var key in response.error){
+                            var a = response.error[key];
+                            if(a.field !== undefined){
+                                var obj = {
+                                    input: $('[name="' + a.field + '"]', form),
+                                    msg  : a.msg
+                                }
+                                Plugin.w.error_array.push(obj);
+                            }
+                        }
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError){
+                    // Un-disable stuff
+                    Plugin.prototype.disable_stuff(false);
+                    // Server error
+                    var error = (xhr.responseText !== '') ? xhr.responseText : thrownError;
+                    //Plugin.w.form.before().html(error).fadeIn(500);
+                }
+            });
+
+            return (Plugin.w.error_array.length === 0) ? true : false;
+        }
+        // No form action
+        else{
+            // Error message
+            helper.message("You must have an action defined on your form in order to use server validation.");
+
+            return false;
+        }
+    }
+
+    /**
+     * Plugin.prototype.success
+     * Form validated successfully
+    **/
+    Plugin.prototype.success = function(type, e){
+        // Un-disable stuff
+        Plugin.prototype.disable_stuff(false);
+        // Clear localStorage
+        Plugin.prototype.clear_localStorage();
+        // If we have a custom post function
+        if(type == 'server'){
+            e.preventDefault();
+            Plugin.w.form.fadeOut(500, function(){
+                Plugin.w.form.prev(Plugin.w.success_element).fadeIn(300);
+            });
+        }
+        else if(type == 'js'){
+            e.preventDefault();
+            $.ajax({
+                type : 'POST',
+                data : Plugin.w.form.serialize(),
+                cache: false,
+                async: false,
+                beforeSend: function(){
+                    // Add a preloader
+                    button.html(helper.loading_animation());
+                },
+                success: function(){
+                    Plugin.w.form.fadeOut(500, function(){
+                        Plugin.w.form.prev(Plugin.w.success_element).fadeIn(300);
+                    });
+                }
+            });
+        }
+        else{
+            return true;
+        }
+    }
+
+    /**
+     * Plugin.prototype.failure
+     * Form validation failed
+    **/
+    Plugin.prototype.failure = function(){
+        // Set errors
+        helper.set_errors(Plugin.w.error_array, Plugin.w.form);
+    }
+
+    /**
+     * Plugin.prototype.process
+     * Process the fields
+    **/
+    Plugin.prototype.process = function(e){
+        // Run setup plugin
+        Plugin.prototype.setup();
+        // Process fields
+        Plugin.prototype.process_fields();
+        // If we are doing server validation
+        if(Plugin.config.serverValidation && Plugin.prototype.server_validate_fields()){
+            Plugin.prototype.success('server', e);
+        }
+        // If we are not doing server validation check if form has passed validation
+        else if(!Plugin.config.serverValidation && Plugin.prototype.js_validate_fields()){
+            Plugin.prototype.success('js', e);
+        }
+        // Not validated, display errors
+        else{
+            e.preventDefault();
+            Plugin.prototype.failure();
+        }
+    }
+
+    /**
+     * Plugin.prototype.reset_form
+     * Reset the form
+    **/
+    Plugin.prototype.reset_form = function(){
+        // Un-disable stuff
+        Plugin.prototype.disable_stuff(false);
+        // Remove errors
+        helper.reset_errors(Plugin.w.form);
+        // Clear localStorage
+        Plugin.prototype.clear_localStorage();
+    }
+
+    /**
+     * $.fn.validation
+     * The plugin instance.
+    **/
+    $.fn.validation = function(options){
+        return this.each(function(){
+            new Plugin(this, options).init();
+        });
+    };
 
 })(jQuery, window);
