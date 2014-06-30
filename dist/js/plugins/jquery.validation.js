@@ -5,6 +5,7 @@
  * domains               : Array. Adds to default array of top level domains for the email checker to spell check against.
  * localStorage          : Boolean. Whether to use localStorage to save the field values if the page gets refreshed.
  * serverValidation      : Boolean. Whether to use server validation or not.
+ * onlyVisibleFields     : Boolean. Whether to only validate against visible fields or not.
  * serverID              : String. Post var to send to server side to identify AJAX response.
  * emailRegEx            : String. RegEx to check email addresses against.
  * passRegEx             : String. RegEx to check passwords against.
@@ -36,6 +37,7 @@
                 domains               : [],
                 localStorage          : true,
                 serverValidation      : true,
+                onlyVisibleFields     : true,
                 serverID              : 'ajaxrequest',
                 emailRegEx            : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
                 passRegEx             : /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
@@ -345,7 +347,14 @@
                     success_element = (settings.successElement.length) ? settings.successElement : form.before($('<div class="form-success">' + settings.defaultSuccessMsg + '</div>')),
                     // Put all required fields into array
                     fields_array  = $('[required]', form).map(function(){
-                        return $(this).attr('name');
+                        if(settings.onlyVisibleFields){
+                            if($(this).is(':visible')){
+                                return $(this).attr('name');
+                            }
+                        }
+                        else{
+                            return $(this).attr('name');
+                        }
                     }),
                     // Remove duplicates (jQuery.unique only works on DOM elements, we can't use DOM elements because they are ALL unique despite the same name)
                     fields_array  = utilities.remove_duplicates(fields_array),
@@ -518,6 +527,13 @@
                         }
                         // URL fields
                         else if(field.attr('type') === 'url' && !settings.urlRegEx.test(field.val())){
+                            return obj = {
+                                input: field,
+                                msg  : msg
+                            }
+                        }
+                        // Select fields
+                        else if(field.attr('type') === 'select' && field.val() === '' || field.val() === 'undefined' || field.val() === undefined || field.val() === '-'){
                             return obj = {
                                 input: field,
                                 msg  : msg
