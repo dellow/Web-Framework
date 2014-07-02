@@ -16,14 +16,20 @@ form {
 		float: right;
 	}
 
+	// Notes
+	.note {
+		font-size: 90%;
+		@include opacity(0.65);
+	}
+	span.note {
+		@include nudge(margin-left, 0.5);
+	}
+
 	// Field wrappers
 	.field {
 		@include nudge(margin-bottom, 0.5);
 		position: relative;
 		@extend %cf;
-		.note {
-			@include opacity(0.65);
-		}
 		&.left, &.right {
 			margin-bottom: 0;
 		}
@@ -35,6 +41,14 @@ form {
 		position: relative;
 		abbr {
 			color: $red;
+		}
+		input[type="radio"], input[type="checkbox"] {
+			@include nudge(margin-left, 0.25);
+		}
+		&:first-child {
+			input[type="radio"], input[type="checkbox"] {
+				margin-left: 0;
+			}
 		}
 	}
 
@@ -89,7 +103,7 @@ form {
 	%radio-checkbox, input[type="radio"], input[type="checkbox"] {
 		width: auto;
 		height: auto;
-		margin: 0 5px 0 0;
+		margin-right: 5px;
 		border: 0;
 		display: inline;
 		vertical-align: middle;

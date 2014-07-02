@@ -25,7 +25,7 @@ form {
 		input, .input, select, textarea, .field-container {
 			width: 65%;
 			margin: 0 0 0 -4px;
-			+ .note {
+			~ .note {
 				margin-left: 35%;
 			}
 		}

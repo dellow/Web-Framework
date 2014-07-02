@@ -1,0 +1,122 @@
+/**
+ * These styles are just for the benefit of this
+ * styleguide. Do not use these in production
+**/
+/* Body */
+body {
+	font-family: 'Lato', sans-serif;
+	background: #F7F7F7;
+}
+
+/* Tags */
+pre[class*="language-"] {
+	width: 100%;
+	margin: 1em 0;
+	font-size: 13px;
+}
+
+/* Standard */
+.container {
+	width: 80%;
+	padding: 20px 0 50px;
+}
+
+/* Flex */
+section.guidetable {
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+section.guidetable ul {
+	display: table-row;
+}
+section.guidetable li {
+	display: table-cell;
+}
+
+/* Headers */
+.styleguide > h1, section > h2 {
+	text-transform: uppercase;
+}
+
+/* Patterns */
+.styleguide .pattern .pattern__view div {
+	margin-bottom: 0;
+}
+.styleguide .pattern .pattern__view div + div {
+	margin-top: 10px;
+}
+.pattern {
+	margin-bottom: 2em;
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+}
+.pattern .pattern__view {
+	padding: 10px 20px;
+	background: white;
+}
+.pattern .pattern__details {
+	padding: 5px 15px;
+	border-bottom: 1px solid #e5e5e5;
+	color: #004b6a;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
+	background: #F0F0F0;
+}
+
+/* Forms */
+form input, form select, form textarea {
+	min-width: 50%;
+}
+
+/* Tables */
+.guidetable {
+	margin-bottom: 25px;
+}
+
+/* Grids */
+.styleguide .grid div.module {
+	padding: 10px;
+	margin: 0 0 10px;
+	background: #efefef;
+}
+.styleguide .pattern .pattern__view .grid div + div {
+	margin-top: 0;
+}
+
+/* Colour Swatches */
+.color-swatches {
+	letter-spacing: -4px;
+}
+.color-swatches li div {
+	margin: 0 !important;
+}
+.color-swatches li {
+	display: inline-block;
+	vertical-align: top;
+	letter-spacing: normal;
+}
+.color-swatches li .bg {
+	height: 65px;
+}
+.color-swatches li .bg:after {
+	content: attr(class);
+	display: block;
+	color: white;
+	font-size: 11px;
+	text-align: center;
+	line-height: 65px;
+	-webkit-opacity: 0.2;
+	-moz-opacity: 0.2;
+	-o-opacity: 0.2;
+	opacity: 0.2;
+	-webkit-transition: opacity 500ms ease;
+	-moz-transition: opacity 500ms ease;
+	-o-transition: opacity 500ms ease;
+	transition: opacity 500ms ease;
+}
+.color-swatches li .bg:hover:after {
+	-webkit-opacity: 0.7;
+	-moz-opacity: 0.7;
+	-o-opacity: 0.7;
+	opacity: 0.7;
+}

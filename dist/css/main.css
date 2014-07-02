@@ -146,16 +146,16 @@
    Some default placeholders for the framework.
 ========================================================================== */
 /* line 6, scss/config/_placeholders.scss */
-.cf, .gallery, .grid, .pagination, div.table, form .field {
+.cf, .grid, .pagination, div.table, form .field {
   zoom: 1;
 }
 /* line 8, scss/config/_placeholders.scss */
-.cf:before, .gallery:before, .grid:before, .pagination:before, div.table:before, form .field:before, .cf:after, .gallery:after, .grid:after, .pagination:after, div.table:after, form .field:after {
+.cf:before, .grid:before, .pagination:before, div.table:before, form .field:before, .cf:after, .grid:after, .pagination:after, div.table:after, form .field:after {
   content: "";
   display: table;
 }
 /* line 12, scss/config/_placeholders.scss */
-.cf:after, .gallery:after, .grid:after, .pagination:after, div.table:after, form .field:after {
+.cf:after, .grid:after, .pagination:after, div.table:after, form .field:after {
   clear: both;
 }
 
@@ -970,7 +970,22 @@ ul.horizontal-block li {
    HTML elements
 ========================================================================== */
 /* -- Source Formatting -- */
-/* line 6, scss/base/_defaults.scss */
+/* line 7, scss/base/_defaults.scss */
+p code {
+  color: #5bb75b;
+}
+
+/* line 11, scss/base/_defaults.scss */
+code {
+  font-weight: 400;
+  font-family: "source-code-pro", monospace;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+/* line 19, scss/base/_defaults.scss */
 pre {
   padding: 24px;
   padding: 1.5rem;
@@ -980,14 +995,9 @@ pre {
   border-color: #34495E;
   border-color: rgba(52, 73, 94, 0.2);
   border-radius: 3px;
-  font: 400 1em/1 "source-code-pro", monospace;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
 }
 
-/* line 19, scss/base/_defaults.scss */
+/* line 27, scss/base/_defaults.scss */
 kbd {
   padding: 12px 24px;
   padding: 0.75rem 1.5rem;
@@ -1001,7 +1011,7 @@ kbd {
 }
 
 /* -- Images -- */
-/* line 31, scss/base/_defaults.scss */
+/* line 39, scss/base/_defaults.scss */
 figure figcaption {
   margin-top: 12px;
   margin-top: 0.75rem;
@@ -1009,13 +1019,13 @@ figure figcaption {
 }
 
 /* -- Lists -- */
-/* line 39, scss/base/_defaults.scss */
+/* line 47, scss/base/_defaults.scss */
 ol.code {
   margin: 0 0 0 3em;
   font: 400 1em/1.7143 "source-code-pro", monospace;
   color: #dddddd;
 }
-/* line 44, scss/base/_defaults.scss */
+/* line 52, scss/base/_defaults.scss */
 ol.code li {
   padding: 0 0.5em;
   margin: 0 0 -1px 0;
@@ -1024,21 +1034,21 @@ ol.code li {
   background: #F6F6F6;
 }
 
-/* line 52, scss/base/_defaults.scss */
+/* line 60, scss/base/_defaults.scss */
 ul {
   list-style-type: disc;
 }
 
-/* line 56, scss/base/_defaults.scss */
+/* line 64, scss/base/_defaults.scss */
 ul li, ol li {
   margin: 0.3em 0;
 }
-/* line 59, scss/base/_defaults.scss */
+/* line 67, scss/base/_defaults.scss */
 ul ul, ul ol, ol ul, ol ol {
   list-style-type: circle;
 }
 
-/* line 64, scss/base/_defaults.scss */
+/* line 72, scss/base/_defaults.scss */
 dl dd {
   margin: 0.3em 0;
   text-indent: 24px;
@@ -1046,14 +1056,14 @@ dl dd {
 }
 
 /* -- Rules -- */
-/* line 71, scss/base/_defaults.scss */
+/* line 79, scss/base/_defaults.scss */
 hr {
   margin: 2em 0;
   border: 1px solid;
   border-color: #EFEFEF;
   border-color: rgba(0, 0, 0, 0.085);
 }
-/* line 75, scss/base/_defaults.scss */
+/* line 83, scss/base/_defaults.scss */
 hr.dots {
   height: 0;
   margin: 24px 0px 48px;
@@ -1066,7 +1076,7 @@ hr.dots {
   font-size: 2.5rem;
   text-align: center;
 }
-/* line 84, scss/base/_defaults.scss */
+/* line 92, scss/base/_defaults.scss */
 hr.dots:after {
   height: 0;
   padding-left: 24px;
@@ -1078,14 +1088,14 @@ hr.dots:after {
 }
 
 /* -- Selection -- */
-/* line 95, scss/base/_defaults.scss */
+/* line 103, scss/base/_defaults.scss */
 ::-moz-selection {
   background: #cd4b45;
   color: white;
   text-shadow: none;
 }
 
-/* line 100, scss/base/_defaults.scss */
+/* line 108, scss/base/_defaults.scss */
 ::selection {
   background: #cd4b45;
   color: white;
@@ -1399,17 +1409,16 @@ blockquote:after, q:after {
 /* line 6, scss/base/_buttons.scss */
 .btn {
   height: auto;
-  padding: 0.5em 1em;
+  padding: 8.4px 18px;
+  padding: 0.525rem 1.125rem;
   display: inline-block;
   zoom: 1;
   *display: inline;
   /* IE Fix */
-  border: 0 !important;
-  /* Important so alert.btn doesn't get an underline */
   border-radius: 3px;
   vertical-align: middle;
   cursor: pointer;
-  color: #FFF;
+  color: white;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   -webkit-transition: background 500ms ease;
@@ -1417,113 +1426,125 @@ blockquote:after, q:after {
   -o-transition: background 500ms ease;
   transition: background 500ms ease;
 }
-/* line 19, scss/base/_buttons.scss */
-.btn.grad {
-  border: 1px solid !important;
-  /* Important so alert.btn doesn't get an underline */
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important;
-  /* Important so alert.btn doesn't get an underline */
-}
-/* line 24, scss/base/_buttons.scss */
+/* line 17, scss/base/_buttons.scss */
 .btn.disabled {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(70))";
   filter: alpha(opacity=70);
   opacity: 0.7;
   cursor: default;
-  background-image: none !important;
 }
-/* line 29, scss/base/_buttons.scss */
-.btn.disabled:hover {
-  background-image: none !important;
-}
-/* line 32, scss/base/_buttons.scss */
-.btn.disabled:active {
-  background-image: none !important;
-  box-shadow: none;
-}
-/* line 36, scss/base/_buttons.scss */
+/* line 21, scss/base/_buttons.scss */
 .btn:hover {
-  color: #FFF !important;
+  color: white;
   text-decoration: none;
 }
-/* line 40, scss/base/_buttons.scss */
+/* line 25, scss/base/_buttons.scss */
 .btn:active {
-  color: #FFF !important;
+  color: white;
   box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* -- Call to Action Standard -- */
-/* line 48, scss/base/_buttons.scss */
+/* -- Abstractions -- */
+/* line 33, scss/base/_buttons.scss */
 .btn.standard {
   background: #006dcc;
 }
-/* line 50, scss/base/_buttons.scss */
-.btn.standard.grad {
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#007be6), to(#005299));
-  background-image: -webkit-linear-gradient(top, #007be6, #005299);
-  background-image: -o-linear-gradient(top, #007be6, #005299);
-  background-image: linear-gradient(to bottom, #007be6, #005299);
-  background-image: -moz-linear-gradient(top, #007be6, #005299);
-  background-repeat: repeat-x;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-}
-/* line 61, scss/base/_buttons.scss */
-.btn.standard:hover {
-  background: #005299;
-}
-/* line 64, scss/base/_buttons.scss */
+/* line 35, scss/base/_buttons.scss */
 .btn.standard.disabled:hover {
   background: #006dcc;
 }
-
-/* -- Call to Action Positive & Negative -- */
-/* line 71, scss/base/_buttons.scss */
-.btn.positive {
-  background: #006dcc;
-}
-/* line 73, scss/base/_buttons.scss */
-.btn.positive.grad {
-  background-image: -ms-linear-gradient(top, #007be6, #005299);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#007be6), to(#005299));
-  background-image: -webkit-linear-gradient(top, #007be6, #005299);
-  background-image: -o-linear-gradient(top, #007be6, #005299);
-  background-image: -moz-linear-gradient(top, #007be6, #005299);
-  background-image: linear-gradient(top, #007be6, #005299);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($blue_base, 5%)',endColorstr='darken($blue_base, 10%)',GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-}
-/* line 84, scss/base/_buttons.scss */
-.btn.positive:hover {
+/* line 38, scss/base/_buttons.scss */
+.btn.standard:hover {
   background: #005299;
 }
-/* line 87, scss/base/_buttons.scss */
-.btn.positive.disabled:hover {
-  background: #006dcc;
+/* line 42, scss/base/_buttons.scss */
+.btn.positive {
+  background: #5bb75b;
 }
-/* line 90, scss/base/_buttons.scss */
+/* line 44, scss/base/_buttons.scss */
+.btn.positive.disabled:hover {
+  background: #5bb75b;
+}
+/* line 47, scss/base/_buttons.scss */
+.btn.positive:hover {
+  background: #449b44;
+}
+/* line 51, scss/base/_buttons.scss */
 .btn.negative {
   background: #cd4b45;
 }
-/* line 92, scss/base/_buttons.scss */
-.btn.negative.grad {
-  background-image: -ms-linear-gradient(top, #d25e59, #b0352f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d25e59), to(#b0352f));
-  background-image: -webkit-linear-gradient(top, #d25e59, #b0352f);
-  background-image: -o-linear-gradient(top, #d25e59, #b0352f);
-  background-image: -moz-linear-gradient(top, #d25e59, #b0352f);
-  background-image: linear-gradient(top, #d25e59, #b0352f);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='lighten($red_base, 5%)',endColorstr='darken($red_base, 10%)',GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+/* line 53, scss/base/_buttons.scss */
+.btn.negative.disabled:hover {
+  background: #cd4b45;
 }
-/* line 103, scss/base/_buttons.scss */
+/* line 56, scss/base/_buttons.scss */
 .btn.negative:hover {
   background: #b0352f;
 }
-/* line 106, scss/base/_buttons.scss */
-.btn.negative.disabled:hover {
-  background: #cd4b45;
+
+/* line 63, scss/base/_buttons.scss */
+.btn.blue {
+  background: #3498db;
+}
+/* line 65, scss/base/_buttons.scss */
+.btn.blue.disabled:hover {
+  background: #3498db;
+}
+/* line 68, scss/base/_buttons.scss */
+.btn.blue:hover {
+  background: #217dbb;
+}
+
+/* line 63, scss/base/_buttons.scss */
+.btn.green {
+  background: #2ecc71;
+}
+/* line 65, scss/base/_buttons.scss */
+.btn.green.disabled:hover {
+  background: #2ecc71;
+}
+/* line 68, scss/base/_buttons.scss */
+.btn.green:hover {
+  background: #25a25a;
+}
+
+/* line 63, scss/base/_buttons.scss */
+.btn.orange {
+  background: #e67e22;
+}
+/* line 65, scss/base/_buttons.scss */
+.btn.orange.disabled:hover {
+  background: #e67e22;
+}
+/* line 68, scss/base/_buttons.scss */
+.btn.orange:hover {
+  background: #bf6516;
+}
+
+/* line 63, scss/base/_buttons.scss */
+.btn.red {
+  background: #c4122f;
+}
+/* line 65, scss/base/_buttons.scss */
+.btn.red.disabled:hover {
+  background: #c4122f;
+}
+/* line 68, scss/base/_buttons.scss */
+.btn.red:hover {
+  background: #950e24;
+}
+
+/* line 63, scss/base/_buttons.scss */
+.btn.yellow {
+  background: #f1c40f;
+}
+/* line 65, scss/base/_buttons.scss */
+.btn.yellow.disabled:hover {
+  background: #f1c40f;
+}
+/* line 68, scss/base/_buttons.scss */
+.btn.yellow:hover {
+  background: #c29d0b;
 }
 
 /* ==========================================================================
@@ -1664,78 +1685,6 @@ ul.alert.box li {
 .editable + .editable {
   padding-left: 2px;
   margin-left: 2px;
-}
-
-/* ==========================================================================
-   Gallery
-   Gallery images and captions.
-========================================================================== */
-/* -- Gallery -- */
-/* line 6, scss/base/components/_gallery.scss */
-.gallery {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
-}
-/* line 9, scss/base/components/_gallery.scss */
-.gallery dl dd {
-  text-indent: 0;
-}
-/* line 12, scss/base/components/_gallery.scss */
-.gallery .gallery-item {
-  width: 33.3333%;
-  /* Default width */
-  padding: 1%;
-  float: left;
-  overflow: hidden;
-  vertical-align: top;
-  list-style: none;
-  letter-spacing: normal;
-  text-align: center;
-}
-/* line 21, scss/base/components/_gallery.scss */
-.gallery .gallery-item a {
-  display: block;
-}
-/* line 24, scss/base/components/_gallery.scss */
-.gallery .gallery-item img {
-  border-radius: 3px;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  -o-box-sizing: content-box;
-  -ms-box-sizing: content-box;
-  box-sizing: content-box;
-}
-/* line 33, scss/base/components/_gallery.scss */
-.gallery .gallery-item .gallery-caption {
-  text-align: center;
-}
-/* line 35, scss/base/components/_gallery.scss */
-.gallery .gallery-item .gallery-caption a {
-  display: inline;
-}
-/* line 40, scss/base/components/_gallery.scss */
-.gallery.image-row-1 .gallery-item, .gallery.gallery-columns-1 .gallery-item {
-  width: 100%;
-}
-/* line 44, scss/base/components/_gallery.scss */
-.gallery.image-row-2 .gallery-item, .gallery.gallery-columns-2 .gallery-item {
-  width: 50%;
-}
-/* line 48, scss/base/components/_gallery.scss */
-.gallery.image-row-3 .gallery-item, .gallery.gallery-columns-3 .gallery-item {
-  width: 33.333%;
-}
-/* line 52, scss/base/components/_gallery.scss */
-.gallery.image-row-4 .gallery-item, .gallery.gallery-columns-4 .gallery-item {
-  width: 25%;
-}
-/* line 56, scss/base/components/_gallery.scss */
-.gallery.image-row-5 .gallery-item, .gallery.gallery-columns-5 .gallery-item {
-  width: 20%;
-}
-/* line 60, scss/base/components/_gallery.scss */
-.gallery.image-row-6 .gallery-item, .gallery.gallery-columns-6 .gallery-item {
-  width: 16.666%;
 }
 
 /* ==========================================================================
@@ -2381,27 +2330,25 @@ ul.alert.box li {
 /* -- Pagination -- */
 /* line 6, scss/base/components/_pagination.scss */
 .pagination {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
   font-size: 12px;
   font-size: 0.75rem;
 }
-/* line 10, scss/base/components/_pagination.scss */
+/* line 9, scss/base/components/_pagination.scss */
 .pagination .page-numbers {
-  padding: 12px 24px;
-  padding: 0.75rem 1.5rem;
-  margin-left: -4px;
+  padding: 6px 12px;
+  padding: 0.375rem 0.75rem;
+  margin-left: -3px;
   border: 1px solid #ccc;
   display: inline-block;
   zoom: 1;
   *display: inline;
   /* IE Fix */
 }
-/* line 16, scss/base/components/_pagination.scss */
+/* line 14, scss/base/components/_pagination.scss */
 .pagination .page-numbers:first-child {
   margin-left: 0;
 }
-/* line 19, scss/base/components/_pagination.scss */
+/* line 17, scss/base/components/_pagination.scss */
 .pagination .page-numbers.current {
   color: #cd4b45;
 }
@@ -2703,31 +2650,46 @@ form .right {
   float: right;
 }
 /* line 20, scss/base/forms/_base.scss */
+form .note {
+  font-size: 90%;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(65))";
+  filter: alpha(opacity=65);
+  opacity: 0.65;
+}
+/* line 24, scss/base/forms/_base.scss */
+form span.note {
+  margin-left: 12px;
+  margin-left: 0.75rem;
+}
+/* line 29, scss/base/forms/_base.scss */
 form .field {
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
   position: relative;
 }
-/* line 24, scss/base/forms/_base.scss */
-form .field .note {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(65))";
-  filter: alpha(opacity=65);
-  opacity: 0.65;
-}
-/* line 27, scss/base/forms/_base.scss */
+/* line 33, scss/base/forms/_base.scss */
 form .field.left, form .field.right {
   margin-bottom: 0;
 }
-/* line 33, scss/base/forms/_base.scss */
+/* line 39, scss/base/forms/_base.scss */
 form label, form .label {
   margin: 0;
   position: relative;
 }
-/* line 36, scss/base/forms/_base.scss */
+/* line 42, scss/base/forms/_base.scss */
 form label abbr, form .label abbr {
   color: #c4122f;
 }
-/* line 42, scss/base/forms/_base.scss */
+/* line 45, scss/base/forms/_base.scss */
+form label input[type="radio"], form label input[type="checkbox"], form .label input[type="radio"], form .label input[type="checkbox"] {
+  margin-left: 6px;
+  margin-left: 0.375rem;
+}
+/* line 49, scss/base/forms/_base.scss */
+form label:first-child input[type="radio"], form label:first-child input[type="checkbox"], form .label:first-child input[type="radio"], form .label:first-child input[type="checkbox"] {
+  margin-left: 0;
+}
+/* line 56, scss/base/forms/_base.scss */
 form input, form .input, form select, form textarea, form button {
   height: 40px;
   border: 1px solid #dedede;
@@ -2742,25 +2704,25 @@ form input, form .input, form select, form textarea, form button {
   -o-transition: color 500ms ease, background 500ms ease, border-color 500ms ease;
   transition: color 500ms ease, background 500ms ease, border-color 500ms ease;
 }
-/* line 52, scss/base/forms/_base.scss */
+/* line 66, scss/base/forms/_base.scss */
 form input:hover, form input:active, form input:focus, form .input:hover, form .input:active, form .input:focus, form select:hover, form select:active, form select:focus, form textarea:hover, form textarea:active, form textarea:focus, form button:hover, form button:active, form button:focus {
   color: inherit;
 }
-/* line 55, scss/base/forms/_base.scss */
+/* line 69, scss/base/forms/_base.scss */
 form input:hover, form input:active, form .input:hover, form .input:active, form select:hover, form select:active, form textarea:hover, form textarea:active, form button:hover, form button:active {
   border-color: #cecece;
 }
-/* line 58, scss/base/forms/_base.scss */
+/* line 72, scss/base/forms/_base.scss */
 form input:focus, form .input:focus, form select:focus, form textarea:focus, form button:focus {
   border-color: #b0b0b0;
 }
-/* line 61, scss/base/forms/_base.scss */
+/* line 75, scss/base/forms/_base.scss */
 form input[readonly], form input.readonly, form input.readonly:hover, form input.readonly:active, form .input[readonly], form .input.readonly, form .input.readonly:hover, form .input.readonly:active, form select[readonly], form select.readonly, form select.readonly:hover, form select.readonly:active, form textarea[readonly], form textarea.readonly, form textarea.readonly:hover, form textarea.readonly:active, form button[readonly], form button.readonly, form button.readonly:hover, form button.readonly:active {
   border-color: #dedede;
   cursor: no-drop;
   background: #e8e8e8;
 }
-/* line 66, scss/base/forms/_base.scss */
+/* line 80, scss/base/forms/_base.scss */
 form input[disabled], form input.disabled, form input.disabled:hover, form input.disabled:active, form .input[disabled], form .input.disabled, form .input.disabled:hover, form .input.disabled:active, form select[disabled], form select.disabled, form select.disabled:hover, form select.disabled:active, form textarea[disabled], form textarea.disabled, form textarea.disabled:hover, form textarea.disabled:active, form button[disabled], form button.disabled, form button.disabled:hover, form button.disabled:active {
   border-color: #cecece;
   cursor: no-drop;
@@ -2769,7 +2731,7 @@ form input[disabled], form input.disabled, form input.disabled:hover, form input
   opacity: 0.5;
   background: #dedede;
 }
-/* line 75, scss/base/forms/_base.scss */
+/* line 89, scss/base/forms/_base.scss */
 form input, form .input, form select, form textarea {
   padding: 4.8px 9.6px;
   padding: 0.3rem 0.6rem;
@@ -2777,38 +2739,38 @@ form input, form .input, form select, form textarea {
   font-size: 80%;
   background: white;
 }
-/* line 83, scss/base/forms/_base.scss */
+/* line 97, scss/base/forms/_base.scss */
 form textarea {
   min-height: 100px;
   height: 125px;
 }
-/* line 89, scss/base/forms/_base.scss */
+/* line 103, scss/base/forms/_base.scss */
 form.form-block input[type="checkbox"], form.form-block input[type="radio"], form.form-inline-block input[type="checkbox"], form.form-inline-block input[type="radio"], form input[type="radio"], form input[type="checkbox"] {
   width: auto;
   height: auto;
-  margin: 0 5px 0 0;
+  margin-right: 5px;
   border: 0;
   display: inline;
   vertical-align: middle;
 }
-/* line 96, scss/base/forms/_base.scss */
+/* line 110, scss/base/forms/_base.scss */
 form.form-block input[type="checkbox"] + label, form.form-block input[type="radio"] + label, form.form-inline-block input[type="checkbox"] + label, form.form-inline-block input[type="radio"] + label, form input[type="radio"] + label, form input[type="checkbox"] + label {
   margin: 0px 24px 0px 4.8px;
   margin: 0px 1.5rem 0px 0.3rem;
   vertical-align: middle;
 }
-/* line 103, scss/base/forms/_base.scss */
+/* line 117, scss/base/forms/_base.scss */
 form button, form .button {
   padding: 0px 28.8px;
   padding: 0px 1.8rem;
   text-align: center;
   background: #e8e8e8;
 }
-/* line 107, scss/base/forms/_base.scss */
+/* line 121, scss/base/forms/_base.scss */
 form button:hover, form button:active, form .button:hover, form .button:active {
   background: #e3e3e3;
 }
-/* line 110, scss/base/forms/_base.scss */
+/* line 124, scss/base/forms/_base.scss */
 form button:active, form .button:active {
   background: #d9d9d9;
 }
@@ -2827,12 +2789,17 @@ form.form-block input, form.form-block .input, form.form-block select, form.form
   width: 100%;
   display: block;
 }
-/* line 21, scss/base/forms/_form-block.scss */
+/* line 16, scss/base/forms/_form-block.scss */
+form.form-block input ~ .note, form.form-block .input ~ .note, form.form-block select ~ .note, form.form-block textarea ~ .note, form.form-block .field-container ~ .note {
+  margin-left: 0;
+  display: block;
+}
+/* line 25, scss/base/forms/_form-block.scss */
 form.form-block .field-container label {
   margin-right: 6px;
   margin-right: 0.375rem;
 }
-/* line 24, scss/base/forms/_form-block.scss */
+/* line 28, scss/base/forms/_form-block.scss */
 form.form-block .field-container input, form.form-block .field-container .input, form.form-block .field-container select, form.form-block .field-container textarea {
   margin-left: 2%;
   display: inline-block;
@@ -2841,11 +2808,11 @@ form.form-block .field-container input, form.form-block .field-container .input,
   /* IE Fix */
   vertical-align: middle;
 }
-/* line 28, scss/base/forms/_form-block.scss */
+/* line 32, scss/base/forms/_form-block.scss */
 form.form-block .field-container input:first-child, form.form-block .field-container .input:first-child, form.form-block .field-container select:first-child, form.form-block .field-container textarea:first-child {
   margin-left: 0;
 }
-/* line 33, scss/base/forms/_form-block.scss */
+/* line 37, scss/base/forms/_form-block.scss */
 form.form-block .field-container span + input, form.form-block .field-container span .input, form.form-block .field-container span select, form.form-block .field-container span textarea, form.form-block .field-container span .field-container {
   margin: 0;
 }
@@ -2883,7 +2850,7 @@ form.form-inline-block input, form.form-inline-block .input, form.form-inline-bl
   margin: 0 0 0 -4px;
 }
 /* line 28, scss/base/forms/_form-inline-block.scss */
-form.form-inline-block input + .note, form.form-inline-block .input + .note, form.form-inline-block select + .note, form.form-inline-block textarea + .note, form.form-inline-block .field-container + .note {
+form.form-inline-block input ~ .note, form.form-inline-block .input ~ .note, form.form-inline-block select ~ .note, form.form-inline-block textarea ~ .note, form.form-inline-block .field-container ~ .note {
   margin-left: 35%;
 }
 /* line 36, scss/base/forms/_form-inline-block.scss */

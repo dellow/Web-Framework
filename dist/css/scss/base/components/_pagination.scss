@@ -4,19 +4,18 @@
 ========================================================================== */
 /* -- Pagination -- */
 .pagination {
-	@include nudge(margin-bottom, 1);
 	@extend %cf;
 	@include rem(font-size, 12px);
 	.page-numbers {
-		@include nudge(padding, 0.5 1);
-		margin-left: -4px;
+		@include nudge(padding, 0.25 0.5);
+		margin-left: -3px;
 		border: 1px solid #ccc;
 		@include inline-block;
-	}
-	.page-numbers:first-child {
-		margin-left: 0;
-	}
-	.page-numbers.current {
-		color: $colour_text_link
+		&:first-child {
+			margin-left: 0;
+		}
+		&.current {
+			color: $colour_text_link
+		}
 	}
 }

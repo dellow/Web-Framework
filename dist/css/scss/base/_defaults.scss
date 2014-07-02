@@ -3,6 +3,19 @@
    HTML elements
 ========================================================================== */
 /* -- Source Formatting -- */
+p {
+	code {
+		color: $green_base;
+	}
+}
+code {
+	font-weight: $font_weight_regular;
+	font-family: $font_family_monospaced;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap  : break-word;
+}
 pre {
 	@include nudge(padding, 1);
 	margin: 0.5em 0;
@@ -10,11 +23,6 @@ pre {
 	position: relative;
 	border-color: #34495E; border-color: rgba(52, 73, 94, 0.2);
 	border-radius: $border_radius_base;
-	font: 400 1em/1 $font_family_monospaced;
-	white-space: pre-wrap;
-	white-space: -moz-pre-wrap;
-	white-space: -o-pre-wrap;
-	word-wrap  : break-word;
 }
 kbd {
 	@include nudge(padding, 0.5 1);

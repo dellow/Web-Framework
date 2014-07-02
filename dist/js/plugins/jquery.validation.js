@@ -558,15 +558,8 @@
                     msg  : msg
                 }
             }
-            // Select fields
-            else if(field.attr('type') === 'select' && field.val() === '' || field.val() === 'undefined' || field.val() === undefined || field.val() === '-'){
-                return obj = {
-                    input: field,
-                    msg  : msg
-                }
-            }
             // Check for existence
-            else if(field.val() === '' || field.val() === 'undefined' || field.val() === undefined){
+            else if(field.val() === '' || field.val() === 'undefined' || field.val() === undefined || field.val() === '-'){
                 return obj = {
                     input: field,
                     msg  : msg

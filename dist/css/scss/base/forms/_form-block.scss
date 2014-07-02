@@ -13,6 +13,10 @@ form {
 		input, .input, select, textarea, .field-container {
 			width: 100%;
 			display: block;
+			~ .note {
+				margin-left: 0;
+				display: block;
+			}
 		}
 		input[type="checkbox"], input[type="radio"] {
 			@extend %radio-checkbox;
