@@ -26,7 +26,7 @@ a, button {
 
 /* -- Styling classes -- */
 .hatnote {
-	@include rem(padding-left, 20px);
+	@include nudge(padding-left, 1);
 	font-style: italic;
 }
 
@@ -43,7 +43,7 @@ p {
 }
 
 /* -- Lists -- */
-ul, ol, dl {
+ul, ol {
 	margin-left: $ul_indent_base;
 }
 
@@ -71,25 +71,4 @@ h5 {
 }
 h6 {
 	@include rhythm($font_size_h6);
-}
-
-/* -- Quotes -- */
-blockquote {
-	padding: 0 10px;
-	position: relative;
-	font-family: $font_family_serif;
-	font-style: italic;
-}
-blockquote, q {
-	&:before, &:after {
-		position: absolute;
-	}
-	&:before {
-		left: 0;
-		content: "\201c";
-	}
-	&:after {
-		right: 0;
-		content: "\201d";
-	}
 }

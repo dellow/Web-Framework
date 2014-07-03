@@ -983,100 +983,154 @@ code {
   white-space: -moz-pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
+  -webkit-tab-size: 4;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
 }
 
-/* line 19, scss/base/_defaults.scss */
+/* line 23, scss/base/_defaults.scss */
 pre {
+  padding: 12px 18px;
+  padding: 0.75rem 1.125rem;
+  border: 1px solid #e0e0e0;
+  position: relative;
+  border-radius: 3px;
+  background: #ededed;
+}
+
+/* line 30, scss/base/_defaults.scss */
+kbd {
+  padding: 6px 12px;
+  padding: 0.375rem 0.75rem;
+  margin: 0 0.25em;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  /* IE Fix */
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  color: #666666;
+  background: #ededed;
+}
+
+/* -- Citation -- */
+/* line 42, scss/base/_defaults.scss */
+cite .profession {
+  font-weight: 700;
+}
+
+/* -- Quotes -- */
+/* line 48, scss/base/_defaults.scss */
+blockquote {
   padding: 24px;
   padding: 1.5rem;
-  margin: 0.5em 0;
-  border: 1px solid;
-  position: relative;
-  border-color: #34495E;
-  border-color: rgba(52, 73, 94, 0.2);
+  border: 1px solid #e0e0e0;
   border-radius: 3px;
+  color: #666666;
+  text-align: center;
+  background: #ededed;
+}
+/* line 55, scss/base/_defaults.scss */
+blockquote cite {
+  margin-top: 12px;
+  margin-top: 0.75rem;
+  display: block;
+  font-style: normal;
 }
 
-/* line 27, scss/base/_defaults.scss */
-kbd {
-  padding: 12px 24px;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid #e6e6e6;
-  border-radius: 3px;
-  font-size: 18px;
-  font-size: 1.125rem;
-  line-height: 90%;
-  color: #666666;
-  background-color: #f6f6f6;
+/* line 61, scss/base/_defaults.scss */
+blockquote, q {
+  font-family: Georgia;
+}
+
+/* line 64, scss/base/_defaults.scss */
+blockquote > *:not(cite), q {
+  margin: 0 !important;
+}
+/* line 66, scss/base/_defaults.scss */
+blockquote > *:not(cite):before, q:before {
+  content: open-quote;
+}
+/* line 69, scss/base/_defaults.scss */
+blockquote > *:not(cite):after, q:after {
+  content: close-quote;
 }
 
 /* -- Images -- */
-/* line 39, scss/base/_defaults.scss */
+/* line 76, scss/base/_defaults.scss */
 figure figcaption {
   margin-top: 12px;
   margin-top: 0.75rem;
   font-size: 12px;
+  font-size: 0.75rem;
 }
 
 /* -- Lists -- */
-/* line 47, scss/base/_defaults.scss */
+/* line 84, scss/base/_defaults.scss */
 ol.code {
-  margin: 0 0 0 3em;
-  font: 400 1em/1.7143 "source-code-pro", monospace;
-  color: #dddddd;
+  padding: 12px 18px;
+  padding: 0.75rem 1.125rem;
+  border: 1px solid #e0e0e0;
+  margin: 0;
+  position: relative;
+  border-radius: 3px;
+  font-weight: 400;
+  font-family: "source-code-pro", monospace;
+  background: #ededed;
 }
-/* line 52, scss/base/_defaults.scss */
+/* line 93, scss/base/_defaults.scss */
 ol.code li {
-  padding: 0 0.5em;
-  margin: 0 0 -1px 0;
-  border-top: 1px solid white;
+  margin-bottom: 0;
   list-style: decimal-leading-zero;
-  background: #F6F6F6;
+  list-style-position: inside;
 }
 
-/* line 60, scss/base/_defaults.scss */
+/* line 100, scss/base/_defaults.scss */
 ul {
   list-style-type: disc;
 }
 
-/* line 64, scss/base/_defaults.scss */
+/* line 104, scss/base/_defaults.scss */
 ul li, ol li {
-  margin: 0.3em 0;
+  margin-bottom: 2.4px;
+  margin-bottom: 0.15rem;
 }
-/* line 67, scss/base/_defaults.scss */
+/* line 107, scss/base/_defaults.scss */
 ul ul, ul ol, ol ul, ol ol {
   list-style-type: circle;
 }
 
-/* line 72, scss/base/_defaults.scss */
+/* line 112, scss/base/_defaults.scss */
 dl dd {
-  margin: 0.3em 0;
+  margin-bottom: 2.4px;
+  margin-bottom: 0.15rem;
   text-indent: 24px;
   text-indent: 1.5rem;
 }
 
 /* -- Rules -- */
-/* line 79, scss/base/_defaults.scss */
+/* line 119, scss/base/_defaults.scss */
 hr {
   margin: 2em 0;
   border: 1px solid;
   border-color: #EFEFEF;
   border-color: rgba(0, 0, 0, 0.085);
 }
-/* line 83, scss/base/_defaults.scss */
+/* line 123, scss/base/_defaults.scss */
 hr.dots {
   height: 0;
+  padding: 0;
   margin: 24px 0px 48px;
   margin: 1.5rem 0px 3rem;
   border: 0;
-  padding: 0;
   display: block;
   clear: both;
   font-size: 40px;
   font-size: 2.5rem;
   text-align: center;
 }
-/* line 92, scss/base/_defaults.scss */
+/* line 132, scss/base/_defaults.scss */
 hr.dots:after {
   height: 0;
   padding-left: 24px;
@@ -1088,14 +1142,14 @@ hr.dots:after {
 }
 
 /* -- Selection -- */
-/* line 103, scss/base/_defaults.scss */
+/* line 143, scss/base/_defaults.scss */
 ::-moz-selection {
   background: #cd4b45;
   color: white;
   text-shadow: none;
 }
 
-/* line 108, scss/base/_defaults.scss */
+/* line 148, scss/base/_defaults.scss */
 ::selection {
   background: #cd4b45;
   color: white;
@@ -1183,8 +1237,8 @@ a:active, button:active {
 /* -- Styling classes -- */
 /* line 28, scss/base/_rhythm.scss */
 .hatnote {
-  padding-left: 20px;
-  padding-left: 1.25rem;
+  padding-left: 24px;
+  padding-left: 1.5rem;
   font-style: italic;
 }
 
@@ -1210,7 +1264,7 @@ p:first-of-type {
 
 /* -- Lists -- */
 /* line 46, scss/base/_rhythm.scss */
-ul, ol, dl {
+ul, ol {
   margin-left: 1.2em;
 }
 
@@ -1277,30 +1331,6 @@ h6 {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.71429;
-}
-
-/* -- Quotes -- */
-/* line 77, scss/base/_rhythm.scss */
-blockquote {
-  padding: 0 10px;
-  position: relative;
-  font-family: Georgia;
-  font-style: italic;
-}
-
-/* line 84, scss/base/_rhythm.scss */
-blockquote:before, blockquote:after, q:before, q:after {
-  position: absolute;
-}
-/* line 87, scss/base/_rhythm.scss */
-blockquote:before, q:before {
-  left: 0;
-  content: "\201c";
-}
-/* line 91, scss/base/_rhythm.scss */
-blockquote:after, q:after {
-  right: 0;
-  content: "\201d";
 }
 
 /* ==========================================================================
@@ -2421,8 +2451,6 @@ ul.alert.box li {
 /* line 46, scss/base/components/_progress-bars.scss */
 .progress {
   height: 20px;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
   overflow: hidden;
   border-radius: 3px;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -2436,16 +2464,10 @@ ul.alert.box li {
   background-repeat: repeat-x;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#f9f9f9', GradientType=0);
 }
-
-/* line 63, scss/base/components/_progress-bars.scss */
+/* line 61, scss/base/components/_progress-bars.scss */
 .progress .bar {
   width: 0;
   height: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
   color: white;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -2459,7 +2481,7 @@ ul.alert.box li {
   transition: width 0.6s ease;
 }
 
-/* line 82, scss/base/components/_progress-bars.scss */
+/* line 74, scss/base/components/_progress-bars.scss */
 .progress-striped .bar {
   background-color: #149bdf !important;
   background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -2474,7 +2496,7 @@ ul.alert.box li {
   background-size: 40px 40px;
 }
 
-/* line 95, scss/base/components/_progress-bars.scss */
+/* line 87, scss/base/components/_progress-bars.scss */
 .progress.active .bar {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
   -moz-animation: progress-bar-stripes 2s linear infinite;
@@ -2483,7 +2505,7 @@ ul.alert.box li {
   animation: progress-bar-stripes 2s linear infinite;
 }
 
-/* line 102, scss/base/components/_progress-bars.scss */
+/* line 94, scss/base/components/_progress-bars.scss */
 .progress-danger .bar {
   background-color: #dd514c !important;
   background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
@@ -2496,7 +2518,7 @@ ul.alert.box li {
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ee5f5b', endColorstr='#c43c35', GradientType=0);
 }
 
-/* line 113, scss/base/components/_progress-bars.scss */
+/* line 105, scss/base/components/_progress-bars.scss */
 .progress-danger.progress-striped .bar {
   background-color: #ee5f5b !important;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
@@ -2507,7 +2529,7 @@ ul.alert.box li {
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
-/* line 122, scss/base/components/_progress-bars.scss */
+/* line 114, scss/base/components/_progress-bars.scss */
 .progress-success .bar {
   background-color: #5eb95e !important;
   background-image: -moz-linear-gradient(top, #62c462, #57a957);
@@ -2520,7 +2542,7 @@ ul.alert.box li {
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#62c462', endColorstr='#57a957', GradientType=0);
 }
 
-/* line 133, scss/base/components/_progress-bars.scss */
+/* line 125, scss/base/components/_progress-bars.scss */
 .progress-success.progress-striped .bar {
   background-color: #62c462 !important;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
@@ -2531,7 +2553,7 @@ ul.alert.box li {
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
-/* line 142, scss/base/components/_progress-bars.scss */
+/* line 134, scss/base/components/_progress-bars.scss */
 .progress-info .bar {
   background-color: #4bb1cf !important;
   background-image: -moz-linear-gradient(top, #5bc0de, #339bb9);
@@ -2544,7 +2566,7 @@ ul.alert.box li {
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#5bc0de', endColorstr='#339bb9', GradientType=0);
 }
 
-/* line 153, scss/base/components/_progress-bars.scss */
+/* line 145, scss/base/components/_progress-bars.scss */
 .progress-info.progress-striped .bar {
   background-color: #5bc0de !important;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
@@ -2555,7 +2577,7 @@ ul.alert.box li {
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
-/* line 162, scss/base/components/_progress-bars.scss */
+/* line 154, scss/base/components/_progress-bars.scss */
 .progress-warning .bar {
   background-color: #faa732 !important;
   background-image: -moz-linear-gradient(top, #fbb450, #f89406);
@@ -2568,7 +2590,7 @@ ul.alert.box li {
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fbb450', endColorstr='#f89406', GradientType=0);
 }
 
-/* line 173, scss/base/components/_progress-bars.scss */
+/* line 165, scss/base/components/_progress-bars.scss */
 .progress-warning.progress-striped .bar {
   background-color: #fbb450 !important;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
@@ -2601,7 +2623,7 @@ div.table .col:first-child {
 }
 
 /* -- Normal Tables -- */
-/* line 21, scss/base/components/_tables.scss */
+/* line 22, scss/base/components/_tables.scss */
 table.table {
   width: 100%;
   border: 1px solid #dddddd;
@@ -2609,11 +2631,11 @@ table.table {
   border-collapse: separate;
   border-spacing: 0;
 }
-/* line 28, scss/base/components/_tables.scss */
+/* line 29, scss/base/components/_tables.scss */
 table.table thead th {
   border-top: 0;
 }
-/* line 32, scss/base/components/_tables.scss */
+/* line 33, scss/base/components/_tables.scss */
 table.table td, table.table th {
   padding: 5px;
   border-left: 1px solid #f2f2f2;
@@ -2621,13 +2643,25 @@ table.table td, table.table th {
   text-align: center;
   vertical-align: middle;
 }
-/* line 38, scss/base/components/_tables.scss */
+/* line 39, scss/base/components/_tables.scss */
 table.table td:first-child, table.table th:first-child {
   border-left: 0;
 }
-/* line 45, scss/base/components/_tables.scss */
-table.table.table-striped tbody tr:nth-child(odd) {
-  background: #f9f9f9;
+/* line 47, scss/base/components/_tables.scss */
+table.table-highlight-horizontal tbody tr:nth-child(even) {
+  background: #f4f4f4;
+}
+/* line 50, scss/base/components/_tables.scss */
+table.table-highlight-horizontal tbody tr:nth-child(odd) {
+  background: #ededed;
+}
+/* line 60, scss/base/components/_tables.scss */
+table.table-highlight-vertical tbody tr th:nth-child(even), table.table-highlight-vertical tbody tr td:nth-child(even) {
+  background: #f4f4f4;
+}
+/* line 63, scss/base/components/_tables.scss */
+table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight-vertical tbody tr td:nth-child(odd) {
+  background: #ededed;
 }
 
 /* ==========================================================================

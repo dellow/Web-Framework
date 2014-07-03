@@ -18,32 +18,51 @@ div.table {
 }
 
 /* -- Normal Tables -- */
-table.table {
-	width: 100%;
-	border: 1px solid $grey;
-	border-radius: $border_radius_base;
-	border-collapse: separate;
-  	border-spacing: 0;
-	thead {
-		th {
-			border-top: 0;
+table {
+	&.table {
+		width: 100%;
+		border: 1px solid $grey;
+		border-radius: $border_radius_base;
+		border-collapse: separate;
+	  	border-spacing: 0;
+		thead {
+			th {
+				border-top: 0;
+			}
+		}
+		td, th {
+			padding: 5px;
+			border-left: 1px solid #f2f2f2;
+			border-top: 1px solid #d9d9d9;
+			text-align: center;
+			vertical-align: middle;
+			&:first-child {
+				border-left: 0;
+			}
 		}
 	}
-	td, th {
-		padding: 5px;
-		border-left: 1px solid #f2f2f2;
-		border-top: 1px solid #d9d9d9;
-		text-align: center;
-		vertical-align: middle;
-		&:first-child {
-			border-left: 0;
-		}
-	}
-	&.table-striped {
+	&.table-highlight-horizontal {
 		tbody {
 			tr {
+				&:nth-child(even) {
+					background: $colour_even_base;
+				}
 				&:nth-child(odd) {
-					background: #f9f9f9;
+					background: $colour_odd_base;
+				}
+			}
+		}
+	}
+	&.table-highlight-vertical {
+		tbody {
+			tr {
+				th, td {
+					&:nth-child(even) {
+						background: $colour_even_base;
+					}
+					&:nth-child(odd) {
+						background: $colour_odd_base;
+					}
 				}
 			}
 		}

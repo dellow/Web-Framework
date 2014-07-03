@@ -15,46 +15,86 @@ code {
 	white-space: -moz-pre-wrap;
 	white-space: -o-pre-wrap;
 	word-wrap  : break-word;
+	-webkit-tab-size: 4;
+	-moz-tab-size   : 4;
+	-o-tab-size     : 4;
+	tab-size        : 4;
 }
 pre {
-	@include nudge(padding, 1);
-	margin: 0.5em 0;
-	border: 1px solid;
+	@include nudge(padding, 0.5 0.75);
+	border: 1px solid darken($grey_light, 5%);
 	position: relative;
-	border-color: #34495E; border-color: rgba(52, 73, 94, 0.2);
 	border-radius: $border_radius_base;
+	background: $grey_light;
 }
 kbd {
-	@include nudge(padding, 0.5 1);
-	border: 1px solid #e6e6e6;
+	@include nudge(padding, 0.25 0.5);
+	margin: 0 0.25em;
+	@include inline-block;
+	border: 1px solid darken($grey_light, 5%);
 	border-radius: $border_radius_base;
-	@include rem(font-size, 18px);
-	line-height: 90%;
 	color: $grey_medium;
-	background-color: #f6f6f6;
+	background: $grey_light;
+}
+
+/* -- Citation -- */
+cite {
+	.profession {
+		font-weight: $font_weight_bold;
+	}
+}
+
+/* -- Quotes -- */
+blockquote {
+	@include nudge(padding, 1);
+	border: 1px solid darken($grey_light, 5%);
+	border-radius: $border_radius_base;
+	color: $grey_medium;
+	text-align: center;
+	background: $grey_light;
+	cite {
+		@include nudge(margin-top, 0.5);
+		display: block;
+		font-style: normal;
+	}
+}
+blockquote, q {
+	font-family: $font_family_serif;
+}
+blockquote > *:not(cite), q {
+	margin: 0 !important;
+	&:before {
+		content: open-quote;
+	}
+	&:after {
+		content: close-quote;
+	}
 }
 
 /* -- Images -- */
 figure {
 	figcaption {
 		@include nudge(margin-top, 0.5);
-		font-size: $font_size_small;
+		@include rem(font-size, $font_size_small);
 	}
 }
 
 /* -- Lists -- */
 ol {
 	&.code {
-		margin: 0 0 0 3em;
-		font: 400 1em/1.7143 $font_family_monospaced;
-		color: $grey;
-	}
-	&.code li {
-		padding: 0 0.5em;
-		margin: 0 0 -1px 0;
-		border-top: 1px solid $white;
-		list-style: decimal-leading-zero;
-		background: #F6F6F6;
+		@include nudge(padding, 0.5 0.75);
+		border: 1px solid darken($grey_light, 5%);
+		margin: 0;
+		position: relative;
+		border-radius: $border_radius_base;
+		font-weight: $font_weight_regular;
+		font-family: $font_family_monospaced;
+		background: $grey_light;
+		li {
+			margin-bottom: 0;
+			list-style: decimal-leading-zero;
+			list-style-position: inside;
+		}
 	}
 }
 ul {
@@ -62,7 +102,7 @@ ul {
 }
 ul, ol {
 	li {
-		margin: 0.3em 0;
+		@include nudge(margin-bottom, 0.1);
 	}
 	ul, ol {
 		list-style-type: circle;
@@ -70,7 +110,7 @@ ul, ol {
 }
 dl {
 	dd {
-		margin: 0.3em 0;
+		@include nudge(margin-bottom, 0.1);
 		@include nudge(text-indent, 1);
 	}
 }
@@ -82,9 +122,9 @@ hr {
 	border-color: #EFEFEF; border-color: rgba(0, 0, 0, 0.085);
 	&.dots {
 		height: 0;
+		padding: 0;
 		@include nudge(margin, 1 0 2);
 		border: 0;
-		padding: 0;
 		display: block;
 		clear: both;
 		@include rem(font-size, 40px);

@@ -40,11 +40,8 @@ section.guidetable li {
 }
 
 /* Patterns */
-.styleguide .pattern .pattern__view div {
-	margin-bottom: 0;
-}
-.styleguide .pattern .pattern__view div + div {
-	margin-top: 10px;
+.styleguide .pattern .pattern__view:not(.allow-margin) > * {
+	margin: 0;
 }
 .pattern {
 	margin-bottom: 2em;
@@ -52,7 +49,7 @@ section.guidetable li {
 	border-radius: 3px;
 }
 .pattern .pattern__view {
-	padding: 10px 20px;
+	padding: 15px 20px;
 	background: white;
 }
 .pattern .pattern__details {
@@ -73,14 +70,16 @@ form input, form select, form textarea {
 	margin-bottom: 25px;
 }
 
+/* Progress Bars */
+.styleguide .pattern .progress {
+	margin: 10px 0;
+}
+
 /* Grids */
 .styleguide .grid div.module {
 	padding: 10px;
 	margin: 0 0 10px;
 	background: #efefef;
-}
-.styleguide .pattern .pattern__view .grid div + div {
-	margin-top: 0;
 }
 
 /* Colour Swatches */
