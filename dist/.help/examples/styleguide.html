@@ -322,7 +322,6 @@
 
 	<section>
 		<h2>Schema</h2>
-
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Schema: Organization &amp; Postal Address</span></summary>
@@ -361,7 +360,6 @@
 
 	<section>
 		<h2>Images</h2>
-
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title"><code>figure</code></span></summary>
@@ -443,8 +441,8 @@
 
 	<hr>
 
-	<h2>Lists</h2>
 	<section>
+		<h2>Lists</h2>
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title"><code>ul</code></span></summary>
@@ -536,8 +534,8 @@
 
 	<hr>
 
-	<h2>Pagination</h2>
 	<section>
+		<h2>Pagination</h2>
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Pagination</span></summary>
@@ -567,8 +565,8 @@
 
 	<hr>
 
-	<h2>Breadcrumb</h2>
 	<section>
+		<h2>Breadcrumb</h2>
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Breadcrumb</span></summary>
@@ -610,8 +608,8 @@
 
 	<hr>
 
-	<h2>Alerts</h2>
 	<section>
+		<h2>Alerts</h2>
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Error</span></summary>
@@ -671,8 +669,8 @@
 
 	<hr>
 
-	<h2>Progress Bars</h2>
 	<section>
+		<h2>Progress Bars</h2>
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Default</span></summary>
@@ -806,9 +804,9 @@
 
 	<hr>
 
-	<h2>Forms</h2>
-	<p>Please view the additional <a href="forms.html">forms styleguide</a> for a complete form usage example and see all the various abstractions. The forms styleguide also invokes the built in jQuery form validation script and has a PHP mailer example.</p>
 	<section>
+		<h2>Forms</h2>
+		<p>Please view the additional <a href="forms.html">forms styleguide</a> for a complete form usage example and see all the various abstractions. The forms styleguide also invokes the built in jQuery form validation script and has a PHP mailer example.</p>
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title"><code>label</code></span></summary>
@@ -964,9 +962,9 @@
 
 	<hr>
 
-	<h2>Grids</h2>
-	<p>Grids are fully responsive and you can use any combination consecutively without splitting into rows. To initiate a grid just requires a wrapping element with the a class of <code>.grid</code>. Direct descendants of the Grid element should be classed by the required column width. For example a descendant with <code>.col-1-2</code> will create a half length column. You can add any type of column width to complete the grid in any format you wish.</p>
 	<section>
+		<h2>Grids</h2>
+		<p>Grids are fully responsive and you can use any combination consecutively without splitting into rows. To initiate a grid just requires a wrapping element with the a class of <code>.grid</code>. Direct descendants of the Grid element should be classed by the required column width. For example a descendant with <code>.col-1-2</code> will create a half length column. You can add any type of column width to complete the grid in any format you wish.</p>
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Responsive Grid</span></summary>
@@ -1366,8 +1364,8 @@
 
 	<hr>
 
-	<h2>Tables</h2>
 	<section>
+		<h2>Tables</h2>
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Normal Table</span></summary>
@@ -1572,7 +1570,115 @@
 			</div>
 		</div>
 	</section>
+
+	<hr>
+
+	<section>
+		<h2>Sliders / Carousels</h2>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title"></span></summary>
+<pre class="language-markup"><code></code></pre>
+			</details>
+			<div class="pattern__view">
+			</div>
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>Accordions</h2>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Standard Accordion</span></summary>
+<pre class="language-markup"><code></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="accordion" role="tablist" multiselectable="true">
+					<div class="accordion-title" role="tablist" aria-selected="true" aria-expanded="false">
+						<span class="more"></span>Accordion Title #1
+					</div>
+					<div class="accordion-content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>Tabs</h2>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Natural Tabs</span></summary>
+<pre class="language-markup"><code></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="tabs">
+					<ul class="nav" role="tablist">
+						<li role="presentation">
+							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
+						</li>
+					</ul>
+					<div class="system">
+						<div id="tab_id_1" class="tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+							<p>Tab 1 content goes here.</p>
+						</div>
+						<div id="tab_id_2" class="tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+							<p>Tab 2 content goes here.</p>
+						</div>
+						<div id="tab_id_3" class="tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+							<p>Tab 3 content goes here.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Full Width Tabs</span></summary>
+<pre class="language-markup"><code></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="tabs tabs-full-width">
+					<ul class="nav" role="tablist">
+						<li role="presentation">
+							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
+						</li>
+					</ul>
+					<div class="system">
+						<div id="tab_id_1" class="tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+							<p>Tab 1 content goes here.</p>
+						</div>
+						<div id="tab_id_2" class="tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+							<p>Tab 2 content goes here.</p>
+						</div>
+						<div id="tab_id_3" class="tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+							<p>Tab 3 content goes here.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
+<script src="../../js/build/build.js"></script>
 <script src="dist/prism/prism.js"></script>
 </body>
 </html>
