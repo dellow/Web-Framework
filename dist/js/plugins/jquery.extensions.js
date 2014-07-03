@@ -39,10 +39,10 @@
         // Defaults
         var defaults = {
             openfirst           : true,
-            title_class         : 'accordion-title',
-            section_class       : 'accordion-content',
-            active_title_class  : 'active-title',
-            active_section_class: 'active-content'
+            title_class         : 'accordion__title',
+            section_class       : 'accordion__content',
+            active_title_class  : 'active__title',
+            active_section_class: 'active__content'
         };
         // Settings
         var settings = $.extend({}, defaults, options);
@@ -80,10 +80,10 @@
     $.fn.tabs = function(options){
         // Defaults
         var defaults = {
-            tab_class       : 'tab',
-            nav_class       : 'nav',
+            tab_class       : 'tabs__tab',
+            nav_class       : 'tabs__nav',
             target_data_attr: 'tab-target',
-            active_tab_class: 'active-tab'
+            active_tab_class: 'active__tab'
         };
         // Settings
         var settings = $.extend({}, defaults, options);

@@ -4,40 +4,49 @@
 ========================================================================== */
 /* -- Accordion -- */
 .accordion {
-	margin-bottom: 1em;
-	.accordion-title {
-		padding: 0.5em;
-		border: 1px solid #EAEAEA;
+	@include nudge(margin-bottom, 1);
+	.accordion__title {
+		@include nudge(padding, 0.25);
+		border: 1px solid darken($grey_light, 5%);
+		border-top: 0;
 		position: relative;
-		@include transition(color $animation ease, background-color $animation ease);
-		&.arrow {
-			&.active-title:after {
-				top: 45%;
-				right: 2.5%;
-				border-left-color: rgba(249,249,249,0.3);
-				border-top-color: #EAEAEA;
-				border-width: 5px;
-			}
-			&:after {
-				height: 0;
-				width: 0;
-				border-width: 5px;
-				border-left-color: #EAEAEA;
-				position: absolute;
-				top: 41%; right: 2%;
-				content: " ";
-				border: solid transparent;
-				pointer-events: none;
+		background: $grey_light;
+		@include transition(color $animation ease, background $animation ease);
+		button {
+			display: block;
+			.more {
+				&:after {
+					width: 20px;
+					@include inline-block;
+					content: "+";
+				}
 			}
 		}
-		&:hover, &.active-title {
-			color: $colour_text_link;
-			background: rgba(249,249,249,0.3);
+		&.active__title {
+			button {
+				.more {
+					&:after {
+						content: "-";
+					}
+				}
+			}
+		}
+		&:hover, &.active__title {
+			background: darken($grey_light, 3%);
+		}
+		&:active {
+			background: darken($grey_light, 5%);
+		}
+		&:first-child {
+			border-top: 1px solid darken($grey_light, 5%);
 		}
 	}
-	.accordion-content {
-		padding: 1em;
-		border: 1px solid #EAEAEA;
+	.accordion__content {
+		@include nudge(padding, 0.75);
+		border: 1px solid darken($grey_light, 5%);
 		display: none;
+		&.active__content {
+			border-top: 0;
+		}
 	}
 }

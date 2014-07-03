@@ -5,6 +5,9 @@
 
 // jQuery
 var $ = jQuery = require('jquery');
+// Helper
+var helper = require('./helper');
+console.log(helper);
 
 ;(function($, window, undefined){
     'use strict';
@@ -77,8 +80,5 @@ var $ = jQuery = require('jquery');
             menus.init($('.nav-primary'));
         }
     });
-
-    // Export object for use.
-    window.menus = menus;
 
 }(jQuery, window));

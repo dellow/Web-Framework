@@ -15,6 +15,10 @@
 <link rel="stylesheet" href="../../css/main.css" media="all">
 <link rel="stylesheet" href="dist/prism/prism.css">
 <link rel="stylesheet" href="dist/styleguide.css">
+<!-- ============================================================================== -->
+<!--                                                                        HELPERS -->
+<!-- ============================================================================== -->
+<script src="../../js/vendor/modernizr.min.js"></script>
 </head>
 <body class="no-debug">
 <div class="container styleguide">
@@ -1596,10 +1600,22 @@
 			</details>
 			<div class="pattern__view">
 				<div class="accordion" role="tablist" multiselectable="true">
-					<div class="accordion-title" role="tablist" aria-selected="true" aria-expanded="false">
-						<span class="more"></span>Accordion Title #1
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #1</button>
 					</div>
-					<div class="accordion-content" role="tabpanel" aria-hidden="true">
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #2</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #3</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
 						Accordion Content
 					</div>
 				</div>
@@ -1618,7 +1634,7 @@
 			</details>
 			<div class="pattern__view">
 				<div class="tabs">
-					<ul class="nav" role="tablist">
+					<ul class="tabs__nav" role="tablist">
 						<li role="presentation">
 							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
 						</li>
@@ -1629,14 +1645,14 @@
 							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
 						</li>
 					</ul>
-					<div class="system">
-						<div id="tab_id_1" class="tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+					<div class="tabs__system">
+						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
 							<p>Tab 1 content goes here.</p>
 						</div>
-						<div id="tab_id_2" class="tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
 							<p>Tab 2 content goes here.</p>
 						</div>
-						<div id="tab_id_3" class="tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
 							<p>Tab 3 content goes here.</p>
 						</div>
 					</div>
@@ -1651,7 +1667,7 @@
 			</details>
 			<div class="pattern__view">
 				<div class="tabs tabs-full-width">
-					<ul class="nav" role="tablist">
+					<ul class="tabs__nav" role="tablist">
 						<li role="presentation">
 							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
 						</li>
@@ -1662,14 +1678,14 @@
 							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
 						</li>
 					</ul>
-					<div class="system">
-						<div id="tab_id_1" class="tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+					<div class="tabs__system">
+						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
 							<p>Tab 1 content goes here.</p>
 						</div>
-						<div id="tab_id_2" class="tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
 							<p>Tab 2 content goes here.</p>
 						</div>
-						<div id="tab_id_3" class="tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
 							<p>Tab 3 content goes here.</p>
 						</div>
 					</div>

@@ -1,12 +1,12 @@
 /**
  * helper.js
- * File description goes here.
+ * Helpers.
 **/
 
-;(function(global, undefined){
+;(function(window, undefined){
 	'use strict';
 
-	var helper = global.helper || {};
+	var helper = helper || {};
 
 	/**
 	 * helper.log
@@ -32,8 +32,5 @@
 		var ww = window.innerWidth;
 		return (ww < breakpoint) ? true : false;
 	}
-
-	// Export helper object for use.
-	window.helper = helper;
 
 })(window);
