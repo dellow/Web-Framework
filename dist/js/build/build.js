@@ -1168,6 +1168,8 @@ require('../plugins/jquery.placeholder');
             plg.element_array = $.map(plg.fields_array, function(field, i){
                 return $('[name="' + field + '"]', plg.form);
             });
+            // Cache plg
+            Plugin.w = plg;
             // Let's go.
             plg.go();
 
@@ -1421,8 +1423,6 @@ require('../plugins/jquery.placeholder');
      * Our initial function.
     **/
     Plugin.prototype.go = function(){
-        // Cache this
-        Plugin.w = this;
         // Cache the extended options.
         Plugin.config = this.config;
         // Add 'novalidate' attribute to form
