@@ -41,14 +41,12 @@
 </head>
 <body class="no-debug">
 <div class="container">
-
 	<h1>Forms</h1>
 
 	<hr>
 
 	<section>
 		<h2>Abstractions</h2>
-
 		<div class="pattern">
 			<div class="pattern__details">
 				<span class="pattern__title">
@@ -181,15 +179,15 @@
 			</div>
 		</div>
 	</section>
-
 </div>
-<script src="../../js/build/build.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../../js/plugins/jquery.validation.js"></script>
+<script src="dist/prism/prism.js"></script>
 <script>
 	/**
 	 * These scripts are just for the benefit of this
 	 * styleguide. Do not use these in production
 	**/
-	$ = jQuery;
 	$(function(){
 		$('.testform').validation({
 			serverValidation: false

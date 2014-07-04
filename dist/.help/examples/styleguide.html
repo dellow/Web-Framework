@@ -1943,6 +1943,10 @@
 		</div>
 	</section>
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../../js/plugins/jquery.extensions.js"></script>
+<script src="../../js/plugins/jquery.bxslider.js"></script>
+<script src="../../js/plugins/jquery.lightbox.js"></script>
 <script src="../../js/build/build.js"></script>
 <script src="dist/prism/prism.js"></script>
 <script>
@@ -1950,15 +1954,14 @@
 	 * These scripts are just for the benefit of this
 	 * styleguide. Do not use these in production
 	**/
-	$ = jQuery;
 	$(function(){
-		// Lightbox
-	    if($('.lightbox').length){
-	        $('.lightbox').lightbox({
+		// Accordion
+	    if($('.accordion').length){
+	        $('.accordion').accordion({
 	            // No options
 	        });
 	    }
-		// Slider
+		// BX Slider
 	    if($('.slider').length){
 	        $('.slider').bxSlider({
 	            // No options
@@ -1981,15 +1984,15 @@
 				maxSlides : 4
 	        });
 	    }
-		// Tabs
-	    if($('.tabs').length){
-	        $('.tabs').tabs({
+		// Lightbox
+	    if($('.lightbox').length){
+	        $('.lightbox').lightbox({
 	            // No options
 	        });
 	    }
-		// Accordion
-	    if($('.accordion').length){
-	        $('.accordion').accordion({
+		// Tabs
+	    if($('.tabs').length){
+	        $('.tabs').tabs({
 	            // No options
 	        });
 	    }

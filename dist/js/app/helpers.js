@@ -1,18 +1,21 @@
-/**
- * helper.js
- * Helpers.
-**/
+/*
+ *
+ * Helpers
+ *
+ * Copyright 2014, Author Name
+ * Some information on the license.
+ *
+ * Various helper functions in vanilla JavaScript.
+ *
+ */
 
-;(function(window, undefined){
+ ;(function(Helpers, window, undefined){
 	'use strict';
 
-	var helper = helper || {};
-
 	/**
-	 * helper.log
 	 * Safe console log.
 	**/
-	helper.log = function(message, alertlog){
+	Helpers.log = function(message, alertlog){
 		alertlog = (typeof alertlog === 'undefined') ? false : true;
 		if(typeof console === 'undefined' || typeof console.log === 'undefined'){
 			if(alertlog){
@@ -25,14 +28,14 @@
 	}
 
 	/**
-	 * helper.mobile_mode
 	 * Checks if the window size is below a certain breakpoint.
 	**/
-	helper.mobile_mode = function(breakpoint){
+	Helpers.mobile_mode = function(breakpoint){
 		var ww = window.innerWidth;
 		return (ww < breakpoint) ? true : false;
 	}
 
-	window.helper = helper;
+	// Export
+	module.exports = Helpers;
 
-})(window);
+}(window.Helpers = window.Helpers || {}, window));
