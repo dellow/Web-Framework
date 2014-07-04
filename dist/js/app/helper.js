@@ -33,4 +33,6 @@
 		return (ww < breakpoint) ? true : false;
 	}
 
+	window.helper = helper;
+
 })(window);

@@ -189,16 +189,19 @@
 	 * These scripts are just for the benefit of this
 	 * styleguide. Do not use these in production
 	**/
-	jQuery('.testform').validation({
-		serverValidation: false
-	});
+	$ = jQuery;
+	$(function(){
+		$('.testform').validation({
+			serverValidation: false
+		});
 
-	jQuery('.js-switch').on('click', function(){
-		var data = 'form-' + jQuery(this).data('switch');
-		var text = jQuery(this).text();
+		$('.js-switch').on('click', function(){
+			var data = 'form-' + $(this).data('switch');
+			var text = $(this).text();
 
-		jQuery('.testform').removeClass('form-block form-inline-block form-inline').addClass(data);
-		jQuery('.js-title').text(text);
+			$('.testform').removeClass('form-block form-inline-block form-inline').addClass(data);
+			$('.js-title').text(text);
+		});
 	});
 </script>
 </body>

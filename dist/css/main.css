@@ -2717,8 +2717,8 @@ form label abbr, form .label abbr {
 }
 /* line 45, scss/base/forms/_base.scss */
 form label input[type="radio"], form label input[type="checkbox"], form .label input[type="radio"], form .label input[type="checkbox"] {
-  margin-left: 6px;
-  margin-left: 0.375rem;
+  margin-left: 12px;
+  margin-left: 0.75rem;
 }
 /* line 49, scss/base/forms/_base.scss */
 form label:first-child input[type="radio"], form label:first-child input[type="checkbox"], form .label:first-child input[type="radio"], form .label:first-child input[type="checkbox"] {
@@ -2783,7 +2783,7 @@ form textarea {
 form.form-block input[type="checkbox"], form.form-block input[type="radio"], form.form-inline-block input[type="checkbox"], form.form-inline-block input[type="radio"], form input[type="radio"], form input[type="checkbox"] {
   width: auto;
   height: auto;
-  margin-right: 5px;
+  margin: -2px 2px 0 0;
   border: 0;
   display: inline;
   vertical-align: middle;

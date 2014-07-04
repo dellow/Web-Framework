@@ -6,8 +6,7 @@
 // jQuery
 var $ = jQuery = require('jquery');
 // Helper
-var helper = require('./helper');
-console.log(helper);
+require('./helper');
 
 ;(function($, window, undefined){
     'use strict';
@@ -80,5 +79,7 @@ console.log(helper);
             menus.init($('.nav-primary'));
         }
     });
+
+    window.menus = menus;
 
 }(jQuery, window));

@@ -121,29 +121,28 @@
             plg.button_name = plg.button.text();
             // Success element
             plg.success_element = (this.config.successElement.length) ? this.config.successElement : plg.form.before($('<div class="form-success">' + this.config.defaultSuccessMsg + '</div>'));
+            // Put all required fields into array
+            plg.fields_array = $('[required]', plg.form).map(function(){
+                if(plg.config.onlyVisibleFields){
+                    if($(this).is(':visible')){
+                        return $(this).attr('name');
+                    }
+                }
+                else{
+                    return $(this).attr('name');
+                }
+            });
+            // Remove duplicates (jQuery.unique only works on DOM elements, we can't use DOM elements because they are ALL unique despite the same name)
+            plg.fields_array = helper.remove_duplicates(plg.fields_array);
+            // Reverts the fields_array into an array of DOM elements
+            plg.element_array = $.map(plg.fields_array, function(field, i){
+                return $('[name="' + field + '"]', plg.form);
+            });
             // Let's go.
             plg.go();
 
             // On submit
             plg.form.on('submit', function(e){
-                // Put all required fields into array
-                plg.fields_array = $('[required]', plg.form).map(function(){
-                    if(plg.config.onlyVisibleFields){
-                        if($(this).is(':visible')){
-                            return $(this).attr('name');
-                        }
-                    }
-                    else{
-                        return $(this).attr('name');
-                    }
-                });
-                // Remove duplicates (jQuery.unique only works on DOM elements, we can't use DOM elements because they are ALL unique despite the same name)
-                plg.fields_array = helper.remove_duplicates(plg.fields_array);
-                // Reverts the fields_array into an array of DOM elements
-                plg.element_array = $.map(plg.fields_array, function(field, i){
-                    return $('[name="' + field + '"]', plg.form);
-                });
-
                 plg.process(e);
             });
             // On reset
@@ -152,7 +151,7 @@
             });
             // On field change
             plg.fields.change(function(){
-                plugin.save_to_localStorage($(this));
+                plg.save_to_localStorage($(this));
             });
 
             return plg;
@@ -184,11 +183,11 @@
         var limit   = 99,
             query   = query.split('@');
 
-        for(var i = 0, ii = domains.length; i < ii; i++){
-            var distance = email_suggester.levenshtein_distance(domains[i], query[1]);
+        for(var i = 0, ii = Plugin.w.domains.length; i < ii; i++){
+            var distance = email_suggester.levenshtein_distance(Plugin.w.domains[i], query[1]);
             if(distance < limit){
                 limit = distance;
-                var domain = domains[i];
+                var domain = Plugin.w.domains[i];
             }
         }
         if(limit <= 2 && domain !== null && domain !== query[1]){
@@ -398,6 +397,8 @@
         Plugin.config = this.config;
         // Add 'novalidate' attribute to form
         Plugin.w.form.attr('novalidate', 'novalidate');
+        // Process fields
+        Plugin.prototype.process_fields();
         // Disable the submit button
         //Plugin.prototype.disable_stuff(true);
         // Hide all error messages if not done with CSS already
@@ -657,7 +658,7 @@
                 async: false,
                 beforeSend: function(){
                     // Add a preloader
-                    button.html(helper.loading_animation());
+                    Plugin.w.button.html(helper.loading_animation());
                 },
                 success: function(){
                     Plugin.w.form.fadeOut(500, function(){
@@ -687,8 +688,6 @@
     Plugin.prototype.process = function(e){
         // Run setup plugin
         Plugin.prototype.setup();
-        // Process fields
-        Plugin.prototype.process_fields();
         // If we are doing server validation
         if(Plugin.config.serverValidation && Plugin.prototype.server_validate_fields()){
             Plugin.prototype.success('server', e);
