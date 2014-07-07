@@ -32,8 +32,7 @@
 	 * Checks if the window size is below a certain breakpoint.
 	**/
 	Helpers.mobile_mode = function(breakpoint){
-		var ww = window.innerWidth;
-		return (ww < breakpoint) ? true : false;
+		return (window.innerWidth < breakpoint) ? true : false;
 	}
 
 	// Export
