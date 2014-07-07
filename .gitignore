@@ -3,15 +3,3 @@
 .sass-cache/
 node_modules/
 bower_components/
-dist/
-
-# App Directories
-# ---------------------------
-
-# App Files
-# ---------------------------
-*.log
-# .gitignore
-# sftp-config.json
-# *.sublime-project
-# *.sublime-workspace
