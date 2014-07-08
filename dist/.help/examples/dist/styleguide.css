@@ -22,15 +22,15 @@ pre[class*="language-"] {
 }
 
 /* Flex */
-section.guidetable {
+div.guidetable {
 	width: 100%;
 	display: table;
 	table-layout: fixed;
 }
-section.guidetable ul {
+div.guidetable ul {
 	display: table-row;
 }
-section.guidetable li {
+div.guidetable li {
 	display: table-cell;
 }
 
