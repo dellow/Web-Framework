@@ -8,14 +8,14 @@
 @include respond-to($mobile){
 }
 // Respond to between generic mobile and tablet
-@include respond-to($mobile, $tablet, false, true){
+@include respond-to($mobile, $tablet, true){
 }
 // Respond to just iPhone 3 device
-@media only screen and (min-device-width : $iphone3_portrait) and (max-device-width : $iphone3_landscape) and (-webkit-min-device-pixel-ratio : $iphone3_dppx){
+@media only screen and (min-device-width: $iphone3_portrait) and (max-device-width: $iphone3_landscape) and (-webkit-min-device-pixel-ratio: $iphone3_dppx){
 }
 // Respond to just iPhone 4 device
-@media only screen and (min-device-width : $iphone4_portrait) and (max-device-width : $iphone4_landscape) and (-webkit-min-device-pixel-ratio : $iphone4_dppx){
+@media only screen and (min-device-width: $iphone4_portrait) and (max-device-width: $iphone4_landscape) and (-webkit-min-device-pixel-ratio: $iphone4_dppx){
 }
 // Respond to just iPhone 5 device
-@media only screen and (min-device-width : $iphone5_portrait) and (max-device-width : $iphone5_landscape) and (-webkit-min-device-pixel-ratio : $iphone5_dppx){
+@media only screen and (min-device-width: $iphone5_portrait) and (max-device-width: $iphone5_landscape) and (-webkit-min-device-pixel-ratio: $iphone5_dppx){
 }
