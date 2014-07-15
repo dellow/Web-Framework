@@ -15,12 +15,13 @@ rm -rf .sass-cache/  && \
 git init             && \
 # ------------------------------------------------------------------------
 # Remove the clean file
-rm install           && \
+rm install.sh        && \
 # ------------------------------------------------------------------------
 # README
-if [ -e README.md ]; then
-	read -p "Do you need the Readme file? " -n 1 -r
-	if [[ $REPLY =~ ^[Nn]$ ]]; then
+if [[ -e README.md ]]; then
+	read -p "Do you need the Readme file? y/n " choice
+	if [[ $choice = "n" ]]
+	then
 		# Remove `README.md`
 		rm README.md
 	fi
@@ -28,9 +29,10 @@ if [ -e README.md ]; then
 fi
 # ------------------------------------------------------------------------
 # htaccess
-if [ -e .htaccess ]; then
-	read -p "Do you need the htaccess file? " -n 1 -r
-	if [[ $REPLY =~ ^[Nn]$ ]]; then
+if [[ -e .htaccess ]]; then
+	read -p "Do you need the htaccess file? y/n " choice
+	if [[ $choice = "n" ]]
+	then
 		# Remove `.htaccess`
 		rm .htaccess
 	fi
@@ -38,24 +40,12 @@ if [ -e .htaccess ]; then
 fi
 # ------------------------------------------------------------------------
 # Sublime Text SFTP
-if [ -e sftp-config.json ]; then
-	read -p "Do you need the Sublime Text SFTP config? " -n 1 -r
-	if [[ $REPLY =~ ^[Nn]$ ]]; then
+if [[ -e sftp-config.json ]]; then
+	read -p "Do you need the Sublime Text SFTP config? y/n " choice
+	if [[ $choice = "n" ]]
+	then
 		# Remove `sftp-config.json`
 		rm sftp-config.json
-	fi
-	printf "\n"
-fi
-# ------------------------------------------------------------------------
-# Sublime Text Project
-if [ -e *.sublime-project ]; then
-	read -p "Do you need the Sublime Text Project config? " -n 1 -r
-	if [[ $REPLY =~ ^[Nn]$ ]]; then
-		# Remove `*.sublime-project` and `*.sublime-workspace`
-		rm *.sublime-project
-		if [ -e *.sublime-workspace ]; then
-			rm *.sublime-workspace
-		fi
 	fi
 	printf "\n"
 fi
@@ -73,8 +63,8 @@ cp -r bower_components/framework-library/dist .  && \
 git add --all                                    && \
 # ------------------------------------------------------------------------
 # Check for a commit
-read -p "Do you want to do an initial commit? " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
+read -p "Do you want to do an initial commit? y/n " choice
+if [[ $choice = "y" ]]
 then
 	# Initial commit
 	git commit -am "Initial commit"
