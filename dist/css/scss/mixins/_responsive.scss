@@ -6,23 +6,23 @@
  * respond-to
  * Responive breakpoints converted to em value
  *
- * @uses px-to-em()
+ * @uses px-to-rem()
  *
  * @include respond-to(768px){.foo {display: block;}}
 **/
 @mixin respond-to($breakpoint1, $breakpoint2: null, $device: false){
 	@if($breakpoint2 != null){
-		@media only screen and (min-width: px-to-em($breakpoint1)) and (max-width: px-to-em($breakpoint2)){
+		@media only screen and (min-width: px-to-rem($breakpoint1, em)) and (max-width: px-to-rem($breakpoint2, em)){
 			@content
 		}
 	}
 	@else if($device){
-		@media only screen and (min-device-width: px-to-em($breakpoint1)) and (max-device-width: px-to-em($breakpoint2)){
+		@media only screen and (min-device-width: px-to-rem($breakpoint1, em)) and (max-device-width: px-to-rem($breakpoint2, em)){
 			@content
 		}
 	}
 	@else{
-		@media only screen and (max-width: px-to-em($breakpoint1)){
+		@media only screen and (max-width: px-to-rem($breakpoint1, em)){
 			@content
 		}
 	}
