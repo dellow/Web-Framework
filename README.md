@@ -77,7 +77,7 @@ There are also various specific variables for common devices set up in `base/var
 	}
 
 ## Working with JavaScript
-All custom JavaScript should be added in `app` directory - these files will be compiled by Gulp into a global build.js file.
+All JavaScript modules should be added in `app` directory - these files will be compiled by Gulp into a global build.js file.
 
 Running Gulp in development mode with `gulp` will compile the JS without minification for easier debugging. Likewise `gulp --config production` will optimize the final build file with UglifyJS.
 
