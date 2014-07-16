@@ -31,8 +31,13 @@ a, button {
 }
 
 /* -- General Formatting -- */
-ul, ol, dl, blockquote, p, address, table, fieldset, figure, pre, .hatnote {
+p, blockquote, address {
 	@include rhythm($font_size_base);
+}
+.main-content {
+	ul, ol, dl, table, fieldset, figure, pre, .hatnote {
+		@include rhythm($font_size_base);
+	}
 }
 
 /* -- Paragraphs -- */

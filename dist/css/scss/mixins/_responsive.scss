@@ -10,15 +10,22 @@
  *
  * @include respond-to(768px){.foo {display: block;}}
 **/
-@mixin respond-to($breakpoint1, $breakpoint2: null, $device: false){
+@mixin respond-to($breakpoint1, $breakpoint2: null, $pixel_ratio: null, $device: false){
 	@if($breakpoint2 != null){
 		@media only screen and (min-width: px-to-rem($breakpoint1, em)) and (max-width: px-to-rem($breakpoint2, em)){
 			@content
 		}
 	}
 	@else if($device){
-		@media only screen and (min-device-width: px-to-rem($breakpoint1, em)) and (max-device-width: px-to-rem($breakpoint2, em)){
-			@content
+		@if($pixel_ratio != null){
+			@media only screen and (min-device-width: px-to-rem($breakpoint1, em)) and (max-device-width: px-to-rem($breakpoint2, em)) and (-webkit-min-device-pixel-ratio: $pixel_ratio){
+				@content
+			}
+		}
+		@else{
+			@media only screen and (min-device-width: px-to-rem($breakpoint1, em)) and (max-device-width: px-to-rem($breakpoint2, em)){
+				@content
+			}
 		}
 	}
 	@else{

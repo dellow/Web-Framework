@@ -36,20 +36,13 @@ $font_family_serif          : $font_family_georgia !default;
 $font_family_sans_serif     : $font_family_arial !default;
 $font_family_serif_base     : $font_family_georgia, $font_family_times, serif !default;
 $font_family_sans_serif_base: $font_family_helvetica, $font_family_arial, $font_family_trebuchet, $font_family_verdana, sans-serif !default;
-// Weights
-$font_weight_bold           : 700 !default;
-$font_weight_semibold       : 600 !default;
-$font_weight_medium         : 400 !default;
-$font_weight_regular        : 400 !default;
-$font_weight_light          : 300 !default;
-$font_weight_thin           : 300 !default;
 // Sizes
-$font_size_tiny             : 10px !default;
-$font_size_small            : 12px !default;
-$font_size_base             : 16px !default;
-$font_size_medium           : 20px !default;
-$font_size_large            : 24px !default;
 $font_size_xlarge           : 30px !default;
+$font_size_large            : 24px !default;
+$font_size_medium           : 20px !default;
+$font_size_base             : 16px !default;
+$font_size_small            : 12px !default;
+$font_size_tiny             : 10px !default;
 // Headings
 $font_size_h1               : 48px !default;
 $font_size_h2               : 36px !default;
@@ -57,6 +50,13 @@ $font_size_h3               : 24px !default;
 $font_size_h4               : 18px !default;
 $font_size_h5               : 16px !default;
 $font_size_h6               : 14px !default;
+// Weights
+$font_weight_bold           : 700 !default;
+$font_weight_semibold       : 600 !default;
+$font_weight_medium         : 400 !default;
+$font_weight_regular        : 400 !default;
+$font_weight_light          : 300 !default;
+$font_weight_thin           : 300 !default;
 // Line Height
 $line_height_base           : $mn !default;
 $line_height_ratio          : $line_height_base / $font_size_base !default;

@@ -7,15 +7,15 @@
 // Respond to mobile
 @include respond-to($mobile){
 }
-// Respond to between generic mobile and tablet
+// Respond to between generic mobile and tablet device
 @include respond-to($mobile, $tablet, true){
 }
 // Respond to just iPhone 3 device
-@media only screen and (min-device-width: $iphone3_portrait) and (max-device-width: $iphone3_landscape) and (-webkit-min-device-pixel-ratio: $iphone3_dppx){
+@include respond-to($iphone3_portrait, $iphone3_landscape, $iphone3_dppx, true){
 }
 // Respond to just iPhone 4 device
-@media only screen and (min-device-width: $iphone4_portrait) and (max-device-width: $iphone4_landscape) and (-webkit-min-device-pixel-ratio: $iphone4_dppx){
+@include respond-to($iphone4_portrait, $iphone4_landscape, $iphone4_dppx, true){
 }
 // Respond to just iPhone 5 device
-@media only screen and (min-device-width: $iphone5_portrait) and (max-device-width: $iphone5_landscape) and (-webkit-min-device-pixel-ratio: $iphone5_dppx){
+@include respond-to($iphone5_portrait, $iphone5_landscape, $iphone5_dppx, true){
 }
