@@ -39,6 +39,17 @@ if [[ -e .htaccess ]]; then
 	printf "\n"
 fi
 # ------------------------------------------------------------------------
+# SFTP Config
+if [[ -e sftp-config.json ]]; then
+	read -p "Do you need the SFTP config? y/n " choice
+	if [[ $choice = "n" ]]
+	then
+		# Remove `sftp-config.json`
+		rm sftp-config.json
+	fi
+	printf "\n"
+fi
+# ------------------------------------------------------------------------
 # Update / get dependencies with Bower
 bower install                                    && \
 # ------------------------------------------------------------------------
