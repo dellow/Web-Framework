@@ -1,7 +1,7 @@
 {
   "name": "Framework",
   "version": "1.0.0",
-  "description": "A Framework for HTML projects. Includes SASS/Compass and Browserify for JavaScript.",
+  "description": "A simple wrapper for web projects.",
   "authors": [
     "Stew Dellow <stewdellow@gmail.com>"
   ],

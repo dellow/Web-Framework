@@ -2,9 +2,19 @@
 ### By Stew Dellow | [hellostew.com](http://hellostew.com/ "Creative Web Developer")
 
 ## About
-A Gulp powered HTML Framework utilising Compass and Browserify. Also uses sprinkles of Grunt for deployment tasks until someone comes up with a decent SFTP/SSH task for Gulp.
+This is a simple project wrapper. To use this as a full framework please follow the installation instructions below. This will pull in the [Framework Library Repo](https://github.com/sdellow/Framework-Library) using Bower which is a CSS and JS framework built using SASS and Browserify.
+
+You will need Gulp to compile SASS and JS and Grunt for deployment.
+
+## Requirements
+- [NodeJS](http://nodejs.org/)
+- [Bower](http://bower.io)
+- [Grunt](http://gruntjs.com/)
+- [Gulp](http://gulpjs.com)
 
 ## Install
+__Please note:__ Please make sure your system meets the requirements above.
+
 After cloning the repository simply run `bash install` from your command line. This will do the following:
 
 - Remove the Git wrapper and replace with a fresh Git initialisation.
@@ -14,6 +24,8 @@ After cloning the repository simply run `bash install` from your command line. T
 - Does an initial commit on the new Git initialisation.
 
 You might want to review the .gitignore file. Sensitive files like `sftp-config.json` which hold SSH connection details for Grunt-SSH should be ignored, along with any other files or directories.
+
+__All additional instructions below assume you have followed the installation process.__
 
 ## Styleguide & Examples
 There is a CSS styleguide in [`dist/.help/examples/styleguide.html`](dist/.help/examples/styleguide.html) which outlines some of the styled elements in the framework. You can also test the vertical rhythm [`dist/.help/examples/rhythm.html`](dist/.help/examples/rhythm.html).

@@ -1,11 +1,11 @@
 {
   "name": "Framework",
   "version": "1.0.0",
-  "description": "A Framework for HTML projects. Includes SASS/Compass and Browserify for JavaScript.",
+  "description": "A simple wrapper for web projects.",
   "author": "Stew Dellow <stewart@hellostew.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sdellow/HTML-Framework.git"
+    "url": "https://github.com/sdellow/Web-Project-Wrapper.git"
   },
   "contributors": [
     {"name": "Stew Dellow", "email": "stewart@hellostew.com"}
