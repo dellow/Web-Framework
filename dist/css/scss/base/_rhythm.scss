@@ -31,10 +31,10 @@ a, button {
 }
 
 /* -- General Formatting -- */
-p, blockquote, address {
+p, blockquote, address, .hatnote {
 	@include rhythm($font_size_base);
 }
-.main-content {
+.content {
 	ul, ol, dl, table, fieldset, figure, pre, .hatnote {
 		@include rhythm($font_size_base);
 	}
