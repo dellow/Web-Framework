@@ -1254,7 +1254,7 @@ p, blockquote, address {
 }
 
 /* line 38, scss/base/_rhythm.scss */
-.main-content ul, .main-content ol, .main-content dl, .main-content table, .main-content fieldset, .main-content figure, .main-content pre, .main-content .hatnote {
+.content ul, .content ol, .content dl, .content table, .content fieldset, .content figure, .content pre, .content .hatnote {
   margin-bottom: 13.71429px;
   margin-bottom: 0.85714rem;
   font-size: 16px;

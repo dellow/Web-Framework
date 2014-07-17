@@ -12,7 +12,7 @@ $debug_mode                 : false !default;
 /**
 * Defaults
 **/
-$mn               			: 24px; // Three is not the magic number. Don't believe Del La Soul
+$mn               			: 24px !default; // Three is not the magic number. Don't believe Del La Soul
 $gutter                     : 3% !default;
 $fixedgutter                : 10px !default;
 $form_field_height          : 40px !default;
