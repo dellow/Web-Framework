@@ -64,10 +64,6 @@ $line_height_ratio          : $line_height_base / $font_size_base !default;
 /**
 * Colours
 **/
-// Defaults
-$colour_text                : #333333 !default;
-$colour_text_link           : #CD4B45 !default;
-$colour_text_link_hover     : #006DCC !default;
 // Useful
 $colour_odd_base            : #EDEDED !default;
 $colour_even_base           : #F4F4F4 !default;
@@ -91,6 +87,10 @@ $green                      : #2ECC71 !default;
 $orange                     : #E67E22 !default;
 $red                        : #C4122f !default;
 $yellow                     : #F1C40F !default;
+// Defaults
+$colour_text                : $grey_dark !default;
+$colour_text_link           : $red_base !default;
+$colour_text_link_hover     : $blue_base !default;
 // Array
 $colours: (
 	'blue' $blue darken($blue, 10%),
