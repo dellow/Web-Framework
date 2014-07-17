@@ -21,8 +21,10 @@
 	/**
 	 * Method.
 	**/
-	Module.method3 = function(){
-		return 'Module Method 3';
+	Module.bindEvents = function(){
+		$('.element').on('click', function(){
+			// Click events here
+		});
 	}
 
 	// Export
