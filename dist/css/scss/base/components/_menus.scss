@@ -7,6 +7,9 @@
 	@include nudge(padding, 1 0);
 	ul {
 		margin-left: 0;
+		li {
+			margin: 0;
+		}
 	}
 }
 
@@ -82,8 +85,7 @@
 /* -- Primary Navigation -- */
 .nav-primary {
 	li {
-		padding: 0 2px;
-		display: inline;
+		@include inline-block;
 		position: relative;
 		.sub-menu {
 			$pad: 12px;

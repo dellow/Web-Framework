@@ -3,48 +3,46 @@
    Inline Block level forms
 ========================================================================== */
 /* -- Forms -- */
-form {
-	&.form-inline-block {
-		label, .label, input, .input, select, textarea, .field-container {
-			@include inline-block;
-			vertical-align: top;
-		}
-		label, .label {
-			width: 35%;
-			padding-right: 5%;
-			line-height: 1.3;
-			input[type="checkbox"], input[type="radio"] {
-				margin: -2px 2px 0 0;
-			}
-			&:first-of-type {
-				input {
-					margin-left: 0;
-				}
-			}
-		}
-		input, .input, select, textarea, .field-container {
-			width: 65%;
-			margin: 0 0 0 -4px;
-			~ .note {
-				margin-left: 35%;
-			}
-		}
+.form-inline-block {
+	label, .label, input, .input, select, textarea, .field-container {
+		@include inline-block;
+		vertical-align: top;
+	}
+	label, .label {
+		width: 35%;
+		padding-right: 5%;
+		line-height: 1.3;
 		input[type="checkbox"], input[type="radio"] {
-			@extend %radio-checkbox;
+			margin: -2px 2px 0 0;
 		}
-		.field-container {
-			label {
-				width: auto;
-				@include nudge(margin-right, 0.25);
-			}
-			span {
-				+ input, .input, select, textarea, .field-container {
-					margin: 0;
-				}
+		&:first-of-type {
+			input {
+				margin-left: 0;
 			}
 		}
-		.field-container {
-			height: $form_field_height;
+	}
+	input, .input, select, textarea, .field-container {
+		width: 65%;
+		margin: 0;
+		~ .note {
+			margin-left: 35%;
 		}
+	}
+	input[type="checkbox"], input[type="radio"] {
+		@extend %radio-checkbox;
+	}
+	.field-container {
+		label {
+			width: auto;
+			@include nudge(margin-right, 0.25);
+		}
+		span {
+			+ input, .input, select, textarea, .field-container {
+				margin: 0;
+			}
+		}
+	}
+	.field-container {
+		height: $form_field_height;
 	}
 }

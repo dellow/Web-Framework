@@ -48,6 +48,7 @@
  * Some information on the license.
  *
  * To include jQuery or any other library in a module pass it into the self invoking function.
+ * The App object should be passed to individual functions. Such as `App.ModuleName.bindEvents(App)`
  *
  */
 
@@ -79,27 +80,27 @@ App.ModuleName = require('./name.module');
 App.Helpers.log(App);
 },{"./helpers":1,"./name.module":3,"jquery":4}],3:[function(require,module,exports){
 /* ======================================================== */
-/* Module Name
+/* ModuleName
 /* ======================================================== */
 ;(function(Module, $, window, undefined){
 	'use strict';
 
 	/**
-	 * Method.
+	 * Module.method1
 	**/
 	Module.method1 = function(){
 		return 'Module Method 1';
 	}
 
 	/**
-	 * Method.
+	 * Module.method2
 	**/
 	Module.method2 = function(){
 		return 'Module Method 2';
 	}
 
 	/**
-	 * Method.
+	 * Module.bindEvents
 	**/
 	Module.bindEvents = function(){
 		$('.element').on('click', function(){

@@ -3,7 +3,7 @@
  * styleguide. Do not use these in production
 **/
 /* Body */
-body {
+html {
 	font-family: 'Lato', sans-serif;
 	background: #F7F7F7;
 }
@@ -16,7 +16,7 @@ pre[class*="language-"] {
 }
 
 /* Standard */
-.container {
+.styleguide.container {
 	width: 80%;
 	padding: 20px 0 50px;
 }
@@ -76,7 +76,7 @@ form input, form select, form textarea {
 }
 
 /* Grids */
-.styleguide .grid div.module {
+.styleguide .grid div.sg-module {
 	padding: 10px;
 	margin: 0 0 10px;
 	background: #efefef;

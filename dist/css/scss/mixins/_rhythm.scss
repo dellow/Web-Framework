@@ -36,11 +36,11 @@
  * .foo {@include rhythm(20px);}
 **/
 @mixin rhythm($size){
-	margin-bottom: 0px + ($mn / 1.75);
-	margin-bottom: px-to-rem($mn / 1.75);
-	font-size: 0px + $size;
-	font-size: px-to-rem($size);
-	line-height: ceil($size / $line_height_base) * ($line_height_base / $size);
+    margin-bottom: 0px + ($mn / 1.75);
+    margin-bottom: px-to-rem($mn / 1.75);
+    font-size: 0px + $size;
+    font-size: px-to-rem($size);
+    line-height: round($line_height_base / $size * 10000) / 10000;
 }
 
 /**
@@ -77,7 +77,7 @@
     $px_sizes: ();
 
     @each $size in $sizes {
-        @if unit($size) == 'px' {
+        @if unit($size) != "" {
             $rem_sizes: append($rem_sizes, $size);
             $px_sizes: append($px_sizes, $size);
         }

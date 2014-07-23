@@ -27,7 +27,7 @@ gulp.task('browserify', function(){
 		.pipe(gulpif(GLOBAL.is_production, streamify(uglify())))
 		.pipe(rename('build.js'))
 		.on('error', handleError)
-		ret.pipe(gulp.dest('./dist/js/build/'));
+		.pipe(gulp.dest('./dist/js/build/'));
 
 	return ret;
 });

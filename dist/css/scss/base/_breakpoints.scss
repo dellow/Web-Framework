@@ -91,17 +91,15 @@
 	}
 
 	/* -- Forms -- */
-	form {
-		&.form-inline, &.form-inline-block, &.form-block {
-			label, .label {
-				width: 100%;
-				display: block;
-			}
-			input, .input, select, textarea, .field-container, button, .button {
-				width: 100%;
-				margin: 0;
-				display: block;
-			}
+	.form-inline, .form-inline-block, .form-block {
+		label, .label {
+			width: 100%;
+			display: block;
+		}
+		input, .input, select, textarea, .field-container, button, .button {
+			width: 100%;
+			margin: 0;
+			display: block;
 		}
 	}
 }

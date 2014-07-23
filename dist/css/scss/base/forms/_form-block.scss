@@ -3,40 +3,38 @@
    Block level forms
 ========================================================================== */
 /* -- Forms -- */
-form {
-	&.form-block {
-		label {
-			input[type="checkbox"], input[type="radio"] {
-				margin: -2px 2px 0 0;
-			}
-		}
-		input, .input, select, textarea, .field-container {
-			width: 100%;
-			display: block;
-			~ .note {
-				margin-left: 0;
-				display: block;
-			}
-		}
+.form-block {
+	label {
 		input[type="checkbox"], input[type="radio"] {
-			@extend %radio-checkbox;
+			margin: -2px 2px 0 0;
 		}
-		.field-container {
-			label {
-				@include nudge(margin-right, 0.25);
+	}
+	input, .input, select, textarea, .field-container {
+		width: 100%;
+		display: block;
+		~ .note {
+			margin-left: 0;
+			display: block;
+		}
+	}
+	input[type="checkbox"], input[type="radio"] {
+		@extend %radio-checkbox;
+	}
+	.field-container {
+		label {
+			@include nudge(margin-right, 0.25);
+		}
+		input, .input, select, textarea {
+			margin-left: 2%;
+			@include inline-block;
+			vertical-align: middle;
+			&:first-child {
+				margin-left: 0;
 			}
-			input, .input, select, textarea {
-				margin-left: 2%;
-				@include inline-block;
-				vertical-align: middle;
-				&:first-child {
-					margin-left: 0;
-				}
-			}
-			span {
-				+ input, .input, select, textarea, .field-container {
-					margin: 0;
-				}
+		}
+		span {
+			+ input, .input, select, textarea, .field-container {
+				margin: 0;
 			}
 		}
 	}

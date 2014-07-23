@@ -53,7 +53,7 @@ form {
 	}
 
 	// All form elements
-	input, .input, select, textarea, button {
+	input, .input, select, textarea, button, .button {
 		height: $form_field_height;
 		border: 1px solid darken($grey_light, 6%);
 		vertical-align: top;
