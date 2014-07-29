@@ -6,10 +6,6 @@
 ========================================================================== */
 // Respond to tablet
 @include respond-to($tablet){
-	html {
-		font-size: 95%;
-	}
-
 	/* -- Exclusions -- */
 	$exlusions: (
 		'.tablet-hide'
@@ -17,25 +13,6 @@
 	@each $element in $exlusions {
 		#{$element} {
 			display: none;
-		}
-	}
-
-	/* -- Full Width -- */
-	$fullwidth: (
-	);
-	@each $element in $fullwidth {
-		#{$element} {
-			width: 100%;
-		}
-	}
-
-	/* -- Reset -- */
-	$reset: (
-	);
-	@each $element in $reset {
-		#{$element} {
-			margin: 0;
-			padding: 0;
 		}
 	}
 
@@ -47,10 +24,6 @@
 
 // Respond to mobile
 @include respond-to($mobile){
-	html {
-		font-size: 100%;
-	}
-
 	/* -- Exclusions -- */
 	$exlusions: (
 		'.mobile-hide',

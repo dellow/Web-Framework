@@ -3,9 +3,9 @@
  * styleguide. Do not use these in production
 **/
 /* Body */
-html {
+html, body {
 	font-family: 'Lato', sans-serif;
-	background: #F7F7F7;
+	background: #F7F7F7 !important;
 }
 
 /* Tags */
@@ -16,12 +16,13 @@ pre[class*="language-"] {
 }
 
 /* Standard */
-.styleguide.container {
+body.styleguide > .container,
+body.styleguide section > .container {
 	width: 80%;
-	padding: 20px 0 50px;
+	padding: 20px 0;
 }
 
-/* Flex */
+/* Tables */
 div.guidetable {
 	width: 100%;
 	display: table;
@@ -35,12 +36,12 @@ div.guidetable li {
 }
 
 /* Headers */
-.styleguide > h1, section > h2 {
+.container > h1, section > h2 {
 	text-transform: uppercase;
 }
 
 /* Patterns */
-.styleguide .pattern .pattern__view:not(.allow-margin) > * {
+body.styleguide .pattern .pattern__view:not(.allow-margin) > * {
 	margin: 0;
 }
 .pattern {
@@ -49,7 +50,6 @@ div.guidetable li {
 	border-radius: 3px;
 }
 .pattern .pattern__view {
-	padding: 15px 20px;
 	background: white;
 }
 .pattern .pattern__details {
@@ -58,6 +58,9 @@ div.guidetable li {
 	color: #004b6a;
 	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
 	background: #F0F0F0;
+}
+.container .pattern .pattern__view {
+	padding: 15px 20px;
 }
 
 /* Forms */

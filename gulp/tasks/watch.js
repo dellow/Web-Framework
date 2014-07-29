@@ -1,8 +1,10 @@
 /* ================================================== */
 /* Require
 /* ================================================== */
-var gulp  = require('gulp'),
-	watch = require('gulp-watch');
+var gulp   = require('gulp'),
+	watch  = require('gulp-watch'),
+	lr     = require('tiny-lr'),
+	server = lr();
 
 /* ================================================== */
 /* Task
@@ -11,6 +13,12 @@ gulp.task('watch', function(){
 	var css = ['compass'],
 		js  = ['browserify'];
 
-	gulp.watch('./dist/css/scss/**/*.scss', css);
-	gulp.watch('./dist/js/**/*.js', js);
+	server.listen(35729, function(err){
+		if(err){
+			return console.log(err);
+		}
+
+		gulp.watch('./dist/css/scss/**/*.scss', css);
+		gulp.watch('./dist/js/**/*.js', js);
+	});
 });

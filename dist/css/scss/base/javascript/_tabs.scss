@@ -12,13 +12,14 @@
 		white-space: nowrap;
 		li {
 			margin: 0 0 0 -5px;
-			border: 1px solid darken($grey_light, 5%);
+			border: 1px solid color(grey);
 			border-bottom: 0;
 			@include inline-block;
 			position: relative;
 	    	z-index: 1;
 			vertical-align: bottom;
-			background: $grey_light;
+			background: lighten(color(grey), 10%);
+			@include transition(color $animation ease, background-color $animation ease);
 	        button {
 	        	width: 100%;
 				@include nudge(padding, 0.25 0.5);
@@ -30,15 +31,18 @@
 	        &:last-child {
 	            border-radius: 0 $border_radius_base 0 0;
 	        }
+			&:hover {
+				background: lighten(color(grey), 5%);
+			}
 			&:active {
-				background: darken($grey_light, 5%);
+				background: lighten(color(grey), 1%);
 			}
 	        &.active__tab {
 	            bottom: -1px;
 	    		z-index: 2;
 	            border-radius: $border_radius_base $border_radius_base 0 0;
-	            color: $colour_text_link;
-	            background: $white;
+	            color: $color_text_link;
+	            background: color(white);
 		        button {
 					@include nudge(padding, 0.35 0.5);
 		        }
@@ -48,8 +52,8 @@
 	.tabs__system {
 		@include nudge(padding, 0.75);
 		border-radius: $border_radius_base;
-		border: 1px solid darken($grey_light, 5%);
-		background: $white;
+		border: 1px solid color(grey);
+		background: color(white);
 	}
 	&.tabs-full-width {
 		.tabs__nav {

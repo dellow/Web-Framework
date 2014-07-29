@@ -2,9 +2,15 @@
    Mixins > Misc
    Functions and mixins for various Framework operations.
 ========================================================================== */
-// Sprites from folder
-//@import "foldername/*.png";
-//@include all-foldername-sprites;
+/**
+ * color
+ * Gets color and tone from map.
+ *
+ * .foo {@include color(red, base);}
+**/
+@function color($color, $tone: 'base'){
+    @return map-get(map-get($colors, $color), $tone);
+}
 
 /**
  * retina-image
@@ -22,6 +28,28 @@
 		background-size: $width $height;
 	}
 	background-image: url($image + '.' + $type);
+}
+
+/**
+ * modify-grid
+ * Temporarily modifies the grid system
+ *
+ *	.foo {
+ *		$gutter_width: 6%;
+ *		@include modify-grid($gutter_width);
+ *		.grid [class*="col-"] {
+ *			width: $col_1-2 - $gutter_width;
+ *		}
+ *	}
+**/
+@mixin modify-grid($gutter_width){
+	.grid {
+		width: 100% + $gutter_width;
+		left: -$gutter_width;
+		[class*="col-"] {
+			margin-left: $gutter_width;
+		}
+	}
 }
 
 /**
@@ -96,7 +124,8 @@
 	&:after {
 		width: 0;
 		height: 0;
-		position: absolute;
+		position: relative;
+		@include inline-block;
 		top: $top;
 		@if($left != null){
 			left: $left;

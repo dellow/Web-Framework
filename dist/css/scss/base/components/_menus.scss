@@ -31,7 +31,7 @@
 			top: 0%; @include rem(right, 8px);
 			@include inline-block;
 			pointer-events: none;
-			color: $grey;
+			color: color(grey);
 			@include opacity(0);
 			@include transition(top $animation ease, opacity $animation ease);
 		}
@@ -44,14 +44,14 @@
 		border-radius: 0;
 		@include inline-block;
 		cursor: pointer;
-		color: $white;
+		color: color(white);
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
-		background: $black;
+		background: color(black);
 		@include transition(background $animation ease);
 		&:hover, &:focus {
-			background-color: $grey;
+			background-color: color(grey);
 		}
 	}
 	&:after {
@@ -66,7 +66,7 @@
 		top: 50%; @include rem(right, 18px);
 		@include inline-block;
 		pointer-events: none;
-		color: $white;
+		color: color(white);
 			@include transition(top $animation ease);
 	}
 	&:hover {
@@ -95,7 +95,7 @@
 			position: absolute;
 			left: -$pad; top: 100%;
 			z-index: 100;
-			background: $white;
+			background: color(white);
 			li {
 				padding: 0;
 				margin: 6px 0;
@@ -115,6 +115,20 @@
 		}
 		&:hover > .sub-menu {
 			display: block;
+		}
+	}
+	&.full-width {
+		margin-bottom: -3.5%;
+		text-align: justify;
+		&:before {
+			width: 100%;
+			content: '';
+			display: block;
+		}
+		&:after {
+			width: 100%;
+			content: '';
+			@include inline-block;
 		}
 	}
 }

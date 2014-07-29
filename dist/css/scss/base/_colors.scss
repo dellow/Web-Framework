@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Colors
+   Takes all the colors from the color map in vars and creates
+   a class for each of them for easy OO styling.
+========================================================================== */
+/* -- Text colors -- */
+@each $color, $this_color in $colors {
+	.color-#{$color} {
+		color: color($color);
+		&.opp {
+			color: color($color, dark);
+		}
+	}
+}
+
+/* -- Slab colors -- */
+.bg, .slab {
+	@each $color, $this_color in $colors {
+		&.color-#{$color} {
+			color: inherit;
+			background: color($color);
+			&.opp {
+				background: color($color, dark);
+			}
+		}
+	}
+}

@@ -27,20 +27,26 @@
 /**
  * rhythm
  * Outputs a perfect vertical rhythm for a particular font-size
- * in a margin / line-height and font-size format
+ * in a margin / line-height and font-size format. You optionally specify
+ * whether to set the line-height or margin. I would because... that's the
+ * point of this mixin.
  *
  * @uses px-to-rem()
  * @uses $line_height_base
  * @uses $mn
  *
- * .foo {@include rhythm(20px);}
+ * .foo {@include rhythm(20px, true, false);}
 **/
-@mixin rhythm($size){
-    margin-bottom: 0px + ($mn / 1.75);
-    margin-bottom: px-to-rem($mn / 1.75);
+@mixin rhythm($size, $line-height: true, $margin: true){
+    @if $margin {
+        margin-bottom: 0px + ($mn / 1.75);
+        margin-bottom: px-to-rem($mn / 1.75);
+    }
     font-size: 0px + $size;
     font-size: px-to-rem($size);
-    line-height: round($line_height_base / $size * 10000) / 10000;
+    @if $line-height {
+        line-height: ceil($size / $line_height_base) * ($line_height_base / $size);
+    }
 }
 
 /**

@@ -10,7 +10,7 @@
 	border-radius: $border_radius_base;
 	vertical-align: middle;
 	cursor: pointer;
-	color: $white;
+	color: color(white);
 	text-align: center;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	@include transition(background $animation ease);
@@ -19,11 +19,11 @@
 		cursor: default;
 	}
 	&:hover {
-		color: $white;;
+		color: color(white);;
 		text-decoration: none;
 	}
 	&:active {
-		color: $white;;
+		color: color(white);;
 		box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
 	}
 }
@@ -31,42 +31,42 @@
 /* -- Abstractions -- */
 .btn {
 	&.standard {
-		background: $blue_base;
+		background: color(blue);
 		&.disabled:hover {
-			background: $blue_base;
+			background: color(blue);
 		}
 		&:hover {
-			background: darken($blue_base, 10%);
+			background: darken(color(blue), 10%);
 		}
 	}
 	&.positive {
-		background: $green_base;
+		background: color(green);
 		&.disabled:hover {
-			background: $green_base;
+			background: color(green);
 		}
 		&:hover {
-			background: darken($green_base, 10%);
+			background: darken(color(green), 10%);
 		}
 	}
 	&.negative {
-		background: $red_base;
+		background: color(red);
 		&.disabled:hover {
-			background: $red_base;
+			background: color(red);
 		}
 		&:hover {
-			background: darken($red_base, 10%);
+			background: darken(color(red), 10%);
 		}
 	}
 }
 
-@each $color in $colours {
-	.btn.#{nth($color, 1)} {
-		background: #{nth($color, 2)};
+@each $color, $this_color in $colors {
+	.btn.#{$color} {
+		background: color($color);
 		&.disabled:hover {
-			background: #{nth($color, 2)};
+			background: color($color);
 		}
 		&:hover {
-			background: darken(nth($color, 2), 10%);
+			background: color($color, dark);
 		}
 	}
 }

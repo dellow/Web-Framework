@@ -7,12 +7,22 @@
 	@include nudge(margin-bottom, 1);
 	.accordion__title {
 		@include nudge(padding, 0.25);
-		border: 1px solid darken($grey_light, 5%);
+		border: 1px solid color(grey);
 		border-top: 0;
 		position: relative;
-		background: $grey_light;
-		@include transition(color $animation ease, background $animation ease);
+		background: lighten(color(grey), 10%);
+		@include transition(color $animation ease, background-color $animation ease);
+		&:first-child {
+			border-top: 1px solid color(grey);
+		}
+		&:hover {
+			background: lighten(color(grey), 5%);
+		}
+		&:active {
+			background: lighten(color(grey), 1%);
+		}
 		button {
+			width: 100%;
 			display: block;
 			.more {
 				&:after {
@@ -23,6 +33,7 @@
 			}
 		}
 		&.active__title {
+			background: lighten(color(grey), 3%);
 			button {
 				.more {
 					&:after {
@@ -31,19 +42,10 @@
 				}
 			}
 		}
-		&:hover, &.active__title {
-			background: darken($grey_light, 3%);
-		}
-		&:active {
-			background: darken($grey_light, 5%);
-		}
-		&:first-child {
-			border-top: 1px solid darken($grey_light, 5%);
-		}
 	}
 	.accordion__content {
 		@include nudge(padding, 0.75);
-		border: 1px solid darken($grey_light, 5%);
+		border: 1px solid color(grey);
 		display: none;
 		&.active__content {
 			border-top: 0;

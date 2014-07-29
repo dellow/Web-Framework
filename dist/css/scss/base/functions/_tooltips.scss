@@ -19,8 +19,8 @@
 		top: -10px; left: 100%;
 		z-index: 2;
 		border-radius: $border_radius_base;
-		color: $white;
-		background: rgba($black, 0.85);
+		color: color(white);
+		background: rgba(color(black), 0.85);
 
 		// Using filters instead of box-shadow so it applies to
 		// the CSS arrow to.
@@ -29,7 +29,7 @@
 		-ms-filter    : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
 		-o-filter     : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
 		filter        : drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
-		@include arrow(10px, rgba($black, 0.85), 10px, -20px, null, left);
+		@include arrow(10px, rgba(color(black), 0.85), 10px, -20px, null, left);
 		p {
 			margin: 5px 0;
 		}

@@ -21,7 +21,7 @@ div.table {
 table {
 	&.table {
 		width: 100%;
-		border: 1px solid $grey;
+		border: 1px solid color(grey);
 		border-radius: $border_radius_base;
 		border-collapse: separate;
 	  	border-spacing: 0;
@@ -45,10 +45,10 @@ table {
 		tbody {
 			tr {
 				&:nth-child(even) {
-					background: $colour_even_base;
+					background: $color_even_base;
 				}
 				&:nth-child(odd) {
-					background: $colour_odd_base;
+					background: $color_odd_base;
 				}
 			}
 		}
@@ -58,10 +58,10 @@ table {
 			tr {
 				th, td {
 					&:nth-child(even) {
-						background: $colour_even_base;
+						background: $color_even_base;
 					}
 					&:nth-child(odd) {
-						background: $colour_odd_base;
+						background: $color_odd_base;
 					}
 				}
 			}

@@ -7,20 +7,20 @@ html {
     min-height: 100%;
     overflow-y: scroll;
     font: #{$font_size_base}/#{$line_height_ratio} $font_family_sans_serif_base; // Hashed so SASS doesn't do a calculation
-	color: $colour_text;
+	color: $color_text;
 	word-wrap: break-word;
 }
 
 /* -- Links, Buttons & Hover Styles -- */
 a, button {
-	color: $colour_text_link;
+	color: $color_text_link;
 	text-decoration: none;
 	@include transition(color $animation ease);
 	&:hover {
-		color: $colour_text_link_hover;
+		color: $color_text_link_hover;
 	}
 	&:active {
-		color: darken($colour_text_link_hover, 15%);
+		color: darken($color_text_link_hover, 15%);
 	}
 }
 
@@ -54,7 +54,7 @@ ul, ol {
 h1, h2, h3, h4, h5, h6 {
 	text-rendering: optimizelegibility;
 	&.collapse-margin {
-		@include nudge(margin-bottom, 0.1);
+		margin: 0;
 	}
 }
 h1 {

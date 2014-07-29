@@ -40,7 +40,7 @@ form {
 		margin: 0;
 		position: relative;
 		abbr {
-			color: $red;
+			color: color(red);
 		}
 		input[type="radio"], input[type="checkbox"] {
 			@include nudge(margin-left, 0.5);
@@ -55,33 +55,28 @@ form {
 	// All form elements
 	input, .input, select, textarea, button, .button {
 		height: $form_field_height;
-		border: 1px solid darken($grey_light, 6%);
+		border: 1px solid lighten(color(grey), 5%);
 		vertical-align: top;
 		position: relative;
 		border-radius: $border_radius_base;
 		cursor: pointer;
 		color: inherit;
 		line-height: $line_height_base;
-		@include transition(color $animation ease, background $animation ease, border-color $animation ease);
-		&:hover, &:active, &:focus {
-			color: inherit;
-		}
+		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease);
 		&:hover, &:active {
-			border-color: darken($grey_light, 12%);
+			border-color: darken(color(grey), 3%);
 		}
 		&:focus {
-			border-color: darken($grey_light, 24%);
+			border-color: darken(color(grey), 9%);
 		}
-		&[readonly], &.readonly, &.readonly:hover, &.readonly:active {
-			border-color: darken($grey_light, 6%);
+		&[readonly], &[readonly]:hover, &.readonly, &.readonly:hover, &.readonly:active,
+		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active  {
+			border-color: lighten(color(grey), 5%);
 			cursor: no-drop;
-			background: darken($grey_light, 2%);
+			background: lighten(color(grey), 10%);
 		}
-		&[disabled], &.disabled, &.disabled:hover, &.disabled:active {
-			border-color: darken($grey_light, 12%);
-			cursor: no-drop;
+		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {
 			@include opacity(0.5);
-			background: darken($grey_light, 6%);
 		}
 	}
 
@@ -90,7 +85,7 @@ form {
 		@include nudge(padding, 0.2 0.4);
 		margin: 0.2em 0;
 		font-size: 80%;
-		background: $white;
+		background: color(white);
 	}
 
 	// Textareas
@@ -117,12 +112,12 @@ form {
 	button, .button {
 		@include nudge(padding, 0 1.2);
 		text-align: center;
-		background: darken($grey_light, 2%);
-		&:hover, &:active {
-			background: darken($grey_light, 4%);
+		background: lighten(color(grey), 10%);
+		&:hover {
+			background: lighten(color(grey), 5%);
 		}
 		&:active {
-			background: darken($grey_light, 8%);
+			background: lighten(color(grey), 1%);
 		}
 	}
 }

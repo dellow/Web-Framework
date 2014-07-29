@@ -34,6 +34,7 @@ gulp.task('compass', function(){
 		environment     : environment,
 		css             : './dist/css',
 		sass            : './dist/css/scss',
+		sourcemap		: true,
 		force           : true,
 		relativeAssets  : true,
 		noLineComments  : true,
