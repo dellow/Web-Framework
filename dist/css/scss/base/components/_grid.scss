@@ -9,17 +9,10 @@ $gutter_width: ($gutter / 2);
 	@extend %cf;
 	position: relative;
 	left: -$gutter_width;
-	&.no-gutter {
-		width: $col_1;
-		left: 0;
-		[class*="col-"] {
-			margin: 0;
-		}
-	}
 	[class*="col-"] {
 		width: $col_1 - $gutter_width;
-		float: left;
 		margin: 0 0 0 $gutter_width;
+		float: left;
 		&.left {
 			text-align: left;
 		}
@@ -34,6 +27,22 @@ $gutter_width: ($gutter / 2);
 		}
 		&.fr {
 			float: right;
+		}
+	}
+	&.no-gutter {
+		width: $col_1;
+		left: 0;
+		[class*="col-"] {
+			margin: 0;
+		}
+	}
+	&.bricked {
+		letter-spacing: -4px;
+		[class*="col-"] {
+			float: none;
+			@include inline-block;
+			vertical-align: top;
+			letter-spacing: normal;
 		}
 	}
 
