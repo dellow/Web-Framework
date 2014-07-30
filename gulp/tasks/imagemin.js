@@ -12,12 +12,12 @@ var gulp     = require('gulp'),
 gulp.task('imagemin', function(){
     // Run on production only
     if(GLOBAL.is_production){
-      	var ret = gulp.src('./app/dist/images/**/*')
+      	var ret = gulp.src(GLOBAL.dist_dir + 'images/**/*')
         .pipe(cache(imagemin({
     		progressive: true,
     		interlaced: true
         })))
-        .pipe(gulp.dest('./app/dist/images'))
+        .pipe(gulp.dest(GLOBAL.dist_dir + 'images'))
         .pipe(size({title: 'images'}));
 
         return ret;

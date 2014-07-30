@@ -23,12 +23,12 @@ function handleError(err) {
 /* Task
 /* ================================================== */
 gulp.task('compass', function(){
-	var ret = gulp.src('./app/dist/css/scss/**/*.scss')
+	var ret = gulp.src(GLOBAL.dist_dir + 'css/scss/**/*.scss')
 	.pipe(compass({
 		style           : minify,
 		environment     : environment,
-		css             : './app/dist/css',
-		sass            : './app/dist/css/scss',
+		css             : GLOBAL.dist_dir + 'css',
+		sass            : GLOBAL.dist_dir + 'css/scss',
 		sourcemap		: sourcemap,
 		force           : true,
 		relativeAssets  : true,
@@ -36,7 +36,7 @@ gulp.task('compass', function(){
 		assetCacheBuster: false
 	}))
 	.on('error', handleError)
-	.pipe(gulp.dest('./app/dist/css'));
+	.pipe(gulp.dest(GLOBAL.dist_dir + 'css'));
 
 	return ret;
 });

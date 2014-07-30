@@ -71,6 +71,8 @@ __Please note:__ `watch` will run in development mode, so CSS and JS will not be
 ## Server
 You can launch the built in web server with BrowserSync simply by running `gulp serve`. This will provide a local and external address to test your apps in sync with other browsers. `gulp serve` will automatically look for changes in the following files: `.html`, `.css`, `.js` and any images in the image folder.
 
+The `gulp serve` command takes an optional parameter to provide a proxy URL, for example: `gulp serve --url http://vagrant.dev/`. If this is supplied you files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, file from the `./app` directory will be served instead.
+
 ## PageSpeed
 You can run Google PageSpeed insights by running `gulp pagespeed`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp pagespeed --url http://amazon.com --mode desktop`.
 

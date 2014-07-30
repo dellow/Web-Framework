@@ -10,7 +10,7 @@ var gulp    = require('gulp'),
 gulp.task('csslint', function(){
     // Run on development only
     if(GLOBAL.is_development){
-		var ret = gulp.src('./app/dist/css/**/*.css')
+		var ret = gulp.src(GLOBAL.dist_dir + 'css/**/*.css')
 	    .pipe(csslint())
 	    .pipe(csslint.reporter());
 
