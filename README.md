@@ -43,8 +43,8 @@ Watch for changes to the main JS and SASS files:
 
 	gulp watch
 
-## Production / Development / Staging
-The Project Wrapper runs various tasks based on the environment. The following tasks are run by default:
+## Profiles
+The Project Wrapper runs various profiles based on the environment variable. Just running `gulp` will run the `development` profile. Running any other profile requires the `--config` parameter, for example: `gulp --config production` will run the production profile. The following tasks are run for each profile:
 
 ### Development
 - Browserify (Non minified)
@@ -59,6 +59,9 @@ The Project Wrapper runs various tasks based on the environment. The following t
 - Compass (Minified)
 - HTML (Minified)
 - Imagemin
+
+### Staging
+_Define as needed_
 
 ## Watch
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile.

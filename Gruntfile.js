@@ -37,12 +37,12 @@ module.exports = function(grunt){
                 release: (new Date()).toISOString().replace(/[^a-z0-9]/gi, '_').toLowerCase(),
                 config : grunt.option('config'),
                 archive: [
-                    'releases/deployment.tgz'
+                    './releases/deployment.tgz'
                 ],
                 files  : [
-                    '*htaccess',
-                    '*html',
-                    '*php',
+                    './app/*htaccess',
+                    './app/*html',
+                    './app/*php',
                     '<%= vars.paths.css %>/addons/**',
                     '<%= vars.paths.css %>/fonts/**',
                     '<%= vars.paths.css %>/*',
@@ -61,7 +61,7 @@ module.exports = function(grunt){
         compress: {
             main: {
                 options: {
-                    archive: 'releases/deployment.tgz'
+                    archive: './releases/deployment.tgz'
                 },
                 expand: true,
                 cwd   : './',
