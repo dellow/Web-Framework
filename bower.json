@@ -16,7 +16,7 @@
     "html",
     "javascript"
     "jquery",
-    "sass",
+    "sass"
   ],
   "license": "MIT",
   "ignore": [
