@@ -15,7 +15,7 @@ gulp.task('html', function(){
             spare: true
         };
 
-        var ret = gulp.src('./app/*.html')
+        var ret = gulp.src(['./app/*.html', './app/*.php'])
         .pipe(html(opts))
         .pipe(gulp.dest('./app/'));
 
