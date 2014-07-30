@@ -3843,7 +3843,7 @@ form .response--warning .msg {
     max-width: 40%;
   }
 }
-@media only screen and (max-width: 32.5em) {
+@media only screen and (max-width: 20em) {
   /* -- Exclusions -- */
   /* line 33, scss/base/_breakpoints.scss */
   .mobile-hide {
