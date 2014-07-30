@@ -24,7 +24,6 @@
     "bower_components",
     "gulp",
     "Gulpfile.js",
-    "bower.json",
     "package.json",
     "README.md",
     ".gitignore"
