@@ -8,8 +8,11 @@ var gulp    = require('gulp'),
 /* Task
 /* ================================================== */
 gulp.task('jasmine', function(){
-	var ret = gulp.src('./dist/js/spec/test.js')
-        .pipe(jasmine());
+    // Run on development only
+    if(GLOBAL.is_development){
+		var ret = gulp.src('./app/dist/js/spec/test.js')
+	        .pipe(jasmine());
 
-	return ret;
+		return ret;
+    }
 });

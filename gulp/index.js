@@ -1,7 +1,9 @@
 /* ================================================== */
-/* Yargs
+/* Require
 /* ================================================== */
-var args = require('yargs').argv;
+var args  = require('yargs').argv,
+	fs    = require('fs'),
+	tasks = fs.readdirSync('./gulp/tasks/');
 
 /* ================================================== */
 /* GLOBAL variables
@@ -11,12 +13,6 @@ GLOBAL.args           = args.config;
 GLOBAL.is_development = (args.config == 'development') ? true : false,
 GLOBAL.is_staging     = (args.config == 'staging') ? true : false,
 GLOBAL.is_production  = (args.config == 'production') ? true : false;
-
-/* ================================================== */
-/* Require
-/* ================================================== */
-var fs    = require('fs'),
-	tasks = fs.readdirSync('./gulp/tasks/');
 
 /* ================================================== */
 /* Task

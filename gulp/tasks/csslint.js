@@ -8,9 +8,12 @@ var gulp    = require('gulp'),
 /* Task
 /* ================================================== */
 gulp.task('csslint', function(){
-	var ret = gulp.src('./dist/css/*.css')
-    .pipe(csslint())
-    .pipe(csslint.reporter());
+    // Run on development only
+    if(GLOBAL.is_development){
+		var ret = gulp.src('./app/dist/css/**/*.css')
+	    .pipe(csslint())
+	    .pipe(csslint.reporter());
 
-	return ret;
+		return ret;
+	}
 });

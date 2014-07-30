@@ -8,7 +8,7 @@ var gulp    = require('gulp'),
 /* Task
 /* ================================================== */
 gulp.task('sync', function(){
-    var ret = gulp.src('./*')
+    var ret = gulp.src('./app/*')
         .pipe(changed('./release/src'))
         .pipe(gulp.dest('./release/src'));
 

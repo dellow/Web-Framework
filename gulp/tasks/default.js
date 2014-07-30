@@ -10,5 +10,8 @@ gulp.task('default', [
 	'browserify',
 	'compass',
 	'csslint',
-	'jasmine'
+	'html',
+	'imagemin',
+	'jasmine',
+	'jshint'
 ]);

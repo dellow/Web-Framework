@@ -27,11 +27,11 @@ module.exports = function(grunt){
         **/
         vars: {
             paths: {
-                base : '/',
-                css  : 'dist/css',
-                fonts: 'dist/css/fonts',
-                img  : 'dist/images',
-                js   : 'dist/js'
+                base : './app',
+                css  : './app/dist/css',
+                fonts: './app/dist/css/fonts',
+                img  : './app/dist/images',
+                js   : './app/dist/js'
             },
             deploy: {
                 release: (new Date()).toISOString().replace(/[^a-z0-9]/gi, '_').toLowerCase(),

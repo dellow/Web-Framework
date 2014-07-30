@@ -18,49 +18,49 @@ git init             && \
 rm install.sh        && \
 # ------------------------------------------------------------------------
 # README
-if [[ -e README.md ]]; then
+if [[ -e ./README.md ]]; then
 	read -p "Do you need the Readme file? y/n " choice
 	if [[ $choice = "n" ]]
 	then
 		# Remove `README.md`
-		rm README.md
+		rm ./README.md
 	fi
 	printf "\n"
 fi
 # ------------------------------------------------------------------------
 # htaccess
-if [[ -e .htaccess ]]; then
+if [[ -e ./app/.htaccess ]]; then
 	read -p "Do you need the htaccess file? y/n " choice
 	if [[ $choice = "n" ]]
 	then
 		# Remove `.htaccess`
-		rm .htaccess
+		rm ./app/.htaccess
 	fi
 	printf "\n"
 fi
 # ------------------------------------------------------------------------
 # SFTP Config
-if [[ -e sftp-config.json ]]; then
+if [[ -e ./sftp-config.json ]]; then
 	read -p "Do you need the SFTP config? y/n " choice
 	if [[ $choice = "n" ]]
 	then
 		# Remove `sftp-config.json`
-		rm sftp-config.json
+		rm ./sftp-config.json
 	fi
 	printf "\n"
 fi
 # ------------------------------------------------------------------------
 # Update / get dependencies with Bower
-bower install                                    && \
+bower install                                        && \
 # ------------------------------------------------------------------------
 # Update / get dependencies with NPM
-npm install                                      && \
+npm install                                          && \
 # ------------------------------------------------------------------------
 # Move bower dependency
-cp -r bower_components/framework-library/dist .  && \
+cp -r bower_components/framework-library/dist ./app  && \
 # ------------------------------------------------------------------------
 # Add all current files
-git add --all                                    && \
+git add --all                                        && \
 # ------------------------------------------------------------------------
 # Check for a commit
 read -p "Do you want to do an initial commit? y/n " choice

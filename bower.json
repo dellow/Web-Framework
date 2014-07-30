@@ -1,10 +1,5 @@
 {
-  "name": "Framework",
-  "version": "1.0.0",
-  "description": "A simple wrapper for web projects.",
-  "authors": [
-    "Stew Dellow <stewdellow@gmail.com>"
-  ],
+  "name": "Project Wrapper",
   "dependencies": {
     "framework-library": "*"
   }

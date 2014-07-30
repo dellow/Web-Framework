@@ -21,13 +21,13 @@ function handleError(err) {
 /* Task
 /* ================================================== */
 gulp.task('browserify', function(){
-	var ret = browserify('./dist/js/app/')
+	var ret = browserify('./app/dist/js/app/')
 		.bundle()
 		.pipe(source('index.js'))
 		.pipe(gulpif(GLOBAL.is_production, streamify(uglify())))
 		.pipe(rename('build.js'))
 		.on('error', handleError)
-		.pipe(gulp.dest('./dist/js/build/'));
+		.pipe(gulp.dest('./app/dist/js/build/'));
 
 	return ret;
 });
