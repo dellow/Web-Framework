@@ -27,6 +27,7 @@
     "bower.json",
     "package.json",
     "README.md",
-    ".gitignore"
+    ".gitignore",
+    ".gitkeep"
   ]
 }
