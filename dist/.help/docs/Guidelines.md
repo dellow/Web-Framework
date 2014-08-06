@@ -20,6 +20,14 @@
 	6. [Shorthand notation](#css--shorthand_notation)
 	7. [Comments](#css--comments)
 	8. [Editor preferences](#css--editor_preferences)
+3. [Mobile Apps](#mobile)
+	1. [Viewport](#mobile--viewport)
+	2. [Icons](#mobile--icons)
+	3. [iOS Startup Images](#mobile--ios_startup_images)
+	4. [iOS Launcher Title](#mobile--ios_launcher_title)
+	5. [iOS Browser UI](#mobile--ios_browser_ui)
+	6. [iOS Status Bar](#mobile--ios_status_bar)
+	7. [Linking to Native Functions](#mobile--linking_native_functions)
 
 <a name="html"></a>
 ## HTML
@@ -295,4 +303,89 @@ Set your editor to the following settings to avoid common code inconsistencies a
 - Use four space tabs.
 - Trim trailing white space on save.
 - Set encoding to UTF-8.
-- Add new line at end of files.
+- No new line at end of files.
+
+<a name="mobile"></a>
+## Mobile Apps
+
+<a name="mobile--viewport"></a>
+### Viewport
+To set the viewport add the following <meta> tag to the <head> of the document.
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+This will set the `width` of the viewport to match the width of the device. The `initial-scale` value ensures that no zoom will be applied to the page when it first loads.
+
+<a name="mobile--icons"></a>
+### Icons
+#### iOS
+All icons should be supplied in PNG format. You can specify the launcher icon by adding a `<link>` element in the head of the document. The `rel` attribute should be set to `apple-touch-icon`.
+
+Additionally the `size` attribute should display the size in pixels of the icon. If you don't specify a `size` attribute the default `60x60` size will be used. The `data-device` attribute is optional and specific only to this framework. It highlights the device the image is for.
+
+	<link rel="apple-touch-icon" sizes="152x152" href="favicon-152x152.png" data-device="ipad|ios7|retina">
+
+There are multiple variants of the Apple Touch Icon as highlighted below:
+- 152x152 for retina iPads on iOS 7.
+- 144x144 for retina iPads on iOS 6.
+- 120x120 for retina iPhones & iPod touches on iOS 7.
+- 114x114 for retina iPhones & iPod touches on iOS 6.
+- 76x76 for iPads on iOS 7.
+- 72x72 for iPads on iOS 6.
+- 57x57 for iPhones & iPod touches on iOS 6.
+
+__Please Note:__ iOS7 no longer adds effects to icons. Older versions of iOS will. To prevent this suffix your icon filenames with `-precomposed.png`.
+
+#### Android
+_Coming soon_
+
+#### Windows
+_Coming soon_
+
+<a name="mobile--ios_startup_images"></a>
+### iOS Startup Images
+Since web apps can now be fired straight from the iOS homescreen you can specify an image to display while it loads.
+
+	<link rel="apple-touch-startup-image" href="startup-image-1536x2008.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" data-device="ipad|ios7|retina|portrait,ipad|ios6|retina|portrait">
+
+There are multiple variants of the Apple Startup Image as highlighted below:
+- 1536x2008 for retina iPads in Portrait mode
+- 1496x2048 for retina iPads in Landscape mode
+- 768x1004 for iPads in Portrait mode
+- 748x1024 for iPads in Landscape mode
+- 640x1096 for retina iPhone 5
+- 640x920 for retina iPhones pre-iPhone 5
+- 320x460 for ye olde iPhones
+
+<a name="mobile--ios_launcher_title"></a>
+### iOS Launcher Title
+iOS Safari will use the web apps `<title>` tag by default to set the title for the launcher icon. This can be overrided with the following `<meta>` tag:
+
+	<meta name="apple-mobile-web-app-title" content="HTML Framework">
+
+<a name="mobile--ios_browser_ui"></a>
+### iOS Browser UI
+_Coming soon_
+
+<a name="mobile--ios_status_bar"></a>
+### iOS Status Bar
+_Coming soon_
+
+<a name="mobile--linking_native_functions"></a>
+### Linking to Native Functions
+#### Launch the native mail app
+	<a href="mailto:hello@example.com">Send Email</a>
+
+#### Launch the native phone app
+	<a href="tel:01234567890">Call Us</a>
+
+#### Launch FaceTime
+	<a href="facetime:01234567890">Call using FaceTime</a>
+	<a href="facetime:hello@example.com">Call using FaceTime</a>
+
+#### Launch the native SMS app
+	<a href="sms:01234567890">Text us</a>
+
+#### Launch the iOS Maps app
+	<a href="http://maps.apple.com/?q=england">England</a>
+	<a href="http://maps.apple.com/?daddr=Glasgow,+CA&saddr=London">Directions</a>
