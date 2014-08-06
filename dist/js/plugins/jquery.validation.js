@@ -582,10 +582,12 @@
     Plugin.prototype.server_validate_fields = function(){
         // Check for a form action
         if(Plugin.config.form_action !== ''){
+            var fatalerror = false;
             // Use ajax to check server response
+
             $.ajax({
                 type    : 'POST',
-                url     : Plugin.config.form_action,
+                url     : Plugin.w.form_action,
                 data    : Plugin.w.form.serialize() + '&' + Plugin.config.serverID + '=true',
                 dataType: 'JSON',
                 cache   : false,
@@ -605,7 +607,7 @@
                             var a = response.error[key];
                             if(a.field !== undefined){
                                 var obj = {
-                                    input: $('[name="' + a.field + '"]', form),
+                                    input: $('[name="' + a.field + '"]', Plugin.w.form),
                                     msg  : a.msg
                                 }
                                 Plugin.w.error_array.push(obj);
@@ -614,6 +616,7 @@
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError){
+                    fatalerror = true;
                     // Un-disable stuff
                     Plugin.prototype.disable_stuff(false);
                     // Server error
@@ -622,7 +625,7 @@
                 }
             });
 
-            return (Plugin.w.error_array.length === 0) ? true : false;
+            return (Plugin.w.error_array.length === 0 && !fatalerror) ? true : false;
         }
         // No form action
         else{
