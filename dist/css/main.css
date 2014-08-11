@@ -24,11 +24,7 @@
  * Temporarily modifies the grid system
  *
  *	.foo {
- *		$gutter_width: 6%;
- *		@include modify-grid($gutter_width);
- *		.grid [class*="col-"] {
- *			width: $col_1-2 - $gutter_width;
- *		}
+		@include modify-grid(6%, 'col-1');
  *	}
 **/
 /**
@@ -3344,7 +3340,7 @@ form .response--warning .msg {
   -o-filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
   filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
 }
-/* line 124, scss/mixins/_misc.scss */
+/* line 121, scss/mixins/_misc.scss */
 .tooltip .tooldata:after {
   width: 0;
   height: 0;

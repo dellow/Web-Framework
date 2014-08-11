@@ -35,18 +35,15 @@
  * Temporarily modifies the grid system
  *
  *	.foo {
- *		$gutter_width: 6%;
- *		@include modify-grid($gutter_width);
- *		.grid [class*="col-"] {
- *			width: $col_1-2 - $gutter_width;
- *		}
+		@include modify-grid(6%, $col-1-2);
  *	}
 **/
-@mixin modify-grid($gutter_width){
+@mixin modify-grid($gutter_width, $col){
 	.grid {
 		width: 100% + $gutter_width;
 		left: -$gutter_width;
 		[class*="col-"] {
+			width: $col - $gutter_width;
 			margin-left: $gutter_width;
 		}
 	}
