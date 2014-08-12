@@ -34,13 +34,13 @@ gulp.task('serve', function(){
 			notify: notify,
 			https: https,
 			server: {
-				baseDir: ['./app']
+				baseDir: [GLOBAL.src_dir]
 			}
 		});
 	}
 
 	// Reload .html and .php file changes
-	watch({glob: ['./app/**/*.html', './app/**/*.php']}, reload);
+	watch({glob: [GLOBAL.src_dir + '**/*.html', GLOBAL.src_dir + '**/*.php']}, reload);
 	// Run Compass on SCSS file changes
 	watch({glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'}, function(){
 		gulp.start('compass');
