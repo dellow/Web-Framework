@@ -3,7 +3,8 @@
 /* ================================================== */
 var gulp        = require('gulp'),
 	gulpif      = require('gulp-if'),
-	jshint      = require('gulp-jshint')
+	jshint      = require('gulp-jshint'),
+	stylish     = require('jshint-stylish');
 
 /* ================================================== */
 /* Task
@@ -13,7 +14,7 @@ gulp.task('jshint', function(){
     if(GLOBAL.is_development){
 		var ret = gulp.src(GLOBAL.dist_dir + 'js/**/*.js')
 	    .pipe(jshint())
-	    .pipe(jshint.reporter('jshint-stylish'));
+	    .pipe(jshint.reporter(stylish));
 
 		return ret;
 	}

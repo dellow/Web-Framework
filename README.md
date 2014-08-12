@@ -53,15 +53,12 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 - JSHint
 - Imagemin
 - Jasmine
+- Bundle (No HTML or Image optimisation)
 
 ### Production
 - Browserify (Minified)
 - Compass (Minified)
-- HTML (Minified)
-- Imagemin
-
-### Staging
-_Define as needed_
+- Bundle (HTML and Image optimisation)
 
 ## Watch
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile.
@@ -71,15 +68,15 @@ __Please note:__ `watch` will run in development mode, so CSS and JS will not be
 ## Server
 You can launch the built in web server with BrowserSync simply by running `gulp serve`. This will provide a local and external address to test your apps in sync with other browsers. `gulp serve` will automatically look for changes in the following files: `.html`, `.css`, `.js` and any images in the image folder.
 
-The `gulp serve` command takes an optional parameter to provide a proxy URL, for example: `gulp serve --url http://vagrant.dev/`. If this is supplied you files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, file from the `./app` directory will be served instead.
+The `gulp serve` command takes an optional parameter to provide a proxy URL, for example: `gulp serve --url http://vagrant.dev/`. If this is supplied you files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./app` directory will be served instead.
 
 ## PageSpeed
 You can run Google PageSpeed insights by running `gulp pagespeed`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp pagespeed --url http://amazon.com --mode desktop`.
 
-## Sync
-Sync creates a new release with the contents of the `./app` directory.
+## Release
+Release creates a snapshot of the application files from the `src` directory essentially creating a release for use. Each release is timestamped and appended with the current state.
 
-__Please note:__ This feature is still under development.
+The current state will also effect the optimisation of the release. For example `gulp release` will create a release with `_development` appended to the end. The development profile (see Profiles) will be run on the release. Likewise `gulp release --config production` will run the production profile on the release.
 
 ## Working with SCSS
 Any new SCSS partials should be added in the `site` directory. `base` and `config` should be left as is so they can be overwritten and updated. Use the `site/_vars` partial to override any of the default variables set in `config/_vars`.
