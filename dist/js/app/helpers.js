@@ -42,6 +42,7 @@
         if($(window).width() > breakpoint1 && $(window).width() < breakpoint2){
             // Map all qualifying element heights to an array.
             var heights = $('[data-eh="true"]', el).map(function(){
+                $(this).css({'height': 'auto'});
                 return $(this).outerHeight();
             }).get();
             // Get the largest value from the array.
