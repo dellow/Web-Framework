@@ -59,7 +59,7 @@ bower install                                        && \
 npm install                                          && \
 # ------------------------------------------------------------------------
 # Move bower dependency
-cp -r bower_components/framework-library/dist ./app  && \
+cp -r bower_components/framework-library/dist ./src  && \
 # ------------------------------------------------------------------------
 # Add all current files
 git add --all                                        && \
