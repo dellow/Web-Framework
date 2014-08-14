@@ -1,5 +1,14 @@
-# Base Directories
-# ---------------------------
+# DIRECTORIES
+# Anything directory a user can modify the contents of on the
+# server side should be ignored to prevent any overwriting issues.
+# ---------------------------------------------------------------------------------
 .sass-cache/
 node_modules/
-bower_components/
+bower_component/
+
+
+# FILES
+# If a public repo any files with sensitive data like database connection
+# details should be ignored to prevent unauthorised access.
+# ---------------------------------------------------------------------------------
+*.log
