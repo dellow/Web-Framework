@@ -49,11 +49,6 @@ gulp.task('serve', function(){
 	watch({glob: GLOBAL.dist_dir + 'css/main.css'}, function(){
 		reload();
 	});
-	// Reload on image file changes
-	watch({glob: GLOBAL.dist_dir + 'images/**/*'}, function(){
-		gulp.start('imagemin');
-		reload();
-	});
 	// Run Browserify on JS file changes
 	watch({glob: GLOBAL.dist_dir + 'js/**/*.js'}, function(){
 		gulp.start('browserify');

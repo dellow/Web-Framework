@@ -19,7 +19,8 @@ var state   = (GLOBAL.args != undefined) ? GLOBAL.args : 'development',
         GLOBAL.dist_dir + 'js/build/**/*',
         GLOBAL.dist_dir + 'js/vendor/**/*',
         GLOBAL.dist_dir + 'images/**/*.*',
-        GLOBAL.src_dir + '*.*'
+        GLOBAL.src_dir + '*.*',
+        GLOBAL.src_dir + '.*'
     ];
 
 /* ================================================== */
@@ -40,6 +41,7 @@ gulp.task('release', function(){
 // Release sub tasks
 gulp.task('r-move', function(){
     return gulp.src(files, {base: GLOBAL.src_dir})
+        .pipe(gulp.dest('./releases/current'))
         .pipe(gulp.dest(release));
 });
 gulp.task('r-minify', function(){
@@ -52,6 +54,7 @@ gulp.task('r-minify', function(){
         };
         return gulp.src([release + '*.html', release + '*.php'])
             .pipe(html(opts))
+            .pipe(gulp.dest('./releases/current'))
             .pipe(gulp.dest(release));
     }
 });
@@ -63,6 +66,7 @@ gulp.task('r-imagemin', function(){
                 progressive: true,
                 interlaced: true
             })))
+            .pipe(gulp.dest('./releases/current/dist/images'))
             .pipe(gulp.dest(release + 'dist/images'))
             .pipe(size({title: 'images'}));
     }

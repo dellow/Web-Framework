@@ -19,10 +19,6 @@ gulp.task('watch', function(){
 			gulp.start('compass');
 		});
 
-		watch({glob: GLOBAL.dist_dir + 'images/**/*'}, function(){
-			gulp.start('imagemin');
-		});
-
 		watch({glob: GLOBAL.dist_dir + 'js/**/*.js'}, function(){
 			gulp.start('browserify');
 		});

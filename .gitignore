@@ -5,6 +5,7 @@
 .sass-cache/
 node_modules/
 bower_components/
+releases/app_*
 
 
 # FILES
