@@ -1,10 +1,20 @@
-# Ignore Directories
-# ---------------------------
+# DIRECTORIES
+# Anything directory a user can modify the contents of on the server side
+# should be ignored to prevent any overwriting issues.
+# ---------------------------------------------------------------------------------
 .sass-cache/
-bower_components/
 node_modules/
+bower_components/
 
-# Temp
+
+# FILES
+# If a public repo any files with sensitive data like database connection
+# details should be ignored to prevent unauthorised access.
+# ---------------------------------------------------------------------------------
+*.log
+
+
+# TEMP
 # ---------------------------
 # JavaScript documentation isn't ready yet
 javascript.html

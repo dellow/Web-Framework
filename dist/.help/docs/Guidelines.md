@@ -23,9 +23,9 @@
 3. [Mobile Apps](#mobile)
 	1. [Viewport](#mobile--viewport)
 	2. [Icons](#mobile--icons)
+	5. [Browser UI](#mobile--browser_ui)
 	3. [iOS Startup Images](#mobile--ios_startup_images)
 	4. [iOS Launcher Title](#mobile--ios_launcher_title)
-	5. [iOS Browser UI](#mobile--ios_browser_ui)
 	6. [iOS Status Bar](#mobile--ios_status_bar)
 	7. [Linking to Native Functions](#mobile--linking_native_functions)
 
@@ -342,6 +342,22 @@ _Coming soon_
 #### Windows
 _Coming soon_
 
+<a name="mobile--browser_ui"></a>
+### Browser UI
+It is possible within iOS and Android to hide the browser UI in order to maximize screen estate by initilising standalone mode. To enable standalone mode simply add these `<meta>` tags:
+
+#### iOS
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+#### Android
+	<meta name="mobile-web-app-capable" content="yes">
+
+You can use JavaScript to check if your app is running in standalone mode simply be running:
+
+	if(window.navigator.standalone){
+	    console.log('Standalone mode is enabled');
+	}
+
 <a name="mobile--ios_startup_images"></a>
 ### iOS Startup Images
 Since web apps can now be fired straight from the iOS homescreen you can specify an image to display while it loads.
@@ -363,13 +379,23 @@ iOS Safari will use the web apps `<title>` tag by default to set the title for t
 
 	<meta name="apple-mobile-web-app-title" content="HTML Framework">
 
-<a name="mobile--ios_browser_ui"></a>
-### iOS Browser UI
-_Coming soon_
-
 <a name="mobile--ios_status_bar"></a>
 ### iOS Status Bar
-_Coming soon_
+With iOS you can also style the browser status bar simply by applying a variable `<meta>` tag. The are various values for the `content-attribute` to apply different styles. These are as follows:
+
+#### Default
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+#### Black
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+#### Black Translucent
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+__Please Note:__ The `black-translucent` type might require your app has extra padding in the header to prevent obscuring the content.
 
 <a name="mobile--linking_native_functions"></a>
 ### Linking to Native Functions
