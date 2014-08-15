@@ -50,7 +50,7 @@ gulp.task('r-minify', function(){
             comments: true,
             spare: true
         };
-        return gulp.src([GLOBAL.app_dir + '*.html', GLOBAL.app_dir + '*.php'])
+        return gulp.src([release + '*.html', release + '*.php'])
             .pipe(html(opts))
             .pipe(gulp.dest(release));
     }
@@ -58,7 +58,7 @@ gulp.task('r-minify', function(){
 gulp.task('r-imagemin', function(){
     // Run on production only
     if(GLOBAL.is_production){
-        return gulp.src(GLOBAL.app_dir + 'dist/images/**/*')
+        return gulp.src(release + 'dist/images/**/*')
             .pipe(cache(imagemin({
                 progressive: true,
                 interlaced: true
