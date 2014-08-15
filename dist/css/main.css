@@ -992,7 +992,7 @@ ul.horizontal-block li {
 /* -- Source Formatting -- */
 /* line 7, scss/base/_defaults.scss */
 p code {
-  color: #2ecc71;
+  color: #2ECC71;
 }
 
 /* line 11, scss/base/_defaults.scss */
@@ -1013,10 +1013,10 @@ code {
 pre {
   padding: 12px 18px;
   padding: 0.75rem 1.125rem;
-  border: 1px solid #dddddd;
+  border: 1px solid #DDDDDD;
   position: relative;
   border-radius: 3px;
-  background: #ededed;
+  background: #EDEDED;
 }
 
 /* line 30, scss/base/_defaults.scss */
@@ -1028,10 +1028,10 @@ kbd {
   zoom: 1;
   *display: inline;
   /* IE Fix */
-  border: 1px solid #dddddd;
+  border: 1px solid #DDDDDD;
   border-radius: 3px;
   color: #666666;
-  background: #ededed;
+  background: #EDEDED;
 }
 
 /* -- Citation -- */
@@ -1045,11 +1045,11 @@ cite .profession {
 blockquote {
   padding: 24px;
   padding: 1.5rem;
-  border: 1px solid #dddddd;
+  border: 1px solid #DDDDDD;
   border-radius: 3px;
-  color: #dddddd;
+  color: #DDDDDD;
   text-align: center;
-  background: #ededed;
+  background: #EDEDED;
 }
 /* line 55, scss/base/_defaults.scss */
 blockquote cite {
@@ -1091,13 +1091,13 @@ figure figcaption {
 ol.code {
   padding: 12px 18px;
   padding: 0.75rem 1.125rem;
-  border: 1px solid #dddddd;
+  border: 1px solid #DDDDDD;
   margin: 0;
   position: relative;
   border-radius: 3px;
   font-weight: 400;
   font-family: "source-code-pro", monospace;
-  background: #ededed;
+  background: #EDEDED;
 }
 /* line 93, scss/base/_defaults.scss */
 ol.code li {
@@ -1156,7 +1156,7 @@ hr.dots:after {
   padding-left: 24px;
   padding-left: 1.5rem;
   content: "·········";
-  color: #dddddd;
+  color: #DDDDDD;
   letter-spacing: 24px;
   letter-spacing: 1.5rem;
 }
@@ -1164,15 +1164,15 @@ hr.dots:after {
 /* -- Selection -- */
 /* line 143, scss/base/_defaults.scss */
 ::-moz-selection {
-  background: #c4122f;
-  color: white;
+  background: #C4122f;
+  color: #FFFFFF;
   text-shadow: none;
 }
 
 /* line 148, scss/base/_defaults.scss */
 ::selection {
-  background: #c4122f;
-  color: white;
+  background: #C4122f;
+  color: #FFFFFF;
   text-shadow: none;
 }
 
@@ -1238,7 +1238,7 @@ html {
 /* -- Links, Buttons & Hover Styles -- */
 /* line 15, scss/base/_rhythm.scss */
 a, button {
-  color: #c4122f;
+  color: #C4122f;
   text-decoration: none;
   -webkit-transition: color 300ms ease;
   -moz-transition: color 300ms ease;
@@ -1247,7 +1247,7 @@ a, button {
 }
 /* line 19, scss/base/_rhythm.scss */
 a:hover, button:hover {
-  color: #3498db;
+  color: #3498DB;
 }
 /* line 22, scss/base/_rhythm.scss */
 a:active, button:active {
@@ -1367,26 +1367,26 @@ h6 {
 /* -- Text colors -- */
 /* line 8, scss/base/_colors.scss */
 .color-black {
-  color: black;
+  color: #000000;
 }
 
 /* line 8, scss/base/_colors.scss */
 .color-white {
-  color: white;
+  color: #FFFFFF;
 }
 
 /* line 8, scss/base/_colors.scss */
-.color-gray {
-  color: #dddddd;
+.color-grey {
+  color: #DDDDDD;
 }
 /* line 10, scss/base/_colors.scss */
-.color-gray.opp {
+.color-grey.opp {
   color: #333333;
 }
 
 /* line 8, scss/base/_colors.scss */
 .color-blue {
-  color: #3498db;
+  color: #3498DB;
 }
 /* line 10, scss/base/_colors.scss */
 .color-blue.opp {
@@ -1395,7 +1395,7 @@ h6 {
 
 /* line 8, scss/base/_colors.scss */
 .color-green {
-  color: #2ecc71;
+  color: #2ECC71;
 }
 /* line 10, scss/base/_colors.scss */
 .color-green.opp {
@@ -1404,7 +1404,7 @@ h6 {
 
 /* line 8, scss/base/_colors.scss */
 .color-orange {
-  color: #e67e22;
+  color: #E67E22;
 }
 /* line 10, scss/base/_colors.scss */
 .color-orange.opp {
@@ -1413,7 +1413,7 @@ h6 {
 
 /* line 8, scss/base/_colors.scss */
 .color-red {
-  color: #c4122f;
+  color: #C4122f;
 }
 /* line 10, scss/base/_colors.scss */
 .color-red.opp {
@@ -1422,7 +1422,7 @@ h6 {
 
 /* line 8, scss/base/_colors.scss */
 .color-yellow {
-  color: #f1c40f;
+  color: #F1C40F;
 }
 /* line 10, scss/base/_colors.scss */
 .color-yellow.opp {
@@ -1433,26 +1433,26 @@ h6 {
 /* line 19, scss/base/_colors.scss */
 .bg.color-black, .slab.color-black {
   color: inherit;
-  background: black;
+  background: #000000;
 }
 /* line 19, scss/base/_colors.scss */
 .bg.color-white, .slab.color-white {
   color: inherit;
-  background: white;
+  background: #FFFFFF;
 }
 /* line 19, scss/base/_colors.scss */
-.bg.color-gray, .slab.color-gray {
+.bg.color-grey, .slab.color-grey {
   color: inherit;
-  background: #dddddd;
+  background: #DDDDDD;
 }
 /* line 22, scss/base/_colors.scss */
-.bg.color-gray.opp, .slab.color-gray.opp {
+.bg.color-grey.opp, .slab.color-grey.opp {
   background: #333333;
 }
 /* line 19, scss/base/_colors.scss */
 .bg.color-blue, .slab.color-blue {
   color: inherit;
-  background: #3498db;
+  background: #3498DB;
 }
 /* line 22, scss/base/_colors.scss */
 .bg.color-blue.opp, .slab.color-blue.opp {
@@ -1461,7 +1461,7 @@ h6 {
 /* line 19, scss/base/_colors.scss */
 .bg.color-green, .slab.color-green {
   color: inherit;
-  background: #2ecc71;
+  background: #2ECC71;
 }
 /* line 22, scss/base/_colors.scss */
 .bg.color-green.opp, .slab.color-green.opp {
@@ -1470,7 +1470,7 @@ h6 {
 /* line 19, scss/base/_colors.scss */
 .bg.color-orange, .slab.color-orange {
   color: inherit;
-  background: #e67e22;
+  background: #E67E22;
 }
 /* line 22, scss/base/_colors.scss */
 .bg.color-orange.opp, .slab.color-orange.opp {
@@ -1479,7 +1479,7 @@ h6 {
 /* line 19, scss/base/_colors.scss */
 .bg.color-red, .slab.color-red {
   color: inherit;
-  background: #c4122f;
+  background: #C4122f;
 }
 /* line 22, scss/base/_colors.scss */
 .bg.color-red.opp, .slab.color-red.opp {
@@ -1488,7 +1488,7 @@ h6 {
 /* line 19, scss/base/_colors.scss */
 .bg.color-yellow, .slab.color-yellow {
   color: inherit;
-  background: #f1c40f;
+  background: #F1C40F;
 }
 /* line 22, scss/base/_colors.scss */
 .bg.color-yellow.opp, .slab.color-yellow.opp {
@@ -1512,7 +1512,7 @@ h6 {
   border-radius: 3px;
   vertical-align: middle;
   cursor: pointer;
-  color: white;
+  color: #FFFFFF;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   -webkit-transition: background 300ms ease;
@@ -1529,23 +1529,23 @@ h6 {
 }
 /* line 21, scss/base/_buttons.scss */
 .btn:hover {
-  color: white;
+  color: #FFFFFF;
   text-decoration: none;
 }
 /* line 25, scss/base/_buttons.scss */
 .btn:active {
-  color: white;
+  color: #FFFFFF;
   box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* -- Abstractions -- */
 /* line 33, scss/base/_buttons.scss */
 .btn.standard {
-  background: #3498db;
+  background: #3498DB;
 }
 /* line 35, scss/base/_buttons.scss */
 .btn.standard.disabled:hover {
-  background: #3498db;
+  background: #3498DB;
 }
 /* line 38, scss/base/_buttons.scss */
 .btn.standard:hover {
@@ -1553,11 +1553,11 @@ h6 {
 }
 /* line 42, scss/base/_buttons.scss */
 .btn.positive {
-  background: #2ecc71;
+  background: #2ECC71;
 }
 /* line 44, scss/base/_buttons.scss */
 .btn.positive.disabled:hover {
-  background: #2ecc71;
+  background: #2ECC71;
 }
 /* line 47, scss/base/_buttons.scss */
 .btn.positive:hover {
@@ -1565,110 +1565,110 @@ h6 {
 }
 /* line 51, scss/base/_buttons.scss */
 .btn.negative {
-  background: #c4122f;
+  background: #C4122f;
 }
 /* line 53, scss/base/_buttons.scss */
 .btn.negative.disabled:hover {
-  background: #c4122f;
+  background: #C4122f;
 }
 /* line 56, scss/base/_buttons.scss */
 .btn.negative:hover {
   background: #950e24;
 }
 
-/* line 63, scss/base/_buttons.scss */
-.btn.black {
-  background: black;
+/* line 64, scss/base/_buttons.scss */
+.btn.btn-black {
+  background: #000000;
 }
-/* line 65, scss/base/_buttons.scss */
-.btn.black.disabled:hover {
-  background: black;
-}
-
-/* line 63, scss/base/_buttons.scss */
-.btn.white {
-  background: white;
-}
-/* line 65, scss/base/_buttons.scss */
-.btn.white.disabled:hover {
-  background: white;
+/* line 66, scss/base/_buttons.scss */
+.btn.btn-black.disabled:hover {
+  background: #000000;
 }
 
-/* line 63, scss/base/_buttons.scss */
-.btn.gray {
-  background: #dddddd;
+/* line 64, scss/base/_buttons.scss */
+.btn.btn-white {
+  background: #FFFFFF;
 }
-/* line 65, scss/base/_buttons.scss */
-.btn.gray.disabled:hover {
-  background: #dddddd;
+/* line 66, scss/base/_buttons.scss */
+.btn.btn-white.disabled:hover {
+  background: #FFFFFF;
 }
-/* line 68, scss/base/_buttons.scss */
-.btn.gray:hover {
+
+/* line 64, scss/base/_buttons.scss */
+.btn.btn-grey {
+  background: #DDDDDD;
+}
+/* line 66, scss/base/_buttons.scss */
+.btn.btn-grey.disabled:hover {
+  background: #DDDDDD;
+}
+/* line 69, scss/base/_buttons.scss */
+.btn.btn-grey:hover {
   background: #333333;
 }
 
-/* line 63, scss/base/_buttons.scss */
-.btn.blue {
-  background: #3498db;
+/* line 64, scss/base/_buttons.scss */
+.btn.btn-blue {
+  background: #3498DB;
 }
-/* line 65, scss/base/_buttons.scss */
-.btn.blue.disabled:hover {
-  background: #3498db;
+/* line 66, scss/base/_buttons.scss */
+.btn.btn-blue.disabled:hover {
+  background: #3498DB;
 }
-/* line 68, scss/base/_buttons.scss */
-.btn.blue:hover {
+/* line 69, scss/base/_buttons.scss */
+.btn.btn-blue:hover {
   background: #217dbb;
 }
 
-/* line 63, scss/base/_buttons.scss */
-.btn.green {
-  background: #2ecc71;
+/* line 64, scss/base/_buttons.scss */
+.btn.btn-green {
+  background: #2ECC71;
 }
-/* line 65, scss/base/_buttons.scss */
-.btn.green.disabled:hover {
-  background: #2ecc71;
+/* line 66, scss/base/_buttons.scss */
+.btn.btn-green.disabled:hover {
+  background: #2ECC71;
 }
-/* line 68, scss/base/_buttons.scss */
-.btn.green:hover {
+/* line 69, scss/base/_buttons.scss */
+.btn.btn-green:hover {
   background: #25a25a;
 }
 
-/* line 63, scss/base/_buttons.scss */
-.btn.orange {
-  background: #e67e22;
+/* line 64, scss/base/_buttons.scss */
+.btn.btn-orange {
+  background: #E67E22;
 }
-/* line 65, scss/base/_buttons.scss */
-.btn.orange.disabled:hover {
-  background: #e67e22;
+/* line 66, scss/base/_buttons.scss */
+.btn.btn-orange.disabled:hover {
+  background: #E67E22;
 }
-/* line 68, scss/base/_buttons.scss */
-.btn.orange:hover {
+/* line 69, scss/base/_buttons.scss */
+.btn.btn-orange:hover {
   background: #bf6516;
 }
 
-/* line 63, scss/base/_buttons.scss */
-.btn.red {
-  background: #c4122f;
+/* line 64, scss/base/_buttons.scss */
+.btn.btn-red {
+  background: #C4122f;
 }
-/* line 65, scss/base/_buttons.scss */
-.btn.red.disabled:hover {
-  background: #c4122f;
+/* line 66, scss/base/_buttons.scss */
+.btn.btn-red.disabled:hover {
+  background: #C4122f;
 }
-/* line 68, scss/base/_buttons.scss */
-.btn.red:hover {
+/* line 69, scss/base/_buttons.scss */
+.btn.btn-red:hover {
   background: #950e24;
 }
 
-/* line 63, scss/base/_buttons.scss */
-.btn.yellow {
-  background: #f1c40f;
+/* line 64, scss/base/_buttons.scss */
+.btn.btn-yellow {
+  background: #F1C40F;
 }
-/* line 65, scss/base/_buttons.scss */
-.btn.yellow.disabled:hover {
-  background: #f1c40f;
+/* line 66, scss/base/_buttons.scss */
+.btn.btn-yellow.disabled:hover {
+  background: #F1C40F;
 }
-/* line 68, scss/base/_buttons.scss */
-.btn.yellow:hover {
+/* line 69, scss/base/_buttons.scss */
+.btn.btn-yellow:hover {
   background: #c29d0b;
 }
 
@@ -2352,7 +2352,7 @@ ul.alert.box li {
   *display: inline;
   /* IE Fix */
   pointer-events: none;
-  color: #dddddd;
+  color: #DDDDDD;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(0))";
   filter: alpha(opacity=0);
   opacity: 0;
@@ -2373,11 +2373,11 @@ ul.alert.box li {
   *display: inline;
   /* IE Fix */
   cursor: pointer;
-  color: white;
+  color: #FFFFFF;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: black;
+  background: #000000;
   -webkit-transition: background 300ms ease;
   -moz-transition: background 300ms ease;
   -o-transition: background 300ms ease;
@@ -2385,7 +2385,7 @@ ul.alert.box li {
 }
 /* line 53, scss/base/components/_menus.scss */
 .mobile-select-menu select:hover, .mobile-select-menu select:focus {
-  background-color: #dddddd;
+  background-color: #DDDDDD;
 }
 /* line 57, scss/base/components/_menus.scss */
 .mobile-select-menu:after {
@@ -2405,7 +2405,7 @@ ul.alert.box li {
   *display: inline;
   /* IE Fix */
   pointer-events: none;
-  color: white;
+  color: #FFFFFF;
   -webkit-transition: top 300ms ease;
   -moz-transition: top 300ms ease;
   -o-transition: top 300ms ease;
@@ -2441,7 +2441,7 @@ ul.alert.box li {
   left: -12px;
   top: 100%;
   z-index: 100;
-  background: white;
+  background: #FFFFFF;
 }
 /* line 99, scss/base/components/_menus.scss */
 .nav-primary li .sub-menu li {
@@ -2515,7 +2515,7 @@ ul.alert.box li {
 }
 /* line 17, scss/base/components/_pagination.scss */
 .pagination .page-numbers.current {
-  color: #c4122f;
+  color: #C4122f;
 }
 
 /* ==========================================================================
@@ -2524,56 +2524,41 @@ ul.alert.box li {
 ========================================================================== */
 /* -- Progress Bar -- */
 @-webkit-keyframes progress-bar-stripes {
-  /* line 7, scss/base/components/_progress-bars.scss */
   from {
     background-position: 40px 0;
   }
-
-  /* line 10, scss/base/components/_progress-bars.scss */
   to {
     background-position: 0 0;
   }
 }
 @-moz-keyframes progress-bar-stripes {
-  /* line 15, scss/base/components/_progress-bars.scss */
   from {
     background-position: 40px 0;
   }
-
-  /* line 18, scss/base/components/_progress-bars.scss */
   to {
     background-position: 0 0;
   }
 }
 @-ms-keyframes progress-bar-stripes {
-  /* line 23, scss/base/components/_progress-bars.scss */
   from {
     background-position: 40px 0;
   }
-
-  /* line 26, scss/base/components/_progress-bars.scss */
   to {
     background-position: 0 0;
   }
 }
 @-o-keyframes progress-bar-stripes {
-  /* line 31, scss/base/components/_progress-bars.scss */
   from {
     background-position: 40px 0;
   }
-
-  /* line 34, scss/base/components/_progress-bars.scss */
   to {
     background-position: 0 0;
   }
 }
 @keyframes progress-bar-stripes {
-  /* line 39, scss/base/components/_progress-bars.scss */
   from {
     background-position: 40px 0;
   }
-
-  /* line 42, scss/base/components/_progress-bars.scss */
   to {
     background-position: 0 0;
   }
@@ -2585,12 +2570,12 @@ ul.alert.box li {
   border-radius: 3px;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   background-color: #f7f7f7;
-  background-image: -moz-linear-gradient(top, whitesmoke, #f9f9f9);
-  background-image: -ms-linear-gradient(top, whitesmoke, #f9f9f9);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(whitesmoke), to(#f9f9f9));
-  background-image: -webkit-linear-gradient(top, whitesmoke, #f9f9f9);
-  background-image: -o-linear-gradient(top, whitesmoke, #f9f9f9);
-  background-image: linear-gradient(top, whitesmoke, #f9f9f9);
+  background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -ms-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: linear-gradient(top, #f5f5f5, #f9f9f9);
   background-repeat: repeat-x;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#f9f9f9', GradientType=0);
 }
@@ -2598,7 +2583,7 @@ ul.alert.box li {
 .progress .bar {
   width: 0;
   height: 100%;
-  color: white;
+  color: #FFFFFF;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
@@ -2756,7 +2741,7 @@ div.table .col:first-child {
 /* line 22, scss/base/components/_tables.scss */
 table.table {
   width: 100%;
-  border: 1px solid #dddddd;
+  border: 1px solid #DDDDDD;
   border-radius: 3px;
   border-collapse: separate;
   border-spacing: 0;
@@ -2779,19 +2764,19 @@ table.table td:first-child, table.table th:first-child {
 }
 /* line 47, scss/base/components/_tables.scss */
 table.table-highlight-horizontal tbody tr:nth-child(even) {
-  background: #f4f4f4;
+  background: #F4F4F4;
 }
 /* line 50, scss/base/components/_tables.scss */
 table.table-highlight-horizontal tbody tr:nth-child(odd) {
-  background: #ededed;
+  background: #EDEDED;
 }
 /* line 60, scss/base/components/_tables.scss */
 table.table-highlight-vertical tbody tr th:nth-child(even), table.table-highlight-vertical tbody tr td:nth-child(even) {
-  background: #f4f4f4;
+  background: #F4F4F4;
 }
 /* line 63, scss/base/components/_tables.scss */
 table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight-vertical tbody tr td:nth-child(odd) {
-  background: #ededed;
+  background: #EDEDED;
 }
 
 /* ==========================================================================
@@ -2842,7 +2827,7 @@ form label, form .label {
 }
 /* line 42, scss/base/forms/_base.scss */
 form label abbr, form .label abbr {
-  color: #c4122f;
+  color: #C4122f;
 }
 /* line 45, scss/base/forms/_base.scss */
 form label input[type="radio"], form label input[type="checkbox"], form .label input[type="radio"], form .label input[type="checkbox"] {
@@ -2894,7 +2879,7 @@ form input, form .input, form select, form textarea {
   padding: 0.3rem 0.6rem;
   margin: 0.2em 0;
   font-size: 80%;
-  background: white;
+  background: #FFFFFF;
 }
 /* line 92, scss/base/forms/_base.scss */
 form textarea {
@@ -3332,7 +3317,7 @@ form .response--warning .msg {
   left: 100%;
   z-index: 2;
   border-radius: 3px;
-  color: white;
+  color: #FFFFFF;
   background: rgba(0, 0, 0, 0.85);
   -webkit-filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
   -moz-filter: drop-shadow(0 0 2px rgba(69, 18, 11, 0.15));
@@ -3383,7 +3368,7 @@ form .response--warning .msg {
 .accordion .accordion__title {
   padding: 6px;
   padding: 0.375rem;
-  border: 1px solid #dddddd;
+  border: 1px solid #DDDDDD;
   border-top: 0;
   position: relative;
   background: #f7f7f7;
@@ -3394,7 +3379,7 @@ form .response--warning .msg {
 }
 /* line 15, scss/base/javascript/_accordion.scss */
 .accordion .accordion__title:first-child {
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #DDDDDD;
 }
 /* line 18, scss/base/javascript/_accordion.scss */
 .accordion .accordion__title:hover {
@@ -3430,7 +3415,7 @@ form .response--warning .msg {
 .accordion .accordion__content {
   padding: 18px;
   padding: 1.125rem;
-  border: 1px solid #dddddd;
+  border: 1px solid #DDDDDD;
   display: none;
 }
 /* line 50, scss/base/javascript/_accordion.scss */
@@ -3473,7 +3458,7 @@ form .response--warning .msg {
 /* line 13, scss/base/javascript/_tabs.scss */
 .tabs .tabs__nav li {
   margin: 0 0 0 -5px;
-  border: 1px solid #dddddd;
+  border: 1px solid #DDDDDD;
   border-bottom: 0;
   display: inline-block;
   zoom: 1;
@@ -3516,8 +3501,8 @@ form .response--warning .msg {
   bottom: -1px;
   z-index: 2;
   border-radius: 3px 3px 0 0;
-  color: #c4122f;
-  background: white;
+  color: #C4122f;
+  background: #FFFFFF;
 }
 /* line 46, scss/base/javascript/_tabs.scss */
 .tabs .tabs__nav li.active__tab button {
@@ -3529,8 +3514,8 @@ form .response--warning .msg {
   padding: 18px;
   padding: 1.125rem;
   border-radius: 3px;
-  border: 1px solid #dddddd;
-  background: white;
+  border: 1px solid #DDDDDD;
+  background: #FFFFFF;
 }
 /* line 59, scss/base/javascript/_tabs.scss */
 .tabs.tabs-full-width .tabs__nav {
@@ -3609,7 +3594,7 @@ form .response--warning .msg {
 /* line 16, scss/base/javascript/plugins/_bx-slider.scss */
 .bx-wrapper .bx-loading {
   min-height: 50px;
-  background: url(../images/plugins/bx-slider/bx-loader.gif) center center no-repeat white;
+  background: url(../images/plugins/bx-slider/bx-loader.gif) center center no-repeat #fff;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -3751,7 +3736,7 @@ form .response--warning .msg {
   position: absolute;
   bottom: 0;
   left: 0;
-  background: #666666 \9;
+  background: #666 \9;
   background: rgba(80, 80, 80, 0.75);
   width: 100%;
 }

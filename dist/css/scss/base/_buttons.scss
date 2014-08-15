@@ -60,13 +60,15 @@
 }
 
 @each $color, $this_color in $colors {
-	.btn.#{$color} {
-		background: color($color);
-		&.disabled:hover {
+	.btn {
+		&.btn-#{$color} {
 			background: color($color);
-		}
-		&:hover {
-			background: color($color, dark);
+			&.disabled:hover {
+				background: color($color);
+			}
+			&:hover {
+				background: color($color, dark);
+			}
 		}
 	}
 }
