@@ -29,12 +29,12 @@ if [[ -e ./README.md ]]; then
 fi
 # ------------------------------------------------------------------------
 # htaccess
-if [[ -e ./app/.htaccess ]]; then
+if [[ -e ./src/.htaccess ]]; then
 	read -p "Do you need the htaccess file? y/n " choice
 	if [[ $choice = "n" ]]
 	then
 		# Remove `.htaccess`
-		rm ./app/.htaccess
+		rm ./src/.htaccess
 	fi
 	printf "\n"
 fi
