@@ -99,9 +99,13 @@ All root commands of `gulp` will create a copy of the working `./src` directory 
 
 <a name="release"></a>
 ## Release
-Release creates a snapshot of the application files from the `src` directory essentially creating a release for use. Each release is timestamped and appended with the current state. Additionally a folder called `current` will be created inside the `release` directory. This is a consistently named directory for the latest release and is useful if you use an online deploy tool such as DeployHQ or dploy.io as you can set this directory as the root directory to deploy from whereas individual releases will be timestamped with no consistent name.
+Release creates a snapshot of the application files from the `src` directory essentially creating a release for use. Each release is timestamped and appended with the current state.
 
-The current state will also effect the optimisation of the release. For example `gulp release` will create a release with `_development` appended to the end. The development profile (see Profiles) will be run on the release. Likewise `gulp release --config production` will run the production profile on the release.
+### Current
+Additionally a folder called `current` will be created inside the `release` directory. This is a consistently named directory for the latest release and is useful if you use an online deploy tool such as DeployHQ or dploy.io as you can set this directory as the root directory to deploy from whereas individual releases will be timestamped with no consistent name.
+
+### Profile
+The current profile will also effect the optimisation of the release. For example `gulp release` will create a release with `_development` appended to the end. The development profile (see [Profiles](#profiles)) will be run on the release. Likewise `gulp release --config production` will run the production profile on the release.
 
 <a name="server"></a>
 ## Server
