@@ -37,7 +37,7 @@ This is a fast project wrapper and workflow that utilises Gulp. To use this as a
 
 <a name="install"></a>
 ## Install
-__Please note:__ Please make sure your system meets the requirements above.
+> __Please note:__ Please make sure your system meets the requirements above.
 
 After cloning the repository simply run `bash install.sh` from your command line. This will do the following:
 
@@ -91,7 +91,7 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 ## Watch
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile.
 
-__Please note:__ `watch` will run in development mode, so CSS and JS will not be minified for easier debugging. You should run `gulp --config production` to get a final minified output for your live environment.
+> __Please note:__ `watch` will run in development mode, so CSS and JS will not be minified for easier debugging. You should run `gulp --config production` to get a final minified output for your live environment.
 
 <a name="bundle"></a>
 ## Bundle
