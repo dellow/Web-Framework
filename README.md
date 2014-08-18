@@ -1,4 +1,4 @@
-# Project Wrapper Workflow
+# Project Wrapper & Workflow
 ### By Stew Dellow | [hellostew.com](http://hellostew.com/ "Creative Web Developer")
 
 ## Contents
@@ -79,13 +79,13 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 - JSHint
 - Imagemin
 - Jasmine
-- Bundle (No HTML or Image optimisation)
+- Bundle
 
 <a name="profiles--production"></a>
 ### Production
 - Browserify (Minified)
 - Compass (Minified)
-- Bundle (HTML and Image optimisation)
+- Bundle
 
 <a name="watch"></a>
 ## Watch
@@ -95,7 +95,13 @@ __Please note:__ `watch` will run in development mode, so CSS and JS will not be
 
 <a name="bundle"></a>
 ## Bundle
-All root commands of `gulp` will create a copy of the working `./src` directory in the `./app` directory but with just the application files. I.E. No `.scss` files or build `.js` files. This can be used as a release or for testing purposes and simply serves to automatically remove any build files for whatever use case. The corresponding profile will be applied to the `./app` directory.
+All root commands of `gulp` will create a copy of the working `./src` directory in the `./app` directory but with just the application files. I.E. No `.scss` files or build `.js` files. This can be used for testing purposes and simply serves to automatically remove any build files for whatever use case. No profiles will be applied to the `./app` directory regardless of the commands used. To create a profiled version use the `release` command.
+
+<a name="release"></a>
+## Release
+Release creates a snapshot of the application files from the `src` directory essentially creating a release for use. Each release is timestamped and appended with the current state.
+
+The current state will also effect the optimisation of the release. For example `gulp release` will create a release with `_development` appended to the end. The development profile (see Profiles) will be run on the release. Likewise `gulp release --config production` will run the production profile on the release.
 
 <a name="server"></a>
 ## Server
@@ -106,12 +112,6 @@ The `gulp serve` command takes an optional parameter to provide a proxy URL, for
 <a name="pagespeed"></a>
 ## PageSpeed
 You can run Google PageSpeed insights by running `gulp pagespeed`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp pagespeed --url http://amazon.com --mode desktop`.
-
-<a name="release"></a>
-## Release
-Release creates a snapshot of the application files from the `src` directory essentially creating a release for use. Each release is timestamped and appended with the current state.
-
-The current state will also effect the optimisation of the release. For example `gulp release` will create a release with `_development` appended to the end. The development profile (see Profiles) will be run on the release. Likewise `gulp release --config production` will run the production profile on the release.
 
 <a name="working-with-scss"></a>
 ## Working with SCSS

@@ -39,7 +39,7 @@ gulp.task('release', function(){
 });
 
 // Release sub tasks
-gulp.task('r-move', function(){
+gulp.task('r-move', ['compass', 'browserify'], function(){
     return gulp.src(files, {base: GLOBAL.src_dir})
         .pipe(gulp.dest('./releases/current'))
         .pipe(gulp.dest(release));
