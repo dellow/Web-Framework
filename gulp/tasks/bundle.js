@@ -7,7 +7,8 @@ var gulp     = require('gulp'),
     html     = require('gulp-minify-html'),
     cache    = require('gulp-cache'),
     size     = require('gulp-size'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    base64   = require('gulp-base64');
 
 /* ================================================== */
 /* Vars
@@ -35,7 +36,7 @@ gulp.task('bundle', function(){
 
 // Makes a timestamped release of the `src` directory and optimises based on current state.
 gulp.task('release', function(){
-    sequence('r-move', 'r-minify', 'r-imagemin');
+    sequence('r-move', 'r-minify', 'r-base64', 'r-imagemin');
 });
 
 // Release sub tasks
@@ -50,7 +51,7 @@ gulp.task('r-minify', function(){
         // Options
         var opts = {
             comments: true,
-            spare: true
+            spare   : true
         };
         return gulp.src([release + '*.html', release + '*.php'])
             .pipe(html(opts))
@@ -58,14 +59,32 @@ gulp.task('r-minify', function(){
             .pipe(gulp.dest(release));
     }
 });
+gulp.task('r-base64', function(){
+    // Run on production only
+    if(GLOBAL.is_production){
+        // Options
+        var opts = {
+            baseDir     : '',
+            extensions  : ['svg', 'png', 'gif', /\.jpg#datauri$/i],
+            maxImageSize: 8*1024, // bytes
+            debug       : false
+        };
+        return gulp.src(release + 'dist/css/*.css')
+            .pipe(base64(opts))
+            .pipe(gulp.dest('./releases/current/dist/css'))
+            .pipe(gulp.dest(release + 'dist/css'));
+    }
+});
 gulp.task('r-imagemin', function(){
+    // Options
+    var opts = {
+        progressive: true,
+        interlaced : true
+    };
     // Run on production only
     if(GLOBAL.is_production){
         return gulp.src(release + 'dist/images/**/*')
-            .pipe(cache(imagemin({
-                progressive: true,
-                interlaced: true
-            })))
+            .pipe(cache(imagemin(opts)))
             .pipe(gulp.dest('./releases/current/dist/images'))
             .pipe(gulp.dest(release + 'dist/images'))
             .pipe(size({title: 'images'}));

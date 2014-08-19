@@ -12,10 +12,8 @@ var gulp        = require('gulp'),
 gulp.task('jshint', function(){
     // Run on development only
     if(GLOBAL.is_development){
-		var ret = gulp.src(GLOBAL.dist_dir + 'js/**/*.js')
-	    .pipe(jshint())
-	    .pipe(jshint.reporter(stylish));
-
-		return ret;
+		return gulp.src(GLOBAL.dist_dir + 'js/**/*.js')
+		    .pipe(jshint())
+		    .pipe(jshint.reporter(stylish));
 	}
 });
