@@ -16,12 +16,12 @@ var gulp     = require('gulp'),
 var state   = (GLOBAL.args != undefined) ? GLOBAL.args : 'development',
     release = GLOBAL.releases_dir + 'app_' + Date.now() + '_' + state + '/',
     files   = [
-        GLOBAL.dist_dir + 'css/main.css',
-        GLOBAL.dist_dir + 'js/build/**/*',
-        GLOBAL.dist_dir + 'js/vendor/**/*',
-        GLOBAL.dist_dir + 'images/**/*.*',
-        GLOBAL.src_dir + '*.*',
-        GLOBAL.src_dir + '.*'
+        GLOBAL.src_dir + '**',
+        '!' + GLOBAL.src_dir + '**/{scss,scss/**}',
+        '!' + GLOBAL.src_dir + '**/js/{app,app/**}',
+        '!' + GLOBAL.src_dir + '**/js/{plugins,plugins/**}',
+        '!' + GLOBAL.src_dir + '**/js/{spec,spec/**}',
+        '!' + GLOBAL.src_dir + '**/js/{vendor,vendor/**}'
     ];
 
 /* ================================================== */
