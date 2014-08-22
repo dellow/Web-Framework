@@ -39,10 +39,10 @@
  *	}
 **/
 @mixin modify-grid($gutter_width, $col){
-	.grid {
+	> .grid {
 		width: 100% + $gutter_width;
 		left: -$gutter_width;
-		[class*="col-"] {
+		> [class*="col-"] {
 			width: $col - $gutter_width;
 			margin-left: $gutter_width;
 		}
@@ -117,8 +117,8 @@
  *
  * .foo {@include arrow(15px, #f9f7f3, 10px, null, 5px, left);}
 **/
-@mixin arrow($size, $color, $top, $left, $margin, $position){
-	&:after {
+@mixin arrow($size, $color, $top, $left, $margin, $position, $type: 'after'){
+	&:#{$type} {
 		width: 0;
 		height: 0;
 		position: relative;

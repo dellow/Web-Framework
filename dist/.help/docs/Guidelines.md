@@ -52,7 +52,7 @@ Enforce standards mode and more consistent rendering in every browser possible w
 
 <a name="html--character_encoding"></a>
 ### Character encoding
-Quickly and easily ensure proper rendering of your content by declaring an explicit character encoding.
+Ensure proper rendering of your content by declaring character encoding. You may avoid using character entities in your HTML, provided their encoding matches that of the document (generally UTF-8).
 
 	<head>
 	<meta charset="UTF-8">
@@ -66,20 +66,20 @@ Per HTML5 spec, typically there is no need to specify a type when including CSS 
 ### Attribute order
 HTML attributes should come in this particular order for easier reading of code.
 
-- rel
-- href, src
-- type
-- for
-- name
-- id
-- class
-- value
-- content
-- data-*
-- alt
-- title
-- lang
-- aria-*, role
+- `rel`
+- `href`, `src`
+- `type`
+- `for`
+- `name`
+- `id`
+- `class`
+- `value`
+- `content`
+- `data-*`
+- `alt`
+- `title`
+- `aria-*`, `role`
+- `lang`
 
 <a name="html--boolean_attributes"></a>
 ### Boolean attributes
