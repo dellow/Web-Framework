@@ -74,5 +74,29 @@
 <!--                                                                     JAVASCRIPT -->
 <!-- ============================================================================== -->
 <script src="dist/js/build/build.js"></script>
+<script src="//wurfl.io/wurfl.js"></script>
+<script>
+	// WURFL Tests
+	console.log(WURFL);
+	// WURFL Statements
+	if(WURFL.is_mobile){
+	}
+</script>
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	// GA Account ID
+	ga('create', 'UA-XXXXXXXXX-1', 'auto');
+	// GA WURFL Custom Variables
+	// These must be defined in Admin > Custom Definitions > Custom Dimensions
+	// See http://www.smashingmagazine.com/2014/08/28/responsive-web-design-google-analytics/ for more help.
+	ga('send', 'pageview', {
+		'dimension1': WURFL.complete_device_name,
+		'dimension2': WURFL.form_factor,
+		'dimension3': WURFL.is_mobile
+	});
+</script>
 </body>
 </html>
