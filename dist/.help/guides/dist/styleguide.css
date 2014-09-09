@@ -16,10 +16,18 @@ pre[class*="language-"] {
 }
 
 /* Standard */
+body {
+	padding: 2rem 0 !important;
+}
+
 body.styleguide > .container,
 body.styleguide section > .container {
 	width: 80%;
-	padding: 20px 0;
+}
+
+/* Elements */
+.page-header {
+	margin-bottom: 2rem;
 }
 
 /* Tables */
@@ -48,6 +56,9 @@ body.styleguide .pattern .pattern__view:not(.allow-margin) > * {
 	margin-bottom: 2em;
 	border: 1px solid #e5e5e5;
 	border-radius: 3px;
+}
+.pattern:last-child {
+	margin-bottom: 0;
 }
 .pattern .pattern__view {
 	background: white;

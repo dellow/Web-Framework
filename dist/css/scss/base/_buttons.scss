@@ -61,15 +61,13 @@
 
 @each $key, $value in $colors {
 	$class: "" + $key;
-	.btn {
-		&.btn-#{$class} {
+	.btn.btn-#{$class} {
+		background: color($key);
+		&.disabled:hover {
 			background: color($key);
-			&.disabled:hover {
-				background: color($key);
-			}
-			&:hover {
-				background: color($key, dark);
-			}
+		}
+		&:hover {
+			background: color($key, dark);
 		}
 	}
 }

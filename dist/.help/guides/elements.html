@@ -7,7 +7,7 @@
 <!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="UTF-8">
-<title>HTML Framework | Elements Styleguide</title>
+<title>HTML Framework | Elements</title>
 <!-- ============================================================================== -->
 <!--                                                              STYLEGUIDE STYLES -->
 <!-- ============================================================================== -->
@@ -24,11 +24,199 @@
 <script src="../../js/vendor/modernizr.min.js"></script>
 </head>
 <body class="styleguide no-debug">
+
+<div class="container">
+	<h1>Elements</h1>
+	<nav class="navigation" role="navigation">
+		<ul class="nav-primary" role="menu">
+			<li class="nav-general" role="menuitem"><a href="styleguide.html" title="General">General</a></li>
+			<li class="nav-elements" role="menuitem"><a href="elements.html" title="Elements">Elements</a></li>
+			<li class="nav-forms" role="menuitem"><a href="forms.html" title="Forms">Forms</a></li>
+			<li class="nav-javascript" role="menuitem"><a href="javascript.html" title="JavaScript">JavaScript</a></li>
+			<li class="nav-rhythm" role="menuitem"><a href="rhythm.html" title="Rhythm">Rhythm</a></li>
+		</ul><!-- .nav-primary -->
+	</nav><!-- .navigation-->
+</div>
+
+<hr class="styled-seperator">
+
 <div class="container">
 
-	<h1>Elements Styleguide</h1>
+	<section>
+		<h2>Accordions</h2>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Standard Accordion</span></summary>
+<pre class="language-markup"><code>&lt;div class="accordion" role="tablist" multiselectable="true">
+	&lt;div class="accordion__title" role="tablist">
+		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #1&lt;/button>
+	&lt;/div>
+	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
+		Accordion Content
+	&lt;/div>
+	&lt;div class="accordion__title" role="tablist">
+		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #2&lt;/button>
+	&lt;/div>
+	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
+		Accordion Content
+	&lt;/div>
+	&lt;div class="accordion__title" role="tablist">
+		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #3&lt;/button>
+	&lt;/div>
+	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
+		Accordion Content
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="accordion" role="tablist" multiselectable="true">
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #1</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #2</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #3</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
 
-	<hr>
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
+		<h2>Tabs</h2>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Natural Tabs</span></summary>
+<pre class="language-markup"><code>&lt;div class="tabs">
+	&lt;ul class="tabs__nav" role="tablist">
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
+		&lt;/li>
+	&lt;/ul>
+	&lt;div class="tabs__system">
+		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+			&lt;p>Tab 1 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+			&lt;p>Tab 2 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+			&lt;p>Tab 3 content goes here.&lt;/p>
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="tabs">
+					<ul class="tabs__nav" role="tablist">
+						<li role="presentation">
+							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
+						</li>
+					</ul>
+					<div class="tabs__system">
+						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+							<p>Tab 1 content goes here.</p>
+						</div>
+						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+							<p>Tab 2 content goes here.</p>
+						</div>
+						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+							<p>Tab 3 content goes here.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Full Width Tabs</span></summary>
+<pre class="language-markup"><code>&lt;div class="tabs tabs-full-width">
+	&lt;ul class="tabs__nav" role="tablist">
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
+		&lt;/li>
+	&lt;/ul>
+	&lt;div class="tabs__system">
+		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+			&lt;p>Tab 1 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+			&lt;p>Tab 2 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+			&lt;p>Tab 3 content goes here.&lt;/p>
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="tabs tabs-full-width">
+					<ul class="tabs__nav" role="tablist">
+						<li role="presentation">
+							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
+						</li>
+					</ul>
+					<div class="tabs__system">
+						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+							<p>Tab 1 content goes here.</p>
+						</div>
+						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+							<p>Tab 2 content goes here.</p>
+						</div>
+						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+							<p>Tab 3 content goes here.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<hr class="styled-seperator">
+
+<div class="container">
 
 	<section>
 		<h2>Tables</h2>
@@ -236,8 +424,11 @@
 			</div>
 		</div>
 	</section>
+</div>
 
-	<hr>
+<hr class="styled-seperator">
+
+<div class="container">
 
 	<section>
 		<h2>Sliders / Carousels</h2>
@@ -434,177 +625,8 @@
 			</div>
 		</div>
 	</section>
-
-	<hr>
-
-	<section>
-		<h2>Accordions</h2>
-		<div class="pattern">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Standard Accordion</span></summary>
-<pre class="language-markup"><code>&lt;div class="accordion" role="tablist" multiselectable="true">
-	&lt;div class="accordion__title" role="tablist">
-		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #1&lt;/button>
-	&lt;/div>
-	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
-		Accordion Content
-	&lt;/div>
-	&lt;div class="accordion__title" role="tablist">
-		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #2&lt;/button>
-	&lt;/div>
-	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
-		Accordion Content
-	&lt;/div>
-	&lt;div class="accordion__title" role="tablist">
-		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #3&lt;/button>
-	&lt;/div>
-	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
-		Accordion Content
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view">
-				<div class="accordion" role="tablist" multiselectable="true">
-					<div class="accordion__title" role="tablist">
-						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #1</button>
-					</div>
-					<div class="accordion__content" role="tabpanel" aria-hidden="true">
-						Accordion Content
-					</div>
-					<div class="accordion__title" role="tablist">
-						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #2</button>
-					</div>
-					<div class="accordion__content" role="tabpanel" aria-hidden="true">
-						Accordion Content
-					</div>
-					<div class="accordion__title" role="tablist">
-						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #3</button>
-					</div>
-					<div class="accordion__content" role="tabpanel" aria-hidden="true">
-						Accordion Content
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<hr>
-
-	<section>
-		<h2>Tabs</h2>
-		<div class="pattern">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Natural Tabs</span></summary>
-<pre class="language-markup"><code>&lt;div class="tabs">
-	&lt;ul class="tabs__nav" role="tablist">
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
-		&lt;/li>
-	&lt;/ul>
-	&lt;div class="tabs__system">
-		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-			&lt;p>Tab 1 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-			&lt;p>Tab 2 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-			&lt;p>Tab 3 content goes here.&lt;/p>
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view">
-				<div class="tabs">
-					<ul class="tabs__nav" role="tablist">
-						<li role="presentation">
-							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
-						</li>
-					</ul>
-					<div class="tabs__system">
-						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-							<p>Tab 1 content goes here.</p>
-						</div>
-						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-							<p>Tab 2 content goes here.</p>
-						</div>
-						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-							<p>Tab 3 content goes here.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="pattern">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Full Width Tabs</span></summary>
-<pre class="language-markup"><code>&lt;div class="tabs tabs-full-width">
-	&lt;ul class="tabs__nav" role="tablist">
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
-		&lt;/li>
-	&lt;/ul>
-	&lt;div class="tabs__system">
-		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-			&lt;p>Tab 1 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-			&lt;p>Tab 2 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-			&lt;p>Tab 3 content goes here.&lt;/p>
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view">
-				<div class="tabs tabs-full-width">
-					<ul class="tabs__nav" role="tablist">
-						<li role="presentation">
-							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
-						</li>
-					</ul>
-					<div class="tabs__system">
-						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-							<p>Tab 1 content goes here.</p>
-						</div>
-						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-							<p>Tab 2 content goes here.</p>
-						</div>
-						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-							<p>Tab 3 content goes here.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 </div>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="../../js/plugins/jquery.extensions.js"></script>
 <script src="../../js/plugins/jquery.bxslider.js"></script>

@@ -142,6 +142,24 @@ img {
 .block {
 	display: block;
 }
+ul.inline {
+	margin: 0;
+	li {
+		display: inline;
+	}
+}
+ul.inline-block {
+	margin: 0;
+	li {
+		display: inline-block;
+	}
+}
+ul.block {
+	margin: 0;
+	li {
+		display: block;
+	}
+}
 
 /* -- Positioning -- */
 .fl {
