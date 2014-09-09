@@ -76,13 +76,13 @@ gulp.task('r-base64', function(){
     }
 });
 gulp.task('r-imagemin', function(){
-    // Options
-    var opts = {
-        progressive: true,
-        interlaced : true
-    };
     // Run on production only
     if(GLOBAL.is_production){
+        // Options
+        var opts = {
+            progressive: true,
+            interlaced : true
+        };
         return gulp.src(release + 'dist/images/**/*')
             .pipe(cache(imagemin(opts)))
             .pipe(gulp.dest('./releases/current/dist/images'))
