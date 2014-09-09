@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Alerts
+   Styles for various success and error alerts
+========================================================================== */
+/* -- All -- */
+.alert {
+	&.box {
+		@include nudge(padding, 0.5 0.5 0.5 14px);
+		@include nudge(margin-bottom, 1);
+		border: 1px solid; border-left: 7px solid;
+		position: relative;
+		border-radius: $border_radius_base;
+		h3 {
+			@include rem(font-size, 30px);
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+			border-bottom: 1px dotted;
+			&:hover {
+				color: inherit;
+				border-bottom-style: solid;
+			}
+		}
+	}
+}
+
+/* -- Alerts as a list -- */
+ul.alert {
+	&.box {
+		padding-left: 14px;
+		margin-left: 0;
+		li {
+			margin: 0;
+			list-style: none;
+		}
+	}
+}
+
+/* -- Error (Red) -- */
+.alert {
+	&.error {
+		color: $color_error;
+	}
+	&.box.error {
+		border-color: lighten($color_error, 25%);
+		background: lighten($color_error, 40%);
+	}
+}
+
+/* -- Status (Blue) -- */
+.alert {
+	&.status {
+		color: $color_status;
+	}
+	&.box.status {
+		border-color: lighten($color_status, 25%);
+		background: lighten($color_status, 40%);
+	}
+}
+
+/* -- Success (Green) -- */
+.alert {
+	&.success {
+		color: $color_success;
+	}
+	&.box.success {
+		border-color: lighten($color_success, 25%);
+		background: lighten($color_success, 40%);
+	}
+}
+
+/* -- Warning (Yellow) -- */
+.alert {
+	&.warning {
+		color: $color_warning;
+	}
+	&.box.warning {
+		border-color: lighten($color_warning, 25%);
+		background: lighten($color_warning, 40%);
+	}
+}
