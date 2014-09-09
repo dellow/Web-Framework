@@ -1,10 +1,20 @@
+/* ==========================================================================
+   All
+   Imports all the partials
+========================================================================== */
+// Core
 @import 'imports',
 		'dev',
 		'rhythm',
-		'sprites',
-		'components/header',
-		'components/footer',
-		'components/global',
-		'pages/home',
-		'fixes',
-		'breakpoints';
+		'global',
+		'sprites';
+// Page
+@import 'page/home',
+		'page/components/header',
+		'page/components/footer';
+// Components
+// @import 'components/partial';
+// Misc
+@import 'fixes',
+		'breakpoints',
+		'print';

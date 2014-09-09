@@ -7,11 +7,11 @@
 		'defaults',
 		'core',
 		'rhythm',
-		'colors',
-		'buttons',
-		'alerts';
+		'colors';
 // Components
-@import 'components/breadcrumbs',
+@import 'components/alerts',
+		'components/breadcrumbs',
+		'components/buttons',
 		'components/content-editable',
 		'components/grid',
 		'components/menus',
