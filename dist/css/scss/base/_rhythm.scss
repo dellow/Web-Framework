@@ -38,9 +38,11 @@ p, blockquote, address {
 	ul, ol, dl, table, fieldset, figure, pre, .hatnote {
 		@include rhythm($font_size_base);
 	}
-	p {
-		&:first-of-type {
-			@include rhythm($font_size_base * 1.125);
+	&.leading-p {
+		p {
+			&:first-of-type {
+				@include rhythm($font_size_base * 1.125);
+			}
 		}
 	}
 }
