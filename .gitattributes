@@ -1,14 +1,44 @@
+# DIRECTORIES
+# Anything directory a user can modify the contents of on the server side
+# should be ignored to prevent any overwriting issues.
+# ---------------------------------------------------------------------------------
+.sass-cache/ export-ignore
+.vagrant/ export-ignore
+
+
+# FILES
+# If a public repo any files with sensitive data like database connection
+# details should be ignored to prevent unauthorised access.
+# ---------------------------------------------------------------------------------
+# Git Files
 .gitattributes export-ignore
 .gitignore export-ignore
 
-*README.txt export-ignore
-*readme.md export-ignore
-*README.md export-ignore
-*README export-ignore
-*LICENSE.txt export-ignore
-*license.txt export-ignore
-*LICENSE.html export-ignore
+# Web files
+.scss export-ignore
+.psd export-ignore
+
+# NPM and Bower
+package.json export-ignore
+bower.json export-ignore
+
+# Task Runners
+Gruntfile.js export-ignore
+Gulpfile.js export-ignore
+
+# Standard text files
+README.txt export-ignore
+readme.md export-ignore
+README.md export-ignore
+README export-ignore
+LICENSE.txt export-ignore
+license.txt export-ignore
+LICENSE.html export-ignore
 COPYRIGHT.txt export-ignore
 CHANGELOG.txt export-ignore
-*changelog.txt export-ignore
-*changelog.html export-ignore
+changelog.txt export-ignore
+changelog.html export-ignore
+
+# Wildcards
+*.log export-ignore
+*.md export-ignore

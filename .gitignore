@@ -3,6 +3,7 @@
 # should be ignored to prevent any overwriting issues.
 # ---------------------------------------------------------------------------------
 .sass-cache/
+.vagrant/
 node_modules/
 bower_components/
 releases/app_*
