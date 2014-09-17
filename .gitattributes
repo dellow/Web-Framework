@@ -4,6 +4,8 @@
 # ---------------------------------------------------------------------------------
 .sass-cache/ export-ignore
 .vagrant/ export-ignore
+assets/ export-ignore
+gulp/ export-ignore
 
 
 # FILES
@@ -21,6 +23,9 @@
 # NPM and Bower
 package.json export-ignore
 bower.json export-ignore
+
+# Bash files
+install.sh
 
 # Task Runners
 Gruntfile.js export-ignore
