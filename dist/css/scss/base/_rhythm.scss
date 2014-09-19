@@ -6,7 +6,7 @@
 html {
     min-height: 100%;
     overflow-y: scroll;
-    font: #{$font_size_base}/#{$line_height_ratio} $font_family_sans_serif_base; // Hashed so SASS doesn't do a calculation
+    font: #{$font_size_base}/#{$line_height_ratio} $font_family_base; // Hashed so SASS doesn't do a calculation
 	color: $color_text;
 	word-wrap: break-word;
 }

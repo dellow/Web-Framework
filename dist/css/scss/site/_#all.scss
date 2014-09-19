@@ -9,11 +9,10 @@
 		'global',
 		'sprites';
 // Page
-@import 'page/home',
-		'page/components/header',
-		'page/components/footer';
+@import 'page/home';
 // Components
-// @import 'components/partial';
+@import 'components/header',
+		'components/footer';
 // Misc
 @import 'fixes',
 		'breakpoints';

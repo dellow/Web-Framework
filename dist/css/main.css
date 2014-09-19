@@ -2350,13 +2350,13 @@ ul.alert.box li {
 .navigation ul {
   margin-left: 0;
 }
-/* line 9, scss/base/components/_menus.scss */
-.navigation ul li {
+/* line 10, scss/base/components/_menus.scss */
+.navigation li {
   margin: 0px 3.6px;
   margin: 0px 0.225rem;
 }
-/* line 11, scss/base/components/_menus.scss */
-.navigation ul li:first-child {
+/* line 12, scss/base/components/_menus.scss */
+.navigation li:first-child {
   margin-left: 0;
 }
 
@@ -2508,12 +2508,16 @@ ul.alert.box li {
   text-align: justify;
 }
 /* line 124, scss/base/components/_menus.scss */
+.nav-primary.full-width a {
+  display: block;
+}
+/* line 127, scss/base/components/_menus.scss */
 .nav-primary.full-width:before {
   width: 100%;
   content: '';
   display: block;
 }
-/* line 129, scss/base/components/_menus.scss */
+/* line 132, scss/base/components/_menus.scss */
 .nav-primary.full-width:after {
   width: 100%;
   content: '';
