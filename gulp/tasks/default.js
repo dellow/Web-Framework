@@ -9,7 +9,7 @@ var gulp = require('gulp');
 gulp.task('default', [
 	'browserify',
 	'compass',
-	'csslint',
+	//'csslint',
 	'jasmine',
 	'jshint'
 ]);

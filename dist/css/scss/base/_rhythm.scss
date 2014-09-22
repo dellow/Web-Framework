@@ -16,6 +16,7 @@ a, button {
 	color: $color_text_link;
 	text-decoration: none;
 	@include transition(color $animation ease);
+	// Pseudo
 	&:hover {
 		color: $color_text_link_hover;
 	}
@@ -44,6 +45,9 @@ p {
 .content {
 	ul, ol, dl, table, fieldset, figure, pre, .hatnote {
 		@include rhythm($font_size_base);
+	}
+	figure, fieldset {
+		padding: 4px 0; // Makes up for the lack of line-height
 	}
 	&.leading-p {
 		p {

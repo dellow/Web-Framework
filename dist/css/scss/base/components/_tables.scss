@@ -11,14 +11,16 @@ div.table {
 		padding: 0.5%;
 		margin-left: 1%;
 		float: left;
-	}
-	.col:first-child {
-		margin-left: 0;
+		// Pseudo
+		&:first-child {
+			margin-left: 0;
+		}
 	}
 }
 
 /* -- Normal Tables -- */
 table {
+	// Abstractions
 	&.table {
 		width: 100%;
 		border: 1px solid color(grey);
@@ -36,6 +38,7 @@ table {
 			border-top: 1px solid #d9d9d9;
 			text-align: center;
 			vertical-align: middle;
+			// Pseudo
 			&:first-child {
 				border-left: 0;
 			}
@@ -44,6 +47,7 @@ table {
 	&.table-highlight-horizontal {
 		tbody {
 			tr {
+				// Pseudo
 				&:nth-child(even) {
 					background: $color_even_base;
 				}
@@ -57,6 +61,7 @@ table {
 		tbody {
 			tr {
 				th, td {
+					// Pseudo
 					&:nth-child(even) {
 						background: $color_even_base;
 					}

@@ -29,6 +29,7 @@
 			.sub-menu {
 				display: none;
 			}
+			// Pseudo
 			&:hover {
 				.sub-menu {
 					display: block;
@@ -51,6 +52,7 @@
 			}
 			label {
 				display: none;
+				// Pseudo
 				&:after {
 					border: none;
 				}

@@ -3,7 +3,7 @@
    Description goes here.
 ========================================================================== */
 /* -- Pagination -- */
-.pagination {
+.module--pagination {
 	@extend %cf;
 	@include rem(font-size, 12px);
 	.page-numbers {
@@ -11,11 +11,13 @@
 		margin-left: -3px;
 		border: 1px solid #ccc;
 		@include inline-block;
-		&:first-child {
-			margin-left: 0;
-		}
+		// Abstractions
 		&.current {
 			color: $color_text_link
+		}
+		// Pseudo
+		&:first-child {
+			margin-left: 0;
 		}
 	}
 }

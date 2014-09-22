@@ -13,6 +13,7 @@ $gutter_width: ($gutter / 2);
 		width: $col_1 - $gutter_width;
 		margin: 0 0 0 $gutter_width;
 		float: left;
+		// Abstractions
 		&.left {
 			text-align: left;
 		}
@@ -28,10 +29,12 @@ $gutter_width: ($gutter / 2);
 		&.fr {
 			float: right;
 		}
+		// Pseudo
 		&:last-of-type {
 			margin-bottom: 0;
 		}
 	}
+	// Abstractions
 	&.no-gutter {
 		width: $col_1;
 		left: 0;

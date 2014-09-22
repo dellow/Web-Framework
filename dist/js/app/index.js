@@ -40,4 +40,8 @@ App.Helpers.log(App);
 /* ======================================================== */
 /* Go!
 /* ======================================================== */
+// Module description
 App.ModuleName.init();
+// Listen for DOM elements that need to be of
+// equal height.
+App.EqualHeights.init();

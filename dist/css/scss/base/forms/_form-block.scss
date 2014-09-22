@@ -12,6 +12,7 @@
 	input, .input, select, textarea, .field-container {
 		width: 100%;
 		display: block;
+		// Sibling
 		~ .note {
 			margin-left: 0;
 			display: block;
@@ -28,11 +29,13 @@
 			margin-left: 2%;
 			@include inline-block;
 			vertical-align: middle;
+			// Pseudo
 			&:first-child {
 				margin-left: 0;
 			}
 		}
 		span {
+			// Sibling
 			+ input, .input, select, textarea, .field-container {
 				margin: 0;
 			}

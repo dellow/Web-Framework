@@ -43,41 +43,6 @@
 <div class="container">
 
 	<section>
-		<h2>Swatches</h2>
-		<p>These colour swatches are derived from the <code>$colours</code> array in the SASS <code>_vars.scss</code> partial. Any colour added to the array will compile to a class off <code>.color-*</code>. So for example adding a "purple" colour will compile a class of<code>.color-purple</code>. This can be used to colour text just by applying the class to any containing element. To apply the colour as a background simply include a class of <code>.bg</code> along with the colour class to apply that background colour.</p>
-		<div class="guidetable">
-			<ul class="color-swatches">
-				<li>
-					<div class="bg color-red"></div>
-					<div class="bg color-red opp"></div>
-				</li>
-				<li>
-					<div class="bg color-orange"></div>
-					<div class="bg color-orange opp"></div>
-				</li>
-				<li>
-					<div class="bg color-green"></div>
-					<div class="bg color-green opp"></div>
-				</li>
-				<li>
-					<div class="bg color-blue"></div>
-					<div class="bg color-blue opp"></div>
-				</li>
-				<li>
-					<div class="bg color-yellow"></div>
-					<div class="bg color-yellow opp"></div>
-				</li>
-			</ul>
-		</div>
-	</section>
-
-</div>
-
-<hr class="styled-seperator">
-
-<div class="container">
-
-	<section>
 		<h2>Typeset</h2>
 		<div class="pattern">
 			<details class="pattern__details">
@@ -417,8 +382,55 @@
 <div class="container">
 
 	<section>
+		<h2>Background Colors &amp; Slabs</h2>
+		<p>These background colors are derived from the <code>$colors</code> array in the SASS <code>_vars.scss</code> partial. Any colour added to the array will compile to a class off <code>.color-*</code>. For example adding a "purple" colour will compile a class of<code>.color-purple</code>. This can be used to apply the colour as a background, to do so simply include a class of <code>.bg</code> along with the colour class to apply that background colour.</p>
+		<h3>Background Colors</h3>
+		<div class="guidetable">
+			<ul class="color-swatches">
+				<li>
+					<div class="bg color-red"></div>
+					<div class="bg color-red opp"></div>
+				</li>
+				<li>
+					<div class="bg color-orange"></div>
+					<div class="bg color-orange opp"></div>
+				</li>
+				<li>
+					<div class="bg color-green"></div>
+					<div class="bg color-green opp"></div>
+				</li>
+				<li>
+					<div class="bg color-blue"></div>
+					<div class="bg color-blue opp"></div>
+				</li>
+				<li>
+					<div class="bg color-yellow"></div>
+					<div class="bg color-yellow opp"></div>
+				</li>
+			</ul>
+		</div>
+		<h3>Slabs</h3>
+		<p>You can also use the same principle to create slabs. Slabs are much the same as adding a bg-color to an element except these are specifically used for colored layout and as such default with padding applied.</p>
+		<div class="guidetable">
+			<div class="slab-swatches">
+				<div class="slab color-red"></div>
+				<div class="slab color-orange"></div>
+				<div class="slab color-green"></div>
+				<div class="slab color-blue"></div>
+				<div class="slab color-yellow"></div>
+			</div>
+		</div>
+	</section>
+
+</div>
+
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
 		<h2>Buttons &amp; CTA's</h2>
-		<p>All CTA's should have an initial <code>.btn</code> class. There are predefined Call to Action buttons in the <code>_buttons.scss</code> partial to abstract the default <code>.btn</code> class. These are defined as <code>.standard</code>, <code>.positive</code> and <code>.negative</code>. Alternatively you can create a CTA from any of the colours in the colour swatch array simply by using the colour name instead. For example <code>.btn .btn-orange</code> will create a button with the orange background colour from the swatch.</p>
+		<p>All CTA's should have an initial <code>.btn</code> class. There are predefined Call to Action buttons in the <code>_buttons.scss</code> partial to abstract the default <code>.btn</code> class. These are defined as <code>.standard</code>, <code>.positive</code> and <code>.negative</code>. Alternatively you can create a CTA from any of the colors in the colour swatch array simply by using the colour name instead. For example <code>.btn .btn-orange</code> will create a button with the orange background colour from the swatch.</p>
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Standard linked CTA's</span></summary>
@@ -584,7 +596,7 @@
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Pagination</span></summary>
-<pre class="language-markup"><code>&lt;div class="pagination">
+<pre class="language-markup"><code>&lt;div class="module module--pagination">
 	&lt;a href="#" class="page-numbers prev">&laquo; Prev&lt;/a>
 	&lt;a href="#" class="page-numbers">1&lt;/a>
 	&lt;a href="#" class="page-numbers current">2&lt;/a>
@@ -595,7 +607,7 @@
 &lt;/div></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<div class="pagination">
+				<div class="module module--pagination">
 					<a href="#" class="page-numbers prev">&laquo; Prev</a>
 					<a href="#" class="page-numbers">1</a>
 					<a href="#" class="page-numbers current">2</a>
@@ -619,7 +631,7 @@
 		<div class="pattern">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Breadcrumb</span></summary>
-<pre class="language-markup"><code>&lt;div class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<pre class="language-markup"><code>&lt;div class="module module--breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 	&lt;a href="/" title="Home" itemprop="url">&lt;span itemprop="title">Home&lt;/span>&lt;/a>
 	&lt;span>&raquo;&lt;/span>
 	&lt;span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -636,7 +648,7 @@
 &lt;/div></code></pre>
 			</details>
 			<div class="pattern__view">
-				<div class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+				<div class="module module--breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 					<a href="/" title="Home" itemprop="url"><span itemprop="title">Home</span></a>
 					<span>&raquo;</span>
 					<span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">

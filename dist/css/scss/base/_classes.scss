@@ -34,6 +34,7 @@
 	}
 }
 img {
+	// Abstractions
 	&.alignleft, &.alignright, &.aligncenter, &.alignnone {
 		border: 2px solid #efefef;
 		border-radius: $border_radius_base;

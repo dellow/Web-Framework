@@ -12,15 +12,7 @@
 		position: relative;
 		background: lighten(color(grey), 10%);
 		@include transition(color $animation ease, background-color $animation ease);
-		&:first-child {
-			border-top: 1px solid color(grey);
-		}
-		&:hover {
-			background: lighten(color(grey), 5%);
-		}
-		&:active {
-			background: lighten(color(grey), 1%);
-		}
+		// Elements
 		button {
 			width: 100%;
 			display: block;
@@ -32,6 +24,7 @@
 				}
 			}
 		}
+		// Abstractions
 		&.active__title {
 			background: lighten(color(grey), 3%);
 			button {
@@ -42,11 +35,22 @@
 				}
 			}
 		}
+		// Pseudo
+		&:first-child {
+			border-top: 1px solid color(grey);
+		}
+		&:hover {
+			background: lighten(color(grey), 5%);
+		}
+		&:active {
+			background: lighten(color(grey), 1%);
+		}
 	}
 	.accordion__content {
 		@include nudge(padding, 0.75);
 		border: 1px solid color(grey);
 		display: none;
+		// Abstractions
 		&.active__content {
 			border-top: 0;
 		}

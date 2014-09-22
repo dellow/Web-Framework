@@ -15,6 +15,7 @@
 		input[type="checkbox"], input[type="radio"] {
 			margin: -2px 2px 0 0;
 		}
+		// Pseudo
 		&:first-of-type {
 			input {
 				margin-left: 0;
@@ -24,6 +25,7 @@
 	input, .input, select, textarea, .field-container {
 		width: 64%;
 		margin: 0;
+		// Siblings
 		~ .note {
 			margin-left: 35%;
 		}
@@ -37,6 +39,7 @@
 			@include nudge(margin-right, 0.25);
 		}
 		span {
+			// Siblings
 			+ input, .input, select, textarea, .field-container {
 				margin: 0;
 			}

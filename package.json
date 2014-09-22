@@ -1,9 +1,9 @@
 {
   "devDependencies": {
-    "browserify": "~3.36.0",
-    "browserify-shim": "~3.4.1",
-    "gulp": "~3.6.2",
-    "gulp-compass": "~1.1.8",
+    "browserify": "^3.36.0",
+    "browserify-shim": "^3.4.1",
+    "gulp": "^3.6.2",
+    "gulp-compass": "^1.1.8",
     "gulp-csslint": "^0.1.4",
     "gulp-if": "^1.2.1",
     "gulp-jasmine": "^0.2.0",
@@ -11,9 +11,10 @@
     "gulp-rename": "^1.2.0",
     "gulp-streamify": "0.0.5",
     "gulp-uglify": "^0.2.1",
-    "gulp-watch": "~0.6.4",
-    "tiny-lr": "0.0.9",
-    "vinyl-source-stream": "~0.1.1",
+    "gulp-watch": "^0.6.4",
+    "tiny-lr": "^0.0.9",
+    "jshint-stylish": "^0.4.0",
+    "vinyl-source-stream": "^0.1.1",
     "yargs": "^1.2.2"
   },
   "dependencies": {

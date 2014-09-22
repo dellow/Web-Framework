@@ -25,6 +25,17 @@ body.styleguide section > .container {
 	width: 80%;
 }
 
+body.styleguide p,
+body.styleguide p:first-child,
+body.styleguide p:last-child,
+body.styleguide p:last-of-type {
+	margin-bottom: 13.71429px;
+	margin-bottom: 0.85714rem;
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
 /* Elements */
 .page-header {
 	margin-bottom: 2rem;
@@ -111,7 +122,8 @@ form input, form select, form textarea {
 .color-swatches li .bg {
 	height: 65px;
 }
-.color-swatches li .bg:after {
+.color-swatches li .bg:after,
+.slab-swatches .slab:after  {
 	content: attr(class);
 	display: block;
 	color: white;
@@ -127,7 +139,12 @@ form input, form select, form textarea {
 	-o-transition: opacity 500ms ease;
 	transition: opacity 500ms ease;
 }
-.color-swatches li .bg:hover:after {
+.slab-swatches .slab:after {
+	font-size: 15px;
+	line-height: 1;
+}
+.color-swatches li .bg:hover:after,
+.slab-swatches .slab:hover:after {
 	-webkit-opacity: 0.7;
 	-moz-opacity: 0.7;
 	-o-opacity: 0.7;

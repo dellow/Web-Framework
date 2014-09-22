@@ -6,10 +6,12 @@
 .tabs {
 	@include nudge(margin-bottom, 1);
 	overflow: hidden;
+	// Descendants
 	.tabs__nav {
 		@include nudge(padding, 0 1);
 		margin: 0;
 		white-space: nowrap;
+		// Elements
 		li {
 			margin: 0 0 0 -5px;
 			border: 1px solid color(grey);
@@ -20,11 +22,24 @@
 			vertical-align: bottom;
 			background: lighten(color(grey), 10%);
 			@include transition(color $animation ease, background-color $animation ease);
+			// Descendants
 	        button {
 	        	width: 100%;
 				@include nudge(padding, 0.25 0.5);
 	            display: block;
 	        }
+			// Abstractions
+	        &.active__tab {
+	            bottom: -1px;
+	    		z-index: 2;
+	            border-radius: $border_radius_base $border_radius_base 0 0;
+	            color: $color_text_link;
+	            background: color(white);
+		        button {
+					@include nudge(padding, 0.35 0.5);
+		        }
+	        }
+			// Pseudo
 	        &:first-child {
 	            border-radius: $border_radius_base 0 0;
 	        }
@@ -37,16 +52,6 @@
 			&:active {
 				background: lighten(color(grey), 1%);
 			}
-	        &.active__tab {
-	            bottom: -1px;
-	    		z-index: 2;
-	            border-radius: $border_radius_base $border_radius_base 0 0;
-	            color: $color_text_link;
-	            background: color(white);
-		        button {
-					@include nudge(padding, 0.35 0.5);
-		        }
-	        }
 		}
 	}
 	.tabs__system {
@@ -55,17 +60,22 @@
 		border: 1px solid color(grey);
 		background: color(white);
 	}
+	// Abstractions
 	&.tabs-full-width {
+		// Descendants
 		.tabs__nav {
 			width: 100%;
 			padding: 0;
 			display: table;
 			table-layout: fixed;
+			// Descendants
 			li {
 				display: table-cell;
+				// Descendants
 				button {
 					text-align: center;
 				}
+				// Abstractions
 		        &.active__tab {
 		            bottom: 0;
 		            border-radius: 0;
@@ -73,6 +83,7 @@
 						@include nudge(padding, 0.25 0.5);
 			        }
 		        }
+				// Pseudo
 		        &:first-child {
 		            border-radius: $border_radius_base 0 0;
 		        }

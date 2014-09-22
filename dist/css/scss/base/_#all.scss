@@ -6,19 +6,19 @@
 @import 'classes',
 		'defaults',
 		'core',
-		'rhythm',
-		'colors';
+		'rhythm';
 // Components
 @import 'components/alerts',
-		'components/breadcrumbs',
 		'components/buttons',
 		'components/content-editable',
 		'components/grid',
 		'components/menus',
-		'components/pagination',
 		'components/progress-bars',
 		'components/slabs',
 		'components/tables';
+// Modules
+@import 'modules/breadcrumbs',
+		'modules/pagination';
 // Forms
 @import 'forms/base',
 		'forms/form-block',
@@ -27,8 +27,6 @@
 		'forms/customised',
 		'forms/notifications',
 		'forms/placeholders';
-// Functions
-@import 'functions/tooltips';
 // JavaScript
 @import 'javascript/accordion',
 		'javascript/maps',

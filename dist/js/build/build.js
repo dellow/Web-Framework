@@ -104,6 +104,15 @@ App.ModuleName = require('./name.module');
 /* ======================================================== */
 // Log App
 App.Helpers.log(App);
+
+/* ======================================================== */
+/* Go!
+/* ======================================================== */
+// Module description
+App.ModuleName.init();
+// Listen for DOM elements that need to be of
+// equal height.
+App.EqualHeights.init();
 },{"./helpers":1,"./name.module":3,"jquery":4}],3:[function(require,module,exports){
 /* ======================================================== */
 /* ModuleName
@@ -112,23 +121,26 @@ App.Helpers.log(App);
 	'use strict';
 
 	/**
-	 * Module.method1
+	 * Module.init
+	 * Init method for this module
 	**/
-	Module.method1 = function(){
-		return 'Module Method 1';
+	Module.init = function(){
+		Module.binds();
 	}
 
 	/**
 	 * Module.method2
+	 * A method description
 	**/
 	Module.method2 = function(){
 		return 'Module Method 2';
 	}
 
 	/**
-	 * Module.bindEvents
+	 * Module.binds
+	 * Binds related to this module
 	**/
-	Module.bindEvents = function(){
+	Module.binds = function(){
 		$('.element').on('click', function(){
 			// Click events here
 		});

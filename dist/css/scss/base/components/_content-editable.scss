@@ -10,7 +10,7 @@
 	border-left: 1px solid transparent;
 	border-right: 1px solid transparent;
 	@include transition(background $animation ease, border-color $animation ease);
-	// Disabled fields
+	// Abstractions
 	&[contenteditable="false"]{
 		&:hover {
 			background: rgba(0, 0, 0, 0.2) !important; // Override hover and focus styles below
@@ -19,17 +19,16 @@
 			background: rgba(0, 0, 0, 0.4) !important; // Override hover and focus styles below
 		}
 	}
-	// Hover
+	// Pseudo
 	&:hover {
 		background: rgba(64, 179, 232, 0.2) !important; // These are !important to overcome a bug with jQuery UI not resetting an animated background-color
 		border-left: 1px solid rgba(0,0,0,0.4);
 		border-right: 1px solid rgba(0,0,0,0.4);
 	}
-	// Focus
 	&:focus {
 		background: rgba(64, 179, 232, 0.4) !important; // These are !important to overcome a bug with jQuery UI not resetting an animated background-color
 	}
-	// When one editable field follows another
+	// Siblings
 	& + .editable {
 		padding-left: 2px;
 		margin-left: 2px;

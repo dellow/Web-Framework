@@ -4,12 +4,14 @@
 ========================================================================== */
 /* -- Forms -- */
 form {
-	// Fields
+	// Descendants
 	input, .input, select, textarea, .field-container {
+		// Abstractions
 		&.error {
 			color: $color_error;
 			border-color: lighten($color_error, 25%);
 			background: lighten($color_error, 40%);
+			// Pseudo
 			&:focus {
 				background: lighten($color_error, 35%);
 			}
@@ -18,6 +20,7 @@ form {
 			color: $color_status;
 			border-color: lighten($color_status, 25%);
 			background: lighten($color_status, 40%);
+			// Pseudo
 			&:focus {
 				background: lighten($color_status, 35%);
 			}
@@ -26,6 +29,7 @@ form {
 			color: $color_success;
 			border-color: lighten($color_success, 25%);
 			background: lighten($color_success, 40%);
+			// Pseudo
 			&:focus {
 				background: lighten($color_success, 35%);
 			}
@@ -34,13 +38,14 @@ form {
 			color: $color_warning;
 			border-color: lighten($color_warning, 25%);
 			background: lighten($color_warning, 40%);
+			// Pseudo
 			&:focus {
 				background: lighten($color_warning, 35%);
 			}
 		}
 	}
-	// Label errors
 	label {
+		// Abstractions
 		&.error {
 			color: $color_error;
 		}
@@ -54,26 +59,29 @@ form {
 			color: $color_warning;
 		}
 	}
-	// Response
 	.msg {
 		@include rem(font-size, 14px);
 	}
 	.response--error {
+		// Descendants
 		.msg {
 			color: $color_error;
 		}
 	}
 	.response--status {
+		// Descendants
 		.msg {
 			color: $color_status;
 		}
 	}
 	.response--success {
+		// Descendants
 		.msg {
 			color: $color_success;
 		}
 	}
 	.response--warning {
+		// Descendants
 		.msg {
 			color: $color_warning;
 		}
