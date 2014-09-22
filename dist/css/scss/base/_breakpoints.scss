@@ -7,10 +7,10 @@
 // Respond to tablet
 @include respond-to($tablet){
 	/* -- Exclusions -- */
-	$exlusions: (
-		'.tablet-hide'
+	$exclusions: (
+		'.hide-tablet'
 	);
-	@each $element in $exlusions {
+	@each $element in $exclusions {
 		#{$element} {
 			display: none;
 		}
@@ -25,11 +25,10 @@
 // Respond to mobile
 @include respond-to($mobile){
 	/* -- Exclusions -- */
-	$exlusions: (
-		'.mobile-hide',
-		'.nav-primary'
+	$exclusions: (
+		'.hide-mobile'
 	);
-	@each $element in $exlusions {
+	@each $element in $exclusions {
 		#{$element} {
 			display: none;
 		}

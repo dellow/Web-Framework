@@ -137,89 +137,87 @@ $col_16               : 6.25% !default;
 
 /**
 * Device sizes
-* http://viewportsizes.com
-* http://screensiz.es
-* http://dpi.lv
+* viewportsizes.com | screensiz.es | dpi.lv
 **/
 // Generic
-$mobile                        : 320px !default;
+$mobile                        : 375px !default;
 $tablet                        : 768px !default;
 $desktop                       : 1280px !default;
 // iPhone 3
 $iphone3_dpi                   : 163 !default;
 $iphone3_dppx                  : 1 !default;
-$iphone3_device_width          : 480px !default;
-$iphone3_device_height         : 320px !default;
+$iphone3_device_width          : 320px !default;
+$iphone3_device_height         : 480px !default;
 $iphone3_resolution_width      : $iphone3_device_width * $iphone3_dppx !default;
 $iphone3_resolution_height     : $iphone3_device_height * $iphone3_dppx !default;
 // iPhone 4
 $iphone4_dpi                   : 326 !default;
 $iphone4_dppx                  : 2 !default;
-$iphone4_device_width          : 480px !default;
-$iphone4_device_height         : 320px !default;
+$iphone4_device_width          : 320px !default;
+$iphone4_device_height         : 480px !default;
 $iphone4_resolution_width      : $iphone4_device_width * $iphone4_dppx !default;
 $iphone4_resolution_height     : $iphone4_device_height * $iphone4_dppx !default;
 // iPhone 5
 $iphone5_dpi                   : 326 !default;
 $iphone5_dppx                  : 2 !default;
-$iphone5_device_width          : 568px !default;
-$iphone5_device_height         : 320px !default;
+$iphone5_device_width          : 320px !default;
+$iphone5_device_height         : 568px !default;
 $iphone5_resolution_width      : $iphone5_device_width * $iphone5_dppx !default;
 $iphone5_resolution_height     : $iphone5_device_height * $iphone5_dppx !default;
 // iPhone 6
 $iphone6_dpi                   : 326 !default;
 $iphone6_dppx                  : 2 !default;
-$iphone6_device_width          : 667px !default;
-$iphone6_device_height         : 375px !default;
+$iphone6_device_width          : 375px !default;
+$iphone6_device_height         : 667px !default;
 $iphone6_resolution_width      : $iphone6_device_width * $iphone6_dppx !default;
 $iphone6_resolution_height     : $iphone6_device_height * $iphone6_dppx !default;
 // iPhone 6 Plus
 $iphone6_plus_dpi              : 401 !default;
 $iphone6_plus_dppx             : 2.46 !default;
-$iphone6_plus_device_width     : 804px !default;
-$iphone6_plus_device_height    : 439px !default;
+$iphone6_plus_device_width     : 439px !default;
+$iphone6_plus_device_height    : 804px !default;
 $iphone6_plus_resolution_width : $iphone6_plus_device_width * $iphone6_plus_dppx !default;
 $iphone6_plus_resolution_height: $iphone6_plus_device_height * $iphone6_plus_dppx !default;
 // iPad 1
 $ipad1_dpi                     : 132 !default;
 $ipad1_dppx                    : 1 !default;
-$ipad1_device_width            : 1024px !default;
-$ipad1_device_height           : 768px !default;
+$ipad1_device_width            : 768px !default;
+$ipad1_device_height           : 1024px !default;
 $ipad1_resolution_width        : $ipad1_device_width * $ipad1_dppx !default;
 $ipad1_resolution_height       : $ipad1_device_height * $ipad1_dppx !default;
 // iPad 2
 $ipad2_dpi                     : 132 !default;
 $ipad2_dppx                    : 1 !default;
-$ipad2_device_width            : 1024px !default;
-$ipad2_device_height           : 768px !default;
+$ipad2_device_width            : 768px !default;
+$ipad2_device_height           : 1024px !default;
 $ipad2_resolution_width        : $ipad2_device_width * $ipad2_dppx !default;
 $ipad2_resolution_height       : $ipad2_device_height * $ipad2_dppx !default;
 // iPad 3
 $ipad3_dpi                     : 264 !default;
 $ipad3_dppx                    : 2 !default;
-$ipad3_device_width            : 1024px !default;
-$ipad3_device_height           : 768px !default;
+$ipad3_device_width            : 768px !default;
+$ipad3_device_height           : 1024px !default;
 $ipad3_resolution_width        : $ipad3_device_width * $ipad3_dppx !default;
 $ipad3_resolution_height       : $ipad3_device_height * $ipad3_dppx !default;
 // iPad Mini
 $ipadmini_dpi                  : 163 !default;
 $ipadmini_dppx                 : 2 !default;
-$ipadmini_device_width         : 1024px !default;
-$ipadmini_device_height        : 768px !default;
+$ipadmini_device_width         : 768px !default;
+$ipadmini_device_height        : 1024px !default;
 $ipadmini_resolution_width     : $ipadmini_device_width * $ipadmini_dppx !default;
 $ipadmini_resolution_height    : $ipadmini_device_height * $ipadmini_dppx !default;
 // Nexus 4
 $nexus4_dpi                    : 318 !default;
 $nexus4_dppx                   : 1 !default;
-$nexus4_device_width           : 598px !default;
-$nexus4_device_height          : 384px !default;
+$nexus4_device_width           : 384px !default;
+$nexus4_device_height          : 598px !default;
 $nexus4_resolution_width       : $nexus4_device_width * $nexus4_dppx !default;
 $nexus4_resolution_height      : $nexus4_device_height * $nexus4_dppx !default;
 // Nexus 5
 $nexus5_dpi                    : 445 !default;
 $nexus5_dppx                   : 1 !default;
-$nexus5_device_width           : 598px !default;
-$nexus5_device_height          : 360px !default;
+$nexus5_device_width           : 360px !default;
+$nexus5_device_height          : 598px !default;
 $nexus5_resolution_width       : $nexus5_device_width * $nexus5_dppx !default;
 $nexus5_resolution_height      : $nexus5_device_height * $nexus5_dppx !default;
 // Nexus 7 2012
