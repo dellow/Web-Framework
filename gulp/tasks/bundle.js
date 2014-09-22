@@ -36,16 +36,16 @@ gulp.task('bundle', function(){
 
 // Makes a timestamped release of the `src` directory and optimises based on current state.
 gulp.task('release', function(){
-    sequence('r-move', 'r-minify', 'r-base64', 'r-imagemin');
+    sequence('release-task-move', 'release-task-minify', 'release-task-base64', 'release-task-imagemin');
 });
 
 // Release sub tasks
-gulp.task('r-move', ['compass', 'browserify'], function(){
+gulp.task('release-task-move', ['compass', 'browserify'], function(){
     return gulp.src(files, {base: GLOBAL.src_dir})
         .pipe(gulp.dest('./releases/current'))
         .pipe(gulp.dest(release));
 });
-gulp.task('r-minify', function(){
+gulp.task('release-task-minify', function(){
     // Run on production only
     if(GLOBAL.is_production){
         // Options
@@ -59,7 +59,7 @@ gulp.task('r-minify', function(){
             .pipe(gulp.dest(release));
     }
 });
-gulp.task('r-base64', function(){
+gulp.task('release-task-base64', function(){
     // Run on production only
     if(GLOBAL.is_production){
         // Options
@@ -75,7 +75,7 @@ gulp.task('r-base64', function(){
             .pipe(gulp.dest(release + 'dist/css'));
     }
 });
-gulp.task('r-imagemin', function(){
+gulp.task('release-task-imagemin', function(){
     // Run on production only
     if(GLOBAL.is_production){
         // Options

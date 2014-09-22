@@ -1,14 +1,16 @@
 /* ================================================== */
 /* Require
 /* ================================================== */
-var gulp    = require('gulp'),
-	compass = require('gulp-compass');
+var gulp      = require('gulp'),
+	gulpif    = require('gulp-if'),
+	streamify = require('gulp-streamify'),
+	minify    = require('gulp-minify-css'),
+	compass   = require('gulp-compass');
 
 /* ================================================== */
 /* Vars
 /* ================================================== */
-var minify      = (GLOBAL.is_production) ? 'compressed' : 'expanded',
-	environment = (GLOBAL.is_production) ? 'production' : 'development',
+var environment = (GLOBAL.is_production) ? 'production' : 'development',
 	sourcemap   = (GLOBAL.is_production) ? false : true,
 	logging     = (GLOBAL.is_production) ? false : true;
 
@@ -26,7 +28,6 @@ function handleError(err) {
 gulp.task('compass', function(){
 	return gulp.src(GLOBAL.dist_dir + 'css/scss/**/*.scss')
 		.pipe(compass({
-			style           : minify,
 			environment     : environment,
 			css             : GLOBAL.dist_dir + 'css',
 			sass            : GLOBAL.dist_dir + 'css/scss',
@@ -34,9 +35,9 @@ gulp.task('compass', function(){
 			logging		    : logging,
 			force           : true,
 			relativeAssets  : true,
-			noLineComments  : true,
-			assetCacheBuster: false
+			noLineComments  : true
 		}))
 		.on('error', handleError)
+		.pipe(gulpif(GLOBAL.is_production, streamify(minify())))
 		.pipe(gulp.dest(GLOBAL.dist_dir + 'css'));
 });
