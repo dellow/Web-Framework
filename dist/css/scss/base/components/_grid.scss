@@ -28,6 +28,9 @@ $gutter_width: ($gutter / 2);
 		&.fr {
 			float: right;
 		}
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 	}
 	&.no-gutter {
 		width: $col_1;
