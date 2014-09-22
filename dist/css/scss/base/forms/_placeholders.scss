@@ -5,11 +5,17 @@
 /* -- Placeholder -- */
 // Can't use opacity to change color. IE doesn't like this!
 ::-webkit-input-placeholder {
-	color: #BBB3B3;
+	color: color(grey);
+}
+::-moz-placeholder {
+	color: color(grey);
 }
 :-moz-placeholder {
-	color: #BBB3B3;
+	color: color(grey);
 }
 :-ms-input-placeholder {
-	color: #BBB3B3;
+	color: color(grey);
+}
+::placeholder {
+	color: color(grey);
 }
