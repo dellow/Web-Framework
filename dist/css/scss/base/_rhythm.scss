@@ -34,6 +34,13 @@ a, button {
 p, blockquote, address {
 	@include rhythm($font_size_base);
 }
+// Paragraph
+p {
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+// Content area
 .content {
 	ul, ol, dl, table, fieldset, figure, pre, .hatnote {
 		@include rhythm($font_size_base);
