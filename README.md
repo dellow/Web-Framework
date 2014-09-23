@@ -97,6 +97,8 @@ You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp
 ## Bundle
 All root commands of `gulp` will create a copy of the working `./src` directory in the `./app` directory but with just the application files. I.E. No `.scss` files or build `.js` files. This can be used for testing purposes and simply serves to automatically remove any build files for whatever use case. No profiles will be applied to the `./app` directory regardless of the commands used. To create a profiled version use the `release` command.
 
+> __Please note:__ `bundle` might be removed in later version due to similarities with the `current` directory which is created with the `release` command.
+
 <a name="release"></a>
 ## Release
 Release creates a snapshot of the application files from the `src` directory essentially creating a release for use. Each release is timestamped and appended with the current state.
