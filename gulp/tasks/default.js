@@ -11,7 +11,6 @@ gulp.task('default', [
 	'browserify',
 	'compass',
 	// Development states
-	'csslint',
 	'jasmine',
 	'jshint',
 	// Bundle must run last
