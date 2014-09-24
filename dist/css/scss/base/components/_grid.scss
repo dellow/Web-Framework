@@ -30,7 +30,7 @@ $gutter_width: ($gutter / 2);
 			float: right;
 		}
 		// Pseudo
-		&:last-of-type {
+		&:last-child {
 			margin-bottom: 0;
 		}
 	}
