@@ -39,7 +39,7 @@
  *	}
 **/
 @mixin modify-grid($gutter_width, $col){
-	> .grid {
+	> .grid, &.grid {
 		width: 100% + $gutter_width;
 		left: -$gutter_width;
 		> [class*="col-"] {
