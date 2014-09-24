@@ -6,6 +6,7 @@
 .vagrant/ export-ignore
 assets/ export-ignore
 gulp/ export-ignore
+deploy/ export-ignore
 
 
 # FILES
