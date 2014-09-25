@@ -9,6 +9,6 @@ SERVER_PATH=/var/www/sitedomain.com
 # Webfiles path
 FILES_PATH=/var/www/sitedomain.com/public_html
 # Git path to deploy from
-GIT_PATH=release/current
+GIT_PATH=releases/current
 # SSH User
 DEPLOY_USER=deploy
