@@ -117,6 +117,20 @@ $color_text_link      : color(red) !default;
 $color_text_link_hover: color(blue) !default;
 
 /**
+* Z-Index Scale
+**/
+$zindex-1 : 100 !default;
+$zindex-2 : 200 !default;
+$zindex-3 : 300 !default;
+$zindex-4 : 400 !default;
+$zindex-5 : 500 !default;
+$zindex-6 : 600 !default;
+$zindex-7 : 700 !default;
+$zindex-8 : 800 !default;
+$zindex-9 : 900 !default;
+$zindex-10: 1000 !default;
+
+/**
 * Percentage Column Widths
 **/
 $col_1                : 100% !default;

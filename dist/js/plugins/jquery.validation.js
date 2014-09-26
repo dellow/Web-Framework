@@ -581,7 +581,7 @@
     **/
     Plugin.prototype.server_validate_fields = function(){
         // Check for a form action
-        if(Plugin.config.form_action !== ''){
+        if(Plugin.w.form_action !== ''){
             var fatalerror = false;
             // Use ajax to check server response
 
@@ -597,7 +597,7 @@
                     Plugin.w.button.html(helper.loading_animation());
                 },
                 success: function(response){
-                    response = response.fields;
+                    response = (typeof response.fields !== 'undefined') ? response.fields : response;
                     // Un-disable stuff
                     Plugin.prototype.disable_stuff(false);
                     // If error

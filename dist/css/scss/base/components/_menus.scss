@@ -105,7 +105,7 @@
 			display: none;
 			position: absolute;
 			left: -$pad; top: 100%;
-			z-index: 100;
+			z-index: $zindex-1;
 			background: color(white);
 			li {
 				padding: 0;

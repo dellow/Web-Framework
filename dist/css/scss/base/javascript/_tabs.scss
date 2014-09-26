@@ -18,7 +18,7 @@
 			border-bottom: 0;
 			@include inline-block;
 			position: relative;
-	    	z-index: 1;
+	    	z-index: $zindex-1;
 			vertical-align: bottom;
 			background: lighten(color(grey), 10%);
 			@include transition(color $animation ease, background-color $animation ease);
@@ -31,7 +31,7 @@
 			// Abstractions
 	        &.active__tab {
 	            bottom: -1px;
-	    		z-index: 2;
+	    		z-index: $zindex-2;
 	            border-radius: $border_radius_base $border_radius_base 0 0;
 	            color: $color_text_link;
 	            background: color(white);
