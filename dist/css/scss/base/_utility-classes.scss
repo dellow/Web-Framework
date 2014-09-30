@@ -1,46 +1,8 @@
 /* ==========================================================================
-   Classes
-   A library of classes to achieve various things.
+   Utility Classes
+   A library of classes to achieve various things. Most are prefixed
+   with a 'u-'. These should be used sparingly.
 ========================================================================== */
-/* -- Images & Alignment -- */
-.content {
-	.aligncenter, .alignnone {
-		margin: $mn auto;
-		display: block;
-	}
-	.alignleft {
-		@include nudge(margin-right, 1);
-		float: left;
-	}
-	.alignright {
-		@include nudge(margin-left, 1);
-		float: right;
-	}
-	figure {
-		img {
-			width: 100%;
-		}
-	}
-}
-.thumb {
-	max-width: 20%;
-	display: block;
-	.thumb--image {
-		width: 100%;
-		border: 4px solid #DFDFDF;
-	}
-	> a {
-		display: block;
-	}
-}
-img {
-	// Abstractions
-	&.alignleft, &.alignright, &.aligncenter, &.alignnone {
-		border: 2px solid #efefef;
-		border-radius: $border_radius_base;
-	}
-}
-
 /* -- Messages -- */
 .msg-success, .msg-failure {
 	@include rem(font-size, 12px);
@@ -66,96 +28,89 @@ img {
 }
 
 /* -- Resetting (This is a last resort) -- */
-.no-width {
+.u-no-width {
 	width: auto !important;
 }
-.no-height {
+.u-no-height {
 	height: auto !important;
 }
-.no-margin {
+.u-no-margin {
 	margin: 0 !important;
 }
-.no-padding {
+.u-no-padding {
 	padding: 0 !important;
 }
-.no-border {
+.u-no-border {
 	border: 0 !important;
 }
-.no-bullet {
+.u-no-bullet {
 	list-style: none !important;
 }
-.no-float {
+.u-no-float {
 	float: none !important;
 }
 
 /* -- Nudge -- */
-.nudge-top {
+.u-nudge-top {
 	@include nudge(margin-top, 1);
 }
-.nudge-right {
+.u-nudge-right {
 	@include nudge(margin-right, 1);
 }
-.nudge-bottom {
+.u-nudge-bottom {
 	@include nudge(margin-bottom, 1);
 }
-.nudge-left {
+.u-nudge-left {
 	@include nudge(margin-left, 1);
 }
 
 /* -- Pad -- */
-.pad-top {
+.u-pad-top {
 	@include nudge(padding-top, 1);
 }
-.pad-right {
+.u-pad-right {
 	@include nudge(padding-right, 1);
 }
-.pad-bottom {
+.u-pad-bottom {
 	@include nudge(padding-bottom, 1);
 }
-.pad-left {
+.u-pad-left {
 	@include nudge(padding-left, 1);
 }
 
-/* -- Image Replacement -- */
-.ir {
-	font: 0/0;
-	text-shadow: none;
-	color: transparent;
-}
-
 /* -- Hide Elements -- */
-.hidden {
+.u-hidden {
 	display: none;
 }
 
 /* -- Vertical Alignment -- */
-.vert {
+.u-vert {
 	vertical-align: middle;
 }
 
 /* -- Structure -- */
-.inline {
+.u-inline {
 	display: inline;
 }
-.inline-block {
+.u-inline-block {
 	display: inline-block;
 }
-.block {
+.u-block {
 	display: block;
 }
-ul.inline {
+ul.u-inline {
 	margin: 0;
 	li {
 		display: inline;
 	}
 }
-ul.inline-block {
+ul.u-inline-block {
 	margin: 0;
 	li {
 		display: inline-block;
 	}
 }
-ul.block {
+ul.u-block {
 	margin: 0;
 	li {
 		display: block;
@@ -169,91 +124,88 @@ ul.block {
 .fr {
 	float: right;
 }
-.static {
+.u-static {
 	position: static;
 }
-.relative {
+.u-relative {
 	position: relative;
 }
-.fixed {
+.u-fixed {
 	position: fixed;
 }
-.absolute {
+.u-absolute {
 	position: absolute;
 }
 
 /* -- Lists -- */
-.inside {
+.u-inside {
 	margin-left: $ul_indent_base;
 	ul, ol {
 		margin-left: $ul_indent_base;
 	}
 }
-.no-bullet {
+.u-no-bullet {
 	list-style: none;
 }
-ul.horizontal {
+ul.u-horizontal {
 	li {
 		display: inline;
 	}
 }
-ul.horizontal-block {
+ul.u-horizontal-block {
 	li {
 		@include inline-block;
 	}
 }
 
 /* -- Text -- */
-.text-small {
+.u-text-small {
 	font-size: 75%;
 }
-.text-big {
+.u-text-big {
 	font-size: 150%;
 }
-.text-left {
+.u-text-left {
 	text-align: left;
 }
-.text-right {
+.u-text-right {
 	text-align: right;
 }
-.text-center {
+.u-text-center {
 	text-align: center;
 }
 
 /* -- Weights & Cases -- */
-.bold {
+.u-regular {
+	font-weight: $font_weight_regular;
+}
+.u-bold {
 	font-weight: $font_weight_bold;
 }
-.italic {
+.u-italic {
 	font-style: italic;
 }
-.nobold {
-	font-weight: normal;
-}
-.case-u {
+.u-uppercase {
 	text-transform: uppercase;
 }
-.case-l {
+.u-lowercase {
 	text-transform: lowercase;
 }
-.case-c {
+.u-capitalize {
 	text-transform: capitalize;
-}
-.case-n {
-	text-transform: none;
 }
 
 /* -- Fonts -- */
-.serif {
+.u-serif {
 	font-family: serif;
 }
-.sans-serif {
+.u-sans-serif {
 	font-family: sans-serif;
 }
 
 /* -- CSS3 Columns -- */
 @for $i from 1 through 10 {
-	.columns-#{$i} {
+	.u-columns-#{$i} {
 		-webkit-column-count: $i; -moz-column-count: $i; column-count: $i;
 	}
 }

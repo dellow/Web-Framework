@@ -297,6 +297,7 @@
      * Remove all errors
     **/
     helper.reset_errors = function(form){
+        form.removeClass('invalid');
         // Remove current classes
         $('.' + Plugin.config.errorClass, form).removeClass(Plugin.config.errorClass);
         $('.' + Plugin.config.errorBoxClass, form).remove();
@@ -309,6 +310,8 @@
     helper.set_errors = function(arr, form){
         // Remove errors
         helper.reset_errors(form);
+        // Add error class to form
+        form.addClass('invalid');
         // Add new ones
         $.each(arr, function(){
             var a = $(this);
@@ -353,23 +356,8 @@
      * helper.loading_animation
      * Creates a spinning loading animation.
     **/
-    helper.loading_animation = function(){
-        // Generate an element name with a random number
-        var el = 'loader-' + Math.random() * (100 - 1) + 1;
-        // Generate the preloader
-        $.getScript('http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.js', function(){
-            var loader = new CanvasLoader(el);
-            loader.setShape('spiral');
-            loader.setDiameter(Plugin.config.preloaderSize);
-            loader.setDensity(Plugin.config.preloaderDensity);
-            loader.setRange(0.6);
-            loader.setSpeed(1);
-            loader.setColor(Plugin.config.preloaderHEX);
-            loader.show();
-        });
-
-        // Return a loader element
-        return $('<div style="display: inline-block; vertical-align: middle;" id="' + el + '"></div>');
+    helper.loading_animation = function(el){
+        el.addClass('loading');
     }
 
     /**
@@ -584,7 +572,6 @@
         if(Plugin.w.form_action !== ''){
             var fatalerror = false;
             // Use ajax to check server response
-
             $.ajax({
                 type    : 'POST',
                 url     : Plugin.w.form_action,
@@ -594,7 +581,7 @@
                 async   : false, // Important, this has to finish first!
                 beforeSend: function(){
                     // Add a preloader
-                    Plugin.w.button.html(helper.loading_animation());
+                    helper.loading_animation(Plugin.w.button);
                 },
                 success: function(response){
                     response = (typeof response.fields !== 'undefined') ? response.fields : response;
@@ -616,6 +603,8 @@
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError){
+
+                    console.log(thrownError);
                     fatalerror = true;
                     // Un-disable stuff
                     Plugin.prototype.disable_stuff(false);
@@ -661,7 +650,7 @@
                 async: false,
                 beforeSend: function(){
                     // Add a preloader
-                    Plugin.w.button.html(helper.loading_animation());
+                    helper.loading_animation(Plugin.w.button);
                 },
                 success: function(){
                     Plugin.w.form.fadeOut(500, function(){

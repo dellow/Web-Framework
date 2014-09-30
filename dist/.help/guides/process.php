@@ -7,7 +7,7 @@
 **/
 
 // Prevent direct access to the file.
-if(!empty($_SERVER['SCRIPT_FILENAME']) && 'mailer.php' === basename($_SERVER['SCRIPT_FILENAME'])){
+if(!empty($_SERVER['SCRIPT_FILENAME']) && 'mailer.php' === basename($_SERVER['SCRIPT_FILENAME']) && !isset($_REQUEST['ajaxrequest'])){
     die('Sorry. This page cannot be loaded directly.');
 }
 
@@ -72,12 +72,12 @@ class mailer{
 			return (!empty($value)) ? strip_tags($value) : false;
 		}
 		// Cycle through fields
-		foreach($_POST[$this->id] as $key=>$value){
+		foreach($_REQUEST[$this->id] as $key=>$value){
 			$valid = true;
-			if(isset($_POST['validationfilter'][$key])){
+			if(isset($_REQUEST['validationfilter'][$key])){
 				$include = true;
 				// Check method
-				switch($_POST['validationfilter'][$key]){
+				switch($_REQUEST['validationfilter'][$key]){
 					case 'existence':
 						$valid = check_existence($value);
 					break;
@@ -103,9 +103,9 @@ class mailer{
 				}
 			}
 			// Field is not valid
-			elseif(!empty($_POST['validationmessage'][$key])){
+			elseif(!empty($_REQUEST['validationmessage'][$key])){
 				$success = false;
-				$this->response[$this->id]['error'][$key]['msg'] = $_POST['validationmessage'][$key];
+				$this->response[$this->id]['error'][$key]['msg'] = $_REQUEST['validationmessage'][$key];
 				if(is_array($value)){
 					$this->response[$this->id]['error'][$key]['field'] = $this->id . '[' . $key . '][]';
 				}
@@ -115,13 +115,8 @@ class mailer{
 			}
 		}
 
-		if($success){
-			return $fields;
-		}
-		else{
-			$this->ajax_response();
-			return false;
-		}
+		$this->ajax_response();
+		return ($success) ? $fields : false;
 	}
 
 	/**
@@ -134,7 +129,7 @@ class mailer{
 	**/
 	public function mail($args){
 		// Check form is posted.
-		if(!isset($_POST[$this->id])){ return; }
+		if(!isset($_REQUEST[$this->id])){ return; }
 
 		/**
 		 * get_domain
@@ -261,6 +256,8 @@ class mailer{
 			else {
 				$this->response['form']['error']['all']['msg'] = 'Mail sending failed';
 			}
+
+			$this->ajax_response();
 		}
 	}
 

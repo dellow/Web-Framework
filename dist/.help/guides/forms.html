@@ -1,6 +1,6 @@
 <?php
 
-	include('mailer.php');
+	include('process.php');
 	$args['recipient'] = 'recipient@sitedomain.com';
 	$args['subject']   = 'Form Subject';
 	$args['title']     = 'Site Title';
@@ -90,7 +90,7 @@
 				<div class="form-success">
 					Thanks! The form has been successfully sent!
 				</div>
-				<form class="testform form-block" action="" method="post">
+				<form class="js-validate form-block" action="http://thispageurl.com/contact/" method="post">
 					<!-- <div><?php echo $form->response(); ?></div> -->
 					<!-- Text input -->
 					<div class="field">
@@ -212,7 +212,7 @@
 	 * styleguide. Do not use these in production
 	**/
 	$(function(){
-		$('.testform').validation({
+		$('.js-validate').validation({
 			serverValidation: false
 		});
 
@@ -220,7 +220,7 @@
 			var data = 'form-' + $(this).data('switch');
 			var text = $(this).text();
 
-			$('.testform').removeClass('form-block form-inline-block form-inline').addClass(data);
+			$('.js-validate').removeClass('form-block form-inline-block form-inline').addClass(data);
 			$('.js-title').text(text);
 		});
 	});

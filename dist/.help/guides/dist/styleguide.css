@@ -107,6 +107,21 @@ form input, form select, form textarea {
 	background: #efefef;
 }
 
+/* Flexbox */
+.flexbox-example {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.flexbox-example li {
+	width: 24%;
+	padding: 10px;
+	margin: 0.5%;
+	list-style: none;
+	color: white;
+	background: #004b6a;
+}
+
 /* Colour Swatches */
 .color-swatches {
 	letter-spacing: -4px;
