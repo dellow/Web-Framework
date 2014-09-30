@@ -3,11 +3,15 @@
 # deploy.sh
 #
 # HOW TO USE:
-# Beware about ownership. This script assumes the SSH user is also the one
-# who owns the directory you are deploying to. It is recommended you use
-# a 'deploy' user for any deployment or public facing file tasks.
+# Beware about ownership. This script assumes the SSH deployment user is also the one
+# who owns the directory you are deploying to. It is recommended you use a 'deploy'
+# user for any deployment or public facing file tasks.
 #
-# 1. Make sure you have environments setup in /deploy/environments in the form of: `production.sh` | `staging.sh` | `dev.sh`
+# 1. Make sure you have environments setup in /deploy/environments in the form of:
+#	 `production.sh` | `staging.sh` | `dev.sh`
+#
+# 2. Your server must be setup with SSH key pairs. It will not work with servers
+# 	 that require passwords to SSH.
 #
 # 2. To do a normal deploy run:
 #	bash deploy.sh <environment>
@@ -43,7 +47,7 @@ echo -e "\n------------------------------------------------"
 # ---------------------------------------------------------------------------
 if [[ ! -d ./.git ]]; then
 	echo -e "$(tput setaf 1)This is not a valid Git repository$(tput sgr0)"
-	echo -e "------------------------------------------------\n"
+	echo -e "------------------------------------------------"
 	exit 1
 fi
 
@@ -69,7 +73,7 @@ if (($# == 1)); then
 	# Check for deploy file
 	if [[ ! -f $DEPLOY_FILE ]]; then
 		echo -e "$(tput setaf 1)Could not find deploy file for $DEPLOY_ENV environment, it should be located in $DEPLOY_FILE.$(tput sgr0)"
-		echo -e "------------------------------------------------\n"
+		echo -e "------------------------------------------------"
 		exit 1
 	fi
 elif [ "$2" = 'rollback' ]; then
@@ -78,12 +82,12 @@ elif [ "$2" = 'rollback' ]; then
 		COMMIT_RANGE_TO=$3
 	else
 		echo -e "$(tput setaf 1)You must supply a commit ID to rollback to$(tput sgr0)"
-		echo -e "------------------------------------------------\n"
+		echo -e "------------------------------------------------"
 		exit 1
 	fi
 else
 	echo -e "$(tput setaf 1)You have supplied to many arguments. The correct usage is: deploy.sh <environment>$(tput sgr0)"
-	echo -e "------------------------------------------------\n"
+	echo -e "------------------------------------------------"
 	exit 1
 fi
 
@@ -93,8 +97,24 @@ DEPLOY_ENV=$1
 DEPLOY_FILE=./deploy/environments/$DEPLOY_ENV.sh
 # Source the deploy file
 source $DEPLOY_FILE
-
-echo -e "Deploying $APP to $DEPLOY_ENV environment..."
+# Check SSH connection
+echo -e "Running connection tests to each of your servers. Please wait..."
+echo -e "------------------------------------------------"
+for SERVER in ${DEPLOY_SERVER[@]}; do
+	if ssh -o BatchMode=yes $DEPLOY_USER@$SERVER true 2>/dev/null; then
+		echo -e "$(tput setaf 2)$DEPLOY_USER@$SERVER: Connected successfully!$(tput sgr0)"
+    else
+		echo -e "$(tput setaf 1)$DEPLOY_USER@$SERVER: Connection failed!$(tput sgr0)"
+		LOGIN_FAILED=true
+    fi
+	echo -e "------------------------------------------------"
+done
+if [[ -n "${LOGIN_FAILED}" ]] ; then
+	echo -e "$(tput setaf 1)Either the details on one of your servers are wrong or the server requires a password. Deployment only supports servers with SSH key pairs.$(tput sgr0)"
+	exit 1
+else
+	echo -e "$(tput setaf 2)Continuing to deploy $APP to $DEPLOY_ENV environment...$(tput sgr0)"
+fi
 
 # ---------------------------------------------------------------------------
 # Vars
@@ -144,7 +164,7 @@ if [[ -n "${ROLLBACK_REQUEST}" ]] ; then
 		git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $BRANCH
 	else
 		echo -e "$(tput setaf 1)Commit range is the same. Nothing to deploy.$(tput sgr0)"
-		echo -e "------------------------------------------------\n"
+		echo -e "------------------------------------------------"
 		exit 1
 	fi
 # Not a rollback
@@ -163,7 +183,7 @@ else
 			git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $BRANCH
 		else
 			echo -e "$(tput setaf 1)Commit range is the same. Nothing to deploy.$(tput sgr0)"
-			echo -e "------------------------------------------------\n"
+			echo -e "------------------------------------------------"
 			exit 1
 		fi
 	# Deployment from commit range
@@ -179,17 +199,11 @@ else
 			git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $COMMIT_RANGE_TO $(git diff --name-only $COMMIT_RANGE_FROM $COMMIT_RANGE_TO $BRANCH)
 		else
 			echo -e "$(tput setaf 1)Commit range is the same. Nothing to deploy.$(tput sgr0)"
-			echo -e "------------------------------------------------\n"
+			echo -e "------------------------------------------------"
 			exit 1
 		fi
 	fi
 fi
-
-# Commit message
-COMMIT_MESSAGE="$(git log -1 HEAD --pretty=format:%s)"
-# Update release_commit_log
-echo "$COMMIT_RANGE_FROM" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 2nd Line
-echo "$COMMIT_RANGE_TO" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 1st Line
 
 # ---------------------------------------------------------------------------
 # Deploy to servers
@@ -208,9 +222,7 @@ for SERVER in ${DEPLOY_SERVER[@]}; do
 		sudo mkdir $SERVER_PATH/releases/$RELEASE_NAME &&
 		sudo tar -xf $REMOTE_RELEASE --directory $SERVER_PATH/releases/$RELEASE_NAME &&
 		echo 'Removing tarball...' &&
-		sudo rm -rf $REMOTE_RELEASE &&
-		echo 'Copying files to web root...' &&
-		sudo cp -rf $SERVER_PATH/releases/$RELEASE_NAME/$GIT_PATH/* $FILES_PATH"
+		sudo rm -rf $REMOTE_RELEASE"
 	# Deploy release
 	if [[ -n "${ROLLBACK_REQUEST}" ]] ; then
 		echo -e "Rolling back to commit: \"$(tput setaf 3)$COMMIT_MESSAGE$(tput sgr0)\""
@@ -220,6 +232,13 @@ for SERVER in ${DEPLOY_SERVER[@]}; do
 		echo -e "Deploying commit: \"$(tput setaf 3)$COMMIT_MESSAGE$(tput sgr0)\""
 		ssh -t $DEPLOY_USER@$SERVER "sudo cp -rf $SERVER_PATH/releases/$RELEASE_NAME/$GIT_PATH/* $FILES_PATH"
 	fi
+
+	# After successfully deployment update the commit log
+	# Commit message
+	COMMIT_MESSAGE="$(git log -1 HEAD --pretty=format:%s)"
+	# Update release_commit_log
+	echo "$COMMIT_RANGE_FROM" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 2nd Line
+	echo "$COMMIT_RANGE_TO" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 1st Line
 done
 
 # ---------------------------------------------------------------------------
@@ -228,4 +247,4 @@ done
 #
 end_seconds="$(date +%s)"
 echo -e "$(tput setaf 2)Deployment completed successfully in "$(expr $end_seconds - $start_seconds)" seconds.$(tput sgr0)"
-echo -e "------------------------------------------------\n"
+echo -e "------------------------------------------------"
