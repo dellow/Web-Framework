@@ -30,7 +30,6 @@
 	<nav class="navigation" role="navigation">
 		<ul class="nav-primary" role="menu">
 			<li class="nav-general" role="menuitem"><a href="styleguide.html" title="General">General</a></li>
-			<li class="nav-elements" role="menuitem"><a href="elements.html" title="Elements">Elements</a></li>
 			<li class="nav-forms" role="menuitem"><a href="forms.html" title="Forms">Forms</a></li>
 			<li class="nav-javascript" role="menuitem"><a href="javascript.html" title="JavaScript">JavaScript</a></li>
 			<li class="nav-rhythm" role="menuitem"><a href="rhythm.html" title="Rhythm">Rhythm</a></li>
@@ -1439,6 +1438,739 @@
 		</div>
 	</section>
 </div>
+
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
+		<h2>Accordions</h2>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Standard Accordion</span></summary>
+<pre class="language-markup"><code>&lt;div class="accordion" role="tablist" multiselectable="true">
+	&lt;div class="accordion__title" role="tablist">
+		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #1&lt;/button>
+	&lt;/div>
+	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
+		Accordion Content
+	&lt;/div>
+	&lt;div class="accordion__title" role="tablist">
+		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #2&lt;/button>
+	&lt;/div>
+	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
+		Accordion Content
+	&lt;/div>
+	&lt;div class="accordion__title" role="tablist">
+		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #3&lt;/button>
+	&lt;/div>
+	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
+		Accordion Content
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="accordion" role="tablist" multiselectable="true">
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #1</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #2</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #3</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
+		<h2>Tabs</h2>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Natural Tabs</span></summary>
+<pre class="language-markup"><code>&lt;div class="tabs">
+	&lt;ul class="tabs__nav" role="tablist">
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
+		&lt;/li>
+	&lt;/ul>
+	&lt;div class="tabs__system">
+		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+			&lt;p>Tab 1 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+			&lt;p>Tab 2 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+			&lt;p>Tab 3 content goes here.&lt;/p>
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="tabs">
+					<ul class="tabs__nav" role="tablist">
+						<li role="presentation">
+							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
+						</li>
+					</ul>
+					<div class="tabs__system">
+						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+							<p>Tab 1 content goes here.</p>
+						</div>
+						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+							<p>Tab 2 content goes here.</p>
+						</div>
+						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+							<p>Tab 3 content goes here.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Full Width Tabs</span></summary>
+<pre class="language-markup"><code>&lt;div class="tabs tabs-full-width">
+	&lt;ul class="tabs__nav" role="tablist">
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
+		&lt;/li>
+	&lt;/ul>
+	&lt;div class="tabs__system">
+		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+			&lt;p>Tab 1 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+			&lt;p>Tab 2 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+			&lt;p>Tab 3 content goes here.&lt;/p>
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="tabs tabs-full-width">
+					<ul class="tabs__nav" role="tablist">
+						<li role="presentation">
+							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
+						</li>
+					</ul>
+					<div class="tabs__system">
+						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+							<p>Tab 1 content goes here.</p>
+						</div>
+						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+							<p>Tab 2 content goes here.</p>
+						</div>
+						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+							<p>Tab 3 content goes here.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
+		<h2>Flexbox</h2>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Equal Heights</span></summary>
+<pre class="language-css"><code>.flexbox-example {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.flexbox-example li {
+	width: 24%;
+	padding: 10px;
+	margin: 0.5%;
+	list-style: none;
+}</code></pre>
+<pre class="language-markup"><code>&lt;ul class="flexbox-example">
+	&lt;li>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quas cum iusto.
+	&lt;/li>
+	&lt;li>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum officiis placeat non velit.
+	&lt;/li>
+	&lt;li>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+	&lt;/li>
+	&lt;li>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad.
+	&lt;/li>
+	&lt;li>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum.
+	&lt;/li>
+	&lt;li>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+	&lt;/li>
+	&lt;li>
+		Lorem ipsum dolor sit amet.
+	&lt;/li>
+	&lt;li>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum officiis placeat non velit.
+	&lt;/li>
+	&lt;li>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+	&lt;/li>
+	&lt;li>Adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur.
+	&lt;/li>
+&lt;/ul>
+</code></pre>
+			</details>
+			<div class="pattern__view">
+				<ul class="flexbox-example">
+					<li>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quas cum iusto.
+					</li>
+					<li>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum officiis placeat non velit.
+					</li>
+					<li>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					</li>
+					<li>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad.
+					</li>
+					<li>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum.
+					</li>
+					<li>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					</li>
+					<li>
+						Lorem ipsum dolor sit amet.
+					</li>
+					<li>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum officiis placeat non velit.
+					</li>
+					<li>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					</li>
+					<li>Adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur.
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</div>
+
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
+		<h2>Tables</h2>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Normal Table</span></summary>
+<pre class="language-markup"><code>&lt;table class="table">
+	&lt;thead>
+		&lt;tr>
+			&lt;th>Title&lt;/th>
+			&lt;th>Title&lt;/th>
+			&lt;th>Title&lt;/th>
+			&lt;th>Title&lt;/th>
+		&lt;/tr>
+	&lt;/thead>
+	&lt;tbody>
+		&lt;tr>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table></code></pre>
+			</details>
+			<div class="pattern__view">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Title</th>
+							<th>Title</th>
+							<th>Title</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+						</tr>
+						<tr>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+						</tr>
+						<tr>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Highlighted Table Horizontal</span></summary>
+<pre class="language-markup"><code>&lt;table class="table table-highlight-horizontal">
+	&lt;thead>
+		&lt;tr>
+			&lt;th>Title&lt;/th>
+			&lt;th>Title&lt;/th>
+			&lt;th>Title&lt;/th>
+			&lt;th>Title&lt;/th>
+		&lt;/tr>
+	&lt;/thead>
+	&lt;tbody>
+		&lt;tr>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table></code></pre>
+			</details>
+			<div class="pattern__view">
+				<table class="table table-highlight-horizontal">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Title</th>
+							<th>Title</th>
+							<th>Title</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+						</tr>
+						<tr>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+						</tr>
+						<tr>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Highlighted Table Vertical</span></summary>
+<pre class="language-markup"><code>&lt;table class="table table-highlight-vertical">
+	&lt;thead>
+		&lt;tr>
+			&lt;th>Title&lt;/th>
+			&lt;th>Title&lt;/th>
+			&lt;th>Title&lt;/th>
+			&lt;th>Title&lt;/th>
+		&lt;/tr>
+	&lt;/thead>
+	&lt;tbody>
+		&lt;tr>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+			&lt;td>Content&lt;/td>
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table></code></pre>
+			</details>
+			<div class="pattern__view">
+				<table class="table table-highlight-vertical">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Title</th>
+							<th>Title</th>
+							<th>Title</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+						</tr>
+						<tr>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+						</tr>
+						<tr>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+							<td>Content</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+</div>
+
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
+		<h2>Sliders / Carousels</h2>
+		<p>Sliders are provided by the excellent <a href="http://bxslider.com" target="_blank">BX Slider</a>. These are basic examples and not predefined in the Framework. View the <a href="http://bxslider.com/options" target="_blank">BX Slider Options</a> to learn more about the extensive API.</p>
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Full Width Slider</span></summary>
+<pre class="language-markup"><code>&lt;div class="slider-container">
+	&lt;div class="slider">
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view allow-margin">
+				<div class="slider-container">
+					<div class="slider">
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Multiple Slider</span></summary>
+<pre class="language-markup"><code>&lt;div class="slider-container">
+	&lt;div class="slider-multiple">
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view allow-margin">
+				<div class="slider-container">
+					<div class="slider-multiple">
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Slider with Margin</span></summary>
+<pre class="language-markup"><code>&lt;div class="slider-container">
+	&lt;div class="slider-multiple-margin">
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+		&lt;div class="slider__slide">
+			&lt;img src="http://fillmurray.com/400/150" alt="Placeholder">
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view allow-margin">
+				<div class="slider-container">
+					<div class="slider-multiple-margin">
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+						<div class="slider__slide">
+							<img src="http://fillmurray.com/400/150" alt="Placeholder">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../../js/plugins/jquery.extensions.js"></script>
+<script src="../../js/plugins/jquery.bxslider.js"></script>
+<script src="../../js/plugins/jquery.lightbox.js"></script>
+<script src="../../js/build/build.js"></script>
 <script src="dist/prism/prism.js"></script>
+<script>
+	/**
+	 * These scripts are just for the benefit of this
+	 * styleguide. Do not use these in production
+	**/
+	$(function(){
+		// Accordion
+	    if($('.accordion').length){
+	        $('.accordion').accordion({
+	            // No options
+	        });
+	    }
+		// BX Slider
+	    if($('.slider').length){
+	        $('.slider').bxSlider({
+	            // No options
+	        });
+	    }
+	    if($('.slider-multiple').length){
+	        $('.slider-multiple').bxSlider({
+				slideWidth: 250,
+				moveSlides: 1,
+				minSlides : 4,
+				maxSlides : 4
+	        });
+	    }
+	    if($('.slider-multiple-margin').length){
+	        $('.slider-multiple-margin').bxSlider({
+	        	slideMargin: 10,
+				slideWidth: 250,
+				moveSlides: 1,
+				minSlides : 4,
+				maxSlides : 4
+	        });
+	    }
+		// Lightbox
+	    if($('.lightbox').length){
+	        $('.lightbox').lightbox({
+	            // No options
+	        });
+	    }
+		// Tabs
+	    if($('.tabs').length){
+	        $('.tabs').tabs({
+	            // No options
+	        });
+	    }
+	});
+</script>
 </body>
 </html>
