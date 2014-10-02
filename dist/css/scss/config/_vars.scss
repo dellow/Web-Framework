@@ -65,7 +65,7 @@ $line_height_ratio     : $line_height_base / $font_size_base !default;
 * Colors
 **/
 // Map
-$colors: (
+$base_colors: (
 	black: (
 		base: #000000
 	),
@@ -104,6 +104,9 @@ $colors: (
 		dark: darken(#F1C40F, 10%)
 	)
 ) !default;
+$site_colors          : () !default;
+// Merge
+$colors               : map-merge($base_colors, $site_colors) !default;
 // Useful
 $color_odd_base       : #EDEDED !default;
 $color_even_base      : #F4F4F4 !default;

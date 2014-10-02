@@ -30,6 +30,10 @@ App.Helpers = require('./helpers');
 /* ======================================================== */
 // Module Name
 App.ModuleName = require('./name.module');
+// Wiselinks
+App.Wiselinks = require('./wiselinks.module');
+// Equal Heights
+App.EqualHeights = require('./equal-heights.module');
 
 /* ======================================================== */
 /* Debugging
@@ -42,6 +46,8 @@ App.Helpers.log(App);
 /* ======================================================== */
 // Module description
 App.ModuleName.init();
+// Wiselinks
+App.Wiselinks.init(App.Helpers);
 // Listen for DOM elements that need to be of
 // equal height.
 App.EqualHeights.init();

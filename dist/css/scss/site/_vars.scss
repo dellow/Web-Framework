@@ -7,3 +7,17 @@
 **/
 // Debug mode - Compass environment must be in 'development' mode for this to work.
 $debug_mode: true;
+
+/**
+* Colors
+**/
+// Map
+$site_colors: (
+	color: (
+		base: #000000,
+		light: lighten(#000000, 10%),
+		dark: darken(#000000, 10%)
+	)
+);
+// Merge (again)
+$colors: map-merge($base_colors, $site_colors);
