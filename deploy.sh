@@ -210,6 +210,8 @@ fi
 # ---------------------------------------------------------------------------
 #
 for SERVER in ${DEPLOY_SERVER[@]}; do
+	# Commit message
+	COMMIT_MESSAGE="$(git log -1 HEAD --pretty=format:%s)"
 	# Create releases directory on server
 	ssh -t $DEPLOY_USER@$SERVER "sudo mkdir -p $SERVER_PATH/releases &&
 	sudo mkdir -p $FILES_PATH &&
@@ -234,8 +236,6 @@ for SERVER in ${DEPLOY_SERVER[@]}; do
 	fi
 
 	# After successfully deployment update the commit log
-	# Commit message
-	COMMIT_MESSAGE="$(git log -1 HEAD --pretty=format:%s)"
 	# Update release_commit_log
 	echo "$COMMIT_RANGE_FROM" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 2nd Line
 	echo "$COMMIT_RANGE_TO" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 1st Line
