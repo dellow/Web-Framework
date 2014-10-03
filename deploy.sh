@@ -14,30 +14,20 @@
 # 	 that require passwords to SSH.
 #
 # 2. To do a normal deploy run:
-#	bash deploy.sh <environment>
+#	./deploy.sh <environment>
 #
 # 2. To do a rollback run:
-#	bash deploy.sh <environment> rollback <commit_to_rollback_to_id>
+#	./deploy.sh <environment> rollback <commit_to_rollback_to_id>
 #
 
 preloader(){
-	echo -ne "$(tput setaf 3)-* (10%)\r$(tput sgr0)"
+	echo -ne "$(tput setaf 3)-* (25%)\r$(tput sgr0)"
 	sleep 1
-	echo -ne "$(tput setaf 3)-*-* (20%)\r$(tput sgr0)"
+	echo -ne "$(tput setaf 3)-*-*-*-* (50%)\r$(tput sgr0)"
 	sleep 1
-	echo -ne "$(tput setaf 3)-*-*-* (30%)\r$(tput sgr0)"
+	echo -ne "$(tput setaf 3)-*-*-*-*-*-*-* (75%)\r$(tput sgr0)"
 	sleep 1
-	echo -ne "$(tput setaf 3)-*-*-*-* (40%)\r$(tput sgr0)"
-	sleep 1
-	echo -ne "$(tput setaf 3)-*-*-*-*-* (50%)\r$(tput sgr0)"
-	sleep 1
-	echo -ne "$(tput setaf 3)-*-*-*-*-*-* (60%)\r$(tput sgr0)"
-	sleep 1
-	echo -ne "$(tput setaf 3)-*-*-*-*-*-*-* (70%)\r$(tput sgr0)"
-	sleep 1
-	echo -ne "$(tput setaf 3)-*-*-*-*-*-*-*-* (80%)\r$(tput sgr0)"
-	sleep 1
-	echo -ne "$(tput setaf 2)-*-*-*-*-*-*-*-*-* (100%) Done!\r$(tput sgr0)"
+	echo -ne "$(tput setaf 2)-*-*-*-*-*-*-*-*-*-* (100%) Done!\r$(tput sgr0)"
 	sleep 1
 }
 
@@ -117,6 +107,24 @@ else
 fi
 
 # ---------------------------------------------------------------------------
+# Check if we need to do a Git push
+# ---------------------------------------------------------------------------
+#
+GIT_LOCAL=$(git rev-parse @)
+GIT_REMOTE=$(git rev-parse @{u})
+GIT_BASE=$(git merge-base @ @{u})
+if [ $GIT_LOCAL = $GIT_REMOTE ]; then
+    echo -e "$(tput setaf 2)Local Git repo is up-to-date with remote. Continuing...$(tput sgr0)"
+elif [ $GIT_REMOTE = $GIT_BASE ]; then
+	read -p "$(tput setaf 5)The local Git repo is not up-to-date with the remote. Deployment will not deploy file not on the remote server. Would you like to push first? y/n $(tput sgr0)" choice
+	if [[ $choice = "y" ]]; then
+		git push origin $DEPLOY_ENV
+	fi
+else
+    echo -e "Diverged"
+fi
+
+# ---------------------------------------------------------------------------
 # Vars
 # ---------------------------------------------------------------------------
 #
@@ -127,21 +135,12 @@ LOCAL_RELEASE=deploy/releases/$RELEASE_NAME.tar.tgz
 # Remote release
 REMOTE_RELEASE=$SERVER_PATH/releases/$RELEASE_NAME.tar.tgz
 # Commit log name
-COMMIT_LOG="./deploy/${BRANCH}_release_commit_log"
+COMMIT_LOG="$SERVER_PATH/${BRANCH}_release_commit_log"
+# Temp commit_log
+TEMP_COMMIT_LOG=deploy/temp_commit_log
 
 # ---------------------------------------------------------------------------
-# Check commit log
-# ---------------------------------------------------------------------------
-#
-if [[ ! -f $COMMIT_LOG ]]; then
-	echo -e "Creating releases commit log..."
-	touch $COMMIT_LOG
-
-	FRESH_DEPLOYMENT=true
-fi
-
-# ---------------------------------------------------------------------------
-# Check for releases directory
+# Make local releases directory
 # ---------------------------------------------------------------------------
 #
 if [[ ! -d ./deploy/releases ]]; then
@@ -150,32 +149,32 @@ if [[ ! -d ./deploy/releases ]]; then
 fi
 
 # ---------------------------------------------------------------------------
-# Create a release from the Git archive
+# Get release for each server
 # ---------------------------------------------------------------------------
 #
-# Rollback request
-if [[ -n "${ROLLBACK_REQUEST}" ]] ; then
-	# Get first commit from release_commit_log
-	COMMIT_RANGE_FROM="$(sed -n '$p' $COMMIT_LOG)"
-	# Check commit range
-	if [[ ! $COMMIT_RANGE_TO = $COMMIT_RANGE_FROM ]]; then
-		# Create tarball
-		preloader
-		git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $BRANCH
-	else
-		echo -e "$(tput setaf 1)Commit range is the same. Nothing to deploy.$(tput sgr0)"
-		echo -e "------------------------------------------------"
-		exit 1
+for SERVER in ${DEPLOY_SERVER[@]}; do
+
+	# ---------------------------------------------------------------------------
+	# Get release
+	# ---------------------------------------------------------------------------
+	# Check for commit log
+	if( ssh $DEPLOY_USER@$SERVER "[ ! -f $COMMIT_LOG ]" ); then
+		echo -e "Creating releases commit log..."
+		# Create commit log
+		ssh -t $DEPLOY_USER@$SERVER "sudo touch $COMMIT_LOG"
+		FRESH_DEPLOYMENT=true
 	fi
-# Not a rollback
-else
-	echo -e "Creating release and deploying tarball to server..."
-	# Deployment from scratch
-	if [ "$FRESH_DEPLOYMENT" = true ] ; then
-		# Get first ever commit
-		COMMIT_RANGE_FROM="$(git rev-list HEAD | tail -n 1)"
-		# Get latest commit from remote origin
-		COMMIT_RANGE_TO="$(git ls-remote origin | awk '/master/ {print $1}')"
+
+	# Get COMMIT_LOG contents
+	echo -e "Getting the commit log from the server..."
+	scp $DEPLOY_USER@$SERVER:$COMMIT_LOG $TEMP_COMMIT_LOG
+
+	# Rollback request
+	if [[ -n "${ROLLBACK_REQUEST}" ]] ; then
+		# Get first commit from release_commit_log
+		COMMIT_RANGE_FROM="$(sed -n '$p' $TEMP_COMMIT_LOG)"
+		# Remove temp_commit_log
+		rm $TEMP_COMMIT_LOG
 		# Check commit range
 		if [[ ! $COMMIT_RANGE_TO = $COMMIT_RANGE_FROM ]]; then
 			# Create tarball
@@ -186,30 +185,67 @@ else
 			echo -e "------------------------------------------------"
 			exit 1
 		fi
-	# Deployment from commit range
+	# Not a rollback
 	else
-		# Get latest commit from release_commit_log
-		COMMIT_RANGE_FROM="$(sed -n '1p' $COMMIT_LOG)"
-		# Get latest commit from remote origin
-		COMMIT_RANGE_TO="$(git ls-remote origin | awk '/master/ {print $1}')"
-		# Check commit range
-		if [[ ! $COMMIT_RANGE_TO = $COMMIT_RANGE_FROM ]]; then
-			# Create tarball
-			preloader
-			git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $COMMIT_RANGE_TO $(git diff --name-only $COMMIT_RANGE_FROM $COMMIT_RANGE_TO $BRANCH)
+		echo -e "Creating release..."
+		# Deployment from scratch
+		if [ "$FRESH_DEPLOYMENT" = true ] ; then
+			echo -e "This is a fresh deployment..."
+			# Get first ever commit
+			COMMIT_RANGE_FROM="$(git rev-list HEAD | tail -n 1)"
+			# Get latest commit from remote origin
+			COMMIT_RANGE_TO="$(git ls-remote origin | awk '/master/ {print $1}')"
+			# Remove temp_commit_log
+			rm $TEMP_COMMIT_LOG
+			# Check commit range
+			if [[ ! $COMMIT_RANGE_TO = $COMMIT_RANGE_FROM ]]; then
+				# Create tarball
+				preloader
+				git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $BRANCH
+			else
+				echo -e "$(tput setaf 1)Commit range is the same. Nothing to deploy.$(tput sgr0)"
+				echo -e "------------------------------------------------"
+				exit 1
+			fi
+		# Deployment from commit range
 		else
-			echo -e "$(tput setaf 1)Commit range is the same. Nothing to deploy.$(tput sgr0)"
-			echo -e "------------------------------------------------"
-			exit 1
+			echo -e "Previous deployments detected..."
+			# Get latest commit from release_TEMP_COMMIT_LOG
+			COMMIT_RANGE_FROM="$(sed -n '1p' $TEMP_COMMIT_LOG)"
+			# Get latest commit from remote origin
+			COMMIT_RANGE_TO="$(git ls-remote origin | awk '/master/ {print $1}')"
+			# Remove temp_commit_log
+			rm $TEMP_COMMIT_LOG
+			# Check commit range
+			if [[ ! $COMMIT_RANGE_TO = $COMMIT_RANGE_FROM ]]; then
+				# Create tarball
+				preloader
+				git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $COMMIT_RANGE_TO $(git diff --name-only $COMMIT_RANGE_FROM $COMMIT_RANGE_TO $BRANCH)
+			else
+				echo -e "$(tput setaf 1)Commit range is the same. Nothing to deploy.$(tput sgr0)"
+				echo -e "------------------------------------------------"
+				exit 1
+			fi
 		fi
 	fi
-fi
 
-# ---------------------------------------------------------------------------
-# Deploy to servers
-# ---------------------------------------------------------------------------
-#
-for SERVER in ${DEPLOY_SERVER[@]}; do
+	# ---------------------------------------------------------------------------
+	# Check file size
+	# ---------------------------------------------------------------------------
+	MIN_FILE_SIZE=1
+	TARBALL_SIZE=$(du -k "$LOCAL_RELEASE" | cut -f 1)
+	echo $TARBALL_SIZE
+	# Check if the release is above 1kb
+	if [ $TARBALL_SIZE -ge $MIN_FILE_SIZE ]; then
+	    echo -e "$(tput setaf 2)File is valid. Continuing...$(tput sgr0)"
+	else
+		echo -e "$(tput setaf 1)The tarball is empty. Exiting...$(tput sgr0)"
+		exit 1
+	fi
+
+	# ---------------------------------------------------------------------------
+	# Deploy to servers
+	# ---------------------------------------------------------------------------
 	# Commit message
 	COMMIT_MESSAGE="$(git log -1 HEAD --pretty=format:%s)"
 	# Create releases directory on server
@@ -236,9 +272,8 @@ for SERVER in ${DEPLOY_SERVER[@]}; do
 	fi
 
 	# After successful deployment update the commit log
-	# Update release_commit_log
-	echo "$COMMIT_RANGE_FROM" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 2nd Line
-	echo "$COMMIT_RANGE_TO" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 1st Line
+	ssh -t $DEPLOY_USER@$SERVER "echo $COMMIT_RANGE_FROM | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG &&
+	echo $COMMIT_RANGE_TO | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG"
 done
 
 # ---------------------------------------------------------------------------
