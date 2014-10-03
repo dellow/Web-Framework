@@ -235,7 +235,7 @@ for SERVER in ${DEPLOY_SERVER[@]}; do
 		ssh -t $DEPLOY_USER@$SERVER "sudo cp -rf $SERVER_PATH/releases/$RELEASE_NAME/$GIT_PATH/* $FILES_PATH"
 	fi
 
-	# After successfully deployment update the commit log
+	# After successful deployment update the commit log
 	# Update release_commit_log
 	echo "$COMMIT_RANGE_FROM" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 2nd Line
 	echo "$COMMIT_RANGE_TO" | cat - $COMMIT_LOG > temp && mv temp $COMMIT_LOG # 1st Line

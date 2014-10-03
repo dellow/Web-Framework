@@ -15,6 +15,7 @@ deploy/releases/
 # details should be ignored to prevent unauthorised access.
 # ---------------------------------------------------------------------------------
 *.log
+*_release_commit_log
 
 
 # SITE
