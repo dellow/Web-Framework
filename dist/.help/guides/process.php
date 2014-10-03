@@ -160,13 +160,13 @@ class mailer{
 			$headers  = 'MIME-Version: 1.0' . "\n";
 			$headers .= 'Content-type: text/html; charset=UTF-8' . "\n";
 			$headers .= 'From: ' . $args['title'] . ' <noreply@' . get_domain($args['domain']) . '>' . "\n";
-			$headers .= (!empty($args['reply-to'])) ? 'Reply-To: ' . $args['reply-to'][0] . ' &lt;' . $args['reply-to'][1] . '&gt;' . "\n" : null;
+			$headers .= (!empty($args['reply-to'])) ? 'Reply-To: ' . $args['reply-to'][0] . ' <' . $args['reply-to'][1] . '>' . "\n" : null;
 			// Reply to
 			if(!empty($args['reply_to'])){
 				$string = '';
 				foreach($args['reply_to'] as $reply_to){
-					$string .= $reply_to[0] . ' &lt;' . $reply_to[1] . '&gt;';
-					if(each($args['reply_to'])) $string .= '; ';
+					$string .= $reply_to[0] . ' <' . $reply_to[1] . '>';
+					if(each($args['reply_to'])) $string .= ', ';
 				}
 				$headers .= (!empty($args['reply_to'])) ? 'Reply-To: ' . $string . "\n" : null;
 			}
@@ -174,8 +174,8 @@ class mailer{
 			if(!empty($args['cc'])){
 				$string = '';
 				foreach($args['cc'] as $cc){
-					$string .= $cc[0] . ' &lt;' . $cc[1] . '&gt;';
-					if(each($args['cc'])) $string .= '; ';
+					$string .= $cc[0] . ' <' . $cc[1] . '>';
+					if(each($args['cc'])) $string .= ', ';
 				}
 				$headers .= (!empty($args['cc'])) ? 'Cc: ' . $string . "\n" : null;
 			}
@@ -183,8 +183,8 @@ class mailer{
 			if(!empty($args['bcc'])){
 				$string = '';
 				foreach($args['bcc'] as $bcc){
-					$string .= $bcc[0] . ' &lt;' . $bcc[1] . '&gt;';
-					if(each($args['bcc'])) $string .= '; ';
+					$string .= $bcc[0] . ' <' . $bcc[1] . '>';
+					if(each($args['bcc'])) $string .= ', ';
 				}
 				$headers .= (!empty($args['bcc'])) ? 'Bcc: ' . $string . "\n" : null;
 			}
