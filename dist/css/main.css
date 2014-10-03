@@ -149,6 +149,9 @@
 /**
  * Config
 **/
+/**
+* Colors
+**/
 /* ==========================================================================
    All
    Imports all the partials
@@ -1648,6 +1651,19 @@ ul.alert.box li {
   background: #c29d0b;
 }
 
+/* line 62, scss/base/components/_buttons.scss */
+.btn.btn-color {
+  background: #000000;
+}
+/* line 64, scss/base/components/_buttons.scss */
+.btn.btn-color.disabled:hover {
+  background: #000000;
+}
+/* line 67, scss/base/components/_buttons.scss */
+.btn.btn-color:hover {
+  background: black;
+}
+
 /* ==========================================================================
    Content Editable
    Description goes here.
@@ -2652,6 +2668,16 @@ ul.alert.box li {
 /* line 17, scss/base/components/_slabs.scss */
 .bg.color-yellow.opp, .slab.color-yellow.opp {
   background: #c29d0b;
+}
+
+/* line 13, scss/base/components/_slabs.scss */
+.bg.color-color, .slab.color-color {
+  color: inherit;
+  background: #000000;
+}
+/* line 17, scss/base/components/_slabs.scss */
+.bg.color-color.opp, .slab.color-color.opp {
+  background: black;
 }
 
 /* ==========================================================================

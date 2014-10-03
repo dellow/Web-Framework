@@ -159,7 +159,7 @@ class mailer{
 		function get_mail_headers($args){
 			$headers  = 'MIME-Version: 1.0' . "\n";
 			$headers .= 'Content-type: text/html; charset=UTF-8' . "\n";
-			$headers .= 'From: ' . $args['title'] . ' &lt;noreply@' . get_domain($args['domain']) . '&gt;' . "\n";
+			$headers .= 'From: ' . $args['title'] . ' <noreply@' . get_domain($args['domain']) . '>' . "\n";
 			$headers .= (!empty($args['reply-to'])) ? 'Reply-To: ' . $args['reply-to'][0] . ' &lt;' . $args['reply-to'][1] . '&gt;' . "\n" : null;
 			// Reply to
 			if(!empty($args['reply_to'])){
