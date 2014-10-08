@@ -172,12 +172,16 @@ var $ = jQuery = require('jquery');
 App.Helpers = require('./helpers');
 
 /* ======================================================== */
+/* Controllers
+/* ======================================================== */
+// Page Controller
+App.PageController = require('./page.controller');
+
+/* ======================================================== */
 /* Modules
 /* ======================================================== */
 // Module Name
-App.ModuleName = require('./name.module');
-// Wiselinks
-App.Wiselinks = require('./wiselinks.module');
+App.ModuleName   = require('./name.module');
 // Equal Heights
 App.EqualHeights = require('./equal-heights.module');
 
@@ -188,16 +192,15 @@ App.EqualHeights = require('./equal-heights.module');
 App.Helpers.log(App);
 
 /* ======================================================== */
-/* Go!
+/* Go
 /* ======================================================== */
+// Page Controller
+App.PageController.init(App);
 // Module description
 App.ModuleName.init();
-// Wiselinks
-App.Wiselinks.init(App.Helpers);
-// Listen for DOM elements that need to be of
-// equal height.
+// Listen for DOM elements that need to be of equal height.
 App.EqualHeights.init();
-},{"./equal-heights.module":1,"./helpers":2,"./name.module":4,"./wiselinks.module":5,"jquery":7}],4:[function(require,module,exports){
+},{"./equal-heights.module":1,"./helpers":2,"./name.module":4,"./page.controller":5,"jquery":7}],4:[function(require,module,exports){
 /* ======================================================== */
 /* ModuleName
 /* ======================================================== */
@@ -236,7 +239,7 @@ App.EqualHeights.init();
 }(window.ModuleName = window.ModuleName || {}, jQuery, window));
 },{}],5:[function(require,module,exports){
 /* ======================================================== */
-/* ModuleWiselinks
+/* ControllerPage
 /* Adds Ajax loading to page.
 /* Just add '<a href="link.php" data-push="true">Page 2</a>'
 /* to any link that needs to be loaded with Ajax
@@ -249,32 +252,32 @@ require('../plugins/wiselinks');
 	 * Module.init
 	 * Init method for this module
 	**/
-	Module.init = function(helper){
+	Module.init = function(App){
 		$(function(){
 			window.wiselinks = new Wiselinks($('.main'));
 
 			$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
-	            helper.log("Loading: " + url + " to " + $target.selector + " within '" + render);
+	            App.helper.log("Loading: " + url + " to " + $target.selector + " within '" + render);
 	            //code to start loading animation
 		    });
 
 			$(document).off('page:redirected').on('page:redirected', function(event, $target, render, url){
-	            helper.log("Redirected to: " + url);
+	            App.helper.log("Redirected to: " + url);
 	            // code to start loading animation
 		    });
 
 			$(document).off('page:always').on('page:always', function(event, xhr, settings){
-	            helper.log("Wiselinks page loading completed");
+	            App.helper.log("Wiselinks page loading completed");
 	            // code to stop loading animation
 		    });
 
 			$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
-	            helper.log("Wiselinks status: '" + status);
+	            App.helper.log("Wiselinks status: '" + status);
 	            // Push Google Analytics page view here
 		    });
 
 			$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
-	            helper.log("Wiselinks status: '" + status);
+	            App.helper.log("Wiselinks status: '" + status);
 	            // code to show error message
 		    });
 	    });
@@ -283,7 +286,7 @@ require('../plugins/wiselinks');
 	// Export
 	module.exports = Module;
 
-}(window.ModuleWiselinks = window.ModuleWiselinks || {}, jQuery, window));
+}(window.ControllerPage = window.ControllerPage || {}, jQuery, window));
 },{"../plugins/wiselinks":6}],6:[function(require,module,exports){
 /**
  * Wiselinks-1.2.2

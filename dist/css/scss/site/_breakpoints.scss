@@ -14,14 +14,14 @@
 @include respond-to($mobile){
 }
 // Respond to between generic mobile and tablet device
-@include respond-to($mobile, $tablet, true){
+@include respond-to($mobile, $tablet, false, null, true){
 }
 // Respond to just iPhone 3 device
-@include respond-to($iphone3_device_width, $iphone3_device_height, $iphone3_dppx, true){
+@include respond-to($iphone3_device_width, $iphone3_device_height, false, $iphone3_dppx, true){
 }
 // Respond to just iPhone 4 device
-@include respond-to($iphone4_device_width, $iphone4_device_height, $iphone4_dppx, true){
+@include respond-to($iphone4_device_width, $iphone4_device_height, false, $iphone4_dppx, true){
 }
 // Respond to just iPhone 5 device
-@include respond-to($iphone5_device_width, $iphone5_device_height, $iphone5_dppx, true){
+@include respond-to($iphone5_device_width, $iphone5_device_height, false, $iphone5_dppx, true){
 }

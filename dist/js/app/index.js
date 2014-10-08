@@ -26,12 +26,16 @@ var $ = jQuery = require('jquery');
 App.Helpers = require('./helpers');
 
 /* ======================================================== */
+/* Controllers
+/* ======================================================== */
+// Page Controller
+App.PageController = require('./page.controller');
+
+/* ======================================================== */
 /* Modules
 /* ======================================================== */
 // Module Name
-App.ModuleName = require('./name.module');
-// Wiselinks
-App.Wiselinks = require('./wiselinks.module');
+App.ModuleName   = require('./name.module');
 // Equal Heights
 App.EqualHeights = require('./equal-heights.module');
 
@@ -42,12 +46,11 @@ App.EqualHeights = require('./equal-heights.module');
 App.Helpers.log(App);
 
 /* ======================================================== */
-/* Go!
+/* Go
 /* ======================================================== */
+// Page Controller
+App.PageController.init(App);
 // Module description
 App.ModuleName.init();
-// Wiselinks
-App.Wiselinks.init(App.Helpers);
-// Listen for DOM elements that need to be of
-// equal height.
+// Listen for DOM elements that need to be of equal height.
 App.EqualHeights.init();
