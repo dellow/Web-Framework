@@ -10,7 +10,7 @@ var gulp    = require('gulp'),
 gulp.task('jasmine', function(){
     // Run on development only
     if(GLOBAL.is_development){
-		var ret = gulp.src(GLOBAL.dist_dir + 'js/spec/test.js')
+		var ret = gulp.src(GLOBAL.dist_dir + 'js/spec/tests-jasmine.js')
 	        .pipe(jasmine());
 
 		return ret;
