@@ -91,6 +91,7 @@ if [[ -d ./deploy ]]; then
 		echo -e "$(tput setaf 3)Removing deployment tool...$(tput sgr0)"
 		rm -rf ./deploy
 		rm -rf ./deploy.sh
+		rm -rf ./.gitattributes
 	else
 		echo -e "$(tput setaf 3)Setting permissions on deployment tool...$(tput sgr0)"
 		chmod +x ./deploy.sh
