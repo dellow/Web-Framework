@@ -34,8 +34,8 @@ App.PageController = require('./page.controller');
 /* ======================================================== */
 /* Modules
 /* ======================================================== */
-// Module Name
-App.ModuleName   = require('./name.module');
+// Mobile Menu
+App.Menu         = require('./menu.module');
 // Equal Heights
 App.EqualHeights = require('./equal-heights.module');
 
@@ -48,9 +48,6 @@ App.Helpers.log(App);
 /* ======================================================== */
 /* Go
 /* ======================================================== */
-// Page Controller
 App.PageController.init(App);
-// Module description
-App.ModuleName.init();
-// Listen for DOM elements that need to be of equal height.
+App.Menu.init(768);
 App.EqualHeights.init();

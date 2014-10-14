@@ -2221,107 +2221,8 @@ ul.alert.box li {
   margin-left: 0;
 }
 
-/* -- Mobile Navigation -- */
-/* line 20, scss/base/components/_menus.scss */
-.mobile-select-menu {
-  display: none;
-  position: relative;
-}
-/* line 24, scss/base/components/_menus.scss */
-.mobile-select-menu span {
-  display: block;
-}
-/* line 27, scss/base/components/_menus.scss */
-.mobile-select-menu span:after {
-  width: 0;
-  height: 0;
-  border-top: .95rem solid;
-  border-right: .95rem solid transparent;
-  border-bottom: .95rem solid transparent;
-  border-left: .95rem solid transparent;
-  content: "";
-  position: absolute;
-  top: 0%;
-  right: 8px;
-  right: 0.5rem;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
-  pointer-events: none;
-  color: #DDDDDD;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(0))";
-  filter: alpha(opacity=0);
-  opacity: 0;
-  -webkit-transition: top 300ms ease, opacity 300ms ease;
-  -moz-transition: top 300ms ease, opacity 300ms ease;
-  -o-transition: top 300ms ease, opacity 300ms ease;
-  transition: top 300ms ease, opacity 300ms ease;
-}
-/* line 44, scss/base/components/_menus.scss */
-.mobile-select-menu select {
-  width: 100%;
-  height: 36px;
-  padding: 0 2.25rem 0 1rem;
-  margin: 0;
-  border-radius: 0;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
-  cursor: pointer;
-  color: #FFFFFF;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: #000000;
-  -webkit-transition: background 300ms ease;
-  -moz-transition: background 300ms ease;
-  -o-transition: background 300ms ease;
-  transition: background 300ms ease;
-}
-/* line 59, scss/base/components/_menus.scss */
-.mobile-select-menu select:hover, .mobile-select-menu select:focus {
-  background-color: #DDDDDD;
-}
-/* line 64, scss/base/components/_menus.scss */
-.mobile-select-menu:after {
-  width: 0;
-  height: 0;
-  border-top: .35rem solid;
-  border-right: .35rem solid transparent;
-  border-bottom: .35rem solid transparent;
-  border-left: .35rem solid transparent;
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 18px;
-  right: 1.125rem;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
-  pointer-events: none;
-  color: #FFFFFF;
-  -webkit-transition: top 300ms ease;
-  -moz-transition: top 300ms ease;
-  -o-transition: top 300ms ease;
-  transition: top 300ms ease;
-}
-/* line 82, scss/base/components/_menus.scss */
-.mobile-select-menu:hover span:after {
-  top: 100%;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(100))";
-  filter: alpha(opacity=100);
-  opacity: 1;
-}
-/* line 88, scss/base/components/_menus.scss */
-.mobile-select-menu:hover:after {
-  top: 100%;
-}
-
 /* -- Primary Navigation -- */
-/* line 97, scss/base/components/_menus.scss */
+/* line 22, scss/base/components/_menus.scss */
 .nav-primary li {
   display: inline-block;
   zoom: 1;
@@ -2329,7 +2230,7 @@ ul.alert.box li {
   /* IE Fix */
   position: relative;
 }
-/* line 101, scss/base/components/_menus.scss */
+/* line 26, scss/base/components/_menus.scss */
 .nav-primary li .sub-menu {
   padding: 0 12px;
   margin-left: 0;
@@ -2340,45 +2241,45 @@ ul.alert.box li {
   z-index: 100;
   background: #FFFFFF;
 }
-/* line 110, scss/base/components/_menus.scss */
+/* line 35, scss/base/components/_menus.scss */
 .nav-primary li .sub-menu li {
   padding: 0;
   margin: 6px 0;
   display: block;
   white-space: nowrap;
 }
-/* line 115, scss/base/components/_menus.scss */
+/* line 40, scss/base/components/_menus.scss */
 .nav-primary li .sub-menu li .sub-menu {
   left: 100%;
   top: -5px;
 }
-/* line 122, scss/base/components/_menus.scss */
+/* line 47, scss/base/components/_menus.scss */
 .nav-primary li.current_page_item > a, .nav-primary li.current_page_parent > a {
   font-weight: 700;
 }
-/* line 126, scss/base/components/_menus.scss */
+/* line 51, scss/base/components/_menus.scss */
 .nav-primary li:first-child {
   padding-left: 0;
 }
-/* line 129, scss/base/components/_menus.scss */
+/* line 54, scss/base/components/_menus.scss */
 .nav-primary li:hover > .sub-menu {
   display: block;
 }
-/* line 134, scss/base/components/_menus.scss */
+/* line 59, scss/base/components/_menus.scss */
 .nav-primary.full-width {
   text-align: justify;
 }
-/* line 136, scss/base/components/_menus.scss */
+/* line 61, scss/base/components/_menus.scss */
 .nav-primary.full-width a {
   display: block;
 }
-/* line 140, scss/base/components/_menus.scss */
+/* line 65, scss/base/components/_menus.scss */
 .nav-primary.full-width:before {
   width: 100%;
   content: '';
   display: block;
 }
-/* line 145, scss/base/components/_menus.scss */
+/* line 70, scss/base/components/_menus.scss */
 .nav-primary.full-width:after {
   width: 100%;
   content: '';
@@ -3930,6 +3831,38 @@ form .response--warning .msg {
    Sprites
    Uses Compass to generate sprites from a directory.
 ========================================================================== */
+/* line 1, scss/site/components/_menus.scss */
+.mobile-menu {
+  display: none;
+}
+
+@media only screen and (max-width: 48em) {
+  /* line 6, scss/site/components/_menus.scss */
+  .mobile-animate {
+    max-height: 0px !important;
+    display: block !important;
+    overflow-y: hidden !important;
+    -webkit-transform: translateZ(0) !important;
+    -webkit-transition: max-height 500ms linear;
+    -moz-transition: max-height 500ms linear;
+    -o-transition: max-height 500ms linear;
+    transition: max-height 500ms linear;
+  }
+  /* line 12, scss/site/components/_menus.scss */
+  .mobile-animate.slide-down {
+    max-height: 5000px !important;
+  }
+
+  /* line 16, scss/site/components/_menus.scss */
+  .mobile-menu {
+    display: block;
+  }
+
+  /* line 19, scss/site/components/_menus.scss */
+  .nav-primary {
+    display: none;
+  }
+}
 /* ==========================================================================
    Fixes
    This file is for legacy browser fixes and hacks. Everything should
