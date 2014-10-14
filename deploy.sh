@@ -20,6 +20,8 @@
 #	./deploy.sh <environment> rollback <commit_to_rollback_to_id>
 #
 
+VERSION=1.0.0
+
 preloader(){
 	echo -ne "$(tput setaf 3)-* (25%)\r$(tput sgr0)"
 	sleep 1
@@ -31,7 +33,8 @@ preloader(){
 	sleep 1
 }
 
-echo -e "\n------------------------------------------------"
+echo -e "\nDeploy system version: ${VERSION}"
+echo -e "------------------------------------------------"
 # ---------------------------------------------------------------------------
 # Check this is a valid Git repo
 # ---------------------------------------------------------------------------
