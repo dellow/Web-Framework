@@ -1043,160 +1043,180 @@
 		<p>Grids are fully responsive and you can use any combination consecutively without splitting into rows. To initiate a grid just requires a wrapping element with the a class of <code>.grid</code>. Direct descendants of the Grid element should be classed by the required column width. For example a descendant with <code>.col-1-2</code> will create a half length column. You can add any type of column width to complete the grid in any format you wish.</p>
 		<div class="pattern">
 			<details class="pattern__details">
-				<summary><span class="pattern__title">Responsive Grid</span></summary>
-<pre class="language-markup"><code>&lt;div class="grid">
+				<summary><span class="pattern__title">Flexbox Responsive Grid</span></summary>
+<pre class="language-markup"><code>&lt;div class="flex-grid">
+	&lt;div class="col-1">
+		&lt;div>
+			.col-1
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-2-3">
+		&lt;div>
+			.col-2-3
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-3">
+		&lt;div>
+			.col-1-3
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-3">
+		&lt;div>
+			.col-1-3
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-2-3">
+		&lt;div>
+			.col-2-3
+		&lt;/div>
+	&lt;/div>
 	&lt;div class="col-1-4">
-		&lt;div class="sg-module">
+		&lt;div>
 			.col-1-4
 		&lt;/div>
 	&lt;/div>
 	&lt;div class="col-1-4">
-		&lt;div class="sg-module">
+		&lt;div>
 			.col-1-4
 		&lt;/div>
 	&lt;/div>
 	&lt;div class="col-1-4">
-		&lt;div class="sg-module">
+		&lt;div>
 			.col-1-4
 		&lt;/div>
 	&lt;/div>
 	&lt;div class="col-1-4">
-		&lt;div class="sg-module">
+		&lt;div>
 			.col-1-4
-		&lt;/div>
-	&lt;/div>
-	&lt;div class="col-1-4">
-		&lt;div class="sg-module">
-			.col-1-4
-		&lt;/div>
-	&lt;/div>
-	&lt;div class="col-1-4">
-		&lt;div class="sg-module">
-			.col-1-4
-		&lt;/div>
-	&lt;/div>
-	&lt;div class="col-1-8">
-		&lt;div class="sg-module">
-			.col-1-8
-		&lt;/div>
-	&lt;/div>
-	&lt;div class="col-1-8">
-		&lt;div class="sg-module">
-			.col-1-8
-		&lt;/div>
-	&lt;/div>
-	&lt;div class="col-1-8">
-		&lt;div class="sg-module">
-			.col-1-8
-		&lt;/div>
-	&lt;/div>
-	&lt;div class="col-1-8">
-		&lt;div class="sg-module">
-			.col-1-8
 		&lt;/div>
 	&lt;/div>
 	&lt;div class="col-1-2">
-		&lt;div class="sg-module">
+		&lt;div>
 			.col-1-2
 		&lt;/div>
 	&lt;/div>
 	&lt;div class="col-1-2">
-		&lt;div class="sg-module">
+		&lt;div>
 			.col-1-2
 		&lt;/div>
 	&lt;/div>
-	&lt;div class="col-1-4">
-		&lt;div class="sg-module">
-			.col-1-4
+	&lt;div class="col-1-2">
+		&lt;div>
+			.col-1-2
 		&lt;/div>
 	&lt;/div>
-	&lt;div class="col-3-4">
-		&lt;div class="sg-module">
-			.col-3-4
+	&lt;div class="col-1-8">
+		&lt;div>
+			.col-1-8
 		&lt;/div>
 	&lt;/div>
-	&lt;div class="col-1-16">
-		&lt;div class="sg-module">
-			.col-1-16
+	&lt;div class="col-1-8">
+		&lt;div>
+			.col-1-8
 		&lt;/div>
 	&lt;/div>
-	&lt;div class="col-1-16">
-		&lt;div class="sg-module">
-			.col-1-16
+	&lt;div class="col-1-8">
+		&lt;div>
+			.col-1-8
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-8">
+		&lt;div>
+			.col-1-8
 		&lt;/div>
 	&lt;/div>
 &lt;/div></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<div class="grid">
+				<div class="flex-grid">
+					<div class="col-1">
+						<div>
+							<code>.col-1</code>
+						</div>
+					</div>
+					<div class="col-2-3">
+						<div>
+							<code>.col-2-3</code>
+						</div>
+					</div>
+					<div class="col-1-3">
+						<div>
+							<code>.col-1-3</code>
+						</div>
+					</div>
+					<div class="col-1-3">
+						<div>
+							<code>.col-1-3</code>
+						</div>
+					</div>
+					<div class="col-2-3">
+						<div>
+							<code>.col-2-3</code>
+						</div>
+					</div>
 					<div class="col-1-4">
-						<div class="sg-module">
+						<div>
 							<code>.col-1-4</code>
 						</div>
 					</div>
 					<div class="col-1-4">
-						<div class="sg-module">
+						<div>
 							<code>.col-1-4</code>
 						</div>
 					</div>
 					<div class="col-1-4">
-						<div class="sg-module">
+						<div>
 							<code>.col-1-4</code>
 						</div>
 					</div>
 					<div class="col-1-4">
-						<div class="sg-module">
+						<div>
 							<code>.col-1-4</code>
-						</div>
-					</div>
-					<div class="col-1-4">
-						<div class="sg-module">
-							<code>.col-1-4</code>
-						</div>
-					</div>
-					<div class="col-1-4">
-						<div class="sg-module">
-							<code>.col-1-4</code>
-						</div>
-					</div>
-					<div class="col-1-8">
-						<div class="sg-module">
-							<code>.col-1-8</code>
-						</div>
-					</div>
-					<div class="col-1-8">
-						<div class="sg-module">
-							<code>.col-1-8</code>
-						</div>
-					</div>
-					<div class="col-1-8">
-						<div class="sg-module">
-							<code>.col-1-8</code>
-						</div>
-					</div>
-					<div class="col-1-8">
-						<div class="sg-module">
-							<code>.col-1-8</code>
 						</div>
 					</div>
 					<div class="col-1-2">
-						<div class="sg-module">
+						<div>
 							<code>.col-1-2</code>
 						</div>
 					</div>
 					<div class="col-1-2">
-						<div class="sg-module">
+						<div>
 							<code>.col-1-2</code>
 						</div>
 					</div>
-					<div class="col-1-4">
-						<div class="sg-module">
-							<code>.col-1-4</code>
+					<div class="col-1-2">
+						<div>
+							<code>.col-1-2</code>
 						</div>
 					</div>
-					<div class="col-3-4">
-						<div class="sg-module">
-							<code>.col-3-4</code>
+					<div class="col-1-2">
+						<div>
+							<code>.col-1-2</code>
+						</div>
+					</div>
+					<div class="col-1-2">
+						<div>
+							<code>.col-1-2</code>
+						</div>
+					</div>
+					<div class="col-1-8">
+						<div>
+							<code>.col-1-8</code>
+						</div>
+					</div>
+					<div class="col-1-8">
+						<div>
+							<code>.col-1-8</code>
+						</div>
+					</div>
+					<div class="col-1-8">
+						<div>
+							<code>.col-1-8</code>
+						</div>
+					</div>
+					<div class="col-1-8">
+						<div>
+							<code>.col-1-8</code>
 						</div>
 					</div>
 				</div>
@@ -1205,7 +1225,179 @@
 
 		<div class="pattern">
 			<details class="pattern__details">
-				<summary><span class="pattern__title">Gallery Grid</span></summary>
+				<summary><span class="pattern__title">Float Responsive Grid</span></summary>
+<pre class="language-markup"><code>&lt;div class="grid">
+	&lt;div class="col-1">
+		&lt;div>
+			.col-1
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-2-3">
+		&lt;div>
+			.col-2-3
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-3">
+		&lt;div>
+			.col-1-3
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-3">
+		&lt;div>
+			.col-1-3
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-2-3">
+		&lt;div>
+			.col-2-3
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-4">
+		&lt;div>
+			.col-1-4
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-4">
+		&lt;div>
+			.col-1-4
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-4">
+		&lt;div>
+			.col-1-4
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-4">
+		&lt;div>
+			.col-1-4
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-2">
+		&lt;div>
+			.col-1-2
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-2">
+		&lt;div>
+			.col-1-2
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-2">
+		&lt;div>
+			.col-1-2
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-8">
+		&lt;div>
+			.col-1-8
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-8">
+		&lt;div>
+			.col-1-8
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-8">
+		&lt;div>
+			.col-1-8
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="col-1-8">
+		&lt;div>
+			.col-1-8
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view allow-margin">
+				<div class="grid">
+					<div class="col-1">
+						<div>
+							<code>.col-1</code>
+						</div>
+					</div>
+					<div class="col-2-3">
+						<div>
+							<code>.col-2-3</code>
+						</div>
+					</div>
+					<div class="col-1-3">
+						<div>
+							<code>.col-1-3</code>
+						</div>
+					</div>
+					<div class="col-1-3">
+						<div>
+							<code>.col-1-3</code>
+						</div>
+					</div>
+					<div class="col-2-3">
+						<div>
+							<code>.col-2-3</code>
+						</div>
+					</div>
+					<div class="col-1-4">
+						<div>
+							<code>.col-1-4</code>
+						</div>
+					</div>
+					<div class="col-1-4">
+						<div>
+							<code>.col-1-4</code>
+						</div>
+					</div>
+					<div class="col-1-4">
+						<div>
+							<code>.col-1-4</code>
+						</div>
+					</div>
+					<div class="col-1-4">
+						<div>
+							<code>.col-1-4</code>
+						</div>
+					</div>
+					<div class="col-1-2">
+						<div>
+							<code>.col-1-2</code>
+						</div>
+					</div>
+					<div class="col-1-2">
+						<div>
+							<code>.col-1-2</code>
+						</div>
+					</div>
+					<div class="col-1-2">
+						<div>
+							<code>.col-1-2</code>
+						</div>
+					</div>
+					<div class="col-1-8">
+						<div>
+							<code>.col-1-8</code>
+						</div>
+					</div>
+					<div class="col-1-8">
+						<div>
+							<code>.col-1-8</code>
+						</div>
+					</div>
+					<div class="col-1-8">
+						<div>
+							<code>.col-1-8</code>
+						</div>
+					</div>
+					<div class="col-1-8">
+						<div>
+							<code>.col-1-8</code>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pattern">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Gallery Float Grid</span></summary>
 <pre class="language-markup"><code>&lt;div class="col-1-2">
 	&lt;a href="#" title="Click to view the placeholder">
 		&lt;figure>

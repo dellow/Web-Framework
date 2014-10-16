@@ -13,7 +13,7 @@ $debug_mode: false !default;
 * Essentials
 **/
 $mn                : 24px !default; // Three is not the magic number. Don't believe Del La Soul
-$gutter            : 3% !default;
+$gutter            : 2% !default;
 $fixedgutter       : 10px !default;
 $form_field_height : 40px !default;
 $border_radius_base: 3px !default;
@@ -136,21 +136,39 @@ $zindex-10: 1000 !default;
 /**
 * Percentage Column Widths
 **/
-$col_1                : 100% !default;
-$col_1-3              : 33.33% !default;
-$col_2-3              : 66.66% !default;
-$col_1-2              : 50% !default;
-$col_1-4              : 25% !default;
-$col_2-4              : 50% !default;
-$col_3-4              : 75% !default;
-$col_5                : 20% !default;
-$col_6                : 16.66% !default;
-$col_7                : 14.28% !default;
-$col_8                : 12.5% !default;
-$col_9                : 11.11% !default;
-$col_10               : 10% !default;
-$col_12               : 8.33% !default;
-$col_16               : 6.25% !default;
+$col_1   : 100% !default;
+$col_1-3 : 33.33% !default;
+$col_2-3 : 66.66% !default;
+$col_1-2 : 50% !default;
+$col_1-4 : 25% !default;
+$col_2-4 : 50% !default;
+$col_3-4 : 75% !default;
+$col_1-5 : 20% !default;
+$col_1-6 : 16.66% !default;
+$col_1-7 : 14.28% !default;
+$col_1-8 : 12.5% !default;
+$col_1-9 : 11.11% !default;
+$col_1-10: 10% !default;
+$col_1-12: 8.33% !default;
+$col_1-16: 6.25% !default;
+// Column array
+$col_array: (
+	col-1   : $col_1,
+	col-1-3 : $col_1-3,
+	col-2-3 : $col_2-3,
+	col-1-2 : $col_1-2,
+	col-1-4 : $col_1-4,
+	col-2-4 : $col_2-4,
+	col-3-4 : $col_3-4,
+	col-1-5 : $col_1-5,
+	col-1-6 : $col_1-6,
+	col-1-7 : $col_1-7,
+	col-1-8 : $col_1-8,
+	col-1-9 : $col_1-9,
+	col-1-10: $col_1-10,
+	col-1-12: $col_1-12,
+	col-1-16: $col_1-16
+) !default;
 
 /**
 * Device sizes

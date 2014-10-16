@@ -101,9 +101,9 @@ form input, form select, form textarea {
 }
 
 /* Grids */
-.styleguide .grid div.sg-module {
+.styleguide .flex-grid [class*="col-"],
+.styleguide .grid [class*="col-"] {
 	padding: 10px;
-	margin: 0 0 10px;
 	background: #efefef;
 }
 
