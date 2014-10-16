@@ -160,16 +160,16 @@
    Placeholders
    Some default placeholders for the framework.
 ========================================================================== */
-/* line 6, scss/config/_placeholders.scss */
+/* line 6, scss/base/config/_placeholders.scss */
 .cf, .grid, div.table, .module--pagination, form .field {
   zoom: 1;
 }
-/* line 8, scss/config/_placeholders.scss */
+/* line 8, scss/base/config/_placeholders.scss */
 .cf:before, .grid:before, div.table:before, .module--pagination:before, form .field:before, .cf:after, .grid:after, div.table:after, .module--pagination:after, form .field:after {
   content: "";
   display: table;
 }
-/* line 12, scss/config/_placeholders.scss */
+/* line 12, scss/base/config/_placeholders.scss */
 .cf:after, .grid:after, div.table:after, .module--pagination:after, form .field:after {
   clear: both;
 }
@@ -178,7 +178,7 @@
    Reset
    Reset styles
 ========================================================================== */
-/* line 5, scss/config/_reset.scss */
+/* line 5, scss/base/config/_reset.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -187,7 +187,7 @@
   box-sizing: border-box;
 }
 
-/* line 12, scss/config/_reset.scss */
+/* line 12, scss/base/config/_reset.scss */
 *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -196,13 +196,13 @@
   box-sizing: border-box;
 }
 
-/* line 19, scss/config/_reset.scss */
+/* line 19, scss/base/config/_reset.scss */
 html, body {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 
-/* line 23, scss/config/_reset.scss */
+/* line 23, scss/base/config/_reset.scss */
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, input, select, button, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -211,7 +211,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   vertical-align: baseline;
 }
 
-/* line 30, scss/config/_reset.scss */
+/* line 30, scss/base/config/_reset.scss */
 sub, sup {
   font-size: 80%;
   vertical-align: baseline;
@@ -219,29 +219,29 @@ sub, sup {
   top: -0.4em;
 }
 
-/* line 36, scss/config/_reset.scss */
+/* line 36, scss/base/config/_reset.scss */
 sub {
   top: 0.4em;
 }
 
-/* line 39, scss/config/_reset.scss */
+/* line 39, scss/base/config/_reset.scss */
 input, select, textarea, button {
   color: inherit;
   font-size: inherit;
 }
 
-/* line 43, scss/config/_reset.scss */
+/* line 43, scss/base/config/_reset.scss */
 label, button, a.button, details, input[type="button"], input[type="submit"] {
   cursor: pointer;
 }
 
-/* line 46, scss/config/_reset.scss */
+/* line 46, scss/base/config/_reset.scss */
 button, select {
   text-transform: none;
   font-weight: inherit;
 }
 
-/* line 50, scss/config/_reset.scss */
+/* line 50, scss/base/config/_reset.scss */
 button {
   overflow: visible;
   font-family: inherit;
@@ -250,7 +250,7 @@ button {
   background: none;
 }
 
-/* line 57, scss/config/_reset.scss */
+/* line 57, scss/base/config/_reset.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -259,38 +259,38 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-/* line 64, scss/config/_reset.scss */
+/* line 64, scss/base/config/_reset.scss */
 button[disabled],
 html input[disabled] {
   cursor: default;
 }
 
-/* line 68, scss/config/_reset.scss */
+/* line 68, scss/base/config/_reset.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
 
-/* line 73, scss/config/_reset.scss */
+/* line 73, scss/base/config/_reset.scss */
 input {
   line-height: normal;
 }
 
-/* line 76, scss/config/_reset.scss */
+/* line 76, scss/base/config/_reset.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
 
-/* line 81, scss/config/_reset.scss */
+/* line 81, scss/base/config/_reset.scss */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-/* line 85, scss/config/_reset.scss */
+/* line 85, scss/base/config/_reset.scss */
 input[type="search"] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -298,82 +298,82 @@ input[type="search"] {
   -webkit-appearance: textfield;
 }
 
-/* line 91, scss/config/_reset.scss */
+/* line 91, scss/base/config/_reset.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 95, scss/config/_reset.scss */
+/* line 95, scss/base/config/_reset.scss */
 html, body, div, p, address, blockquote, ol, ul, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, pre, hr, menu, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
-/* line 98, scss/config/_reset.scss */
+/* line 98, scss/base/config/_reset.scss */
 video {
   cursor: pointer;
 }
 
-/* line 101, scss/config/_reset.scss */
+/* line 101, scss/base/config/_reset.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-/* line 105, scss/config/_reset.scss */
+/* line 105, scss/base/config/_reset.scss */
 [hidden], template {
   display: none;
 }
 
-/* line 108, scss/config/_reset.scss */
+/* line 108, scss/base/config/_reset.scss */
 :focus {
   outline: 0;
 }
 
-/* line 111, scss/config/_reset.scss */
+/* line 111, scss/base/config/_reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 115, scss/config/_reset.scss */
+/* line 115, scss/base/config/_reset.scss */
 td {
   vertical-align: top;
 }
 
-/* line 118, scss/config/_reset.scss */
+/* line 118, scss/base/config/_reset.scss */
 th, strong, dt {
   font-weight: 700;
 }
 
-/* line 121, scss/config/_reset.scss */
+/* line 121, scss/base/config/_reset.scss */
 del {
   text-decoration: line-through;
 }
 
-/* line 124, scss/config/_reset.scss */
+/* line 124, scss/base/config/_reset.scss */
 blockquote, q, em, cite, dfn, cite, var {
   font-style: italic;
 }
 
-/* line 127, scss/config/_reset.scss */
+/* line 127, scss/base/config/_reset.scss */
 img, object, embed {
   max-width: 100%;
   height: auto;
 }
 
-/* line 131, scss/config/_reset.scss */
+/* line 131, scss/base/config/_reset.scss */
 object, embed {
   height: 100%;
 }
 
-/* line 134, scss/config/_reset.scss */
+/* line 134, scss/base/config/_reset.scss */
 img {
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 138, scss/config/_reset.scss */
+/* line 138, scss/base/config/_reset.scss */
 textarea {
   resize: vertical;
 }
@@ -390,7 +390,7 @@ textarea {
    Yellow == Needs checking
    None   == No problemo!
 ========================================================================== */
-/* line 17, scss/config/_debug.scss */
+/* line 17, scss/base/config/_debug.scss */
 body:not(.no-debug) {
   /* -- Debug Box -- */
   /* -- All -- */
@@ -404,7 +404,7 @@ body:not(.no-debug) {
   /* -- Inline styles -- */
   /* -- IDs -- */
 }
-/* line 19, scss/config/_debug.scss */
+/* line 19, scss/base/config/_debug.scss */
 body:not(.no-debug) img:after, body:not(.no-debug) ul > *:not(li):after, body:not(.no-debug) ol > *:not(li):after, body:not(.no-debug) form:after, body:not(.no-debug) button:after, body:not(.no-debug) :empty:after, body:not(.no-debug) img[alt=""]:after, body:not(.no-debug) a:after, body:not(.no-debug) a[href="#"]:after,
 body:not(.no-debug) a[href*="javascript"]:after, body:not(.no-debug) [style]:not(html):not(body):after, body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
   padding: 5px 10px;
@@ -417,18 +417,18 @@ body:not(.no-debug) a[href*="javascript"]:after, body:not(.no-debug) [style]:not
   white-space: nowrap;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
-/* line 29, scss/config/_debug.scss */
+/* line 29, scss/base/config/_debug.scss */
 body:not(.no-debug) img:after, body:not(.no-debug) ul > *:not(li):after, body:not(.no-debug) ol > *:not(li):after, body:not(.no-debug) form:after, body:not(.no-debug) button:after {
   color: white;
   background: red;
 }
-/* line 34, scss/config/_debug.scss */
+/* line 34, scss/base/config/_debug.scss */
 body:not(.no-debug) :empty:after, body:not(.no-debug) img[alt=""]:after, body:not(.no-debug) a:after, body:not(.no-debug) a[href="#"]:after,
 body:not(.no-debug) a[href*="javascript"]:after, body:not(.no-debug) [style]:not(html):not(body):after, body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
   color: black;
   background: yellow;
 }
-/* line 39, scss/config/_debug.scss */
+/* line 39, scss/base/config/_debug.scss */
 body:not(.no-debug) img[alt]:after, body:not(.no-debug) a[title]:after, body:not(.no-debug) form[action]:after, body:not(.no-debug) button[type=submit]:after {
   padding: 0;
   position: static;
@@ -437,151 +437,147 @@ body:not(.no-debug) img[alt]:after, body:not(.no-debug) a[title]:after, body:not
   font-size: inherit;
   content: "";
 }
-/* line 48, scss/config/_debug.scss */
+/* line 48, scss/base/config/_debug.scss */
 body:not(.no-debug) * {
   position: relative;
 }
-/* line 53, scss/config/_debug.scss */
+/* line 53, scss/base/config/_debug.scss */
 body:not(.no-debug) :empty {
   outline: 2px dashed yellow;
 }
-/* line 55, scss/config/_debug.scss */
+/* line 55, scss/base/config/_debug.scss */
 body:not(.no-debug) :empty:after {
   content: "Element is empty!";
 }
-/* line 62, scss/config/_debug.scss */
+/* line 62, scss/base/config/_debug.scss */
 body:not(.no-debug) img {
   outline: 2px dashed red;
 }
-/* line 64, scss/config/_debug.scss */
+/* line 64, scss/base/config/_debug.scss */
 body:not(.no-debug) img:after {
   content: "Missing [alt] atrribute";
 }
-/* line 69, scss/config/_debug.scss */
+/* line 69, scss/base/config/_debug.scss */
 body:not(.no-debug) img[alt] {
   outline: none;
 }
-/* line 75, scss/config/_debug.scss */
+/* line 75, scss/base/config/_debug.scss */
 body:not(.no-debug) img[alt=""] {
   outline: 2px dashed yellow;
 }
-/* line 77, scss/config/_debug.scss */
+/* line 77, scss/base/config/_debug.scss */
 body:not(.no-debug) img[alt=""]:after {
   content: "[alt] atrribute empty";
 }
-/* line 84, scss/config/_debug.scss */
+/* line 84, scss/base/config/_debug.scss */
 body:not(.no-debug) a {
   outline: 2px dashed yellow;
 }
-/* line 86, scss/config/_debug.scss */
+/* line 86, scss/base/config/_debug.scss */
 body:not(.no-debug) a:after {
   content: "Missing [title] atrribute";
 }
-/* line 91, scss/config/_debug.scss */
+/* line 91, scss/base/config/_debug.scss */
 body:not(.no-debug) a[title] {
   outline: none;
 }
-/* line 97, scss/config/_debug.scss */
+/* line 97, scss/base/config/_debug.scss */
 body:not(.no-debug) a[href="#"],
 body:not(.no-debug) a[href*="javascript"] {
   outline: 2px dashed yellow;
 }
-/* line 100, scss/config/_debug.scss */
+/* line 100, scss/base/config/_debug.scss */
 body:not(.no-debug) a[href="#"]:after,
 body:not(.no-debug) a[href*="javascript"]:after {
   content: "# and JavaScript calls do not belong in [href] attribute!";
 }
-/* line 108, scss/config/_debug.scss */
+/* line 108, scss/base/config/_debug.scss */
 body:not(.no-debug) ul > *:not(li), body:not(.no-debug) ol > *:not(li) {
   outline: 2px dashed red;
 }
-/* line 110, scss/config/_debug.scss */
+/* line 110, scss/base/config/_debug.scss */
 body:not(.no-debug) ul > *:not(li):after, body:not(.no-debug) ol > *:not(li):after {
   content: "# and JavaScript calls do not belong in [href] attribute!";
 }
-/* line 118, scss/config/_debug.scss */
+/* line 118, scss/base/config/_debug.scss */
 body:not(.no-debug) th {
   outline: 2px dashed yellow;
 }
-/* line 121, scss/config/_debug.scss */
+/* line 121, scss/base/config/_debug.scss */
 body:not(.no-debug) th[scope] {
   outline: none;
 }
-/* line 124, scss/config/_debug.scss */
+/* line 124, scss/base/config/_debug.scss */
 body:not(.no-debug) table > tr {
   outline: 2px dashed yellow;
 }
-/* line 127, scss/config/_debug.scss */
+/* line 127, scss/base/config/_debug.scss */
 body:not(.no-debug) tbody + tfoot {
   outline: 2px dashed yellow;
 }
-/* line 132, scss/config/_debug.scss */
+/* line 132, scss/base/config/_debug.scss */
 body:not(.no-debug) form {
   position: relative;
   outline: 2px dashed red;
 }
-/* line 135, scss/config/_debug.scss */
+/* line 135, scss/base/config/_debug.scss */
 body:not(.no-debug) form:after {
   content: "Missing [action] attribute.";
 }
-/* line 140, scss/config/_debug.scss */
+/* line 140, scss/base/config/_debug.scss */
 body:not(.no-debug) form[action] {
   outline: none;
 }
-/* line 148, scss/config/_debug.scss */
+/* line 148, scss/base/config/_debug.scss */
 body:not(.no-debug) textarea,
 body:not(.no-debug) input {
   outline: 2px dashed red;
 }
-/* line 152, scss/config/_debug.scss */
+/* line 152, scss/base/config/_debug.scss */
 body:not(.no-debug) input[type] {
   outline: none;
 }
-/* line 155, scss/config/_debug.scss */
+/* line 155, scss/base/config/_debug.scss */
 body:not(.no-debug) textarea[rows][cols] {
   outline: none;
 }
-/* line 158, scss/config/_debug.scss */
+/* line 158, scss/base/config/_debug.scss */
 body:not(.no-debug) input[type=submit] {
   outline: 2px dashed red;
 }
-/* line 161, scss/config/_debug.scss */
+/* line 161, scss/base/config/_debug.scss */
 body:not(.no-debug) input[type=submit][value] {
   outline: none;
 }
-/* line 164, scss/config/_debug.scss */
+/* line 164, scss/base/config/_debug.scss */
 body:not(.no-debug) button {
   outline: 2px dashed red;
 }
-/* line 166, scss/config/_debug.scss */
+/* line 166, scss/base/config/_debug.scss */
 body:not(.no-debug) button:after {
   content: "Missing [type] attribute";
 }
-/* line 171, scss/config/_debug.scss */
+/* line 171, scss/base/config/_debug.scss */
 body:not(.no-debug) button[type=submit] {
   outline: none;
 }
-/* line 179, scss/config/_debug.scss */
+/* line 179, scss/base/config/_debug.scss */
 body:not(.no-debug) [style]:not(html):not(body) {
   outline: 2px dashed yellow;
 }
-/* line 181, scss/config/_debug.scss */
+/* line 181, scss/base/config/_debug.scss */
 body:not(.no-debug) [style]:not(html):not(body):after {
   content: "Using an inline style!";
 }
-/* line 188, scss/config/_debug.scss */
+/* line 188, scss/base/config/_debug.scss */
 body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea) {
   outline: 2px dashed yellow;
 }
-/* line 190, scss/config/_debug.scss */
+/* line 190, scss/base/config/_debug.scss */
 body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
   content: "Using ID's!";
 }
 
-/* ==========================================================================
-   All
-   Imports all the partials
-========================================================================== */
 /* ==========================================================================
    Utility Classes
    A library of classes to achieve various things. Most are prefixed

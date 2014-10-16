@@ -4,13 +4,10 @@
 @import 'mixins/#all';
 
 // 2. Config vars
-@import 'config/vars';
+@import 'base/vars';
 
 // 3. Site vars
 @import 'site/vars';
-
-// 4. Config
-@import 'config/#all';
 
 // 5. Base
 @import 'base/#all';

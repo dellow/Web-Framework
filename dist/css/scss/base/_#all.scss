@@ -2,6 +2,10 @@
    All
    Imports all the partials
 ========================================================================== */
+// Config
+@import 'config/placeholders',
+		'config/reset',
+		'config/debug';
 // Core
 @import 'utility-classes',
 		'defaults',
