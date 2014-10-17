@@ -19,7 +19,11 @@ gulp.task('watch', function(){
 			gulp.start('compass');
 		});
 
-		watch({glob: GLOBAL.dist_dir + 'js/**/*.js'}, function(){
+		watch({glob: GLOBAL.dist_dir + 'images/icons/sprite/*.png'}, function(){
+			gulp.start('sprite');
+		});
+
+		watch({glob: GLOBAL.dist_dir + 'js/app/*.js'}, function(){
 			gulp.start('browserify');
 		});
 	});

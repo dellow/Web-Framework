@@ -45,12 +45,16 @@ gulp.task('serve', function(){
 	watch({glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'}, function(){
 		gulp.start('compass');
 	});
+	// Run Sprites on image updates
+	watch({glob: GLOBAL.dist_dir + 'images/icons/sprite/*.png'}, function(){
+		gulp.start('sprite');
+	});
 	// Reload on main.css file change
 	watch({glob: GLOBAL.dist_dir + 'css/main.css'}, function(){
 		reload();
 	});
 	// Run Browserify on JS file changes
-	watch({glob: GLOBAL.dist_dir + 'js/**/*.js'}, function(){
+	watch({glob: GLOBAL.dist_dir + 'js/app/*.js'}, function(){
 		gulp.start('browserify');
 	});
 	// Reload on build.js file change
