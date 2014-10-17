@@ -29,15 +29,15 @@ App.Helpers = require('./helpers');
 /* Controllers
 /* ======================================================== */
 // Page Controller
-App.PageController = require('./page.controller');
+App.PageController = require('./controller.page');
 
 /* ======================================================== */
 /* Modules
 /* ======================================================== */
 // Mobile Menu
-App.Menu         = require('./menu.module');
+App.Menu         = require('./module.menu');
 // Equal Heights
-App.EqualHeights = require('./equal-heights.module');
+App.EqualHeights = require('./module.equal-heights');
 
 /* ======================================================== */
 /* Debugging

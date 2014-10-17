@@ -1492,10 +1492,10 @@ ul.alert.box li {
   color: #FFFFFF;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  -webkit-transition: background 300ms ease;
-  -moz-transition: background 300ms ease;
-  -o-transition: background 300ms ease;
-  transition: background 300ms ease;
+  -webkit-transition: background 300ms ease, box-shadow 300ms ease;
+  -moz-transition: background 300ms ease, box-shadow 300ms ease;
+  -o-transition: background 300ms ease, box-shadow 300ms ease;
+  transition: background 300ms ease, box-shadow 300ms ease;
 }
 /* line 18, scss/base/components/_buttons.scss */
 .btn.standard {
