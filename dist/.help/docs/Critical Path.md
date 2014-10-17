@@ -23,7 +23,7 @@ Consider this document:
 
 Assuming each resource takes 100ms to download and the browser can maintain up to 6 connections in parallel this download profile would take 300ms.
 
-As `stylesheet1.css` and `script1.js` will download as a concurrent block, `script2.js` will then download blocking the next resources, finally `stylesheet2.css` and `stylesheet3.css` will download as a third concurrent block.
+As `stylesheet1.css` and `script1.js` will download as a concurrent block (because `stylesheet1.css` has already begun), `script2.js` will then download blocking the next resources, finally `stylesheet2.css` and `stylesheet3.css` will download as a third concurrent block.
 
 In comparison consider this:
 
@@ -58,7 +58,7 @@ Where possible stylesheets should always be referenced in the head of a page. Co
 
 From a cold cache, DNS lookup for CSS slows down site display because DNS lookup takes longer and CSS is render blocking, so nothing will be shown until ALL CSS has been retrieved. All CSS will be downloaded, even ones specific to a media such as breakpoints or print. Because of this fact it's better to concatenate all CSS into one file simply because it WILL be downloaded anyway.
 
-#### Increasing the paralleised download limit
+#### Increasing the parallel download limit
 You can circumvent browser limitations by serving assets from multiple hostnames. For example if a page references 100 external resources and the browser limitation was (for example) 2 concurrent downloads per hostname, this would result in 1 RTT (Round Trip Times) for every 2 resources and a total download time of 50 RTTs. By requesting external assets from different hostnames you can increase the concurrent download limit forcing the browser to make better use of the available bandwidth.
 
 - However, using more concurrent connections will increase CPR usage and introduce additional DNS lookups and TCP connection initialisations. Therefore above a certain limit this technique can degrade overall performance.
@@ -68,7 +68,7 @@ You can circumvent browser limitations by serving assets from multiple hostnames
 - Ensure all pages references the same asset using the same URL to benefit from browser and proxy caching.
 
 #### DNS configuration
-To configure additional hostnames, sub-domains can be created as CNAME records that point to a single A record and configure the web server to respond from multiple hosts (e.g. Apache VirtualHosts).
+To configure additional hostnames, sub-domains can be created as CNAME records that point to a single A record and configure the web server to respond from multiple hosts (e.g. Apache/Nginx VirtualHosts).
 
 All hostnames should be cookie-less: e.g.
 
@@ -92,7 +92,7 @@ CDNs can have automatic server availability sensing with instant user redirectio
 #### JavaScript blocking
 Many browsers will block other assets from downloading while currently downloading a JavaScript file to minimise the blocking risk consider the following:
 
-- Minimise the number of external JavaScript asset requests. Consider using an asynchronous loader such as RequireJS.
+- Minimise the number of external JavaScript asset requests. Consider using an asynchronous loader such as RequireJS. Or a compiler like Browserify.
 - Reference them in the correct order so they do not block the critical path.
 - Where possible reference JavaScript assets in the foot of a page.
 
@@ -106,6 +106,8 @@ Finding the correct balance between quality and filesize is paramount. Optimisat
 	- GIF: Simple, small graphics (less than 10x10) or a colour palette less than 3 colours
 	- JPEG: Photography
 - Apply lossless compression on JPEG and PNG files.
+- Use CSS Sprites where appropriate. Remove as much whitespace as possible.
+- Base64 encoding should only be used on small images that are critical to the presentation. This should be rare.
 
 #### Image Reflow & Dimensions
 When the browser lays out the page, it needs to be able to flow around replaceable elements such as images. It can begin to render a page even before images are downloaded, provided that it knows the dimensions to wrap non-replaceable elements around. If no dimensions are specified in the containing document, or if the dimensions specified don't match those of the actual images, the browser will require a reflow and repaint once the images are downloaded.
