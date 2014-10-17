@@ -27,9 +27,9 @@ bower.json export-ignore
 
 # Bash files
 install.sh
+deploy.sh
 
 # Task Runners
-Gruntfile.js export-ignore
 Gulpfile.js export-ignore
 
 # Standard text files
