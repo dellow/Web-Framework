@@ -1,12 +1,12 @@
 /* ======================================================== */
-/* ModuleEqualHeights
+/* Module
 /* ======================================================== */
 ;(function(Module, $, window, undefined){
     'use strict';
 
     /**
      * Module.init
-     * Initialise the module.
+     * Init method for this module.
     **/
     Module.init = function(){
         Module.binds();
@@ -72,6 +72,6 @@
     }
 
     // Export
-    module.exports = Module;
+    module.exports = EH;
 
-}(window.ModuleEqualHeights = window.ModuleEqualHeights || {}, jQuery, window));
+}(window.EH = window.EH || {}, jQuery, window));

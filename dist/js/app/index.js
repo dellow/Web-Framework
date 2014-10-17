@@ -35,9 +35,9 @@ App.PageController = require('./controller.page');
 /* Modules
 /* ======================================================== */
 // Mobile Menu
-App.Menu         = require('./module.menu');
+App.Menu = require('./module.menu');
 // Equal Heights
-App.EqualHeights = require('./module.equal-heights');
+App.EH   = require('./module.eh');
 
 /* ======================================================== */
 /* Debugging
@@ -48,6 +48,4 @@ App.Helpers.log(App);
 /* ======================================================== */
 /* Go
 /* ======================================================== */
-App.PageController.init(App);
-App.Menu.init(768);
-App.EqualHeights.init();
+App.PageController.init();

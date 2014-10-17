@@ -1,9 +1,10 @@
 /* ======================================================== */
-/* ControllerPage
+/* PageController
 /* Adds Ajax loading to page.
 /* Just add '<a href="link.php" data-push="true">Page 2</a>'
 /* to any link that needs to be loaded with Ajax
 /* ======================================================== */
+// Require module
 require('../plugins/wiselinks');
 ;(function(Module, $, window, undefined){
 	'use strict';
@@ -12,38 +13,33 @@ require('../plugins/wiselinks');
 	 * Module.init
 	 * Init method for this module
 	**/
-	Module.init = function(App){
+	Module.init = function(){
 		$(function(){
 			window.wiselinks = new Wiselinks($('.main'));
 
 			$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
-	            App.helper.log("Loading: " + url + " to " + $target.selector + " within '" + render);
-	            //code to start loading animation
+	            Helpers.log("Loading: " + url + " to " + $target.selector + " within '" + render);
 		    });
 
 			$(document).off('page:redirected').on('page:redirected', function(event, $target, render, url){
-	            App.helper.log("Redirected to: " + url);
-	            // code to start loading animation
+	            Helpers.log("Redirected to: " + url);
 		    });
 
 			$(document).off('page:always').on('page:always', function(event, xhr, settings){
-	            App.helper.log("Wiselinks page loading completed");
-	            // code to stop loading animation
+	            Helpers.log("Wiselinks page loading completed");
 		    });
 
 			$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
-	            App.helper.log("Wiselinks status: '" + status);
-	            // Push Google Analytics page view here
+	            Helpers.log("Wiselinks status: '" + status);
 		    });
 
 			$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
-	            App.helper.log("Wiselinks status: '" + status);
-	            // code to show error message
+	            Helpers.log("Wiselinks status: '" + status);
 		    });
 	    });
 	}
 
 	// Export
-	module.exports = Module;
+	module.exports = PageController;
 
-}(window.ControllerPage = window.ControllerPage || {}, jQuery, window));
+}(window.PageController = window.PageController || {}, jQuery, window));

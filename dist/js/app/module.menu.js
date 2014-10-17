@@ -1,12 +1,12 @@
 /* ======================================================== */
-/* ModuleMenu
+/* Module
 /* ======================================================== */
 ;(function(Module, $, window, undefined){
 	'use strict';
 
 	/**
 	 * Module.init
-	 * Init method for this module
+	 * Init method for this module.
 	**/
 	Module.init = function(breakpoint){
 		$(window).on('resize load', function(){
@@ -16,7 +16,7 @@
 
 	/**
 	 * Module.binds
-	 * Binds related to this module
+	 * Binds related to this module.
 	**/
 	Module.binds = function(breakpoint){
 		var primary    = $('.nav-primary'),
@@ -38,6 +38,7 @@
 
 	/**
 	 * Module.menu_reveal
+	 * Adds class to menu.
 	**/
 	Module.menu_reveal = function(el, primary){
 		// Toggle class to button
@@ -51,6 +52,6 @@
 	}
 
 	// Export
-	module.exports = Module;
+	module.exports = Menu;
 
-}(window.ModuleMenu = window.ModuleMenu || {}, jQuery, window));
+}(window.Menu = window.Menu || {}, jQuery, window));

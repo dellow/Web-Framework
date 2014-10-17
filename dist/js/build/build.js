@@ -1,10 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /* ======================================================== */
-/* ControllerPage
+/* PageController
 /* Adds Ajax loading to page.
 /* Just add '<a href="link.php" data-push="true">Page 2</a>'
 /* to any link that needs to be loaded with Ajax
 /* ======================================================== */
+// Require module
 require('../plugins/wiselinks');
 ;(function(Module, $, window, undefined){
 	'use strict';
@@ -13,41 +14,36 @@ require('../plugins/wiselinks');
 	 * Module.init
 	 * Init method for this module
 	**/
-	Module.init = function(App){
+	Module.init = function(){
 		$(function(){
 			window.wiselinks = new Wiselinks($('.main'));
 
 			$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
-	            App.helper.log("Loading: " + url + " to " + $target.selector + " within '" + render);
-	            //code to start loading animation
+	            Helpers.log("Loading: " + url + " to " + $target.selector + " within '" + render);
 		    });
 
 			$(document).off('page:redirected').on('page:redirected', function(event, $target, render, url){
-	            App.helper.log("Redirected to: " + url);
-	            // code to start loading animation
+	            Helpers.log("Redirected to: " + url);
 		    });
 
 			$(document).off('page:always').on('page:always', function(event, xhr, settings){
-	            App.helper.log("Wiselinks page loading completed");
-	            // code to stop loading animation
+	            Helpers.log("Wiselinks page loading completed");
 		    });
 
 			$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
-	            App.helper.log("Wiselinks status: '" + status);
-	            // Push Google Analytics page view here
+	            Helpers.log("Wiselinks status: '" + status);
 		    });
 
 			$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
-	            App.helper.log("Wiselinks status: '" + status);
-	            // code to show error message
+	            Helpers.log("Wiselinks status: '" + status);
 		    });
 	    });
 	}
 
 	// Export
-	module.exports = Module;
+	module.exports = PageController;
 
-}(window.ControllerPage = window.ControllerPage || {}, jQuery, window));
+}(window.PageController = window.PageController || {}, jQuery, window));
 },{"../plugins/wiselinks":6}],2:[function(require,module,exports){
 /*
  *
@@ -60,7 +56,7 @@ require('../plugins/wiselinks');
  *
  */
 
- ;(function(Helpers, $, window, undefined){
+ ;(function(Helpers, window, undefined){
 	'use strict';
 
 	/**
@@ -85,36 +81,10 @@ require('../plugins/wiselinks');
 		return (window.innerWidth < breakpoint) ? true : false;
 	}
 
-	/**
-	 * Apply equal heights to given elements.
-	**/
-	Helpers.equal_heights = function(el, breakpoint1, breakpoint2){
-        // Check the current breakpoint.
-        if($(window).width() > breakpoint1 && $(window).width() < breakpoint2){
-            // Map all qualifying element heights to an array.
-            var heights = $('[data-eh="true"]', el).map(function(){
-                $(this).css({'height': 'auto'});
-                return $(this).outerHeight();
-            }).get();
-            // Get the largest value from the array.
-            var large = Math.max.apply(Math, heights);
-            // Apply the CSS height to all qualifying elements.
-            $('[data-eh="true"]', el).each(function(){
-                $(this).outerHeight(large);
-            });
-        }
-        else{
-            // Reset the height attribute to `auto` (or nothing).
-            $('[data-eh="true"]', el).each(function(){
-                $(this).css({'height': 'auto'});
-            });
-        }
-    }
-
 	// Export
 	module.exports = Helpers;
 
-}(window.Helpers = window.Helpers || {}, jQuery, window));
+}(window.Helpers = window.Helpers || {}, window));
 },{}],3:[function(require,module,exports){
 /*
  *
@@ -153,9 +123,9 @@ App.PageController = require('./controller.page');
 /* Modules
 /* ======================================================== */
 // Mobile Menu
-App.Menu         = require('./module.menu');
+App.Menu = require('./module.menu');
 // Equal Heights
-App.EqualHeights = require('./module.equal-heights');
+App.EH   = require('./module.eh');
 
 /* ======================================================== */
 /* Debugging
@@ -166,19 +136,17 @@ App.Helpers.log(App);
 /* ======================================================== */
 /* Go
 /* ======================================================== */
-App.PageController.init(App);
-App.Menu.init(768);
-App.EqualHeights.init();
-},{"./controller.page":1,"./helpers":2,"./module.equal-heights":4,"./module.menu":5,"jquery":7}],4:[function(require,module,exports){
+App.PageController.init();
+},{"./controller.page":1,"./helpers":2,"./module.eh":4,"./module.menu":5,"jquery":7}],4:[function(require,module,exports){
 /* ======================================================== */
-/* ModuleEqualHeights
+/* Module
 /* ======================================================== */
 ;(function(Module, $, window, undefined){
     'use strict';
 
     /**
      * Module.init
-     * Initialise the module.
+     * Init method for this module.
     **/
     Module.init = function(){
         Module.binds();
@@ -244,19 +212,19 @@ App.EqualHeights.init();
     }
 
     // Export
-    module.exports = Module;
+    module.exports = EH;
 
-}(window.ModuleEqualHeights = window.ModuleEqualHeights || {}, jQuery, window));
+}(window.EH = window.EH || {}, jQuery, window));
 },{}],5:[function(require,module,exports){
 /* ======================================================== */
-/* ModuleMenu
+/* Module
 /* ======================================================== */
 ;(function(Module, $, window, undefined){
 	'use strict';
 
 	/**
 	 * Module.init
-	 * Init method for this module
+	 * Init method for this module.
 	**/
 	Module.init = function(breakpoint){
 		$(window).on('resize load', function(){
@@ -266,7 +234,7 @@ App.EqualHeights.init();
 
 	/**
 	 * Module.binds
-	 * Binds related to this module
+	 * Binds related to this module.
 	**/
 	Module.binds = function(breakpoint){
 		var primary    = $('.nav-primary'),
@@ -288,6 +256,7 @@ App.EqualHeights.init();
 
 	/**
 	 * Module.menu_reveal
+	 * Adds class to menu.
 	**/
 	Module.menu_reveal = function(el, primary){
 		// Toggle class to button
@@ -301,9 +270,9 @@ App.EqualHeights.init();
 	}
 
 	// Export
-	module.exports = Module;
+	module.exports = Menu;
 
-}(window.ModuleMenu = window.ModuleMenu || {}, jQuery, window));
+}(window.Menu = window.Menu || {}, jQuery, window));
 },{}],6:[function(require,module,exports){
 /**
  * Wiselinks-1.2.2
