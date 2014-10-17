@@ -5,8 +5,7 @@ var gulp     = require('gulp'),
     sequence = require('run-sequence'),
     changed  = require('gulp-changed'),
     html     = require('gulp-minify-html'),
-    imagemin = require('gulp-imagemin'),
-    base64   = require('gulp-base64');
+    imagemin = require('gulp-imagemin');
 
 /* ================================================== */
 /* Vars
@@ -29,7 +28,7 @@ var state   = (GLOBAL.args != undefined) ? GLOBAL.args : 'development',
 gulp.task('release', function(){
     // Run sequence tasks.
     if(GLOBAL.is_production){
-        sequence('release-task-move', 'release-sync', 'release-task-minify', 'release-task-base64', 'release-task-imagemin');
+        sequence('release-task-move', 'release-sync', 'release-task-minify', 'release-task-imagemin');
     }
     else{
         sequence('release-task-move', 'release-sync');
@@ -65,22 +64,6 @@ gulp.task('release-task-minify', function(){
         .pipe(html(opts))
         .pipe(gulp.dest('./releases/current'))
         .pipe(gulp.dest(release));
-});
-
-// Converts images to base64 encoded images in stylesheet.
-// Production only.
-gulp.task('release-task-base64', function(){
-    // Options
-    var opts = {
-        baseDir     : '',
-        extensions  : ['svg', 'png', 'gif', /\.jpg#datauri$/i],
-        maxImageSize: 8*1024, // bytes
-        debug       : false
-    };
-    return gulp.src(release + 'dist/css/*.css')
-        .pipe(base64(opts))
-        .pipe(gulp.dest('./releases/current/dist/css'))
-        .pipe(gulp.dest(release + 'dist/css'));
 });
 
 // Run image optimisations
