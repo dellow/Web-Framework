@@ -10,21 +10,29 @@ var gulp       = require('gulp'),
 /* Task
 /* ================================================== */
 gulp.task('watch', function(){
+
+	var compass    = function(){gulp.start('compass')},
+	    browserify = function(){gulp.start('browserify')},
+	    sprite     = function(){gulp.start('sprite')};
+
 	server.listen(35729, function(err){
 		if(err){
 			return console.log(err);
 		}
 
-		watch({glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'}, function(){
-			gulp.start('compass');
-		});
+		// Run Compass on SCSS file changes
+		watch({
+			glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'
+		}, compass);
 
-		watch({glob: GLOBAL.dist_dir + 'images/icons/sprite/*.png'}, function(){
-			gulp.start('sprite');
-		});
+		// Run Browserify on JS file changes
+		watch({
+			glob: GLOBAL.dist_dir + 'js/**/*.js'
+		}, browserify);
 
-		watch({glob: GLOBAL.dist_dir + 'js/app/*.js'}, function(){
-			gulp.start('browserify');
-		});
+		// Run Sprites on image updates
+		watch({
+			glob: GLOBAL.dist_dir + 'images/icons/sprite/*.png'
+		}, sprite);
 	});
 });
