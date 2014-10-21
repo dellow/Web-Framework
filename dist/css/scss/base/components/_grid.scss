@@ -98,6 +98,7 @@ $gutter_width: ($gutter / 2);
 		}
 	}
 	&.bricked {
+		@include inline-block; // Hack to prevent negative margin having weird effects
 		letter-spacing: -4px;
 		[class*="col-"] {
 			float: none;
