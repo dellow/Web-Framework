@@ -18,47 +18,43 @@ var url    = args.url,
 /* Task
 /* ================================================== */
 gulp.task('serve', function(){
-	var css = ['compass', reload],
-		img = ['imagemin', reload],
-		js  = ['browserify', reload];
-
 	if(url){
 		browserSync({
-			notify: notify,
-			https: https,
-			proxy: url
+			open   : 'external',
+			browser: ['google chrome'],
+			notify : notify,
+			https  : https,
+			xip    : true,
+			proxy  : url
 		});
 	}
 	else{
 		browserSync({
-			notify: notify,
-			https: https,
-			server: {
+			open   : 'external',
+			browser: ['google chrome'],
+			notify : notify,
+			https  : https,
+			xip    : true,
+			server : {
 				baseDir: [GLOBAL.src_dir]
 			}
 		});
 	}
 
-	// Reload .html and .php file changes
-	watch({glob: [GLOBAL.src_dir + '**/*.html', GLOBAL.src_dir + '**/*.php']}, reload);
 	// Run Compass on SCSS file changes
 	watch({glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'}, function(){
 		gulp.start('compass');
 	});
-	// Run Sprites on image updates
-	watch({glob: GLOBAL.dist_dir + 'images/icons/sprite/*.png'}, function(){
-		gulp.start('sprite');
-	});
-	// Reload on main.css file change
-	watch({glob: GLOBAL.dist_dir + 'css/main.css'}, function(){
-		reload();
-	});
 	// Run Browserify on JS file changes
-	watch({glob: GLOBAL.dist_dir + 'js/app/*.js'}, function(){
+	watch({glob: GLOBAL.dist_dir + 'js/**/*.js'}, function(){
 		gulp.start('browserify');
 	});
-	// Reload on build.js file change
-	watch({glob: GLOBAL.dist_dir + 'js/build/build.js'}, function(){
-		reload();
-	});
+
+	// Reload on file changes
+	watch([
+		GLOBAL.src_dir + '**/*.html',
+		GLOBAL.src_dir + '**/*.php',
+		GLOBAL.dist_dir + 'css/main.css',
+		GLOBAL.dist_dir + 'js/build/build.js'
+	], reload);
 });

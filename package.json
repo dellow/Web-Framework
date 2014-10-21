@@ -8,7 +8,7 @@
     "browser-sync"        : "^1.3.0",
     "gulp"                : "^3.6.2",
     "gulp-changed"        : "^0.4.1",
-    "gulp-compass"        : "^1.1.8",
+    "gulp-compass"        : "^1.3.3",
     "gulp-concat"         : "^2.2.0",
     "gulp-dalek"          : "^0.0.1",
     "gulp-if"             : "^1.2.1",
