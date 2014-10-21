@@ -41,10 +41,23 @@
 @mixin modify-grid($gutter_width, $col){
 	> .grid, &.grid {
 		width: 100% + $gutter_width;
+		margin-top: -$gutter_width;
 		left: -$gutter_width;
 		> [class*="col-"] {
 			width: $col - $gutter_width;
-			margin-left: $gutter_width;
+			margin: $gutter_width 0 0 $gutter_width;
+		}
+	}
+	> .flex-grid, &.flex-grid {
+		width: 100% + $gutter_width;
+		margin-top: -$gutter_width;
+		left: -$gutter_width;
+		> [class*="col-"] {
+			margin: $gutter_width 0 0 $gutter_width;
+			max-width              : $col - $gutter_width;
+			-webkit-flex-basis     : $col - $gutter_width;
+			-ms-flex-preferred-size: $col - $gutter_width;
+			flex-basis             : $col - $gutter_width;
 		}
 	}
 }
