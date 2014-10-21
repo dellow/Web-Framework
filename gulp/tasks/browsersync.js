@@ -18,6 +18,10 @@ var url    = args.url,
 /* Task
 /* ================================================== */
 gulp.task('serve', function(){
+
+	var compass    = function(){gulp.start('compass')},
+	    browserify = function(){gulp.start('browserify')};
+
 	if(url){
 		browserSync({
 			open   : 'external',
@@ -42,19 +46,20 @@ gulp.task('serve', function(){
 	}
 
 	// Run Compass on SCSS file changes
-	watch({glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'}, function(){
-		gulp.start('compass');
-	});
+	watch({
+		glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'
+	}, compass);
 	// Run Browserify on JS file changes
-	watch({glob: GLOBAL.dist_dir + 'js/**/*.js'}, function(){
-		gulp.start('browserify');
-	});
-
+	watch({
+		glob: GLOBAL.dist_dir + 'js/**/*.js'
+	}, browserify);
 	// Reload on file changes
-	watch([
-		GLOBAL.src_dir + '**/*.html',
-		GLOBAL.src_dir + '**/*.php',
-		GLOBAL.dist_dir + 'css/main.css',
-		GLOBAL.dist_dir + 'js/build/build.js'
-	], reload);
+	watch({
+		glob: [
+			GLOBAL.src_dir + '**/*.html',
+			GLOBAL.src_dir + '**/*.php',
+			GLOBAL.dist_dir + 'css/main.css',
+			GLOBAL.dist_dir + 'js/build/build.js'
+		]
+	}, reload);
 });
