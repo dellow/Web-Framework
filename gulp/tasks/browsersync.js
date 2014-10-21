@@ -20,7 +20,8 @@ var url    = args.url,
 gulp.task('serve', function(){
 
 	var compass    = function(){gulp.start('compass')},
-	    browserify = function(){gulp.start('browserify')};
+	    browserify = function(){gulp.start('browserify')},
+	    sprite     = function(){gulp.start('sprite')};
 
 	if(url){
 		browserSync({
@@ -49,10 +50,17 @@ gulp.task('serve', function(){
 	watch({
 		glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'
 	}, compass);
+
 	// Run Browserify on JS file changes
 	watch({
 		glob: GLOBAL.dist_dir + 'js/**/*.js'
 	}, browserify);
+
+	// Run Sprites on image updates
+	watch({
+		glob: GLOBAL.dist_dir + 'images/icons/sprite/*.png'
+	}, sprite);
+
 	// Reload on file changes
 	watch({
 		glob: [

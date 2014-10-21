@@ -30,7 +30,8 @@ gulp.task('compass', function(){
 		.pipe(compass({
 			environment     : environment,
 			css             : GLOBAL.dist_dir + 'css',
-			sass            : GLOBAL.dist_dir + 'css/scss',
+			sass            : 'src/dist/css/scss', // Temporary fix while compass doesn't accept './' in path
+			// sass            : GLOBAL.dist_dir + 'css/scss',
 			sourcemap		: sourcemap,
 			logging		    : logging,
 			force           : true,
