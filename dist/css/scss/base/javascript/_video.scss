@@ -270,10 +270,10 @@ body.vjs-full-window {
     transition: background-color 0.25s;
     -webkit-backface-visibility: hidden;
 }
-.vjs-seek-handle[style*='95.'] {
+.vjs-seek-handle[style*="95."] {
     margin-left: 3px;
 }
-.vjs-seek-handle[style='left: 0%;'] {
+.vjs-seek-handle[style="left: 0%"] {
     margin-left: -2px;
 }
 .vjs-seek-handle:hover, .vjs-seek-handle:focus {
