@@ -13,10 +13,10 @@
 # 2. Your server must be setup with SSH key pairs. It will not work with servers
 # 	 that require passwords to SSH.
 #
-# 2. To do a normal deploy run:
+# 3. To do a normal deploy run:
 #	./deploy.sh <environment>
 #
-# 2. To do a rollback run:
+# 4. To do a rollback run:
 #	./deploy.sh <environment> rollback <commit_to_rollback_to_id>
 #
 

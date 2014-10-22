@@ -66,7 +66,7 @@ gulp.task('serve', function(){
 		glob: [
 			GLOBAL.src_dir + '**/*.html',
 			GLOBAL.src_dir + '**/*.php',
-			GLOBAL.dist_dir + 'css/main.css',
+			GLOBAL.dist_dir + 'css/build.css',
 			GLOBAL.dist_dir + 'js/build/build.js'
 		]
 	}, reload);

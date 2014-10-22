@@ -19,7 +19,7 @@ gulp.task('sprite', function(){
 			prefix     : 'css-sprite',
 			name       : 'sprite',
 			style      : GLOBAL.dist_dir + 'css/scss/site/_sprites.scss',
-			cssPath    : GLOBAL.dist_dir + 'images',
+			cssPath    : '../images/icons/',
 			processor  : 'scss'
 	    }))
 	    .pipe(gulpif('*.png', gulp.dest(GLOBAL.dist_dir + 'images/icons'), gulp.dest(GLOBAL.dist_dir + 'css/scss/site')))
