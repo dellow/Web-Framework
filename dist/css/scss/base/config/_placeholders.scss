@@ -14,25 +14,9 @@
 	}
 }
 
-// Vertically align elements with display: box;
+// Vertically align elements with display: flex;
 %vertical-align {
-	display           : -webkit-box;
-	-webkit-box-orient: vertical;
-
-	display           : -moz-box;
-	-moz-box-orient   : vertical;
-
-	display           : box;
-	box-orient        : vertical;
-}
-
-// Image Replacement
-%ir {
-	font: 0/0;
-	text-shadow: none;
-	color: transparent;
-}
-.oldie %ir {
-	overflow: hidden;
-	text-indent: -999px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
