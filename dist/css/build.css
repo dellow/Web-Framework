@@ -228,20 +228,21 @@ sub {
 input, select, textarea, button {
   color: inherit;
   font-size: inherit;
+  font-family: "Helvetica", Arial, "Trebuchet MS", Verdana, sans-serif;
 }
 
-/* line 43, scss/base/config/_reset.scss */
+/* line 44, scss/base/config/_reset.scss */
 label, button, a.button, details, input[type="button"], input[type="submit"] {
   cursor: pointer;
 }
 
-/* line 46, scss/base/config/_reset.scss */
+/* line 47, scss/base/config/_reset.scss */
 button, select {
   text-transform: none;
   font-weight: inherit;
 }
 
-/* line 50, scss/base/config/_reset.scss */
+/* line 51, scss/base/config/_reset.scss */
 button {
   overflow: visible;
   font-family: inherit;
@@ -250,7 +251,7 @@ button {
   background: none;
 }
 
-/* line 57, scss/base/config/_reset.scss */
+/* line 58, scss/base/config/_reset.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -259,38 +260,38 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-/* line 64, scss/base/config/_reset.scss */
+/* line 65, scss/base/config/_reset.scss */
 button[disabled],
 html input[disabled] {
   cursor: default;
 }
 
-/* line 68, scss/base/config/_reset.scss */
+/* line 69, scss/base/config/_reset.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
 
-/* line 73, scss/base/config/_reset.scss */
+/* line 74, scss/base/config/_reset.scss */
 input {
   line-height: normal;
 }
 
-/* line 76, scss/base/config/_reset.scss */
+/* line 77, scss/base/config/_reset.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
 
-/* line 81, scss/base/config/_reset.scss */
+/* line 82, scss/base/config/_reset.scss */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-/* line 85, scss/base/config/_reset.scss */
+/* line 86, scss/base/config/_reset.scss */
 input[type="search"] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -298,82 +299,82 @@ input[type="search"] {
   -webkit-appearance: textfield;
 }
 
-/* line 91, scss/base/config/_reset.scss */
+/* line 92, scss/base/config/_reset.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 95, scss/base/config/_reset.scss */
+/* line 96, scss/base/config/_reset.scss */
 html, body, div, p, address, blockquote, ol, ul, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, pre, hr, menu, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
-/* line 98, scss/base/config/_reset.scss */
+/* line 99, scss/base/config/_reset.scss */
 video {
   cursor: pointer;
 }
 
-/* line 101, scss/base/config/_reset.scss */
+/* line 102, scss/base/config/_reset.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-/* line 105, scss/base/config/_reset.scss */
+/* line 106, scss/base/config/_reset.scss */
 [hidden], template {
   display: none;
 }
 
-/* line 108, scss/base/config/_reset.scss */
+/* line 109, scss/base/config/_reset.scss */
 :focus {
   outline: 0;
 }
 
-/* line 111, scss/base/config/_reset.scss */
+/* line 112, scss/base/config/_reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 115, scss/base/config/_reset.scss */
+/* line 116, scss/base/config/_reset.scss */
 td {
   vertical-align: top;
 }
 
-/* line 118, scss/base/config/_reset.scss */
+/* line 119, scss/base/config/_reset.scss */
 th, strong, dt {
   font-weight: 700;
 }
 
-/* line 121, scss/base/config/_reset.scss */
+/* line 122, scss/base/config/_reset.scss */
 del {
   text-decoration: line-through;
 }
 
-/* line 124, scss/base/config/_reset.scss */
+/* line 125, scss/base/config/_reset.scss */
 blockquote, q, em, cite, dfn, cite, var {
   font-style: italic;
 }
 
-/* line 127, scss/base/config/_reset.scss */
+/* line 128, scss/base/config/_reset.scss */
 img, object, embed {
   max-width: 100%;
   height: auto;
 }
 
-/* line 131, scss/base/config/_reset.scss */
+/* line 132, scss/base/config/_reset.scss */
 object, embed {
   height: 100%;
 }
 
-/* line 134, scss/base/config/_reset.scss */
+/* line 135, scss/base/config/_reset.scss */
 img {
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 138, scss/base/config/_reset.scss */
+/* line 139, scss/base/config/_reset.scss */
 textarea {
   resize: vertical;
 }
@@ -1700,12 +1701,12 @@ ul.alert.box li {
    Grid layouts.
 ========================================================================== */
 /* -- Flex -- */
-/* line 8, scss/base/components/_grid.scss */
+/* line 6, scss/base/components/_grid.scss */
 .flex-grid {
-  width: 101%;
-  margin-top: -1%;
+  width: 102%;
+  margin-top: -2%;
   position: relative;
-  left: -1%;
+  left: -2%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1719,230 +1720,230 @@ ul.alert.box li {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-/* line 27, scss/base/components/_grid.scss */
+/* line 25, scss/base/components/_grid.scss */
 .flex-grid [class*="col-"] {
-  max-width: 99%;
-  -webkit-flex-basis: 99%;
-  -ms-flex-preferred-size: 99%;
-  flex-basis: 99%;
-  margin: 1% 0 0 1%;
+  max-width: 98%;
+  -webkit-flex-basis: 98%;
+  -ms-flex-preferred-size: 98%;
+  flex-basis: 98%;
+  margin: 2% 0 0 2%;
 }
-/* line 34, scss/base/components/_grid.scss */
+/* line 32, scss/base/components/_grid.scss */
 .flex-grid [class*="col-"].left {
   text-align: left;
 }
-/* line 37, scss/base/components/_grid.scss */
+/* line 35, scss/base/components/_grid.scss */
 .flex-grid [class*="col-"].right {
   text-align: right;
 }
-/* line 40, scss/base/components/_grid.scss */
+/* line 38, scss/base/components/_grid.scss */
 .flex-grid [class*="col-"].center {
   text-align: center;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1 {
-  max-width: 99%;
-  -webkit-flex-basis: 99%;
-  -ms-flex-preferred-size: 99%;
-  flex-basis: 99%;
+  max-width: 98%;
+  -webkit-flex-basis: 98%;
+  -ms-flex-preferred-size: 98%;
+  flex-basis: 98%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1 {
   max-width: 100%;
   -webkit-flex-basis: 100%;
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-3 {
-  max-width: 32.33%;
-  -webkit-flex-basis: 32.33%;
-  -ms-flex-preferred-size: 32.33%;
-  flex-basis: 32.33%;
+  max-width: 31.33%;
+  -webkit-flex-basis: 31.33%;
+  -ms-flex-preferred-size: 31.33%;
+  flex-basis: 31.33%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-3 {
   max-width: 33.33%;
   -webkit-flex-basis: 33.33%;
   -ms-flex-preferred-size: 33.33%;
   flex-basis: 33.33%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-2-3 {
-  max-width: 65.66%;
-  -webkit-flex-basis: 65.66%;
-  -ms-flex-preferred-size: 65.66%;
-  flex-basis: 65.66%;
+  max-width: 64.66%;
+  -webkit-flex-basis: 64.66%;
+  -ms-flex-preferred-size: 64.66%;
+  flex-basis: 64.66%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-2-3 {
   max-width: 66.66%;
   -webkit-flex-basis: 66.66%;
   -ms-flex-preferred-size: 66.66%;
   flex-basis: 66.66%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-2 {
-  max-width: 49%;
-  -webkit-flex-basis: 49%;
-  -ms-flex-preferred-size: 49%;
-  flex-basis: 49%;
+  max-width: 48%;
+  -webkit-flex-basis: 48%;
+  -ms-flex-preferred-size: 48%;
+  flex-basis: 48%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-2 {
   max-width: 50%;
   -webkit-flex-basis: 50%;
   -ms-flex-preferred-size: 50%;
   flex-basis: 50%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-4 {
-  max-width: 24%;
-  -webkit-flex-basis: 24%;
-  -ms-flex-preferred-size: 24%;
-  flex-basis: 24%;
+  max-width: 23%;
+  -webkit-flex-basis: 23%;
+  -ms-flex-preferred-size: 23%;
+  flex-basis: 23%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-4 {
   max-width: 25%;
   -webkit-flex-basis: 25%;
   -ms-flex-preferred-size: 25%;
   flex-basis: 25%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-2-4 {
-  max-width: 49%;
-  -webkit-flex-basis: 49%;
-  -ms-flex-preferred-size: 49%;
-  flex-basis: 49%;
+  max-width: 48%;
+  -webkit-flex-basis: 48%;
+  -ms-flex-preferred-size: 48%;
+  flex-basis: 48%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-2-4 {
   max-width: 50%;
   -webkit-flex-basis: 50%;
   -ms-flex-preferred-size: 50%;
   flex-basis: 50%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-3-4 {
-  max-width: 74%;
-  -webkit-flex-basis: 74%;
-  -ms-flex-preferred-size: 74%;
-  flex-basis: 74%;
+  max-width: 73%;
+  -webkit-flex-basis: 73%;
+  -ms-flex-preferred-size: 73%;
+  flex-basis: 73%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-3-4 {
   max-width: 75%;
   -webkit-flex-basis: 75%;
   -ms-flex-preferred-size: 75%;
   flex-basis: 75%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-5 {
-  max-width: 19%;
-  -webkit-flex-basis: 19%;
-  -ms-flex-preferred-size: 19%;
-  flex-basis: 19%;
+  max-width: 18%;
+  -webkit-flex-basis: 18%;
+  -ms-flex-preferred-size: 18%;
+  flex-basis: 18%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-5 {
   max-width: 20%;
   -webkit-flex-basis: 20%;
   -ms-flex-preferred-size: 20%;
   flex-basis: 20%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-6 {
-  max-width: 15.66%;
-  -webkit-flex-basis: 15.66%;
-  -ms-flex-preferred-size: 15.66%;
-  flex-basis: 15.66%;
+  max-width: 14.66%;
+  -webkit-flex-basis: 14.66%;
+  -ms-flex-preferred-size: 14.66%;
+  flex-basis: 14.66%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-6 {
   max-width: 16.66%;
   -webkit-flex-basis: 16.66%;
   -ms-flex-preferred-size: 16.66%;
   flex-basis: 16.66%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-7 {
-  max-width: 13.28%;
-  -webkit-flex-basis: 13.28%;
-  -ms-flex-preferred-size: 13.28%;
-  flex-basis: 13.28%;
+  max-width: 12.28%;
+  -webkit-flex-basis: 12.28%;
+  -ms-flex-preferred-size: 12.28%;
+  flex-basis: 12.28%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-7 {
   max-width: 14.28%;
   -webkit-flex-basis: 14.28%;
   -ms-flex-preferred-size: 14.28%;
   flex-basis: 14.28%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-8 {
-  max-width: 11.5%;
-  -webkit-flex-basis: 11.5%;
-  -ms-flex-preferred-size: 11.5%;
-  flex-basis: 11.5%;
+  max-width: 10.5%;
+  -webkit-flex-basis: 10.5%;
+  -ms-flex-preferred-size: 10.5%;
+  flex-basis: 10.5%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-8 {
   max-width: 12.5%;
   -webkit-flex-basis: 12.5%;
   -ms-flex-preferred-size: 12.5%;
   flex-basis: 12.5%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-9 {
-  max-width: 10.11%;
-  -webkit-flex-basis: 10.11%;
-  -ms-flex-preferred-size: 10.11%;
-  flex-basis: 10.11%;
+  max-width: 9.11%;
+  -webkit-flex-basis: 9.11%;
+  -ms-flex-preferred-size: 9.11%;
+  flex-basis: 9.11%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-9 {
   max-width: 11.11%;
   -webkit-flex-basis: 11.11%;
   -ms-flex-preferred-size: 11.11%;
   flex-basis: 11.11%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-10 {
-  max-width: 9%;
-  -webkit-flex-basis: 9%;
-  -ms-flex-preferred-size: 9%;
-  flex-basis: 9%;
+  max-width: 8%;
+  -webkit-flex-basis: 8%;
+  -ms-flex-preferred-size: 8%;
+  flex-basis: 8%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-10 {
   max-width: 10%;
   -webkit-flex-basis: 10%;
   -ms-flex-preferred-size: 10%;
   flex-basis: 10%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-12 {
-  max-width: 7.33%;
-  -webkit-flex-basis: 7.33%;
-  -ms-flex-preferred-size: 7.33%;
-  flex-basis: 7.33%;
+  max-width: 6.33%;
+  -webkit-flex-basis: 6.33%;
+  -ms-flex-preferred-size: 6.33%;
+  flex-basis: 6.33%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-12 {
   max-width: 8.33%;
   -webkit-flex-basis: 8.33%;
   -ms-flex-preferred-size: 8.33%;
   flex-basis: 8.33%;
 }
-/* line 45, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-16 {
-  max-width: 5.25%;
-  -webkit-flex-basis: 5.25%;
-  -ms-flex-preferred-size: 5.25%;
-  flex-basis: 5.25%;
+  max-width: 4.25%;
+  -webkit-flex-basis: 4.25%;
+  -ms-flex-preferred-size: 4.25%;
+  flex-basis: 4.25%;
 }
-/* line 51, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-16 {
   max-width: 6.25%;
   -webkit-flex-basis: 6.25%;
@@ -1951,53 +1952,53 @@ ul.alert.box li {
 }
 
 /* -- System -- */
-/* line 61, scss/base/components/_grid.scss */
+/* line 59, scss/base/components/_grid.scss */
 .grid {
-  width: 101%;
-  margin-top: -1%;
+  width: 102%;
+  margin-top: -2%;
   position: relative;
-  left: -1%;
+  left: -2%;
 }
-/* line 67, scss/base/components/_grid.scss */
+/* line 65, scss/base/components/_grid.scss */
 .grid [class*="col-"] {
-  width: 99%;
-  margin: 1% 0 0 1%;
+  width: 98%;
+  margin: 2% 0 0 2%;
   float: left;
 }
-/* line 72, scss/base/components/_grid.scss */
+/* line 70, scss/base/components/_grid.scss */
 .grid [class*="col-"].left {
   text-align: left;
 }
-/* line 75, scss/base/components/_grid.scss */
+/* line 73, scss/base/components/_grid.scss */
 .grid [class*="col-"].right {
   text-align: right;
 }
-/* line 78, scss/base/components/_grid.scss */
+/* line 76, scss/base/components/_grid.scss */
 .grid [class*="col-"].center {
   text-align: center;
 }
-/* line 81, scss/base/components/_grid.scss */
+/* line 79, scss/base/components/_grid.scss */
 .grid [class*="col-"].fl {
   float: left;
 }
-/* line 84, scss/base/components/_grid.scss */
+/* line 82, scss/base/components/_grid.scss */
 .grid [class*="col-"].fr {
   float: right;
 }
-/* line 88, scss/base/components/_grid.scss */
+/* line 86, scss/base/components/_grid.scss */
 .grid [class*="col-"]:last-child {
   margin-bottom: 0;
 }
-/* line 93, scss/base/components/_grid.scss */
+/* line 91, scss/base/components/_grid.scss */
 .grid.no-gutter {
   width: 100%;
   left: 0;
 }
-/* line 96, scss/base/components/_grid.scss */
+/* line 94, scss/base/components/_grid.scss */
 .grid.no-gutter [class*="col-"] {
-  margin: 0;
+  margin-left: 0;
 }
-/* line 100, scss/base/components/_grid.scss */
+/* line 98, scss/base/components/_grid.scss */
 .grid.bricked {
   display: inline-block;
   zoom: 1;
@@ -2005,7 +2006,7 @@ ul.alert.box li {
   /* IE Fix */
   letter-spacing: -4px;
 }
-/* line 103, scss/base/components/_grid.scss */
+/* line 101, scss/base/components/_grid.scss */
 .grid.bricked [class*="col-"] {
   float: none;
   display: inline-block;
@@ -2015,123 +2016,123 @@ ul.alert.box li {
   vertical-align: top;
   letter-spacing: normal;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1 {
-  width: 99%;
+  width: 98%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1 {
   width: 100%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-3 {
-  width: 32.33%;
+  width: 31.33%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-3 {
   width: 33.33%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-2-3 {
-  width: 65.66%;
+  width: 64.66%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-2-3 {
   width: 66.66%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-2 {
-  width: 49%;
+  width: 48%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-2 {
   width: 50%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-4 {
-  width: 24%;
+  width: 23%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-4 {
   width: 25%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-2-4 {
-  width: 49%;
+  width: 48%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-2-4 {
   width: 50%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-3-4 {
-  width: 74%;
+  width: 73%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-3-4 {
   width: 75%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-5 {
-  width: 19%;
+  width: 18%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-5 {
   width: 20%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-6 {
-  width: 15.66%;
+  width: 14.66%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-6 {
   width: 16.66%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-7 {
-  width: 13.28%;
+  width: 12.28%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-7 {
   width: 14.28%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-8 {
-  width: 11.5%;
+  width: 10.5%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-8 {
   width: 12.5%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-9 {
-  width: 10.11%;
+  width: 9.11%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-9 {
   width: 11.11%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-10 {
-  width: 9%;
+  width: 8%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-10 {
   width: 10%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-12 {
-  width: 7.33%;
+  width: 6.33%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-12 {
   width: 8.33%;
 }
-/* line 112, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-16 {
-  width: 5.25%;
+  width: 4.25%;
 }
-/* line 115, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-16 {
   width: 6.25%;
 }

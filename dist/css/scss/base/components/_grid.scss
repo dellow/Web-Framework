@@ -2,14 +2,12 @@
    Grid
    Grid layouts.
 ========================================================================== */
-$gutter_width: ($gutter / 2);
-
 /* -- Flex -- */
 .flex-grid {
-	width: 100% + $gutter_width;
-	margin-top: -$gutter_width;
+	width: 100% + $gutter;
+	margin-top: -$gutter;
 	position: relative;
-	left: -$gutter_width;
+	left: -$gutter;
 	// Flex
 	display               : -webkit-box;
 	display               : -webkit-flex;
@@ -25,11 +23,11 @@ $gutter_width: ($gutter / 2);
 	flex-wrap             : wrap;
 	// All columns
 	[class*="col-"] {
-		max-width              : $col_1 - $gutter_width;
-		-webkit-flex-basis     : $col_1 - $gutter_width;
-		-ms-flex-preferred-size: $col_1 - $gutter_width;
-		flex-basis             : $col_1 - $gutter_width;
-		margin: $gutter_width 0 0 $gutter_width;
+		max-width              : $col_1 - $gutter;
+		-webkit-flex-basis     : $col_1 - $gutter;
+		-ms-flex-preferred-size: $col_1 - $gutter;
+		flex-basis             : $col_1 - $gutter;
+		margin: $gutter 0 0 $gutter;
 		// Abstractions
 		&.left {
 			text-align: left;
@@ -43,10 +41,10 @@ $gutter_width: ($gutter / 2);
 	}
 	@each $key, $value in $col_array {
 		.#{$key} {
-			max-width              : $value - $gutter_width;
-			-webkit-flex-basis     : $value - $gutter_width;
-			-ms-flex-preferred-size: $value - $gutter_width;
-			flex-basis             : $value - $gutter_width;
+			max-width              : $value - $gutter;
+			-webkit-flex-basis     : $value - $gutter;
+			-ms-flex-preferred-size: $value - $gutter;
+			flex-basis             : $value - $gutter;
 		}
 		&.no-gutter .#{$key} {
 			max-width              : $value;
@@ -59,14 +57,14 @@ $gutter_width: ($gutter / 2);
 
 /* -- System -- */
 .grid {
-	width: 100% + $gutter_width;
-	margin-top: -$gutter_width;
+	width: 100% + $gutter;
+	margin-top: -$gutter;
 	@extend %cf;
 	position: relative;
-	left: -$gutter_width;
+	left: -$gutter;
 	[class*="col-"] {
-		width: $col_1 - $gutter_width;
-		margin: $gutter_width 0 0 $gutter_width;
+		width: $col_1 - $gutter;
+		margin: $gutter 0 0 $gutter;
 		float: left;
 		// Abstractions
 		&.left {
@@ -94,7 +92,7 @@ $gutter_width: ($gutter / 2);
 		width: $col_1;
 		left: 0;
 		[class*="col-"] {
-			margin: 0;
+			margin-left: 0;
 		}
 	}
 	&.bricked {
@@ -110,7 +108,7 @@ $gutter_width: ($gutter / 2);
 
 	@each $key, $value in $col_array {
 		.#{$key} {
-			width: $value - $gutter_width;
+			width: $value - $gutter;
 		}
 		&.no-gutter .#{$key} {
 			width: $value;

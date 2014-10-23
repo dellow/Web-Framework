@@ -38,26 +38,26 @@
 		@include modify-grid(6%, $col-1-2);
  *	}
 **/
-@mixin modify-grid($gutter_width, $col){
+@mixin modify-grid($gutter, $col){
 	> .grid, &.grid {
-		width: 100% + $gutter_width;
-		margin-top: -$gutter_width;
-		left: -$gutter_width;
+		width: 100% + $gutter;
+		margin-top: -$gutter;
+		left: -$gutter;
 		> [class*="col-"] {
-			width: $col - $gutter_width;
-			margin: $gutter_width 0 0 $gutter_width;
+			width: $col - $gutter;
+			margin: $gutter 0 0 $gutter;
 		}
 	}
 	> .flex-grid, &.flex-grid {
-		width: 100% + $gutter_width;
-		margin-top: -$gutter_width;
-		left: -$gutter_width;
+		width: 100% + $gutter;
+		margin-top: -$gutter;
+		left: -$gutter;
 		> [class*="col-"] {
-			margin: $gutter_width 0 0 $gutter_width;
-			max-width              : $col - $gutter_width;
-			-webkit-flex-basis     : $col - $gutter_width;
-			-ms-flex-preferred-size: $col - $gutter_width;
-			flex-basis             : $col - $gutter_width;
+			margin: $gutter 0 0 $gutter;
+			max-width              : $col - $gutter;
+			-webkit-flex-basis     : $col - $gutter;
+			-ms-flex-preferred-size: $col - $gutter;
+			flex-basis             : $col - $gutter;
 		}
 	}
 }
