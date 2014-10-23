@@ -2237,10 +2237,10 @@ ul.alert.box li {
     display: block !important;
     overflow-y: hidden !important;
     -webkit-transform: translateZ(0) !important;
-    -webkit-transition: max-height 500ms linear;
-    -moz-transition: max-height 500ms linear;
-    -o-transition: max-height 500ms linear;
-    transition: max-height 500ms linear;
+    -webkit-transition: max-height 1000ms ease-in-out;
+    -moz-transition: max-height 1000ms ease-in-out;
+    -o-transition: max-height 1000ms ease-in-out;
+    transition: max-height 1000ms ease-in-out;
   }
   /* line 90, scss/base/components/_menus.scss */
   .mobile-animate.slide-down {

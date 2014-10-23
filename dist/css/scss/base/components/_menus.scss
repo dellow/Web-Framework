@@ -86,7 +86,7 @@
 		display: block !important;
 		overflow-y: hidden !important;
 		-webkit-transform: translateZ(0) !important;
-		@include transition(max-height 500ms linear);
+		@include transition(max-height 1000ms ease-in-out);
 		&.slide-down {
 			max-height: 5000px !important;
 		}
