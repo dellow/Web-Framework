@@ -17,8 +17,7 @@ var state   = (GLOBAL.args != undefined) ? GLOBAL.args : 'development',
         '!' + GLOBAL.src_dir + '**/{scss,scss/**}',
         '!' + GLOBAL.src_dir + '**/js/{app,app/**}',
         '!' + GLOBAL.src_dir + '**/js/{plugins,plugins/**}',
-        '!' + GLOBAL.src_dir + '**/js/{spec,spec/**}',
-        '!' + GLOBAL.src_dir + '**/js/{vendor,vendor/**}'
+        '!' + GLOBAL.src_dir + '**/js/{spec,spec/**}'
     ];
 
 /* ================================================== */
