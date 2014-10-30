@@ -2751,15 +2751,14 @@ form input, form .input, form select, form textarea {
   padding: 4.8px 9.6px;
   padding: 0.3rem 0.6rem;
   margin: 0.2em 0;
-  font-size: 80%;
   background: #FFFFFF;
 }
-/* line 95, scss/base/forms/_base.scss */
+/* line 94, scss/base/forms/_base.scss */
 form textarea {
   min-height: 100px;
   height: 125px;
 }
-/* line 101, scss/base/forms/_base.scss */
+/* line 100, scss/base/forms/_base.scss */
 form .form-block input[type="checkbox"], .form-block form input[type="checkbox"], form .form-block input[type="radio"], .form-block form input[type="radio"], form .form-inline-block input[type="checkbox"], .form-inline-block form input[type="checkbox"], form .form-inline-block input[type="radio"], .form-inline-block form input[type="radio"], form input[type="radio"], form input[type="checkbox"] {
   width: auto;
   height: auto;
@@ -2768,16 +2767,17 @@ form .form-block input[type="checkbox"], .form-block form input[type="checkbox"]
   display: inline;
   vertical-align: middle;
 }
-/* line 109, scss/base/forms/_base.scss */
+/* line 108, scss/base/forms/_base.scss */
 form .form-block input[type="checkbox"] + label, .form-block form input[type="checkbox"] + label, form .form-block input[type="radio"] + label, .form-block form input[type="radio"] + label, form .form-inline-block input[type="checkbox"] + label, .form-inline-block form input[type="checkbox"] + label, form .form-inline-block input[type="radio"] + label, .form-inline-block form input[type="radio"] + label, form input[type="radio"] + label, form input[type="checkbox"] + label {
   margin: 0px 24px 0px 4.8px;
   margin: 0px 1.5rem 0px 0.3rem;
   vertical-align: middle;
 }
-/* line 116, scss/base/forms/_base.scss */
+/* line 115, scss/base/forms/_base.scss */
 form button, form .button {
   padding: 0px 28.8px;
   padding: 0px 1.8rem;
+  border: 0;
   text-align: center;
   background: #f7f7f7;
 }
@@ -4293,6 +4293,10 @@ body.vjs-full-window {
    file should be ignored when creating a new app.
 ========================================================================== */
 /* ==========================================================================
+   Sprites
+   Uses Compass to generate sprites from a directory.
+========================================================================== */
+/* ==========================================================================
    Dev
    CSS for the development environment only. This can be used for
    experimental styles and can be turned off with an environment var
@@ -4305,10 +4309,6 @@ body.vjs-full-window {
    Global
    Styles that are across the board and not specific to
    any single partial.
-========================================================================== */
-/* ==========================================================================
-   Sprites
-   Uses Compass to generate sprites from a directory.
 ========================================================================== */
 /* ==========================================================================
    Fixes

@@ -38,26 +38,42 @@
 		@include modify-grid(6%, $col-1-2);
  *	}
 **/
-@mixin modify-grid($gutter, $col){
-	> .grid, &.grid {
-		width: 100% + $gutter;
-		margin-top: -$gutter;
-		left: -$gutter;
+@mixin modify-grid($gutter_width, $col, $all: false){
+	$grid_selector     : '';
+	$flex_grid_selector: '';
+
+	@if($all){
+		$grid_selector: '> .grid, &.grid';
+	}
+	@else{
+		$grid_selector: '.grid, &.grid';
+	}
+	#{$grid_selector} {
+		width: 100% + $gutter_width;
+		margin-top: -$gutter_width;
+		left: -$gutter_width;
 		> [class*="col-"] {
-			width: $col - $gutter;
-			margin: $gutter 0 0 $gutter;
+			width: $col - $gutter_width;
+			margin: $gutter_width 0 0 $gutter_width;
 		}
 	}
-	> .flex-grid, &.flex-grid {
-		width: 100% + $gutter;
-		margin-top: -$gutter;
-		left: -$gutter;
+
+	@if($all){
+		$flex_grid_selector: '> .flex-grid, &.flex-grid';
+	}
+	@else{
+		$flex_grid_selector: '.flex-grid, &.flex-grid';
+	}
+	#{$flex_grid_selector} {
+		width: 100% + $gutter_width;
+		margin-top: -$gutter_width;
+		left: -$gutter_width;
 		> [class*="col-"] {
-			margin: $gutter 0 0 $gutter;
-			max-width              : $col - $gutter;
-			-webkit-flex-basis     : $col - $gutter;
-			-ms-flex-preferred-size: $col - $gutter;
-			flex-basis             : $col - $gutter;
+			margin: $gutter_width 0 0 $gutter_width;
+			max-width              : $col - $gutter_width;
+			-webkit-flex-basis     : $col - $gutter_width;
+			-ms-flex-preferred-size: $col - $gutter_width;
+			flex-basis             : $col - $gutter_width;
 		}
 	}
 }

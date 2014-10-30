@@ -87,7 +87,6 @@ form {
 	input, .input, select, textarea {
 		@include nudge(padding, 0.2 0.4);
 		margin: 0.2em 0;
-		font-size: 80%;
 		background: color(white);
 	}
 
@@ -115,6 +114,7 @@ form {
 	// Buttons
 	button, .button {
 		@include nudge(padding, 0 1.2);
+		border: 0;
 		text-align: center;
 		background: lighten(color(grey), 10%);
 		// Pseudo
