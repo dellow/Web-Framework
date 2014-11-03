@@ -10,12 +10,14 @@
 /* -- Slab colors -- */
 @each $key, $value in $colors {
 	$class: "" + $key;
-	.bg.color-#{$class}, .slab.color-#{$class} {
-		color: inherit;
-		background: color($key);
-		// Abstractions
-		&.opp {
-			background: color($key, dark);
+	.bg, .slab {
+		&.color-#{$class} {
+			color: inherit;
+			background: color($key);
+			// Abstractions
+			&.opp {
+				background: color($key, dark);
+			}
 		}
 	}
 }

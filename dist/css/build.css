@@ -1546,112 +1546,112 @@ ul.alert.box li {
   box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* line 62, scss/base/components/_buttons.scss */
-.btn.btn-black {
+/* line 63, scss/base/components/_buttons.scss */
+.btn.color-black {
   background: #000000;
 }
-/* line 64, scss/base/components/_buttons.scss */
-.btn.btn-black.disabled:hover {
+/* line 66, scss/base/components/_buttons.scss */
+.btn.color-black.disabled:hover {
   background: #000000;
 }
 
-/* line 62, scss/base/components/_buttons.scss */
-.btn.btn-white {
+/* line 63, scss/base/components/_buttons.scss */
+.btn.color-white {
   background: #FFFFFF;
 }
-/* line 64, scss/base/components/_buttons.scss */
-.btn.btn-white.disabled:hover {
+/* line 66, scss/base/components/_buttons.scss */
+.btn.color-white.disabled:hover {
   background: #FFFFFF;
 }
 
-/* line 62, scss/base/components/_buttons.scss */
-.btn.btn-grey {
+/* line 63, scss/base/components/_buttons.scss */
+.btn.color-grey {
   background: #DDDDDD;
 }
-/* line 64, scss/base/components/_buttons.scss */
-.btn.btn-grey.disabled:hover {
+/* line 66, scss/base/components/_buttons.scss */
+.btn.color-grey.disabled:hover {
   background: #DDDDDD;
 }
-/* line 67, scss/base/components/_buttons.scss */
-.btn.btn-grey:hover {
+/* line 70, scss/base/components/_buttons.scss */
+.btn.color-grey:hover {
   background: #333333;
 }
 
-/* line 62, scss/base/components/_buttons.scss */
-.btn.btn-blue {
+/* line 63, scss/base/components/_buttons.scss */
+.btn.color-blue {
   background: #3498DB;
 }
-/* line 64, scss/base/components/_buttons.scss */
-.btn.btn-blue.disabled:hover {
+/* line 66, scss/base/components/_buttons.scss */
+.btn.color-blue.disabled:hover {
   background: #3498DB;
 }
-/* line 67, scss/base/components/_buttons.scss */
-.btn.btn-blue:hover {
+/* line 70, scss/base/components/_buttons.scss */
+.btn.color-blue:hover {
   background: #217dbb;
 }
 
-/* line 62, scss/base/components/_buttons.scss */
-.btn.btn-green {
+/* line 63, scss/base/components/_buttons.scss */
+.btn.color-green {
   background: #2ECC71;
 }
-/* line 64, scss/base/components/_buttons.scss */
-.btn.btn-green.disabled:hover {
+/* line 66, scss/base/components/_buttons.scss */
+.btn.color-green.disabled:hover {
   background: #2ECC71;
 }
-/* line 67, scss/base/components/_buttons.scss */
-.btn.btn-green:hover {
+/* line 70, scss/base/components/_buttons.scss */
+.btn.color-green:hover {
   background: #25a25a;
 }
 
-/* line 62, scss/base/components/_buttons.scss */
-.btn.btn-orange {
+/* line 63, scss/base/components/_buttons.scss */
+.btn.color-orange {
   background: #E67E22;
 }
-/* line 64, scss/base/components/_buttons.scss */
-.btn.btn-orange.disabled:hover {
+/* line 66, scss/base/components/_buttons.scss */
+.btn.color-orange.disabled:hover {
   background: #E67E22;
 }
-/* line 67, scss/base/components/_buttons.scss */
-.btn.btn-orange:hover {
+/* line 70, scss/base/components/_buttons.scss */
+.btn.color-orange:hover {
   background: #bf6516;
 }
 
-/* line 62, scss/base/components/_buttons.scss */
-.btn.btn-red {
+/* line 63, scss/base/components/_buttons.scss */
+.btn.color-red {
   background: #C4122f;
 }
-/* line 64, scss/base/components/_buttons.scss */
-.btn.btn-red.disabled:hover {
+/* line 66, scss/base/components/_buttons.scss */
+.btn.color-red.disabled:hover {
   background: #C4122f;
 }
-/* line 67, scss/base/components/_buttons.scss */
-.btn.btn-red:hover {
+/* line 70, scss/base/components/_buttons.scss */
+.btn.color-red:hover {
   background: #950e24;
 }
 
-/* line 62, scss/base/components/_buttons.scss */
-.btn.btn-yellow {
+/* line 63, scss/base/components/_buttons.scss */
+.btn.color-yellow {
   background: #F1C40F;
 }
-/* line 64, scss/base/components/_buttons.scss */
-.btn.btn-yellow.disabled:hover {
+/* line 66, scss/base/components/_buttons.scss */
+.btn.color-yellow.disabled:hover {
   background: #F1C40F;
 }
-/* line 67, scss/base/components/_buttons.scss */
-.btn.btn-yellow:hover {
+/* line 70, scss/base/components/_buttons.scss */
+.btn.color-yellow:hover {
   background: #c29d0b;
 }
 
-/* line 62, scss/base/components/_buttons.scss */
-.btn.btn-color {
+/* line 63, scss/base/components/_buttons.scss */
+.btn.color-color {
   background: #000000;
 }
-/* line 64, scss/base/components/_buttons.scss */
-.btn.btn-color.disabled:hover {
+/* line 66, scss/base/components/_buttons.scss */
+.btn.color-color.disabled:hover {
   background: #000000;
 }
-/* line 67, scss/base/components/_buttons.scss */
-.btn.btn-color:hover {
+/* line 70, scss/base/components/_buttons.scss */
+.btn.color-color:hover {
   background: black;
 }
 
@@ -2467,84 +2467,84 @@ ul.alert.box li {
 }
 
 /* -- Slab colors -- */
-/* line 13, scss/base/components/_slabs.scss */
+/* line 14, scss/base/components/_slabs.scss */
 .bg.color-black, .slab.color-black {
   color: inherit;
   background: #000000;
 }
 
-/* line 13, scss/base/components/_slabs.scss */
+/* line 14, scss/base/components/_slabs.scss */
 .bg.color-white, .slab.color-white {
   color: inherit;
   background: #FFFFFF;
 }
 
-/* line 13, scss/base/components/_slabs.scss */
+/* line 14, scss/base/components/_slabs.scss */
 .bg.color-grey, .slab.color-grey {
   color: inherit;
   background: #DDDDDD;
 }
-/* line 17, scss/base/components/_slabs.scss */
+/* line 18, scss/base/components/_slabs.scss */
 .bg.color-grey.opp, .slab.color-grey.opp {
   background: #333333;
 }
 
-/* line 13, scss/base/components/_slabs.scss */
+/* line 14, scss/base/components/_slabs.scss */
 .bg.color-blue, .slab.color-blue {
   color: inherit;
   background: #3498DB;
 }
-/* line 17, scss/base/components/_slabs.scss */
+/* line 18, scss/base/components/_slabs.scss */
 .bg.color-blue.opp, .slab.color-blue.opp {
   background: #217dbb;
 }
 
-/* line 13, scss/base/components/_slabs.scss */
+/* line 14, scss/base/components/_slabs.scss */
 .bg.color-green, .slab.color-green {
   color: inherit;
   background: #2ECC71;
 }
-/* line 17, scss/base/components/_slabs.scss */
+/* line 18, scss/base/components/_slabs.scss */
 .bg.color-green.opp, .slab.color-green.opp {
   background: #25a25a;
 }
 
-/* line 13, scss/base/components/_slabs.scss */
+/* line 14, scss/base/components/_slabs.scss */
 .bg.color-orange, .slab.color-orange {
   color: inherit;
   background: #E67E22;
 }
-/* line 17, scss/base/components/_slabs.scss */
+/* line 18, scss/base/components/_slabs.scss */
 .bg.color-orange.opp, .slab.color-orange.opp {
   background: #bf6516;
 }
 
-/* line 13, scss/base/components/_slabs.scss */
+/* line 14, scss/base/components/_slabs.scss */
 .bg.color-red, .slab.color-red {
   color: inherit;
   background: #C4122f;
 }
-/* line 17, scss/base/components/_slabs.scss */
+/* line 18, scss/base/components/_slabs.scss */
 .bg.color-red.opp, .slab.color-red.opp {
   background: #950e24;
 }
 
-/* line 13, scss/base/components/_slabs.scss */
+/* line 14, scss/base/components/_slabs.scss */
 .bg.color-yellow, .slab.color-yellow {
   color: inherit;
   background: #F1C40F;
 }
-/* line 17, scss/base/components/_slabs.scss */
+/* line 18, scss/base/components/_slabs.scss */
 .bg.color-yellow.opp, .slab.color-yellow.opp {
   background: #c29d0b;
 }
 
-/* line 13, scss/base/components/_slabs.scss */
+/* line 14, scss/base/components/_slabs.scss */
 .bg.color-color, .slab.color-color {
   color: inherit;
   background: #000000;
 }
-/* line 17, scss/base/components/_slabs.scss */
+/* line 18, scss/base/components/_slabs.scss */
 .bg.color-color.opp, .slab.color-color.opp {
   background: black;
 }
@@ -2627,29 +2627,29 @@ table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight
    Description goes here.
 ========================================================================== */
 /* -- Pagination -- */
-/* line 6, scss/base/modules/_pagination.scss */
-.module--pagination {
-  font-size: 12px;
-  font-size: 0.75rem;
-}
-/* line 9, scss/base/modules/_pagination.scss */
+/* line 8, scss/base/modules/_pagination.scss */
 .module--pagination .page-numbers {
   padding: 6px 12px;
   padding: 0.375rem 0.75rem;
-  margin-left: -3px;
-  border: 1px solid #ccc;
+  border-radius: 3px;
   display: inline-block;
   zoom: 1;
   *display: inline;
   /* IE Fix */
+  color: #FFFFFF;
+  background: #C4122f;
+  -webkit-transition: background-color 300ms ease;
+  -moz-transition: background-color 300ms ease;
+  -o-transition: background-color 300ms ease;
+  transition: background-color 300ms ease;
 }
-/* line 15, scss/base/modules/_pagination.scss */
+/* line 16, scss/base/modules/_pagination.scss */
 .module--pagination .page-numbers.current {
-  color: #C4122f;
+  background: #950e24;
 }
-/* line 19, scss/base/modules/_pagination.scss */
-.module--pagination .page-numbers:first-child {
-  margin-left: 0;
+/* line 20, scss/base/modules/_pagination.scss */
+.module--pagination .page-numbers:hover {
+  background: #950e24;
 }
 
 /* ==========================================================================

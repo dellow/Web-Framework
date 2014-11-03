@@ -5,19 +5,20 @@
 /* -- Pagination -- */
 .module--pagination {
 	@extend %cf;
-	@include rem(font-size, 12px);
 	.page-numbers {
 		@include nudge(padding, 0.25 0.5);
-		margin-left: -3px;
-		border: 1px solid #ccc;
+		border-radius: $border_radius_base;
 		@include inline-block;
+		color: color(white);
+		background: color(red);
+		@include transition(background-color $animation ease);
 		// Abstractions
 		&.current {
-			color: $color_text_link
+			background: color(red, dark);
 		}
 		// Pseudo
-		&:first-child {
-			margin-left: 0;
+		&:hover {
+			background: color(red, dark);
 		}
 	}
 }
