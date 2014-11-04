@@ -37,7 +37,7 @@ p, blockquote, address {
 }
 // Paragraph
 p {
-	&:last-of-type {
+	&:last-child {
 		margin-bottom: 0;
 	}
 }
@@ -56,9 +56,9 @@ p {
 		float: right;
 	}
 	img {
-		width: 100%;
 		// Abstractions
 		&.alignleft, &.alignright, &.aligncenter, &.alignnone {
+			width: 100%;
 			border: 2px solid #efefef;
 			border-radius: $border_radius_base;
 		}
@@ -89,11 +89,6 @@ p {
 	> a {
 		display: block;
 	}
-}
-
-/* -- Lists -- */
-ul, ol {
-	margin-left: $ul_indent_base;
 }
 
 /* -- Heading Formatting -- */

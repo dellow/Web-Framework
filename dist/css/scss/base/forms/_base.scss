@@ -76,6 +76,7 @@ form {
 		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active  {
 			border-color: lighten(color(grey), 5%);
 			cursor: no-drop;
+			color: color(grey);
 			background: lighten(color(grey), 10%);
 		}
 		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {

@@ -27,7 +27,7 @@
 <!--[if (IE 9)&!(IEMobile)]><html class="no-js ie9 oldie" lang="en"><![endif]-->
 <!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>HTML Framework | Forms</title>
 <!-- ============================================================================== -->
 <!--                                                              STYLEGUIDE STYLES -->
@@ -39,23 +39,18 @@
 <!--                                                                         STYLES -->
 <!-- ============================================================================== -->
 <link rel="stylesheet" href="../../css/build.css" media="all">
-<!-- ============================================================================== -->
-<!--                                                                        HELPERS -->
-<!-- ============================================================================== -->
-<script src="../../js/vendor/modernizr.min.js"></script>
 </head>
 <body class="styleguide no-debug">
 
 <div class="container">
 	<h1>Forms</h1>
-	<nav class="navigation" role="navigation">
-		<ul class="nav-primary" role="menu">
-			<li class="nav-general" role="menuitem"><a href="styleguide.html" title="General">General</a></li>
-			<li class="nav-forms" role="menuitem"><a href="forms.html" title="Forms">Forms</a></li>
-			<li class="nav-javascript" role="menuitem"><a href="javascript.html" title="JavaScript">JavaScript</a></li>
-			<li class="nav-rhythm" role="menuitem"><a href="rhythm.html" title="Rhythm">Rhythm</a></li>
-		</ul><!-- .nav-primary -->
-	</nav><!-- .navigation-->
+	<ul role="menu">
+		<li role="menuitem"><a href="styleguide.html">General</a></li>
+		<li role="menuitem"><a href="forms.html">Forms</a></li>
+		<li role="menuitem"><a href="javascript.html">JavaScript</a></li>
+		<li role="menuitem"><a href="layout.html">Layout</a></li>
+		<li role="menuitem"><a href="rhythm.html">Rhythm</a></li>
+	</ul>
 </div>
 
 <hr class="styled-seperator">
@@ -91,7 +86,7 @@
 					<!-- Text input -->
 					<div class="field">
 						<label for="form__fullname">Name <abbr title="Required">*</abbr></label>
-						<input type="text" name="fields[fullname]" id="form__fullname" placeholder="e.g. John Smith" required>
+						<input type="text" name="fields[fullname]" id="form__fullname" placeholder="e.g. John Smith" aria-required="true" required>
 						<span class="note">A note about this field.</span>
 						<!-- Validation & Filter -->
 						<input type="hidden" name="validationmessage[fullname]" class="error-message" value="Please enter your name">
@@ -114,7 +109,7 @@
 					<!-- Email input -->
 					<div class="field">
 						<label for="form__emailaddress">Email Address <abbr title="Required">*</abbr></label>
-						<input type="email" name="fields[emailaddress]" id="form__emailaddress" placeholder="e.g. john.smith@hotmail.com" required>
+						<input type="email" name="fields[emailaddress]" id="form__emailaddress" placeholder="e.g. john.smith@hotmail.com" aria-required="true" required>
 						<span class="note">A note about this field.</span>
 						<!-- Validation & Filter -->
 						<input type="hidden" name="validationmessage[emailaddress]" class="error-message" value="Please enter a valid email address">
@@ -125,15 +120,15 @@
 						<div class="label">Please choose a checkbox option <abbr title="Required">*</abbr></div>
 						<div class="field-container">
 							<label for="form__checkbox_option1">
-								<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option1" value="Option #1" required>
+								<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option1" value="Option #1" aria-required="true" required>
 								Option #1
 							</label>
 							<label for="form__checkbox_option2">
-								<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option2" value="Option #2" required>
+								<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option2" value="Option #2" aria-required="true" required>
 								Option #2
 							</label>
 							<label for="form__checkbox_option3">
-								<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option3" value="Option #3" required>
+								<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option3" value="Option #3" aria-required="true" required>
 								Option #3
 							</label>
 							<!-- Dummy -->
@@ -149,15 +144,15 @@
 						<div class="label">Please choose a radio option <abbr title="Required">*</abbr></div>
 						<div class="field-container">
 							<label for="form__radio_option1">
-								<input type="radio" name="fields[radio_option][]" id="form__radio_option1" value="Option #1" required>
+								<input type="radio" name="fields[radio_option][]" id="form__radio_option1" value="Option #1" aria-required="true" required>
 								Option #1
 							</label>
 							<label for="form__radio_option2">
-								<input type="radio" name="fields[radio_option][]" id="form__radio_option2" value="Option #2" required>
+								<input type="radio" name="fields[radio_option][]" id="form__radio_option2" value="Option #2" aria-required="true" required>
 								Option #2
 							</label>
 							<label for="form__radio_option3">
-								<input type="radio" name="fields[radio_option][]" id="form__radio_option3" value="Option #3" required>
+								<input type="radio" name="fields[radio_option][]" id="form__radio_option3" value="Option #3" aria-required="true" required>
 								Option #3
 							</label>
 							<!-- Dummy -->
@@ -171,7 +166,7 @@
 					<!-- Select box -->
 					<div class="field">
 						<label for="form__select_option">Please choose a select option <abbr title="Required">*</abbr></label>
-						<select name="fields[select_option]" id="form__select_option" required>
+						<select name="fields[select_option]" id="form__select_option" aria-required="true" required>
 							<option value="">Please Select</option>
 							<option value="Option #1">Option #1</option>
 							<option value="Option #2">Option #2</option>
@@ -186,7 +181,7 @@
 					<!-- Textarea -->
 					<div class="field">
 						<label for="form__message">Message <abbr title="Required">*</abbr></label>
-						<textarea name="fields[message]" id="form__message" required></textarea>
+						<textarea name="fields[message]" id="form__message" aria-required="true" required></textarea>
 						<span class="note">A note about this field.</span>
 						<!-- Validation & Filter -->
 						<input type="hidden" name="validationmessage[message]" class="error-message" value="Please enter a message">

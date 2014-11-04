@@ -92,6 +92,19 @@
 }
 
 /**
+ * transform
+ * Cross browser transform.
+ *
+ * .foo {@include transform(scale(1.25));}
+**/
+@mixin transform($pattern...){
+	-webkit-transform: $pattern;
+	-moz-transform   : $pattern;
+	-o-transform     : $pattern;
+	transform        : $pattern;
+}
+
+/**
  * opacity
  * Cross browser opacity.
  *
@@ -132,7 +145,7 @@
 		left: 0;
 		box-shadow: 0 0.25em 0 0 $color, 0 0.5em 0 0 $color;
 		background: $color;
-		@include transition($animation background ease, $animation box-shadow ease);
+		@include transition(background $animation ease, box-shadow $animation ease);
 	}
 	&:hover:before {
 		box-shadow: 0 0.25em 0 0 $hover, 0 0.5em 0 0 $hover;
