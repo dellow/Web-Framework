@@ -14,8 +14,16 @@
 	}
 }
 
+// Preserve-3D method to prevent blurring
+%preserve-3d {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style   : preserve-3d;
+	-o-transform-style     : preserve-3d;
+	transform-style        : preserve-3d;
+}
+
 // Vertically align elements with display: flex;
-%vertical-align {
+%flex-vertical-align {
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
@@ -33,4 +41,11 @@
 	-ms-justify-content    : center;
 	-o-justify-content     : center;
 	justify-content        : center;
+}
+
+// Vertically align elements with transform:
+%transform-vertical-align {
+	position: relative;
+	top: 50%;
+	@include transform(translateY(-50%));
 }
