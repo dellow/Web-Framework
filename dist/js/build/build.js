@@ -38,6 +38,13 @@ require('../plugins/wiselinks');
 
 			$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
 	            Helpers.log("Wiselinks status: '" + status);
+				// GA Page View
+				ga('send', 'pageview', {
+					'page'      : url,
+					'dimension1': WURFL.complete_device_name,
+					'dimension2': WURFL.form_factor,
+					'dimension3': WURFL.is_mobile
+				});
 		    });
 
 			$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
