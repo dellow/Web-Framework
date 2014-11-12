@@ -4,6 +4,7 @@
 ========================================================================== */
 /* -- Flex -- */
 .flex-grid {
+	$top: ($gutter / ($gutter * 0 + 1));
 	width: 100% + $gutter;
 	margin-top: -$gutter;
 	position: relative;
@@ -27,7 +28,7 @@
 		-webkit-flex-basis     : $col_1 - $gutter;
 		-ms-flex-preferred-size: $col_1 - $gutter;
 		flex-basis             : $col_1 - $gutter;
-		margin: $gutter 0 0 $gutter;
+		margin: #{$top}rem 0 0 $gutter;
 		// Abstractions
 		&.left {
 			text-align: left;

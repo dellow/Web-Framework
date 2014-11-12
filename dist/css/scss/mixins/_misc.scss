@@ -65,15 +65,16 @@
 		$flex_grid_selector: '.flex-grid, &.flex-grid';
 	}
 	#{$flex_grid_selector} {
+		$top: ($gutter_width / ($gutter_width * 0 + 1)) / 1.11;
 		width: 100% + $gutter_width;
-		margin-top: -$gutter_width;
+		margin-top: -$top;
 		left: -$gutter_width;
 		> [class*="col-"] {
-			margin: $gutter_width 0 0 $gutter_width;
 			max-width              : $col - $gutter_width;
 			-webkit-flex-basis     : $col - $gutter_width;
 			-ms-flex-preferred-size: $col - $gutter_width;
 			flex-basis             : $col - $gutter_width;
+			margin: #{$top}rem 0 0 $gutter_width;
 		}
 	}
 }
