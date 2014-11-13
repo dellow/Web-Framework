@@ -82,6 +82,19 @@ if [[ -e ./src/.htaccess ]]; then
 fi
 
 # ------------------------------------------------------------------------
+# robots.txt
+# ------------------------------------------------------------------------
+#
+if [[ -e ./src/robots.txt ]]; then
+	read -p "$(tput setaf 5)Do you need the robots.txt file? y/n $(tput sgr0)" choice
+	if [[ $choice = "n" ]]; then
+		echo -e "$(tput setaf 3)Removing robots.txt...$(tput sgr0)"
+		rm ./src/robots.txt
+	fi
+	printf "\n"
+fi
+
+# ------------------------------------------------------------------------
 # Deployment Tool
 # ------------------------------------------------------------------------
 #
@@ -90,14 +103,27 @@ if [[ -d ./deploy ]]; then
 	if [[ $choice = "n" ]]; then
 		echo -e "$(tput setaf 3)Removing deployment tool...$(tput sgr0)"
 		rm -rf ./deploy
-		rm -rf ./deploy.sh
-		rm -rf ./.gitattributes
+		rm ./deploy.sh
+		rm ./.gitattributes
 	else
 		echo -e "$(tput setaf 3)Setting permissions on deployment tool...$(tput sgr0)"
 		chmod +x ./deploy.sh
 	fi
 	printf "\n"
 fi
+
+# ------------------------------------------------------------------------
+# Install WordPress
+# ------------------------------------------------------------------------
+#
+read -p "$(tput setaf 5)Would you like to install WordPress? y/n $(tput sgr0)" choice
+if [[ $choice = "n" ]]; then
+	echo -e "$(tput setaf 3)Installing WordPress...$(tput sgr0)"
+	rm ./src/*
+	git clone git@github.com:sdellow/WordPress-Framework.git ./src
+	bash ./src/plugins.sh
+fi
+printf "\n"
 
 # ------------------------------------------------------------------------
 # Check for a commit
