@@ -1,6 +1,12 @@
-/* ======================================================== */
-/* Module
-/* ======================================================== */
+/**
+ *
+ * Module
+ *
+ * Copyright 2014, Author Name
+ * Some information on the license.
+ *
+**/
+
 ;(function(Module, $, window, undefined){
 	'use strict';
 

@@ -1,9 +1,17 @@
-/* ======================================================== */
-/* PageController
-/* Adds Ajax loading to page.
-/* Just add '<a href="link.php" data-push="true">Page 2</a>'
-/* to any link that needs to be loaded with Ajax
-/* ======================================================== */
+/**
+ *
+ * PageController
+ *
+ * Copyright 2014, Author Name
+ * Some information on the license.
+ *
+ * Loads pages via Ajax thanks to WiseLinks.
+ *
+ * Just add '<a href="link.php" data-push="true">Page 2</a>'
+ * to any link that needs to be loaded with Ajax.
+ *
+**/
+
 // Require
 require('../plugins/wiselinks');
 
@@ -14,12 +22,12 @@ require('../plugins/wiselinks');
 	 * Module.init
 	 * Init method for this module
 	**/
-	Module.init = function(){
+	Module.init = function(el){
 		$(function(){
             // Run page load events.
 			Module.page_load();
 			// Init WiseLinks
-			window.wiselinks = new Wiselinks($('.main'));
+			window.wiselinks = new Wiselinks(el);
 			// WiseLinks events
 			$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
 	            Helpers.log("Loading: " + url + " to " + $target.selector + " within '" + render);
@@ -57,6 +65,8 @@ require('../plugins/wiselinks');
 	 * Run on page load.
 	**/
 	Module.page_load = function(){
+		Menu.init(window.mobile_breakpoint);
+		Binds.init();
 	}
 
 	// Export

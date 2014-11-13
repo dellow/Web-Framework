@@ -3351,564 +3351,316 @@ form .response--warning .msg {
   border-radius: 0 0 3px 3px;
 }
 
-/* line 1, scss/base/javascript/_video.scss */
-body.vjs-full-window {
+/*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
+/* line 2, scss/base/javascript/_fancybox.scss */
+.fancybox-wrap,
+.fancybox-skin,
+.fancybox-outer,
+.fancybox-inner,
+.fancybox-image,
+.fancybox-wrap iframe,
+.fancybox-wrap object,
+.fancybox-nav,
+.fancybox-nav span,
+.fancybox-tmp {
   padding: 0;
   margin: 0;
-  height: 100%;
-  overflow-y: auto;
+  border: 0;
+  outline: none;
+  vertical-align: top;
 }
 
-/* line 7, scss/base/javascript/_video.scss */
-.video-js {
-  background-color: #34495e;
-  border-radius: 6px;
-  position: relative;
-  padding: 0;
-  font-size: 10px;
-  vertical-align: middle;
-}
-/* line 14, scss/base/javascript/_video.scss */
-.video-js .vjs-tech {
+/* line 20, scss/base/javascript/_fancybox.scss */
+.fancybox-wrap {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  z-index: 8020;
 }
-/* line 20, scss/base/javascript/_video.scss */
-.video-js .vjs-text-track-display {
-  text-align: center;
-  position: absolute;
-  bottom: 4em;
-  left: 1em;
-  right: 1em;
-  font-family: "Lato", sans-serif;
+
+/* line 27, scss/base/javascript/_fancybox.scss */
+.fancybox-skin {
+  position: relative;
+  background: #f9f9f9;
+  color: #444;
+  text-shadow: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
-/* line 28, scss/base/javascript/_video.scss */
-.video-js .vjs-text-track {
-  display: none;
-  color: white;
-  font-size: 1.4em;
-  text-align: center;
-  margin-bottom: 0.1em;
-  background: black;
-  background: rgba(0, 0, 0, 0.5);
+
+/* line 37, scss/base/javascript/_fancybox.scss */
+.fancybox-opened {
+  z-index: 8030;
 }
-/* line 37, scss/base/javascript/_video.scss */
-.video-js .vjs-subtitles {
-  color: white;
+
+/* line 41, scss/base/javascript/_fancybox.scss */
+.fancybox-opened .fancybox-skin {
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
-/* line 40, scss/base/javascript/_video.scss */
-.video-js .vjs-captions {
-  color: #ffcc66;
+
+/* line 47, scss/base/javascript/_fancybox.scss */
+.fancybox-outer, .fancybox-inner {
+  position: relative;
 }
-/* line 43, scss/base/javascript/_video.scss */
-.video-js:-moz-full-screen {
-  position: absolute;
-}
-/* line 46, scss/base/javascript/_video.scss */
-.video-js.vjs-fullscreen {
-  position: fixed;
+
+/* line 51, scss/base/javascript/_fancybox.scss */
+.fancybox-inner {
   overflow: hidden;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100% !important;
-  height: 100% !important;
-  _position: absolute;
-}
-/* line 58, scss/base/javascript/_video.scss */
-.video-js:-webkit-full-screen {
-  width: 100% !important;
-  height: 100% !important;
 }
 
-/* line 63, scss/base/javascript/_video.scss */
-.vjs-poster {
-  margin: 0 auto;
-  padding: 0;
-  cursor: pointer;
-  position: relative;
+/* line 55, scss/base/javascript/_fancybox.scss */
+.fancybox-type-iframe .fancybox-inner {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* line 59, scss/base/javascript/_fancybox.scss */
+.fancybox-error {
+  color: #444;
+  font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin: 0;
+  padding: 15px;
+  white-space: nowrap;
+}
+
+/* line 67, scss/base/javascript/_fancybox.scss */
+.fancybox-image, .fancybox-iframe {
+  display: block;
   width: 100%;
+  height: 100%;
+}
+
+/* line 73, scss/base/javascript/_fancybox.scss */
+.fancybox-image {
+  max-width: 100%;
   max-height: 100%;
 }
 
-/* line 71, scss/base/javascript/_video.scss */
-.vjs-tt-cue {
-  display: block;
+/* line 78, scss/base/javascript/_fancybox.scss */
+#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+  background-image: url("../images/plugins/fancybox/fancybox_sprite.png");
 }
 
-/* line 74, scss/base/javascript/_video.scss */
-.vjs-fade-in {
-  visibility: visible !important;
-  opacity: 1 !important;
-  -webkit-transition: visibility 0s linear 0s, opacity 0.3s linear;
-  -moz-transition: visibility 0s linear 0s, opacity 0.3s linear;
-  -o-transition: visibility 0s linear 0s, opacity 0.3s linear;
-  transition: visibility 0s linear 0s, opacity 0.3s linear;
-  -webkit-backface-visibility: hidden;
+/* line 82, scss/base/javascript/_fancybox.scss */
+#fancybox-loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -22px;
+  margin-left: -22px;
+  background-position: 0 -108px;
+  opacity: 0.8;
+  cursor: pointer;
+  z-index: 8060;
 }
 
-/* line 83, scss/base/javascript/_video.scss */
-.vjs-fade-out {
-  visibility: hidden !important;
-  opacity: 0 !important;
-  -webkit-transition: visibility 0s linear 1.5s, opacity 1.5s linear;
-  -moz-transition: visibility 0s linear 1.5s, opacity 1.5s linear;
-  -o-transition: visibility 0s linear 1.5s, opacity 1.5s linear;
-  transition: visibility 0s linear 1.5s, opacity 1.5s linear;
-  -webkit-backface-visibility: hidden;
+/* line 94, scss/base/javascript/_fancybox.scss */
+#fancybox-loading div {
+  width: 44px;
+  height: 44px;
+  background: url("../images/plugins/fancybox/fancybox_loading.gif") center center no-repeat;
 }
 
-/* line 92, scss/base/javascript/_video.scss */
-.vjs-controls {
+/* line 100, scss/base/javascript/_fancybox.scss */
+.fancybox-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 8040;
+}
+
+/* line 110, scss/base/javascript/_fancybox.scss */
+.fancybox-nav {
+  position: absolute;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent url("../images/plugins/fancybox/blank.gif");
+  /* helps IE */
+  -webkit-tap-highlight-color: transparent;
+  z-index: 8040;
+}
+
+/* line 122, scss/base/javascript/_fancybox.scss */
+.fancybox-prev {
+  left: 0;
+}
+
+/* line 126, scss/base/javascript/_fancybox.scss */
+.fancybox-next {
+  right: 0;
+}
+
+/* line 130, scss/base/javascript/_fancybox.scss */
+.fancybox-nav span {
+  position: absolute;
+  top: 50%;
+  width: 36px;
+  height: 34px;
+  margin-top: -18px;
+  cursor: pointer;
+  z-index: 8040;
+  visibility: hidden;
+}
+
+/* line 141, scss/base/javascript/_fancybox.scss */
+.fancybox-prev span {
+  left: 10px;
+  background-position: 0 -36px;
+}
+
+/* line 146, scss/base/javascript/_fancybox.scss */
+.fancybox-next span {
+  right: 10px;
+  background-position: 0 -72px;
+}
+
+/* line 151, scss/base/javascript/_fancybox.scss */
+.fancybox-nav:hover span {
+  visibility: visible;
+}
+
+/* line 155, scss/base/javascript/_fancybox.scss */
+.fancybox-tmp {
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+  visibility: hidden;
+  max-width: 99999px;
+  max-height: 99999px;
+  overflow: visible !important;
+}
+
+/* Overlay helper */
+/* line 167, scss/base/javascript/_fancybox.scss */
+.fancybox-lock {
+  overflow: hidden !important;
+  width: auto;
+}
+
+/* line 172, scss/base/javascript/_fancybox.scss */
+.fancybox-lock body {
+  overflow: hidden !important;
+}
+
+/* line 176, scss/base/javascript/_fancybox.scss */
+.fancybox-lock-test {
+  overflow-y: hidden !important;
+}
+
+/* line 180, scss/base/javascript/_fancybox.scss */
+.fancybox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: none;
+  z-index: 8010;
+  background: url("../images/plugins/fancybox/fancybox_overlay.png");
+}
+
+/* line 190, scss/base/javascript/_fancybox.scss */
+.fancybox-overlay-fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+/* line 196, scss/base/javascript/_fancybox.scss */
+.fancybox-lock .fancybox-overlay {
+  overflow: auto;
+  overflow-y: scroll;
+}
+
+/* Title helper */
+/* line 203, scss/base/javascript/_fancybox.scss */
+.fancybox-title {
+  visibility: hidden;
+  font: normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  position: relative;
+  text-shadow: none;
+  z-index: 8050;
+}
+
+/* line 211, scss/base/javascript/_fancybox.scss */
+.fancybox-opened .fancybox-title {
+  visibility: visible;
+}
+
+/* line 215, scss/base/javascript/_fancybox.scss */
+.fancybox-title-float-wrap {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  margin-bottom: -35px;
+  z-index: 8050;
+  text-align: center;
+}
+
+/* line 224, scss/base/javascript/_fancybox.scss */
+.fancybox-title-float-wrap .child {
+  display: inline-block;
+  margin-right: -100%;
+  padding: 2px 20px;
+  background: transparent;
+  /* Fallback for web browsers that doesn't support RGBa */
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  text-shadow: 0 1px 2px #222;
+  color: #FFF;
+  font-weight: bold;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+/* line 240, scss/base/javascript/_fancybox.scss */
+.fancybox-title-outside-wrap {
+  position: relative;
+  margin-top: 10px;
+  color: #fff;
+}
+
+/* line 246, scss/base/javascript/_fancybox.scss */
+.fancybox-title-inside-wrap {
+  padding-top: 10px;
+}
+
+/* line 250, scss/base/javascript/_fancybox.scss */
+.fancybox-title-over-wrap {
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  height: 47px;
-  border-radius: 0 0 6px 6px;
-  color: white;
-  background: #2c3e50;
-}
-/* line 103, scss/base/javascript/_video.scss */
-.vjs-controls.vjs-fade-out {
-  visibility: visible !important;
-  opacity: 1 !important;
+  color: #fff;
+  padding: 10px;
+  background: #000;
+  background: rgba(0, 0, 0, 0.8);
 }
 
-/* line 108, scss/base/javascript/_video.scss */
-.vjs-control {
-  background-position: center center;
-  background-repeat: no-repeat;
-  position: relative;
-  float: left;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  height: 18px;
-  width: 18px;
-}
-/* line 118, scss/base/javascript/_video.scss */
-.vjs-control div {
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-/* line 122, scss/base/javascript/_video.scss */
-.vjs-control:focus {
-  outline: 0;
-}
-
-/* line 126, scss/base/javascript/_video.scss */
-.vjs-control-text {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-/* line 136, scss/base/javascript/_video.scss */
-.vjs-play-control {
-  cursor: pointer !important;
-  height: 47px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 58px;
-}
-
-/* line 145, scss/base/javascript/_video.scss */
-.vjs-paused .vjs-play-control {
-  background: url(../images/plugins/video/play.png) center -31px no-repeat;
-  background-size: 16px 64px;
-}
-/* line 149, scss/base/javascript/_video.scss */
-.vjs-paused .vjs-play-control:hover div {
-  opacity: 0;
-}
-/* line 152, scss/base/javascript/_video.scss */
-.vjs-paused .vjs-play-control div {
-  background: url(../images/plugins/video/play.png) center 15px no-repeat;
-  background-size: 16px 64px;
-  height: 47px;
-  -webkit-transition: opacity 0.25s;
-  -moz-transition: opacity 0.25s;
-  -o-transition: opacity 0.25s;
-  transition: opacity 0.25s;
-  -webkit-backface-visibility: hidden;
-}
-
-/* line 164, scss/base/javascript/_video.scss */
-.vjs-playing .vjs-play-control {
-  background: url(../images/plugins/video/pause.png) center -31px no-repeat;
-  background-size: 15px 64px;
-}
-/* line 168, scss/base/javascript/_video.scss */
-.vjs-playing .vjs-play-control:hover div {
-  opacity: 0;
-}
-/* line 171, scss/base/javascript/_video.scss */
-.vjs-playing .vjs-play-control div {
-  background: url(../images/plugins/video/pause.png) center 15px no-repeat;
-  background-size: 15px 64px;
-  height: 47px;
-  -webkit-transition: opacity 0.25s;
-  -moz-transition: opacity 0.25s;
-  -o-transition: opacity 0.25s;
-  transition: opacity 0.25s;
-  -webkit-backface-visibility: hidden;
-}
-
-/* line 182, scss/base/javascript/_video.scss */
-.vjs-rewind-control {
-  width: 5em;
-  cursor: pointer !important;
-}
-/* line 185, scss/base/javascript/_video.scss */
-.vjs-rewind-control div {
-  width: 19px;
-  height: 16px;
-  background: url(../images/icons/video-js.png);
-  margin: 0.5em auto 0;
-}
-
-/* line 192, scss/base/javascript/_video.scss */
-.vjs-mute-control {
-  background: url(../images/plugins/video/volume-full.png) center -48px no-repeat;
-  background-size: 16px 64px;
-  cursor: pointer !important;
-  position: absolute;
-  right: 51px;
-  top: 14px;
-}
-/* line 199, scss/base/javascript/_video.scss */
-.vjs-mute-control div {
-  background: #2c3e50 url(../images/plugins/video/volume-full.png) no-repeat center 2px;
-  background-size: 16px 64px;
-  height: 18px;
-  -webkit-transition: opacity 0.25s;
-  -moz-transition: opacity 0.25s;
-  -o-transition: opacity 0.25s;
-  transition: opacity 0.25s;
-  -webkit-backface-visibility: hidden;
-}
-/* line 209, scss/base/javascript/_video.scss */
-.vjs-mute-control:hover div, .vjs-mute-control:focus div {
-  opacity: 0;
-}
-/* line 212, scss/base/javascript/_video.scss */
-.vjs-mute-control.vjs-vol-0, .vjs-mute-control.vjs-vol-0 div {
-  background-image: url(../images/plugins/video/volume-off.png);
-}
-
-/* line 216, scss/base/javascript/_video.scss */
-.vjs-volume-control, .vjs-volume-level, .vjs-volume-handle,
-.vjs-volume-bar {
-  display: none;
-}
-
-/* line 220, scss/base/javascript/_video.scss */
-.vjs-progress-control {
-  border-radius: 32px;
-  position: absolute;
-  left: 60px;
-  right: 180px;
-  height: 12px;
-  width: auto;
-  top: 18px;
-  background: #eff2f6;
-}
-
-/* line 230, scss/base/javascript/_video.scss */
-.vjs-progress-holder {
-  position: relative;
-  cursor: pointer !important;
-  padding: 0;
-  margin: 0;
-  height: 12px;
-}
-
-/* line 237, scss/base/javascript/_video.scss */
-.vjs-play-progress, .vjs-load-progress {
-  border-radius: 32px;
-  position: absolute;
-  display: block;
-  height: 12px;
-  margin: 0;
-  padding: 0;
-  left: 0;
-  top: 0;
-}
-
-/* line 247, scss/base/javascript/_video.scss */
-.vjs-play-progress {
-  background: #1abc9c;
-  left: -1px;
-}
-
-/* line 251, scss/base/javascript/_video.scss */
-.vjs-load-progress {
-  background: #d6dbe0;
-  border-radius: 32px 0 0 32px;
-}
-
-/* line 255, scss/base/javascript/_video.scss */
-.vjs-load-progress[style*='100%'], .vjs-load-progress[style*='99%'] {
-  border-radius: 32px;
-}
-
-/* line 258, scss/base/javascript/_video.scss */
-.vjs-seek-handle {
-  background-color: #16a085;
-  border-radius: 50%;
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  margin: -3px 0 0 1px;
-  left: 0;
-  top: 0;
-  -webkit-transition: background-color 0.25s;
-  -moz-transition: background-color 0.25s;
-  -o-transition: background-color 0.25s;
-  transition: background-color 0.25s;
-  -webkit-backface-visibility: hidden;
-}
-
-/* line 273, scss/base/javascript/_video.scss */
-.vjs-seek-handle[style*="95."] {
-  margin-left: 3px;
-}
-
-/* line 276, scss/base/javascript/_video.scss */
-.vjs-seek-handle[style="left: 0%"] {
-  margin-left: -2px;
-}
-
-/* line 279, scss/base/javascript/_video.scss */
-.vjs-seek-handle:hover, .vjs-seek-handle:focus {
-  background-color: #138d75;
-}
-
-/* line 282, scss/base/javascript/_video.scss */
-.vjs-seek-handle:active {
-  background-color: #117e69;
-}
-
-/* line 285, scss/base/javascript/_video.scss */
-.vjs-time-controls {
-  position: absolute;
-  height: 20px;
-  width: 50px;
-  top: 16px;
-  font: 300 13px "Lato", sans-serif;
-}
-
-/* line 292, scss/base/javascript/_video.scss */
-.vjs-current-time {
-  right: 128px;
-  text-align: right;
-}
-
-/* line 296, scss/base/javascript/_video.scss */
-.vjs-duration {
-  color: #667687;
-  right: 69px;
-  text-align: left;
-}
-
-/* line 301, scss/base/javascript/_video.scss */
-.vjs-remaining-time {
-  display: none;
-}
-
-/* line 304, scss/base/javascript/_video.scss */
-.vjs-time-divider {
-  color: #667687;
-  font-size: 14px;
-  position: absolute;
-  right: 121px;
-  top: 15px;
-}
-
-/* line 311, scss/base/javascript/_video.scss */
-.vjs-secondary-controls {
-  float: right;
-}
-
-/* line 314, scss/base/javascript/_video.scss */
-.vjs-fullscreen-control {
-  background-image: url(../images/plugins/video/fullscreen.png);
-  background-position: center -47px;
-  background-size: 15px 64px;
-  cursor: pointer !important;
-  position: absolute;
-  right: 17px;
-  top: 13px;
-}
-
-/* line 323, scss/base/javascript/_video.scss */
-.vjs-fullscreen-control:hover div, .vjs-fullscreen-control:focus div {
-  opacity: 0;
-}
-
-/* line 326, scss/base/javascript/_video.scss */
-.vjs-fullscreen-control div {
-  height: 18px;
-  background: url(../images/plugins/video/fullscreen.png) no-repeat center 2px;
-  background-size: 15px 64px;
-  -webkit-transition: opacity 0.25s;
-  -moz-transition: opacity 0.25s;
-  -o-transition: opacity 0.25s;
-  transition: opacity 0.25s;
-  -webkit-backface-visibility: hidden;
-}
-
-/* line 336, scss/base/javascript/_video.scss */
-.vjs-menu-button {
-  display: none !important;
-}
-
-@-webkit-keyframes sharp {
-  0% {
-    background: #e74c3c;
-    border-radius: 10px;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+/*Retina graphics!*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  /* line 265, scss/base/javascript/_fancybox.scss */
+  #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+    background-image: url("../images/plugins/fancybox/fancybox_sprite@2x.png");
+    background-size: 44px 152px;
+    /*The size of the normal image, half the size of the hi-res image*/
   }
-  50% {
-    background: #ebedee;
-    border-radius: 0;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-  100% {
-    background: #e74c3c;
-    border-radius: 10px;
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
+
+  /* line 270, scss/base/javascript/_fancybox.scss */
+  #fancybox-loading div {
+    background-image: url("../images/plugins/fancybox/fancybox_loading@2x.gif");
+    background-size: 24px 24px;
+    /*The size of the normal image, half the size of the hi-res image*/
   }
 }
-@-moz-keyframes sharp {
-  0% {
-    background: #e74c3c;
-    border-radius: 10px;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    background: #ebedee;
-    border-radius: 0;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-  100% {
-    background: #e74c3c;
-    border-radius: 10px;
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@-o-keyframes sharp {
-  0% {
-    background: #e74c3c;
-    border-radius: 10px;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    background: #ebedee;
-    border-radius: 0;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-  100% {
-    background: #e74c3c;
-    border-radius: 10px;
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes sharp {
-  0% {
-    background: #e74c3c;
-    border-radius: 10px;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    background: #ebedee;
-    border-radius: 0;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-  100% {
-    background: #e74c3c;
-    border-radius: 10px;
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-/* line 463, scss/base/javascript/_video.scss */
-.vjs-loading-spinner {
-  background: #ebedee;
-  border-radius: 10px;
-  display: none;
-  height: 16px;
-  left: 50%;
-  margin: -8px 0 0 -8px;
-  position: absolute;
-  top: 50%;
-  width: 16px;
-  -webkit-animation: sharp 2s ease infinite;
-  -moz-animation: sharp 2s ease infinite;
-  -o-animation: sharp 2s ease infinite;
-  animation: sharp 2s ease infinite;
-}
-
 /* line 1, scss/base/javascript/_form-validation.scss */
 .suggestion {
   display: none;
@@ -3924,20 +3676,47 @@ body.vjs-full-window {
   display: none;
 }
 
-/* line 1, scss/base/javascript/_bx-slider.scss */
+/**
+ * BxSlider v4.1.2 - Fully loaded, responsive content slider
+ * http://bxslider.com
+ *
+ * Written by: Steven Wanderski, 2014
+ * http://stevenwanderski.com
+ * (while drinking Belgian ales and listening to jazz)
+ *
+ * CEO and founder of bxCreative, LTD
+ * http://bxcreative.com
+ */
+/** RESET AND LAYOUT
+===================================*/
+/* line 17, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper {
   position: relative;
+  margin: 0 auto 60px;
   padding: 0;
   *zoom: 1;
 }
 
-/* line 6, scss/base/javascript/_bx-slider.scss */
+/* line 24, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper img {
-  width: 100%;
+  max-width: 100%;
   display: block;
 }
 
-/* line 10, scss/base/javascript/_bx-slider.scss */
+/** THEME
+===================================*/
+/* line 32, scss/base/javascript/_bx-slider.scss */
+.bx-wrapper .bx-viewport {
+  left: -5px;
+  /*fix other elements on the page moving (on Chrome)*/
+  -webkit-transform: translatez(0);
+  -moz-transform: translatez(0);
+  -ms-transform: translatez(0);
+  -o-transform: translatez(0);
+  transform: translatez(0);
+}
+
+/* line 43, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
   position: absolute;
@@ -3945,7 +3724,8 @@ body.vjs-full-window {
   width: 100%;
 }
 
-/* line 16, scss/base/javascript/_bx-slider.scss */
+/* LOADER */
+/* line 52, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-loading {
   min-height: 50px;
   background: url(../images/plugins/bx-slider/bx-loader.gif) center center no-repeat #fff;
@@ -3957,17 +3737,18 @@ body.vjs-full-window {
   z-index: 2000;
 }
 
-/* line 26, scss/base/javascript/_bx-slider.scss */
+/* PAGER */
+/* line 65, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-pager {
   text-align: center;
   font-size: .85em;
   font-family: Arial;
-  font-weight: 700;
+  font-weight: bold;
   color: #666;
   padding-top: 20px;
 }
 
-/* line 34, scss/base/javascript/_bx-slider.scss */
+/* line 74, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-pager .bx-pager-item,
 .bx-wrapper .bx-controls-auto .bx-controls-auto-item {
   display: inline-block;
@@ -3975,7 +3756,7 @@ body.vjs-full-window {
   *display: inline;
 }
 
-/* line 40, scss/base/javascript/_bx-slider.scss */
+/* line 81, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-pager.bx-default-pager a {
   background: #666;
   text-indent: -9999px;
@@ -3989,35 +3770,36 @@ body.vjs-full-window {
   border-radius: 5px;
 }
 
-/* line 52, scss/base/javascript/_bx-slider.scss */
+/* line 94, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .bx-wrapper .bx-pager.bx-default-pager a.active {
   background: #000;
 }
 
-/* line 56, scss/base/javascript/_bx-slider.scss */
+/* DIRECTION CONTROLS (NEXT / PREV) */
+/* line 101, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-prev {
   left: 10px;
   background: url(../images/plugins/bx-slider/bx-controls.png) no-repeat 0 -32px;
 }
 
-/* line 60, scss/base/javascript/_bx-slider.scss */
+/* line 106, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-next {
   right: 10px;
   background: url(../images/plugins/bx-slider/bx-controls.png) no-repeat -43px -32px;
 }
 
-/* line 64, scss/base/javascript/_bx-slider.scss */
+/* line 111, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-prev:hover {
   background-position: 0 0;
 }
 
-/* line 67, scss/base/javascript/_bx-slider.scss */
+/* line 115, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-next:hover {
   background-position: -43px 0;
 }
 
-/* line 70, scss/base/javascript/_bx-slider.scss */
+/* line 119, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-controls-direction a {
   position: absolute;
   top: 50%;
@@ -4029,17 +3811,18 @@ body.vjs-full-window {
   z-index: 9999;
 }
 
-/* line 80, scss/base/javascript/_bx-slider.scss */
+/* line 130, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-controls-direction a.disabled {
   display: none;
 }
 
-/* line 83, scss/base/javascript/_bx-slider.scss */
+/* AUTO CONTROLS (START / STOP) */
+/* line 136, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-controls-auto {
   text-align: center;
 }
 
-/* line 86, scss/base/javascript/_bx-slider.scss */
+/* line 140, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-controls-auto .bx-start {
   display: block;
   text-indent: -9999px;
@@ -4050,13 +3833,13 @@ body.vjs-full-window {
   margin: 0 3px;
 }
 
-/* line 95, scss/base/javascript/_bx-slider.scss */
+/* line 150, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-controls-auto .bx-start:hover,
 .bx-wrapper .bx-controls-auto .bx-start.active {
   background-position: -86px 0;
 }
 
-/* line 99, scss/base/javascript/_bx-slider.scss */
+/* line 155, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-controls-auto .bx-stop {
   display: block;
   text-indent: -9999px;
@@ -4067,25 +3850,27 @@ body.vjs-full-window {
   margin: 0 3px;
 }
 
-/* line 108, scss/base/javascript/_bx-slider.scss */
+/* line 165, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-controls-auto .bx-stop:hover,
 .bx-wrapper .bx-controls-auto .bx-stop.active {
   background-position: -86px -33px;
 }
 
-/* line 112, scss/base/javascript/_bx-slider.scss */
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+/* line 172, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
   text-align: left;
   width: 80%;
 }
 
-/* line 116, scss/base/javascript/_bx-slider.scss */
+/* line 177, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
   right: 0;
   width: 35px;
 }
 
-/* line 120, scss/base/javascript/_bx-slider.scss */
+/* IMAGE CAPTIONS */
+/* line 184, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-caption {
   position: absolute;
   bottom: 0;
@@ -4095,7 +3880,7 @@ body.vjs-full-window {
   width: 100%;
 }
 
-/* line 128, scss/base/javascript/_bx-slider.scss */
+/* line 193, scss/base/javascript/_bx-slider.scss */
 .bx-wrapper .bx-caption span {
   color: #fff;
   font-family: Arial;

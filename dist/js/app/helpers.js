@@ -1,4 +1,4 @@
-/*
+/**
  *
  * Helpers
  *
@@ -7,9 +7,9 @@
  *
  * Various helper functions in vanilla JavaScript.
  *
- */
+**/
 
- ;(function(Helpers, window, undefined){
+;(function(Helpers, window, undefined){
 	'use strict';
 
 	/**
