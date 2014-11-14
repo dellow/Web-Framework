@@ -4077,7 +4077,9 @@ form .response--warning .msg {
 ========================================================================== */
 /* ==========================================================================
    Sprites
-   Uses Compass to generate sprites from a directory.
+   This is populated from the Gulp task `sprite`. Do not edit this directly.
+   For more information on how to generate a sprite used here please review
+   the Readme file.
 ========================================================================== */
 /* ==========================================================================
    Dev
