@@ -1993,7 +1993,7 @@ ul.alert.box li {
 }
 /* line 95, scss/base/components/_grid.scss */
 .grid.no-gutter [class*="col-"] {
-  margin-left: 0;
+  margin: 0;
 }
 /* line 99, scss/base/components/_grid.scss */
 .grid.bricked {
@@ -4082,10 +4082,12 @@ form .response--warning .msg {
    the Readme file.
 ========================================================================== */
 /* ==========================================================================
-   Dev
-   CSS for the development environment only. This can be used for
-   experimental styles and can be turned off with an environment var
+   Icons
+   Iconography to be used throughout the sites. Will pull variables
+   from the _sprites.scss partial.
 ========================================================================== */
+/* -- Base Icon -- */
+/* -- Icon Set Title -- */
 /* ==========================================================================
    Rhythm
    The framework rhythm.
@@ -4094,6 +4096,11 @@ form .response--warning .msg {
    Global
    Styles that are across the board and not specific to
    any single partial.
+========================================================================== */
+/* ==========================================================================
+   Dev
+   CSS for the development environment only. This can be used for
+   experimental styles and can be turned off with an environment var
 ========================================================================== */
 /* ==========================================================================
    Fixes
