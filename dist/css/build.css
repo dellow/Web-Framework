@@ -1030,21 +1030,17 @@ blockquote, q {
   font-family: Georgia;
 }
 
-/* line 66, scss/base/_defaults.scss */
-blockquote > *:not(cite), q {
-  margin: 0 !important;
-}
 /* line 69, scss/base/_defaults.scss */
-blockquote > *:not(cite):before, q:before {
+blockquote > *:not(cite):first-of-type:before, q:first-of-type:before {
   content: open-quote;
 }
-/* line 72, scss/base/_defaults.scss */
-blockquote > *:not(cite):after, q:after {
+/* line 75, scss/base/_defaults.scss */
+blockquote > *:not(cite):last-of-type:after, q:last-of-type:after {
   content: close-quote;
 }
 
 /* -- Images -- */
-/* line 80, scss/base/_defaults.scss */
+/* line 84, scss/base/_defaults.scss */
 figure figcaption {
   margin-top: 12px;
   margin-top: 0.75rem;
@@ -1053,7 +1049,7 @@ figure figcaption {
 }
 
 /* -- Lists -- */
-/* line 89, scss/base/_defaults.scss */
+/* line 93, scss/base/_defaults.scss */
 ol.code {
   padding: 12px 18px;
   padding: 0.75rem 1.125rem;
@@ -1065,29 +1061,29 @@ ol.code {
   font-family: "source-code-pro", monospace;
   background: #EDEDED;
 }
-/* line 98, scss/base/_defaults.scss */
+/* line 102, scss/base/_defaults.scss */
 ol.code li {
   margin-bottom: 0;
   list-style: decimal-leading-zero;
   list-style-position: inside;
 }
 
-/* line 105, scss/base/_defaults.scss */
+/* line 109, scss/base/_defaults.scss */
 ul {
   list-style-type: disc;
 }
 
-/* line 110, scss/base/_defaults.scss */
+/* line 114, scss/base/_defaults.scss */
 ul li, ol li {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
 }
-/* line 113, scss/base/_defaults.scss */
+/* line 117, scss/base/_defaults.scss */
 ul ul, ul ol, ol ul, ol ol {
   list-style-type: circle;
 }
 
-/* line 119, scss/base/_defaults.scss */
+/* line 123, scss/base/_defaults.scss */
 dl dd {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
@@ -1096,7 +1092,7 @@ dl dd {
 }
 
 /* -- Rules -- */
-/* line 126, scss/base/_defaults.scss */
+/* line 130, scss/base/_defaults.scss */
 hr {
   margin: 48px 0px;
   margin: 3rem 0px;
@@ -1104,7 +1100,7 @@ hr {
   border-color: #EFEFEF;
   border-color: rgba(0, 0, 0, 0.085);
 }
-/* line 131, scss/base/_defaults.scss */
+/* line 135, scss/base/_defaults.scss */
 hr.dots {
   height: 0;
   padding: 0;
@@ -1117,7 +1113,7 @@ hr.dots {
   font-size: 2.5rem;
   text-align: center;
 }
-/* line 141, scss/base/_defaults.scss */
+/* line 145, scss/base/_defaults.scss */
 hr.dots:after {
   height: 0;
   padding-left: 24px;
@@ -1127,7 +1123,7 @@ hr.dots:after {
   letter-spacing: 24px;
   letter-spacing: 1.5rem;
 }
-/* line 149, scss/base/_defaults.scss */
+/* line 153, scss/base/_defaults.scss */
 hr.styled-seperator {
   margin: 48px 0px;
   margin: 3rem 0px;
@@ -1136,14 +1132,14 @@ hr.styled-seperator {
 }
 
 /* -- Selection -- */
-/* line 157, scss/base/_defaults.scss */
+/* line 161, scss/base/_defaults.scss */
 ::-moz-selection {
   background: #C4122f;
   color: #FFFFFF;
   text-shadow: none;
 }
 
-/* line 162, scss/base/_defaults.scss */
+/* line 166, scss/base/_defaults.scss */
 ::selection {
   background: #C4122f;
   color: #FFFFFF;

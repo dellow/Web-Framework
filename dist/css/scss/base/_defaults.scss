@@ -64,13 +64,17 @@ blockquote, q {
 	font-family: $font_family_serif;
 }
 blockquote > *:not(cite), q {
-	margin: 0 !important;
-	// Pseudo
-	&:before {
-		content: open-quote;
+	&:first-of-type {
+		// Pseudo
+		&:before {
+			content: open-quote;
+		}
 	}
-	&:after {
-		content: close-quote;
+	&:last-of-type {
+		// Pseudo
+		&:after {
+			content: close-quote;
+		}
 	}
 }
 

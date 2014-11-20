@@ -56,6 +56,7 @@ require('../plugins/wiselinks');
 
 			$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
 	            Helpers.log("Wiselinks status: '" + status);
+	            window.location.replace(window.base_url + '404');
 		    });
 	    });
 	}

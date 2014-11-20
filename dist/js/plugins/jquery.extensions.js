@@ -113,122 +113,23 @@
     }
 
     /**
-     * $.extCenter
-     * Centers any element vertically, horizontally or both can pass an element to center relative to that element
-    **/
-    $.fn.extCenter = function(method, element){
-        var el = (typeof element !== 'undefined') ? element : $(window);
-        el.css({'position': 'relative'});
-        this.css({'position': 'absolute', 'z-index': '999'});
-        var methods = {
-            all: function(){
-                this.css('top', ((el.height() - this.outerHeight()) / 2) + el.scrollTop() + 'px');
-                this.css('left', ((el.width() - this.outerWidth()) / 2) + el.scrollLeft() + 'px');
-                return this;
-            },
-            vertical: function(){
-                this.css('top', ((el.height() - this.outerHeight()) / 2) + el.scrollTop() + 'px');
-                return this;
-            },
-            horizontal: function(){
-                this.css('left', ((el.width() - this.outerWidth()) / 2) + el.scrollLeft() + 'px');
-                return this;
-            }
-        }
-        if(methods[method]){
-            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        }
-        else if(typeof method === 'object' || !method){
-            return methods.all.apply(this, arguments);
-        }
-        else{
-            $.error('Method ' +  method + ' does not exist on jQuery.extCenter');
-        }
-    }
-
-    /**
-     * $.extPreloader
-     * Creates a preloading animation
-    **/
-    $.fn.extPreloader = function(options){
-        var loader,
-            el = this,
-            rn = parseInt(Math.random() * (100 - 1) + 1, 10),
-            defaults = {
-                loader     : 'loader-' + rn,
-                loadershape: 'spiral',
-                loadersize : 30,
-                loaderhex  : '#333',
-                loadmethod : 'html',
-                loaderstyle: 'display: inline-block;'
-            }
-
-        // Extend the defaults
-        var settings = $.extend({}, defaults, options);
-
-        // Return each instance
-        return this.each(function(){
-
-            // Adding the loader
-            switch(settings.loadmethod){
-                case 'html' :
-                    el.html('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
-                break;
-                case 'after' :
-                    el.after('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
-                break;
-                case 'before' :
-                    el.before('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
-                break;
-                case 'prepend' :
-                    el.prepend('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
-                break;
-                case 'append' :
-                    el.append('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
-                break;
-                default :
-                    el.html('<div id="' + settings.loader + '" style="' + settings.loaderstyle + '"></div>');
-                break;
-            }
-
-            // Get the canvas loader
-            $.getScript('http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.js', function(){
-                loader = new CanvasLoader(settings.loader);
-                loader.setShape(settings.loadershape);
-                loader.setDiameter(settings.loadersize);
-                loader.setDensity(13);
-                loader.setRange(0.6);
-                loader.setSpeed(1);
-                loader.setColor(settings.loaderhex);
-                loader.show();
-            });
-
-            // Destroy method
-            el.destroyExtPreloader = function(){
-                loader.kill();
-                $('#' + settings.loader).remove();
-            }
-        });
-    }
-
-    /**
      * Viewport Selector by Mika Tuupola
     **/
     $.belowthefold = function(element, settings) {
         var fold = $(window).height() + $(window).scrollTop();
-        return fold <= $(element).offset().top - settings.threshold;
+        return fold <= $(element).offset().top + settings.threshold;
     };
     $.abovethetop = function(element, settings) {
         var top = $(window).scrollTop();
-        return top >= $(element).offset().top + $(element).height() - settings.threshold;
+        return top >= $(element).offset().top + $(element).height() + settings.threshold;
     };
     $.rightofscreen = function(element, settings) {
         var fold = $(window).width() + $(window).scrollLeft();
-        return fold <= $(element).offset().left - settings.threshold;
+        return fold <= $(element).offset().left + settings.threshold;
     };
     $.leftofscreen = function(element, settings) {
         var left = $(window).scrollLeft();
-        return left >= $(element).offset().left + $(element).width() - settings.threshold;
+        return left >= $(element).offset().left + $(element).width() + settings.threshold;
     };
     $.inviewport = function(element, settings) {
         return !$.rightofscreen(element, settings) && !$.leftofscreen(element, settings) && !$.belowthefold(element, settings) && !$.abovethetop(element, settings);
