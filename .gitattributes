@@ -27,7 +27,6 @@ scss/ export-ignore
 **/*.psd export-ignore
 **/*.scss export-ignore
 **/*.sql export-ignore
-**/*.txt export-ignore
 bower.json export-ignore
 Gruntfile.js export-ignore
 Gulpfile.js export-ignore

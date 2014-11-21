@@ -13,7 +13,5 @@ gulp.task('default', [
 	// Development states
 	'dalek',
 	'jasmine',
-	'jshint',
-	// Bundle must run last
-	'bundle'
+	'jshint'
 ]);

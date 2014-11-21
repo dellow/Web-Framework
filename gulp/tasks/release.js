@@ -14,6 +14,7 @@ var state   = (GLOBAL.args != undefined) ? GLOBAL.args : 'development',
     release = GLOBAL.releases_dir + 'app_' + Date.now() + '_' + state + '/',
     files   = [
         GLOBAL.src_dir + '**',
+        '!' + GLOBAL.src_dir + '**/{.help,.help/**}',
         '!' + GLOBAL.src_dir + '**/{scss,scss/**}',
         '!' + GLOBAL.src_dir + '**/js/{app,app/**}',
         '!' + GLOBAL.src_dir + '**/js/{plugins,plugins/**}',
