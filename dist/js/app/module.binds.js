@@ -32,7 +32,7 @@ require('../plugins/jquery.equal-heights');
      * Slider events.
     **/
     Module.sliders = function(){
-        if(('.js-slider').length){
+        if($('.js-slider').length){
             $('.js-slider').bxSlider({
                 auto        : false,
                 controls    : true,
@@ -54,7 +54,7 @@ require('../plugins/jquery.equal-heights');
      * Lightbox events.
     **/
     Module.lightboxes = function(){
-        if(('.js-lightbox').length){
+        if($('.js-lightbox').length){
             $('.js-lightbox').fancybox({
                 autoWidth    : true,
                 autoHeight   : true,
@@ -69,8 +69,8 @@ require('../plugins/jquery.equal-heights');
      * Form validation events.
     **/
     Module.validation = function(){
-        if(('.js-validation').length){
-            $('.js-validation').validation({
+        if($('.js-validate').length){
+            $('.js-validate').validation({
                 serverValidation: false,
                 msgSep          : ''
             });
@@ -82,7 +82,9 @@ require('../plugins/jquery.equal-heights');
      * Equal height elements.
     **/
     Module.equal_heights = function(){
-        $('.js-eh').equalHeights();
+        if($('.js-eh').length){
+            $('.js-eh').equalHeights();
+        }
     }
 
     // Export

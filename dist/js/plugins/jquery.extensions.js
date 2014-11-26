@@ -1,119 +1,30 @@
 /**
- * extensions.js
+ *
+ * Equal Heights
+ * jquery.extensions.js
+ *
+ * Copyright 2014, Stewart Dellow
+ * Some information on the license.
+ *
  * Adds some additional jQuery methods and a few common events.
+ *
 **/
 
 ;(function($, window, undefined){
     'use strict';
 
     /**
-     * Requests confirmation before completing action
+     * Requests confirmation before completing action.
     **/
-    $('.js-confirm-action').on({
-        click: function(e){
-            var custom_message = $(this).data('confirm-message'),
-                message        = (custom_message !== undefined) ? custom_message : 'Are you sure?';
+    $('.js-confirm').on('click', function(){
+        var a = $(this).data('confirm-message'),
+            b = (a !== undefined) ? a : 'Are you sure?';
 
-            return confirm(message);
-        }
+        return confirm(b);
     });
 
     /**
-     * Buttonless form submittal
-    **/
-    $('.js-send').each(function(){
-        var jsform = $(this).offsetParent('form');
-        $('button', jsform).hide();
-        $(this).on({
-            change: function(){
-                jsform.submit();
-            }
-        });
-    });
-
-    /**
-     * $.accordion
-     * Creates an accordion
-    **/
-    $.fn.accordion = function(options){
-        // Defaults
-        var defaults = {
-            openfirst           : true,
-            title_class         : 'accordion__title',
-            section_class       : 'accordion__content',
-            active_title_class  : 'active__title',
-            active_section_class: 'active__content'
-        };
-        // Settings
-        var settings = $.extend({}, defaults, options);
-        // Return instance
-        return this.each(function(){
-            var plg     = $(this),
-                title   = $('> .' + settings.title_class, plg),
-                content = $('> .' + settings.section_class, plg);
-
-            // Reset the accordion
-            $('.' + settings.active_section_class, plg).removeClass(settings.active_section_class);
-            $('.' + settings.active_title_class, plg).removeClass(settings.active_title_class);
-
-            title.css({'cursor': 'pointer'});
-            content.hide();
-            if(settings.openfirst){
-                title.first().show().addClass(settings.active_title_class);
-                content.first().show().addClass(settings.active_section_class);
-            }
-
-            title.on('click', function(){
-                if(!$(this).hasClass(settings.active_title_class)){
-                    $('.' + settings.active_section_class, plg).slideUp(500).removeClass(settings.active_section_class);
-                    $('.' + settings.active_title_class, plg).removeClass(settings.active_title_class);
-                    $(this).addClass(settings.active_title_class, plg).next().slideDown(500).addClass(settings.active_section_class);
-                }
-            });
-        });
-    }
-
-    /**
-     * $.tabs
-     * Creates tabs
-    **/
-    $.fn.tabs = function(options){
-        // Defaults
-        var defaults = {
-            tab_class       : 'tabs__tab',
-            nav_class       : 'tabs__nav',
-            target_data_attr: 'tab-target',
-            active_tab_class: 'active__tab'
-        };
-        // Settings
-        var settings = $.extend({}, defaults, options);
-        // Return instance
-        return this.each(function(){
-            var plg = $(this);
-
-            $('.' + settings.tab_class, plg).hide();
-            $('.' + settings.tab_class, plg).first().show().addClass(settings.active_tab_class);
-            $('.' + settings.nav_class + ' li', plg).first().addClass(settings.active_tab_class);
-
-            $('.' + settings.nav_class + ' li button', plg).on('click', function(e){
-                e.preventDefault();
-                var tab_nav    = $(this).parent().parent(),
-                    tab_system = tab_nav.next();
-
-                if(!$(this).parent().hasClass(settings.active_tab_class)){
-                    var target = $(this).data(settings.target_data_attr);
-
-                    $('li.' + settings.active_tab_class, tab_nav).removeClass(settings.active_tab_class);
-                    $(this).parent().addClass(settings.active_tab_class);
-                    $('.' + settings.active_tab_class, tab_system).hide().removeClass(settings.active_tab_class);
-                    $('#' + target, tab_system).fadeIn(500).addClass(settings.active_tab_class);
-                }
-            });
-        });
-    }
-
-    /**
-     * Viewport Selector by Mika Tuupola
+     * Viewport Selector by Mika Tuupola.
     **/
     $.belowthefold = function(element, settings) {
         var fold = $(window).height() + $(window).scrollTop();
@@ -153,7 +64,7 @@
     });
 
     /**
-     * jQuery Easing
+     * jQuery Easing.
     **/
     $.extend($.easing,{
         easeInQuad: function (x, t, b, c, d){

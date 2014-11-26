@@ -57,7 +57,7 @@ form {
 	// All form elements
 	input, .input, select, textarea, button, .button {
 		height: $form_field_height;
-		border: 1px solid lighten(color(grey), 5%);
+		border: 1px solid lighten(color(grey), 50%);
 		vertical-align: top;
 		position: relative;
 		border-radius: $border_radius_base;
@@ -67,17 +67,16 @@ form {
 		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease);
 		// Pseudo
 		&:hover, &:active {
-			border-color: darken(color(grey), 3%);
+			border-color: lighten(color(grey), 40%);
 		}
 		&:focus {
-			border-color: darken(color(grey), 9%);
+			border-color: lighten(color(grey), 25%);
 		}
 		&[readonly], &[readonly]:hover, &.readonly, &.readonly:hover, &.readonly:active,
 		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active  {
-			border-color: lighten(color(grey), 5%);
+			border-color: lighten(color(grey), 50%);
 			cursor: no-drop;
-			color: color(grey);
-			background: lighten(color(grey), 10%);
+			background: lighten(color(grey), 60%);
 		}
 		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {
 			@include opacity(0.5);
@@ -117,13 +116,13 @@ form {
 		@include nudge(padding, 0 1.2);
 		border: 0;
 		text-align: center;
-		background: lighten(color(grey), 10%);
+		background: lighten(color(grey), 60%);
 		// Pseudo
 		&:hover {
-			background: lighten(color(grey), 5%);
+			background: lighten(color(grey), 55%);
 		}
 		&:active {
-			background: lighten(color(grey), 1%);
+			background: lighten(color(grey), 50%);
 		}
 	}
 }

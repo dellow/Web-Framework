@@ -1,12 +1,14 @@
 /**
  *
- * Equal Heights
- * jquery.equal-heights.js
+ * Accordion
+ * jquery.accordion.js
  *
  * Copyright 2014, Stewart Dellow
  * Some information on the license.
  *
- * $('.js-eh').equalHeights();
+ * $('.js-accordion').accordion();
+ *
+ * setting: Type. Description.
  *
 **/
 
@@ -20,10 +22,10 @@
     /* Plugin Instance
     /* ======================================================== */
     /**
-     * $.fn.equalHeights
+     * $.fn.accordion
      * Return a unique plugin instance.
     **/
-    $.fn.equalHeights = function(options){
+    $.fn.accordion = function(options){
         return this.each(function(){
             new Plugin.init(this, options);
         });
@@ -63,6 +65,11 @@
     Plugin.options = function(options){
         // Our application defaults.
         var defaults = {
+            openfirst           : true,
+            title_class         : 'accordion__title',
+            section_class       : 'accordion__content',
+            active_title_class  : 'active__title',
+            active_section_class: 'active__content'
         };
 
         // Combine the defaults and custom settings.
@@ -103,56 +110,26 @@
      * Our initial function.
     **/
     Plugin.run = function(){
-        // Set the breakpoints
-        var breakpoints = (Plugin.elem.data('eh-breakpoints')) ? Plugin.elem.data('eh-breakpoints').split('|') : [320, 9999];
-        // Go!
-        Plugin.watch_window(Plugin.elem, breakpoints[0], breakpoints[1]);
-    }
+        var title   = $('> .' + Plugin.settings.title_class, Plugin.elem),
+            content = $('> .' + Plugin.settings.section_class, Plugin.elem);
 
-    /**
-     * Plugin.calculate
-     * Calculate and apply the correct heights.
-    **/
-    Plugin.calculate = function(el){
-        var boxes = $('[data-eh="true"]', el);
-        // Reset the height attribute to `auto` (or nothing).
-        Plugin.reset_heights(el);
-        // Map all qualifying element heights to an array.
-        var heights = boxes.map(function(){
-            return $(this).outerHeight();
-        }).get();
-        // Get the largest value from the array.
-        var large = Math.max.apply(Math, heights);
-        // Apply the CSS height to all qualifying elements.
-        boxes.each(function(){
-            $(this).height(large);
-        });
-    }
+        // Reset the accordion
+        $('.' + Plugin.settings.active_section_class, Plugin.elem).removeClass(Plugin.settings.active_section_class);
+        $('.' + Plugin.settings.active_title_class, Plugin.elem).removeClass(Plugin.settings.active_title_class);
 
-    /**
-     * Plugin.watch_window
-     * Watches the window size and checks if breakpoints apply.
-    **/
-    Plugin.watch_window = function(el, breakpoint1, breakpoint2){
-        $(window).on('load resize', function(){
-            if($(window).width() > breakpoint1 && $(window).width() < breakpoint2){
-                Plugin.calculate(el);
+        title.css({'cursor': 'pointer'});
+        content.hide();
+        if(Plugin.settings.openfirst){
+            title.first().show().addClass(Plugin.settings.active_title_class);
+            content.first().show().addClass(Plugin.settings.active_section_class);
+        }
+
+        title.on('click', function(){
+            if(!$(this).hasClass(Plugin.settings.active_title_class)){
+                $('.' + Plugin.settings.active_section_class, Plugin.elem).slideUp(500).removeClass(Plugin.settings.active_section_class);
+                $('.' + Plugin.settings.active_title_class, Plugin.elem).removeClass(Plugin.settings.active_title_class);
+                $(this).addClass(Plugin.settings.active_title_class, Plugin.elem).next().slideDown(500).addClass(Plugin.settings.active_section_class);
             }
-            else{
-                Plugin.reset_heights(el);
-            }
-        });
-    }
-
-    /**
-     * Plugin.reset_heights
-     * Reset all box heights.
-    **/
-    Plugin.reset_heights = function(el){
-        var boxes = $('[data-eh="true"]', el);
-        // Reset the height attribute to `auto` (or nothing).
-        boxes.each(function(){
-            $(this).css({'height': 'auto'});
         });
     }
 

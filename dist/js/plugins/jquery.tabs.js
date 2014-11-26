@@ -1,12 +1,14 @@
 /**
  *
- * Equal Heights
- * jquery.equal-heights.js
+ * Tabs
+ * jquery.tabs.js
  *
  * Copyright 2014, Stewart Dellow
  * Some information on the license.
  *
- * $('.js-eh').equalHeights();
+ * $('.js-tabs').tabs();
+ *
+ * setting: Type. Description.
  *
 **/
 
@@ -20,10 +22,10 @@
     /* Plugin Instance
     /* ======================================================== */
     /**
-     * $.fn.equalHeights
+     * $.fn.tabs
      * Return a unique plugin instance.
     **/
-    $.fn.equalHeights = function(options){
+    $.fn.tabs = function(options){
         return this.each(function(){
             new Plugin.init(this, options);
         });
@@ -63,6 +65,10 @@
     Plugin.options = function(options){
         // Our application defaults.
         var defaults = {
+            tab_class       : 'tabs__tab',
+            nav_class       : 'tabs__nav',
+            target_data_attr: 'tab-target',
+            active_tab_class: 'active__tab'
         };
 
         // Combine the defaults and custom settings.
@@ -103,56 +109,23 @@
      * Our initial function.
     **/
     Plugin.run = function(){
-        // Set the breakpoints
-        var breakpoints = (Plugin.elem.data('eh-breakpoints')) ? Plugin.elem.data('eh-breakpoints').split('|') : [320, 9999];
-        // Go!
-        Plugin.watch_window(Plugin.elem, breakpoints[0], breakpoints[1]);
-    }
+        $('.' + Plugin.settings.tab_class, Plugin.elem).hide();
+        $('.' + Plugin.settings.tab_class, Plugin.elem).first().show().addClass(Plugin.settings.active_tab_class);
+        $('.' + Plugin.settings.nav_class + ' li', Plugin.elem).first().addClass(Plugin.settings.active_tab_class);
 
-    /**
-     * Plugin.calculate
-     * Calculate and apply the correct heights.
-    **/
-    Plugin.calculate = function(el){
-        var boxes = $('[data-eh="true"]', el);
-        // Reset the height attribute to `auto` (or nothing).
-        Plugin.reset_heights(el);
-        // Map all qualifying element heights to an array.
-        var heights = boxes.map(function(){
-            return $(this).outerHeight();
-        }).get();
-        // Get the largest value from the array.
-        var large = Math.max.apply(Math, heights);
-        // Apply the CSS height to all qualifying elements.
-        boxes.each(function(){
-            $(this).height(large);
-        });
-    }
+        $('.' + Plugin.settings.nav_class + ' li button', Plugin.elem).on('click', function(e){
+            e.preventDefault();
+            var tab_nav    = $(this).parent().parent(),
+                tab_system = tab_nav.next();
 
-    /**
-     * Plugin.watch_window
-     * Watches the window size and checks if breakpoints apply.
-    **/
-    Plugin.watch_window = function(el, breakpoint1, breakpoint2){
-        $(window).on('load resize', function(){
-            if($(window).width() > breakpoint1 && $(window).width() < breakpoint2){
-                Plugin.calculate(el);
+            if(!$(this).parent().hasClass(Plugin.settings.active_tab_class)){
+                var target = $(this).data(Plugin.settings.target_data_attr);
+
+                $('li.' + Plugin.settings.active_tab_class, tab_nav).removeClass(Plugin.settings.active_tab_class);
+                $(this).parent().addClass(Plugin.settings.active_tab_class);
+                $('.' + Plugin.settings.active_tab_class, tab_system).hide().removeClass(Plugin.settings.active_tab_class);
+                $('#' + target, tab_system).fadeIn(500).addClass(Plugin.settings.active_tab_class);
             }
-            else{
-                Plugin.reset_heights(el);
-            }
-        });
-    }
-
-    /**
-     * Plugin.reset_heights
-     * Reset all box heights.
-    **/
-    Plugin.reset_heights = function(el){
-        var boxes = $('[data-eh="true"]', el);
-        // Reset the height attribute to `auto` (or nothing).
-        boxes.each(function(){
-            $(this).css({'height': 'auto'});
         });
     }
 
