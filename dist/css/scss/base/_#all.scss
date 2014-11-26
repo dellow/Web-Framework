@@ -6,11 +6,13 @@
 @import 'config/placeholders',
 		'config/reset',
 		'config/debug';
+
 // Core
 @import 'utility-classes',
 		'defaults',
 		'core',
 		'rhythm';
+
 // Components
 @import 'components/alerts',
 		'components/buttons',
@@ -20,9 +22,11 @@
 		'components/progress-bars',
 		'components/slabs',
 		'components/tables';
+
 // Modules
 @import 'modules/breadcrumbs',
 		'modules/pagination';
+
 // Forms
 @import 'forms/base',
 		'forms/form-block',
@@ -31,12 +35,15 @@
 		'forms/customised',
 		'forms/notifications',
 		'forms/placeholders';
+
 // JavaScript
 @import 'javascript/accordion',
-		'javascript/tabs',
+		'javascript/bx-slider',
 		'javascript/fancybox',
 		'javascript/form-validation',
-		'javascript/bx-slider';
+		'javascript/google-map',
+		'javascript/tabs';
+
 // Misc
 @import 'fixes',
 		'breakpoints',
