@@ -2,8 +2,8 @@
    Notifications
    Form messages and responses.
 ========================================================================== */
-/* -- Forms -- */
 form {
+
 	// Descendants
 	input, .input, select, textarea, .field-container {
 		// Abstractions
@@ -44,6 +44,8 @@ form {
 			}
 		}
 	}
+
+	// Label
 	label {
 		// Abstractions
 		&.error {
@@ -59,9 +61,13 @@ form {
 			color: $color_warning;
 		}
 	}
+
+	// Messages
 	.msg {
 		@include rem(font-size, 14px);
 	}
+
+	// Responses
 	.response--error {
 		// Descendants
 		.msg {

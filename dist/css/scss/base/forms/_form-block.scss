@@ -2,25 +2,9 @@
    Form Block
    Block level forms
 ========================================================================== */
-/* -- Forms -- */
-.form-block {
-	label {
-		input[type="checkbox"], input[type="radio"] {
-			margin: -2px 2px 0 0;
-		}
-	}
-	input, .input, select, textarea, .field-container {
-		width: 100%;
-		display: block;
-		// Sibling
-		~ .note {
-			margin-left: 0;
-			display: block;
-		}
-	}
-	input[type="checkbox"], input[type="radio"] {
-		@extend %radio-checkbox;
-	}
+form.form-block {
+
+	// Field container
 	.field-container {
 		label {
 			@include nudge(margin-right, 0.25);
@@ -40,5 +24,28 @@
 				margin: 0;
 			}
 		}
+	}
+
+	// Labels
+	label {
+		input[type="checkbox"], input[type="radio"] {
+			margin: -2px 2px 0 0;
+		}
+	}
+
+	// All form elements
+	input, .input, select, textarea, .field-container {
+		width: 100%;
+		display: block;
+		// Sibling
+		~ .note {
+			margin-left: 0;
+			display: block;
+		}
+	}
+
+	// Radio & Checkboxes
+	input[type="checkbox"], input[type="radio"] {
+		@extend %radio-checkbox;
 	}
 }

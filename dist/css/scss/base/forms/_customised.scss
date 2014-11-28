@@ -2,8 +2,8 @@
    Customised
    Custom form inputs.
 ========================================================================== */
-/* -- Forms -- */
 form {
+
 	// General Custom Inputs
 	.custom-checkbox, .custom-radio {
 		@include nudge(margin-right, 1);
@@ -61,6 +61,7 @@ form {
 			@include opacity(0.8);
 		}
 	}
+
 	// Custom Radio Input
 	.custom-radio {
 		label {
@@ -84,6 +85,7 @@ form {
 			@include opacity(0.8);
 		}
 	}
+
 	// Custom Selects
 	.custom-select {
 		// Pseudo

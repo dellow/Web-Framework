@@ -2,20 +2,23 @@
    Placeholders
    Form placeholder styles.
 ========================================================================== */
-/* -- Placeholder -- */
-// Can't use opacity to change color. IE doesn't like this!
-::-webkit-input-placeholder {
-	color: color(grey);
-}
-::-moz-placeholder {
-	color: color(grey);
-}
-:-moz-placeholder {
-	color: color(grey);
-}
-:-ms-input-placeholder {
-	color: color(grey);
-}
-::placeholder {
-	color: color(grey);
+form {
+	::-webkit-input-placeholder {
+		color: color(grey);
+	}
+	::-moz-placeholder {
+		color: color(grey);
+	}
+	:-moz-placeholder {
+		color: color(grey);
+	}
+	:-ms-input-placeholder {
+		color: color(grey);
+	}
+	::placeholder {
+		color: color(grey);
+	}
+	select {
+		color: color(grey);
+	}
 }

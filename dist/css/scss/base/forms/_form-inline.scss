@@ -2,8 +2,14 @@
    Form Inline
    Inline forms
 ========================================================================== */
-/* -- Forms -- */
-.form-inline {
+form.form-inline {
+
+	// Field container
+	.field-container {
+		height: $form_field_height;
+	}
+
+	// Labels
 	label, .label, input, .input, select, textarea, .field-container {
 		width: auto;
 		@include nudge(margin, 0 0 0 0.5);
@@ -18,8 +24,5 @@
 		+ input, .input, select, textarea, .field-container {
 			margin: 0;
 		}
-	}
-	.field-container {
-		height: $form_field_height;
 	}
 }

@@ -13,80 +13,91 @@
 ;(function($, window, undefined){
     'use strict';
 
-    // Set plugin.
-    var Plugin = {};
+    /**
+     * Plugin
+     * Return a unique plugin instance.
+    **/
+    var Plugin = function(elem, options){
+        this.elem     = elem;
+        this.$elem    = $(elem);
+        this.options  = options;
+        this.metadata = this.$elem.data('plugin-options');
+    }
 
-    /* ======================================================== */
-    /* Plugin Instance
-    /* ======================================================== */
     /**
      * $.fn.equalHeights
      * Return a unique plugin instance.
     **/
     $.fn.equalHeights = function(options){
         return this.each(function(){
-            new Plugin.init(this, options);
+            new Plugin(this, options).init();
         });
     };
 
-    /* ======================================================== */
-    /* Plugin base methods
-    /* ======================================================== */
     /**
-     * Plugin.init
-     * Init this plugin.
+     * Plugin.prototype
+     * Init.
     **/
-    Plugin.init = function(elem, options){
-        // Global vars.
-        Plugin.elem     = $(elem);
-        // Global settings.
-        Plugin.settings = Plugin.options(options);
-        // Expose other vars to the party.
-        Plugin.vars();
-        // Do binds.
-        Plugin.binds();
-        // Run the plugin.
-        Plugin.run();
-    };
+    Plugin.prototype = {
+        init: function(){
+            // this
+            var _self = this;
 
-    /**
-     * Plugin.vars
-     * Plugin variables.
-    **/
-    Plugin.vars = function(){
+            // Run the plugin.
+            _self.run();
+
+            return _self;
+        },
+        run: function(){
+            // Set the breakpoints
+            var breakpoints = (this.$elem.data('eh-breakpoints')) ? this.$elem.data('eh-breakpoints').split('|') : [320, 9999];
+            // Go!
+            this.watch_window(this.$elem, breakpoints[0], breakpoints[1]);
+        },
+        calculate: function(el){
+            var boxes = $('[data-eh="true"]', el);
+            // Reset the height attribute to `auto` (or nothing).
+            this.reset_heights(el);
+            // Map all qualifying element heights to an array.
+            var heights = boxes.map(function(){
+                return $(this).outerHeight();
+            }).get();
+            // Get the largest value from the array.
+            var large = Math.max.apply(Math, heights);
+            // Apply the CSS height to all qualifying elements.
+            boxes.each(function(){
+                $(this).height(large);
+            });
+        },
+        watch_window: function(el, breakpoint1, breakpoint2){
+            var _self = this;
+
+            $(window).on('load resize', function(){
+                if($(window).width() > breakpoint1 && $(window).width() < breakpoint2){
+                    _self.calculate(el);
+                }
+                else{
+                    _self.reset_heights(el);
+                }
+            });
+        },
+        reset_heights: function(el){
+            var boxes = $('[data-eh="true"]', el);
+            // Reset the height attribute to `auto` (or nothing).
+            boxes.each(function(){
+                $(this).css({'height': 'auto'});
+            });
+        }
     }
 
-    /**
-     * Plugin.options
-     * Plugin settings and options.
-    **/
-    Plugin.options = function(options){
-        // Our application defaults.
-        var defaults = {
-        };
-
-        // Combine the defaults and custom settings.
-        return $.extend({}, defaults, options);
-    };
+    // Set helpers.
+    var helpers = {};
 
     /**
-     * Plugin.binds
-     * jQuery bind events.
-    **/
-    Plugin.binds = function(){
-    }
-
-    /* ======================================================== */
-    /* Plugin specific methods
-    /* ======================================================== */
-    // Set helper.
-    var Helper = {};
-
-    /**
-     * Helper.log
+     * helpers.log
      * Returns a cross-browser safe message in the console.
     **/
-    Helper.log = function(message, alertlog){
+    helpers.log = function(message, alertlog){
         alertlog = (typeof alertlog === 'undefined') ? false : true;
         if(typeof console === 'undefined' || typeof console.log === 'undefined'){
             if(alertlog){
@@ -96,64 +107,6 @@
         else {
             console.log(message);
         }
-    }
-
-    /**
-     * plugin.run
-     * Our initial function.
-    **/
-    Plugin.run = function(){
-        // Set the breakpoints
-        var breakpoints = (Plugin.elem.data('eh-breakpoints')) ? Plugin.elem.data('eh-breakpoints').split('|') : [320, 9999];
-        // Go!
-        Plugin.watch_window(Plugin.elem, breakpoints[0], breakpoints[1]);
-    }
-
-    /**
-     * Plugin.calculate
-     * Calculate and apply the correct heights.
-    **/
-    Plugin.calculate = function(el){
-        var boxes = $('[data-eh="true"]', el);
-        // Reset the height attribute to `auto` (or nothing).
-        Plugin.reset_heights(el);
-        // Map all qualifying element heights to an array.
-        var heights = boxes.map(function(){
-            return $(this).outerHeight();
-        }).get();
-        // Get the largest value from the array.
-        var large = Math.max.apply(Math, heights);
-        // Apply the CSS height to all qualifying elements.
-        boxes.each(function(){
-            $(this).height(large);
-        });
-    }
-
-    /**
-     * Plugin.watch_window
-     * Watches the window size and checks if breakpoints apply.
-    **/
-    Plugin.watch_window = function(el, breakpoint1, breakpoint2){
-        $(window).on('load resize', function(){
-            if($(window).width() > breakpoint1 && $(window).width() < breakpoint2){
-                Plugin.calculate(el);
-            }
-            else{
-                Plugin.reset_heights(el);
-            }
-        });
-    }
-
-    /**
-     * Plugin.reset_heights
-     * Reset all box heights.
-    **/
-    Plugin.reset_heights = function(el){
-        var boxes = $('[data-eh="true"]', el);
-        // Reset the height attribute to `auto` (or nothing).
-        boxes.each(function(){
-            $(this).css({'height': 'auto'});
-        });
     }
 
 })(jQuery, window);

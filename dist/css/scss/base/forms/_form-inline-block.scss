@@ -2,12 +2,41 @@
    Form Inline Block
    Inline Block level forms
 ========================================================================== */
-/* -- Forms -- */
-.form-inline-block {
+form.form-inline-block {
+
+	// Field
+	.field {
+		margin: 0;
+		@include inline-block;
+		vertical-align: top;
+		label, .label, input, .input, select, textarea, .field-container {
+			width: 100%;
+			display: block;
+		}
+	}
+
+	// Field container
+	.field-container {
+		height: $form_field_height;
+		label {
+			width: auto;
+			@include nudge(margin-right, 0.25);
+		}
+		span {
+			// Siblings
+			+ input, .input, select, textarea, .field-container {
+				margin: 0;
+			}
+		}
+	}
+
+	// All form elements
 	label, .label, input, .input, select, textarea, .field-container {
 		@include inline-block;
 		vertical-align: top;
 	}
+
+	// Labels
 	label, .label {
 		width: 35%;
 		padding-right: 5%;
@@ -22,6 +51,8 @@
 			}
 		}
 	}
+
+	// All form elements
 	input, .input, select, textarea, .field-container {
 		width: 64%;
 		margin: 0;
@@ -30,22 +61,9 @@
 			margin-left: 35%;
 		}
 	}
+
+	// Radio & Checkboxes
 	input[type="checkbox"], input[type="radio"] {
 		@extend %radio-checkbox;
-	}
-	.field-container {
-		label {
-			width: auto;
-			@include nudge(margin-right, 0.25);
-		}
-		span {
-			// Siblings
-			+ input, .input, select, textarea, .field-container {
-				margin: 0;
-			}
-		}
-	}
-	.field-container {
-		height: $form_field_height;
 	}
 }

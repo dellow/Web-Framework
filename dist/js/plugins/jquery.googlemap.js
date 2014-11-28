@@ -28,133 +28,204 @@
 ;(function($, window, undefined){
     'use strict';
 
-    // Set plugin.
-    var Plugin = {};
+    /**
+     * Plugin
+     * Return a unique plugin instance.
+    **/
+    var Plugin = function(elem, options){
+        this.elem     = elem;
+        this.$elem    = $(elem);
+        this.options  = options;
+        this.metadata = this.$elem.data('plugin-options');
+    }
 
-    /* ======================================================== */
-    /* Plugin Instance
-    /* ======================================================== */
     /**
      * $.fn.googlemap
      * Return a unique plugin instance.
     **/
     $.fn.googlemap = function(options){
-        // Cache the selector.
-        Plugin.selector = this.selector;
-
         return this.each(function(){
-            new Plugin.init(this, options);
+            new Plugin(this, options).init();
         });
     };
 
-    /* ======================================================== */
-    /* Plugin base methods
-    /* ======================================================== */
     /**
-     * Plugin.init
-     * Init this plugin.
+     * $.fn.googlemap.defaults
+     * Default options.
     **/
-    Plugin.init = function(elem, options){
-        // Global vars.
-        Plugin.elem     = $(elem);
-        // Global settings.
-        Plugin.settings = Plugin.options(options);
-        // Expose other vars to the party.
-        Plugin.vars();
-        // Do binds.
-        Plugin.binds();
-        // Run the plugin.
-        Plugin.run();
+    $.fn.googlemap.defaults = {
+        canvas                   : 'map-canvas',
+        locations                : [],
+        apiKey                   : '',
+        map_type                 : 'roadmap',
+        hoverThreshold           : 500,
+        mapStyles                : null,
+        mapZoom                  : 15,
+        mapDisableDefaultUI      : false,
+        mapStreetViewControl     : true,
+        mapDisableDoubleClickZoom: true,
+        mapScrollwheel           : true,
+        mapDraggable             : true,
+        markerAnimation          : true,
+        markerIcon               : 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        markerTitle              : 'Location'
     };
 
     /**
-     * Plugin.vars
-     * Plugin variables.
+     * Plugin.prototype
+     * Init.
     **/
-    Plugin.vars = function(){
-        // API Key
-        Plugin.key = (Plugin.settings.apiKey !== '') ? '&key=' + Plugin.settings.apiKey : ''; // Must be empty string, not `null`.
-        // Canvas
-        Plugin.canvas = $('#' + Plugin.settings.canvas, Plugin.elem);
-    }
+    Plugin.prototype = {
+        init: function(){
+            // this
+            var _self = this;
 
-    /**
-     * Plugin.options
-     * Plugin settings and options.
-    **/
-    Plugin.options = function(options){
-        // Our application defaults.
-        var defaults = {
-            canvas                   : 'map-canvas',
-            locations                : [],
-            apiKey                   : '',
-            map_type                 : 'roadmap',
-            hoverThreshold           : 500,
-            mapStyles                : null,
-            mapZoom                  : 15,
-            mapDisableDefaultUI      : false,
-            mapStreetViewControl     : true,
-            mapDisableDoubleClickZoom: true,
-            mapScrollwheel           : true,
-            mapDraggable             : true,
-            markerAnimation          : true,
-            markerIcon               : 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-            markerTitle              : 'Location'
-        };
+            // Global settings.
+            _self.settings = $.extend({}, $.fn.googlemap.defaults, _self.options);
 
-        // Combine the defaults and custom Plugin.settings.
-        return $.extend({}, defaults, options);
-    };
+            // API Key
+            _self.key = (_self.settings.apiKey !== '') ? '&key=' + _self.settings.apiKey : ''; // Must be empty string, not `null`.
+            // Canvas
+            _self.canvas = $('#' + _self.settings.canvas, _self.elem);
 
-    /**
-     * Plugin.binds
-     * jQuery bind events.
-    **/
-    Plugin.binds = function(){
-        // Vars
-        var timeout, pointer_active = false;
+            // Do jQuery event binds.
+            _self.binds();
+            // Run the plugin.
+            _self.run();
 
-        // On events
-        $(document).on({
-            click: function(){
-                if(!pointer_active){
-                    Plugin.elem.addClass('map-is-active');
-                    Plugin.canvas.css({'pointer-events': 'auto'});
-                    pointer_active = true;
-                }
-            },
-            mouseover: function(){
-                if(!pointer_active){
-                    timeout = window.setTimeout(function(){
-                        window.clearTimeout(timeout);
-                        Plugin.elem.addClass('map-is-active');
-                        Plugin.canvas.css({'pointer-events': 'auto'});
+            return _self;
+        },
+        binds: function(){
+            var _self = this;
+
+            // Vars
+            var timeout, pointer_active = false;
+
+            // On events
+            $(document).on({
+                click: function(){
+                    if(!pointer_active){
+                        _self.elem.addClass('map-is-active');
+                        _self.canvas.css({'pointer-events': 'auto'});
                         pointer_active = true;
-                    }, Plugin.settings.hoverThreshold);
+                    }
+                },
+                mouseover: function(){
+                    if(!pointer_active){
+                        timeout = window.setTimeout(function(){
+                            window.clearTimeout(timeout);
+                            _self.elem.addClass('map-is-active');
+                            _self.canvas.css({'pointer-events': 'auto'});
+                            pointer_active = true;
+                        }, _self.settings.hoverThreshold);
+                    }
+                },
+                mouseleave: function(){
+                    if(pointer_active){
+                        window.clearTimeout(timeout);
+                        _self.elem.removeClass('map-is-active');
+                        _self.canvas.css({'pointer-events': 'none'});
+                        pointer_active = false;
+                    }
                 }
-            },
-            mouseleave: function(){
-                if(pointer_active){
-                    window.clearTimeout(timeout);
-                    Plugin.elem.removeClass('map-is-active');
-                    Plugin.canvas.css({'pointer-events': 'none'});
-                    pointer_active = false;
+            }, _self.selector);
+        },
+        run: function(){
+            // Check for canvas.
+            if(!this.canvas.length){Helper.log("Map canvas not available.");return;};
+            // Run
+            this.maps_init();
+        },
+        maps_init: function(){
+            var _self = this;
+
+            // Load API.
+            $.getScript('https://www.google.com/jsapi', function(){
+                // Get API
+                google.load('maps', '3', {
+                    other_params: 'sensor=false&region=GB&libraries=geometry' + _self.key,
+                    callback: function(){
+                        // Map Type
+                        switch(_self.settings.map_type.toLowerCase()){
+                            case 'roadmap' : _self.settings.map_type = google.maps.MapTypeId.ROADMAP; break;
+                            case 'satellite' : _self.settings.map_type = google.maps.MapTypeId.SATELLITE; break;
+                            case 'terrain' : _self.settings.map_type = google.maps.MapTypeId.TERRAIN; break;
+                            case 'hybrid' : _self.settings.map_type = google.maps.MapTypeId.HYBRID; break;
+                        }
+                        // Start Bounds.
+                        _self.bounds = new google.maps.LatLngBounds();
+                        // Start Map.
+                        _self.map = new google.maps.Map(document.getElementById(_self.settings.canvas), {
+                            zoom                  : 5,
+                            center                : new google.maps.LatLng(51.5000, 0.1167),
+                            mapTypeId             : _self.settings.map_type,
+                            disableDefaultUI      : _self.settings.mapDisableDefaultUI,
+                            streetViewControl     : _self.settings.mapStreetViewControl,
+                            disableDoubleClickZoom: _self.settings.mapDisableDoubleClickZoom,
+                            scrollwheel           : _self.settings.mapScrollwheel,
+                            draggable             : _self.settings.mapDraggable,
+                            styles                : _self.settings.mapStyles
+                        });
+                        // Start Geocoder.
+                        var geocoder = new google.maps.Geocoder();
+                        // Loop through locations.
+                        for(var i = 0, ii = _self.settings.locations.length; i < ii; i++){
+                            geocoder.geocode({'address': _self.settings.locations[i]}, _self.geocode_found());
+                        }
+
+                    }
+                });
+            });
+        },
+        geocode_found: function(){
+            var _self = this;
+
+            return function(results, status){
+                // Check location has been found.
+                if(status === google.maps.GeocoderStatus.OK){
+                    // Start listeners
+                    _self.set_position(results[0].geometry.location);
+                }
+                else{
+                    Helper.log("Can't Geolocated that location.");
                 }
             }
-        }, Plugin.selector);
+        },
+        set_position: function(location){
+            var _self = this;
+
+            // Set a marker for the location.
+            var marker = new google.maps.Marker({
+                map      : _self.map,
+                position : location,
+                animation: (_self.settings.markerAnimation) ? google.maps.Animation.DROP : null,
+                icon     : _self.settings.markerIcon,
+                title    : _self.settings.markerTitle
+            });
+
+            // If we have more than one location use bounds to set the viewport. Otherwise
+            // set the zoom and center manually for a single location.
+            if(_self.settings.locations.length > 1){
+                // Extend the bounds of the map for each location.
+                _self.bounds.extend(location);
+                // Fit the bounds on each iteration.
+                _self.map.fitBounds(_self.bounds);
+            }
+            else{
+                _self.map.setCenter(location);
+                _self.map.setZoom(_self.settings.mapZoom);
+            }
+        }
     }
 
-    /* ======================================================== */
-    /* Plugin specific methods
-    /* ======================================================== */
-    // Set helper.
-    var Helper = {};
+    // Set helpers.
+    var helpers = {};
 
     /**
-     * Helper.log
+     * helpers.log
      * Returns a cross-browser safe message in the console.
     **/
-    Helper.log = function(message, alertlog){
+    helpers.log = function(message, alertlog){
         alertlog = (typeof alertlog === 'undefined') ? false : true;
         if(typeof console === 'undefined' || typeof console.log === 'undefined'){
             if(alertlog){
@@ -163,102 +234,6 @@
         }
         else {
             console.log(message);
-        }
-    }
-
-    /**
-     * plugin.run
-     * Our initial function.
-    **/
-    Plugin.run = function(){
-        // Check for canvas.
-        if(!Plugin.canvas.length){Helper.log("Map canvas not available.");return;};
-        // Load API.
-        $.getScript('https://www.google.com/jsapi', function(){
-            // Get API
-            google.load('maps', '3', {
-                other_params: 'sensor=false&region=GB&libraries=geometry' + Plugin.key,
-                callback: Plugin.maps_init
-            });
-        });
-    }
-
-    /**
-     * Plugin.maps_init
-     * Initialise the map canvas and Geocode locations.
-    **/
-    Plugin.maps_init = function(){
-        // Map Type
-        switch(Plugin.settings.map_type.toLowerCase()){
-            case 'roadmap' : Plugin.settings.map_type = google.maps.MapTypeId.ROADMAP; break;
-            case 'satellite' : Plugin.settings.map_type = google.maps.MapTypeId.SATELLITE; break;
-            case 'terrain' : Plugin.settings.map_type = google.maps.MapTypeId.TERRAIN; break;
-            case 'hybrid' : Plugin.settings.map_type = google.maps.MapTypeId.HYBRID; break;
-        }
-        // Start Bounds.
-        Plugin.bounds = new google.maps.LatLngBounds();
-        // Start Map.
-        Plugin.map = new google.maps.Map(document.getElementById(Plugin.settings.canvas), {
-            zoom                  : 5,
-            center                : new google.maps.LatLng(51.5000, 0.1167),
-            mapTypeId             : Plugin.settings.map_type,
-            disableDefaultUI      : Plugin.settings.mapDisableDefaultUI,
-            streetViewControl     : Plugin.settings.mapStreetViewControl,
-            disableDoubleClickZoom: Plugin.settings.mapDisableDoubleClickZoom,
-            scrollwheel           : Plugin.settings.mapScrollwheel,
-            draggable             : Plugin.settings.mapDraggable,
-            styles                : Plugin.settings.mapStyles
-        });
-        // Start Geocoder.
-        var geocoder = new google.maps.Geocoder();
-        // Loop through locations.
-        for(var i = 0, ii = Plugin.settings.locations.length; i < ii; i++){
-            geocoder.geocode({'address': Plugin.settings.locations[i]}, Plugin.geocode_found());
-        }
-    }
-
-    /**
-     * Plugin.geocode_found
-     * Geocoder callback.
-    **/
-    Plugin.geocode_found = function(){
-        return function(results, status){
-            // Check location has been found.
-            if(status === google.maps.GeocoderStatus.OK){
-                // Start listeners
-                Plugin.set_position(results[0].geometry.location);
-            }
-            else{
-                Helper.log("Can't Geolocated that location.");
-            }
-        }
-    }
-
-    /**
-     * Plugin.set_position
-     * Set's the map position and places a marker.
-    **/
-    Plugin.set_position = function(location){
-        // Set a marker for the location.
-        var marker = new google.maps.Marker({
-            map      : Plugin.map,
-            position : location,
-            animation: (Plugin.settings.markerAnimation) ? google.maps.Animation.DROP : null,
-            icon     : Plugin.settings.markerIcon,
-            title    : Plugin.settings.markerTitle
-        });
-
-        // If we have more than one location use bounds to set the viewport. Otherwise
-        // set the zoom and center manually for a single location.
-        if(Plugin.settings.locations.length > 1){
-            // Extend the bounds of the map for each location.
-            Plugin.bounds.extend(location);
-            // Fit the bounds on each iteration.
-            Plugin.map.fitBounds(Plugin.bounds);
-        }
-        else{
-            Plugin.map.setCenter(location);
-            Plugin.map.setZoom(Plugin.settings.mapZoom);
         }
     }
 
