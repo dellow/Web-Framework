@@ -70,25 +70,27 @@
         binds: function(){
         },
         run: function(){
-            var title   = $('> .' + Plugin.settings.title_class, Plugin.elem),
-                content = $('> .' + Plugin.settings.section_class, Plugin.elem);
+            var _self = this;
+
+            var title   = $('> .' + _self.title_class, _self.$elem),
+                content = $('> .' + _self.section_class, _self.$elem);
 
             // Reset the accordion
-            $('.' + Plugin.settings.active_section_class, Plugin.elem).removeClass(Plugin.settings.active_section_class);
-            $('.' + Plugin.settings.active_title_class, Plugin.elem).removeClass(Plugin.settings.active_title_class);
+            $('.' + _self.active_section_class, _self.$elem).removeClass(_self.active_section_class);
+            $('.' + _self.active_title_class, _self.$elem).removeClass(_self.active_title_class);
 
             title.css({'cursor': 'pointer'});
             content.hide();
-            if(Plugin.settings.openfirst){
-                title.first().show().addClass(Plugin.settings.active_title_class);
-                content.first().show().addClass(Plugin.settings.active_section_class);
+            if(_self.openfirst){
+                title.first().show().addClass(_self.active_title_class);
+                content.first().show().addClass(_self.active_section_class);
             }
 
             title.on('click', function(){
-                if(!$(this).hasClass(Plugin.settings.active_title_class)){
-                    $('.' + Plugin.settings.active_section_class, Plugin.elem).slideUp(500).removeClass(Plugin.settings.active_section_class);
-                    $('.' + Plugin.settings.active_title_class, Plugin.elem).removeClass(Plugin.settings.active_title_class);
-                    $(this).addClass(Plugin.settings.active_title_class, Plugin.elem).next().slideDown(500).addClass(Plugin.settings.active_section_class);
+                if(!$(this).hasClass(_self.active_title_class)){
+                    $('.' + _self.active_section_class, _self.$elem).slideUp(500).removeClass(_self.active_section_class);
+                    $('.' + _self.active_title_class, _self.$elem).removeClass(_self.active_title_class);
+                    $(this).addClass(_self.active_title_class, _self.$elem).next().slideDown(500).addClass(_self.active_section_class);
                 }
             });
         }

@@ -69,22 +69,24 @@
         binds: function(){
         },
         run: function(){
-            $('.' + Plugin.settings.tab_class, Plugin.elem).hide();
-            $('.' + Plugin.settings.tab_class, Plugin.elem).first().show().addClass(Plugin.settings.active_tab_class);
-            $('.' + Plugin.settings.nav_class + ' li', Plugin.elem).first().addClass(Plugin.settings.active_tab_class);
+            var _self = this;
 
-            $('.' + Plugin.settings.nav_class + ' li button', Plugin.elem).on('click', function(e){
+            $('.' + _self.settings.tab_class, _self.$elem).hide();
+            $('.' + _self.settings.tab_class, _self.$elem).first().show().addClass(_self.settings.active_tab_class);
+            $('.' + _self.settings.nav_class + ' li', _self.$elem).first().addClass(_self.settings.active_tab_class);
+
+            $('.' + _self.settings.nav_class + ' li button', _self.$elem).on('click', function(e){
                 e.preventDefault();
                 var tab_nav    = $(this).parent().parent(),
                     tab_system = tab_nav.next();
 
-                if(!$(this).parent().hasClass(Plugin.settings.active_tab_class)){
-                    var target = $(this).data(Plugin.settings.target_data_attr);
+                if(!$(this).parent().hasClass(_self.settings.active_tab_class)){
+                    var target = $(this).data(_self.settings.target_data_attr);
 
-                    $('li.' + Plugin.settings.active_tab_class, tab_nav).removeClass(Plugin.settings.active_tab_class);
-                    $(this).parent().addClass(Plugin.settings.active_tab_class);
-                    $('.' + Plugin.settings.active_tab_class, tab_system).hide().removeClass(Plugin.settings.active_tab_class);
-                    $('#' + target, tab_system).fadeIn(500).addClass(Plugin.settings.active_tab_class);
+                    $('li.' + _self.settings.active_tab_class, tab_nav).removeClass(_self.settings.active_tab_class);
+                    $(this).parent().addClass(_self.settings.active_tab_class);
+                    $('.' + _self.settings.active_tab_class, tab_system).hide().removeClass(_self.settings.active_tab_class);
+                    $('#' + target, tab_system).fadeIn(500).addClass(_self.settings.active_tab_class);
                 }
             });
         }
