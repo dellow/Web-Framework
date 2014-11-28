@@ -14,7 +14,7 @@ releases/app_*
 # If a public repo any files with sensitive data like database connection
 # details should be ignored to prevent unauthorised access.
 # ---------------------------------------------------------------------------------
-**/*.htaccess
+# **/*.htaccess
 **/*.log
 
 
