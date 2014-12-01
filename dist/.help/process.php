@@ -157,8 +157,8 @@ class mailer{
 		 * @version 1.0.0
 		**/
 		function get_mail_headers($args){
-			$headers  = 'MIME-Version: 1.0' . "\n";
-			$headers .= 'Content-type: text/html; charset=UTF-8' . "\n";
+			$headers  = "MIME-Version: 1.0" . "\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1" . "\n";
 			$headers .= 'From: ' . $args['title'] . ' <noreply@' . get_domain($args['domain']) . '>' . "\n";
 			$headers .= (!empty($args['reply-to'])) ? 'Reply-To: ' . $args['reply-to'][0] . ' <' . $args['reply-to'][1] . '>' . "\n" : null;
 			// Reply to

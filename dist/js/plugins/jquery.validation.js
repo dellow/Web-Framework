@@ -38,6 +38,12 @@
 ;(function($, window, undefined){
     'use strict';
 
+    // Email suggester object.
+    var suggester = {};
+
+    // Set helpers.
+    var helpers = {};
+
     /**
      * Plugin
      * Return a unique plugin instance.
@@ -101,7 +107,6 @@
 
             // Global settings.
             _self.settings = $.extend({}, $.fn.validation.defaults, _self.options);
-            $.fn.validation.settings = _self.settings;
             // Global arrays
             _self.error_array; _self.group_array;
             // Action for the form.
@@ -367,10 +372,12 @@
             }
         },
         setup_email_field: function(el){
-            el.after($('<div class="suggestion">' + this.settings.defaultSuggestText + ' <a href="#" class="alternative-email"><span class="address">address</span>@<span class="domain">domain.com</span></a>?</div>').hide());
+            var _self = this;
+
+            el.after($('<div class="suggestion">' + _self.settings.defaultSuggestText + ' <a href="#" class="alternative-email"><span class="address">address</span>@<span class="domain">domain.com</span></a>?</div>').hide());
 
             el.on('blur', function(){
-                EmailSuggester.init(el);
+                suggester.init(el, _self.settings.domains);
             });
         },
         setup_url_field: function(el){
@@ -492,14 +499,11 @@
         }
     }
 
-    // Email suggester object.
-    var EmailSuggester = {};
-
     /**
-     * EmailSuggester.init
+     * suggester.init
      * NULLED.
     **/
-    EmailSuggester.init = function(el){
+    suggester.init = function(el, plugin_domains){
         // Default domains
         var default_domains = [
             'aol.com',
@@ -536,25 +540,25 @@
             'yahoo.fr'
         ];
         // Extend the domains array with those from the plugin settings.
-        this.domains = $.extend(true, default_domains, $.fn.validation.settings.domains);
+        this.domains = $.extend(true, default_domains, plugin_domains);
 
         var email_val = el.val(),
-            match_val = EmailSuggester.get_match(email_val);
+            match_val = suggester.get_match(email_val);
 
         this.suggestion = el.next('.suggestion');
         this.reveal_suggestion(el, match_val);
     }
 
     /**
-     * EmailSuggester.get_match
+     * suggester.get_match
      * NULLED.
     **/
-    EmailSuggester.get_match = function(query){
+    suggester.get_match = function(query){
         var limit   = 99,
             query   = query.split('@');
 
         for(var i = 0, ii = this.domains.length; i < ii; i++){
-            var distance = EmailSuggester.levenshtein_distance(this.domains[i], query[1]);
+            var distance = suggester.levenshtein_distance(this.domains[i], query[1]);
             if(distance < limit){
                 limit = distance;
                 var domain = this.domains[i];
@@ -572,10 +576,10 @@
     }
 
     /**
-     * EmailSuggester.levenshtein_distance
+     * suggester.levenshtein_distance
      * NULLED.
     **/
-    EmailSuggester.levenshtein_distance = function(a, b){
+    suggester.levenshtein_distance = function(a, b){
         var c = 0,
             d = 0,
             e = 0,
@@ -618,10 +622,10 @@
     }
 
     /**
-     * EmailSuggester.reveal_suggestion
+     * suggester.reveal_suggestion
      * NULLED.
     **/
-    EmailSuggester.reveal_suggestion = function(el, result){
+    suggester.reveal_suggestion = function(el, result){
         if(result){
             $('.address', this.suggestion).text(result.address);
             $('.domain', this.suggestion).text(result.domain);
@@ -630,13 +634,10 @@
             $('.alternative-email').on('click', function(e){
                 e.preventDefault();
                 el.val(result.address + '@' + result.domain);
-                EmailSuggester.suggestion.stop(true, false).slideUp(350);
+                suggester.suggestion.stop(true, false).slideUp(350);
             });
         }
     }
-
-    // Set helpers.
-    var helpers = {};
 
     /**
      * helpers.remove_duplicates

@@ -15,6 +15,9 @@
 ;(function($, window, undefined){
     'use strict';
 
+    // Set helpers.
+    var helpers = {};
+
     /**
      * Plugin
      * Return a unique plugin instance.
@@ -91,9 +94,6 @@
             });
         }
     }
-
-    // Set helpers.
-    var helpers = {};
 
     /**
      * helpers.log

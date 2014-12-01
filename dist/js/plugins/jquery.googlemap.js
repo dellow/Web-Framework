@@ -28,6 +28,9 @@
 ;(function($, window, undefined){
     'use strict';
 
+    // Set helpers.
+    var helpers = {};
+
     /**
      * Plugin
      * Return a unique plugin instance.
@@ -86,7 +89,7 @@
             // API Key
             _self.key = (_self.settings.apiKey !== '') ? '&key=' + _self.settings.apiKey : ''; // Must be empty string, not `null`.
             // Canvas
-            _self.canvas = $('#' + _self.settings.canvas, _self.elem);
+            _self.canvas = $('#' + _self.settings.canvas, _self.$elem);
 
             // Do jQuery event binds.
             _self.binds();
@@ -105,7 +108,7 @@
             $(document).on({
                 click: function(){
                     if(!pointer_active){
-                        _self.elem.addClass('map-is-active');
+                        _self.$elem.addClass('map-is-active');
                         _self.canvas.css({'pointer-events': 'auto'});
                         pointer_active = true;
                     }
@@ -114,7 +117,7 @@
                     if(!pointer_active){
                         timeout = window.setTimeout(function(){
                             window.clearTimeout(timeout);
-                            _self.elem.addClass('map-is-active');
+                            _self.$elem.addClass('map-is-active');
                             _self.canvas.css({'pointer-events': 'auto'});
                             pointer_active = true;
                         }, _self.settings.hoverThreshold);
@@ -123,7 +126,7 @@
                 mouseleave: function(){
                     if(pointer_active){
                         window.clearTimeout(timeout);
-                        _self.elem.removeClass('map-is-active');
+                        _self.$elem.removeClass('map-is-active');
                         _self.canvas.css({'pointer-events': 'none'});
                         pointer_active = false;
                     }
@@ -217,9 +220,6 @@
             }
         }
     }
-
-    // Set helpers.
-    var helpers = {};
 
     /**
      * helpers.log
