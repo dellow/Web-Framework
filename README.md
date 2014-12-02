@@ -11,15 +11,14 @@
 	1. [Development](#profiles--development)
 	2. [Production](#profiles--production)
 7. [Watch](#watch)
-8. [Bundle](#bundle)
-9. [Server](#server)
-10. [PageSpeed](#pagespeed)
-11. [Release](#release)
-12. [Working with SCSS](#working-with-scss)
+8. [Server](#server)
+9. [PageSpeed](#pagespeed)
+10. [Release](#release)
+11. [Working with SCSS](#working-with-scss)
 	1. [Debug Mode](#working-with-scss--debug-mode)
 	2. [Dev Mode](#working-with-scss--dev-mode)
 	3. [Responsive](#working-with-scss--responsive)
-13. [Working with JavaScript](#working-with-javascript)
+12. [Working with JavaScript](#working-with-javascript)
 	1. [Requiring New Files](#working-with-javascript--requiring-new-files)
 
 <a name="about"></a>
@@ -75,11 +74,8 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 ### Development
 - Browserify (Non minified)
 - Compass (Non minified with development mode activated)
-- CSSLint
 - JSHint
-- Imagemin
 - Jasmine
-- Bundle
 
 <a name="profiles--production"></a>
 ### Production
@@ -92,12 +88,6 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile.
 
 > __Please note:__ `watch` will run in development mode, so CSS and JS will not be minified for easier debugging. You should run `gulp --config production` to get a final minified output for your live environment.
-
-<a name="bundle"></a>
-## Bundle
-All root commands of `gulp` will create a copy of the working `./src` directory in the `./app` directory but with just the application files. I.E. No `.scss` files or build `.js` files. This can be used for testing purposes and simply serves to automatically remove any build files for whatever use case. No profiles will be applied to the `./app` directory regardless of the commands used. To create a profiled version use the `release` command.
-
-> __Please note:__ `bundle` might be removed in later version due to similarities with the `current` directory which is created with the `release` command.
 
 <a name="release"></a>
 ## Release
