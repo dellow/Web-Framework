@@ -50,7 +50,7 @@ __All additional instructions below assume you have followed the installation pr
 
 <a name="styleguide-examples"></a>
 ## Styleguide & Examples
-There is a CSS styleguide in [`dist/.help/guides/styleguide.html`](dist/.help/guides/styleguide.html) which outlines some of the default elements in the framework. Or you can view the Elements styleguide for more specific elements [`dist/.help/guides/elements.html`](dist/.help/guides/elements.html). You can also test the vertical rhythm [`dist/.help/guides/rhythm.html`](dist/.help/guides/rhythm.html).
+There is a CSS styleguide in [`dist/.help/guides/styleguide.html`](dist/.help/guides/styleguide.html) which outlines some of the elements in the framework. You can also test the vertical rhythm [`dist/.help/guides/rhythm.html`](dist/.help/guides/rhythm.html).
 
 These serve as ongoing platforms to test any changes you might make to framework CSS.
 
