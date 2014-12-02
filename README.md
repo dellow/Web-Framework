@@ -74,6 +74,7 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 ### Development
 - Browserify (Non minified)
 - Compass (Non minified with development mode activated)
+- Dalek
 - JSHint
 - Jasmine
 
@@ -81,7 +82,6 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 ### Production
 - Browserify (Minified)
 - Compass (Minified)
-- Bundle
 
 <a name="watch"></a>
 ## Watch
