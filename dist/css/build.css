@@ -3,13 +3,9 @@
    Mixins > All
    Imports all the partials.
 ========================================================================== */
-/* ==========================================================================
-   Mixins > Vendor > All
-   Mixins from 3rd party sources.
-========================================================================== */
 /* CSS compiled from SCSS */
 /* --------------------------------------- */
-/* line 10, scss/mixins/vendor/sassline/style.scss */
+/* line 10, scss/mixins/vendor/sassline/_style.scss */
 #baseline.show-grid {
   background-image: -webkit-linear-gradient(top, cyan 0, rgba(255, 255, 255, 0) 1px);
   background-image: -moz-linear-gradient(top, cyan 0, rgba(255, 255, 255, 0) 1px);
