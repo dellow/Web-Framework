@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Mixins > Helpers
+   Functions and mixins that aid development or other mixins.
+========================================================================== */
+/**
+ * color
+ * Gets color and tone from map.
+ *
+ * .foo {@include color(red, base);}
+**/
+@function color($color, $tone: 'base'){
+    @return map-get(map-get($colors, $color), $tone);
+}
+
+/**
+ * px-to-rem
+ * Takes a single value or a list of values and replaces px units with rem
+ * Zero values will remain 0.
+ * Non-px values will not be modified.
+ * You can return an em value by passing the $unit var as 'em'
+**/
+@function px-to-rem($px, $unit: rem){
+    $return: ();
+
+    @each $var in $px {
+        @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
+            $return: append($return, #{$var/16px}$unit, space);
+        }
+        @else {
+            $return: append($return, $var, space);
+        }
+    }
+
+    @return $return;
+}
+
+/**
+ * modify-grid
+ * Temporarily modifies the grid system
+ *
+ * .foo {@include modify-grid(6%, $col-1-2);}
+**/
+@mixin modify-grid($gutter_width, $col, $all: false){
+	$grid_selector     : '';
+	$flex_grid_selector: '';
+
+	@if($all){
+		$grid_selector: '> .grid, &.grid';
+	}
+	@else{
+		$grid_selector: '.grid, &.grid';
+	}
+	#{$grid_selector} {
+		width: 100% + $gutter_width;
+		margin-top: -$gutter_width;
+		left: -$gutter_width;
+		> [class*="col-"] {
+			width: $col - $gutter_width;
+			margin: $gutter_width 0 0 $gutter_width;
+		}
+	}
+
+	@if($all){
+		$flex_grid_selector: '> .flex-grid, &.flex-grid';
+	}
+	@else{
+		$flex_grid_selector: '.flex-grid, &.flex-grid';
+	}
+	#{$flex_grid_selector} {
+		$top: ($gutter_width / ($gutter_width * 0 + 1)) / 1.11;
+		width: 100% + $gutter_width;
+		margin-top: -$top;
+		left: -$gutter_width;
+		> [class*="col-"] {
+			max-width              : $col - $gutter_width;
+			-webkit-flex-basis     : $col - $gutter_width;
+			-ms-flex-preferred-size: $col - $gutter_width;
+			flex-basis             : $col - $gutter_width;
+			margin: #{$top}rem 0 0 $gutter_width;
+		}
+	}
+}

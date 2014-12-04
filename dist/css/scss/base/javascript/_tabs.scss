@@ -11,7 +11,7 @@
 			margin: 0 0 0 -5px;
 			border: 1px solid color(grey);
 			border-bottom: 0;
-			@include inline-block;
+			display: inline-block;
 			position: relative;
 	    	z-index: $zindex-1;
 			vertical-align: bottom;

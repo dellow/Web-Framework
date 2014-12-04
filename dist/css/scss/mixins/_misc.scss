@@ -3,16 +3,6 @@
    Functions and mixins for various Framework operations.
 ========================================================================== */
 /**
- * color
- * Gets color and tone from map.
- *
- * .foo {@include color(red, base);}
-**/
-@function color($color, $tone: 'base'){
-    @return map-get(map-get($colors, $color), $tone);
-}
-
-/**
  * retina-image
  * Retina image replacement.
  *
@@ -28,55 +18,6 @@
 		background-size: $width $height;
 	}
 	background-image: url($image + '.' + $type);
-}
-
-/**
- * modify-grid
- * Temporarily modifies the grid system
- *
- *	.foo {
-		@include modify-grid(6%, $col-1-2);
- *	}
-**/
-@mixin modify-grid($gutter_width, $col, $all: false){
-	$grid_selector     : '';
-	$flex_grid_selector: '';
-
-	@if($all){
-		$grid_selector: '> .grid, &.grid';
-	}
-	@else{
-		$grid_selector: '.grid, &.grid';
-	}
-	#{$grid_selector} {
-		width: 100% + $gutter_width;
-		margin-top: -$gutter_width;
-		left: -$gutter_width;
-		> [class*="col-"] {
-			width: $col - $gutter_width;
-			margin: $gutter_width 0 0 $gutter_width;
-		}
-	}
-
-	@if($all){
-		$flex_grid_selector: '> .flex-grid, &.flex-grid';
-	}
-	@else{
-		$flex_grid_selector: '.flex-grid, &.flex-grid';
-	}
-	#{$flex_grid_selector} {
-		$top: ($gutter_width / ($gutter_width * 0 + 1)) / 1.11;
-		width: 100% + $gutter_width;
-		margin-top: -$top;
-		left: -$gutter_width;
-		> [class*="col-"] {
-			max-width              : $col - $gutter_width;
-			-webkit-flex-basis     : $col - $gutter_width;
-			-ms-flex-preferred-size: $col - $gutter_width;
-			flex-basis             : $col - $gutter_width;
-			margin: #{$top}rem 0 0 $gutter_width;
-		}
-	}
 }
 
 /**
@@ -118,17 +59,6 @@
 }
 
 /**
- * inline-block
- * Cross browser inline-block.
- *
- * .foo {@include inline-block;}
-**/
-@mixin inline-block(){
-	display: inline-block;
-	zoom: 1; *display: inline; /* IE Fix */
-}
-
-/**
  * trigram
  * Trigram for Heaven mobile icon.
  *
@@ -165,7 +95,7 @@
 		width: 0;
 		height: 0;
 		position: relative;
-		@include inline-block;
+		display: inline-block;
 		top: $top;
 		@if($left != null){
 			left: $left;

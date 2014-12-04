@@ -14,7 +14,7 @@
 			.more {
 				&:after {
 					width: 20px;
-					@include inline-block;
+					display: inline-block;
 					content: "+";
 				}
 			}

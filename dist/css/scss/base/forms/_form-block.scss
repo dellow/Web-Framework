@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Form Block
+   Base > Forms > Form Block
    Block level forms
 ========================================================================== */
 form.form-block {
@@ -11,7 +11,7 @@ form.form-block {
 		}
 		input, .input, select, textarea {
 			margin-left: 2%;
-			@include inline-block;
+			display: inline-block;
 			vertical-align: middle;
 			// Pseudo
 			&:first-child {

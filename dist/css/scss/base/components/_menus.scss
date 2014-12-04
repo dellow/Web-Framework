@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Menus
+   Base > Components > Menus
    Styles for navigational menus.
 ========================================================================== */
 /* -- All Navigation -- */
@@ -20,7 +20,7 @@
 .nav-primary {
 	// Descendants
 	li {
-		@include inline-block;
+		display: inline-block;
 		position: relative;
 		// Descendants
 		.sub-menu {
@@ -70,7 +70,7 @@
 		&:after {
 			width: 100%;
 			content: '';
-			@include inline-block;
+			display: inline-block;
 		}
 	}
 }

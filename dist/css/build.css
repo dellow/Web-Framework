@@ -1,11 +1,27 @@
 @charset "UTF-8";
 /* ==========================================================================
-   All
-   Imports all the partials
+   Mixins > All
+   Imports all the partials.
 ========================================================================== */
 /* ==========================================================================
-   Mixins > Misc
-   Functions and mixins for various Framework operations.
+   Mixins > Vendor > All
+   Mixins from 3rd party sources.
+========================================================================== */
+/* CSS compiled from SCSS */
+/* --------------------------------------- */
+/* line 10, scss/mixins/vendor/sassline/style.scss */
+#baseline.show-grid {
+  background-image: -webkit-linear-gradient(top, cyan 0, rgba(255, 255, 255, 0) 1px);
+  background-image: -moz-linear-gradient(top, cyan 0, rgba(255, 255, 255, 0) 1px);
+  background-image: -o-linear-gradient(top, cyan 0, rgba(255, 255, 255, 0) 1px);
+  background-image: linear-gradient(to bottom, cyan 0, rgba(255, 255, 255, 0) 1px);
+  background-repeat: repeat-y;
+  background-size: 100% 1rem;
+}
+
+/* ==========================================================================
+   Mixins > Helpers
+   Functions and mixins that aid development or other mixins.
 ========================================================================== */
 /**
  * color
@@ -14,18 +30,27 @@
  * .foo {@include color(red, base);}
 **/
 /**
- * retina-image
- * Retina image replacement.
- *
- * .foo {@include retina-image('logo', 'png', 100px, 25px);}
+ * px-to-rem
+ * Takes a single value or a list of values and replaces px units with rem
+ * Zero values will remain 0.
+ * Non-px values will not be modified.
+ * You can return an em value by passing the $unit var as 'em'
 **/
 /**
  * modify-grid
  * Temporarily modifies the grid system
  *
- *	.foo {
-		@include modify-grid(6%, $col-1-2);
- *	}
+ * .foo {@include modify-grid(6%, $col-1-2);}
+**/
+/* ==========================================================================
+   Mixins > Misc
+   Functions and mixins for various Framework operations.
+========================================================================== */
+/**
+ * retina-image
+ * Retina image replacement.
+ *
+ * .foo {@include retina-image('logo', 'png', 100px, 25px);}
 **/
 /**
  * transition
@@ -46,12 +71,6 @@
  * .foo {@include opacity(0.7);}
 **/
 /**
- * inline-block
- * Cross browser inline-block.
- *
- * .foo {@include inline-block;}
-**/
-/**
  * trigram
  * Trigram for Heaven mobile icon.
  *
@@ -67,26 +86,6 @@
    Mixins > Typography
    Font size and typesetting mixins.
 ========================================================================== */
-/**
- * px-to-rem
- * Takes a single value or a list of values and replaces px units with rem
- * Zero values will remain 0.
- * Non-px values will not be modified.
- * You can return an em value by passing the $unit var as 'em'
-**/
-/**
- * rhythm
- * Outputs a perfect vertical rhythm for a particular font-size
- * in a margin / line-height and font-size format. You optionally specify
- * whether to set the line-height or margin. I would because... that's the
- * point of this mixin.
- *
- * @uses px-to-rem()
- * @uses $line_height_base
- * @uses $mn
- *
- * .foo {@include rhythm(20px, true, false);}
-**/
 /**
  * rem
  * Output a selector with px fallback and rem values, so that modern browsers will use the rem values.
@@ -122,7 +121,7 @@
  * @include respond-to(768px){.foo {display: block;}}
 **/
 /* ==========================================================================
-   Vars
+   Base > Vars
    The variables for use throughout the framework. These can
    be overwritten from the site/vars partial.
 ========================================================================== */
@@ -149,7 +148,7 @@
 * viewportsizes.com | screensiz.es | dpi.lv
 **/
 /* ==========================================================================
-   Vars
+   Site > Vars
    You can overwrite any of the config vars from here.
 ========================================================================== */
 /**
@@ -159,11 +158,11 @@
 * Colors
 **/
 /* ==========================================================================
-   All
-   Imports all the partials
+   Base > All
+   Imports all the partials.
 ========================================================================== */
 /* ==========================================================================
-   Placeholders
+   Base > Config > Placeholders
    Some default placeholders for the framework.
 ========================================================================== */
 /* line 6, scss/base/config/_placeholders.scss */
@@ -181,7 +180,7 @@
 }
 
 /* ==========================================================================
-   Reset
+   Base > Config > Reset
    Reset styles
 ========================================================================== */
 /* line 5, scss/base/config/_reset.scss */
@@ -203,12 +202,6 @@
 }
 
 /* line 19, scss/base/config/_reset.scss */
-html, body {
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
-/* line 23, scss/base/config/_reset.scss */
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, input, select, button, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -217,7 +210,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   vertical-align: baseline;
 }
 
-/* line 30, scss/base/config/_reset.scss */
+/* line 26, scss/base/config/_reset.scss */
 sub, sup {
   font-size: 80%;
   vertical-align: baseline;
@@ -225,30 +218,30 @@ sub, sup {
   top: -0.4em;
 }
 
-/* line 36, scss/base/config/_reset.scss */
+/* line 32, scss/base/config/_reset.scss */
 sub {
   top: 0.4em;
 }
 
-/* line 39, scss/base/config/_reset.scss */
+/* line 35, scss/base/config/_reset.scss */
 input, select, textarea, button {
   color: inherit;
   font-size: inherit;
   font-family: "Helvetica", Arial, "Trebuchet MS", Verdana, sans-serif;
 }
 
-/* line 44, scss/base/config/_reset.scss */
+/* line 40, scss/base/config/_reset.scss */
 label, button, a.button, details, input[type="button"], input[type="submit"] {
   cursor: pointer;
 }
 
-/* line 47, scss/base/config/_reset.scss */
+/* line 43, scss/base/config/_reset.scss */
 button, select {
   text-transform: none;
   font-weight: inherit;
 }
 
-/* line 51, scss/base/config/_reset.scss */
+/* line 47, scss/base/config/_reset.scss */
 button {
   overflow: visible;
   font-family: inherit;
@@ -257,7 +250,7 @@ button {
   background: none;
 }
 
-/* line 58, scss/base/config/_reset.scss */
+/* line 54, scss/base/config/_reset.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -266,38 +259,38 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-/* line 65, scss/base/config/_reset.scss */
+/* line 61, scss/base/config/_reset.scss */
 button[disabled],
 html input[disabled] {
   cursor: default;
 }
 
-/* line 69, scss/base/config/_reset.scss */
+/* line 65, scss/base/config/_reset.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
 
-/* line 74, scss/base/config/_reset.scss */
+/* line 70, scss/base/config/_reset.scss */
 input {
   line-height: normal;
 }
 
-/* line 77, scss/base/config/_reset.scss */
+/* line 73, scss/base/config/_reset.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
 
-/* line 82, scss/base/config/_reset.scss */
+/* line 78, scss/base/config/_reset.scss */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-/* line 86, scss/base/config/_reset.scss */
+/* line 82, scss/base/config/_reset.scss */
 input[type="search"] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -305,88 +298,88 @@ input[type="search"] {
   -webkit-appearance: textfield;
 }
 
-/* line 92, scss/base/config/_reset.scss */
+/* line 88, scss/base/config/_reset.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 96, scss/base/config/_reset.scss */
+/* line 92, scss/base/config/_reset.scss */
 html, body, div, p, address, blockquote, ol, ul, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, pre, hr, menu, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
-/* line 99, scss/base/config/_reset.scss */
+/* line 95, scss/base/config/_reset.scss */
 video {
   cursor: pointer;
 }
 
-/* line 102, scss/base/config/_reset.scss */
+/* line 98, scss/base/config/_reset.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-/* line 106, scss/base/config/_reset.scss */
+/* line 102, scss/base/config/_reset.scss */
 [hidden], template {
   display: none;
 }
 
-/* line 109, scss/base/config/_reset.scss */
+/* line 105, scss/base/config/_reset.scss */
 :focus {
   outline: 0;
 }
 
-/* line 112, scss/base/config/_reset.scss */
+/* line 108, scss/base/config/_reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 116, scss/base/config/_reset.scss */
+/* line 112, scss/base/config/_reset.scss */
 td {
   vertical-align: top;
 }
 
-/* line 119, scss/base/config/_reset.scss */
+/* line 115, scss/base/config/_reset.scss */
 th, strong, dt {
   font-weight: 700;
 }
 
-/* line 122, scss/base/config/_reset.scss */
+/* line 118, scss/base/config/_reset.scss */
 del {
   text-decoration: line-through;
 }
 
-/* line 125, scss/base/config/_reset.scss */
+/* line 121, scss/base/config/_reset.scss */
 blockquote, q, em, cite, dfn, cite, var {
   font-style: italic;
 }
 
-/* line 128, scss/base/config/_reset.scss */
+/* line 124, scss/base/config/_reset.scss */
 img, object, embed {
   max-width: 100%;
   height: auto;
 }
 
-/* line 132, scss/base/config/_reset.scss */
+/* line 128, scss/base/config/_reset.scss */
 object, embed {
   height: 100%;
 }
 
-/* line 135, scss/base/config/_reset.scss */
+/* line 131, scss/base/config/_reset.scss */
 img {
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 139, scss/base/config/_reset.scss */
+/* line 135, scss/base/config/_reset.scss */
 textarea {
   resize: vertical;
 }
 
 /* ==========================================================================
-   Debug
+   Base > Config > Debug
    Useful debug operations. Adapted from inuit.css by Harry Roberts.
    Compass environment must be in 'development' mode and the $debug_mode
    var set to true for this to work.
@@ -586,366 +579,357 @@ body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
 }
 
 /* ==========================================================================
-   Utility Classes
+   Base > Utility Classes
    A library of classes to achieve various things. Most are prefixed
    with a 'u-'. These should be used sparingly.
 ========================================================================== */
 /* -- Messages -- */
 /* line 7, scss/base/_utility-classes.scss */
-.msg-success, .msg-failure {
-  font-size: 12px;
-  font-size: 0.75rem;
-}
-
-/* line 10, scss/base/_utility-classes.scss */
 .msg-success {
   color: rgba(138, 216, 54, 0.6);
 }
 
-/* line 13, scss/base/_utility-classes.scss */
+/* line 10, scss/base/_utility-classes.scss */
 .msg-failure {
   color: rgba(255, 0, 0, 0.6);
 }
 
 /* -- Clearing -- */
-/* line 21, scss/base/_utility-classes.scss */
+/* line 18, scss/base/_utility-classes.scss */
 .clear {
   clear: both;
 }
 
 /* -- Resetting (This is a last resort) -- */
-/* line 26, scss/base/_utility-classes.scss */
+/* line 23, scss/base/_utility-classes.scss */
 .u-no-width {
   width: auto !important;
 }
 
-/* line 29, scss/base/_utility-classes.scss */
+/* line 26, scss/base/_utility-classes.scss */
 .u-no-height {
   height: auto !important;
 }
 
-/* line 32, scss/base/_utility-classes.scss */
+/* line 29, scss/base/_utility-classes.scss */
 .u-no-margin {
   margin: 0 !important;
 }
 
-/* line 35, scss/base/_utility-classes.scss */
+/* line 32, scss/base/_utility-classes.scss */
 .u-no-padding {
   padding: 0 !important;
 }
 
-/* line 38, scss/base/_utility-classes.scss */
+/* line 35, scss/base/_utility-classes.scss */
 .u-no-border {
   border: 0 !important;
 }
 
-/* line 41, scss/base/_utility-classes.scss */
+/* line 38, scss/base/_utility-classes.scss */
 .u-no-bullet {
   list-style: none !important;
 }
 
-/* line 44, scss/base/_utility-classes.scss */
+/* line 41, scss/base/_utility-classes.scss */
 .u-no-float {
   float: none !important;
 }
 
 /* -- Nudge -- */
-/* line 49, scss/base/_utility-classes.scss */
+/* line 46, scss/base/_utility-classes.scss */
 .u-nudge-top {
   margin-top: 24px;
   margin-top: 1.5rem;
 }
 
-/* line 52, scss/base/_utility-classes.scss */
+/* line 49, scss/base/_utility-classes.scss */
 .u-nudge-right {
   margin-right: 24px;
   margin-right: 1.5rem;
 }
 
-/* line 55, scss/base/_utility-classes.scss */
+/* line 52, scss/base/_utility-classes.scss */
 .u-nudge-bottom {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
 }
 
-/* line 58, scss/base/_utility-classes.scss */
+/* line 55, scss/base/_utility-classes.scss */
 .u-nudge-left {
   margin-left: 24px;
   margin-left: 1.5rem;
 }
 
 /* -- Pad -- */
-/* line 63, scss/base/_utility-classes.scss */
+/* line 60, scss/base/_utility-classes.scss */
 .u-pad-top {
   padding-top: 24px;
   padding-top: 1.5rem;
 }
 
-/* line 66, scss/base/_utility-classes.scss */
+/* line 63, scss/base/_utility-classes.scss */
 .u-pad-right {
   padding-right: 24px;
   padding-right: 1.5rem;
 }
 
-/* line 69, scss/base/_utility-classes.scss */
+/* line 66, scss/base/_utility-classes.scss */
 .u-pad-bottom {
   padding-bottom: 24px;
   padding-bottom: 1.5rem;
 }
 
-/* line 72, scss/base/_utility-classes.scss */
+/* line 69, scss/base/_utility-classes.scss */
 .u-pad-left {
   padding-left: 24px;
   padding-left: 1.5rem;
 }
 
 /* -- Hide Elements -- */
-/* line 77, scss/base/_utility-classes.scss */
+/* line 74, scss/base/_utility-classes.scss */
 .u-hidden {
   display: none;
 }
 
 /* -- Vertical Alignment -- */
-/* line 82, scss/base/_utility-classes.scss */
+/* line 79, scss/base/_utility-classes.scss */
 .u-vert {
   vertical-align: middle;
 }
 
 /* -- Structure -- */
-/* line 87, scss/base/_utility-classes.scss */
+/* line 84, scss/base/_utility-classes.scss */
 .u-inline {
   display: inline;
 }
 
-/* line 90, scss/base/_utility-classes.scss */
+/* line 87, scss/base/_utility-classes.scss */
 .u-inline-block {
   display: inline-block;
 }
 
-/* line 93, scss/base/_utility-classes.scss */
+/* line 90, scss/base/_utility-classes.scss */
 .u-block {
   display: block;
 }
 
-/* line 96, scss/base/_utility-classes.scss */
+/* line 93, scss/base/_utility-classes.scss */
 ul.u-inline {
   margin: 0;
 }
-/* line 98, scss/base/_utility-classes.scss */
+/* line 95, scss/base/_utility-classes.scss */
 ul.u-inline li {
   display: inline;
 }
 
-/* line 102, scss/base/_utility-classes.scss */
+/* line 99, scss/base/_utility-classes.scss */
 ul.u-inline-block {
   margin: 0;
 }
-/* line 104, scss/base/_utility-classes.scss */
+/* line 101, scss/base/_utility-classes.scss */
 ul.u-inline-block li {
   display: inline-block;
 }
 
-/* line 108, scss/base/_utility-classes.scss */
+/* line 105, scss/base/_utility-classes.scss */
 ul.u-block {
   margin: 0;
 }
-/* line 110, scss/base/_utility-classes.scss */
+/* line 107, scss/base/_utility-classes.scss */
 ul.u-block li {
   display: block;
 }
 
 /* -- Positioning -- */
-/* line 116, scss/base/_utility-classes.scss */
+/* line 113, scss/base/_utility-classes.scss */
 .fl {
   float: left;
 }
 
-/* line 119, scss/base/_utility-classes.scss */
+/* line 116, scss/base/_utility-classes.scss */
 .fr {
   float: right;
 }
 
-/* line 122, scss/base/_utility-classes.scss */
+/* line 119, scss/base/_utility-classes.scss */
 .u-static {
   position: static;
 }
 
-/* line 125, scss/base/_utility-classes.scss */
+/* line 122, scss/base/_utility-classes.scss */
 .u-relative {
   position: relative;
 }
 
-/* line 128, scss/base/_utility-classes.scss */
+/* line 125, scss/base/_utility-classes.scss */
 .u-fixed {
   position: fixed;
 }
 
-/* line 131, scss/base/_utility-classes.scss */
+/* line 128, scss/base/_utility-classes.scss */
 .u-absolute {
   position: absolute;
 }
 
 /* -- Lists -- */
-/* line 136, scss/base/_utility-classes.scss */
+/* line 133, scss/base/_utility-classes.scss */
 .u-inside {
   margin-left: 1.2em;
 }
-/* line 138, scss/base/_utility-classes.scss */
+/* line 135, scss/base/_utility-classes.scss */
 .u-inside ul, .u-inside ol {
   margin-left: 1.2em;
 }
 
-/* line 142, scss/base/_utility-classes.scss */
+/* line 139, scss/base/_utility-classes.scss */
 .u-no-bullet {
   list-style: none;
 }
 
-/* line 146, scss/base/_utility-classes.scss */
+/* line 143, scss/base/_utility-classes.scss */
 ul.u-horizontal li {
   display: inline;
 }
 
-/* line 151, scss/base/_utility-classes.scss */
+/* line 148, scss/base/_utility-classes.scss */
 ul.u-horizontal-block li {
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
 }
 
 /* -- Text -- */
-/* line 157, scss/base/_utility-classes.scss */
+/* line 154, scss/base/_utility-classes.scss */
 .u-text-small {
   font-size: 75%;
 }
 
-/* line 160, scss/base/_utility-classes.scss */
+/* line 157, scss/base/_utility-classes.scss */
 .u-text-big {
   font-size: 150%;
 }
 
-/* line 163, scss/base/_utility-classes.scss */
+/* line 160, scss/base/_utility-classes.scss */
 .u-text-left {
   text-align: left;
 }
 
-/* line 166, scss/base/_utility-classes.scss */
+/* line 163, scss/base/_utility-classes.scss */
 .u-text-right {
   text-align: right;
 }
 
-/* line 169, scss/base/_utility-classes.scss */
+/* line 166, scss/base/_utility-classes.scss */
 .u-text-center {
   text-align: center;
 }
 
 /* -- Weights & Cases -- */
-/* line 174, scss/base/_utility-classes.scss */
+/* line 171, scss/base/_utility-classes.scss */
 .u-regular {
   font-weight: 400;
 }
 
-/* line 177, scss/base/_utility-classes.scss */
+/* line 174, scss/base/_utility-classes.scss */
 .u-bold {
   font-weight: 700;
 }
 
-/* line 180, scss/base/_utility-classes.scss */
+/* line 177, scss/base/_utility-classes.scss */
 .u-italic {
   font-style: italic;
 }
 
-/* line 183, scss/base/_utility-classes.scss */
+/* line 180, scss/base/_utility-classes.scss */
 .u-uppercase {
   text-transform: uppercase;
 }
 
-/* line 186, scss/base/_utility-classes.scss */
+/* line 183, scss/base/_utility-classes.scss */
 .u-lowercase {
   text-transform: lowercase;
 }
 
-/* line 189, scss/base/_utility-classes.scss */
+/* line 186, scss/base/_utility-classes.scss */
 .u-capitalize {
   text-transform: capitalize;
 }
 
 /* -- Fonts -- */
-/* line 194, scss/base/_utility-classes.scss */
+/* line 191, scss/base/_utility-classes.scss */
 .u-serif {
   font-family: serif;
 }
 
-/* line 197, scss/base/_utility-classes.scss */
+/* line 194, scss/base/_utility-classes.scss */
 .u-sans-serif {
   font-family: sans-serif;
 }
 
 /* -- CSS3 Columns -- */
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-1 {
   -webkit-column-count: 1;
   -moz-column-count: 1;
   column-count: 1;
 }
 
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-2 {
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
 }
 
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-3 {
   -webkit-column-count: 3;
   -moz-column-count: 3;
   column-count: 3;
 }
 
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-4 {
   -webkit-column-count: 4;
   -moz-column-count: 4;
   column-count: 4;
 }
 
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-5 {
   -webkit-column-count: 5;
   -moz-column-count: 5;
   column-count: 5;
 }
 
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-6 {
   -webkit-column-count: 6;
   -moz-column-count: 6;
   column-count: 6;
 }
 
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-7 {
   -webkit-column-count: 7;
   -moz-column-count: 7;
   column-count: 7;
 }
 
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-8 {
   -webkit-column-count: 8;
   -moz-column-count: 8;
   column-count: 8;
 }
 
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-9 {
   -webkit-column-count: 9;
   -moz-column-count: 9;
   column-count: 9;
 }
 
-/* line 203, scss/base/_utility-classes.scss */
+/* line 200, scss/base/_utility-classes.scss */
 .u-columns-10 {
   -webkit-column-count: 10;
   -moz-column-count: 10;
@@ -953,16 +937,674 @@ ul.u-horizontal-block li {
 }
 
 /* ==========================================================================
-   Defaults
-   HTML elements
+   Base > Misc
+   Miscellaneous elements
 ========================================================================== */
+/* -- Images -- */
+/* line 7, scss/base/_misc.scss */
+.thumb {
+  max-width: 20%;
+  display: block;
+}
+/* line 10, scss/base/_misc.scss */
+.thumb .thumb--image {
+  width: 100%;
+  border: 4px solid #DFDFDF;
+}
+/* line 15, scss/base/_misc.scss */
+.thumb.aligncenter, .thumb.alignnone {
+  margin: 24px auto;
+  display: block;
+}
+/* line 19, scss/base/_misc.scss */
+.thumb.alignleft {
+  margin-right: 24px;
+  margin-right: 1.5rem;
+  float: left;
+}
+/* line 23, scss/base/_misc.scss */
+.thumb.alignright {
+  margin-left: 24px;
+  margin-left: 1.5rem;
+  float: right;
+}
+/* line 30, scss/base/_misc.scss */
+.thumb img.alignleft, .thumb img.alignright, .thumb img.aligncenter, .thumb img.alignnone {
+  width: 100%;
+  border: 2px solid #efefef;
+  border-radius: 3px;
+}
+/* line 36, scss/base/_misc.scss */
+.thumb > a {
+  display: block;
+}
+
+/* -- Code -- */
+/* line 43, scss/base/_misc.scss */
+ol.code {
+  padding: 12px 18px;
+  padding: 0.75rem 1.125rem;
+  border: 1px solid #DDDDDD;
+  margin: 0;
+  position: relative;
+  border-radius: 3px;
+  font-weight: 400;
+  font-family: "source-code-pro", monospace;
+  background: #EDEDED;
+}
+/* line 52, scss/base/_misc.scss */
+ol.code li {
+  margin-bottom: 0;
+  list-style: decimal-leading-zero;
+  list-style-position: inside;
+}
+
+/* -- Horizontal Rules -- */
+/* line 61, scss/base/_misc.scss */
+hr {
+  margin: 48px 0px;
+  margin: 3rem 0px;
+  border: 1px solid;
+  border-color: #EFEFEF;
+  border-color: rgba(0, 0, 0, 0.085);
+}
+/* line 66, scss/base/_misc.scss */
+hr.dots {
+  height: 0;
+  padding: 0;
+  margin: 24px 0px 48px;
+  margin: 1.5rem 0px 3rem;
+  border: 0;
+  display: block;
+  clear: both;
+  font-size: 2.33333rem;
+  text-align: center;
+}
+@media screen and (min-width: 40em) {
+  /* line 66, scss/base/_misc.scss */
+  hr.dots {
+    font-size: 2.14286rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 66, scss/base/_misc.scss */
+  hr.dots {
+    font-size: 2.13333rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 66, scss/base/_misc.scss */
+  hr.dots {
+    font-size: 2.35294rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 66, scss/base/_misc.scss */
+  hr.dots {
+    font-size: 2.63158rem;
+  }
+}
+/* line 76, scss/base/_misc.scss */
+hr.dots:after {
+  height: 0;
+  padding-left: 24px;
+  padding-left: 1.5rem;
+  content: "·········";
+  color: #DDDDDD;
+  letter-spacing: 24px;
+  letter-spacing: 1.5rem;
+}
+/* line 84, scss/base/_misc.scss */
+hr.styled-seperator {
+  margin: 48px 0px;
+  margin: 3rem 0px;
+  border-bottom: 1px solid white;
+  border-top: 1px solid #E8EAED;
+}
+
+/* ==========================================================================
+   Base > Core
+   Important classes that are imperative to the framework
+========================================================================== */
+/* -- Container -- */
+/* line 6, scss/base/_core.scss */
+.container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ==========================================================================
+   Base > Rhythm
+   The framework rhythm.
+========================================================================== */
+/* -- HTML -- */
+/* line 6, scss/base/_rhythm.scss */
+html {
+  min-height: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* -- Body -- */
+/* line 16, scss/base/_rhythm.scss */
+body {
+  font-size: 1.33333rem;
+  font-family: "Helvetica", Arial, "Trebuchet MS", Verdana, sans-serif;
+  word-wrap: break-word;
+  line-height: 2rem;
+  color: #333333;
+}
+@media screen and (min-width: 40em) {
+  /* line 16, scss/base/_rhythm.scss */
+  body {
+    font-size: 1.21429rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 16, scss/base/_rhythm.scss */
+  body {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 16, scss/base/_rhythm.scss */
+  body {
+    font-size: 1.17647rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 16, scss/base/_rhythm.scss */
+  body {
+    font-size: 1.15789rem;
+  }
+}
+
+/* -- Links, Buttons & Hover Styles -- */
+/* line 26, scss/base/_rhythm.scss */
+a, button {
+  color: #C4122f;
+  text-decoration: none;
+  -webkit-transition: color 300ms ease, background 300ms ease;
+  -moz-transition: color 300ms ease, background 300ms ease;
+  -o-transition: color 300ms ease, background 300ms ease;
+  transition: color 300ms ease, background 300ms ease;
+}
+/* line 31, scss/base/_rhythm.scss */
+a:hover, button:hover {
+  color: #3498DB;
+}
+/* line 34, scss/base/_rhythm.scss */
+a:active, button:active {
+  color: #1d6fa5;
+}
+
+/* -- General Formatting -- */
+/* line 41, scss/base/_rhythm.scss */
+p, li {
+  -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+}
+
+/* line 51, scss/base/_rhythm.scss */
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* line 57, scss/base/_rhythm.scss */
+figcaption, .caption {
+  font-size: 1.06667rem;
+  line-height: 1.4rem;
+  margin-bottom: 0.64666rem;
+  padding-top: 0.35334rem;
+}
+@media screen and (min-width: 40em) {
+  /* line 57, scss/base/_rhythm.scss */
+  figcaption, .caption {
+    font-size: 0.97143rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 57, scss/base/_rhythm.scss */
+  figcaption, .caption {
+    font-size: 0.96rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 57, scss/base/_rhythm.scss */
+  figcaption, .caption {
+    font-size: 0.88235rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 57, scss/base/_rhythm.scss */
+  figcaption, .caption {
+    font-size: 0.82105rem;
+  }
+}
+@media screen and (min-width: 40em) {
+  /* line 57, scss/base/_rhythm.scss */
+  figcaption, .caption {
+    margin-bottom: 0.6157rem;
+    padding-top: 0.3843rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 57, scss/base/_rhythm.scss */
+  figcaption, .caption {
+    margin-bottom: 0.61199rem;
+    padding-top: 0.38801rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 57, scss/base/_rhythm.scss */
+  figcaption, .caption {
+    margin-bottom: 0.58675rem;
+    padding-top: 0.41325rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 57, scss/base/_rhythm.scss */
+  figcaption, .caption {
+    margin-bottom: 0.56683rem;
+    padding-top: 0.43317rem;
+  }
+}
+
+/* line 64, scss/base/_rhythm.scss */
+blockquote p {
+  border-left: 0.15rem solid #0E58F5;
+  font-style: italic;
+  padding-left: 1rem;
+  margin-bottom: 1.87999rem;
+  padding-bottom: 0.56001rem;
+}
+@media screen and (min-width: 40em) {
+  /* line 64, scss/base/_rhythm.scss */
+  blockquote p {
+    margin-bottom: 1.80142rem;
+    padding-bottom: 0.5993rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 64, scss/base/_rhythm.scss */
+  blockquote p {
+    margin-bottom: 1.79199rem;
+    padding-bottom: 0.60401rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 64, scss/base/_rhythm.scss */
+  blockquote p {
+    margin-bottom: 1.77646rem;
+    padding-bottom: 0.61177rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 64, scss/base/_rhythm.scss */
+  blockquote p {
+    margin-bottom: 1.7642rem;
+    padding-bottom: 0.6179rem;
+  }
+}
+@media screen and (min-width: 40em) {
+  /* line 63, scss/base/_rhythm.scss */
+  blockquote {
+    margin-left: -1rem;
+  }
+}
+
+/* line 101, scss/base/_rhythm.scss */
+cite .profession {
+  font-weight: 700;
+}
+
+/* -- Content Areas -- */
+/* line 110, scss/base/_rhythm.scss */
+.content p a, .content li a {
+  background-image: -webkit-linear-gradient(top, transparent 50%, #ef4d68 50%);
+  background-image: -moz-linear-gradient(top, transparent 50%, #ef4d68 50%);
+  background-image: -o-linear-gradient(top, transparent 50%, #ef4d68 50%);
+  background-image: linear-gradient(to bottom, transparent 50%, #ef4d68 50%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 100% 0.15rem;
+}
+/* line 118, scss/base/_rhythm.scss */
+.content p a:hover, .content p a:active, .content p a:focus, .content li a:hover, .content li a:active, .content li a:focus {
+  background-image: -webkit-linear-gradient(top, transparent 50%, #8bc4ea 50%);
+  background-image: -moz-linear-gradient(top, transparent 50%, #8bc4ea 50%);
+  background-image: -o-linear-gradient(top, transparent 50%, #8bc4ea 50%);
+  background-image: linear-gradient(to bottom, transparent 50%, #8bc4ea 50%);
+}
+/* line 128, scss/base/_rhythm.scss */
+.content ul {
+  list-style-type: disc;
+}
+/* line 131, scss/base/_rhythm.scss */
+.content ul, .content ol {
+  margin-left: 1.2em;
+}
+/* line 133, scss/base/_rhythm.scss */
+.content ul li, .content ol li {
+  margin-bottom: 2.4px;
+  margin-bottom: 0.15rem;
+}
+/* line 136, scss/base/_rhythm.scss */
+.content ul ul, .content ul ol, .content ol ul, .content ol ol {
+  margin-left: 1.2em;
+  list-style-type: circle;
+}
+/* line 142, scss/base/_rhythm.scss */
+.content dl dd {
+  margin-bottom: 2.4px;
+  margin-bottom: 0.15rem;
+  text-indent: 24px;
+  text-indent: 1.5rem;
+}
+/* line 151, scss/base/_rhythm.scss */
+.content.leading-p p:first-of-type {
+  font-size: 1.66667rem;
+}
+@media screen and (min-width: 40em) {
+  /* line 151, scss/base/_rhythm.scss */
+  .content.leading-p p:first-of-type {
+    font-size: 1.52143rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 151, scss/base/_rhythm.scss */
+  .content.leading-p p:first-of-type {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 151, scss/base/_rhythm.scss */
+  .content.leading-p p:first-of-type {
+    font-size: 1.57059rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 151, scss/base/_rhythm.scss */
+  .content.leading-p p:first-of-type {
+    font-size: 1.63684rem;
+  }
+}
+
+/* -- Heading Formatting -- */
+/* line 159, scss/base/_rhythm.scss */
+h1, h2, h3, h4, h5, h6 {
+  -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -ms-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+}
+/* line 165, scss/base/_rhythm.scss */
+h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
+  margin: 0;
+}
+
+/* line 169, scss/base/_rhythm.scss */
+h1, .alpha {
+  line-height: 3rem;
+  font-size: 2.33333rem;
+  margin-bottom: 0.25832rem;
+  padding-top: 0.74168rem;
+}
+@media screen and (min-width: 40em) {
+  /* line 169, scss/base/_rhythm.scss */
+  h1, .alpha {
+    font-size: 2.14286rem;
+    margin-bottom: 0.19642rem;
+    padding-top: 0.80358rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 169, scss/base/_rhythm.scss */
+  h1, .alpha {
+    font-size: 2.13333rem;
+    margin-bottom: 0.19332rem;
+    padding-top: 0.80668rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 169, scss/base/_rhythm.scss */
+  h1, .alpha {
+    font-size: 2.35294rem;
+    margin-bottom: 0.2647rem;
+    padding-top: 0.7353rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 169, scss/base/_rhythm.scss */
+  h1, .alpha {
+    font-size: 2.63158rem;
+    margin-bottom: 0.35525rem;
+    padding-top: 0.64475rem;
+  }
+}
+
+/* line 172, scss/base/_rhythm.scss */
+h2, .beta {
+  line-height: 3rem;
+  font-size: 2.08333rem;
+  margin-bottom: 0.17707rem;
+  padding-top: 0.82293rem;
+}
+@media screen and (min-width: 40em) {
+  /* line 172, scss/base/_rhythm.scss */
+  h2, .beta {
+    font-size: 1.9rem;
+    margin-bottom: 0.11749rem;
+    padding-top: 0.88251rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 172, scss/base/_rhythm.scss */
+  h2, .beta {
+    font-size: 1.87333rem;
+    margin-bottom: 0.10882rem;
+    padding-top: 0.89118rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 172, scss/base/_rhythm.scss */
+  h2, .beta {
+    font-size: 2.08824rem;
+    margin-bottom: 0.17867rem;
+    padding-top: 0.82133rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 172, scss/base/_rhythm.scss */
+  h2, .beta {
+    font-size: 2.31053rem;
+    margin-bottom: 0.25091rem;
+    padding-top: 0.74909rem;
+  }
+}
+
+/* line 175, scss/base/_rhythm.scss */
+h3, .gamma {
+  line-height: 3rem;
+  font-size: 1.86667rem;
+  margin-bottom: 0.10666rem;
+  padding-top: 0.89334rem;
+}
+@media screen and (min-width: 40em) {
+  /* line 175, scss/base/_rhythm.scss */
+  h3, .gamma {
+    font-size: 1.71429rem;
+    margin-bottom: 0.05713rem;
+    padding-top: 0.94287rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 175, scss/base/_rhythm.scss */
+  h3, .gamma {
+    font-size: 1.70667rem;
+    margin-bottom: 0.05466rem;
+    padding-top: 0.94534rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 175, scss/base/_rhythm.scss */
+  h3, .gamma {
+    font-size: 1.76471rem;
+    margin-bottom: 0.07352rem;
+    padding-top: 0.92648rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 175, scss/base/_rhythm.scss */
+  h3, .gamma {
+    font-size: 1.85789rem;
+    margin-bottom: 0.10381rem;
+    padding-top: 0.89619rem;
+  }
+}
+
+/* line 178, scss/base/_rhythm.scss */
+h4, .delta {
+  line-height: 2rem;
+  font-size: 1.66667rem;
+  margin-bottom: -0.45834rem;
+  padding-top: 0.45834rem;
+}
+@media screen and (min-width: 40em) {
+  /* line 178, scss/base/_rhythm.scss */
+  h4, .delta {
+    font-size: 1.52143rem;
+    margin-bottom: -0.50555rem;
+    padding-top: 0.50555rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 178, scss/base/_rhythm.scss */
+  h4, .delta {
+    font-size: 1.5rem;
+    margin-bottom: -0.51251rem;
+    padding-top: 0.51251rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 178, scss/base/_rhythm.scss */
+  h4, .delta {
+    font-size: 1.57059rem;
+    margin-bottom: -0.48957rem;
+    padding-top: 0.48957rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 178, scss/base/_rhythm.scss */
+  h4, .delta {
+    font-size: 1.63684rem;
+    margin-bottom: -0.46804rem;
+    padding-top: 0.46804rem;
+  }
+}
+
+/* line 181, scss/base/_rhythm.scss */
+h5, .epsilon {
+  line-height: 2rem;
+  font-size: 1.49167rem;
+  margin-bottom: -0.51522rem;
+  padding-top: 0.51522rem;
+}
+@media screen and (min-width: 40em) {
+  /* line 181, scss/base/_rhythm.scss */
+  h5, .epsilon {
+    font-size: 1.37143rem;
+    margin-bottom: -0.5543rem;
+    padding-top: 0.5543rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 181, scss/base/_rhythm.scss */
+  h5, .epsilon {
+    font-size: 1.36667rem;
+    margin-bottom: -0.55584rem;
+    padding-top: 0.55584rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 181, scss/base/_rhythm.scss */
+  h5, .epsilon {
+    font-size: 1.32353rem;
+    margin-bottom: -0.56986rem;
+    padding-top: 0.56986rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 181, scss/base/_rhythm.scss */
+  h5, .epsilon {
+    font-size: 1.31579rem;
+    margin-bottom: -0.57238rem;
+    padding-top: 0.57238rem;
+  }
+}
+
+/* line 184, scss/base/_rhythm.scss */
+h6, .zeta {
+  line-height: 2rem;
+  font-size: 1.33333rem;
+  margin-bottom: -0.56668rem;
+  padding-top: 0.56668rem;
+}
+@media screen and (min-width: 40em) {
+  /* line 184, scss/base/_rhythm.scss */
+  h6, .zeta {
+    font-size: 1.21429rem;
+    margin-bottom: -0.60537rem;
+    padding-top: 0.60537rem;
+  }
+}
+@media screen and (min-width: 50em) {
+  /* line 184, scss/base/_rhythm.scss */
+  h6, .zeta {
+    font-size: 1.2rem;
+    margin-bottom: -0.61001rem;
+    padding-top: 0.61001rem;
+  }
+}
+@media screen and (min-width: 64em) {
+  /* line 184, scss/base/_rhythm.scss */
+  h6, .zeta {
+    font-size: 1.17647rem;
+    margin-bottom: -0.61766rem;
+    padding-top: 0.61766rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 184, scss/base/_rhythm.scss */
+  h6, .zeta {
+    font-size: 1.15789rem;
+    margin-bottom: -0.62369rem;
+    padding-top: 0.62369rem;
+  }
+}
+
+/* -- Hatnotes -- */
+/* line 189, scss/base/_rhythm.scss */
+.hatnote {
+  padding-left: 24px;
+  padding-left: 1.5rem;
+  font-style: italic;
+}
+
 /* -- Source Formatting -- */
-/* line 8, scss/base/_defaults.scss */
+/* line 196, scss/base/_rhythm.scss */
 p code {
   color: #2ECC71;
 }
 
-/* line 12, scss/base/_defaults.scss */
+/* line 200, scss/base/_rhythm.scss */
 code {
   font-weight: 400;
   font-family: "source-code-pro", monospace;
@@ -976,7 +1618,7 @@ code {
   tab-size: 4;
 }
 
-/* line 24, scss/base/_defaults.scss */
+/* line 212, scss/base/_rhythm.scss */
 pre {
   padding: 12px 18px;
   padding: 0.75rem 1.125rem;
@@ -986,393 +1628,20 @@ pre {
   background: #EDEDED;
 }
 
-/* line 31, scss/base/_defaults.scss */
+/* line 219, scss/base/_rhythm.scss */
 kbd {
   padding: 6px 12px;
   padding: 0.375rem 0.75rem;
   margin: 0 0.25em;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   border: 1px solid #DDDDDD;
   border-radius: 3px;
   color: #666666;
   background: #EDEDED;
 }
 
-/* -- Citation -- */
-/* line 44, scss/base/_defaults.scss */
-cite .profession {
-  font-weight: 700;
-}
-
-/* -- Quotes -- */
-/* line 50, scss/base/_defaults.scss */
-blockquote {
-  padding: 24px;
-  padding: 1.5rem;
-  border: 1px solid #DDDDDD;
-  border-radius: 3px;
-  text-align: center;
-  background: #EDEDED;
-}
-/* line 57, scss/base/_defaults.scss */
-blockquote cite {
-  margin-top: 12px;
-  margin-top: 0.75rem;
-  display: block;
-  font-style: normal;
-}
-
-/* line 63, scss/base/_defaults.scss */
-blockquote, q {
-  font-family: Georgia;
-}
-
-/* line 69, scss/base/_defaults.scss */
-blockquote > *:not(cite):first-of-type:before, q:first-of-type:before {
-  content: open-quote;
-}
-/* line 75, scss/base/_defaults.scss */
-blockquote > *:not(cite):last-of-type:after, q:last-of-type:after {
-  content: close-quote;
-}
-
-/* -- Images -- */
-/* line 84, scss/base/_defaults.scss */
-figure figcaption {
-  margin-top: 12px;
-  margin-top: 0.75rem;
-  font-size: 12px;
-  font-size: 0.75rem;
-}
-
-/* -- Lists -- */
-/* line 93, scss/base/_defaults.scss */
-ol.code {
-  padding: 12px 18px;
-  padding: 0.75rem 1.125rem;
-  border: 1px solid #DDDDDD;
-  margin: 0;
-  position: relative;
-  border-radius: 3px;
-  font-weight: 400;
-  font-family: "source-code-pro", monospace;
-  background: #EDEDED;
-}
-/* line 102, scss/base/_defaults.scss */
-ol.code li {
-  margin-bottom: 0;
-  list-style: decimal-leading-zero;
-  list-style-position: inside;
-}
-
-/* line 109, scss/base/_defaults.scss */
-ul {
-  list-style-type: disc;
-}
-
-/* line 114, scss/base/_defaults.scss */
-ul li, ol li {
-  margin-bottom: 2.4px;
-  margin-bottom: 0.15rem;
-}
-/* line 117, scss/base/_defaults.scss */
-ul ul, ul ol, ol ul, ol ol {
-  list-style-type: circle;
-}
-
-/* line 123, scss/base/_defaults.scss */
-dl dd {
-  margin-bottom: 2.4px;
-  margin-bottom: 0.15rem;
-  text-indent: 24px;
-  text-indent: 1.5rem;
-}
-
-/* -- Rules -- */
-/* line 130, scss/base/_defaults.scss */
-hr {
-  margin: 48px 0px;
-  margin: 3rem 0px;
-  border: 1px solid;
-  border-color: #EFEFEF;
-  border-color: rgba(0, 0, 0, 0.085);
-}
-/* line 135, scss/base/_defaults.scss */
-hr.dots {
-  height: 0;
-  padding: 0;
-  margin: 24px 0px 48px;
-  margin: 1.5rem 0px 3rem;
-  border: 0;
-  display: block;
-  clear: both;
-  font-size: 40px;
-  font-size: 2.5rem;
-  text-align: center;
-}
-/* line 145, scss/base/_defaults.scss */
-hr.dots:after {
-  height: 0;
-  padding-left: 24px;
-  padding-left: 1.5rem;
-  content: "·········";
-  color: #DDDDDD;
-  letter-spacing: 24px;
-  letter-spacing: 1.5rem;
-}
-/* line 153, scss/base/_defaults.scss */
-hr.styled-seperator {
-  margin: 48px 0px;
-  margin: 3rem 0px;
-  border-bottom: 1px solid white;
-  border-top: 1px solid #E8EAED;
-}
-
-/* -- Selection -- */
-/* line 161, scss/base/_defaults.scss */
-::-moz-selection {
-  background: #C4122f;
-  color: #FFFFFF;
-  text-shadow: none;
-}
-
-/* line 166, scss/base/_defaults.scss */
-::selection {
-  background: #C4122f;
-  color: #FFFFFF;
-  text-shadow: none;
-}
-
-/* -- Scrollbars -- */
-/*
-::-webkit-scrollbar {
-	width: 1em;
-}
-::-webkit-scrollbar-track-piece {
-	background: #e3f7fc;
-}
-::-webkit-scrollbar-thumb {
-	background: $red;
-	box-shadow: inset 0 0 2em rgba(0, 0, 0, 0.2);
-}
-::-webkit-scrollbar-button {
-}
-::-webkit-scrollbar-trac {
-}
-::-webkit-scrollbar-corner {
-}
-::-webkit-resizer {
-}
-:horizontal
-:vertical
-:decrement
-:increment
-:start
-:end
-:double-button
-:single-button
-:no-button
-:corner-present
-:window-inactive
-*/
 /* ==========================================================================
-   Core
-   Important classes that are imperative to the framework
-========================================================================== */
-/* -- Container -- */
-/* line 6, scss/base/_core.scss */
-.container {
-  width: 90%;
-  max-width: 1280px;
-  margin: 0 auto;
-  position: relative;
-}
-
-/* ==========================================================================
-   Rhythm
-   The framework rhythm.
-========================================================================== */
-/* -- Global -- */
-/* line 6, scss/base/_rhythm.scss */
-html {
-  min-height: 100%;
-  overflow-y: scroll;
-  font: 16px/1.5 "Helvetica", Arial, "Trebuchet MS", Verdana, sans-serif;
-  color: #333333;
-  word-wrap: break-word;
-}
-
-/* -- Links, Buttons & Hover Styles -- */
-/* line 15, scss/base/_rhythm.scss */
-a, button {
-  color: #C4122f;
-  text-decoration: none;
-  -webkit-transition: color 300ms ease;
-  -moz-transition: color 300ms ease;
-  -o-transition: color 300ms ease;
-  transition: color 300ms ease;
-}
-/* line 20, scss/base/_rhythm.scss */
-a:hover, button:hover {
-  color: #3498DB;
-}
-/* line 23, scss/base/_rhythm.scss */
-a:active, button:active {
-  color: #1d6fa5;
-}
-
-/* -- Styling classes -- */
-/* line 29, scss/base/_rhythm.scss */
-.hatnote {
-  padding-left: 24px;
-  padding-left: 1.5rem;
-  font-style: italic;
-}
-
-/* -- General Formatting -- */
-/* line 35, scss/base/_rhythm.scss */
-p, blockquote, address {
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* line 40, scss/base/_rhythm.scss */
-p:last-child {
-  margin-bottom: 0;
-}
-
-/* line 46, scss/base/_rhythm.scss */
-.content .aligncenter, .content .alignnone {
-  margin: 24px auto;
-  display: block;
-}
-/* line 50, scss/base/_rhythm.scss */
-.content .alignleft {
-  margin-right: 24px;
-  margin-right: 1.5rem;
-  float: left;
-}
-/* line 54, scss/base/_rhythm.scss */
-.content .alignright {
-  margin-left: 24px;
-  margin-left: 1.5rem;
-  float: right;
-}
-/* line 60, scss/base/_rhythm.scss */
-.content img.alignleft, .content img.alignright, .content img.aligncenter, .content img.alignnone {
-  width: 100%;
-  border: 2px solid #efefef;
-  border-radius: 3px;
-}
-/* line 66, scss/base/_rhythm.scss */
-.content ul, .content ol, .content dl, .content table, .content fieldset, .content figure, .content pre, .content .hatnote {
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-/* line 69, scss/base/_rhythm.scss */
-.content figure, .content fieldset {
-  padding: 4px 0;
-}
-/* line 74, scss/base/_rhythm.scss */
-.content.leading-p p:first-of-type {
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 18px;
-  font-size: 1.125rem;
-  line-height: 1.33333;
-}
-
-/* -- Thumbnails -- */
-/* line 82, scss/base/_rhythm.scss */
-.thumb {
-  max-width: 20%;
-  display: block;
-}
-/* line 85, scss/base/_rhythm.scss */
-.thumb .thumb--image {
-  width: 100%;
-  border: 4px solid #DFDFDF;
-}
-/* line 89, scss/base/_rhythm.scss */
-.thumb > a {
-  display: block;
-}
-
-/* -- Heading Formatting -- */
-/* line 95, scss/base/_rhythm.scss */
-h1, h2, h3, h4, h5, h6 {
-  text-rendering: optimizelegibility;
-}
-/* line 97, scss/base/_rhythm.scss */
-h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
-  margin: 0;
-}
-
-/* line 101, scss/base/_rhythm.scss */
-h1 {
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 48px;
-  font-size: 3rem;
-  line-height: 1;
-}
-
-/* line 104, scss/base/_rhythm.scss */
-h2 {
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 36px;
-  font-size: 2.25rem;
-  line-height: 1.33333;
-}
-
-/* line 107, scss/base/_rhythm.scss */
-h3 {
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 24px;
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-/* line 110, scss/base/_rhythm.scss */
-h4 {
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 18px;
-  font-size: 1.125rem;
-  line-height: 1.33333;
-}
-
-/* line 113, scss/base/_rhythm.scss */
-h5 {
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* line 116, scss/base/_rhythm.scss */
-h6 {
-  margin-bottom: 13.71429px;
-  margin-bottom: 0.85714rem;
-  font-size: 14px;
-  font-size: 0.875rem;
-  line-height: 1.71429;
-}
-
-/* ==========================================================================
-   Alerts
+   Base > Components > Alerts
    Styles for various success and error alerts
 ========================================================================== */
 /* -- All -- */
@@ -1388,80 +1657,75 @@ h6 {
   border-radius: 3px;
 }
 /* line 15, scss/base/components/_alerts.scss */
-.alert.box h3 {
-  font-size: 30px;
-  font-size: 1.875rem;
-}
-/* line 18, scss/base/components/_alerts.scss */
 .alert.box a {
   color: inherit;
   text-decoration: none;
   border-bottom: 1px dotted;
 }
-/* line 23, scss/base/components/_alerts.scss */
+/* line 20, scss/base/components/_alerts.scss */
 .alert.box a:hover {
   color: inherit;
   border-bottom-style: solid;
 }
 
 /* -- Alerts as a list -- */
-/* line 34, scss/base/components/_alerts.scss */
+/* line 31, scss/base/components/_alerts.scss */
 ul.alert.box {
   padding-left: 14px;
   margin-left: 0;
 }
-/* line 37, scss/base/components/_alerts.scss */
+/* line 34, scss/base/components/_alerts.scss */
 ul.alert.box li {
   margin: 0;
   list-style: none;
 }
 
 /* -- Error (Red) -- */
-/* line 47, scss/base/components/_alerts.scss */
+/* line 44, scss/base/components/_alerts.scss */
 .alert.error {
   color: #b94a48;
 }
-/* line 50, scss/base/components/_alerts.scss */
+/* line 47, scss/base/components/_alerts.scss */
 .alert.box.error {
   border-color: #dca5a4;
   background: #f1dcdc;
 }
 
 /* -- Status (Blue) -- */
-/* line 59, scss/base/components/_alerts.scss */
+/* line 56, scss/base/components/_alerts.scss */
 .alert.status {
   color: #3a87ad;
 }
-/* line 62, scss/base/components/_alerts.scss */
+/* line 59, scss/base/components/_alerts.scss */
 .alert.box.status {
   border-color: #8ec0d9;
   background: #c7e0ec;
 }
 
 /* -- Success (Green) -- */
-/* line 71, scss/base/components/_alerts.scss */
+/* line 68, scss/base/components/_alerts.scss */
 .alert.success {
   color: #468847;
 }
-/* line 74, scss/base/components/_alerts.scss */
+/* line 71, scss/base/components/_alerts.scss */
 .alert.box.success {
   border-color: #8ac38b;
   background: #bdddbd;
 }
 
 /* -- Warning (Yellow) -- */
-/* line 83, scss/base/components/_alerts.scss */
+/* line 80, scss/base/components/_alerts.scss */
 .alert.warning {
   color: #c09853;
 }
-/* line 86, scss/base/components/_alerts.scss */
+/* line 83, scss/base/components/_alerts.scss */
 .alert.box.warning {
   border-color: #e2d0b0;
   background: #f7f1e8;
 }
 
 /* ==========================================================================
-   Buttons
+   Base > Components > Buttons
    Styles for buttons. These are not form buttons but clickable
    anchors such as Call to Actions.
 ========================================================================== */
@@ -1471,9 +1735,6 @@ ul.alert.box li {
   padding: 8.4px 18px;
   padding: 0.525rem 1.125rem;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   border-radius: 3px;
   vertical-align: middle;
   cursor: pointer;
@@ -1649,7 +1910,7 @@ ul.alert.box li {
 }
 
 /* ==========================================================================
-   Content Editable
+   Base > Components > Content Editable
    Description goes here.
 ========================================================================== */
 /* -- Content Editable -- */
@@ -1690,7 +1951,7 @@ ul.alert.box li {
 }
 
 /* ==========================================================================
-   Grid
+   Base > Components > Grid
    Grid layouts.
 ========================================================================== */
 /* -- Flex -- */
@@ -1713,230 +1974,230 @@ ul.alert.box li {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-/* line 26, scss/base/components/_grid.scss */
+/* line 25, scss/base/components/_grid.scss */
 .flex-grid [class*="col-"] {
   max-width: 98%;
   -webkit-flex-basis: 98%;
   -ms-flex-preferred-size: 98%;
   flex-basis: 98%;
-  margin: 2rem 0 0 2%;
+  margin: 1rem 0 0 2%;
 }
-/* line 33, scss/base/components/_grid.scss */
+/* line 32, scss/base/components/_grid.scss */
 .flex-grid [class*="col-"].left {
   text-align: left;
 }
-/* line 36, scss/base/components/_grid.scss */
+/* line 35, scss/base/components/_grid.scss */
 .flex-grid [class*="col-"].right {
   text-align: right;
 }
-/* line 39, scss/base/components/_grid.scss */
+/* line 38, scss/base/components/_grid.scss */
 .flex-grid [class*="col-"].center {
   text-align: center;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1 {
   max-width: 98%;
   -webkit-flex-basis: 98%;
   -ms-flex-preferred-size: 98%;
   flex-basis: 98%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1 {
   max-width: 100%;
   -webkit-flex-basis: 100%;
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-3 {
   max-width: 31.33%;
   -webkit-flex-basis: 31.33%;
   -ms-flex-preferred-size: 31.33%;
   flex-basis: 31.33%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-3 {
   max-width: 33.33%;
   -webkit-flex-basis: 33.33%;
   -ms-flex-preferred-size: 33.33%;
   flex-basis: 33.33%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-2-3 {
   max-width: 64.66%;
   -webkit-flex-basis: 64.66%;
   -ms-flex-preferred-size: 64.66%;
   flex-basis: 64.66%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-2-3 {
   max-width: 66.66%;
   -webkit-flex-basis: 66.66%;
   -ms-flex-preferred-size: 66.66%;
   flex-basis: 66.66%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-2 {
   max-width: 48%;
   -webkit-flex-basis: 48%;
   -ms-flex-preferred-size: 48%;
   flex-basis: 48%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-2 {
   max-width: 50%;
   -webkit-flex-basis: 50%;
   -ms-flex-preferred-size: 50%;
   flex-basis: 50%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-4 {
   max-width: 23%;
   -webkit-flex-basis: 23%;
   -ms-flex-preferred-size: 23%;
   flex-basis: 23%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-4 {
   max-width: 25%;
   -webkit-flex-basis: 25%;
   -ms-flex-preferred-size: 25%;
   flex-basis: 25%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-2-4 {
   max-width: 48%;
   -webkit-flex-basis: 48%;
   -ms-flex-preferred-size: 48%;
   flex-basis: 48%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-2-4 {
   max-width: 50%;
   -webkit-flex-basis: 50%;
   -ms-flex-preferred-size: 50%;
   flex-basis: 50%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-3-4 {
   max-width: 73%;
   -webkit-flex-basis: 73%;
   -ms-flex-preferred-size: 73%;
   flex-basis: 73%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-3-4 {
   max-width: 75%;
   -webkit-flex-basis: 75%;
   -ms-flex-preferred-size: 75%;
   flex-basis: 75%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-5 {
   max-width: 18%;
   -webkit-flex-basis: 18%;
   -ms-flex-preferred-size: 18%;
   flex-basis: 18%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-5 {
   max-width: 20%;
   -webkit-flex-basis: 20%;
   -ms-flex-preferred-size: 20%;
   flex-basis: 20%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-6 {
   max-width: 14.66%;
   -webkit-flex-basis: 14.66%;
   -ms-flex-preferred-size: 14.66%;
   flex-basis: 14.66%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-6 {
   max-width: 16.66%;
   -webkit-flex-basis: 16.66%;
   -ms-flex-preferred-size: 16.66%;
   flex-basis: 16.66%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-7 {
   max-width: 12.28%;
   -webkit-flex-basis: 12.28%;
   -ms-flex-preferred-size: 12.28%;
   flex-basis: 12.28%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-7 {
   max-width: 14.28%;
   -webkit-flex-basis: 14.28%;
   -ms-flex-preferred-size: 14.28%;
   flex-basis: 14.28%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-8 {
   max-width: 10.5%;
   -webkit-flex-basis: 10.5%;
   -ms-flex-preferred-size: 10.5%;
   flex-basis: 10.5%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-8 {
   max-width: 12.5%;
   -webkit-flex-basis: 12.5%;
   -ms-flex-preferred-size: 12.5%;
   flex-basis: 12.5%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-9 {
   max-width: 9.11%;
   -webkit-flex-basis: 9.11%;
   -ms-flex-preferred-size: 9.11%;
   flex-basis: 9.11%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-9 {
   max-width: 11.11%;
   -webkit-flex-basis: 11.11%;
   -ms-flex-preferred-size: 11.11%;
   flex-basis: 11.11%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-10 {
   max-width: 8%;
   -webkit-flex-basis: 8%;
   -ms-flex-preferred-size: 8%;
   flex-basis: 8%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-10 {
   max-width: 10%;
   -webkit-flex-basis: 10%;
   -ms-flex-preferred-size: 10%;
   flex-basis: 10%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-12 {
   max-width: 6.33%;
   -webkit-flex-basis: 6.33%;
   -ms-flex-preferred-size: 6.33%;
   flex-basis: 6.33%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-12 {
   max-width: 8.33%;
   -webkit-flex-basis: 8.33%;
   -ms-flex-preferred-size: 8.33%;
   flex-basis: 8.33%;
 }
-/* line 44, scss/base/components/_grid.scss */
+/* line 43, scss/base/components/_grid.scss */
 .flex-grid .col-1-16 {
   max-width: 4.25%;
   -webkit-flex-basis: 4.25%;
   -ms-flex-preferred-size: 4.25%;
   flex-basis: 4.25%;
 }
-/* line 50, scss/base/components/_grid.scss */
+/* line 49, scss/base/components/_grid.scss */
 .flex-grid.no-gutter .col-1-16 {
   max-width: 6.25%;
   -webkit-flex-basis: 6.25%;
@@ -1945,193 +2206,187 @@ ul.alert.box li {
 }
 
 /* -- System -- */
-/* line 60, scss/base/components/_grid.scss */
+/* line 59, scss/base/components/_grid.scss */
 .grid {
   width: 102%;
   margin-top: -2%;
   position: relative;
   left: -2%;
 }
-/* line 66, scss/base/components/_grid.scss */
+/* line 65, scss/base/components/_grid.scss */
 .grid [class*="col-"] {
   width: 98%;
   margin: 2% 0 0 2%;
   float: left;
 }
-/* line 71, scss/base/components/_grid.scss */
+/* line 70, scss/base/components/_grid.scss */
 .grid [class*="col-"].left {
   text-align: left;
 }
-/* line 74, scss/base/components/_grid.scss */
+/* line 73, scss/base/components/_grid.scss */
 .grid [class*="col-"].right {
   text-align: right;
 }
-/* line 77, scss/base/components/_grid.scss */
+/* line 76, scss/base/components/_grid.scss */
 .grid [class*="col-"].center {
   text-align: center;
 }
-/* line 80, scss/base/components/_grid.scss */
+/* line 79, scss/base/components/_grid.scss */
 .grid [class*="col-"].fl {
   float: left;
 }
-/* line 83, scss/base/components/_grid.scss */
+/* line 82, scss/base/components/_grid.scss */
 .grid [class*="col-"].fr {
   float: right;
 }
-/* line 87, scss/base/components/_grid.scss */
+/* line 86, scss/base/components/_grid.scss */
 .grid [class*="col-"]:last-child {
   margin-bottom: 0;
 }
-/* line 92, scss/base/components/_grid.scss */
+/* line 91, scss/base/components/_grid.scss */
 .grid.no-gutter {
   width: 100%;
   left: 0;
 }
-/* line 95, scss/base/components/_grid.scss */
+/* line 94, scss/base/components/_grid.scss */
 .grid.no-gutter [class*="col-"] {
   margin: 0;
 }
-/* line 99, scss/base/components/_grid.scss */
+/* line 98, scss/base/components/_grid.scss */
 .grid.bricked {
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   letter-spacing: -4px;
 }
-/* line 102, scss/base/components/_grid.scss */
+/* line 101, scss/base/components/_grid.scss */
 .grid.bricked [class*="col-"] {
   float: none;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   vertical-align: top;
   letter-spacing: normal;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1 {
   width: 98%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1 {
   width: 100%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-3 {
   width: 31.33%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-3 {
   width: 33.33%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-2-3 {
   width: 64.66%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-2-3 {
   width: 66.66%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-2 {
   width: 48%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-2 {
   width: 50%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-4 {
   width: 23%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-4 {
   width: 25%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-2-4 {
   width: 48%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-2-4 {
   width: 50%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-3-4 {
   width: 73%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-3-4 {
   width: 75%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-5 {
   width: 18%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-5 {
   width: 20%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-6 {
   width: 14.66%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-6 {
   width: 16.66%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-7 {
   width: 12.28%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-7 {
   width: 14.28%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-8 {
   width: 10.5%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-8 {
   width: 12.5%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-9 {
   width: 9.11%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-9 {
   width: 11.11%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-10 {
   width: 8%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-10 {
   width: 10%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-12 {
   width: 6.33%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-12 {
   width: 8.33%;
 }
-/* line 111, scss/base/components/_grid.scss */
+/* line 110, scss/base/components/_grid.scss */
 .grid .col-1-16 {
   width: 4.25%;
 }
-/* line 114, scss/base/components/_grid.scss */
+/* line 113, scss/base/components/_grid.scss */
 .grid.no-gutter .col-1-16 {
   width: 6.25%;
 }
 
 /* ==========================================================================
-   Menus
+   Base > Components > Menus
    Styles for navigational menus.
 ========================================================================== */
 /* -- All Navigation -- */
@@ -2153,9 +2408,6 @@ ul.alert.box li {
 /* line 22, scss/base/components/_menus.scss */
 .nav-primary li {
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   position: relative;
 }
 /* line 26, scss/base/components/_menus.scss */
@@ -2212,9 +2464,6 @@ ul.alert.box li {
   width: 100%;
   content: '';
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
 }
 
 /* -- Mobile Menu -- */
@@ -2251,7 +2500,7 @@ ul.alert.box li {
   }
 }
 /* ==========================================================================
-   Progress Bar
+   Base > Components > Progress Bar
    Description goes here.
 ========================================================================== */
 /* -- Progress Bar -- */
@@ -2449,7 +2698,7 @@ ul.alert.box li {
 }
 
 /* ==========================================================================
-   Slabs
+   Base > Components > Slabs
    Slabs create sections styled with a background colour. They differ
    from the `.bg` class by being naturally padded to provide content space.
 ========================================================================== */
@@ -2543,7 +2792,7 @@ ul.alert.box li {
 }
 
 /* ==========================================================================
-   Tables
+   Base > Components > Tables
    Description goes here.
 ========================================================================== */
 /* -- Div Tables -- */
@@ -2606,7 +2855,7 @@ table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight
 }
 
 /* ==========================================================================
-   Breadcrumb
+   Base > Modules > Breadcrumb
    Description goes here.
 ========================================================================== */
 /* -- Breadcrumb -- */
@@ -2616,7 +2865,7 @@ table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight
 }
 
 /* ==========================================================================
-   Pagination
+   Base > Modules > Pagination
    Description goes here.
 ========================================================================== */
 /* -- Pagination -- */
@@ -2626,9 +2875,6 @@ table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight
   padding: 0.375rem 0.75rem;
   border-radius: 3px;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   color: #FFFFFF;
   background: #C4122f;
   -webkit-transition: background-color 300ms ease;
@@ -2646,7 +2892,7 @@ table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight
 }
 
 /* ==========================================================================
-   Base
+   Base > Forms > Base
    Styling for elements within a form tag
 ========================================================================== */
 /* line 5, scss/base/forms/_base.scss */
@@ -2706,7 +2952,7 @@ form label:first-child input[type="radio"], form label:first-child input[type="c
 /* line 57, scss/base/forms/_base.scss */
 form input, form .input, form select, form textarea, form button, form .button {
   height: 40px;
-  border: 1px solid white;
+  border: 1px solid #cccccc;
   vertical-align: top;
   position: relative;
   border-radius: 3px;
@@ -2720,17 +2966,17 @@ form input, form .input, form select, form textarea, form button, form .button {
 }
 /* line 68, scss/base/forms/_base.scss */
 form input:hover, form input:active, form .input:hover, form .input:active, form select:hover, form select:active, form textarea:hover, form textarea:active, form button:hover, form button:active, form .button:hover, form .button:active {
-  border-color: white;
+  border-color: #b3b3b3;
 }
 /* line 71, scss/base/forms/_base.scss */
 form input:focus, form .input:focus, form select:focus, form textarea:focus, form button:focus, form .button:focus {
-  border-color: white;
+  border-color: #8c8c8c;
 }
 /* line 74, scss/base/forms/_base.scss */
 form input[readonly], form input[readonly]:hover, form input.readonly, form input.readonly:hover, form input.readonly:active, form input[disabled], form input[disabled]:hover, form input.disabled, form input.disabled:hover, form input.disabled:active, form .input[readonly], form .input[readonly]:hover, form .input.readonly, form .input.readonly:hover, form .input.readonly:active, form .input[disabled], form .input[disabled]:hover, form .input.disabled, form .input.disabled:hover, form .input.disabled:active, form select[readonly], form select[readonly]:hover, form select.readonly, form select.readonly:hover, form select.readonly:active, form select[disabled], form select[disabled]:hover, form select.disabled, form select.disabled:hover, form select.disabled:active, form textarea[readonly], form textarea[readonly]:hover, form textarea.readonly, form textarea.readonly:hover, form textarea.readonly:active, form textarea[disabled], form textarea[disabled]:hover, form textarea.disabled, form textarea.disabled:hover, form textarea.disabled:active, form button[readonly], form button[readonly]:hover, form button.readonly, form button.readonly:hover, form button.readonly:active, form button[disabled], form button[disabled]:hover, form button.disabled, form button.disabled:hover, form button.disabled:active, form .button[readonly], form .button[readonly]:hover, form .button.readonly, form .button.readonly:hover, form .button.readonly:active, form .button[disabled], form .button[disabled]:hover, form .button.disabled, form .button.disabled:hover, form .button.disabled:active {
-  border-color: white;
+  border-color: #cccccc;
   cursor: no-drop;
-  background: white;
+  background: #e6e6e6;
 }
 /* line 80, scss/base/forms/_base.scss */
 form input[disabled], form input[disabled]:hover, form input.disabled, form input.disabled:hover, form input.disabled:active, form .input[disabled], form .input[disabled]:hover, form .input.disabled, form .input.disabled:hover, form .input.disabled:active, form select[disabled], form select[disabled]:hover, form select.disabled, form select.disabled:hover, form select.disabled:active, form textarea[disabled], form textarea[disabled]:hover, form textarea.disabled, form textarea.disabled:hover, form textarea.disabled:active, form button[disabled], form button[disabled]:hover, form button.disabled, form button.disabled:hover, form button.disabled:active, form .button[disabled], form .button[disabled]:hover, form .button.disabled, form .button.disabled:hover, form .button.disabled:active {
@@ -2771,19 +3017,19 @@ form button, form .button {
   padding: 0px 1.8rem;
   border: 0;
   text-align: center;
-  background: white;
+  background: #e6e6e6;
 }
 /* line 120, scss/base/forms/_base.scss */
 form button:hover, form .button:hover {
-  background: white;
+  background: #d9d9d9;
 }
 /* line 123, scss/base/forms/_base.scss */
 form button:active, form .button:active {
-  background: white;
+  background: #cccccc;
 }
 
 /* ==========================================================================
-   Form Block
+   Base > Forms > Form Block
    Block level forms
 ========================================================================== */
 /* line 9, scss/base/forms/_form-block.scss */
@@ -2795,9 +3041,6 @@ form.form-block .field-container label {
 form.form-block .field-container input, form.form-block .field-container .input, form.form-block .field-container select, form.form-block .field-container textarea {
   margin-left: 2%;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   vertical-align: middle;
 }
 /* line 17, scss/base/forms/_form-block.scss */
@@ -2824,16 +3067,13 @@ form.form-block input ~ .note, form.form-block .input ~ .note, form.form-block s
 }
 
 /* ==========================================================================
-   Form Inline Block
+   Base > Forms > Form Inline Block
    Inline Block level forms
 ========================================================================== */
 /* line 8, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block .field {
   margin: 0;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   vertical-align: top;
 }
 /* line 12, scss/base/forms/_form-inline-block.scss */
@@ -2858,9 +3098,6 @@ form.form-inline-block .field-container span + input, form.form-inline-block .fi
 /* line 34, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block label, form.form-inline-block .label, form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   vertical-align: top;
 }
 /* line 40, scss/base/forms/_form-inline-block.scss */
@@ -2888,7 +3125,7 @@ form.form-inline-block input ~ .note, form.form-inline-block .input ~ .note, for
 }
 
 /* ==========================================================================
-   Form Inline
+   Base > Forms > Form Inline
    Inline forms
 ========================================================================== */
 /* line 8, scss/base/forms/_form-inline.scss */
@@ -2912,7 +3149,7 @@ form.form-inline span + input, form.form-inline span .input, form.form-inline sp
 }
 
 /* ==========================================================================
-   Customised
+   Base > Forms > Customised
    Custom form inputs.
 ========================================================================== */
 /* line 8, scss/base/forms/_customised.scss */
@@ -2921,9 +3158,6 @@ form .custom-checkbox, form .custom-radio {
   margin-right: 1.5rem;
   position: relative;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
 }
 /* line 12, scss/base/forms/_customised.scss */
 form .custom-checkbox label, form .custom-radio label {
@@ -3030,9 +3264,6 @@ form .custom-select:after {
   right: 18px;
   right: 1.125rem;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   pointer-events: none;
 }
 /* line 106, scss/base/forms/_customised.scss */
@@ -3041,9 +3272,6 @@ form .custom-select select {
   padding-right: 2.25rem;
   margin: 0;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -3056,89 +3284,109 @@ form .custom-select select::-ms-expand {
 }
 
 /* ==========================================================================
-   Notifications
+   Base > Forms > Notifications
    Form messages and responses.
 ========================================================================== */
-/* line 10, scss/base/forms/_notifications.scss */
-form input.error, form .input.error, form select.error, form textarea.error, form .field-container.error {
+/* line 12, scss/base/forms/_notifications.scss */
+form.form-has-errors label.error {
+  color: #b94a48;
+}
+/* line 15, scss/base/forms/_notifications.scss */
+form.form-has-errors label.status {
+  color: #3a87ad;
+}
+/* line 18, scss/base/forms/_notifications.scss */
+form.form-has-errors label.success {
+  color: #468847;
+}
+/* line 21, scss/base/forms/_notifications.scss */
+form.form-has-errors label.warning {
+  color: #c09853;
+}
+/* line 29, scss/base/forms/_notifications.scss */
+form.form-has-errors input.error, form.form-has-errors .input.error, form.form-has-errors select.error, form.form-has-errors textarea.error, form.form-has-errors .field-container.error {
   color: #b94a48;
   border-color: #dca5a4;
   background: #f1dcdc;
 }
-/* line 15, scss/base/forms/_notifications.scss */
-form input.error:focus, form .input.error:focus, form select.error:focus, form textarea.error:focus, form .field-container.error:focus {
+/* line 34, scss/base/forms/_notifications.scss */
+form.form-has-errors input.error:focus, form.form-has-errors .input.error:focus, form.form-has-errors select.error:focus, form.form-has-errors textarea.error:focus, form.form-has-errors .field-container.error:focus {
   background: #eacac9;
 }
-/* line 19, scss/base/forms/_notifications.scss */
-form input.status, form .input.status, form select.status, form textarea.status, form .field-container.status {
+/* line 38, scss/base/forms/_notifications.scss */
+form.form-has-errors input.status, form.form-has-errors .input.status, form.form-has-errors select.status, form.form-has-errors textarea.status, form.form-has-errors .field-container.status {
   color: #3a87ad;
   border-color: #8ec0d9;
   background: #c7e0ec;
 }
-/* line 24, scss/base/forms/_notifications.scss */
-form input.status:focus, form .input.status:focus, form select.status:focus, form textarea.status:focus, form .field-container.status:focus {
+/* line 43, scss/base/forms/_notifications.scss */
+form.form-has-errors input.status:focus, form.form-has-errors .input.status:focus, form.form-has-errors select.status:focus, form.form-has-errors textarea.status:focus, form.form-has-errors .field-container.status:focus {
   background: #b4d5e6;
 }
-/* line 28, scss/base/forms/_notifications.scss */
-form input.success, form .input.success, form select.success, form textarea.success, form .field-container.success {
+/* line 47, scss/base/forms/_notifications.scss */
+form.form-has-errors input.success, form.form-has-errors .input.success, form.form-has-errors select.success, form.form-has-errors textarea.success, form.form-has-errors .field-container.success {
   color: #468847;
   border-color: #8ac38b;
   background: #bdddbd;
 }
-/* line 33, scss/base/forms/_notifications.scss */
-form input.success:focus, form .input.success:focus, form select.success:focus, form textarea.success:focus, form .field-container.success:focus {
+/* line 52, scss/base/forms/_notifications.scss */
+form.form-has-errors input.success:focus, form.form-has-errors .input.success:focus, form.form-has-errors select.success:focus, form.form-has-errors textarea.success:focus, form.form-has-errors .field-container.success:focus {
   background: #acd4ad;
 }
-/* line 37, scss/base/forms/_notifications.scss */
-form input.warning, form .input.warning, form select.warning, form textarea.warning, form .field-container.warning {
+/* line 56, scss/base/forms/_notifications.scss */
+form.form-has-errors input.warning, form.form-has-errors .input.warning, form.form-has-errors select.warning, form.form-has-errors textarea.warning, form.form-has-errors .field-container.warning {
   color: #c09853;
   border-color: #e2d0b0;
   background: #f7f1e8;
 }
-/* line 42, scss/base/forms/_notifications.scss */
-form input.warning:focus, form .input.warning:focus, form select.warning:focus, form textarea.warning:focus, form .field-container.warning:focus {
+/* line 61, scss/base/forms/_notifications.scss */
+form.form-has-errors input.warning:focus, form.form-has-errors .input.warning:focus, form.form-has-errors select.warning:focus, form.form-has-errors textarea.warning:focus, form.form-has-errors .field-container.warning:focus {
   background: #f0e6d6;
 }
-/* line 51, scss/base/forms/_notifications.scss */
-form label.error {
-  color: #b94a48;
-}
-/* line 54, scss/base/forms/_notifications.scss */
-form label.status {
-  color: #3a87ad;
-}
-/* line 57, scss/base/forms/_notifications.scss */
-form label.success {
-  color: #468847;
-}
-/* line 60, scss/base/forms/_notifications.scss */
-form label.warning {
-  color: #c09853;
-}
-/* line 66, scss/base/forms/_notifications.scss */
-form .msg {
+/* line 68, scss/base/forms/_notifications.scss */
+form.form-has-errors .msg {
   font-size: 14px;
   font-size: 0.875rem;
 }
-/* line 73, scss/base/forms/_notifications.scss */
-form .response--error .msg {
+/* line 75, scss/base/forms/_notifications.scss */
+form.form-has-errors .response--error .msg {
   color: #b94a48;
 }
-/* line 79, scss/base/forms/_notifications.scss */
-form .response--status .msg {
+/* line 81, scss/base/forms/_notifications.scss */
+form.form-has-errors .response--status .msg {
   color: #3a87ad;
 }
-/* line 85, scss/base/forms/_notifications.scss */
-form .response--success .msg {
+/* line 87, scss/base/forms/_notifications.scss */
+form.form-has-errors .response--success .msg {
   color: #468847;
 }
-/* line 91, scss/base/forms/_notifications.scss */
-form .response--warning .msg {
+/* line 93, scss/base/forms/_notifications.scss */
+form.form-has-errors .response--warning .msg {
   color: #c09853;
+}
+/* line 100, scss/base/forms/_notifications.scss */
+form.form-has-errors .field.field-has-errors ::-webkit-input-placeholder {
+  color: #b94a48;
+}
+/* line 103, scss/base/forms/_notifications.scss */
+form.form-has-errors .field.field-has-errors ::-moz-placeholder {
+  color: #b94a48;
+}
+/* line 106, scss/base/forms/_notifications.scss */
+form.form-has-errors .field.field-has-errors :-moz-placeholder {
+  color: #b94a48;
+}
+/* line 109, scss/base/forms/_notifications.scss */
+form.form-has-errors .field.field-has-errors :-ms-input-placeholder {
+  color: #b94a48;
+}
+/* line 112, scss/base/forms/_notifications.scss */
+form.form-has-errors .field.field-has-errors ::placeholder {
+  color: #b94a48;
 }
 
 /* ==========================================================================
-   Placeholders
+   Base > Forms > Placeholders
    Form placeholder styles.
 ========================================================================== */
 /* line 6, scss/base/forms/_placeholders.scss */
@@ -3193,9 +3441,6 @@ form select {
 .accordion .accordion__title button .more:after {
   width: 20px;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   content: "+";
 }
 /* line 23, scss/base/javascript/_accordion.scss */
@@ -3753,17 +3998,17 @@ form select {
     /*The size of the normal image, half the size of the hi-res image*/
   }
 }
-/* line 1, scss/base/javascript/_form-validation.scss */
+/* line 1, scss/base/javascript/_validation.scss */
 .suggestion {
   display: none;
 }
 
-/* line 4, scss/base/javascript/_form-validation.scss */
+/* line 4, scss/base/javascript/_validation.scss */
 .alternative-email {
   cursor: pointer;
 }
 
-/* line 7, scss/base/javascript/_form-validation.scss */
+/* line 7, scss/base/javascript/_validation.scss */
 .form-success {
   display: none;
 }
@@ -3803,9 +4048,6 @@ form select {
   border: 1px solid #DDDDDD;
   border-bottom: 0;
   display: inline-block;
-  zoom: 1;
-  *display: inline;
-  /* IE Fix */
   position: relative;
   z-index: 100;
   vertical-align: bottom;
@@ -3898,7 +4140,7 @@ form select {
 }
 
 /* ==========================================================================
-   Fixes
+   Base > Fixes
    This file is for legacy browser fixes and hacks. Everything should
    be documented and explained for later review.
 ========================================================================== */
@@ -3926,7 +4168,7 @@ form select {
 }
 
 /* ==========================================================================
-   Breakpoints
+   Base > Breakpoints
    Responsive partial for global responsive styles.
    Use responsive mixin inside the correct partial for local responsive
    styles.
@@ -3971,33 +4213,26 @@ form select {
     width: 100%;
   }
 
-  /* line 54, scss/base/_breakpoints.scss */
-  figure figcaption {
-    font-size: 14px;
-    font-size: 0.875rem;
-    text-align: center;
-  }
-
   /* -- Forms -- */
-  /* line 62, scss/base/_breakpoints.scss */
+  /* line 55, scss/base/_breakpoints.scss */
   .form-inline label, .form-inline .label, .form-inline-block label, .form-inline-block .label, .form-block label, .form-block .label {
     width: 100%;
     display: block;
   }
-  /* line 66, scss/base/_breakpoints.scss */
+  /* line 59, scss/base/_breakpoints.scss */
   .form-inline input, .form-inline .input, .form-inline select, .form-inline textarea, .form-inline .field-container, .form-inline button, .form-inline .button, .form-inline-block input, .form-inline-block .input, .form-inline-block select, .form-inline-block textarea, .form-inline-block .field-container, .form-inline-block button, .form-inline-block .button, .form-block input, .form-block .input, .form-block select, .form-block textarea, .form-block .field-container, .form-block button, .form-block .button {
     width: 100%;
     margin: 0;
     display: block;
   }
-  /* line 71, scss/base/_breakpoints.scss */
+  /* line 64, scss/base/_breakpoints.scss */
   .form-inline button, .form-inline .button, .form-inline-block button, .form-inline-block .button, .form-block button, .form-block .button {
     margin-bottom: 6px;
     margin-bottom: 0.375rem;
   }
 }
 /* ==========================================================================
-   Print
+   Base > Print
    Print styling
 ========================================================================== */
 @media print {
@@ -4074,49 +4309,49 @@ form select {
   }
 }
 /* ==========================================================================
-   All
-   Imports all the partials
+   Site > All
+   Imports all the partials.
 ========================================================================== */
 /* ==========================================================================
-   Imports
+   Site > Imports
    This file is for importing partials from other directories
    These are not part of the framework and the contents of this
    file should be ignored when creating a new app.
 ========================================================================== */
 /* ==========================================================================
-   Sprites
+   Site > Sprites
    This is populated from the Gulp task `sprite`. Do not edit this directly.
    For more information on how to generate a sprite used here please review
    the Readme file.
 ========================================================================== */
 /* ==========================================================================
-   Icons
+   Site > Icons
    Iconography to be used throughout the sites. Will pull variables
    from the _sprites.scss partial.
 ========================================================================== */
 /* -- Base Icon -- */
 /* -- Icon Set Title -- */
 /* ==========================================================================
-   Rhythm
+   Site > Rhythm
    The framework rhythm.
 ========================================================================== */
 /* ==========================================================================
-   Global
+   Site > Global
    Styles that are across the board and not specific to
    any single partial.
 ========================================================================== */
 /* ==========================================================================
-   Dev
+   Site > Dev
    CSS for the development environment only. This can be used for
    experimental styles and can be turned off with an environment var
 ========================================================================== */
 /* ==========================================================================
-   Fixes
+   Site > Fixes
    This file is for legacy browser fixes and hacks. Everything should
    be documented and explained for later review.
 ========================================================================== */
 /* ==========================================================================
-   Breakpoints
+   Site > Breakpoints
    Responsive partial for global responsive styles.
    Use responsive mixin inside the correct partial for local responsive
    styles.

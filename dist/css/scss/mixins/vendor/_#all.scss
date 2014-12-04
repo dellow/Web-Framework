@@ -1,10 +1,5 @@
 /* ==========================================================================
-   Base > Modules > Breadcrumb
-   Description goes here.
+   Mixins > Vendor > All
+   Mixins from 3rd party sources.
 ========================================================================== */
-/* -- Breadcrumb -- */
-.module--breadcrumb {
-	> a {
-		font-weight: $font_weight_bold;
-	}
-}
+@import 'sassline/style';

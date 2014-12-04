@@ -1,10 +1,9 @@
 /* ==========================================================================
-   Grid
+   Base > Components > Grid
    Grid layouts.
 ========================================================================== */
 /* -- Flex -- */
 .flex-grid {
-	$top: ($gutter / ($gutter * 0 + 1));
 	width: 100% + $gutter;
 	margin-top: -$gutter;
 	position: relative;
@@ -28,7 +27,7 @@
 		-webkit-flex-basis     : $col_1 - $gutter;
 		-ms-flex-preferred-size: $col_1 - $gutter;
 		flex-basis             : $col_1 - $gutter;
-		margin: #{$top}rem 0 0 $gutter;
+		margin: 1rem 0 0 $gutter;
 		// Abstractions
 		&.left {
 			text-align: left;
@@ -97,11 +96,11 @@
 		}
 	}
 	&.bricked {
-		@include inline-block; // Hack to prevent negative margin having weird effects
+		display: inline-block; // Hack to prevent negative margin having weird effects
 		letter-spacing: -4px;
 		[class*="col-"] {
 			float: none;
-			@include inline-block;
+			display: inline-block;
 			vertical-align: top;
 			letter-spacing: normal;
 		}

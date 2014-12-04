@@ -16,7 +16,7 @@
 	$args['reply_to'] = array(
 		array('Name', 'reply@sitedomain.com')
 	);
-	$form = new mailer('mail', 'fields', $args);
+	$form = new mailer('mail', 'exampleForm', $args);
 
 ?>
 <!DOCTYPE html>
@@ -85,7 +85,7 @@
 					<!-- Text input -->
 					<div class="field">
 						<label for="form__fullname">Name <abbr title="Required">*</abbr></label>
-						<input type="text" name="fields[fullname]" id="form__fullname" placeholder="e.g. John Smith" aria-required="true" required>
+						<input type="text" name="exampleForm[fullname]" id="form__fullname" placeholder="e.g. John Smith" aria-required="true" required>
 						<span class="note">A note about this field.</span>
 						<!-- Validation & Filter -->
 						<input type="hidden" name="validationmessage[fullname]" class="error-message" value="Please enter your name">
@@ -96,20 +96,20 @@
 						<!-- Readonly Input -->
 						<div class="field left">
 							<label for="form__readonly">Readonly Input <abbr title="Required">*</abbr></label>
-							<input type="text" name="fields[readonly]" id="form__readonly" value="A readonly value" readonly>
+							<input type="text" name="exampleForm[readonly]" id="form__readonly" value="A readonly value" readonly>
 							<span class="note">A note about this field.</span>
 						</div>
 						<!-- Disabled Input -->
 						<div class="field right">
 							<label for="form_disabled">Disabled Input <abbr title="Required">*</abbr></label>
-							<input type="text" name="fields[disabled]" id="form_disabled" value="A disabled value" disabled>
+							<input type="text" name="exampleForm[disabled]" id="form_disabled" value="A disabled value" disabled>
 							<span class="note">A note about this field.</span>
 						</div>
 					</div>
 					<!-- Email input -->
 					<div class="field">
 						<label for="form__emailaddress">Email Address <abbr title="Required">*</abbr></label>
-						<input type="email" name="fields[emailaddress]" id="form__emailaddress" placeholder="e.g. john.smith@hotmail.com" aria-required="true" required>
+						<input type="email" name="exampleForm[emailaddress]" id="form__emailaddress" placeholder="e.g. john.smith@hotmail.com" aria-required="true" required>
 						<span class="note">A note about this field.</span>
 						<!-- Validation & Filter -->
 						<input type="hidden" name="validationmessage[emailaddress]" class="error-message" value="Please enter a valid email address">
@@ -120,19 +120,19 @@
 						<div class="label">Please choose a checkbox option <abbr title="Required">*</abbr></div>
 						<div class="field-container">
 							<label for="form__checkbox_option1">
-								<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option1" value="Option #1" aria-required="true" required>
+								<input type="checkbox" name="exampleForm[checkbox_option][]" id="form__checkbox_option1" value="Option #1" aria-required="true" required>
 								Option #1
 							</label>
 							<label for="form__checkbox_option2">
-								<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option2" value="Option #2" aria-required="true" required>
+								<input type="checkbox" name="exampleForm[checkbox_option][]" id="form__checkbox_option2" value="Option #2" aria-required="true" required>
 								Option #2
 							</label>
 							<label for="form__checkbox_option3">
-								<input type="checkbox" name="fields[checkbox_option][]" id="form__checkbox_option3" value="Option #3" aria-required="true" required>
+								<input type="checkbox" name="exampleForm[checkbox_option][]" id="form__checkbox_option3" value="Option #3" aria-required="true" required>
 								Option #3
 							</label>
 							<!-- Dummy -->
-							<input type="hidden" name="fields[checkbox_option][dummy]" value="">
+							<input type="hidden" name="exampleForm[checkbox_option][dummy]" value="">
 							<!-- Validation & Filter -->
 							<input type="hidden" name="validationmessage[checkbox_option]" class="error-message" value="Please choose a checkbox option">
 							<input type="hidden" name="validationfilter[checkbox_option]" value="array">
@@ -144,19 +144,19 @@
 						<div class="label">Please choose a radio option <abbr title="Required">*</abbr></div>
 						<div class="field-container">
 							<label for="form__radio_option1">
-								<input type="radio" name="fields[radio_option][]" id="form__radio_option1" value="Option #1" aria-required="true" required>
+								<input type="radio" name="exampleForm[radio_option][]" id="form__radio_option1" value="Option #1" aria-required="true" required>
 								Option #1
 							</label>
 							<label for="form__radio_option2">
-								<input type="radio" name="fields[radio_option][]" id="form__radio_option2" value="Option #2" aria-required="true" required>
+								<input type="radio" name="exampleForm[radio_option][]" id="form__radio_option2" value="Option #2" aria-required="true" required>
 								Option #2
 							</label>
 							<label for="form__radio_option3">
-								<input type="radio" name="fields[radio_option][]" id="form__radio_option3" value="Option #3" aria-required="true" required>
+								<input type="radio" name="exampleForm[radio_option][]" id="form__radio_option3" value="Option #3" aria-required="true" required>
 								Option #3
 							</label>
 							<!-- Dummy -->
-							<input type="hidden" name="fields[radio_option][dummy]" value="">
+							<input type="hidden" name="exampleForm[radio_option][dummy]" value="">
 							<!-- Validation & Filter -->
 							<input type="hidden" name="validationmessage[radio_option]" class="error-message" value="Please choose a radio option">
 							<input type="hidden" name="validationfilter[radio_option]" value="array">
@@ -166,7 +166,7 @@
 					<!-- Select box -->
 					<div class="field">
 						<label for="form__select_option">Please choose a select option <abbr title="Required">*</abbr></label>
-						<select name="fields[select_option]" id="form__select_option" aria-required="true" required>
+						<select name="exampleForm[select_option]" id="form__select_option" aria-required="true" required>
 							<option value="">Please Select</option>
 							<option value="Option #1">Option #1</option>
 							<option value="Option #2">Option #2</option>
@@ -181,7 +181,7 @@
 					<!-- Textarea -->
 					<div class="field">
 						<label for="form__message">Message <abbr title="Required">*</abbr></label>
-						<textarea name="fields[message]" id="form__message" aria-required="true" required></textarea>
+						<textarea name="exampleForm[message]" id="form__message" aria-required="true" required></textarea>
 						<span class="note">A note about this field.</span>
 						<!-- Validation & Filter -->
 						<input type="hidden" name="validationmessage[message]" class="error-message" value="Please enter a message">
@@ -200,11 +200,12 @@
 <script>
 	/**
 	 * These scripts are just for the benefit of this
-	 * styleguide. Do not use these in production
+	 * styleguide. Do not use these in production.
 	**/
 	$(function(){
 		$('.js-validate').validation({
-			serverValidation: false
+			serverValidation        : false,
+			appendErrorToPlaceholder: true
 		});
 
 		$('.js-switch').on('click', function(){

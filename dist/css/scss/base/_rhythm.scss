@@ -1,21 +1,32 @@
 /* ==========================================================================
-   Rhythm
+   Base > Rhythm
    The framework rhythm.
 ========================================================================== */
-/* -- Global -- */
+/* -- HTML -- */
 html {
-    min-height: 100%;
-    overflow-y: scroll;
-    font: #{$font_size_base}/#{$line_height_ratio} $font_family_base; // Hashed so SASS doesn't do a calculation
-	color: $color_text;
+	min-height: 100%;
+	overflow-y: scroll;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+
+	// @include rootsize; // Preference
+}
+
+/* -- Body -- */
+body {
+ 	@include fontsize(zeta, all);
+    font-family: $font_family_base;
 	word-wrap: break-word;
+  	line-height: 2rem;
+	color: $color_text;
 }
 
 /* -- Links, Buttons & Hover Styles -- */
+// Links.
 a, button {
 	color: $color_text_link;
 	text-decoration: none;
-	@include transition(color $animation ease);
+	@include transition(color $animation ease, background $animation ease);
 	// Pseudo
 	&:hover {
 		color: $color_text_link_hover;
@@ -25,91 +36,192 @@ a, button {
 	}
 }
 
-/* -- Styling classes -- */
-.hatnote {
-	@include nudge(padding-left, 1);
-	font-style: italic;
+/* -- General Formatting -- */
+// Global.
+p, li {
+	-webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+	-moz-font-feature-settings   : 'kern' 1, 'onum' 1, 'liga' 1;
+	-ms-font-feature-settings    : 'kern' 1, 'onum' 1, 'liga' 1;
+	-o-font-feature-settings     : 'kern' 1, 'onum' 1, 'liga' 1;
+	font-feature-settings        : 'kern' 1, 'onum' 1, 'liga' 1;
 }
 
-/* -- General Formatting -- */
-p, blockquote, address, ul, ol, dl, table, fieldset, figure, pre, .hatnote {
-	@include rhythm($font_size_base);
-}
-// Paragraph
+// Paragraph.
 p {
 	&:last-child {
 		margin-bottom: 0;
 	}
 }
-// Content area
-.content {
-	.aligncenter, .alignnone {
-		margin: $mn auto;
-		display: block;
-	}
-	.alignleft {
-		@include nudge(margin-right, 1);
-		float: left;
-	}
-	.alignright {
-		@include nudge(margin-left, 1);
-		float: right;
-	}
-	img {
-		// Abstractions
-		&.alignleft, &.alignright, &.aligncenter, &.alignnone {
-			width: 100%;
-			border: 2px solid #efefef;
-			border-radius: $border_radius_base;
+
+// Captions.
+figcaption, .caption {
+    @include fontsize(theta, all);
+    @include baseline(theta, $headingtype, 1.4, 1, all);
+}
+
+// Quotes.
+blockquote {
+	p {
+		border-left: 0.15rem solid $linkColour;
+		font-style: map-get($bodytype, italic);
+		padding-left: 1rem;
+
+		// Add spacing below blockquote paragraphs to align to baseline grid.
+		$get-scale: map-get($modular-scale, scale-0);
+		$get-size: map-get($get-scale, zeta);
+		$rootsize: nth($sizes, 1);
+		$baseline-shift: #{($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001};
+		$baseline-push: #{3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001)};
+
+		margin-bottom: #{$baseline-push}rem;
+		padding-bottom: #{$baseline-shift}rem;
+
+		@for $i from 2 through $breakpoints-limit {
+			$get-scale: map-get($modular-scale, scale-#{$i - 1});
+			$get-size: map-get($get-scale, zeta);
+			$rootsize: nth($sizes, $i);
+			$baseline-shift: #{($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001};
+			$baseline-push: #{3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001)};
+
+			@media screen and (min-width: nth($points, $i) / 16 * 1em ) {
+				margin-bottom: #{$baseline-push}rem;
+				padding-bottom: #{$baseline-shift}rem;
+			}
 		}
 	}
-	figure, fieldset {
-		padding: 4px 0; // Makes up for the lack of line-height
+
+	@include breakpoint(break-1) {
+		margin-left: -1rem;
 	}
+}
+
+// Citation
+cite {
+	// Descendants
+	.profession {
+		font-weight: $font_weight_bold;
+	}
+}
+
+/* -- Content Areas -- */
+.content {
+	// Typeset.
+	p, li {
+		a {
+			background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link, 20%) 50%);
+			background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link, 20%) 50%);
+			background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link, 20%) 50%);
+			background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, lighten($color_text_link, 20%) 50%);
+			background-position: 0 100%;
+			background-repeat: repeat-x;
+			background-size: 100% 0.15rem;
+			&:hover, &:active, &:focus {
+				background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link_hover, 20%) 50%);
+				background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link_hover, 20%) 50%);
+				background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link_hover, 20%) 50%);
+				background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, lighten($color_text_link_hover, 20%) 50%);
+			}
+		}
+	}
+
+	// Lists.
+	ul {
+		list-style-type: disc;
+	}
+	ul, ol {
+		margin-left: 1.2em;
+		li {
+			@include nudge(margin-bottom, 0.1);
+		}
+		ul, ol {
+			margin-left: 1.2em;
+			list-style-type: circle;
+		}
+	}
+	dl {
+		dd {
+			@include nudge(margin-bottom, 0.1);
+			@include nudge(text-indent, 1);
+		}
+	}
+
+	// Leading intro paragraph.
 	&.leading-p {
 		p {
 			&:first-of-type {
-				@include rhythm($font_size_base * 1.125);
+ 				@include fontsize(delta, all);
 			}
 		}
 	}
 }
 
-/* -- Thumbnails -- */
-.thumb {
-	max-width: 20%;
-	display: block;
-	.thumb--image {
-		width: 100%;
-		border: 4px solid #DFDFDF;
-	}
-	> a {
-		display: block;
-	}
-}
-
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
-	text-rendering: optimizelegibility;
+	-webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	-moz-font-feature-settings   : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	-ms-font-feature-settings    : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	-o-font-feature-settings     : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	font-feature-settings        : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 	&.collapse-margin {
 		margin: 0;
 	}
 }
-h1 {
-	@include rhythm($font_size_h1);
+h1, .alpha {
+	@include sassline($fontsize: alpha, $font: $headingtype, $lineheight: 3, $below: 1, $breakpoint: all);
 }
-h2 {
-	@include rhythm($font_size_h2);
+h2, .beta {
+	@include sassline(beta, $headingtype, 3, 1, all);
 }
-h3 {
-	@include rhythm($font_size_h3);
+h3, .gamma {
+	@include sassline(gamma, $headingtype, 3, 1, all);
 }
-h4 {
-	@include rhythm($font_size_h4);
+h4, .delta {
+	@include sassline(delta, $headingtype, 2, 0, all);
 }
-h5 {
-	@include rhythm($font_size_h5);
+h5, .epsilon {
+	@include sassline(epsilon, $headingtype, 2, 0, all);
 }
-h6 {
-	@include rhythm($font_size_h6);
+h6, .zeta {
+	@include sassline(zeta, $headingtype, 2, 0, all);
+}
+
+/* -- Hatnotes -- */
+.hatnote {
+	@include nudge(padding-left, 1);
+	font-style: italic;
+}
+
+/* -- Source Formatting -- */
+p {
+	code {
+		color: color(green);
+	}
+}
+code {
+	font-weight: $font_weight_regular;
+	font-family: $font_family_monospaced;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap  : break-word;
+	-webkit-tab-size: 4;
+	-moz-tab-size   : 4;
+	-o-tab-size     : 4;
+	tab-size        : 4;
+}
+pre {
+	@include nudge(padding, 0.5 0.75);
+	border: 1px solid color(grey);
+	position: relative;
+	border-radius: $border_radius_base;
+	background: color(grey, light);
+}
+kbd {
+	@include nudge(padding, 0.25 0.5);
+	margin: 0 0.25em;
+	display: inline-block;
+	border: 1px solid color(grey);
+	border-radius: $border_radius_base;
+	color: color(grey, medium);
+	background: color(grey, light);
 }

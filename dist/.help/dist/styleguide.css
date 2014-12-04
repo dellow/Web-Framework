@@ -2,9 +2,10 @@
  * These styles are just for the benefit of this
  * styleguide. Do not use these in production
 **/
+
 /* Body */
-html, body {
-	font-family: 'Lato', sans-serif;
+body {
+	font-family: 'Lato', sans-serif !important;
 	background: #F7F7F7 !important;
 }
 

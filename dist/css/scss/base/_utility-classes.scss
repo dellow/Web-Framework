@@ -1,12 +1,9 @@
 /* ==========================================================================
-   Utility Classes
+   Base > Utility Classes
    A library of classes to achieve various things. Most are prefixed
    with a 'u-'. These should be used sparingly.
 ========================================================================== */
 /* -- Messages -- */
-.msg-success, .msg-failure {
-	@include rem(font-size, 12px);
-}
 .msg-success {
 	color: rgba(138, 216, 54, 0.6);
 }
@@ -149,7 +146,7 @@ ul.u-horizontal {
 }
 ul.u-horizontal-block {
 	li {
-		@include inline-block;
+		display: inline-block;
 	}
 }
 

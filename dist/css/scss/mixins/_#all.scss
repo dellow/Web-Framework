@@ -1,7 +1,10 @@
 /* ==========================================================================
-   All
-   Imports all the partials
+   Mixins > All
+   Imports all the partials.
 ========================================================================== */
-@import 'mixins/misc',
+@import 'vendor/#all';
+
+@import 'mixins/helpers',
+		'mixins/misc',
 		'mixins/rhythm',
 		'mixins/responsive';

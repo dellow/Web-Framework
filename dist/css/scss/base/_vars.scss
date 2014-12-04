@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Vars
+   Base > Vars
    The variables for use throughout the framework. These can
    be overwritten from the site/vars partial.
 ========================================================================== */
@@ -36,20 +36,6 @@ $font_family_monospaced: 'source-code-pro', monospace !default;
 $font_family_serif     : $font_family_georgia !default;
 $font_family_sans_serif: $font_family_arial !default;
 $font_family_base      : $font_family_helvetica, $font_family_arial, $font_family_trebuchet, $font_family_verdana, sans-serif !default;
-// Sizes
-$font_size_xlarge      : 30px !default;
-$font_size_large       : 24px !default;
-$font_size_medium      : 20px !default;
-$font_size_base        : 16px !default;
-$font_size_small       : 12px !default;
-$font_size_tiny        : 10px !default;
-// Headings
-$font_size_h1          : 48px !default;
-$font_size_h2          : 36px !default;
-$font_size_h3          : 24px !default;
-$font_size_h4          : 18px !default;
-$font_size_h5          : 16px !default;
-$font_size_h6          : 14px !default;
 // Weights
 $font_weight_extra_bold: 900 !default;
 $font_weight_bold      : 700 !default;
@@ -60,7 +46,6 @@ $font_weight_light     : 200 !default;
 $font_weight_thin      : 100 !default;
 // Line Height
 $line_height_base      : $mn !default;
-$line_height_ratio     : $line_height_base / $font_size_base !default;
 
 /**
 * Colors

@@ -1,12 +1,12 @@
 /* ==========================================================================
-   Buttons
+   Base > Components > Buttons
    Styles for buttons. These are not form buttons but clickable
    anchors such as Call to Actions.
 ========================================================================== */
 .btn {
 	height: auto;
 	@include nudge(padding, 0.35 0.75);
-	@include inline-block;
+	display: inline-block;
 	border-radius: $border_radius_base;
 	vertical-align: middle;
 	cursor: pointer;

@@ -4406,7 +4406,7 @@ if (typeof JSON !== 'object') {
             this.reset_heights(el);
             // Map all qualifying element heights to an array.
             var heights = boxes.map(function(){
-                return $(this).outerHeight();
+                return $(this).height();
             }).get();
             // Get the largest value from the array.
             var large = Math.max.apply(Math, heights);
@@ -8377,7 +8377,10 @@ if (typeof JSON !== 'object') {
             });
         },
         reset_errors: function(){
-            this.$elem.removeClass('invalid');
+            // Remove error class from form.
+            this.$elem.removeClass('form-has-errors');
+            // Remove error class from fields.
+            $('.field-has-errors').removeClass('field-has-errors');
             // Remove current classes.
             $('.' + this.settings.errorClass, this.$elem).removeClass(this.settings.errorClass);
             $('.' + this.settings.errorBoxClass, this.$elem).remove();
@@ -8388,7 +8391,7 @@ if (typeof JSON !== 'object') {
             // Remove errors.
             _self.reset_errors(_self.$elem);
             // Add error class to form.
-            _self.$elem.addClass('invalid');
+            _self.$elem.addClass('form-has-errors');
             // Add new ones.
             $.each(arr, function(){
                 var a = $(this);
@@ -8416,8 +8419,6 @@ if (typeof JSON !== 'object') {
                         el.parent().find('label, .label').addClass(_self.settings.errorBoxClass).append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
                     }
                 }
-                // Add class to form.
-                _self.$elem.addClass('form-has-errors');
             });
         },
         success: function(type, e){

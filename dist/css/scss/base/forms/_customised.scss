@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Customised
+   Base > Forms > Customised
    Custom form inputs.
 ========================================================================== */
 form {
@@ -8,7 +8,7 @@ form {
 	.custom-checkbox, .custom-radio {
 		@include nudge(margin-right, 1);
 		position: relative;
-		@include inline-block;
+		display: inline-block;
 		label {
 			width: 17px;
 			height: 17px;
@@ -100,13 +100,13 @@ form {
 			content: "";
 			position: absolute;
 			top: 50%; @include rem(right, 18px);
-			@include inline-block;
+			display: inline-block;
 			pointer-events: none;
 		}
 		select {
 			@include rem(padding-right, 36px);
 			margin: 0;
-			@include inline-block;
+			display: inline-block;
 			-webkit-appearance: none;
 			-moz-appearance   : none;
 			-ms-appearance    : none;

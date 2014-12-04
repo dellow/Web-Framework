@@ -1,6 +1,6 @@
 /* ==========================================================================
-   All
-   Imports all the partials
+   Base > All
+   Imports all the partials.
 ========================================================================== */
 // Config
 @import 'config/placeholders',
@@ -9,7 +9,7 @@
 
 // Core
 @import 'utility-classes',
-		'defaults',
+		'misc',
 		'core',
 		'rhythm';
 
@@ -40,7 +40,7 @@
 @import 'javascript/accordion',
 		'javascript/bx-slider',
 		'javascript/fancybox',
-		'javascript/form-validation',
+		'javascript/validation',
 		'javascript/google-map',
 		'javascript/tabs';
 

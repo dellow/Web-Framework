@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Form Inline Block
+   Base > Forms > Form Inline Block
    Inline Block level forms
 ========================================================================== */
 form.form-inline-block {
@@ -7,7 +7,7 @@ form.form-inline-block {
 	// Field
 	.field {
 		margin: 0;
-		@include inline-block;
+		display: inline-block;
 		vertical-align: top;
 		label, .label, input, .input, select, textarea, .field-container {
 			width: 100%;
@@ -32,7 +32,7 @@ form.form-inline-block {
 
 	// All form elements
 	label, .label, input, .input, select, textarea, .field-container {
-		@include inline-block;
+		display: inline-block;
 		vertical-align: top;
 	}
 

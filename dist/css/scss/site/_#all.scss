@@ -1,6 +1,6 @@
 /* ==========================================================================
-   All
-   Imports all the partials
+   Site > All
+   Imports all the partials.
 ========================================================================== */
 // Core
 @import 'imports',
@@ -9,8 +9,10 @@
 		'rhythm',
 		'global',
 		'dev';
+
 // Page
 @import 'page/home';
+
 // Components
 @import 'components/header',
 		'components/footer',
@@ -18,6 +20,7 @@
 		'components/grids',
 		'components/forms',
 		'components/menus';
+
 // Misc
 @import 'fixes',
 		'breakpoints';

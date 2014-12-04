@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Docs
+   Base > Config > Docs
    CSS examples and experimental features
 ========================================================================== */
 /**
@@ -170,22 +170,4 @@
 /* -- Chained Filters -- */
 .foo {
 	-webkit-filter: blur(10px) brightness(0.5) hue-rotate(360deg) saturate(10);
-}
-
-/* -- Display Box Vertical Align -- */
-.foo {
-	display: -webkit-box;
-	-webkit-box-orient:vertical;
-	-webkit-box-pack  :center;
-	-webkit-box-align :center;
-
-	display: -moz-box;
-	-moz-box-orient:vertical;
-	-moz-box-pack  :center;
-	-moz-box-align :center;
-
-	display: box;
-	box-orient:vertical;
-	box-pack  :center;
-	box-align :center;
 }
