@@ -32,7 +32,7 @@ a, button {
 }
 
 /* -- General Formatting -- */
-p, blockquote, address {
+p, blockquote, address, ul, ol, dl, table, fieldset, figure, pre, .hatnote {
 	@include rhythm($font_size_base);
 }
 // Paragraph
@@ -62,9 +62,6 @@ p {
 			border: 2px solid #efefef;
 			border-radius: $border_radius_base;
 		}
-	}
-	ul, ol, dl, table, fieldset, figure, pre, .hatnote {
-		@include rhythm($font_size_base);
 	}
 	figure, fieldset {
 		padding: 4px 0; // Makes up for the lack of line-height

@@ -63,7 +63,7 @@
             this.reset_heights(el);
             // Map all qualifying element heights to an array.
             var heights = boxes.map(function(){
-                return $(this).outerHeight();
+                return $(this).height();
             }).get();
             // Get the largest value from the array.
             var large = Math.max.apply(Math, heights);
