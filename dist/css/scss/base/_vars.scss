@@ -50,7 +50,7 @@ $line_height_base      : $mn !default;
 /**
 * Colors
 **/
-// Map
+// Base
 $base_colors: (
 	black: (
 		base: #000000
@@ -59,40 +59,72 @@ $base_colors: (
 		base: #FFFFFF
 	),
 	grey: (
-		base: #DDDDDD,
-		light: #EDEDED,
+		base  : #DDDDDD,
+		light : #EDEDED,
 		medium: #666666,
-		dark: #333333
+		dark  : #333333
 	),
 	blue: (
-		base: #3498DB,
+		base : #3498DB,
 		light: lighten(#3498DB, 10%),
-		dark: darken(#3498DB, 10%)
+		dark : darken(#3498DB, 10%)
 	),
 	green: (
-		base: #2ECC71,
+		base : #2ECC71,
 		light: lighten(#2ECC71, 10%),
-		dark: darken(#2ECC71, 10%)
+		dark : darken(#2ECC71, 10%)
 	),
 	orange: (
-		base: #E67E22,
+		base : #E67E22,
 		light: lighten(#E67E22, 10%),
-		dark: darken(#E67E22, 10%)
+		dark : darken(#E67E22, 10%)
 	),
 	red: (
-		base: #C4122f,
+		base : #C4122f,
 		light: lighten(#C4122f, 10%),
-		dark: darken(#C4122f, 10%)
+		dark : darken(#C4122f, 10%)
 	),
 	yellow: (
-		base: #F1C40F,
+		base : #F1C40F,
 		light: lighten(#F1C40F, 10%),
-		dark: darken(#F1C40F, 10%)
+		dark : darken(#F1C40F, 10%)
+	),
+	social: (
+		facebook : #3b5998,
+		google   : #dd4b39,
+		instagram: #517fa4,
+		linkedin : #007bb6,
+		pinterest: #cb2027,
+		quora    : #a82400,
+		snapchat : #fffc00,
+		twitter  : #00aced,
+		vimeo    : #aad450,
+		vine     : #00bf8f,
+		youtube  : #bb0000
 	)
 ) !default;
+// Social
+$social_colors: (
+	facebook  : #3b5998,
+	flickr    : #ff0084,
+	foursquare: #0072b1,
+	google    : #dd4b39,
+	instagram : #517fa4,
+	linkedin  : #007bb6,
+	pinterest : #cb2027,
+	quora     : #a82400,
+	snapchat  : #fffc00,
+	tumblr    : #32506d,
+	twitter   : #00aced,
+	vimeo     : #aad450,
+	vine      : #00bf8f,
+	youtube   : #bb0000
+) !default;
+// Site
 $site_colors          : () !default;
 // Merge
-$colors               : map-merge($base_colors, $site_colors) !default;
+$colors               : map-merge($base_colors, $social_colors) !default;
+$colors               : map-merge($colors, $site_colors) !default;
 // Useful
 $color_odd_base       : #EDEDED !default;
 $color_even_base      : #F4F4F4 !default;
