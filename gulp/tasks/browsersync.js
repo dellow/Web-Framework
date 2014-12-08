@@ -17,7 +17,7 @@ var url    = args.url,
 /* ================================================== */
 /* Task
 /* ================================================== */
-gulp.task('serve', function(){
+gulp.task('server', function(){
 
 	var compass    = function(){gulp.start('compass')},
 	    browserify = function(){gulp.start('browserify')},

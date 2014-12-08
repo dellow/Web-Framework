@@ -99,15 +99,17 @@ The tasks that are run in the `watch` task are:
 
 <a name="server"></a>
 ## Server
-You can launch the built in web server with BrowserSync simply by running `gulp serve`. This will provide a local and external address to test your apps in sync with other browsers. `gulp serve` will automatically look for changes in the following files: `.html`, `.php`, `.css`, `.js`, any images in the image folder and run the respective tasks on them.
+You can launch the built in web server with BrowserSync simply by running `gulp server`. This will provide a local and external address to test your apps in sync with other browsers. `gulp server` will automatically look for changes in the following files: `.html`, `.php`, `.css`, `.js`, any images in the image folder and run the respective tasks on them.
 
-The tasks that are run in the `serve` task are:
+The tasks that are run in the `server` task are:
 - Browserify
 - Compass
 - Imagemin
 - Sprite
 
-The `gulp serve` command takes an optional parameter to provide a proxy URL, for example: `gulp serve --url http://vagrant.dev/` (you must supply the root domain, i.e. no sub folders). If this is supplied you files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
+The `gulp server` command takes an optional parameter to provide a proxy URL, for example: `gulp server --url http://vagrant.dev/` (you must supply the root domain, i.e. no sub folders). If this is supplied you files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
+
+> __Please note:__ `server` will run in development mode, so CSS and JS will not be minified for easier debugging. You should run `gulp --config production` to get a final minified output for your live environment.
 
 <a name="pagespeed"></a>
 ## PageSpeed
