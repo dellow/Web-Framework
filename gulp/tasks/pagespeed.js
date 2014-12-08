@@ -30,6 +30,14 @@ function convert_object(obj){
 	return arr.join(',');
 }
 
+function get_name(str){
+	// Remove protocol
+	var a = str.replace(/^(https?|ftp|www):\/\/(www)./g, '');
+	var b = a.substr(0, a.indexOf('/'));
+
+    return b;
+}
+
 /* ================================================== */
 /* Task
 /* ================================================== */
@@ -55,10 +63,13 @@ gulp.task('pagespeed', function(){
 			'',
 			''].join('\n');
 
+		var dir  = get_name(url),
+			file = './logs/pagespeed/' + dir;
+
 		// Create file
-		fs.ensureFile('./logs/pagespeed.txt', function(err){
+		fs.ensureFile(file, function(err){
 			// Task
-			gulp.src('./logs/pagespeed.txt')
+			gulp.src(file)
 			.pipe(header(stats, {
 				date     : Date(),
 				pageStats: convert_object(data.pageStats).split(',').join("\r\n"),
@@ -66,7 +77,10 @@ gulp.task('pagespeed', function(){
 				title    : data.title,
 				url      : data.id
 			}))
-			.pipe(gulp.dest('./logs/'));
+			.pipe(gulp.dest('./logs/pagespeed'));
+
+			// Report
+			console.log("Log has been recorded to: " + file);
 		});
 
 	});
