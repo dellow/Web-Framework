@@ -4,8 +4,7 @@
 var gulp     = require('gulp'),
     sequence = require('run-sequence'),
     changed  = require('gulp-changed'),
-    html     = require('gulp-minify-html'),
-    imagemin = require('gulp-imagemin');
+    html     = require('gulp-minify-html');
 
 /* ================================================== */
 /* Vars
@@ -28,7 +27,7 @@ var state   = (GLOBAL.args != undefined) ? GLOBAL.args : 'development',
 gulp.task('release', function(){
     // Run sequence tasks.
     if(GLOBAL.is_production){
-        sequence('release-task-move', 'release-sync', 'release-task-minify', 'release-task-imagemin');
+        sequence('release-task-move', 'release-sync', 'release-task-minify');
     }
     else{
         sequence('release-task-move', 'release-sync');
@@ -64,18 +63,4 @@ gulp.task('release-task-minify', function(){
         .pipe(html(opts))
         .pipe(gulp.dest('./releases/current'))
         .pipe(gulp.dest(release));
-});
-
-// Run image optimisations
-// Production only.
-gulp.task('release-task-imagemin', function(){
-    // Options
-    var opts = {
-        optimizationLevel: 3,
-        progressive      : true,
-        interlaced       : true
-    };
-    return gulp.src(release + 'dist/images/**/*')
-        .pipe(imagemin(opts))
-        .pipe(gulp.dest('./releases/current/dist/images'));
 });

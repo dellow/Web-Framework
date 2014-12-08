@@ -21,7 +21,8 @@ gulp.task('serve', function(){
 
 	var compass    = function(){gulp.start('compass')},
 	    browserify = function(){gulp.start('browserify')},
-	    sprite     = function(){gulp.start('sprite')};
+	    sprite     = function(){gulp.start('sprite')},
+	    imagemin   = function(){gulp.start('imagemin')};
 
 	if(url){
 		browserSync({
@@ -55,6 +56,11 @@ gulp.task('serve', function(){
 	watch({
 		glob: GLOBAL.dist_dir + 'js/**/*.js'
 	}, browserify);
+
+	// Run Imagemin on image updates
+	watch({
+		glob: GLOBAL.dist_dir + 'images/**/*'
+	}, imagemin);
 
 	// Run Sprites on image updates
 	watch({

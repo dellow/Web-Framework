@@ -13,7 +13,8 @@ gulp.task('watch', function(){
 
 	var compass    = function(){gulp.start('compass')},
 	    browserify = function(){gulp.start('browserify')},
-	    sprite     = function(){gulp.start('sprite')};
+	    sprite     = function(){gulp.start('sprite')},
+	    imagemin   = function(){gulp.start('imagemin')};
 
 	server.listen(35729, function(err){
 		if(err){
@@ -29,6 +30,11 @@ gulp.task('watch', function(){
 		watch({
 			glob: GLOBAL.dist_dir + 'js/**/*.js'
 		}, browserify);
+
+		// Run Imagemin on image updates
+		watch({
+			glob: GLOBAL.dist_dir + 'images/**/*'
+		}, imagemin);
 
 		// Run Sprites on image updates
 		watch({
