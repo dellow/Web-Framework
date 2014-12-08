@@ -89,6 +89,12 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 ## Watch
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Watch](#watch).
 
+The tasks that are run in the `watch` task are:
+- Browserify
+- Compass
+- Imagemin
+- Sprite
+
 > __Please note:__ `watch` will run in development mode, so CSS and JS will not be minified for easier debugging. You should run `gulp --config production` to get a final minified output for your live environment.
 
 <a name="server"></a>
