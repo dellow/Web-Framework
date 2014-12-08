@@ -92,7 +92,7 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 
 <a name="watch"></a>
 ## Watch
-You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Watch](#watch).
+You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Server](#server).
 
 The tasks that are run in the `watch` task are:
 - Browserify
