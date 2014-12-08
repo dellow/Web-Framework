@@ -74,6 +74,7 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 ### Development
 - Browserify (Non minified)
 - Compass (Non minified with development mode activated)
+- Imagemin
 - Dalek
 - JSHint
 - Jasmine
@@ -82,12 +83,29 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 ### Production
 - Browserify (Minified)
 - Compass (Minified)
+- Imagemin
 
 <a name="watch"></a>
 ## Watch
-You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile.
+You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Watch](#watch).
 
 > __Please note:__ `watch` will run in development mode, so CSS and JS will not be minified for easier debugging. You should run `gulp --config production` to get a final minified output for your live environment.
+
+<a name="server"></a>
+## Server
+You can launch the built in web server with BrowserSync simply by running `gulp serve`. This will provide a local and external address to test your apps in sync with other browsers. `gulp serve` will automatically look for changes in the following files: `.html`, `.php`, `.css`, `.js`, any images in the image folder and run the respective tasks on them.
+
+The tasks that are run in the `serve` task are:
+- Browserify
+- Compass
+- Imagemin
+- Sprite
+
+The `gulp serve` command takes an optional parameter to provide a proxy URL, for example: `gulp serve --url http://vagrant.dev/` (you must supply the root domain, i.e. no sub folders). If this is supplied you files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
+
+<a name="pagespeed"></a>
+## PageSpeed
+You can run Google PageSpeed insights by running `gulp pagespeed`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp pagespeed --url http://amazon.com --mode desktop`.
 
 <a name="release"></a>
 ## Release
@@ -98,16 +116,6 @@ Additionally a folder called `current` will be created inside the `release` dire
 
 ### Profile
 The current profile will also effect the optimisation of the release. For example `gulp release` will create a release with `_development` appended to the end. The development profile (see [Profiles](#profiles)) will be run on the release. Likewise `gulp release --config production` will run the production profile on the release.
-
-<a name="server"></a>
-## Server
-You can launch the built in web server with BrowserSync simply by running `gulp serve`. This will provide a local and external address to test your apps in sync with other browsers. `gulp serve` will automatically look for changes in the following files: `.html`, `.php`, `.css`, `.js` and any images in the image folder.
-
-The `gulp serve` command takes an optional parameter to provide a proxy URL, for example: `gulp serve --url http://vagrant.dev/` (you must supply the root domain, i.e. no sub folders). If this is supplied you files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
-
-<a name="pagespeed"></a>
-## PageSpeed
-You can run Google PageSpeed insights by running `gulp pagespeed`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp pagespeed --url http://amazon.com --mode desktop`.
 
 <a name="working-with-scss"></a>
 ## Working with SCSS

@@ -21,15 +21,15 @@ gulp.task('watch', function(){
 			return console.log(err);
 		}
 
-		// Run Compass on SCSS file changes
-		watch({
-			glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'
-		}, compass);
-
 		// Run Browserify on JS file changes
 		watch({
 			glob: GLOBAL.dist_dir + 'js/**/*.js'
 		}, browserify);
+
+		// Run Compass on SCSS file changes
+		watch({
+			glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'
+		}, compass);
 
 		// Run Imagemin on image updates
 		watch({
