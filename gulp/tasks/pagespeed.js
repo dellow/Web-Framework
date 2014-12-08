@@ -31,17 +31,17 @@ function convert_object(obj){
 }
 
 function get_name(str){
-	// Remove protocol
-	var a = str.replace(/^(https?|ftp|www):\/\/(www)./g, '');
-	var b = a.substr(0, a.indexOf('/'));
+	var matches = url.match(/^https?\:\/\/(?:www\.)?([^\/?#]+)(?:[\/?#]|$)/i);
+	var domain = matches && matches[1];
 
-    return b;
+    return domain;
 }
 
 /* ================================================== */
 /* Task
 /* ================================================== */
-gulp.task('pagespeed', function(){
+gulp.task('psi', function(){
+
 	pagespeed({
 		url     : url,
 		strategy: mode,
