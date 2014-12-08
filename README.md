@@ -32,7 +32,10 @@ This is a fast project wrapper and workflow that utilises Gulp. To use this as a
 - [Gulp](http://gulpjs.com)
 
 ### Gems
-- [Compass 1.0.0.alpha.21](https://rubygems.org/gems/compass/versions/1.0.0.alpha.21)
+- [SASS 3.4.9'](https://rubygems.org/gems/sass/versions/3.4.9)
+- [Compass 1.0.1'](https://rubygems.org/gems/compass/versions/1.0.1)
+
+> __Please note:__ Required Gems will automatically install for you when using the automatic installer method below.
 
 <a name="install"></a>
 ## Install
@@ -40,8 +43,10 @@ This is a fast project wrapper and workflow that utilises Gulp. To use this as a
 
 After cloning the repository simply run `bash install.sh` from your command line. This will do the following:
 
+- Install Bundler for Gem dependencies.
 - Remove the Git wrapper and replace with a fresh Git initialisation.
 - Remove any un-necessary files/directories.
+- Get all Ruby Gem dependencies.
 - Get all Bower dependencies.
 - Get all NPM dependencies, such as Gulp modules and JavaScript libraries (You can not use Gulp until this step is complete).
 - Does an initial commit on the new Git initialisation.
