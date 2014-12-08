@@ -120,6 +120,8 @@ The `gulp server` command takes an optional parameter to provide a proxy URL, fo
 ## PageSpeed
 You can run Google PageSpeed insights by running `gulp pagespeed`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp pagespeed --url http://amazon.com --mode desktop`.
 
+This task will also create a text file in `logs/pagespeed.txt` to record all PageSpeed results.
+
 <a name="release"></a>
 ## Release
 Release creates a snapshot of the application files from the `src` directory essentially creating a release for use. Each release is timestamped and appended with the current state.
