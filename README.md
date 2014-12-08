@@ -32,8 +32,8 @@ This is a fast project wrapper and workflow that utilises Gulp. To use this as a
 - [Gulp](http://gulpjs.com)
 
 ### Gems
-- [SASS 3.4.9'](https://rubygems.org/gems/sass/versions/3.4.9)
-- [Compass 1.0.1'](https://rubygems.org/gems/compass/versions/1.0.1)
+- [SASS 3.4.9](https://rubygems.org/gems/sass/versions/3.4.9)
+- [Compass 1.0.1](https://rubygems.org/gems/compass/versions/1.0.1)
 
 > __Please note:__ Required Gems will automatically install for you when using the automatic installer method below.
 
