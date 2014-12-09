@@ -4,13 +4,14 @@
 ========================================================================== */
 /**
  * respond-to
- * Responive breakpoints converted to em value
+ * Responsive breakpoints converted to em value.
  *
  * @uses px-to-rem()
+ * @uses $mobile_first
  *
  * @include respond-to(768px){.foo {display: block;}}
 **/
-@mixin respond-to($breakpoint1, $breakpoint2: null, $min: false, $pixel_ratio: null, $device: false){
+@mixin respond-to($breakpoint1, $breakpoint2: null, $switch_operator: false, $pixel_ratio: null, $device: false){
 	@if($breakpoint2 != null){
 		@media only screen and (min-width: px-to-rem($breakpoint1, em)) and (max-width: px-to-rem($breakpoint2, em)){
 			@content
@@ -29,13 +30,19 @@
 		}
 	}
 	@else{
-		@if($min){
-			@media only screen and (min-width: px-to-rem($breakpoint1, em)){
+		@if($switch_operator){
+			// If $mobile_first is set to true use min-width.
+			$operator: if($mobile_first, 'max-width', 'min-width');
+
+			@media only screen and ($operator: px-to-rem($breakpoint1, em)){
 				@content
 			}
 		}
 		@else{
-			@media only screen and (max-width: px-to-rem($breakpoint1, em)){
+			// if $mobile_first is set to false use max-width.
+			$operator: if($mobile_first, 'min-width', 'max-width');
+
+			@media only screen and ($operator: px-to-rem($breakpoint1, em)){
 				@content
 			}
 		}

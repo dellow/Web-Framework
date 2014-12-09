@@ -110,9 +110,10 @@
 ========================================================================== */
 /**
  * respond-to
- * Responive breakpoints converted to em value
+ * Responsive breakpoints converted to em value.
  *
  * @uses px-to-rem()
+ * @uses $mobile_first
  *
  * @include respond-to(768px){.foo {display: block;}}
 **/
