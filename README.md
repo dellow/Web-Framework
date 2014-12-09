@@ -154,6 +154,7 @@ Much of the Framework CSS is based around the BEM syntax. The virtues of BEM are
 You don't __have__ to use BEM. But it is recommended. Since Version 3.3, SASS includes native methods for writing CSS in BEM. Please see the following example:
 
 Syntax:
+
 	.block {
 	    &__element {
 	    }
@@ -162,6 +163,7 @@ Syntax:
 	}
 
 Will compile to:
+
 	.block {
 	}
 	.block__element {
