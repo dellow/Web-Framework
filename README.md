@@ -17,13 +17,14 @@
 11. [Working with SCSS](#working-with-scss)
 	1. [Debug Mode](#working-with-scss--debug-mode)
 	2. [Dev Mode](#working-with-scss--dev-mode)
-	3. [Responsive](#working-with-scss--responsive)
+	3. [BEM](#working-with-scss--bem)
+	4. [Responsive](#working-with-scss--responsive)
 12. [Working with JavaScript](#working-with-javascript)
 	1. [Requiring New Files](#working-with-javascript--requiring-new-files)
 
 <a name="about"></a>
 ## About
-This is a fast project wrapper and workflow that utilises Gulp. To use this as a full framework please follow the installation instructions below. This will pull in the [Framework Library Repo](https://github.com/sdellow/Framework-Library) using Bower which is a CSS and JS framework built using SASS and Browserify.
+This is a fast project wrapper and workflow that utilises Gulp. To use this as a full Framework please follow the installation instructions below. This will pull in the [Framework Library Repo](https://github.com/sdellow/Framework-Library) using Bower which is a CSS and JS Framework built using SASS and Browserify.
 
 <a name="requirements"></a>
 ## Requirements
@@ -55,9 +56,9 @@ __All additional instructions below assume you have followed the installation pr
 
 <a name="styleguide-examples"></a>
 ## Styleguide & Examples
-There is a CSS styleguide in [`dist/.help/guides/styleguide.html`](dist/.help/guides/styleguide.html) which outlines some of the elements in the framework. You can also test the vertical rhythm [`dist/.help/guides/rhythm.html`](dist/.help/guides/rhythm.html).
+After installation there is a CSS styleguide located in `dist/.help/guides/styleguide.html` which outlines some of the elements in the Framework. You can also test the vertical rhythm `dist/.help/guides/rhythm.html`.
 
-These serve as ongoing platforms to test any changes you might make to framework CSS.
+These serve as ongoing platforms to test any changes you might make to the Framework.
 
 <a name="using-gulp"></a>
 ## Using Gulp
@@ -145,6 +146,28 @@ By default debug mode is on but will only work in the default Gulp environment w
 <a name="working-with-scss--dev-mode"></a>
 ### Dev Mode
 The `site/_dev` partial is for experimental CSS that is only compiled in the default Gulp environment which is `development` mode. Any CSS in here will not compile on `gulp --config production`.
+
+<a name="working-with-scss--bem"></a>
+### BEM Syntax
+Much of the Framework CSS is based around the BEM syntax. The virtues of BEM are out of the scope of this guide, please see [MindBEMding – getting your head ’round BEM syntax](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) and [About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) for all the information you need to get started on BEM.
+
+You don't __have__ to use BEM. But it is recommended. Since Version 3.3, SASS includes native methods for writing CSS in BEM. Please see the following example:
+
+Syntax:
+	.block {
+	    &__element {
+	    }
+	    &--modifier {
+	    }
+	}
+
+Will compile to:
+	.block {
+	}
+	.block__element {
+	}
+	.block--modifier {
+	}
 
 <a name="working-with-scss--responsive"></a>
 ### Responsive

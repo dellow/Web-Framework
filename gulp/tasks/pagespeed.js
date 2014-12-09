@@ -18,10 +18,10 @@ var url  = args.url || 'http://google.com',
 /* ================================================== */
 function convert_object(obj){
 	var arr = [];
-	for (var key in obj) {
-	    if (obj.hasOwnProperty(key)) {
+	for(var key in obj){
+	    if(obj.hasOwnProperty(key)){
 	    	var k = key.replace(/([A-Z])/g, ' $1'),
-	    		k = k.replace(/^./, function(str){ return str.toUpperCase(); });
+	    		k = k.replace(/^./, function(str){return str.toUpperCase()});
 
 	        arr.push(k + ' = ' + obj[key]);
 	    }
@@ -31,8 +31,8 @@ function convert_object(obj){
 }
 
 function get_name(str){
-	var matches = url.match(/^https?\:\/\/(?:www\.)?([^\/?#]+)(?:[\/?#]|$)/i);
-	var domain = matches && matches[1];
+	var matches = url.match(/^https?\:\/\/(?:www\.)?([^\/?#]+)(?:[\/?#]|$)/i),
+		domain = matches && matches[1];
 
     return domain;
 }
@@ -41,7 +41,6 @@ function get_name(str){
 /* Task
 /* ================================================== */
 gulp.task('psi', function(){
-
 	pagespeed({
 		url     : url,
 		strategy: mode,
@@ -82,6 +81,5 @@ gulp.task('psi', function(){
 			// Report
 			console.log("Log has been recorded to: " + file);
 		});
-
 	});
 });
