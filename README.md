@@ -153,7 +153,7 @@ Much of the Framework CSS is based around the BEM syntax. The virtues of BEM are
 
 You don't __have__ to use BEM. But it is recommended. Since Version 3.3, SASS includes native methods for writing CSS in BEM. Please see the following example:
 
-Syntax:
+_Syntax_:
 
 	.block {
 	    &__element {
@@ -162,7 +162,7 @@ Syntax:
 	    }
 	}
 
-Will compile to:
+_Will compile to_:
 
 	.block {
 	}
@@ -189,9 +189,19 @@ There are also various specific variables for common devices set up in `base/var
 		}
 	}
 
-The `respond-to` mixin takes various arguments to create breakpoints for you. You can use the above examples to create a simple `max-width` query or specify two breakpoints to create a `min-width / max-width` query:
+The `respond-to` mixin converts all values to `em` (see [The EMs have it: Proportional Media Queries FTW!](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/)) and can take various arguments to create breakpoints for you. You can use the above examples to create a simple `max-width` query or specify two breakpoints to create a `min-width / max-width` query:
+
+_Syntax_:
 
 	@include respond-to(320px, 768px){
+		.foo {
+			display: block;
+		}
+	}
+
+_Will compile to_:
+
+	@media only screen and (min-width: 20em) and (max-width: 48em){
 		.foo {
 			display: block;
 		}
