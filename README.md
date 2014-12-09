@@ -189,7 +189,9 @@ There are also various specific variables for common devices set up in `base/var
 		}
 	}
 
-The `respond-to` mixin converts all values to `em` (see: [The EMs have it: Proportional Media Queries FTW!](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/)) and can take various arguments to create breakpoints for you. You can use the above examples to create a simple `max-width` query or specify two breakpoints to create a `min-width / max-width` query:
+The `respond-to` mixin converts all values to `em` (see: [The EMs have it: Proportional Media Queries FTW!](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/)) and can take various arguments to create breakpoints for you.
+
+You can use the above examples to create a simple query or specify two breakpoints to create a `min-width / max-width` query:
 
 _Syntax_:
 
@@ -208,6 +210,14 @@ _Will compile to_:
 	}
 
 The above example will create a media query for styles between 320px and 768px. For more information and advanced use please see the `_responsive.scss` partial in the mixins directory.
+
+By default the Framework is set to a Desktop First approach. This can (and probably should) be changed in the `_vars.scss` partial simply by setting: `$mobile_first: true` - This will use `min-width` by default in the `respond-to` mixin otherwise it will use `max-width` by default. This can be overrode with each call to the mixin if the `$switch_operator` argument is passed `true`:
+
+	@include respond-to(320px, null, true){
+		.foo {
+			display: block;
+		}
+	}
 
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
