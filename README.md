@@ -189,6 +189,16 @@ There are also various specific variables for common devices set up in `base/var
 		}
 	}
 
+The `respond-to` mixin takes various arguments to create breakpoints for you. You can use the above examples to create a simple `max-width` query or specify two breakpoints to create a `min-width / max-width` query:
+
+	@include respond-to(320px, 768px){
+		.foo {
+			display: block;
+		}
+	}
+
+The above example will create a media query for styles between 320px and 768px. For more information and advanced use please see the `_responsive.scss` partial in the mixins directory.
+
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
 All JavaScript modules should be added in `app` directory - these files will be compiled by Gulp into a global `build.js` file.
