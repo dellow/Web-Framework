@@ -5,6 +5,7 @@ var gulp      = require('gulp'),
 	gulpif    = require('gulp-if'),
 	streamify = require('gulp-streamify'),
 	minify    = require('gulp-minify-css'),
+	filesize  = require('gulp-filesize'),
 	compass   = require('gulp-compass');
 
 /* ================================================== */
@@ -31,8 +32,7 @@ gulp.task('compass', function(){
 			style         : 'expanded',
 			environment   : environment,
 			css           : GLOBAL.dist_dir + 'css',
-			sass          : 'src/dist/css/scss', // Temporary fix while compass doesn't accept './' in path
-			// sass       : GLOBAL.dist_dir + 'css/scss',
+			sass          : GLOBAL.dist_dir + 'css/scss',
 			sourcemap     : sourcemap,
 			logging       : logging,
 			force         : true,
@@ -40,6 +40,8 @@ gulp.task('compass', function(){
 			noLineComments: true
 		}))
 		.on('error', handleError)
+		.pipe(filesize())
 		.pipe(gulpif(GLOBAL.is_production, streamify(minify())))
+		.pipe(filesize())
 		.pipe(gulp.dest(GLOBAL.dist_dir + 'css'));
 });
