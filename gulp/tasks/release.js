@@ -37,7 +37,8 @@ gulp.task('release', function(){
 /* ================================================== */
 /* Sub Tasks
 /* ================================================== */
-// Moves files to the release directory.
+// Moves files to the release directory and run the
+// Compass and Browserify tasks.
 gulp.task('release-task-move', ['compass', 'browserify'], function(){
     return gulp.src(files, {base: GLOBAL.src_dir})
         .pipe(gulp.dest(release));
@@ -47,20 +48,18 @@ gulp.task('release-task-move', ['compass', 'browserify'], function(){
 // This will only move changed files.
 gulp.task('release-sync', function(){
     return gulp.src(files, {base: GLOBAL.src_dir})
-        .pipe(changed('./releases/current'))
-        .pipe(gulp.dest('./releases/current'));
+        .pipe(changed(GLOBAL.releases_dir + 'current'))
+        .pipe(gulp.dest(GLOBAL.releases_dir + 'current'));
 });
 
 // Minifies HTML.
 // Production only.
 gulp.task('release-task-minify', function(){
-    // Options
-    var opts = {
-        comments: true,
-        spare   : true
-    };
     return gulp.src([release + '*.html', release + '*.php'])
-        .pipe(html(opts))
-        .pipe(gulp.dest('./releases/current'))
+        .pipe(html({
+            comments: true,
+            spare   : true
+        }))
+        .pipe(gulp.dest(GLOBAL.releases_dir + 'current'))
         .pipe(gulp.dest(release));
 });
