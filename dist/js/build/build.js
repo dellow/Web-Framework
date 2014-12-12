@@ -8007,6 +8007,8 @@ if (typeof JSON !== 'object') {
  * serverValidation        : Boolean. Whether to use server validation or not.
  * onlyVisibleFields       : Boolean. Whether to only validate against visible fields or not.
  * appendErrorToPlaceholder: Boolean. Append the error message to the form field placeholder.
+ * disableButtons          : Boolean. Disable the form buttons while processing.
+ * fadeOutAnimationSpeed   : Integer. Speed to fade out the form on success.
  * serverID                : String. Post var to send to server side to identify AJAX response.
  * emailRegEx              : String. RegEx to check email addresses against.
  * passRegEx               : String. RegEx to check passwords against.
@@ -8018,13 +8020,10 @@ if (typeof JSON !== 'object') {
  * defaultSuccessMsg       : String. Form success message if one isn't supplied in the HTML.
  * defaultSuggestText      : String. Email suggestion text.
  * errorBoxElement         : String. HTML element type that wraps the error message.
- * preloaderHEX            : String. HEX value for the colour of the preloader spinner. Must be a full 6 character HEX value.
- * preloaderSize           : Integer. Pixel size of the preloader spinner.
- * preloaderDensity        : Integer. Density of the preloader spinner.
+ * preloaderTemplate       : String. HTML template for the preloader. Can include inline styles or use in external stylesheet.
  * validateElement         : jQuery Element. A valid jQuery element to specify fields that aren't required but should be validated if entered.
  * successElement          : jQuery Element. A valid jQuery element that holds the success message.
  * validationMessage       : jQuery Element. A valid jQuery element that holds the error message.
- * successFunction         : Function. Function to run on successful validation.
  * customValidationMethod  : Function. Function containing any custom methods to validate against. Must return the element.
  *
 **/
@@ -8069,6 +8068,8 @@ if (typeof JSON !== 'object') {
         serverValidation        : true,
         onlyVisibleFields       : true,
         appendErrorToPlaceholder: false,
+        disableButtons          : false,
+        fadeOutAnimationSpeed   : 500,
         serverID                : 'ajaxrequest',
         emailRegEx              : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
         passRegEx               : /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
@@ -8080,13 +8081,10 @@ if (typeof JSON !== 'object') {
         defaultSuccessMsg       : 'The form has been successfully submitted.',
         defaultSuggestText      : 'Did you mean',
         errorBoxElement         : '<span/>',
-        preloaderHEX            : '#333333',
-        preloaderSize           : 15,
-        preloaderDensity        : 15,
+        preloaderTemplate       : '<div class="loader" title="1"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path fill="#000000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg></div>',
         validateElement         : $('.validate'),
         successElement          : $('.form-success'),
         validationMessage       : $('.error-message'),
-        successFunction         : null,
         customValidationMethod  : null
     };
 
@@ -8111,8 +8109,6 @@ if (typeof JSON !== 'object') {
             _self.reset       = $('button[type="reset"], input[type="reset"]', _self.$elem);
             // Cache the submit button element.
             _self.button      = $('button[type="submit"], input[type="submit"]', _self.$elem);
-            // Get button text for later.
-            _self.button_name = _self.button.text();
             // Success element.
             _self.success_element = (_self.settings.successElement.length) ? _self.settings.successElement : _self.$elem.before($('<div class="form-success">' + _self.settings.defaultSuccessMsg + '</div>'));
             // Put all required fields into array.
@@ -8145,11 +8141,13 @@ if (typeof JSON !== 'object') {
 
             // On submit.
             _self.$elem.on('submit', function(e){
-                _self.process(e);
+                e.preventDefault();
+
+                _self.process();
             });
             // On reset.
             _self.reset.on('click', function(e){
-                _self.reset_form(e)
+                _self.validation_reset(e);
             });
             // On field change.
             _self.fields.change(function(){
@@ -8161,8 +8159,6 @@ if (typeof JSON !== 'object') {
             this.$elem.attr('novalidate', 'novalidate');
             // Process fields.
             this.process_fields();
-            // Disable the submit button.
-            //this.disable_stuff(true);
             // Hide all error messages if not done with CSS already.
             this.$elem.children(this.settings.validationMessage.hide());
             // Get localStorage.
@@ -8189,16 +8185,45 @@ if (typeof JSON !== 'object') {
             // Create an array for checkboxes and radio inputs.
             this.group_array = [];
         },
-        disable_stuff: function(disable){
-            // Reset errors.
-            this.reset_errors();
-            if(disable){
-                // Disable the submit button.
-                this.button.attr('disabled', 'disabled');
+        ajax_request: function(url, request){
+            return $.ajax({
+                type    : 'POST',
+                url     : url,
+                data    : request,
+                dataType: 'json'
+            });
+        },
+        apply_preloader: function(el, destroy){
+            // Set destroy.
+            destroy = (typeof destroy !== 'undefined') ? true : false;
+            // Destroy?
+            if(!destroy){
+                // Content.
+                var content = JSON.stringify(el.html());
+                // Loader.
+                var loader = $(this.settings.preloaderTemplate).hide();
+                // Apply preloader.
+                el.css({'width':el.outerWidth(),'height':el.outerHeight(),'position': 'relative'}).html(loader).attr('data-loader-content', content);
+                loader.css({'position':'absolute','top':'50%','left':'50%','margin-left':-loader.outerWidth()/2,'margin-top':-loader.outerHeight()/2}).show();
             }
             else{
-                // Enable the submmit button and re-apply the button name.
-                this.button.removeAttr('disabled').html(this.button_name);
+                // Content.
+                var content = JSON.parse(el.data('loader-content'));
+                // Remove preloader
+                el.html(content).removeAttr('data-loader-content').css({'width':'','height':'','position':''});
+            }
+        },
+        disable_button: function(disable){
+            if(this.settings.disableButtons){
+                // Disable
+                if(disable){
+                    // Disable the submit button.
+                    this.button.attr('disabled', 'disabled');
+                }
+                else{
+                    // Enable the submit button.
+                    this.button.removeAttr('disabled');
+                }
             }
         },
         clear_localStorage: function(){
@@ -8259,121 +8284,6 @@ if (typeof JSON !== 'object') {
                 else{
                     localStorage[input_name] = el.val();
                 }
-            }
-        },
-        field_checker: function(field){
-            var _self = this;
-
-            var obj, msg = field.closest('.field').find(_self.settings.validationMessage).val() || field.closest('.field').find(_self.settings.validationMessage).text();
-
-            // Checkboxes and radio.
-            if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){
-                return obj = {
-                    input: field,
-                    msg  : msg
-                }
-            }
-            // Email fields.
-            else if(field.attr('type') === 'email' && !_self.settings.emailRegEx.test(field.val())){
-                return obj = {
-                    input: field,
-                    msg  : msg
-                }
-            }
-            // URL fields.
-            else if(field.attr('type') === 'url' && !_self.settings.urlRegEx.test(field.val())){
-                return obj = {
-                    input: field,
-                    msg  : msg
-                }
-            }
-            // Check for existence.
-            else if(field.val() === '' || field.val() === 'undefined' || field.val() === undefined || field.val() === '-'){
-                return obj = {
-                    input: field,
-                    msg  : msg
-                }
-            }
-        },
-        js_validate_fields: function(){
-            var _self = this;
-
-            // Put all empty fields into array.
-            _self.error_array = $.map(_self.$element_array, function(field, i){
-                return _self.field_checker(field);
-            });
-            // Custom validation method.
-            if($.isFunction(_self.settings.customValidationMethod)){
-                _self.error_array.push(_self.settings.customValidationMethod());
-            }
-            // Validate non required fields with length.
-            _self.$elem.find(_self.settings.validateElement).each(function(){
-                if($(this).val() !== ''){
-                    _self.error_array.push(_self.field_checker($(this)));
-                }
-            });
-
-            return (_self.error_array.length === 0) ? true : false;
-        },
-        server_validate_fields: function(){
-            var _self = this;
-
-            // Check for a form action.
-            if(_self.form_action !== ''){
-                // Set flag.
-                var fatalerror = false;
-                // Use ajax to check server response.
-                $.ajax({
-                    type    : 'POST',
-                    url     : _self.form_action,
-                    data    : _self.$elem.serialize() + '&' + _self.settings.serverID + '=true',
-                    dataType: 'JSON',
-                    cache   : false,
-                    async   : false, // Important, this has to finish first!
-                    beforeSend: function(){
-                        // Add a preloader.
-                        helpers.loading_animation(_self.button);
-                    },
-                    success: function(response){
-                        response = (typeof response.fields !== 'undefined') ? response.fields : response;
-                        // Un-disable stuff.
-                        _self.disable_stuff(false);
-                        // If error.
-                        if(response.error){
-                            // Loops through the response and adds them to the error_array.
-                            for(var key in response.error){
-                                var a = response.error[key];
-                                if(a.field !== undefined){
-                                    var obj = {
-                                        input: $('[name="' + a.field + '"]', _self.$elem),
-                                        msg  : a.msg
-                                    }
-                                    _self.error_array.push(obj);
-                                }
-                            }
-                        }
-                    },
-                    error: function(xhr, ajaxOptions, thrownError){
-                        // Log it.
-                        helpers.log(thrownError);
-                        // Set error.
-                        fatalerror = true;
-                        // Un-disable stuff.
-                        _self.disable_stuff(false);
-                        // Server error
-                        var error = (xhr.responseText !== '') ? xhr.responseText : thrownError;
-                        //_self.$elem.before().html(error).fadeIn(500);
-                    }
-                });
-
-                return (_self.error_array.length === 0 && !fatalerror) ? true : false;
-            }
-            // No form action.
-            else{
-                // Error message.
-                helpers.log("You must have an action defined on your form in order to use server validation.");
-
-                return false;
             }
         },
         setup_email_field: function(el){
@@ -8437,71 +8347,197 @@ if (typeof JSON !== 'object') {
                     }
                     else{
                         // Add error element to field.
-                        el.parent().find('label, .label').addClass(_self.settings.errorBoxClass).append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
+                        el.parent().find('label, .label').append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
                     }
                 }
             });
         },
-        success: function(type, e){
+        field_checker: function(field){
             var _self = this;
 
-            // Un-disable stuff.
-            _self.disable_stuff(false);
+            var obj, msg = field.closest('.field').find(_self.settings.validationMessage).val() || field.closest('.field').find(_self.settings.validationMessage).text();
+
+            // Checkboxes and radio.
+            if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // Email fields.
+            else if(field.attr('type') === 'email' && !_self.settings.emailRegEx.test(field.val())){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // URL fields.
+            else if(field.attr('type') === 'url' && !_self.settings.urlRegEx.test(field.val())){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // Check for existence.
+            else if(field.val() === '' || field.val() === 'undefined' || field.val() === undefined || field.val() === '-'){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+        },
+        js_validate_fields: function(){
+            var _self = this;
+
+            // Put all empty fields into array.
+            _self.error_array = $.map(_self.$element_array, function(field, i){
+                return _self.field_checker(field);
+            });
+            // Custom validation method.
+            if($.isFunction(_self.settings.customValidationMethod)){
+                _self.error_array.push(_self.settings.customValidationMethod());
+            }
+            // Validate non required fields with length.
+            _self.$elem.find(_self.settings.validateElement).each(function(){
+                if($(this).val() !== ''){
+                    _self.error_array.push(_self.field_checker($(this)));
+                }
+            });
+
+            // Outcome.
+            if(_self.error_array.length === 0){
+                _self.success('server');
+            }
+            else{
+                _self.validation_failure();
+            }
+        },
+        server_validate_fields: function(){
+            var _self = this;
+
+            // Check for a form action.
+            if(_self.form_action !== ''){
+                // Set flag.
+                var fatalerror = false;
+                // Ajax request.
+                var ajax_promise = _self.ajax_request(_self.form_action, _self.$elem.serialize() + '&' + _self.settings.serverID + '=true');
+
+                // Process promise.
+                ajax_promise.done(function(response){
+                    // Response.
+                    response = (typeof response.fields !== 'undefined') ? response.fields : response;
+                    // If error.
+                    if(response.error){
+                        // Loops through the response and adds them to the error_array.
+                        for(var key in response.error){
+                            var a = response.error[key];
+                            if(a.field !== undefined){
+                                var obj = {
+                                    input: $('[name="' + a.field + '"]', _self.$elem),
+                                    msg  : a.msg
+                                }
+                                _self.error_array.push(obj);
+                            }
+                        }
+                    }
+
+                    // Outcome.
+                    if(_self.error_array.length === 0 && !fatalerror){
+                        _self.success('server');
+                    }
+                    else{
+                        _self.validation_failure();
+                    }
+                }).fail(function(xhr, ajaxOptions, thrownError){
+                    // Log it.
+                    helpers.log(xhr);
+                    helpers.log(thrownError);
+                    // Set error.
+                    fatalerror = true;
+                    // Server error
+                    var error = (xhr.responseText !== '') ? xhr.responseText : thrownError;
+                });
+            }
+            // No form action.
+            else{
+                // Error message.
+                helpers.log("You must have an action defined on your form in order to use server validation.");
+
+                return false;
+            }
+        },
+        success: function(type){
+            var _self = this;
+
             // Clear localStorage.
             _self.clear_localStorage();
             // If we have a custom post function.
             if(type == 'server'){
-                e.preventDefault();
-                _self.$elem.fadeOut(500, function(){
-                    _self.$elem.prev(_self.success_element).fadeIn(300);
+                _self.$elem.fadeOut(_self.settings.fadeOutAnimationSpeed, function(){
+                    // Validation Complete.
+                    _self.validation_complete();
+                    // Fade in success element.
+                    _self.$elem.prev(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
                 });
             }
             else if(type == 'js'){
-                e.preventDefault();
-                $.ajax({
-                    type : 'POST',
-                    data : _self.$elem.serialize(),
-                    cache: false,
-                    async: false,
-                    beforeSend: function(){
-                        // Add a preloader
-                        helpers.loading_animation(_self.button);
-                    },
-                    success: function(){
-                        _self.$elem.fadeOut(500, function(){
-                            _self.$elem.prev(_self.success_element).fadeIn(300);
-                        });
-                    }
+                // Ajax request.
+                var ajax_promise = _self.ajax_request(null, _self.$elem.serialize());
+
+                // Process promise.
+                ajax_promise.done(function(response){
+                    _self.$elem.fadeOut(_self.settings.fadeOutAnimationSpeed, function(){
+                        // Validation Complete.
+                        _self.validation_complete();
+                        // Fade in success element.
+                        _self.$elem.prev(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
+                    });
+                }).fail(function(xhr, ajaxOptions, thrownError){
+                    // Log it.
+                    helpers.log(xhr);
+                    helpers.log(thrownError);
                 });
             }
             else{
                 return true;
             }
         },
-        failure: function(){
-            // Set errors
-            this.set_errors(this.error_array, this.$elem);
-        },
-        process: function(e){
+        process: function(){
+            // Apply preloader.
+            this.apply_preloader(this.button);
+            // Disable stuff.
+            this.disable_button(true);
             // Run setup this.
             this.setup();
             // If we are doing server validation.
-            if(this.settings.serverValidation && this.server_validate_fields()){
-                this.success('server', e);
+            if(this.settings.serverValidation){
+                this.server_validate_fields();
             }
             // If we are not doing server validation check if form has passed validation.
-            else if(!this.settings.serverValidation && this.js_validate_fields()){
-                this.success('js', e);
-            }
-            // Not validated, display errors.
-            else{
-                e.preventDefault();
-                this.failure();
+            else if(!this.settings.serverValidation){
+                this.js_validate_fields();
             }
         },
-        reset_form: function(){
+        validation_complete: function(){
+            // Destroy preloader.
+            this.apply_preloader(this.button, true);
+        },
+        validation_failure: function(){
+            var _self = this;
+
+            // Process for 0.5 second.
+            setTimeout(function(){
+                // Set errors
+                _self.set_errors(_self.error_array, _self.$elem);
+                // Destroy preloader.
+                _self.apply_preloader(_self.button, true);
+            }, 500);
+        },
+        validation_reset: function(){
+            // Destroy preloader.
+            this.apply_preloader(this.button, true);
             // Un-disable stuff.
-            this.disable_stuff(false);
+            this.disable_button(false);
             // Remove errors.
             this.reset_errors();
             // Clear localStorage.
@@ -8647,6 +8683,7 @@ if (typeof JSON !== 'object') {
             // Click event.
             $('.alternative-email').on('click', function(e){
                 e.preventDefault();
+
                 // Apply suggestion.
                 el.val(result.address + '@' + result.domain);
                 // Hide suggestion.
@@ -8668,14 +8705,6 @@ if (typeof JSON !== 'object') {
         });
 
         return result;
-    }
-
-    /**
-     * helpers.loading_animation
-     * Creates a spinning loading animation.
-    **/
-    helpers.loading_animation = function(el){
-        el.addClass('loading');
     }
 
     /**
