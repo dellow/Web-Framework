@@ -1,6 +1,6 @@
 {
   "name": "Framework Library",
-  "version": "1.3.11",
+  "version": "1.3.12",
   "private": true,
   "authors": [
     "Stew Dellow <stewdellow@gmail.com>"
@@ -27,6 +27,7 @@
     "bower.json",
     "package.json",
     "README.md",
+    "gemfile",
     ".gitignore",
     ".gitkeep"
   ]

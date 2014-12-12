@@ -36,6 +36,43 @@ a, button {
 	}
 }
 
+/* -- Heading Formatting -- */
+h1, h2, h3, h4, h5, h6 {
+	-webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	-moz-font-feature-settings   : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	-ms-font-feature-settings    : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	-o-font-feature-settings     : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	font-feature-settings        : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	&.collapse-margin {
+		margin: 0;
+	}
+}
+h1, .alpha {
+	@include sassline($fontsize: alpha, $font: $headingtype, $lineheight: 3, $below: 1, $breakpoint: all);
+}
+h2, .beta {
+	@include sassline(beta, $headingtype, 3, 1, all);
+}
+h3, .gamma {
+	@include sassline(gamma, $headingtype, 3, 1, all);
+}
+h4, .delta {
+	@include sassline(delta, $headingtype, 2, 0, all);
+}
+h5, .epsilon {
+	@include sassline(epsilon, $headingtype, 2, 0, all);
+}
+h6, .zeta {
+	@include sassline(zeta, $headingtype, 2, 0, all);
+}
+
+/* -- Paragraph -- */
+p {
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
 /* -- General Formatting -- */
 // Global.
 p, li {
@@ -44,13 +81,6 @@ p, li {
 	-ms-font-feature-settings    : 'kern' 1, 'onum' 1, 'liga' 1;
 	-o-font-feature-settings     : 'kern' 1, 'onum' 1, 'liga' 1;
 	font-feature-settings        : 'kern' 1, 'onum' 1, 'liga' 1;
-}
-
-// Paragraph.
-p {
-	&:last-child {
-		margin-bottom: 0;
-	}
 }
 
 // Captions.
@@ -62,20 +92,15 @@ figcaption, .caption {
 // Quotes.
 blockquote {
 	p {
-		border-left: 0.15rem solid $linkColour;
 		font-style: map-get($bodytype, italic);
-		padding-left: 1rem;
-
 		// Add spacing below blockquote paragraphs to align to baseline grid.
 		$get-scale: map-get($modular-scale, scale-0);
 		$get-size: map-get($get-scale, zeta);
 		$rootsize: nth($sizes, 1);
 		$baseline-shift: #{($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001};
 		$baseline-push: #{3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001)};
-
 		margin-bottom: #{$baseline-push}rem;
 		padding-bottom: #{$baseline-shift}rem;
-
 		@for $i from 2 through $breakpoints-limit {
 			$get-scale: map-get($modular-scale, scale-#{$i - 1});
 			$get-size: map-get($get-scale, zeta);
@@ -153,36 +178,6 @@ cite {
 			}
 		}
 	}
-}
-
-/* -- Heading Formatting -- */
-h1, h2, h3, h4, h5, h6 {
-	-webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	-moz-font-feature-settings   : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	-ms-font-feature-settings    : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	-o-font-feature-settings     : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	font-feature-settings        : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	&.collapse-margin {
-		margin: 0;
-	}
-}
-h1, .alpha {
-	@include sassline($fontsize: alpha, $font: $headingtype, $lineheight: 3, $below: 1, $breakpoint: all);
-}
-h2, .beta {
-	@include sassline(beta, $headingtype, 3, 1, all);
-}
-h3, .gamma {
-	@include sassline(gamma, $headingtype, 3, 1, all);
-}
-h4, .delta {
-	@include sassline(delta, $headingtype, 2, 0, all);
-}
-h5, .epsilon {
-	@include sassline(epsilon, $headingtype, 2, 0, all);
-}
-h6, .zeta {
-	@include sassline(zeta, $headingtype, 2, 0, all);
 }
 
 /* -- Hatnotes -- */

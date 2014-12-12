@@ -16,7 +16,7 @@
     /**
      * Requests confirmation before completing action.
     **/
-    $('.js-confirm').on('click', function(){
+    $(document).on('click', '.js-confirm', function(e){
         var a = $(this).data('confirm-message'),
             b = (a !== undefined) ? a : 'Are you sure?';
 

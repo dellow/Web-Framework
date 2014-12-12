@@ -105,17 +105,17 @@ class mailer{
 			// Field is not valid
 			elseif(!empty($_REQUEST['validationmessage'][$key])){
 				$success = false;
-				$this->response[$this->id]['error'][$key]['msg'] = $_REQUEST['validationmessage'][$key];
+				$this->response['error'][$key]['msg'] = $_REQUEST['validationmessage'][$key];
 				if(is_array($value)){
-					$this->response[$this->id]['error'][$key]['field'] = $this->id . '[' . $key . '][]';
+					$this->response['error'][$key]['field'] = $this->id . '[' . $key . '][]';
 				}
 				else{
-					$this->response[$this->id]['error'][$key]['field'] = $this->id . '[' . $key . ']';
+					$this->response['error'][$key]['field'] = $this->id . '[' . $key . ']';
 				}
 			}
 		}
 
-		$this->ajax_response();
+		$this->json_response();
 		return ($success) ? $fields : false;
 	}
 
@@ -257,7 +257,7 @@ class mailer{
 				$this->response['form']['error']['all']['msg'] = 'Mail sending failed';
 			}
 
-			$this->ajax_response();
+			$this->json_response();
 		}
 	}
 
@@ -295,13 +295,13 @@ class mailer{
 	}
 
 	/**
-	 * ajax_response
+	 * json_response
 	 * Return a response for Ajax.
 	 *
 	 * @since 1.0.0
 	 * @version 1.0.0
 	**/
-	public function ajax_response(){
+	public function json_response(){
 		// If we have a response return it for Ajax
 		if(!empty($this->response) && isset($_REQUEST['ajaxrequest'])){
 		    echo json_encode($this->response);
@@ -310,13 +310,13 @@ class mailer{
 	}
 
 	/**
-	 * response
+	 * php_response
 	 * Called from the template to output the response messages.
 	 *
 	 * @since 1.0.0
 	 * @version 1.0.0
 	**/
-	public function response(){
+	public function php_response(){
 		if($this->response){
 			foreach($this->response as $response){
 				foreach($response as $k=>$v) : ?>

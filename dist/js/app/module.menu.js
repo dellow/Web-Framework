@@ -47,13 +47,21 @@
 	 * Adds class to menu.
 	**/
 	Module.menu_reveal = function(el, primary){
-		// Toggle class to button
-		el.toggleClass('active-menu');
-		// Slide down with CSS animation
-		primary.toggleClass('slide-down');
-		// If hidden remove the `display: block`
-		if(primary.is(':hidden')){
-			primary.removeAttr('style');
+		if(primary.outerHeight() < 5){
+			// Toggle class to button
+			el.addClass('active-menu');
+			// Slide down with CSS animation
+			primary.addClass('slide-down');
+		}
+		else{
+			// Toggle class to button
+			el.removeClass('active-menu');
+			// Slide down with CSS animation
+			primary.removeClass('slide-down');
+			// If hidden remove the `display: block`
+			if(primary.is(':hidden')){
+				primary.removeAttr('style');
+			}
 		}
 	}
 

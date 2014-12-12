@@ -95,6 +95,7 @@ require('../controllers/wiselinks');
 	'use strict';
 
 	/**
+	 * Helpers.log
 	 * Safe console log.
 	**/
 	Helpers.log = function(message, alertlog){
@@ -110,6 +111,7 @@ require('../controllers/wiselinks');
 	}
 
 	/**
+	 * Helpers.mobile_mode
 	 * Checks if the window size is below a certain breakpoint.
 	**/
 	Helpers.mobile_mode = function(breakpoint){
@@ -129,12 +131,8 @@ require('../controllers/wiselinks');
  * Some information on the license.
  *
  * To include jQuery or any other library in a module pass it into the self invoking function.
- * The App object should be passed to individual functions. Such as `App.ModuleName.bindEvents(App)`
  *
 **/
-
-// App
-var App = {};
 
 // Global vars
 window.mobile_breakpoint = 520;
@@ -146,16 +144,16 @@ window.mobile_breakpoint = 520;
 var $ = jQuery = require('jquery');
 
 /* ======================================================== */
-/* Helpers
-/* ======================================================== */
-// Helpers
-App.Helpers = require('./helpers');
-
-/* ======================================================== */
 /* Controllers
 /* ======================================================== */
 // Page Controller
-App.PageController = require('./controller.page');
+var PageController = require('./controller.page');
+
+/* ======================================================== */
+/* Helpers
+/* ======================================================== */
+// Helpers
+require('./helpers');
 
 /* ======================================================== */
 /* Modules
@@ -168,7 +166,7 @@ require('./module.binds');
 /* ======================================================== */
 /* Go
 /* ======================================================== */
-App.PageController.init($('.main'));
+PageController.init($('.main'));
 },{"./controller.page":1,"./helpers":2,"./module.binds":4,"./module.menu":5,"jquery":11}],4:[function(require,module,exports){
 /**
  *
@@ -180,10 +178,10 @@ App.PageController.init($('.main'));
 **/
 
 // Require
-require('../plugins/jquery.slider');
-require('../plugins/jquery.lightbox');
-require('../plugins/jquery.validation');
 require('../plugins/jquery.equal-heights');
+require('../plugins/jquery.lightbox');
+require('../plugins/jquery.slider');
+require('../plugins/jquery.validation');
 
 ;(function(Module, $, window, undefined){
     'use strict';
@@ -193,10 +191,35 @@ require('../plugins/jquery.equal-heights');
      * Init method for this module.
     **/
     Module.init = function(){
-        Module.sliders();
-        Module.lightboxes();
-        Module.validation();
         Module.equal_heights();
+        Module.lightboxes();
+        Module.sliders();
+        Module.validation();
+    }
+
+    /**
+     * Module.equal_heights
+     * Equal height elements.
+    **/
+    Module.equal_heights = function(){
+        if($('.js-eh').length){
+            $('.js-eh').equalHeights();
+        }
+    }
+
+    /**
+     * Module.lightboxes
+     * Lightbox events.
+    **/
+    Module.lightboxes = function(){
+        if($('.js-lightbox').length){
+            $('.js-lightbox').fancybox({
+                autoWidth    : true,
+                autoHeight   : true,
+                autoScale    : true,
+                transitionIn : 'fade'
+            });
+        }
     }
 
     /**
@@ -222,21 +245,6 @@ require('../plugins/jquery.equal-heights');
     }
 
     /**
-     * Module.lightboxes
-     * Lightbox events.
-    **/
-    Module.lightboxes = function(){
-        if($('.js-lightbox').length){
-            $('.js-lightbox').fancybox({
-                autoWidth    : true,
-                autoHeight   : true,
-                autoScale    : true,
-                transitionIn : 'fade'
-            });
-        }
-    }
-
-    /**
      * Module.validation
      * Form validation events.
     **/
@@ -246,16 +254,6 @@ require('../plugins/jquery.equal-heights');
                 serverValidation: false,
                 msgSep          : ''
             });
-        }
-    }
-
-    /**
-     * Module.equal_heights
-     * Equal height elements.
-    **/
-    Module.equal_heights = function(){
-        if($('.js-eh').length){
-            $('.js-eh').equalHeights();
         }
     }
 
@@ -313,13 +311,21 @@ require('../plugins/jquery.equal-heights');
 	 * Adds class to menu.
 	**/
 	Module.menu_reveal = function(el, primary){
-		// Toggle class to button
-		el.toggleClass('active-menu');
-		// Slide down with CSS animation
-		primary.toggleClass('slide-down');
-		// If hidden remove the `display: block`
-		if(primary.is(':hidden')){
-			primary.removeAttr('style');
+		if(primary.outerHeight() < 5){
+			// Toggle class to button
+			el.addClass('active-menu');
+			// Slide down with CSS animation
+			primary.addClass('slide-down');
+		}
+		else{
+			// Toggle class to button
+			el.removeClass('active-menu');
+			// Slide down with CSS animation
+			primary.removeClass('slide-down');
+			// If hidden remove the `display: block`
+			if(primary.is(':hidden')){
+				primary.removeAttr('style');
+			}
 		}
 	}
 
@@ -8007,7 +8013,6 @@ if (typeof JSON !== 'object') {
  * urlRegEx                : String. RegEx to check URLs against.
  * errorBoxClass           : String. Class to apply to the error box.
  * errorClass              : String. Class to apply to fields with an error.
- * successClass            : String. Description.
  * msgSep                  : String. Used to separate the field label and the error message.
  * defaultErrorMsg         : String. Field error message if one isn't supplied in the HTML.
  * defaultSuccessMsg       : String. Form success message if one isn't supplied in the HTML.
@@ -8016,6 +8021,7 @@ if (typeof JSON !== 'object') {
  * preloaderHEX            : String. HEX value for the colour of the preloader spinner. Must be a full 6 character HEX value.
  * preloaderSize           : Integer. Pixel size of the preloader spinner.
  * preloaderDensity        : Integer. Density of the preloader spinner.
+ * validateElement         : jQuery Element. A valid jQuery element to specify fields that aren't required but should be validated if entered.
  * successElement          : jQuery Element. A valid jQuery element that holds the success message.
  * validationMessage       : jQuery Element. A valid jQuery element that holds the error message.
  * successFunction         : Function. Function to run on successful validation.
@@ -8069,7 +8075,6 @@ if (typeof JSON !== 'object') {
         urlRegEx                : /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
         errorBoxClass           : 'response--error',
         errorClass              : 'error',
-        successClass            : 'success',
         msgSep                  : ' -',
         defaultErrorMsg         : 'Please enter a value',
         defaultSuccessMsg       : 'The form has been successfully submitted.',
@@ -8078,6 +8083,7 @@ if (typeof JSON !== 'object') {
         preloaderHEX            : '#333333',
         preloaderSize           : 15,
         preloaderDensity        : 15,
+        validateElement         : $('.validate'),
         successElement          : $('.form-success'),
         validationMessage       : $('.error-message'),
         successFunction         : null,
@@ -8185,7 +8191,7 @@ if (typeof JSON !== 'object') {
         },
         disable_stuff: function(disable){
             // Reset errors.
-            this.reset_errors(this.$elem);
+            this.reset_errors();
             if(disable){
                 // Disable the submit button.
                 this.button.attr('disabled', 'disabled');
@@ -8255,47 +8261,57 @@ if (typeof JSON !== 'object') {
                 }
             }
         },
+        field_checker: function(field){
+            var _self = this;
+
+            var obj, msg = field.closest('.field').find(_self.settings.validationMessage).val() || field.closest('.field').find(_self.settings.validationMessage).text();
+
+            // Checkboxes and radio.
+            if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // Email fields.
+            else if(field.attr('type') === 'email' && !_self.settings.emailRegEx.test(field.val())){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // URL fields.
+            else if(field.attr('type') === 'url' && !_self.settings.urlRegEx.test(field.val())){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+            // Check for existence.
+            else if(field.val() === '' || field.val() === 'undefined' || field.val() === undefined || field.val() === '-'){
+                return obj = {
+                    input: field,
+                    msg  : msg
+                }
+            }
+        },
         js_validate_fields: function(){
             var _self = this;
 
-            // Put all empty fields into array
+            // Put all empty fields into array.
             _self.error_array = $.map(_self.$element_array, function(field, i){
-                var obj,
-                    msg = field.closest('.field').find(_self.settings.validationMessage).val() || field.closest('.field').find(_self.settings.validationMessage).text();
-
-                // Checkboxes and radio.
-                if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){
-                    return obj = {
-                        input: field,
-                        msg  : msg
-                    }
-                }
-                // Email fields.
-                else if(field.attr('type') === 'email' && !_self.settings.emailRegEx.test(field.val())){
-                    return obj = {
-                        input: field,
-                        msg  : msg
-                    }
-                }
-                // URL fields.
-                else if(field.attr('type') === 'url' && !_self.settings.urlRegEx.test(field.val())){
-                    return obj = {
-                        input: field,
-                        msg  : msg
-                    }
-                }
-                // Check for existence.
-                else if(field.val() === '' || field.val() === 'undefined' || field.val() === undefined || field.val() === '-'){
-                    return obj = {
-                        input: field,
-                        msg  : msg
-                    }
-                }
+                return _self.field_checker(field);
             });
             // Custom validation method.
             if($.isFunction(_self.settings.customValidationMethod)){
                 _self.error_array.push(_self.settings.customValidationMethod());
             }
+            // Validate non required fields with length.
+            _self.$elem.find(_self.settings.validateElement).each(function(){
+                if($(this).val() !== ''){
+                    _self.error_array.push(_self.field_checker($(this)));
+                }
+            });
 
             return (_self.error_array.length === 0) ? true : false;
         },
@@ -8304,6 +8320,7 @@ if (typeof JSON !== 'object') {
 
             // Check for a form action.
             if(_self.form_action !== ''){
+                // Set flag.
                 var fatalerror = false;
                 // Use ajax to check server response.
                 $.ajax({
@@ -8323,7 +8340,7 @@ if (typeof JSON !== 'object') {
                         _self.disable_stuff(false);
                         // If error.
                         if(response.error){
-                            // Cycles through the response and adds them to the error_array.
+                            // Loops through the response and adds them to the error_array.
                             for(var key in response.error){
                                 var a = response.error[key];
                                 if(a.field !== undefined){
@@ -8365,7 +8382,7 @@ if (typeof JSON !== 'object') {
             el.after($('<div class="suggestion">' + _self.settings.defaultSuggestText + ' <a href="#" class="alternative-email"><span class="address">address</span>@<span class="domain">domain.com</span></a>?</div>').hide());
 
             el.on('blur', function(){
-                suggester.init(el, _self.settings.domains);
+                suggester.init(_self, el, _self.settings.domains);
             });
         },
         setup_url_field: function(el){
@@ -8376,20 +8393,24 @@ if (typeof JSON !== 'object') {
                 }
             });
         },
-        reset_errors: function(){
+        reset_errors: function(form){
+            // Set form.
+            form = (typeof form !== 'undefined') ? form : this;
             // Remove error class from form.
-            this.$elem.removeClass('form-has-errors');
+            form.$elem.removeClass('form-has-errors');
             // Remove error class from fields.
-            $('.field-has-errors').removeClass('field-has-errors');
+            $('.field-has-errors', form.$elem).removeClass('field-has-errors');
+            // Hide email suggester.
+            $('.suggestion', form.$elem).hide();
             // Remove current classes.
-            $('.' + this.settings.errorClass, this.$elem).removeClass(this.settings.errorClass);
-            $('.' + this.settings.errorBoxClass, this.$elem).remove();
+            $('.' + form.settings.errorClass, form.$elem).removeClass(form.settings.errorClass);
+            $('.' + form.settings.errorBoxClass, form.$elem).remove();
         },
         set_errors: function(arr){
             var _self = this;
 
-            // Remove errors.
-            _self.reset_errors(_self.$elem);
+            // Remove previous errors.
+            _self.reset_errors();
             // Add error class to form.
             _self.$elem.addClass('form-has-errors');
             // Add new ones.
@@ -8482,7 +8503,7 @@ if (typeof JSON !== 'object') {
             // Un-disable stuff.
             this.disable_stuff(false);
             // Remove errors.
-            this.reset_errors(this.$elem);
+            this.reset_errors();
             // Clear localStorage.
             this.clear_localStorage();
         }
@@ -8492,7 +8513,7 @@ if (typeof JSON !== 'object') {
      * suggester.init
      * NULLED.
     **/
-    suggester.init = function(el, plugin_domains){
+    suggester.init = function(form, el, plugin_domains){
         // Default domains
         var default_domains = [
             'aol.com',
@@ -8535,7 +8556,7 @@ if (typeof JSON !== 'object') {
             match_val = suggester.get_match(email_val);
 
         this.suggestion = el.next('.suggestion');
-        this.reveal_suggestion(el, match_val);
+        this.reveal_suggestion(form, el, match_val);
     }
 
     /**
@@ -8614,15 +8635,21 @@ if (typeof JSON !== 'object') {
      * suggester.reveal_suggestion
      * NULLED.
     **/
-    suggester.reveal_suggestion = function(el, result){
+    suggester.reveal_suggestion = function(form, el, result){
         if(result){
+            Plugin.prototype.reset_errors(form);
+            // Set email address.
             $('.address', this.suggestion).text(result.address);
+            // Set email domain.
             $('.domain', this.suggestion).text(result.domain);
+            // Reveal suggestion.
             this.suggestion.stop(true, false).slideDown(350);
-
+            // Click event.
             $('.alternative-email').on('click', function(e){
                 e.preventDefault();
+                // Apply suggestion.
                 el.val(result.address + '@' + result.domain);
+                // Hide suggestion.
                 suggester.suggestion.stop(true, false).slideUp(350);
             });
         }

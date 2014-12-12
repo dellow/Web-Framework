@@ -13,6 +13,7 @@
 	'use strict';
 
 	/**
+	 * Helpers.log
 	 * Safe console log.
 	**/
 	Helpers.log = function(message, alertlog){
@@ -28,6 +29,7 @@
 	}
 
 	/**
+	 * Helpers.mobile_mode
 	 * Checks if the window size is below a certain breakpoint.
 	**/
 	Helpers.mobile_mode = function(breakpoint){

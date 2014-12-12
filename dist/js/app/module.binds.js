@@ -8,10 +8,10 @@
 **/
 
 // Require
-require('../plugins/jquery.slider');
-require('../plugins/jquery.lightbox');
-require('../plugins/jquery.validation');
 require('../plugins/jquery.equal-heights');
+require('../plugins/jquery.lightbox');
+require('../plugins/jquery.slider');
+require('../plugins/jquery.validation');
 
 ;(function(Module, $, window, undefined){
     'use strict';
@@ -21,10 +21,35 @@ require('../plugins/jquery.equal-heights');
      * Init method for this module.
     **/
     Module.init = function(){
-        Module.sliders();
-        Module.lightboxes();
-        Module.validation();
         Module.equal_heights();
+        Module.lightboxes();
+        Module.sliders();
+        Module.validation();
+    }
+
+    /**
+     * Module.equal_heights
+     * Equal height elements.
+    **/
+    Module.equal_heights = function(){
+        if($('.js-eh').length){
+            $('.js-eh').equalHeights();
+        }
+    }
+
+    /**
+     * Module.lightboxes
+     * Lightbox events.
+    **/
+    Module.lightboxes = function(){
+        if($('.js-lightbox').length){
+            $('.js-lightbox').fancybox({
+                autoWidth    : true,
+                autoHeight   : true,
+                autoScale    : true,
+                transitionIn : 'fade'
+            });
+        }
     }
 
     /**
@@ -50,21 +75,6 @@ require('../plugins/jquery.equal-heights');
     }
 
     /**
-     * Module.lightboxes
-     * Lightbox events.
-    **/
-    Module.lightboxes = function(){
-        if($('.js-lightbox').length){
-            $('.js-lightbox').fancybox({
-                autoWidth    : true,
-                autoHeight   : true,
-                autoScale    : true,
-                transitionIn : 'fade'
-            });
-        }
-    }
-
-    /**
      * Module.validation
      * Form validation events.
     **/
@@ -74,16 +84,6 @@ require('../plugins/jquery.equal-heights');
                 serverValidation: false,
                 msgSep          : ''
             });
-        }
-    }
-
-    /**
-     * Module.equal_heights
-     * Equal height elements.
-    **/
-    Module.equal_heights = function(){
-        if($('.js-eh').length){
-            $('.js-eh').equalHeights();
         }
     }
 
