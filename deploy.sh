@@ -13,14 +13,14 @@
 # 2. Your server must be setup with SSH key pairs. It will not work with servers
 # 	 that require passwords to SSH.
 #
-# 3. To do a normal deploy run:
+# 2. To do a normal deploy run:
 #	./deploy.sh <environment>
 #
-# 4. To do a rollback run:
+# 2. To do a rollback run:
 #	./deploy.sh <environment> rollback <commit_to_rollback_to_id>
 #
 
-VERSION=1.0.0
+VERSION=1.0.1
 
 preloader(){
 	echo -ne "$(tput setaf 3)-* (25%)\r$(tput sgr0)"
@@ -69,7 +69,7 @@ if (($# == 1)); then
 		echo -e "------------------------------------------------"
 		exit 1
 	fi
-elif [ "$2" = 'rollback' ]; then
+elif [ "$2" == 'rollback' ]; then
 	if [[ -n "$3" ]] ; then
 		ROLLBACK_REQUEST=true
 		COMMIT_RANGE_TO=$3
@@ -179,7 +179,7 @@ for SERVER in ${DEPLOY_SERVER[@]}; do
 		# Remove temp_commit_log
 		rm $TEMP_COMMIT_LOG
 		# Check commit range
-		if [[ ! $COMMIT_RANGE_TO = $COMMIT_RANGE_FROM ]]; then
+		if [[ ! $COMMIT_RANGE_TO == $COMMIT_RANGE_FROM ]]; then
 			# Create tarball
 			preloader
 			git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $BRANCH
@@ -192,16 +192,16 @@ for SERVER in ${DEPLOY_SERVER[@]}; do
 	else
 		echo -e "Creating release..."
 		# Deployment from scratch
-		if [ "$FRESH_DEPLOYMENT" = true ] ; then
+		if [ "$FRESH_DEPLOYMENT" == true ] ; then
 			echo -e "This is a fresh deployment..."
 			# Get first ever commit
 			COMMIT_RANGE_FROM="$(git rev-list HEAD | tail -n 1)"
 			# Get latest commit from remote origin
-			COMMIT_RANGE_TO="$(git ls-remote origin | awk '/master/ {print $1}')"
+			COMMIT_RANGE_TO="$(git ls-remote origin | awk '/$BRANCH/ {print $1}')"
 			# Remove temp_commit_log
 			rm $TEMP_COMMIT_LOG
 			# Check commit range
-			if [[ ! $COMMIT_RANGE_TO = $COMMIT_RANGE_FROM ]]; then
+			if [[ ! $COMMIT_RANGE_TO == $COMMIT_RANGE_FROM ]]; then
 				# Create tarball
 				preloader
 				git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $BRANCH
@@ -216,11 +216,11 @@ for SERVER in ${DEPLOY_SERVER[@]}; do
 			# Get latest commit from release_TEMP_COMMIT_LOG
 			COMMIT_RANGE_FROM="$(sed -n '1p' $TEMP_COMMIT_LOG)"
 			# Get latest commit from remote origin
-			COMMIT_RANGE_TO="$(git ls-remote origin | awk '/master/ {print $1}')"
+			COMMIT_RANGE_TO="$(git ls-remote origin | awk '/$BRANCH/ {print $1}')"
 			# Remove temp_commit_log
 			rm $TEMP_COMMIT_LOG
 			# Check commit range
-			if [[ ! $COMMIT_RANGE_TO = $COMMIT_RANGE_FROM ]]; then
+			if [[ ! $COMMIT_RANGE_TO == $COMMIT_RANGE_FROM ]]; then
 				# Create tarball
 				preloader
 				git archive --format tar --output ./deploy/releases/$RELEASE_NAME.tar.tgz $COMMIT_RANGE_TO $(git diff --name-only $COMMIT_RANGE_FROM $COMMIT_RANGE_TO $BRANCH)
