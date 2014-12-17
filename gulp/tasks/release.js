@@ -55,7 +55,7 @@ gulp.task('release-sync', function(){
 // Minifies HTML.
 // Production only.
 gulp.task('release-task-minify', function(){
-    return gulp.src([release + '*.html', release + '*.php'])
+    return gulp.src([release + '*.html'])
         .pipe(html({
             comments: true,
             spare   : true

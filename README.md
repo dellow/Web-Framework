@@ -31,6 +31,7 @@ This is a fast project wrapper and workflow that utilises Gulp. To use this as a
 - [NodeJS](http://nodejs.org/)
 - [Bower](http://bower.io)
 - [Gulp](http://gulpjs.com)
+- [Bundler](http://bundler.io)
 
 ### Gems
 - [SASS 3.4.9](https://rubygems.org/gems/sass/versions/3.4.9)
@@ -44,7 +45,6 @@ This is a fast project wrapper and workflow that utilises Gulp. To use this as a
 
 After cloning the repository simply run `bash install.sh` from your command line. This will do the following:
 
-- Install Bundler for Gem dependencies.
 - Remove the Git wrapper and replace with a fresh Git initialisation.
 - Remove any un-necessary files/directories.
 - Get all Ruby Gem dependencies.

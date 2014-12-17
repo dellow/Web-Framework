@@ -14,7 +14,6 @@ GLOBAL.is_development = (args.config == 'development' || args.config == undefine
 GLOBAL.is_staging     = (args.config == 'staging') ? true : false,
 GLOBAL.is_production  = (args.config == 'production') ? true : false;
 GLOBAL.releases_dir   = './releases/';
-GLOBAL.app_dir        = './app/';
 GLOBAL.src_dir        = './src/';
 GLOBAL.dist_dir       = './src/dist/';
 

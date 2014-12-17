@@ -22,13 +22,6 @@ echo -e "Installation in progress. Please wait..."
 start_seconds="$(date +%s)"
 
 # ------------------------------------------------------------------------
-# Install Bundler
-# ------------------------------------------------------------------------
-#
-echo -e "Installing Bundler..."
-sudo gem install bundler && \
-
-# ------------------------------------------------------------------------
 # Remove initial `.git` directory
 # ------------------------------------------------------------------------
 #
@@ -125,7 +118,7 @@ fi
 # ------------------------------------------------------------------------
 #
 read -p "$(tput setaf 5)Would you like to install WordPress? y/n $(tput sgr0)" choice
-if [[ $choice = "n" ]]; then
+if [[ $choice = "y" ]]; then
 	echo -e "$(tput setaf 3)Installing WordPress...$(tput sgr0)"
 	rm ./src/*
 	git clone git@github.com:sdellow/WordPress-Framework.git ./src
