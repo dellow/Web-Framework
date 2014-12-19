@@ -31,6 +31,7 @@
  * successElement          : jQuery Element. A valid jQuery element that holds the success message.
  * validationMessage       : jQuery Element. A valid jQuery element that holds the error message.
  * customValidationMethod  : Function. Function containing any custom methods to validate against. Must return the element.
+ * successCallback         : Function. Function to be called on success of validation. Provides array of fields as parameter if using server validation.
  *
 **/
 
@@ -91,7 +92,8 @@
         validateElement         : $('.validate'),
         successElement          : $('.form-success'),
         validationMessage       : $('.error-message'),
-        customValidationMethod  : null
+        customValidationMethod  : function(){},
+        successCallback         : function(parameters){}
     };
 
     /**
@@ -410,9 +412,12 @@
                 }
             });
 
+            // Array of elements for the callback.
+            var parameters = null;
+
             // Outcome.
             if(_self.error_array.length === 0){
-                _self.success('server');
+                _self.success('server', parameters);
             }
             else{
                 _self.validation_failure();
@@ -447,9 +452,12 @@
                         }
                     }
 
+                    // Array of elements for the callback.
+                    var parameters = _self.$elem.serializeArray();
+
                     // Outcome.
                     if(_self.error_array.length === 0 && !fatalerror){
-                        _self.success('server');
+                        _self.success('server', parameters);
                     }
                     else{
                         _self.validation_failure();
@@ -472,7 +480,7 @@
                 return false;
             }
         },
-        success: function(type){
+        success: function(type, callback_parameters){
             var _self = this;
 
             // Clear localStorage.
@@ -484,6 +492,8 @@
                     _self.validation_complete();
                     // Fade in success element.
                     _self.$elem.prev(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
+                    // Callback
+                    _self.settings.successCallback.call(_self, callback_parameters);
                 });
             }
             else if(type == 'js'){
@@ -497,6 +507,8 @@
                         _self.validation_complete();
                         // Fade in success element.
                         _self.$elem.prev(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
+                        // Callback
+                        _self.settings.successCallback.call(_self, callback_parameters);
                     });
                 }).fail(function(xhr, ajaxOptions, thrownError){
                     // Log it.

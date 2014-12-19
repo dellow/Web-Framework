@@ -7,8 +7,8 @@
 **/
 
 // Prevent direct access to the file.
-if(!empty($_SERVER['SCRIPT_FILENAME']) && 'mailer.php' === basename($_SERVER['SCRIPT_FILENAME']) && !isset($_REQUEST['ajaxrequest'])){
-    die('Sorry. This page cannot be loaded directly.');
+if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVER['SCRIPT_FILENAME']) && !isset($_REQUEST['ajaxrequest'])){
+    die('Sorry. This file cannot be loaded directly.');
 }
 
 class mailer{
@@ -251,10 +251,10 @@ class mailer{
 
 			// Send the email
 			if(@mail($recipient, $subject, $message, $headers)){
-				$this->response['form']['success']['all']['msg'] = 'Mail sent';
+				$this->response['success']['all']['msg'] = 'Mail sent';
 			}
 			else {
-				$this->response['form']['error']['all']['msg'] = 'Mail sending failed';
+				$this->response['error']['all']['msg'] = 'Mail sending failed';
 			}
 
 			$this->json_response();
