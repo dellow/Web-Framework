@@ -163,7 +163,7 @@ npm install                                          && \
 # ------------------------------------------------------------------------
 #
 echo -e "Moving /dist/ directory to it's new home..."
-cp -r bower_components/framework-library/dist ./src  && \
+cp -r bower_components/framework-library/dist/ ./src  && \
 
 # ------------------------------------------------------------------------
 # Git commit
