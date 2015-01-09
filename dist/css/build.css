@@ -1019,30 +1019,35 @@ hr.dots {
   border: 0;
   display: block;
   clear: both;
+  font-size: 28px;
   font-size: 2.33333rem;
   text-align: center;
 }
 @media screen and (min-width: 40em) {
   /* line 66, scss/base/_misc.scss */
   hr.dots {
+    font-size: 30px;
     font-size: 2.14286rem;
   }
 }
 @media screen and (min-width: 50em) {
   /* line 66, scss/base/_misc.scss */
   hr.dots {
+    font-size: 32px;
     font-size: 2.13333rem;
   }
 }
 @media screen and (min-width: 64em) {
   /* line 66, scss/base/_misc.scss */
   hr.dots {
+    font-size: 40px;
     font-size: 2.35294rem;
   }
 }
 @media screen and (min-width: 100em) {
   /* line 66, scss/base/_misc.scss */
   hr.dots {
+    font-size: 50px;
     font-size: 2.63158rem;
   }
 }
@@ -1093,6 +1098,7 @@ html {
 /* -- Body -- */
 /* line 16, scss/base/_rhythm.scss */
 body {
+  font-size: 16px;
   font-size: 1.33333rem;
   font-family: "Helvetica", Arial, "Trebuchet MS", Verdana, sans-serif;
   word-wrap: break-word;
@@ -1102,24 +1108,28 @@ body {
 @media screen and (min-width: 40em) {
   /* line 16, scss/base/_rhythm.scss */
   body {
+    font-size: 17px;
     font-size: 1.21429rem;
   }
 }
 @media screen and (min-width: 50em) {
   /* line 16, scss/base/_rhythm.scss */
   body {
+    font-size: 18px;
     font-size: 1.2rem;
   }
 }
 @media screen and (min-width: 64em) {
   /* line 16, scss/base/_rhythm.scss */
   body {
+    font-size: 20px;
     font-size: 1.17647rem;
   }
 }
 @media screen and (min-width: 100em) {
   /* line 16, scss/base/_rhythm.scss */
   body {
+    font-size: 22px;
     font-size: 1.15789rem;
   }
 }
@@ -1415,6 +1425,7 @@ p, li {
 
 /* line 87, scss/base/_rhythm.scss */
 figcaption, .caption {
+  font-size: 12.8px;
   font-size: 1.06667rem;
   line-height: 1.4rem;
   margin-bottom: 0.64666rem;
@@ -1423,24 +1434,28 @@ figcaption, .caption {
 @media screen and (min-width: 40em) {
   /* line 87, scss/base/_rhythm.scss */
   figcaption, .caption {
+    font-size: 13.6px;
     font-size: 0.97143rem;
   }
 }
 @media screen and (min-width: 50em) {
   /* line 87, scss/base/_rhythm.scss */
   figcaption, .caption {
+    font-size: 14.4px;
     font-size: 0.96rem;
   }
 }
 @media screen and (min-width: 64em) {
   /* line 87, scss/base/_rhythm.scss */
   figcaption, .caption {
+    font-size: 15px;
     font-size: 0.88235rem;
   }
 }
 @media screen and (min-width: 100em) {
   /* line 87, scss/base/_rhythm.scss */
   figcaption, .caption {
+    font-size: 15.6px;
     font-size: 0.82105rem;
   }
 }
@@ -1564,29 +1579,34 @@ cite .profession {
 }
 /* line 176, scss/base/_rhythm.scss */
 .content.leading-p p:first-of-type {
+  font-size: 20px;
   font-size: 1.66667rem;
 }
 @media screen and (min-width: 40em) {
   /* line 176, scss/base/_rhythm.scss */
   .content.leading-p p:first-of-type {
+    font-size: 21.3px;
     font-size: 1.52143rem;
   }
 }
 @media screen and (min-width: 50em) {
   /* line 176, scss/base/_rhythm.scss */
   .content.leading-p p:first-of-type {
+    font-size: 22.5px;
     font-size: 1.5rem;
   }
 }
 @media screen and (min-width: 64em) {
   /* line 176, scss/base/_rhythm.scss */
   .content.leading-p p:first-of-type {
+    font-size: 26.7px;
     font-size: 1.57059rem;
   }
 }
 @media screen and (min-width: 100em) {
   /* line 176, scss/base/_rhythm.scss */
   .content.leading-p p:first-of-type {
+    font-size: 31.1px;
     font-size: 1.63684rem;
   }
 }

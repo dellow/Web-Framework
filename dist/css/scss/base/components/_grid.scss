@@ -58,7 +58,7 @@
 /* -- System -- */
 .grid {
 	width: 100% + $gutter;
-	margin-top: -$gutter;
+	margin-top: -$gutter; // Will need to apply 'overflow: auto' to the parent item for this to work.
 	@extend %cf;
 	position: relative;
 	left: -$gutter;

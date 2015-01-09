@@ -160,7 +160,6 @@ class mailer{
 			$headers  = "MIME-Version: 1.0" . "\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1" . "\n";
 			$headers .= 'From: ' . $args['title'] . ' <noreply@' . get_domain($args['domain']) . '>' . "\n";
-			$headers .= (!empty($args['reply-to'])) ? 'Reply-To: ' . $args['reply-to'][0] . ' <' . $args['reply-to'][1] . '>' . "\n" : null;
 			// Reply to
 			if(!empty($args['reply_to'])){
 				$string = '';
