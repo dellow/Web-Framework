@@ -160,7 +160,7 @@ require('./helpers');
 /* ======================================================== */
 // Mobile Menu
 require('./module.menu');
-// Equal Binds
+// Binds
 require('./module.binds');
 
 /* ======================================================== */
@@ -8002,6 +8002,23 @@ if (typeof JSON !== 'object') {
  *
  * $('.form').validation();
  *
+ * Setting Error Messages:
+ * If no error message is set a generic one will be used (this can be changed in options). You can set an error message by
+ * one of two ways. Either by using the `data-validation-message` HTML attribute on the field in question or by entering
+ * a validation message in a hidden HTML element. You must pass the class of this HTML element in the options. The default
+ * element is: $('.error-message').
+ *
+ * Callback:
+ * You can supply a callback function which is called on success in the options like so:
+ *      $('.js-validate').validation({
+ *          ...
+ *          successCallback  : function(parameters){
+ *              console.log(parameters);
+ *          }
+ *      });
+ * If you are using server validation, the `parameters` argument will supply the results of the validation.
+ *
+ *
  * domains                 : Array. Adds to default array of top level domains for the email checker to spell check against.
  * localStorage            : Boolean. Whether to use localStorage to save the field values if the page gets refreshed.
  * serverValidation        : Boolean. Whether to use server validation or not.
@@ -8086,7 +8103,7 @@ if (typeof JSON !== 'object') {
         validateElement         : $('.validate'),
         successElement          : $('.form-success'),
         validationMessage       : $('.error-message'),
-        customValidationMethod  : function(){},
+        customValidationMethod  : null,
         successCallback         : function(parameters){}
     };
 
@@ -8321,14 +8338,19 @@ if (typeof JSON !== 'object') {
         set_errors: function(arr){
             var _self = this;
 
+            // Remove empty elements.
+            arr = jQuery.grep(arr, function(n, i){
+              return (n !== "" && n != null);
+            });
             // Remove previous errors.
             _self.reset_errors();
             // Add error class to form.
             _self.$elem.addClass('form-has-errors');
             // Add new ones.
             $.each(arr, function(){
-                var a = $(this);
-                var el = a[0].input;
+                if($(this) == undefined){return;}
+                var a = $(this),
+                    el = a[0].input;
                 // Get error message.
                 var error = (a[0].msg !== '') ? a[0].msg : _self.settings.defaultErrorMsg;
                 // Separator.
@@ -8356,8 +8378,8 @@ if (typeof JSON !== 'object') {
         },
         field_checker: function(field){
             var _self = this;
-
-            var obj, msg = field.closest('.field').find(_self.settings.validationMessage).val() || field.closest('.field').find(_self.settings.validationMessage).text();
+            var obj;
+            var msg = field.data('validation-message') || field.closest('.field').find(_self.settings.validationMessage).val() || field.closest('.field').find(_self.settings.validationMessage).text();
 
             // Checkboxes and radio.
             if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){

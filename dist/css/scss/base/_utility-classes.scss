@@ -19,6 +19,13 @@
 	clear: both;
 }
 
+/* -- Overflow Auto -- */
+.u-auto-overflow {
+	overflow: auto;
+	position: relative;
+	z-index: 1;
+}
+
 /* -- Resetting (This is a last resort) -- */
 .u-no-width {
 	width: auto !important;

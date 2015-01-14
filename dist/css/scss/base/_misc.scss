@@ -70,7 +70,7 @@ hr {
 		border: 0;
 		display: block;
 		clear: both;
-    	@include fontsize(alpha, all);
+    	@include rem(font-size, $font_size_h1);
 		text-align: center;
 		// Pseudo
 		&:after {

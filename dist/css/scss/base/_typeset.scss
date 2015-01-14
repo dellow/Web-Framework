@@ -8,16 +8,14 @@ html {
 	overflow-y: scroll;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
-
-	// @include rootsize; // Preference
 }
 
 /* -- Body -- */
 body {
- 	@include fontsize(zeta, all);
+ 	font-size: $font_size_base;
     font-family: $font_family_base;
 	word-wrap: break-word;
-  	line-height: 2rem;
+  	line-height: $line_height_base;
 	color: $color_text;
 }
 
@@ -38,6 +36,7 @@ a, button {
 
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
+	line-height: 1;
 	-webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 	-moz-font-feature-settings   : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 	-ms-font-feature-settings    : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
@@ -48,22 +47,22 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 h1, .alpha {
-	@include sassline($fontsize: alpha, $font: $headingtype, $lineheight: 3, $below: 1, $breakpoint: all);
+	@include rem(font-size, $font_size_h1);
 }
 h2, .beta {
-	@include sassline(beta, $headingtype, 3, 1, all);
+	@include rem(font-size, $font_size_h2);
 }
 h3, .gamma {
-	@include sassline(gamma, $headingtype, 3, 1, all);
+	@include rem(font-size, $font_size_h3);
 }
 h4, .delta {
-	@include sassline(delta, $headingtype, 2, 0, all);
+	@include rem(font-size, $font_size_h4);
 }
 h5, .epsilon {
-	@include sassline(epsilon, $headingtype, 2, 0, all);
+	@include rem(font-size, $font_size_h5);
 }
 h6, .zeta {
-	@include sassline(zeta, $headingtype, 2, 0, all);
+	@include rem(font-size, $font_size_h6);
 }
 
 /* -- Paragraph -- */
@@ -85,39 +84,11 @@ p, li {
 
 // Captions.
 figcaption, .caption {
-    @include fontsize(theta, all);
-    @include baseline(theta, $headingtype, 1.4, 1, all);
 }
 
 // Quotes.
 blockquote {
-	p {
-		font-style: map-get($bodytype, italic);
-		// Add spacing below blockquote paragraphs to align to baseline grid.
-		$get-scale: map-get($modular-scale, scale-0);
-		$get-size: map-get($get-scale, zeta);
-		$rootsize: nth($sizes, 1);
-		$baseline-shift: #{($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001};
-		$baseline-push: #{3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001)};
-		margin-bottom: #{$baseline-push}rem;
-		padding-bottom: #{$baseline-shift}rem;
-		@for $i from 2 through $breakpoints-limit {
-			$get-scale: map-get($modular-scale, scale-#{$i - 1});
-			$get-size: map-get($get-scale, zeta);
-			$rootsize: nth($sizes, $i);
-			$baseline-shift: #{($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001};
-			$baseline-push: #{3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001)};
-
-			@media screen and (min-width: nth($points, $i) / 16 * 1em ) {
-				margin-bottom: #{$baseline-push}rem;
-				padding-bottom: #{$baseline-shift}rem;
-			}
-		}
-	}
-
-	@include breakpoint(break-1) {
-		margin-left: -1rem;
-	}
+	p {}
 }
 
 // Citation
@@ -174,7 +145,7 @@ cite {
 	&.leading-p {
 		p {
 			&:first-of-type {
- 				@include fontsize(delta, all);
+ 				@include rem(font-size, $font_size_medium);
 			}
 		}
 	}

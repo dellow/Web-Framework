@@ -35,7 +35,7 @@ require('./helpers');
 /* ======================================================== */
 // Mobile Menu
 require('./module.menu');
-// Equal Binds
+// Binds
 require('./module.binds');
 
 /* ======================================================== */

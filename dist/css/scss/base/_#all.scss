@@ -11,7 +11,7 @@
 @import 'utility-classes',
 		'misc',
 		'core',
-		'rhythm';
+		'typeset';
 
 // Components
 @import 'components/alerts',
@@ -39,7 +39,8 @@
 // JavaScript
 @import 'javascript/accordion',
 		'javascript/bx-slider',
-		'javascript/fancybox',
+		'javascript/lightbox',
+		'javascript/modals',
 		'javascript/validation',
 		'javascript/google-map',
 		'javascript/tabs';
