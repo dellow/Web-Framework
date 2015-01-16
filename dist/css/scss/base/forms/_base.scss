@@ -54,7 +54,7 @@ form {
 	}
 
 	// All form elements
-	input, .input, select, textarea, button, .button {
+	input, .input, select, textarea, button[type="submit"], .button {
 		height: $form_field_height;
 		border: 1px solid lighten(color(grey, dark), 60%);
 		vertical-align: top;
@@ -111,7 +111,7 @@ form {
 	}
 
 	// Buttons
-	button, .button {
+	button[type="submit"], .button {
 		@include nudge(padding, 0 1.2);
 		border: 0;
 		text-align: center;
