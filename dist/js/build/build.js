@@ -8084,7 +8084,7 @@ if (typeof JSON !== 'object') {
         domains                 : [],
         localStorage            : true,
         serverValidation        : true,
-        onlyVisibleFields       : true,
+        onlyVisibleFields       : false,
         appendErrorToPlaceholder: false,
         disableButtons          : false,
         fadeOutAnimationSpeed   : 500,
