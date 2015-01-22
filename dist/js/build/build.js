@@ -8237,11 +8237,11 @@ if (typeof JSON !== 'object') {
                 // Disable
                 if(disable){
                     // Disable the submit button.
-                    this.button.attr('disabled', 'disabled');
+                    this.button('button').prop('disabled', true);
                 }
                 else{
                     // Enable the submit button.
-                    this.button.removeAttr('disabled');
+                    this.button('button').prop('disabled', false);
                 }
             }
         },
