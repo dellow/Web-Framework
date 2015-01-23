@@ -16,21 +16,21 @@ body {
     font-family: $font_family_base;
 	word-wrap: break-word;
   	line-height: $line_height_base;
-	color: $color_text;
+	color: color(text, copy);
 }
 
 /* -- Links, Buttons & Hover Styles -- */
 // Links.
 a, button {
-	color: $color_text_link;
+	color: color(text, link);
 	text-decoration: none;
 	@include transition(color $animation ease, background $animation ease);
 	// Pseudo
 	&:hover {
-		color: $color_text_link_hover;
+		color: color(text, hover);
 	}
 	&:active {
-		color: darken($color_text_link_hover, 15%);
+		color: color(text, active);
 	}
 }
 
@@ -104,18 +104,18 @@ cite {
 	// Typeset.
 	p, li {
 		a {
-			background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link, 20%) 50%);
-			background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link, 20%) 50%);
-			background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link, 20%) 50%);
-			background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, lighten($color_text_link, 20%) 50%);
+			background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(text, link), 20%) 50%);
+			background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(text, link), 20%) 50%);
+			background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(text, link), 20%) 50%);
+			background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, lighten(color(text, link), 20%) 50%);
 			background-position: 0 100%;
 			background-repeat: repeat-x;
 			background-size: 100% 0.15rem;
 			&:hover, &:active, &:focus {
-				background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link_hover, 20%) 50%);
-				background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link_hover, 20%) 50%);
-				background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten($color_text_link_hover, 20%) 50%);
-				background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, lighten($color_text_link_hover, 20%) 50%);
+				background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(text, hover), 20%) 50%);
+				background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(text, hover), 20%) 50%);
+				background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(text, hover), 20%) 50%);
+				background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, lighten(color(text, hover), 20%) 50%);
 			}
 		}
 	}

@@ -13,11 +13,12 @@ $debug_mode: true;
 **/
 // Map
 $site_colors: (
-	color: (
-		base: #000000,
-		light: lighten(#000000, 10%),
-		dark: darken(#000000, 10%)
+	text: (
+		copy  : #3b5998,
+		link  : #C4122f,
+		hover : darken(#C4122f, 10%),
+		active: darken(#C4122f, 20%)
 	)
 );
 // Merge (again)
-$colors: map-merge($base_colors, $site_colors);
+$colors: map-merge($framework_colors, $site_colors);

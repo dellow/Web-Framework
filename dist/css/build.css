@@ -1122,7 +1122,7 @@ body {
   font-family: "Helvetica", Arial, "Trebuchet MS", Verdana, sans-serif;
   word-wrap: break-word;
   line-height: 24px;
-  color: #333333;
+  color: #3b5998;
 }
 
 /* -- Links, Buttons & Hover Styles -- */
@@ -1137,11 +1137,11 @@ a, button {
 }
 /* line 29, scss/base/_typeset.scss */
 a:hover, button:hover {
-  color: #3498DB;
+  color: #950e24;
 }
 /* line 32, scss/base/_typeset.scss */
 a:active, button:active {
-  color: #1d6fa5;
+  color: #670919;
 }
 
 /* -- Heading Formatting -- */
@@ -1229,10 +1229,10 @@ cite .profession {
 }
 /* line 114, scss/base/_typeset.scss */
 .content p a:hover, .content p a:active, .content p a:focus, .content li a:hover, .content li a:active, .content li a:focus {
-  background-image: -webkit-linear-gradient(top, transparent 50%, #8bc4ea 50%);
-  background-image: -moz-linear-gradient(top, transparent 50%, #8bc4ea 50%);
-  background-image: -o-linear-gradient(top, transparent 50%, #8bc4ea 50%);
-  background-image: linear-gradient(to bottom, transparent 50%, #8bc4ea 50%);
+  background-image: -webkit-linear-gradient(top, transparent 50%, #ea1f40 50%);
+  background-image: -moz-linear-gradient(top, transparent 50%, #ea1f40 50%);
+  background-image: -o-linear-gradient(top, transparent 50%, #ea1f40 50%);
+  background-image: linear-gradient(to bottom, transparent 50%, #ea1f40 50%);
 }
 /* line 124, scss/base/_typeset.scss */
 .content ul {
@@ -1569,19 +1569,6 @@ ul.alert.box li {
 /* line 70, scss/base/components/_buttons.scss */
 .btn.color-yellow:hover {
   background: #c29d0b;
-}
-
-/* line 63, scss/base/components/_buttons.scss */
-.btn.color-color {
-  background: #000000;
-}
-/* line 66, scss/base/components/_buttons.scss */
-.btn.color-color.disabled:hover {
-  background: #000000;
-}
-/* line 70, scss/base/components/_buttons.scss */
-.btn.color-color:hover {
-  background: black;
 }
 
 /* ==========================================================================
@@ -2457,18 +2444,13 @@ ul.alert.box li {
 }
 
 /* line 14, scss/base/components/_slabs.scss */
-.bg.color-social, .slab.color-social {
+.bg.color-text, .slab.color-text {
   color: inherit;
 }
 
 /* line 14, scss/base/components/_slabs.scss */
-.bg.color-color, .slab.color-color {
+.bg.color-social, .slab.color-social {
   color: inherit;
-  background: #000000;
-}
-/* line 18, scss/base/components/_slabs.scss */
-.bg.color-color.opp, .slab.color-color.opp {
-  background: black;
 }
 
 /* ==========================================================================

@@ -105,42 +105,37 @@ $base_colors: (
 		light: lighten(#F1C40F, 10%),
 		dark : darken(#F1C40F, 10%)
 	),
-	social: (
-		facebook : #3b5998,
-		google   : #dd4b39,
-		instagram: #517fa4,
-		linkedin : #007bb6,
-		pinterest: #cb2027,
-		quora    : #a82400,
-		snapchat : #fffc00,
-		twitter  : #00aced,
-		vimeo    : #aad450,
-		vine     : #00bf8f,
-		youtube  : #bb0000
+	text: (
+		copy  : #3b5998,
+		link  : #C4122f,
+		hover : darken(#C4122f, 10%),
+		active: darken(#C4122f, 20%)
 	)
 ) !default;
 // Social
 $social_colors: (
-	facebook  : #3b5998,
-	flickr    : #ff0084,
-	foursquare: #0072b1,
-	google    : #dd4b39,
-	instagram : #517fa4,
-	linkedin  : #007bb6,
-	pinterest : #cb2027,
-	quora     : #a82400,
-	snapchat  : #fffc00,
-	tumblr    : #32506d,
-	twitter   : #00aced,
-	vimeo     : #aad450,
-	vine      : #00bf8f,
-	youtube   : #bb0000
+	social: (
+		facebook  : #3b5998,
+		flickr    : #ff0084,
+		foursquare: #0072b1,
+		google    : #dd4b39,
+		instagram : #517fa4,
+		linkedin  : #007bb6,
+		pinterest : #cb2027,
+		quora     : #a82400,
+		snapchat  : #fffc00,
+		tumblr    : #32506d,
+		twitter   : #00aced,
+		vimeo     : #aad450,
+		vine      : #00bf8f,
+		youtube   : #bb0000
+	)
 ) !default;
 // Site
 $site_colors          : () !default;
 // Merge
-$colors               : map-merge($base_colors, $social_colors) !default;
-$colors               : map-merge($colors, $site_colors) !default;
+$framework_colors     : map-merge($base_colors, $social_colors) !default;
+$colors               : map-merge($framework_colors, $site_colors) !default;
 // Useful
 $color_odd_base       : #EDEDED !default;
 $color_even_base      : #F4F4F4 !default;
@@ -148,10 +143,6 @@ $color_error          : #b94a48 !default;
 $color_status         : #3a87ad !default;
 $color_success        : #468847 !default;
 $color_warning        : #c09853 !default;
-// Essentials
-$color_text           : color(grey, dark) !default;
-$color_text_link      : color(red) !default;
-$color_text_link_hover: color(blue) !default;
 
 /**
 * Z-Index Scale
