@@ -82,14 +82,11 @@
 
 @include respond-to($mobile_menu){
 	.mobile-animate {
-		max-height: 0px !important;
+		max-height: 0px;
 		display: block !important;
 		overflow-y: hidden !important;
 		-webkit-transform: translateZ(0) !important;
 		@include transition(max-height 1000ms ease-in-out);
-		&.slide-down {
-			max-height: 5000px !important;
-		}
 	}
 	.mobile-menu {
 		display: block;

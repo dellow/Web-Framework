@@ -10,7 +10,7 @@
 **/
 
 // Global vars
-window.mobile_breakpoint = 520;
+window.mobile_breakpoint = 768;
 
 /* ======================================================== */
 /* Libraries

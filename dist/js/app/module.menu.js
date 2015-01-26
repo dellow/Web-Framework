@@ -10,6 +10,10 @@
 ;(function(Module, $, window, undefined){
 	'use strict';
 
+	var primary    = $('.nav-primary'),
+		navigation = $('.navigation'),
+		height 	   = primary.outerHeight();
+
 	/**
 	 * Module.init
 	 * Init method for this module.
@@ -25,9 +29,6 @@
 	 * Binds related to this module.
 	**/
 	Module.binds = function(breakpoint){
-		var primary    = $('.nav-primary'),
-			navigation = $('.navigation');
-
 		// Apply classes
 		if(Helpers.mobile_mode(breakpoint)){
 			primary.addClass('mobile-animate');
@@ -47,20 +48,20 @@
 	 * Adds class to menu.
 	**/
 	Module.menu_reveal = function(el, primary){
-		if(primary.outerHeight() < 5){
+		if(primary.height() < 5){
 			// Toggle class to button
 			el.addClass('active-menu');
 			// Slide down with CSS animation
-			primary.addClass('slide-down');
+			primary.addClass('slide-down').css({'max-height': height + 'px'});
 		}
 		else{
 			// Toggle class to button
 			el.removeClass('active-menu');
 			// Slide down with CSS animation
-			primary.removeClass('slide-down');
+			primary.removeClass('slide-down').css({'max-height': ''});
 			// If hidden remove the `display: block`
 			if(primary.is(':hidden')){
-				primary.removeAttr('style');
+				primary.css({'display': ''});
 			}
 		}
 	}

@@ -135,7 +135,7 @@
         },
         run: function(){
             // Check for canvas.
-            if(!this.canvas.length){Helper.log("Map canvas not available.");return;};
+            if(!this.canvas.length){helpers.log("Map canvas not available.");return;};
             // Run
             this.maps_init();
         },
