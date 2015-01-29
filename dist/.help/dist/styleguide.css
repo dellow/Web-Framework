@@ -37,6 +37,11 @@ body.styleguide p:last-of-type {
 	line-height: 1.5;
 }
 
+/* Resizable */
+.pattern.resizable {
+	overflow: hidden;
+}
+
 /* Elements */
 .page-header {
 	margin-bottom: 2rem;
@@ -73,6 +78,7 @@ body.styleguide .pattern .pattern__view:not(.allow-margin) > * {
 	margin-bottom: 0;
 }
 .pattern .pattern__view {
+	height: 100%;
 	background: white;
 }
 .pattern .pattern__details {
@@ -84,11 +90,6 @@ body.styleguide .pattern .pattern__view:not(.allow-margin) > * {
 }
 .container .pattern .pattern__view {
 	padding: 15px 20px;
-}
-
-/* Forms */
-form input, form select, form textarea {
-	min-width: 50%;
 }
 
 /* Tables */

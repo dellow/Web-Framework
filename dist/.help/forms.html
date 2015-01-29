@@ -17,6 +17,7 @@
 <!-- ============================================================================== -->
 <!--                                                                         STYLES -->
 <!-- ============================================================================== -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="../css/build.css" media="all">
 </head>
 <body class="styleguide no-debug">
@@ -36,10 +37,67 @@
 <div class="container">
 
 	<section>
+		<div class="pattern resizable">
+			<div class="pattern__details">
+				<span class="pattern__title">Checkout</span>
+			</div>
+			<div class="pattern__view">
+				<form class="js-validate form-block" action="http://thispageurl.com/contact/" method="post">
+					<fieldset>
+						<!-- Text input -->
+						<div class="field">
+							<label for="cart__voucher">Voucher or Gift Code</label>
+							<input type="text" name="cart[voucher]" id="cart__voucher" class="voucher">
+							<button type="submit">Apply Code</button>
+						</div>
+					</fieldset>
+					<fieldset>
+						<!-- Text input -->
+						<div class="field">
+							<label for="cart__fullname">Name On Card <abbr title="Required">*</abbr></label>
+							<input type="text" name="cart[fullname]" id="cart__fullname" placeholder="Mr John Smith" data-validation-message="Please enter the name on your card" aria-required="true" required>
+						</div>
+						<!-- Text input -->
+						<div class="field">
+							<label for="cart__number">Card Number <abbr title="Required">*</abbr></label>
+							<input type="text" name="cart[number]" id="cart__number" placeholder="1234 5678 8765 4321" data-validation-message="Please enter a valid card number" aria-required="true" required>
+						</div>
+						<!-- Text input -->
+						<div class="field">
+							<label for="cart__exp_month">Expiration Date <abbr title="Required">*</abbr></label>
+							<select name="cart[exp_month]" id="cart__exp_month" class="v-small" data-validation-message="Please choose an expiry month" aria-required="true" required>
+								<option value="">Month</option>
+								<option value="Jan">Jan</option>
+							</select>
+							<select name="cart[exp_year]" id="cart__exp_year" class="v-small" data-validation-message="Please choose an expiry year" aria-required="true" required>
+								<option value="">Year</option>
+								<option value="2015">2015</option>
+							</select>
+						</div>
+						<!-- Text input -->
+						<div class="field">
+							<label for="cart__securitycode">Security Code <abbr title="Required">*</abbr></label>
+							<input type="text" name="cart[securitycode]" id="cart__securitycode" class="v-small" placeholder="123" data-validation-message="Please enter a valid security code" aria-required="true" required>
+							<span class="note"><a href="HREF_HERE">What's This?</a></span>
+						</div>
+					</fieldset>
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</section>
+
+</div>
+
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
 		<h2>Abstractions</h2>
 		<p>Use the display selector on the right hand side to switch between form style types. These abstractions are controlled via a <code>form-*</code> class on the <code>&lt;form></code> element. For example block style forms would have a <code>.form-block</code> class.</p>
 		<p>You can test the jQuery Form Validation script by trying to submit the form without any values. This page can also be saved as a .php file and tested with the included PHP Mailer script.</p>
-		<div class="pattern">
+		<div class="pattern resizable">
 			<div class="pattern__details">
 				<span class="pattern__title">
 					<div class="grid">
@@ -62,16 +120,16 @@
 				<form class="js-validate form-block" action="http://thispageurl.com/contact/" method="post">
 					<!-- Text input -->
 					<div class="field">
-						<label for="form__fullname">Name <abbr title="Required">*</abbr></label>
-						<input type="text" name="exampleForm[fullname]" id="form__fullname" placeholder="e.g. John Smith" data-validation-message="Please enter your name" aria-required="true" required>
+						<label for="exampleForm__fullname">Name <abbr title="Required">*</abbr></label>
+						<input type="text" name="exampleForm[fullname]" id="exampleForm__fullname" placeholder="e.g. John Smith" data-validation-message="Please enter your name" aria-required="true" required>
 						<span class="note">A note about this field.</span>
 					</div>
 					<!-- Float -->
 					<div class="field">
 						<!-- Readonly Input -->
 						<div class="field left">
-							<label for="form__readonly">Readonly Input <abbr title="Required">*</abbr></label>
-							<input type="text" name="exampleForm[readonly]" id="form__readonly" value="A readonly value" readonly>
+							<label for="exampleForm__readonly">Readonly Input <abbr title="Required">*</abbr></label>
+							<input type="text" name="exampleForm[readonly]" id="exampleForm__readonly" value="A readonly value" readonly>
 							<span class="note">A note about this field.</span>
 						</div>
 						<!-- Disabled Input -->
@@ -83,24 +141,24 @@
 					</div>
 					<!-- Email input -->
 					<div class="field">
-						<label for="form__emailaddress">Email Address <abbr title="Required">*</abbr></label>
-						<input type="email" name="exampleForm[emailaddress]" id="form__emailaddress" placeholder="e.g. john.smith@hotmail.com" data-validation-message="Please enter a valid email address" aria-required="true" required>
+						<label for="exampleForm__emailaddress">Email Address <abbr title="Required">*</abbr></label>
+						<input type="email" name="exampleForm[emailaddress]" id="exampleForm__emailaddress" placeholder="e.g. john.smith@hotmail.com" data-validation-message="Please enter a valid email address" aria-required="true" required>
 						<span class="note">A note about this field.</span>
 					</div>
 					<!-- Checkbox input -->
 					<div class="field">
 						<div class="label">Please choose a checkbox option <abbr title="Required">*</abbr></div>
 						<div class="field-container">
-							<label for="form__checkbox_option1">
-								<input type="checkbox" name="exampleForm[checkbox_option][]" id="form__checkbox_option1" value="Option #1" aria-required="true" required>
+							<label for="exampleForm__checkbox_option1">
+								<input type="checkbox" name="exampleForm[checkbox_option][]" id="exampleForm__checkbox_option1" value="Option #1" aria-required="true" required>
 								Option #1
 							</label>
-							<label for="form__checkbox_option2">
-								<input type="checkbox" name="exampleForm[checkbox_option][]" id="form__checkbox_option2" value="Option #2" aria-required="true" required>
+							<label for="exampleForm__checkbox_option2">
+								<input type="checkbox" name="exampleForm[checkbox_option][]" id="exampleForm__checkbox_option2" value="Option #2" aria-required="true" required>
 								Option #2
 							</label>
-							<label for="form__checkbox_option3">
-								<input type="checkbox" name="exampleForm[checkbox_option][]" id="form__checkbox_option3" value="Option #3" aria-required="true" required>
+							<label for="exampleForm__checkbox_option3">
+								<input type="checkbox" name="exampleForm[checkbox_option][]" id="exampleForm__checkbox_option3" value="Option #3" aria-required="true" required>
 								Option #3
 							</label>
 							<!-- Dummy -->
@@ -113,16 +171,16 @@
 					<div class="field">
 						<div class="label">Please choose a radio option <abbr title="Required">*</abbr></div>
 						<div class="field-container">
-							<label for="form__radio_option1">
-								<input type="radio" name="exampleForm[radio_option][]" id="form__radio_option1" value="Option #1" aria-required="true" required>
+							<label for="exampleForm__radio_option1">
+								<input type="radio" name="exampleForm[radio_option][]" id="exampleForm__radio_option1" value="Option #1" aria-required="true" required>
 								Option #1
 							</label>
-							<label for="form__radio_option2">
-								<input type="radio" name="exampleForm[radio_option][]" id="form__radio_option2" value="Option #2" aria-required="true" required>
+							<label for="exampleForm__radio_option2">
+								<input type="radio" name="exampleForm[radio_option][]" id="exampleForm__radio_option2" value="Option #2" aria-required="true" required>
 								Option #2
 							</label>
-							<label for="form__radio_option3">
-								<input type="radio" name="exampleForm[radio_option][]" id="form__radio_option3" value="Option #3" aria-required="true" required>
+							<label for="exampleForm__radio_option3">
+								<input type="radio" name="exampleForm[radio_option][]" id="exampleForm__radio_option3" value="Option #3" aria-required="true" required>
 								Option #3
 							</label>
 							<!-- Dummy -->
@@ -133,8 +191,8 @@
 					</div>
 					<!-- Select box -->
 					<div class="field">
-						<label for="form__select_option">Please choose a select option <abbr title="Required">*</abbr></label>
-						<select name="exampleForm[select_option]" id="form__select_option" data-validation-message="Please choose a select option" aria-required="true" required>
+						<label for="exampleForm__select_option">Please choose a select option <abbr title="Required">*</abbr></label>
+						<select name="exampleForm[select_option]" id="exampleForm__select_option" data-validation-message="Please choose a select option" aria-required="true" required>
 							<option value="">Please Select</option>
 							<option value="Option #1">Option #1</option>
 							<option value="Option #2">Option #2</option>
@@ -145,8 +203,8 @@
 					</div>
 					<!-- Textarea -->
 					<div class="field">
-						<label for="form__message">Message <abbr title="Required">*</abbr></label>
-						<textarea name="exampleForm[message]" id="form__message" data-validation-message="Please enter a message" aria-required="true" required></textarea>
+						<label for="exampleForm__message">Message <abbr title="Required">*</abbr></label>
+						<textarea name="exampleForm[message]" id="exampleForm__message" data-validation-message="Please enter a message" aria-required="true" required></textarea>
 						<span class="note">A note about this field.</span>
 					</div>
 					<button type="submit">Submit</button>
@@ -157,6 +215,7 @@
 	</section>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script src="../js/plugins/jquery.validation.js"></script>
 <script src="dist/prism/prism.js"></script>
 <script>
@@ -165,11 +224,18 @@
 	 * styleguide. Do not use these in production.
 	**/
 	$(function(){
+		// Validation
 		$('.js-validate').validation({
 			serverValidation        : false,
 			appendErrorToPlaceholder: true
 		});
 
+		// Resizable
+		$('.resizable').resizable({
+			grid: 50,
+			containment: 'section'
+		});
+		// Switcher
 		$('.js-switch').on('click', function(){
 			var data = 'form-' + $(this).data('switch');
 			var text = $(this).text();

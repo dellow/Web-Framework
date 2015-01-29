@@ -11,14 +11,6 @@
 	color: rgba(255, 0, 0, 0.6);
 }
 
-/* -- Reveal -- */
-.hide {
-	display: none;
-}
-.show {
-	display: block;
-}
-
 /* -- Clearing -- */
 .cf {
 	@extend %cf;
@@ -114,6 +106,9 @@
 /* -- Hide Elements -- */
 .u-hidden {
 	display: none;
+}
+.u-show {
+	display: block;
 }
 
 /* -- Vertical Alignment -- */

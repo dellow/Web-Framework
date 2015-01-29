@@ -23,17 +23,6 @@
 				@include nudge(padding, 0.25 0.5);
 	            display: block;
 	        }
-			// Abstractions
-	        &.active__tab {
-	            bottom: -1px;
-	    		z-index: $zindex-2;
-	            border-radius: $border_radius_base $border_radius_base 0 0;
-	            color: color(text, link);
-	            background: color(white);
-		        button {
-					@include nudge(padding, 0.35 0.5);
-		        }
-	        }
 			// Pseudo
 	        &:first-child {
 	            border-radius: $border_radius_base 0 0;
@@ -47,6 +36,17 @@
 			&:active {
 				background: lighten(color(grey), 1%);
 			}
+			// Abstractions
+	        &.active__tab {
+	            bottom: -1px;
+	    		z-index: $zindex-2;
+	            border-radius: $border_radius_base $border_radius_base 0 0;
+	            color: color(text, link);
+	            background: color(white);
+		        button {
+					@include nudge(padding, 0.35 0.5);
+		        }
+	        }
 		}
 	}
 	.tabs__system {
@@ -70,6 +70,13 @@
 				button {
 					text-align: center;
 				}
+				// Pseudo
+		        &:first-child {
+		            border-radius: $border_radius_base 0 0;
+		        }
+		        &:last-child {
+		            border-radius: 0 $border_radius_base 0 0;
+		        }
 				// Abstractions
 		        &.active__tab {
 		            bottom: 0;
@@ -77,13 +84,6 @@
 			        button {
 						@include nudge(padding, 0.25 0.5);
 			        }
-		        }
-				// Pseudo
-		        &:first-child {
-		            border-radius: $border_radius_base 0 0;
-		        }
-		        &:last-child {
-		            border-radius: 0 $border_radius_base 0 0;
 		        }
 			}
 		}

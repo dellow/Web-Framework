@@ -22,7 +22,7 @@ var $ = jQuery = require('jquery');
 /* Controllers
 /* ======================================================== */
 // Page Controller
-var PageController = require('./controller.page');
+require('./controller.page');
 
 /* ======================================================== */
 /* Helpers

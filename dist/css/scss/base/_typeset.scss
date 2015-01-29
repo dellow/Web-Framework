@@ -48,21 +48,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1, .alpha {
 	@include rem(font-size, $font_size_h1);
+	line-height: 1.4;
 }
 h2, .beta {
 	@include rem(font-size, $font_size_h2);
+	line-height: 1.6;
 }
 h3, .gamma {
 	@include rem(font-size, $font_size_h3);
+	line-height: 2;
 }
 h4, .delta {
 	@include rem(font-size, $font_size_h4);
+	line-height: 2;
 }
 h5, .epsilon {
 	@include rem(font-size, $font_size_h5);
+	line-height: 2;
 }
 h6, .zeta {
 	@include rem(font-size, $font_size_h6);
+	line-height: 2;
 }
 
 /* -- Paragraph -- */

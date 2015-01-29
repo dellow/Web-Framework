@@ -228,14 +228,14 @@
                 // Loader.
                 var loader = $(this.settings.preloaderTemplate).hide();
                 // Apply preloader.
-                el.css({'width':el.outerWidth(),'height':el.outerHeight(),'position': 'relative'}).html(loader).attr('data-loader-content', content);
+                el.css({'width':el.outerWidth(),'height':el.outerHeight(),'position': 'relative'}).html(loader).attr('data-loader-content', content).addClass('loading');
                 loader.css({'position':'absolute','top':'50%','left':'50%','margin-left':-loader.outerWidth()/2,'margin-top':-loader.outerHeight()/2}).show();
             }
             else{
                 // Content.
                 var content = JSON.parse(el.data('loader-content'));
                 // Remove preloader
-                el.html(content).removeAttr('data-loader-content').css({'width':'','height':'','position':''});
+                el.removeClass('loading').html(content).removeAttr('data-loader-content').css({'width':'','height':'','position':''});
             }
         },
         disable_button: function(disable){
@@ -439,7 +439,7 @@
 
             // Outcome.
             if(_self.error_array.length === 0){
-                _self.success('server', parameters);
+                _self.success('js', parameters);
             }
             else{
                 _self.validation_failure();

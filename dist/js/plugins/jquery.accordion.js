@@ -75,25 +75,26 @@
         run: function(){
             var _self = this;
 
-            var title   = $('> .' + _self.title_class, _self.$elem),
-                content = $('> .' + _self.section_class, _self.$elem);
+            var title   = $('> .' + _self.settings.title_class, _self.$elem),
+                content = $('> .' + _self.settings.section_class, _self.$elem);
 
             // Reset the accordion
-            $('.' + _self.active_section_class, _self.$elem).removeClass(_self.active_section_class);
-            $('.' + _self.active_title_class, _self.$elem).removeClass(_self.active_title_class);
+            $('.' + _self.settings.active_section_class, _self.$elem).removeClass(_self.settings.active_section_class);
+            $('.' + _self.settings.active_title_class, _self.$elem).removeClass(_self.settings.active_title_class);
 
             title.css({'cursor': 'pointer'});
             content.hide();
-            if(_self.openfirst){
-                title.first().show().addClass(_self.active_title_class);
-                content.first().show().addClass(_self.active_section_class);
+
+            if(_self.settings.openfirst){
+                title.first().show().addClass(_self.settings.active_title_class);
+                content.first().show().addClass(_self.settings.active_section_class);
             }
 
             title.on('click', function(){
-                if(!$(this).hasClass(_self.active_title_class)){
-                    $('.' + _self.active_section_class, _self.$elem).slideUp(500).removeClass(_self.active_section_class);
-                    $('.' + _self.active_title_class, _self.$elem).removeClass(_self.active_title_class);
-                    $(this).addClass(_self.active_title_class, _self.$elem).next().slideDown(500).addClass(_self.active_section_class);
+                if(!$(this).hasClass(_self.settings.active_title_class)){
+                    $('.' + _self.settings.active_section_class, _self.$elem).slideUp(500).removeClass(_self.settings.active_section_class);
+                    $('.' + _self.settings.active_title_class, _self.$elem).removeClass(_self.settings.active_title_class);
+                    $(this).addClass(_self.settings.active_title_class, _self.$elem).next().slideDown(500).addClass(_self.settings.active_section_class);
                 }
             });
         }

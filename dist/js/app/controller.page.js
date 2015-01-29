@@ -12,11 +12,11 @@
  *
 **/
 
-// Require
-require('../controllers/wiselinks');
-
 ;(function(Module, $, window, undefined){
 	'use strict';
+
+	// Require
+	require('../controllers/wiselinks');
 
 	/**
 	 * Module.init
