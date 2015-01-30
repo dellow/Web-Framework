@@ -151,13 +151,71 @@ form {
 			}
 		}
 		&.half {
-			max-width: (100% / 2);
+			max-width: (100% / 2) - 1;
 		}
 		&.small {
 			max-width: (100% / 3);
 		}
 		&.v-small {
 			max-width: (100% / 6);
+		}
+	}
+}
+
+@include respond-to($tablet){
+	form {
+		// Specific Fields
+		input, select, textarea {
+			&.voucher, &.coupon {
+				max-width: (100% / 2) - 1;
+				+ button[type="submit"] {
+					max-width: (100% / 2) - 1;
+				}
+			}
+			&.small {
+				max-width: (100% / 2) - 1;
+			}
+			&.v-small {
+				max-width: (100% / 3);
+			}
+		}
+	}
+}
+
+@include respond-to($mobile){
+	form {
+		// Specific Fields
+		input, select, textarea {
+			&.v-small {
+				max-width: (100% / 2) - 1;
+			}
+		}
+	}
+}
+
+@include respond-to(360px){
+	form {
+		// Specific Fields
+		input, select, textarea {
+			&.qty, &.voucher, &.coupon, &.half, &.small, &.v-small {
+				+ .note {
+					margin: 7px 0 0 0 !important;
+				}
+			}
+			&.voucher, &.coupon {
+				max-width: 100%;
+				width: 100%;
+				+ button[type="submit"] {
+					max-width: 100%;
+					width: 100%;
+					margin: 4px 0 2px;
+				}
+			}
+			&.v-small {
+				max-width: 100%;
+				width: 100%;
+				margin: 4px 0 2px;
+			}
 		}
 	}
 }

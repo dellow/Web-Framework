@@ -2517,7 +2517,7 @@ form input.voucher + button[type="submit"], form input.coupon + button[type="sub
 }
 /* line 153, scss/base/forms/_base.scss */
 form input.half, form select.half, form textarea.half {
-  max-width: 50%;
+  max-width: 49%;
 }
 /* line 156, scss/base/forms/_base.scss */
 form input.small, form select.small, form textarea.small {
@@ -2528,6 +2528,53 @@ form input.v-small, form select.v-small, form textarea.v-small {
   max-width: 16.66667%;
 }
 
+@media only screen and (max-width: 48em) {
+  /* line 169, scss/base/forms/_base.scss */
+  form input.voucher, form input.coupon, form select.voucher, form select.coupon, form textarea.voucher, form textarea.coupon {
+    max-width: 49%;
+  }
+  /* line 171, scss/base/forms/_base.scss */
+  form input.voucher + button[type="submit"], form input.coupon + button[type="submit"], form select.voucher + button[type="submit"], form select.coupon + button[type="submit"], form textarea.voucher + button[type="submit"], form textarea.coupon + button[type="submit"] {
+    max-width: 49%;
+  }
+  /* line 175, scss/base/forms/_base.scss */
+  form input.small, form select.small, form textarea.small {
+    max-width: 49%;
+  }
+  /* line 178, scss/base/forms/_base.scss */
+  form input.v-small, form select.v-small, form textarea.v-small {
+    max-width: 33.33333%;
+  }
+}
+@media only screen and (max-width: 28.4375em) {
+  /* line 189, scss/base/forms/_base.scss */
+  form input.v-small, form select.v-small, form textarea.v-small {
+    max-width: 49%;
+  }
+}
+@media only screen and (max-width: 22.5em) {
+  /* line 201, scss/base/forms/_base.scss */
+  form input.qty + .note, form input.voucher + .note, form input.coupon + .note, form input.half + .note, form input.small + .note, form input.v-small + .note, form select.qty + .note, form select.voucher + .note, form select.coupon + .note, form select.half + .note, form select.small + .note, form select.v-small + .note, form textarea.qty + .note, form textarea.voucher + .note, form textarea.coupon + .note, form textarea.half + .note, form textarea.small + .note, form textarea.v-small + .note {
+    margin: 7px 0 0 0 !important;
+  }
+  /* line 205, scss/base/forms/_base.scss */
+  form input.voucher, form input.coupon, form select.voucher, form select.coupon, form textarea.voucher, form textarea.coupon {
+    max-width: 100%;
+    width: 100%;
+  }
+  /* line 208, scss/base/forms/_base.scss */
+  form input.voucher + button[type="submit"], form input.coupon + button[type="submit"], form select.voucher + button[type="submit"], form select.coupon + button[type="submit"], form textarea.voucher + button[type="submit"], form textarea.coupon + button[type="submit"] {
+    max-width: 100%;
+    width: 100%;
+    margin: 4px 0 2px;
+  }
+  /* line 214, scss/base/forms/_base.scss */
+  form input.v-small, form select.v-small, form textarea.v-small {
+    max-width: 100%;
+    width: 100%;
+    margin: 4px 0 2px;
+  }
+}
 /* ==========================================================================
    Base > Forms > Form Block
    Block level forms
