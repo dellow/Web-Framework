@@ -15,7 +15,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-streamify": "0.0.5",
     "gulp-uglify": "^0.2.1",
-    "gulp-watch": "^0.6.4",
+    "gulp-watch": "^4.1.0",
     "tiny-lr": "^0.0.9",
     "jshint-stylish": "^0.4.0",
     "vinyl-source-stream": "^0.1.1",
