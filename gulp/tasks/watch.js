@@ -13,7 +13,8 @@ gulp.task('watch', function(){
 	server.listen(35729, function(err){
 		var browserify = function(){gulp.start('browserify')},
 		    compass    = function(){gulp.start('compass')},
-		    imagemin   = function(){gulp.start('imagemin')};
+		    imagemin   = function(){gulp.start('imagemin')},
+		    sprite     = function(){gulp.start('sprite')};
 
 		if(err){
 			return console.log(err);
@@ -25,5 +26,7 @@ gulp.task('watch', function(){
 		watch(GLOBAL.dist_dir + 'css/scss/**/*.scss', compass);
 		// Run Imagemin on image updates
 		watch(GLOBAL.dist_dir + 'images/**/*.*', imagemin);
+		// Run Sprites on image updates
+		watch(GLOBAL.dist_dir + 'images/icons/sprite/*.png', sprite);
 	});
 });

@@ -7,7 +7,6 @@ var gulp       = require('gulp'),
 	streamify  = require('gulp-streamify'),
 	uglify     = require('gulp-uglify'),
 	rename     = require('gulp-rename'),
-	filesize   = require('gulp-filesize'),
 	source     = require('vinyl-source-stream');
 
 /* ================================================== */
@@ -29,6 +28,5 @@ gulp.task('browserify', function(){
 		.pipe(gulpif(GLOBAL.is_production, streamify(uglify())))
 		.pipe(rename('build.js'))
 		.on('error', handleError)
-		.pipe(filesize())
 		.pipe(gulp.dest(GLOBAL.dist_dir + 'js/build/'));
 });
