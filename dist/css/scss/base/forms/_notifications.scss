@@ -28,37 +28,37 @@ form {
 			&.error {
 				color: $color_error;
 				border-color: lighten($color_error, 25%);
-				background: lighten($color_error, 40%);
+				background-color: lighten($color_error, 40%);
 				// Pseudo
 				&:focus {
-					background: lighten($color_error, 35%);
+					background-color: lighten($color_error, 35%);
 				}
 			}
 			&.status {
 				color: $color_status;
 				border-color: lighten($color_status, 25%);
-				background: lighten($color_status, 40%);
+				background-color: lighten($color_status, 40%);
 				// Pseudo
 				&:focus {
-					background: lighten($color_status, 35%);
+					background-color: lighten($color_status, 35%);
 				}
 			}
 			&.success {
 				color: $color_success;
 				border-color: lighten($color_success, 25%);
-				background: lighten($color_success, 40%);
+				background-color: lighten($color_success, 40%);
 				// Pseudo
 				&:focus {
-					background: lighten($color_success, 35%);
+					background-color: lighten($color_success, 35%);
 				}
 			}
 			&.warning {
 				color: $color_warning;
 				border-color: lighten($color_warning, 25%);
-				background: lighten($color_warning, 40%);
+				background-color: lighten($color_warning, 40%);
 				// Pseudo
 				&:focus {
-					background: lighten($color_warning, 35%);
+					background-color: lighten($color_warning, 35%);
 				}
 			}
 		}

@@ -130,7 +130,7 @@ form {
 	}
 
 	// Specific Fields
-	input, select, textarea {
+	label, .label, input, select, textarea {
 		&.qty, &.voucher, &.coupon, &.half, &.small, &.v-small {
 			display: inline-block !important;
 			+ .note {
@@ -149,6 +149,10 @@ form {
 				max-width: (100% / 1.5);
 				display: inline-block;
 			}
+		}
+		&.full {
+			width: 100% !important;
+			max-width: 100%;
 		}
 		&.half {
 			max-width: (100% / 2) - 1;

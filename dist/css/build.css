@@ -37,6 +37,12 @@
  * .foo {@include retina-image('logo', 'png', 100px, 25px);}
 **/
 /**
+ * underline
+ * Better underline.
+ *
+ * .foo {@include underline(red);}
+**/
+/**
  * transition
  * Cross browser transition.
  *
@@ -1227,46 +1233,46 @@ cite .profession {
   background-repeat: repeat-x;
   background-size: 100% 0.15rem;
 }
-/* line 120, scss/base/_typeset.scss */
+/* line 114, scss/base/_typeset.scss */
 .content p a:hover, .content p a:active, .content p a:focus, .content li a:hover, .content li a:active, .content li a:focus {
   background-image: -webkit-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: -moz-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: -o-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: linear-gradient(to bottom, transparent 50%, #ea1f40 50%);
 }
-/* line 130, scss/base/_typeset.scss */
+/* line 124, scss/base/_typeset.scss */
 .content ul {
   list-style-type: disc;
 }
-/* line 133, scss/base/_typeset.scss */
+/* line 127, scss/base/_typeset.scss */
 .content ul, .content ol {
   margin-left: 1.2em;
 }
-/* line 135, scss/base/_typeset.scss */
+/* line 129, scss/base/_typeset.scss */
 .content ul li, .content ol li {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
 }
-/* line 138, scss/base/_typeset.scss */
+/* line 132, scss/base/_typeset.scss */
 .content ul ul, .content ul ol, .content ol ul, .content ol ol {
   margin-left: 1.2em;
   list-style-type: circle;
 }
-/* line 144, scss/base/_typeset.scss */
+/* line 138, scss/base/_typeset.scss */
 .content dl dd {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
   text-indent: 24px;
   text-indent: 1.5rem;
 }
-/* line 153, scss/base/_typeset.scss */
+/* line 147, scss/base/_typeset.scss */
 .content.leading-p p:first-of-type {
   font-size: 20px;
   font-size: 1.25rem;
 }
 
 /* -- Hatnotes -- */
-/* line 161, scss/base/_typeset.scss */
+/* line 155, scss/base/_typeset.scss */
 .hatnote {
   padding-left: 24px;
   padding-left: 1.5rem;
@@ -1274,12 +1280,12 @@ cite .profession {
 }
 
 /* -- Source Formatting -- */
-/* line 168, scss/base/_typeset.scss */
+/* line 162, scss/base/_typeset.scss */
 p code {
   color: #2ECC71;
 }
 
-/* line 172, scss/base/_typeset.scss */
+/* line 166, scss/base/_typeset.scss */
 code {
   font-weight: 400;
   font-family: "source-code-pro", monospace;
@@ -1293,7 +1299,7 @@ code {
   tab-size: 4;
 }
 
-/* line 184, scss/base/_typeset.scss */
+/* line 178, scss/base/_typeset.scss */
 pre {
   padding: 12px 18px;
   padding: 0.75rem 1.125rem;
@@ -1303,7 +1309,7 @@ pre {
   background: #EDEDED;
 }
 
-/* line 191, scss/base/_typeset.scss */
+/* line 185, scss/base/_typeset.scss */
 kbd {
   padding: 6px 12px;
   padding: 0.375rem 0.75rem;
@@ -2492,83 +2498,88 @@ form button[type="submit"]:active, form button[type="reset"]:active, form .butto
   background: #cccccc;
 }
 /* line 134, scss/base/forms/_base.scss */
-form input.qty, form input.voucher, form input.coupon, form input.half, form input.small, form input.v-small, form select.qty, form select.voucher, form select.coupon, form select.half, form select.small, form select.v-small, form textarea.qty, form textarea.voucher, form textarea.coupon, form textarea.half, form textarea.small, form textarea.v-small {
+form label.qty, form label.voucher, form label.coupon, form label.half, form label.small, form label.v-small, form .label.qty, form .label.voucher, form .label.coupon, form .label.half, form .label.small, form .label.v-small, form input.qty, form input.voucher, form input.coupon, form input.half, form input.small, form input.v-small, form select.qty, form select.voucher, form select.coupon, form select.half, form select.small, form select.v-small, form textarea.qty, form textarea.voucher, form textarea.coupon, form textarea.half, form textarea.small, form textarea.v-small {
   display: inline-block !important;
 }
 /* line 136, scss/base/forms/_base.scss */
-form input.qty + .note, form input.voucher + .note, form input.coupon + .note, form input.half + .note, form input.small + .note, form input.v-small + .note, form select.qty + .note, form select.voucher + .note, form select.coupon + .note, form select.half + .note, form select.small + .note, form select.v-small + .note, form textarea.qty + .note, form textarea.voucher + .note, form textarea.coupon + .note, form textarea.half + .note, form textarea.small + .note, form textarea.v-small + .note {
+form label.qty + .note, form label.voucher + .note, form label.coupon + .note, form label.half + .note, form label.small + .note, form label.v-small + .note, form .label.qty + .note, form .label.voucher + .note, form .label.coupon + .note, form .label.half + .note, form .label.small + .note, form .label.v-small + .note, form input.qty + .note, form input.voucher + .note, form input.coupon + .note, form input.half + .note, form input.small + .note, form input.v-small + .note, form select.qty + .note, form select.voucher + .note, form select.coupon + .note, form select.half + .note, form select.small + .note, form select.v-small + .note, form textarea.qty + .note, form textarea.voucher + .note, form textarea.coupon + .note, form textarea.half + .note, form textarea.small + .note, form textarea.v-small + .note {
   margin: 7px 0 0 10px !important;
   display: inline-block !important;
 }
 /* line 141, scss/base/forms/_base.scss */
-form input.qty, form select.qty, form textarea.qty {
+form label.qty, form .label.qty, form input.qty, form select.qty, form textarea.qty {
   max-width: 56px;
 }
 /* line 144, scss/base/forms/_base.scss */
-form input.voucher, form input.coupon, form select.voucher, form select.coupon, form textarea.voucher, form textarea.coupon {
+form label.voucher, form label.coupon, form .label.voucher, form .label.coupon, form input.voucher, form input.coupon, form select.voucher, form select.coupon, form textarea.voucher, form textarea.coupon {
   max-width: 33.33333%;
   margin: 0;
   display: inline-block !important;
 }
 /* line 148, scss/base/forms/_base.scss */
-form input.voucher + button[type="submit"], form input.coupon + button[type="submit"], form select.voucher + button[type="submit"], form select.coupon + button[type="submit"], form textarea.voucher + button[type="submit"], form textarea.coupon + button[type="submit"] {
+form label.voucher + button[type="submit"], form label.coupon + button[type="submit"], form .label.voucher + button[type="submit"], form .label.coupon + button[type="submit"], form input.voucher + button[type="submit"], form input.coupon + button[type="submit"], form select.voucher + button[type="submit"], form select.coupon + button[type="submit"], form textarea.voucher + button[type="submit"], form textarea.coupon + button[type="submit"] {
   max-width: 66.66667%;
   display: inline-block;
 }
 /* line 153, scss/base/forms/_base.scss */
-form input.half, form select.half, form textarea.half {
+form label.full, form .label.full, form input.full, form select.full, form textarea.full {
+  width: 100% !important;
+  max-width: 100%;
+}
+/* line 157, scss/base/forms/_base.scss */
+form label.half, form .label.half, form input.half, form select.half, form textarea.half {
   max-width: 49%;
 }
-/* line 156, scss/base/forms/_base.scss */
-form input.small, form select.small, form textarea.small {
+/* line 160, scss/base/forms/_base.scss */
+form label.small, form .label.small, form input.small, form select.small, form textarea.small {
   max-width: 33.33333%;
 }
-/* line 159, scss/base/forms/_base.scss */
-form input.v-small, form select.v-small, form textarea.v-small {
+/* line 163, scss/base/forms/_base.scss */
+form label.v-small, form .label.v-small, form input.v-small, form select.v-small, form textarea.v-small {
   max-width: 16.66667%;
 }
 
 @media only screen and (max-width: 48em) {
-  /* line 169, scss/base/forms/_base.scss */
+  /* line 173, scss/base/forms/_base.scss */
   form input.voucher, form input.coupon, form select.voucher, form select.coupon, form textarea.voucher, form textarea.coupon {
     max-width: 49%;
   }
-  /* line 171, scss/base/forms/_base.scss */
+  /* line 175, scss/base/forms/_base.scss */
   form input.voucher + button[type="submit"], form input.coupon + button[type="submit"], form select.voucher + button[type="submit"], form select.coupon + button[type="submit"], form textarea.voucher + button[type="submit"], form textarea.coupon + button[type="submit"] {
     max-width: 49%;
   }
-  /* line 175, scss/base/forms/_base.scss */
+  /* line 179, scss/base/forms/_base.scss */
   form input.small, form select.small, form textarea.small {
     max-width: 49%;
   }
-  /* line 178, scss/base/forms/_base.scss */
+  /* line 182, scss/base/forms/_base.scss */
   form input.v-small, form select.v-small, form textarea.v-small {
     max-width: 33.33333%;
   }
 }
 @media only screen and (max-width: 28.4375em) {
-  /* line 189, scss/base/forms/_base.scss */
+  /* line 193, scss/base/forms/_base.scss */
   form input.v-small, form select.v-small, form textarea.v-small {
     max-width: 49%;
   }
 }
 @media only screen and (max-width: 22.5em) {
-  /* line 201, scss/base/forms/_base.scss */
+  /* line 205, scss/base/forms/_base.scss */
   form input.qty + .note, form input.voucher + .note, form input.coupon + .note, form input.half + .note, form input.small + .note, form input.v-small + .note, form select.qty + .note, form select.voucher + .note, form select.coupon + .note, form select.half + .note, form select.small + .note, form select.v-small + .note, form textarea.qty + .note, form textarea.voucher + .note, form textarea.coupon + .note, form textarea.half + .note, form textarea.small + .note, form textarea.v-small + .note {
     margin: 7px 0 0 0 !important;
   }
-  /* line 205, scss/base/forms/_base.scss */
+  /* line 209, scss/base/forms/_base.scss */
   form input.voucher, form input.coupon, form select.voucher, form select.coupon, form textarea.voucher, form textarea.coupon {
     max-width: 100%;
     width: 100%;
   }
-  /* line 208, scss/base/forms/_base.scss */
+  /* line 212, scss/base/forms/_base.scss */
   form input.voucher + button[type="submit"], form input.coupon + button[type="submit"], form select.voucher + button[type="submit"], form select.coupon + button[type="submit"], form textarea.voucher + button[type="submit"], form textarea.coupon + button[type="submit"] {
     max-width: 100%;
     width: 100%;
     margin: 4px 0 2px;
   }
-  /* line 214, scss/base/forms/_base.scss */
+  /* line 218, scss/base/forms/_base.scss */
   form input.v-small, form select.v-small, form textarea.v-small {
     max-width: 100%;
     width: 100%;
@@ -2621,56 +2632,49 @@ form.form-block input ~ .note, form.form-block .input ~ .note, form.form-block s
    Base > Forms > Form Inline Block
    Inline Block level forms
 ========================================================================== */
-/* line 7, scss/base/forms/_form-inline-block.scss */
-form.form-inline-block .field {
-  margin: 0;
-  display: inline-block;
-  vertical-align: top;
-}
-/* line 11, scss/base/forms/_form-inline-block.scss */
-form.form-inline-block .field label, form.form-inline-block .field .label, form.form-inline-block .field input, form.form-inline-block .field .input, form.form-inline-block .field select, form.form-inline-block .field textarea, form.form-inline-block .field .field-container {
-  width: 100%;
-  display: block;
-}
-/* line 18, scss/base/forms/_form-inline-block.scss */
+/* line 8, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block .field-container {
   height: 40px;
 }
-/* line 20, scss/base/forms/_form-inline-block.scss */
+/* line 10, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block .field-container label {
   width: auto;
   margin-right: 6px;
   margin-right: 0.375rem;
 }
-/* line 26, scss/base/forms/_form-inline-block.scss */
+/* line 16, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block .field-container span + input, form.form-inline-block .field-container span .input, form.form-inline-block .field-container span select, form.form-inline-block .field-container span textarea, form.form-inline-block .field-container span .field-container {
   margin: 0;
 }
-/* line 33, scss/base/forms/_form-inline-block.scss */
+/* line 23, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block label, form.form-inline-block .label, form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
   display: inline-block;
+  vertical-align: middle;
+}
+/* line 29, scss/base/forms/_form-inline-block.scss */
+form.form-inline-block textarea {
   vertical-align: top;
 }
-/* line 39, scss/base/forms/_form-inline-block.scss */
+/* line 34, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block label, form.form-inline-block .label {
   width: 35%;
   padding-right: 5%;
   line-height: 1.3;
 }
-/* line 43, scss/base/forms/_form-inline-block.scss */
+/* line 38, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block label input[type="checkbox"], form.form-inline-block label input[type="radio"], form.form-inline-block .label input[type="checkbox"], form.form-inline-block .label input[type="radio"] {
   margin: -2px 2px 0 0;
 }
-/* line 48, scss/base/forms/_form-inline-block.scss */
+/* line 43, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block label:first-of-type input, form.form-inline-block .label:first-of-type input {
   margin-left: 0;
 }
-/* line 55, scss/base/forms/_form-inline-block.scss */
+/* line 50, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
   width: 64%;
   margin: 0;
 }
-/* line 59, scss/base/forms/_form-inline-block.scss */
+/* line 54, scss/base/forms/_form-inline-block.scss */
 form.form-inline-block input ~ .note, form.form-inline-block .input ~ .note, form.form-inline-block select ~ .note, form.form-inline-block textarea ~ .note, form.form-inline-block .field-container ~ .note {
   margin-left: 35%;
 }
@@ -2858,41 +2862,41 @@ form.form-has-errors label.warning {
 form.form-has-errors input.error, form.form-has-errors .input.error, form.form-has-errors select.error, form.form-has-errors textarea.error, form.form-has-errors .field-container.error {
   color: #b94a48;
   border-color: #dca5a4;
-  background: #f1dcdc;
+  background-color: #f1dcdc;
 }
 /* line 33, scss/base/forms/_notifications.scss */
 form.form-has-errors input.error:focus, form.form-has-errors .input.error:focus, form.form-has-errors select.error:focus, form.form-has-errors textarea.error:focus, form.form-has-errors .field-container.error:focus {
-  background: #eacac9;
+  background-color: #eacac9;
 }
 /* line 37, scss/base/forms/_notifications.scss */
 form.form-has-errors input.status, form.form-has-errors .input.status, form.form-has-errors select.status, form.form-has-errors textarea.status, form.form-has-errors .field-container.status {
   color: #3a87ad;
   border-color: #8ec0d9;
-  background: #c7e0ec;
+  background-color: #c7e0ec;
 }
 /* line 42, scss/base/forms/_notifications.scss */
 form.form-has-errors input.status:focus, form.form-has-errors .input.status:focus, form.form-has-errors select.status:focus, form.form-has-errors textarea.status:focus, form.form-has-errors .field-container.status:focus {
-  background: #b4d5e6;
+  background-color: #b4d5e6;
 }
 /* line 46, scss/base/forms/_notifications.scss */
 form.form-has-errors input.success, form.form-has-errors .input.success, form.form-has-errors select.success, form.form-has-errors textarea.success, form.form-has-errors .field-container.success {
   color: #468847;
   border-color: #8ac38b;
-  background: #bdddbd;
+  background-color: #bdddbd;
 }
 /* line 51, scss/base/forms/_notifications.scss */
 form.form-has-errors input.success:focus, form.form-has-errors .input.success:focus, form.form-has-errors select.success:focus, form.form-has-errors textarea.success:focus, form.form-has-errors .field-container.success:focus {
-  background: #acd4ad;
+  background-color: #acd4ad;
 }
 /* line 55, scss/base/forms/_notifications.scss */
 form.form-has-errors input.warning, form.form-has-errors .input.warning, form.form-has-errors select.warning, form.form-has-errors textarea.warning, form.form-has-errors .field-container.warning {
   color: #c09853;
   border-color: #e2d0b0;
-  background: #f7f1e8;
+  background-color: #f7f1e8;
 }
 /* line 60, scss/base/forms/_notifications.scss */
 form.form-has-errors input.warning:focus, form.form-has-errors .input.warning:focus, form.form-has-errors select.warning:focus, form.form-has-errors textarea.warning:focus, form.form-has-errors .field-container.warning:focus {
-  background: #f0e6d6;
+  background-color: #f0e6d6;
 }
 /* line 67, scss/base/forms/_notifications.scss */
 form.form-has-errors .msg {
