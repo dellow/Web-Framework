@@ -23,4 +23,9 @@ releases/app_*
 # Files/Directories that probably should be ignored for a live project,
 # but for the sake of the Framework can't be ignored.
 # ---------------------------------------------------------------------------------
-# deploy/
+# src/deploy/releases/
+
+
+# EXCEPTIONS
+# Directories that are ignored that have a few exceptions.
+# ---------------------------------------------------------------------------------
