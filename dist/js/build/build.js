@@ -177,14 +177,14 @@ PageController.init($('.main'));
  *
 **/
 
-// Require
-require('../plugins/jquery.equal-heights');
-require('../plugins/jquery.lightbox');
-require('../plugins/jquery.slider');
-require('../plugins/jquery.validation');
-
 ;(function(Module, $, window, undefined){
     'use strict';
+
+    // Require
+    require('../plugins/jquery.equal-heights');
+    require('../plugins/jquery.lightbox');
+    require('../plugins/jquery.slider');
+    require('../plugins/jquery.validation');
 
     /**
      * Module.init

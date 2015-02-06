@@ -107,6 +107,13 @@ cite {
 
 /* -- Content Areas -- */
 .content {
+	// Margins
+	p {
+		@include nudge(margin-bottom, 1);
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
 	// Typeset.
 	p, li {
 		a {

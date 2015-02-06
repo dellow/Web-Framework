@@ -1223,7 +1223,16 @@ cite .profession {
 }
 
 /* -- Content Areas -- */
-/* line 112, scss/base/_typeset.scss */
+/* line 111, scss/base/_typeset.scss */
+.content p {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+}
+/* line 113, scss/base/_typeset.scss */
+.content p:last-of-type {
+  margin-bottom: 0;
+}
+/* line 119, scss/base/_typeset.scss */
 .content p a, .content li a {
   background-image: -webkit-linear-gradient(top, transparent 50%, #ef4d68 50%);
   background-image: -moz-linear-gradient(top, transparent 50%, #ef4d68 50%);
@@ -1233,46 +1242,46 @@ cite .profession {
   background-repeat: repeat-x;
   background-size: 100% 0.15rem;
 }
-/* line 114, scss/base/_typeset.scss */
+/* line 121, scss/base/_typeset.scss */
 .content p a:hover, .content p a:active, .content p a:focus, .content li a:hover, .content li a:active, .content li a:focus {
   background-image: -webkit-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: -moz-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: -o-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: linear-gradient(to bottom, transparent 50%, #ea1f40 50%);
 }
-/* line 124, scss/base/_typeset.scss */
+/* line 131, scss/base/_typeset.scss */
 .content ul {
   list-style-type: disc;
 }
-/* line 127, scss/base/_typeset.scss */
+/* line 134, scss/base/_typeset.scss */
 .content ul, .content ol {
   margin-left: 1.2em;
 }
-/* line 129, scss/base/_typeset.scss */
+/* line 136, scss/base/_typeset.scss */
 .content ul li, .content ol li {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
 }
-/* line 132, scss/base/_typeset.scss */
+/* line 139, scss/base/_typeset.scss */
 .content ul ul, .content ul ol, .content ol ul, .content ol ol {
   margin-left: 1.2em;
   list-style-type: circle;
 }
-/* line 138, scss/base/_typeset.scss */
+/* line 145, scss/base/_typeset.scss */
 .content dl dd {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
   text-indent: 24px;
   text-indent: 1.5rem;
 }
-/* line 147, scss/base/_typeset.scss */
+/* line 154, scss/base/_typeset.scss */
 .content.leading-p p:first-of-type {
   font-size: 20px;
   font-size: 1.25rem;
 }
 
 /* -- Hatnotes -- */
-/* line 155, scss/base/_typeset.scss */
+/* line 162, scss/base/_typeset.scss */
 .hatnote {
   padding-left: 24px;
   padding-left: 1.5rem;
@@ -1280,12 +1289,12 @@ cite .profession {
 }
 
 /* -- Source Formatting -- */
-/* line 162, scss/base/_typeset.scss */
+/* line 169, scss/base/_typeset.scss */
 p code {
   color: #2ECC71;
 }
 
-/* line 166, scss/base/_typeset.scss */
+/* line 173, scss/base/_typeset.scss */
 code {
   font-weight: 400;
   font-family: "source-code-pro", monospace;
@@ -1299,7 +1308,7 @@ code {
   tab-size: 4;
 }
 
-/* line 178, scss/base/_typeset.scss */
+/* line 185, scss/base/_typeset.scss */
 pre {
   padding: 12px 18px;
   padding: 0.75rem 1.125rem;
@@ -1309,7 +1318,7 @@ pre {
   background: #EDEDED;
 }
 
-/* line 185, scss/base/_typeset.scss */
+/* line 192, scss/base/_typeset.scss */
 kbd {
   padding: 6px 12px;
   padding: 0.375rem 0.75rem;

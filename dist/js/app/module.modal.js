@@ -7,11 +7,11 @@
  *
 **/
 
-// Require
-require('../plugins/jquery.modals');
-
 ;(function(Module, $, window, undefined){
 	'use strict';
+
+	// Require
+	require('../plugins/jquery.modals');
 
 	/**
 	 * Module.init
