@@ -31,6 +31,7 @@
  * onlyVisibleFields       : Boolean. Whether to only validate against visible fields or not.
  * appendErrorToPlaceholder: Boolean. Append the error message to the form field placeholder.
  * disableButtons          : Boolean. Disable the form buttons while processing.
+ * scrollToError           : Boolean. If enabled animates a scroll to the first field with an error.
  * fadeOutAnimationSpeed   : Integer. Speed to fade out the form on success.
  * serverID                : String. Post var to send to server side to identify AJAX response.
  * emailRegEx              : String. RegEx to check email addresses against.
@@ -93,6 +94,7 @@
         onlyVisibleFields       : false,
         appendErrorToPlaceholder: false,
         disableButtons          : false,
+        scrollToError           : true,
         fadeOutAnimationSpeed   : 500,
         serverID                : 'ajaxrequest',
         emailRegEx              : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
@@ -362,7 +364,7 @@
             // Add error class to form.
             _self.$elem.addClass('form-has-errors');
             // Add new ones.
-            $.each(arr, function(){
+            $.each(arr, function(index){
                 if($(this) == undefined){return;}
                 var a = $(this),
                     el = a[0].input;
@@ -389,7 +391,14 @@
                         el.parent().find('label, .label').append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
                     }
                 }
+                // Set errors on fieldset.
                 el.closest('fieldset').addClass('fieldset-has-errors');
+                // Scroll to first error field.
+                if(index == 0 && _self.settings.scrollToError){
+                    $('html,body').animate({
+                        scrollTop: el.offset().top
+                    }, 500);
+                }
             });
         },
         field_checker: function(field){
