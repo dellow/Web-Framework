@@ -17,6 +17,8 @@
 
 	// Require
 	require('../controllers/wiselinks');
+	require('./module.menu');
+	require('./module.binds');
 
 	/**
 	 * Module.init

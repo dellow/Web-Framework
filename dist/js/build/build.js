@@ -18,6 +18,8 @@
 
 	// Require
 	require('../controllers/wiselinks');
+	require('./module.menu');
+	require('./module.binds');
 
 	/**
 	 * Module.init
@@ -79,7 +81,7 @@
 	module.exports = PageController;
 
 }(window.PageController = window.PageController || {}, jQuery, window));
-},{"../controllers/wiselinks":6}],2:[function(require,module,exports){
+},{"../controllers/wiselinks":6,"./module.binds":4,"./module.menu":5}],2:[function(require,module,exports){
 /**
  *
  * Helpers
@@ -144,30 +146,22 @@ window.mobile_breakpoint = 768;
 var $ = jQuery = require('jquery');
 
 /* ======================================================== */
-/* Controllers
-/* ======================================================== */
-// Page Controller
-require('./controller.page');
-
-/* ======================================================== */
 /* Helpers
 /* ======================================================== */
 // Helpers
 require('./helpers');
 
 /* ======================================================== */
-/* Modules
+/* Controllers
 /* ======================================================== */
-// Mobile Menu
-require('./module.menu');
-// Binds
-require('./module.binds');
+// Page Controller
+require('./controller.page');
 
 /* ======================================================== */
 /* Go
 /* ======================================================== */
 PageController.init($('.main'));
-},{"./controller.page":1,"./helpers":2,"./module.binds":4,"./module.menu":5,"jquery":11}],4:[function(require,module,exports){
+},{"./controller.page":1,"./helpers":2,"jquery":11}],4:[function(require,module,exports){
 /**
  *
  * Module
