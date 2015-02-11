@@ -13,6 +13,7 @@
     "gulp-compass"        : "^2.0.3",
     "gulp-concat"         : "^2.2.0",
     "gulp-dalek"          : "^0.0.1",
+    "gulp-filesize"       : "^0.0.6",
     "gulp-if"             : "^1.2.1",
     "gulp-imagemin"       : "^0.5.0",
     "gulp-jasmine"        : "^0.2.0",

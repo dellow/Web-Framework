@@ -4,6 +4,7 @@
 var gulp       = require('gulp'),
 	gulpif     = require('gulp-if'),
 	browserify = require('browserify'),
+	filesize   = require('filesize'),
 	streamify  = require('gulp-streamify'),
 	uglify     = require('gulp-uglify'),
 	rename     = require('gulp-rename'),
