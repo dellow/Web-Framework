@@ -4,23 +4,11 @@
 ========================================================================== */
 /* -- Flex -- */
 .flex-grid {
+	@extend %flex;
 	width: 100% + $gutter;
 	margin-top: -$gutter;
 	position: relative;
 	left: -$gutter;
-	// Flex
-	display               : -webkit-box;
-	display               : -webkit-flex;
-	display               : -ms-flexbox;
-	display               : flex;
-	-webkit-box-orient    : horizontal;
-	-webkit-box-direction : normal;
-	-webkit-flex-direction: row;
-	-ms-flex-direction    : row;
-	flex-direction        : row;
-	-webkit-flex-wrap     : wrap;
-	-ms-flex-wrap         : wrap;
-	flex-wrap             : wrap;
 	// All columns
 	[class*="col-"] {
 		max-width              : $col_1 - $gutter;
