@@ -96,24 +96,6 @@ if [[ -e ./src/robots.txt ]]; then
 fi
 
 # ------------------------------------------------------------------------
-# Deployment Tool
-# ------------------------------------------------------------------------
-#
-if [[ -d ./deploy ]]; then
-	read -p "$(tput setaf 5)Do you need the deployment tool? y/n $(tput sgr0)" choice
-	if [[ $choice = "n" ]]; then
-		echo -e "$(tput setaf 3)Removing deployment tool...$(tput sgr0)"
-		rm -rf ./deploy
-		rm ./deploy.sh
-		rm ./.gitattributes
-	else
-		echo -e "$(tput setaf 3)Setting permissions on deployment tool...$(tput sgr0)"
-		chmod +x ./deploy.sh
-	fi
-	printf "\n"
-fi
-
-# ------------------------------------------------------------------------
 # Install WordPress
 # ------------------------------------------------------------------------
 #
