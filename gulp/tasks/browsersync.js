@@ -48,32 +48,22 @@ gulp.task('server', function(){
 	}
 
 	// Run Browserify on JS file changes
-	watch({
-		glob: GLOBAL.dist_dir + 'js/**/*.js'
-	}, browserify);
+	watch(GLOBAL.dist_dir + 'js/**/*.js', browserify);
 
 	// Run Compass on SCSS file changes
-	watch({
-		glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'
-	}, compass);
+	watch(GLOBAL.dist_dir + 'css/scss/**/*.scss', compass);
 
 	// Run Imagemin on image updates
-	watch({
-		glob: GLOBAL.dist_dir + 'images/**/*'
-	}, imagemin);
+	watch(GLOBAL.dist_dir + 'images/**/*', imagemin);
 
 	// Run Sprites on image updates
-	watch({
-		glob: GLOBAL.dist_dir + 'images/icons/sprite/*.png'
-	}, sprite);
+	watch(GLOBAL.dist_dir + 'images/icons/sprite/*.png', sprite);
 
 	// Reload on file changes
-	watch({
-		glob: [
-			GLOBAL.src_dir + '**/*.html',
-			GLOBAL.src_dir + '**/*.php',
-			GLOBAL.dist_dir + 'css/build.css',
-			GLOBAL.dist_dir + 'js/build/build.js'
-		]
-	}, reload);
+	watch([
+		GLOBAL.src_dir + '**/*.html',
+		GLOBAL.src_dir + '**/*.php',
+		GLOBAL.dist_dir + 'css/build.css',
+		GLOBAL.dist_dir + 'js/build/build.js'
+	], reload);
 });
