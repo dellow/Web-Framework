@@ -15,11 +15,6 @@
 			display: none;
 		}
 	}
-
-	/* -- Images & Alignment -- */
-	.thumb {
-		max-width: 40%;
-	}
 }
 
 // Respond to mobile
@@ -31,38 +26,6 @@
 	@each $element in $exclusions {
 		#{$element} {
 			display: none;
-		}
-	}
-
-	/* -- Images & Alignment -- */
-	.thumb {
-		width: 100%;
-		max-width: none;
-		float: none;
-		&.alignright {
-			margin-left: 0;
-		}
-		&.alignleft {
-			margin-right: 0;
-		}
-		img {
-			width: 100%;
-		}
-	}
-
-	/* -- Forms -- */
-	.form-inline, .form-inline-block, .form-block {
-		label, .label {
-			width: 100%;
-			display: block;
-		}
-		input, .input, select, textarea, .field-container, button, .button {
-			width: 100%;
-			margin: 0;
-			display: block;
-		}
-		button, .button {
-			@include nudge(margin-bottom, 0.25);
 		}
 	}
 }
