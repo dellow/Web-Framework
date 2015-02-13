@@ -15,42 +15,42 @@ echo -e "\n------------------------------------------------"
 echo -e "Installation in progress. Please wait..."
 
 # ---------------------------------------------------------------------------
-# Vars
+# Vars.
 # ---------------------------------------------------------------------------
 #
 # Set the start time
 start_seconds="$(date +%s)"
 
 # ------------------------------------------------------------------------
-# Remove initial `.git` directory
+# Remove initial `.git` directory.
 # ------------------------------------------------------------------------
 #
 echo -e "Removing initial .git directory..."
 rm -rf .git/         && \
 
 # ------------------------------------------------------------------------
-# Remove the `.sass-cache` directory
+# Remove the `.sass-cache` directory.
 # ------------------------------------------------------------------------
 #
 echo -e "Removing .sass-cache directory..."
 rm -rf .sass-cache/  && \
 
 # ------------------------------------------------------------------------
-# Remove .gitkeep files
+# Remove .gitkeep files.
 # ------------------------------------------------------------------------
 #
 echo -e "Removing any .gitkeep files..."
 find . -name ".gitkeep" -print0 | xargs -0 rm -rf  && \
 
 # ------------------------------------------------------------------------
-# Initialize a new Git instance
+# Initialize a new Git instance.
 # ------------------------------------------------------------------------
 #
 echo -e "Initialize new Git instance..."
 git init             && \
 
 # ------------------------------------------------------------------------
-# Remove the clean file
+# Remove the install script.
 # ------------------------------------------------------------------------
 #
 rm install.sh        && \
@@ -96,7 +96,7 @@ if [[ -e ./src/robots.txt ]]; then
 fi
 
 # ------------------------------------------------------------------------
-# Install WordPress
+# Install WordPress.
 # ------------------------------------------------------------------------
 #
 read -p "$(tput setaf 5)Would you like to install WordPress? y/n $(tput sgr0)" choice
@@ -109,7 +109,7 @@ fi
 printf "\n"
 
 # ------------------------------------------------------------------------
-# Check for a commit
+# Check for a commit.
 # ------------------------------------------------------------------------
 #
 read -p "$(tput setaf 5)Do you want to do an initial commit? y/n $(tput sgr0)" choice
@@ -120,35 +120,35 @@ fi
 printf "\n"
 
 # ------------------------------------------------------------------------
-# Update / get dependencies with Bundler
+# Update / get dependencies with Bundler.
 # ------------------------------------------------------------------------
 #
 echo -e "Getting Bundler dependencies..."
 bundle install                                        && \
 
 # ------------------------------------------------------------------------
-# Update / get dependencies with Bower
+# Update / get dependencies with Bower.
 # ------------------------------------------------------------------------
 #
 echo -e "Getting Bower dependencies..."
 bower install                                        && \
 
 # ------------------------------------------------------------------------
-# Update / get dependencies with NPM
+# Update / get dependencies with NPM.
 # ------------------------------------------------------------------------
 #
 echo -e "Getting NPM dependencies..."
 npm install                                          && \
 
 # ------------------------------------------------------------------------
-# Move bower dependency
+# Move bower dependency.
 # ------------------------------------------------------------------------
 #
 echo -e "Moving /dist/ directory to it's new home..."
 cp -r bower_components/framework-library/dist ./src  && \
 
 # ------------------------------------------------------------------------
-# Git commit
+# Git commit.
 # ------------------------------------------------------------------------
 #
 if [ "$INITIAL_COMMIT" = true ] ; then
@@ -160,14 +160,14 @@ fi
 printf "\n"
 
 # ------------------------------------------------------------------------
-# Create a dev branch
+# Create a dev branch.
 # ------------------------------------------------------------------------
 #
 echo -e "Creating a dev branch..."
 git branch dev
 
 # ---------------------------------------------------------------------------
-# Complete
+# Complete.
 # ---------------------------------------------------------------------------
 #
 end_seconds="$(date +%s)"
@@ -175,7 +175,7 @@ echo -e "$(tput setaf 2)Framework installed successfully in "$(expr $end_seconds
 echo -e "------------------------------------------------\n"
 
 # ------------------------------------------------------------------------
-# Run a Git status
+# Run a Git status.
 # ------------------------------------------------------------------------
 #
 git status

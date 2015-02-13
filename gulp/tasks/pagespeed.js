@@ -1,17 +1,20 @@
 /* ================================================== */
 /* Require
 /* ================================================== */
-var args      = require('yargs').argv,
-	gulp      = require('gulp'),
-	pagespeed = require('psi'),
-	fs 		  = require('fs-extra'),
-	header    = require('gulp-header');
+var args   = require('yargs').argv,
+	gulp   = require('gulp'),
+	psi    = require('psi'),
+	fs 	   = require('fs-extra'),
+	header = require('gulp-header');
 
 /* ================================================== */
 /* Vars
 /* ================================================== */
 var url  = args.url || 'http://google.com',
 	mode = args.mode || 'desktop';
+
+// Seems to freeze without this.
+console.log('Query URL: ' + url);
 
 /* ================================================== */
 /* Functions
@@ -40,12 +43,11 @@ function get_name(str){
 /* ================================================== */
 /* Task
 /* ================================================== */
-gulp.task('psi', function(){
-	pagespeed({
-		url     : url,
-		strategy: mode,
-		locale  : 'en_GB'
-	}, function(err, data){
+// var options = ['', mode, 'en_GB'];
+var options = [];
+
+gulp.task('psi', options, function(){
+	psi(url, function(err, data){
 		// Stats template.
 		var stats = ['-----------------------------------',
 			'Date: <%= date %>',
@@ -55,6 +57,8 @@ gulp.task('psi', function(){
 			'URL: <%= url %>',
 			'-',
 			'Page Title: <%= title %>',
+			'-',
+			'Strategy / Mode: <%= mode %>',
 			'-',
 			'Page Stats:',
 			'<%= pageStats %>',
@@ -74,6 +78,7 @@ gulp.task('psi', function(){
 				pageStats: convert_object(data.pageStats).split(',').join("\r\n"),
 				score    : data.score,
 				title    : data.title,
+				mode     : mode,
 				url      : data.id
 			}))
 			.pipe(gulp.dest('./logs/pagespeed'));
