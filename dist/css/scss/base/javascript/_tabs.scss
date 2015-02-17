@@ -41,7 +41,7 @@
 	            bottom: -1px;
 	    		z-index: $zindex-2;
 	            border-radius: $border_radius_base $border_radius_base 0 0;
-	            color: color(text, link);
+	            color: color(copy, link);
 	            background: color(white);
 		        button {
 					@include nudge(padding, 0.35 0.5);

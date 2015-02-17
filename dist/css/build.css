@@ -467,7 +467,7 @@ body:not(.no-debug) img {
 }
 /* line 64, scss/base/config/_debug.scss */
 body:not(.no-debug) img:after {
-  content: "Missing [alt] atrribute";
+  content: "Missing [alt] attribute";
 }
 /* line 69, scss/base/config/_debug.scss */
 body:not(.no-debug) img[alt] {
@@ -479,7 +479,7 @@ body:not(.no-debug) img[alt=""] {
 }
 /* line 77, scss/base/config/_debug.scss */
 body:not(.no-debug) img[alt=""]:after {
-  content: "[alt] atrribute empty";
+  content: "[alt] attribute empty";
 }
 /* line 84, scss/base/config/_debug.scss */
 body:not(.no-debug) a {
@@ -487,7 +487,7 @@ body:not(.no-debug) a {
 }
 /* line 86, scss/base/config/_debug.scss */
 body:not(.no-debug) a:after {
-  content: "Missing [title] atrribute";
+  content: "Missing [title] attribute";
 }
 /* line 91, scss/base/config/_debug.scss */
 body:not(.no-debug) a[title] {
@@ -1139,7 +1139,7 @@ body {
   font-family: "Helvetica", Arial, "Trebuchet MS", Verdana, sans-serif;
   word-wrap: break-word;
   line-height: 24px;
-  color: #333333;
+  color: #5f5659;
 }
 
 /* -- Links, Buttons & Hover Styles -- */
@@ -1164,6 +1164,7 @@ a:active, button:active {
 /* -- Heading Formatting -- */
 /* line 38, scss/base/_typeset.scss */
 h1, h2, h3, h4, h5, h6 {
+  color: #231f20;
   line-height: 1;
   -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
@@ -1171,47 +1172,47 @@ h1, h2, h3, h4, h5, h6 {
   -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 }
-/* line 45, scss/base/_typeset.scss */
+/* line 46, scss/base/_typeset.scss */
 h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
   margin: 0;
 }
 
-/* line 49, scss/base/_typeset.scss */
+/* line 50, scss/base/_typeset.scss */
 h1, .alpha {
   font-size: 48px;
   font-size: 3rem;
   line-height: 1.4;
 }
 
-/* line 53, scss/base/_typeset.scss */
+/* line 54, scss/base/_typeset.scss */
 h2, .beta {
   font-size: 36px;
   font-size: 2.25rem;
   line-height: 1.6;
 }
 
-/* line 57, scss/base/_typeset.scss */
+/* line 58, scss/base/_typeset.scss */
 h3, .gamma {
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 2;
 }
 
-/* line 61, scss/base/_typeset.scss */
+/* line 62, scss/base/_typeset.scss */
 h4, .delta {
   font-size: 18px;
   font-size: 1.125rem;
   line-height: 2;
 }
 
-/* line 65, scss/base/_typeset.scss */
+/* line 66, scss/base/_typeset.scss */
 h5, .epsilon {
   font-size: 16px;
   font-size: 1rem;
   line-height: 2;
 }
 
-/* line 69, scss/base/_typeset.scss */
+/* line 70, scss/base/_typeset.scss */
 h6, .zeta {
   font-size: 14px;
   font-size: 0.875rem;
@@ -1219,13 +1220,13 @@ h6, .zeta {
 }
 
 /* -- Paragraph -- */
-/* line 76, scss/base/_typeset.scss */
+/* line 77, scss/base/_typeset.scss */
 p:last-child {
   margin-bottom: 0;
 }
 
 /* -- General Formatting -- */
-/* line 83, scss/base/_typeset.scss */
+/* line 84, scss/base/_typeset.scss */
 p, li {
   -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
   -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
@@ -1234,22 +1235,22 @@ p, li {
   font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 }
 
-/* line 103, scss/base/_typeset.scss */
+/* line 104, scss/base/_typeset.scss */
 cite .profession {
   font-weight: 700;
 }
 
 /* -- Content Areas -- */
-/* line 111, scss/base/_typeset.scss */
+/* line 112, scss/base/_typeset.scss */
 .content p {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
 }
-/* line 113, scss/base/_typeset.scss */
+/* line 114, scss/base/_typeset.scss */
 .content p:last-of-type {
   margin-bottom: 0;
 }
-/* line 119, scss/base/_typeset.scss */
+/* line 120, scss/base/_typeset.scss */
 .content p a, .content li a {
   background-image: -webkit-linear-gradient(top, transparent 50%, #ef4d68 50%);
   background-image: -moz-linear-gradient(top, transparent 50%, #ef4d68 50%);
@@ -1259,46 +1260,46 @@ cite .profession {
   background-repeat: repeat-x;
   background-size: 100% 0.15rem;
 }
-/* line 121, scss/base/_typeset.scss */
+/* line 122, scss/base/_typeset.scss */
 .content p a:hover, .content p a:active, .content p a:focus, .content li a:hover, .content li a:active, .content li a:focus {
   background-image: -webkit-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: -moz-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: -o-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: linear-gradient(to bottom, transparent 50%, #ea1f40 50%);
 }
-/* line 131, scss/base/_typeset.scss */
+/* line 132, scss/base/_typeset.scss */
 .content ul {
   list-style-type: disc;
 }
-/* line 134, scss/base/_typeset.scss */
+/* line 135, scss/base/_typeset.scss */
 .content ul, .content ol {
   margin-left: 1.2em;
 }
-/* line 136, scss/base/_typeset.scss */
+/* line 137, scss/base/_typeset.scss */
 .content ul li, .content ol li {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
 }
-/* line 139, scss/base/_typeset.scss */
+/* line 140, scss/base/_typeset.scss */
 .content ul ul, .content ul ol, .content ol ul, .content ol ol {
   margin-left: 1.2em;
   list-style-type: circle;
 }
-/* line 145, scss/base/_typeset.scss */
+/* line 146, scss/base/_typeset.scss */
 .content dl dd {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
   text-indent: 24px;
   text-indent: 1.5rem;
 }
-/* line 154, scss/base/_typeset.scss */
+/* line 155, scss/base/_typeset.scss */
 .content.leading-p p:first-of-type {
   font-size: 20px;
   font-size: 1.25rem;
 }
 
 /* -- Hatnotes -- */
-/* line 162, scss/base/_typeset.scss */
+/* line 163, scss/base/_typeset.scss */
 .hatnote {
   padding-left: 24px;
   padding-left: 1.5rem;
@@ -1306,12 +1307,12 @@ cite .profession {
 }
 
 /* -- Source Formatting -- */
-/* line 169, scss/base/_typeset.scss */
+/* line 170, scss/base/_typeset.scss */
 p code {
   color: #2ECC71;
 }
 
-/* line 173, scss/base/_typeset.scss */
+/* line 174, scss/base/_typeset.scss */
 code {
   font-weight: 400;
   font-family: "source-code-pro", monospace;
@@ -1325,7 +1326,7 @@ code {
   tab-size: 4;
 }
 
-/* line 185, scss/base/_typeset.scss */
+/* line 186, scss/base/_typeset.scss */
 pre {
   padding: 12px 18px;
   padding: 0.75rem 1.125rem;
@@ -1335,7 +1336,7 @@ pre {
   background: #EDEDED;
 }
 
-/* line 192, scss/base/_typeset.scss */
+/* line 193, scss/base/_typeset.scss */
 kbd {
   padding: 6px 12px;
   padding: 0.375rem 0.75rem;
@@ -2277,7 +2278,7 @@ ul.alert.box li {
 }
 
 /* line 14, scss/base/components/_slabs.scss */
-.bg.color-text, .slab.color-text {
+.bg.color-copy, .slab.color-copy {
   color: inherit;
 }
 

@@ -13,8 +13,9 @@ $debug_mode: true;
 **/
 // Map
 $site_colors: (
-	text: (
-		copy  : #333333,
+	copy: (
+		header: #231f20,
+		body  : #5f5659,
 		link  : #C4122F,
 		hover : darken(#C4122F, 10%),
 		active: darken(#C4122F, 20%)

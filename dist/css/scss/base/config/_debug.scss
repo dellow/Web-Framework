@@ -63,7 +63,7 @@
 		    outline: $debug_outline_px dashed red;
 		    &:after {
 		    	@extend %debug-red;
-		    	content: "Missing [alt] atrribute";
+		    	content: "Missing [alt] attribute";
 		    }
 		}
 		img[alt] {
@@ -76,7 +76,7 @@
 		    outline: $debug_outline_px dashed yellow;
 		    &:after {
 		    	@extend %debug-yellow;
-		    	content: "[alt] atrribute empty";
+		    	content: "[alt] attribute empty";
 		    }
 		}
 
@@ -85,7 +85,7 @@
 		    outline: $debug_outline_px dashed yellow;
 		    &:after {
 		    	@extend %debug-yellow;
-		    	content: "Missing [title] atrribute";
+		    	content: "Missing [title] attribute";
 		    }
 		}
 		a[title] {

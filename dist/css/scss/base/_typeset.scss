@@ -16,26 +16,27 @@ body {
     font-family: $font_family_base;
 	word-wrap: break-word;
   	line-height: $line_height_base;
-	color: color(text, copy);
+	color: color(copy, body);
 }
 
 /* -- Links, Buttons & Hover Styles -- */
 // Links.
 a, button {
-	color: color(text, link);
+	color: color(copy, link);
 	text-decoration: none;
 	@include transition(color $animation ease, background $animation ease);
 	// Pseudo
 	&:hover {
-		color: color(text, hover);
+		color: color(copy, hover);
 	}
 	&:active {
-		color: color(text, active);
+		color: color(copy, active);
 	}
 }
 
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
+	color: color(copy, header);
 	line-height: 1;
 	-webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 	-moz-font-feature-settings   : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
@@ -117,12 +118,12 @@ cite {
 	// Typeset.
 	p, li {
 		a {
-			@include underline(lighten(color(text, link), 20%));
+			@include underline(lighten(color(copy, link), 20%));
 			&:hover, &:active, &:focus {
-				background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(text, hover), 20%) 50%);
-				background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(text, hover), 20%) 50%);
-				background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(text, hover), 20%) 50%);
-				background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, lighten(color(text, hover), 20%) 50%);
+				background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(copy, hover), 20%) 50%);
+				background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(copy, hover), 20%) 50%);
+				background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(copy, hover), 20%) 50%);
+				background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, lighten(color(copy, hover), 20%) 50%);
 			}
 		}
 	}
