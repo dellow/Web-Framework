@@ -1,10 +1,9 @@
 /* ================================================== */
 /* Require
 /* ================================================== */
-var gulp       = require('gulp'),
-	watch      = require('gulp-watch'),
-	lr         = require('tiny-lr'),
-	server     = lr();
+var gulp   = require('gulp'),
+	lr     = require('tiny-lr'),
+	server = lr();
 
 /* ================================================== */
 /* Task
@@ -15,11 +14,11 @@ gulp.task('watch', function(){
 			return console.log(err);
 		}
 
-		watch({glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'}, function(){
+		gulp.watch({glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'}, function(){
 			gulp.start('compass');
 		});
 
-		watch({glob: GLOBAL.dist_dir + 'js/**/*.js'}, function(){
+		gulp.watch({glob: GLOBAL.dist_dir + 'js/**/*.js'}, function(){
 			gulp.start('browserify');
 		});
 	});
