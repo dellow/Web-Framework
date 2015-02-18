@@ -3,7 +3,6 @@
 /* ================================================== */
 var args        = require('yargs').argv,
 	gulp        = require('gulp'),
-	watch       = require('gulp-watch'),
 	browserSync = require('browser-sync'),
 	reload      = browserSync.reload;
 
@@ -48,19 +47,19 @@ gulp.task('server', function(){
 	}
 
 	// Run Browserify on JS file changes
-	watch(GLOBAL.dist_dir + 'js/**/*.js', browserify);
+	gulp.watch(GLOBAL.dist_dir + 'js/**/*.js', browserify);
 
 	// Run Compass on SCSS file changes
-	watch(GLOBAL.dist_dir + 'css/scss/**/*.scss', compass);
+	gulp.watch(GLOBAL.dist_dir + 'css/scss/**/*.scss', compass);
 
 	// Run Imagemin on image updates
-	watch(GLOBAL.dist_dir + 'images/**/*', imagemin);
+	gulp.watch(GLOBAL.dist_dir + 'images/**/*', imagemin);
 
 	// Run Sprites on image updates
-	watch(GLOBAL.dist_dir + 'images/icons/sprite/*.png', sprite);
+	gulp.watch(GLOBAL.dist_dir + 'images/icons/sprite/*.png', sprite);
 
 	// Reload on file changes
-	watch([
+	gulp.watch([
 		GLOBAL.src_dir + '**/*.html',
 		GLOBAL.src_dir + '**/*.php',
 		GLOBAL.dist_dir + 'css/build.css',

@@ -1,10 +1,9 @@
 /* ================================================== */
 /* Require
 /* ================================================== */
-var gulp       = require('gulp'),
-	watch      = require('gulp-watch'),
-	lr         = require('tiny-lr'),
-	server     = lr();
+var gulp   = require('gulp'),
+	lr     = require('tiny-lr'),
+	server = lr();
 
 /* ================================================== */
 /* Task
@@ -21,12 +20,12 @@ gulp.task('watch', function(){
 		}
 
 		// Run Browserify on JS file changes
-		watch(GLOBAL.dist_dir + 'js/**/*.js', browserify);
+		gulp.watch(GLOBAL.dist_dir + 'js/**/*.js', browserify);
 		// Run Compass on SCSS file changes
-		watch(GLOBAL.dist_dir + 'css/scss/**/*.scss', compass);
+		gulp.watch(GLOBAL.dist_dir + 'css/scss/**/*.scss', compass);
 		// Run Imagemin on image updates
-		watch(GLOBAL.dist_dir + 'images/**/*.*', imagemin);
+		gulp.watch(GLOBAL.dist_dir + 'images/**/*.*', imagemin);
 		// Run Sprites on image updates
-		watch(GLOBAL.dist_dir + 'images/icons/sprite/*.png', sprite);
+		gulp.watch(GLOBAL.dist_dir + 'images/icons/sprite/*.png', sprite);
 	});
 });
