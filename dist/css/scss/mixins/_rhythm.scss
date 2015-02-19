@@ -36,13 +36,17 @@
     $px_sizes: ();
 
     @each $size in $sizes {
-        @if unit($size) != "" {
+        @if $size == "auto" {
+            $rem_sizes: append($rem_sizes, auto);
+            $px_sizes : append($px_sizes, auto);
+        }
+        @else if unit($size) != "" {
             $rem_sizes: append($rem_sizes, $size);
-            $px_sizes: append($px_sizes, $size);
+            $px_sizes : append($px_sizes, $size);
         }
         @else {
             $rem_sizes: append($rem_sizes, px-to-rem($size * $mn));
-            $px_sizes: append($px_sizes, $size * $mn);
+            $px_sizes : append($px_sizes, $size * $mn);
         }
     }
 

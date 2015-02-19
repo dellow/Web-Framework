@@ -86,7 +86,7 @@
 			background-color: transparent;
 			&:before, &:after {
 				top: 0;
-				background: color(orange);
+				background: color(copy, link);
 			}
 			&:before {
 				transform: rotate(45deg);
@@ -134,7 +134,7 @@
 		position: absolute;
 		left: 0; top: 100px;
 		z-index: $zindex-1;
-		background: color(red);
+		background: color(copy, link);
 		li {
 			margin: 0;
 			display: block;
@@ -143,7 +143,7 @@
 				display: block;
 				&:hover {
 					color: color(black);
-					background: color(red, dark);
+					background: darken(color(copy, link), 10%);
 				}
 			}
 		}
