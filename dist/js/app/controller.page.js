@@ -2,7 +2,7 @@
  *
  * PageController
  *
- * Copyright 2014, Author Name
+ * Copyright 2015, Author Name
  * Some information on the license.
  *
  * Loads pages via Ajax thanks to WiseLinks.
@@ -49,7 +49,7 @@
 	            Helpers.log("Wiselinks status: '" + status);
 
 	            // Check for Google Analytics.
-				if(typeof window.ga !== "undefined"){
+        		if(window.ga_active){
 					// Register Analytics Page View.
 					ga('send', 'pageview', {
 						'page'      : url,
@@ -62,7 +62,7 @@
 
 			$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
 	            Helpers.log("Wiselinks status: '" + status);
-	            window.location.replace(window.base_url + '404');
+	            window.location.replace(window.config.base_url + '404');
 		    });
 	    });
 	}

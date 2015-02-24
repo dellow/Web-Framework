@@ -2,7 +2,7 @@
  *
  * Helpers
  *
- * Copyright 2014, Author Name
+ * Copyright 2015, Author Name
  * Some information on the license.
  *
  * Various helper functions in vanilla JavaScript.
@@ -17,14 +17,16 @@
 	 * Safe console log.
 	**/
 	Helpers.log = function(message, alertlog){
-		alertlog = (typeof alertlog === 'undefined') ? false : true;
-		if(typeof console === 'undefined' || typeof console.log === 'undefined'){
-			if(alertlog){
-				alert(message);
+		if(window.debugging){
+			alertlog = (typeof alertlog === 'undefined') ? false : true;
+			if(typeof console === 'undefined' || typeof console.log === 'undefined'){
+				if(alertlog){
+					alert(message);
+				}
 			}
-		}
-		else {
-			console.log(message);
+			else {
+				console.log(message);
+			}
 		}
 	}
 

@@ -2,7 +2,7 @@
  *
  * Module
  *
- * Copyright 2014, Author Name
+ * Copyright 2015, Author Name
  * Some information on the license.
  *
 **/

@@ -2,7 +2,7 @@
  *
  * Module
  *
- * Copyright 2014, Stew Dellow
+ * Copyright 2015, Stew Dellow
  * Some information on the license.
  *
 **/

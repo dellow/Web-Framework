@@ -3,7 +3,7 @@
  *
  * PageController
  *
- * Copyright 2014, Author Name
+ * Copyright 2015, Author Name
  * Some information on the license.
  *
  * Loads pages via Ajax thanks to WiseLinks.
@@ -50,7 +50,7 @@
 	            Helpers.log("Wiselinks status: '" + status);
 
 	            // Check for Google Analytics.
-				if(typeof window.ga !== "undefined"){
+        		if(window.ga_active){
 					// Register Analytics Page View.
 					ga('send', 'pageview', {
 						'page'      : url,
@@ -63,7 +63,7 @@
 
 			$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
 	            Helpers.log("Wiselinks status: '" + status);
-	            window.location.replace(window.base_url + '404');
+	            window.location.replace(window.config.base_url + '404');
 		    });
 	    });
 	}
@@ -86,7 +86,7 @@
  *
  * Helpers
  *
- * Copyright 2014, Author Name
+ * Copyright 2015, Author Name
  * Some information on the license.
  *
  * Various helper functions in vanilla JavaScript.
@@ -101,14 +101,16 @@
 	 * Safe console log.
 	**/
 	Helpers.log = function(message, alertlog){
-		alertlog = (typeof alertlog === 'undefined') ? false : true;
-		if(typeof console === 'undefined' || typeof console.log === 'undefined'){
-			if(alertlog){
-				alert(message);
+		if(window.debugging){
+			alertlog = (typeof alertlog === 'undefined') ? false : true;
+			if(typeof console === 'undefined' || typeof console.log === 'undefined'){
+				if(alertlog){
+					alert(message);
+				}
 			}
-		}
-		else {
-			console.log(message);
+			else {
+				console.log(message);
+			}
 		}
 	}
 
@@ -129,15 +131,17 @@
  *
  * Application or Website name
  *
- * Copyright 2014, Author Name
+ * Copyright 2015, Author Name
  * Some information on the license.
  *
  * To include jQuery or any other library in a module pass it into the self invoking function.
  *
 **/
 
-// Global vars
+// Global settings.
 window.mobile_breakpoint = 768;
+window.debugging         = false;
+window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
 /* ======================================================== */
 /* Libraries
@@ -166,7 +170,7 @@ PageController.init($('.main'));
  *
  * Module
  *
- * Copyright 2014, Author Name
+ * Copyright 2015, Author Name
  * Some information on the license.
  *
 **/
@@ -260,7 +264,7 @@ PageController.init($('.main'));
  *
  * Module
  *
- * Copyright 2014, Author Name
+ * Copyright 2015, Author Name
  * Some information on the license.
  *
 **/
