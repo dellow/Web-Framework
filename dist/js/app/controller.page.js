@@ -12,7 +12,7 @@
  *
 **/
 
-;(function(Module, $, window, undefined){
+;(function(Controller, $, window, undefined){
 	'use strict';
 
 	// Require
@@ -21,13 +21,13 @@
 	require('./module.binds');
 
 	/**
-	 * Module.init
+	 * Controller.init
 	 * Init method for this module
 	**/
-	Module.init = function(el){
+	Controller.init = function(el){
 		$(function(){
             // Run page load events.
-			Module.page_load();
+			Controller.page_load();
 			// Init WiseLinks
 			window.wiselinks = new Wiselinks(el);
 			// WiseLinks events
@@ -42,7 +42,7 @@
 			$(document).off('page:always').on('page:always', function(event, xhr, settings){
 	            Helpers.log("Wiselinks page loading completed");
             	// Run page load events.
-				Module.page_load();
+				Controller.page_load();
 		    });
 
 			$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
@@ -68,15 +68,15 @@
 	}
 
 	/**
-	 * Module.page_load
+	 * Controller.page_load
 	 * Run on page load.
 	**/
-	Module.page_load = function(){
+	Controller.page_load = function(){
 		Menu.init(window.mobile_breakpoint);
 		Binds.init();
 	}
 
 	// Export
-	module.exports = PageController;
+	Controller.exports = PageController;
 
 }(window.PageController = window.PageController || {}, jQuery, window));

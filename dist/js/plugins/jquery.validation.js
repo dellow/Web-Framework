@@ -96,7 +96,7 @@
         onlyVisibleFields       : false,
         appendErrorToPlaceholder: false,
         disableButtons          : false,
-        scrollToError           : true,
+        scrollToError           : false,
         fadeOutAnimationSpeed   : 500,
         serverID                : 'ajaxrequest',
         emailRegEx              : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
@@ -220,6 +220,8 @@
             this.error_array = [];
             // Create an array for checkboxes and radio inputs.
             this.group_array = [];
+            // Create an array for messages that have no fields.
+            this.leftovers = [];
         },
         ajax_request: function(url, request){
             return $.ajax({
@@ -254,11 +256,11 @@
                 // Disable
                 if(disable){
                     // Disable the submit button.
-                    this.button('button').prop('disabled', true);
+                    this.button.prop('disabled', true);
                 }
                 else{
                     // Enable the submit button.
-                    this.button('button').prop('disabled', false);
+                    this.button.prop('disabled', false);
                 }
             }
         },
@@ -354,7 +356,7 @@
             $('.' + form.settings.errorClass, form.$elem).removeClass(form.settings.errorClass);
             $('.' + form.settings.errorBoxClass, form.$elem).remove();
         },
-        set_errors: function(arr){
+        attach_errors: function(arr){
             var _self = this;
 
             // Remove empty elements.
@@ -363,6 +365,8 @@
             });
             // Remove previous errors.
             _self.reset_errors();
+            // Un-disable stuff.
+            _self.disable_button(false);
             // Add error class to form.
             _self.$elem.addClass('form-has-errors');
             // Add new ones.
@@ -370,36 +374,44 @@
                 if($(this) == undefined){return;}
                 var a = $(this),
                     el = a[0].input;
+
                 // Get error message.
                 var error = (a[0].msg !== '') ? a[0].msg : _self.settings.defaultErrorMsg;
                 // Separator.
                 var message = (_self.settings.msgSep) ? (error) ? _self.settings.msgSep + ' <span class="msg">' + error + '</span>' : '' : '<span class="msg">' + error + '</span>';
-                // Apply error class to field.
-                el.addClass(_self.settings.errorClass).parent('.field').addClass('field-has-errors');
-                // Field specific actions.
-                if(el.attr('type') === 'checkbox' || el.attr('type') === 'radio'){
-                    // Add error element to field.
-                    el.closest('.field').find('label, .label').first().append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
-                    // Apply to nearest label if checkbox or radio.
-                    el.closest('label').addClass(_self.settings.errorClass);
-                }
-                else{
-                    if(_self.settings.appendErrorToPlaceholder){
-                        el.parent().find('label, .label').addClass(_self.settings.errorClass);
-                        el.attr('placeholder', error);
+
+                // Check element exists in the DOM.
+                if(el.length && el.attr('type') !== 'hidden'){
+                    // Apply error class to field.
+                    el.addClass(_self.settings.errorClass).parent('.field').addClass('field-has-errors');
+                    // Field specific actions.
+                    if(el.attr('type') === 'checkbox' || el.attr('type') === 'radio'){
+                        // Add error element to field.
+                        el.closest('.field').find('label, .label').first().append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
+                        // Apply to nearest label if checkbox or radio.
+                        el.closest('label').addClass(_self.settings.errorClass);
                     }
                     else{
-                        // Add error element to field.
-                        el.parent().find('label, .label').append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
+                        if(_self.settings.appendErrorToPlaceholder){
+                            el.parent().find('label, .label').addClass(_self.settings.errorClass);
+                            el.attr('placeholder', error);
+                        }
+                        else{
+                            // Add error element to field.
+                            el.parent().find('label, .label').append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
+                        }
+                    }
+                    // Set errors on fieldset.
+                    el.closest('fieldset').addClass('fieldset-has-errors');
+                    // Scroll to first error field.
+                    if(index == 0 && _self.settings.scrollToError){
+                        $('html,body').animate({
+                            scrollTop: (el.offset().top - 25)
+                        }, 500);
                     }
                 }
-                // Set errors on fieldset.
-                el.closest('fieldset').addClass('fieldset-has-errors');
-                // Scroll to first error field.
-                if(index == 0 && _self.settings.scrollToError){
-                    $('html,body').animate({
-                        scrollTop: el.offset().top
-                    }, 500);
+                else{
+                    _self.leftovers.push(error);
                 }
             });
         },
@@ -477,21 +489,16 @@
                 var ajax_promise = _self.ajax_request(_self.form_action, _self.$elem.serialize() + '&' + _self.settings.serverID + '=true');
 
                 // Process promise.
-                ajax_promise.done(function(response){
-                    // Response.
-                    response = (typeof response.fields !== 'undefined') ? response.fields : response;
+                ajax_promise.done(function(xhr){
                     // If error.
-                    if(response.error){
+                    if(xhr.type == 'error'){
                         // Loops through the response and adds them to the error_array.
-                        for(var key in response.error){
-                            var a = response.error[key];
-                            if(a.field !== undefined){
-                                var obj = {
-                                    input: $('[name="' + a.field + '"]', _self.$elem),
-                                    msg  : a.msg
-                                }
-                                _self.error_array.push(obj);
+                        for(var i = 0, ii = xhr.fields.length; i < ii; i++){
+                            var obj = {
+                                input: $('[name="' + xhr.fields[i] + '"]', _self.$elem),
+                                msg  : xhr.responses[i]
                             }
+                            _self.error_array.push(obj);
                         }
                     }
 
@@ -541,10 +548,10 @@
             }
             else if(!_self.settings.disableAjax && type == 'js'){
                 // Ajax request.
-                var ajax_promise = _self.ajax_request(null, _self.$elem.serialize());
+                var ajax_promise = _self.ajax_request(_self.form_action, _self.$elem.serialize());
 
                 // Process promise.
-                ajax_promise.done(function(response){
+                ajax_promise.always(function(response){
                     _self.$elem.fadeOut(_self.settings.fadeOutAnimationSpeed, function(){
                         // Validation Complete.
                         _self.validation_complete();
@@ -553,10 +560,6 @@
                         // Callback
                         _self.settings.successCallback.call(_self, callback_parameters);
                     });
-                }).fail(function(xhr, ajaxOptions, thrownError){
-                    // Log it.
-                    helpers.log(xhr);
-                    helpers.log(thrownError);
                 });
             }
             else{
@@ -594,7 +597,7 @@
             // Process for 0.5 second.
             setTimeout(function(){
                 // Set errors
-                _self.set_errors(_self.error_array, _self.$elem);
+                _self.attach_errors(_self.error_array, _self.$elem);
                 // Destroy preloader.
                 _self.apply_preloader(_self.button, true);
             }, 500);
