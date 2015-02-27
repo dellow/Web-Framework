@@ -64,9 +64,18 @@
 <link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" data-device="iphone|io7|retina,iphone|io6|retina">
 <link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-320x460.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" data-device="iphone|ios6">
 <!-- ============================================================================== -->
-<!--                                                                        HELPERS -->
+<!--                                                                        VENDORS -->
 <!-- ============================================================================== -->
 <script src="dist/js/vendor/modernizr.min.js"></script>
+<!-- ============================================================================== -->
+<!--                                                                         CONFIG -->
+<!-- ============================================================================== -->
+<script>
+window.config = {
+	ga      : "UA-XXXXXXXX-1",
+	base_url: ""
+}
+</script>
 <!-- ============================================================================== -->
 <!--                                                                      ANALYTICS -->
 <!-- ============================================================================== -->
@@ -76,18 +85,22 @@
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+// GA Account ID.
+ga('create', window.config.ga, 'auto');
+// Require: Display features.
+ga('require', 'displayfeatures');
+// GA Page View.
+ga('send', 'pageview', {
+    'dimension1': WURFL.complete_device_name,
+    'dimension2': WURFL.form_factor,
+    'dimension3': WURFL.is_mobile
+});
 </script>
 </head>
 <body>
 <!-- ============================================================================== -->
 <!--                                                                     JAVASCRIPT -->
 <!-- ============================================================================== -->
-<script>
-window.config = {
-	ga      : "UA-XXXXXXXX-1",
-	base_url: ""
-}
-</script>
 <script src="dist/js/build/build.js"></script>
 </body>
 </html>
