@@ -110,7 +110,7 @@ cite {
 	// Margins
 	p {
 		@include nudge(margin-bottom, 1);
-		&:last-of-type {
+		&:last-child {
 			margin-bottom: 0;
 		}
 	}

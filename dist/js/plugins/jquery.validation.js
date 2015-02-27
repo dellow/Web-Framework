@@ -28,6 +28,7 @@
  * domains                 : Array. Adds to default array of top level domains for the email checker to spell check against.
  * localStorage            : Boolean. Whether to use localStorage to save the field values if the page gets refreshed.
  * serverValidation        : Boolean. Whether to use server validation or not.
+ * disableAjax             : Boolean. Disables AJAX. serverValidation must be false.
  * onlyVisibleFields       : Boolean. Whether to only validate against visible fields or not.
  * appendErrorToPlaceholder: Boolean. Append the error message to the form field placeholder.
  * disableButtons          : Boolean. Disable the form buttons while processing.
@@ -91,6 +92,7 @@
         domains                 : [],
         localStorage            : true,
         serverValidation        : true,
+        disableAjax             : false,
         onlyVisibleFields       : false,
         appendErrorToPlaceholder: false,
         disableButtons          : false,
@@ -537,7 +539,7 @@
                     _self.settings.successCallback.call(_self, callback_parameters);
                 });
             }
-            else if(type == 'js'){
+            else if(!_self.settings.disableAjax && type == 'js'){
                 // Ajax request.
                 var ajax_promise = _self.ajax_request(null, _self.$elem.serialize());
 
@@ -558,6 +560,11 @@
                 });
             }
             else{
+                // Validation Complete.
+                _self.validation_complete();
+                // Callback
+                _self.settings.successCallback.call(_self, callback_parameters);
+
                 return true;
             }
         },

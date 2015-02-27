@@ -89,7 +89,7 @@
             // API Key
             _self.key = (_self.settings.apiKey !== '') ? '&key=' + _self.settings.apiKey : ''; // Must be empty string, not `null`.
             // Canvas
-            _self.canvas = $('#' + _self.settings.canvas, _self.$elem);
+            _self.map_canvas = $('#' + _self.settings.canvas, _self.$elem);
 
             // Do jQuery event binds.
             _self.binds();
@@ -109,7 +109,7 @@
                 click: function(){
                     if(!pointer_active){
                         _self.$elem.addClass('map-is-active');
-                        _self.canvas.css({'pointer-events': 'auto'});
+                        _self.map_canvas.css({'pointer-events': 'auto'});
                         pointer_active = true;
                     }
                 },
@@ -118,7 +118,7 @@
                         timeout = window.setTimeout(function(){
                             window.clearTimeout(timeout);
                             _self.$elem.addClass('map-is-active');
-                            _self.canvas.css({'pointer-events': 'auto'});
+                            _self.map_canvas.css({'pointer-events': 'auto'});
                             pointer_active = true;
                         }, _self.settings.hoverThreshold);
                     }
@@ -127,27 +127,35 @@
                     if(pointer_active){
                         window.clearTimeout(timeout);
                         _self.$elem.removeClass('map-is-active');
-                        _self.canvas.css({'pointer-events': 'none'});
+                        _self.map_canvas.css({'pointer-events': 'none'});
                         pointer_active = false;
                     }
                 }
             }, _self.selector);
         },
         run: function(){
+            var _self = this;
+
             // Check for canvas.
-            if(!this.canvas.length){helpers.log("Map canvas not available.");return;};
-            // Run
-            this.maps_init();
+            if(_self.map_canvas.length){
+                // Run
+                _self.maps_init();
+            }
+            else{
+                helpers.log("Map canvas not available.");
+            }
         },
         maps_init: function(){
             var _self = this;
 
             // Load API.
             $.getScript('https://www.google.com/jsapi', function(){
+
                 // Get API
                 google.load('maps', '3', {
                     other_params: 'sensor=false&region=GB&libraries=geometry' + _self.key,
                     callback: function(){
+
                         // Map Type
                         switch(_self.settings.map_type.toLowerCase()){
                             case 'roadmap' : _self.settings.map_type = google.maps.MapTypeId.ROADMAP; break;
@@ -169,13 +177,13 @@
                             draggable             : _self.settings.mapDraggable,
                             styles                : _self.settings.mapStyles
                         });
+
                         // Start Geocoder.
                         var geocoder = new google.maps.Geocoder();
                         // Loop through locations.
                         for(var i = 0, ii = _self.settings.locations.length; i < ii; i++){
                             geocoder.geocode({'address': _self.settings.locations[i]}, _self.geocode_found());
                         }
-
                     }
                 });
             });
@@ -190,7 +198,7 @@
                     _self.set_position(results[0].geometry.location);
                 }
                 else{
-                    Helper.log("Can't Geolocated that location.");
+                    helpers.log("Can't Geolocate that location.");
                 }
             }
         },

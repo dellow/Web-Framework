@@ -1246,7 +1246,7 @@ cite .profession {
   margin-bottom: 1.5rem;
 }
 /* line 113, scss/base/_typeset.scss */
-.content p:last-of-type {
+.content p:last-child {
   margin-bottom: 0;
 }
 /* line 119, scss/base/_typeset.scss */
