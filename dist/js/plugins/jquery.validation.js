@@ -563,12 +563,14 @@
                 });
             }
             else{
+                // Unbind submit.
+                _self.$elem.unbind('submit');
                 // Validation Complete.
                 _self.validation_complete();
                 // Callback
                 _self.settings.successCallback.call(_self, callback_parameters);
-
-                return true;
+                // Trigger submit after unbind.
+                _self.$elem.trigger('submit');
             }
         },
         process: function(){
