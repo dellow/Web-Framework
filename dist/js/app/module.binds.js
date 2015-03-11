@@ -10,11 +10,13 @@
 ;(function(Module, $, window, undefined){
     'use strict';
 
-    // Require
+    // Require :: NPM
+    require('fancybox');
+    // Require :: Plugins
     require('../plugins/jquery.equal-heights');
-    require('../plugins/jquery.lightbox');
-    require('../plugins/jquery.slider');
     require('../plugins/jquery.validation');
+    // Require :: Vendor
+    require('../plugins/vendor/jquery.slider');
 
     /**
      * Module.init
@@ -32,9 +34,10 @@
      * Equal height elements.
     **/
     Module.equal_heights = function(){
-        if($('.js-eh').length){
-            $('.js-eh').equalHeights();
-        }
+        // DOM check.
+        if(!$('.js-eh').length){return};
+        // Init plugin.
+        $('.js-eh').equalHeights();
     }
 
     /**
@@ -42,14 +45,15 @@
      * Lightbox events.
     **/
     Module.lightboxes = function(){
-        if($('.js-lightbox').length){
-            $('.js-lightbox').fancybox({
-                autoWidth    : true,
-                autoHeight   : true,
-                autoScale    : true,
-                transitionIn : 'fade'
-            });
-        }
+        // DOM check.
+        if(!$('.js-lightbox').length){return};
+        // Init plugin.
+        $('.js-lightbox').fancybox({
+            autoWidth    : true,
+            autoHeight   : true,
+            autoScale    : true,
+            transitionIn : 'fade'
+        });
     }
 
     /**
@@ -57,21 +61,22 @@
      * Slider events.
     **/
     Module.sliders = function(){
-        if($('.js-slider').length){
-            $('.js-slider').bxSlider({
-                auto        : false,
-                controls    : true,
-                pager       : false,
-                autoReload  : true,
-                infiniteLoop: true,
-                moveSlides  : 1,
-                breaks      : [
-                    {screen: 0, slides: 1, pager: false},
-                    {screen: 460, slides: 2},
-                    {screen: 768, slides: 3}
-                ]
-            });
-        }
+        // DOM check.
+        if(!$('.js-slider').length){return};
+        // Init plugin.
+        $('.js-slider').bxSlider({
+            auto        : true,
+            controls    : true,
+            pager       : false,
+            autoReload  : true,
+            infiniteLoop: true,
+            moveSlides  : 1,
+            breaks      : [
+                {screen: 0, slides: 1, pager: false},
+                {screen: 460, slides: 2},
+                {screen: 768, slides: 3}
+            ]
+        });
     }
 
     /**
@@ -79,12 +84,13 @@
      * Form validation events.
     **/
     Module.validation = function(){
-        if($('.js-validate').length){
-            $('.js-validate').validation({
-                serverValidation: false,
-                msgSep          : ''
-            });
-        }
+        // DOM check.
+        if(!$('.js-validate').length){return};
+        // Init plugin.
+        $('.js-validate').validation({
+            serverValidation        : false,
+            appendErrorToPlaceholder: true
+        });
     }
 
     // Export

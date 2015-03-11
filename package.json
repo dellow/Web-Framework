@@ -21,7 +21,12 @@
     "yargs": "^1.2.2"
   },
   "dependencies": {
-    "jquery": "*"
+    "jquery"           : "*",
+    "dropzone"         : "*",
+    "waypoints"        : "*",
+    "fancybox"         : "*",
+    "jquery-touchswipe": "*",
+    "jquery.scrollto"  : "*"
   },
   "engines": {
     "node": ">=0.10.0"
