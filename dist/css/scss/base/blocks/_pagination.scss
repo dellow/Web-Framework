@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Base > Modules > Pagination
+   Base > Blocks > Pagination
    Description goes here.
 ========================================================================== */
 /* -- Pagination -- */
-.module--pagination {
+.pagination {
 	@extend %cf;
 	.page-numbers {
 		@include nudge(padding, 0.25 0.5);

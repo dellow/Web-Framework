@@ -11,6 +11,7 @@
 
 // Global settings.
 window.mobile_breakpoint = 768;
+window.wiselinks_enabled = true;
 window.debugging         = false;
 window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
@@ -23,13 +24,13 @@ var $ = jQuery = require('jquery');
 /* ======================================================== */
 /* Helpers
 /* ======================================================== */
-// Helpers
+// Helpers.
 require('./helpers');
 
 /* ======================================================== */
 /* Controllers
 /* ======================================================== */
-// Page Controller
+// Page Controller.
 require('./controller.page');
 
 /* ======================================================== */

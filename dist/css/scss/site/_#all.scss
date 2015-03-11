@@ -3,26 +3,26 @@
    Imports all the partials.
 ========================================================================== */
 // Core
-@import 'imports',
+@import 'placeholders',
+		'imports',
 		'sprites',
 		'icons',
-		'placeholders',
 		'typeset',
 		'global',
-		'sections',
 		'dev';
 
-// Page
-@import 'page/home';
-
 // Components
-@import 'components/header',
-		'components/footer',
-		'components/buttons',
+@import 'components/buttons',
 		'components/grids',
 		'components/slabs',
 		'components/forms',
 		'components/menus';
+
+// Blocks
+@import 'blocks/global';
+
+// Page
+@import 'page/home';
 
 // Misc
 @import 'fixes',

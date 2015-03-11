@@ -228,7 +228,7 @@
                 type    : 'POST',
                 url     : url,
                 data    : request,
-                dataType: 'json'
+                dataType: 'JSON'
             });
         },
         apply_preloader: function(el, destroy){

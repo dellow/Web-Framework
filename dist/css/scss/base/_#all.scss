@@ -3,12 +3,12 @@
    Imports all the partials.
 ========================================================================== */
 // Config
-@import 'config/placeholders',
-		'config/reset',
+@import 'config/reset',
 		'config/debug';
 
 // Core
-@import 'utility-classes',
+@import 'placeholders',
+		'utility-classes',
 		'misc',
 		'core',
 		'typeset';
@@ -20,20 +20,18 @@
 		'components/grid',
 		'components/menus',
 		'components/slabs',
-		'components/tables';
+		'components/tables',
+		'components/forms/base',
+		'components/forms/form-block',
+		'components/forms/form-inline-block',
+		'components/forms/form-inline',
+		'components/forms/customised',
+		'components/forms/notifications',
+		'components/forms/placeholders';
 
-// Modules
-@import 'modules/breadcrumbs',
-		'modules/pagination';
-
-// Forms
-@import 'forms/base',
-		'forms/form-block',
-		'forms/form-inline-block',
-		'forms/form-inline',
-		'forms/customised',
-		'forms/notifications',
-		'forms/placeholders';
+// Blocks
+@import 'blocks/breadcrumbs',
+		'blocks/pagination';
 
 // JavaScript
 @import 'javascript/accordion',

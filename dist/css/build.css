@@ -153,40 +153,6 @@
    Imports all the partials.
 ========================================================================== */
 /* ==========================================================================
-   Base > Config > Placeholders
-   Some default placeholders for the framework.
-========================================================================== */
-/* line 6, scss/base/config/_placeholders.scss */
-.cf, .grid, div.table, .module--pagination, form .field {
-  zoom: 1;
-}
-/* line 8, scss/base/config/_placeholders.scss */
-.cf:before, .grid:before, div.table:before, .module--pagination:before, form .field:before, .cf:after, .grid:after, div.table:after, .module--pagination:after, form .field:after {
-  content: "";
-  display: table;
-}
-/* line 12, scss/base/config/_placeholders.scss */
-.cf:after, .grid:after, div.table:after, .module--pagination:after, form .field:after {
-  clear: both;
-}
-
-/* line 18, scss/base/config/_placeholders.scss */
-.flex-grid {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-/* ==========================================================================
    Base > Config > Reset
    Reset styles
 ========================================================================== */
@@ -588,6 +554,40 @@ body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea) {
 /* line 190, scss/base/config/_debug.scss */
 body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
   content: "Using ID's!";
+}
+
+/* ==========================================================================
+   Base > Placeholders
+   Some default placeholders for the framework.
+========================================================================== */
+/* line 6, scss/base/_placeholders.scss */
+.cf, .grid, div.table, form .field, .pagination {
+  zoom: 1;
+}
+/* line 8, scss/base/_placeholders.scss */
+.cf:before, .grid:before, div.table:before, form .field:before, .pagination:before, .cf:after, .grid:after, div.table:after, form .field:after, .pagination:after {
+  content: "";
+  display: table;
+}
+/* line 12, scss/base/_placeholders.scss */
+.cf:after, .grid:after, div.table:after, form .field:after, .pagination:after {
+  clear: both;
+}
+
+/* line 18, scss/base/_placeholders.scss */
+.flex-grid {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 /* ==========================================================================
@@ -1120,8 +1120,8 @@ hr.styled-seperator {
 }
 
 /* ==========================================================================
-   Base > Rhythm
-   The framework rhythm.
+   Base > Typeset
+   App fonts and type settings.
 ========================================================================== */
 /* -- HTML -- */
 /* line 6, scss/base/_typeset.scss */
@@ -2415,106 +2415,69 @@ table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight
 }
 
 /* ==========================================================================
-   Base > Modules > Breadcrumb
-   Description goes here.
-========================================================================== */
-/* -- Breadcrumb -- */
-/* line 7, scss/base/modules/_breadcrumbs.scss */
-.module--breadcrumb > a {
-  font-weight: 700;
-}
-
-/* ==========================================================================
-   Base > Modules > Pagination
-   Description goes here.
-========================================================================== */
-/* -- Pagination -- */
-/* line 8, scss/base/modules/_pagination.scss */
-.module--pagination .page-numbers {
-  padding: 6px 12px;
-  padding: 0.375rem 0.75rem;
-  border-radius: 3px;
-  display: inline-block;
-  color: #FFFFFF;
-  background: #C4122f;
-  -webkit-transition: background-color 300ms ease;
-  -moz-transition: background-color 300ms ease;
-  -o-transition: background-color 300ms ease;
-  transition: background-color 300ms ease;
-}
-/* line 16, scss/base/modules/_pagination.scss */
-.module--pagination .page-numbers.current {
-  background: #950e24;
-}
-/* line 20, scss/base/modules/_pagination.scss */
-.module--pagination .page-numbers:hover {
-  background: #950e24;
-}
-
-/* ==========================================================================
    Base > Forms > Base
    Styling for elements within a form tag
 ========================================================================== */
-/* line 5, scss/base/forms/_base.scss */
+/* line 5, scss/base/components/forms/_base.scss */
 form {
   position: relative;
 }
-/* line 9, scss/base/forms/_base.scss */
+/* line 9, scss/base/components/forms/_base.scss */
 form .left {
   width: 49%;
   float: left;
 }
-/* line 13, scss/base/forms/_base.scss */
+/* line 13, scss/base/components/forms/_base.scss */
 form .right {
   width: 49%;
   float: right;
 }
-/* line 19, scss/base/forms/_base.scss */
+/* line 19, scss/base/components/forms/_base.scss */
 form .note {
   font-size: 90%;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(65))";
   filter: alpha(opacity=65);
   opacity: 0.65;
 }
-/* line 23, scss/base/forms/_base.scss */
+/* line 23, scss/base/components/forms/_base.scss */
 form span.note {
   margin-left: 12px;
   margin-left: 0.75rem;
 }
-/* line 28, scss/base/forms/_base.scss */
+/* line 28, scss/base/components/forms/_base.scss */
 form .field {
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
   position: relative;
 }
-/* line 33, scss/base/forms/_base.scss */
+/* line 33, scss/base/components/forms/_base.scss */
 form .field.left, form .field.right {
   margin-bottom: 0;
 }
-/* line 39, scss/base/forms/_base.scss */
+/* line 39, scss/base/components/forms/_base.scss */
 form fieldset {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
 }
-/* line 44, scss/base/forms/_base.scss */
+/* line 44, scss/base/components/forms/_base.scss */
 form label, form .label {
   margin: 0 0 5px;
   position: relative;
 }
-/* line 47, scss/base/forms/_base.scss */
+/* line 47, scss/base/components/forms/_base.scss */
 form label abbr, form .label abbr {
   color: #C4122f;
 }
-/* line 50, scss/base/forms/_base.scss */
+/* line 50, scss/base/components/forms/_base.scss */
 form label input[type="radio"], form label input[type="checkbox"], form .label input[type="radio"], form .label input[type="checkbox"] {
   margin-left: 12px;
   margin-left: 0.75rem;
 }
-/* line 55, scss/base/forms/_base.scss */
+/* line 55, scss/base/components/forms/_base.scss */
 form label:first-child input[type="radio"], form label:first-child input[type="checkbox"], form .label:first-child input[type="radio"], form .label:first-child input[type="checkbox"] {
   margin-left: 0;
 }
-/* line 62, scss/base/forms/_base.scss */
+/* line 62, scss/base/components/forms/_base.scss */
 form input, form .input, form select, form textarea, form button[type="submit"], form button[type="reset"], form .button {
   height: 40px;
   border: 1px solid #cccccc;
@@ -2529,38 +2492,38 @@ form input, form .input, form select, form textarea, form button[type="submit"],
   -o-transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
   transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
 }
-/* line 73, scss/base/forms/_base.scss */
+/* line 73, scss/base/components/forms/_base.scss */
 form input:hover, form input:active, form .input:hover, form .input:active, form select:hover, form select:active, form textarea:hover, form textarea:active, form button[type="submit"]:hover, form button[type="submit"]:active, form button[type="reset"]:hover, form button[type="reset"]:active, form .button:hover, form .button:active {
   border-color: #b3b3b3;
 }
-/* line 76, scss/base/forms/_base.scss */
+/* line 76, scss/base/components/forms/_base.scss */
 form input:focus, form .input:focus, form select:focus, form textarea:focus, form button[type="submit"]:focus, form button[type="reset"]:focus, form .button:focus {
   border-color: #8c8c8c;
 }
-/* line 79, scss/base/forms/_base.scss */
+/* line 79, scss/base/components/forms/_base.scss */
 form input[readonly], form input[readonly]:hover, form input.readonly, form input.readonly:hover, form input.readonly:active, form input[disabled], form input[disabled]:hover, form input.disabled, form input.disabled:hover, form input.disabled:active, form .input[readonly], form .input[readonly]:hover, form .input.readonly, form .input.readonly:hover, form .input.readonly:active, form .input[disabled], form .input[disabled]:hover, form .input.disabled, form .input.disabled:hover, form .input.disabled:active, form select[readonly], form select[readonly]:hover, form select.readonly, form select.readonly:hover, form select.readonly:active, form select[disabled], form select[disabled]:hover, form select.disabled, form select.disabled:hover, form select.disabled:active, form textarea[readonly], form textarea[readonly]:hover, form textarea.readonly, form textarea.readonly:hover, form textarea.readonly:active, form textarea[disabled], form textarea[disabled]:hover, form textarea.disabled, form textarea.disabled:hover, form textarea.disabled:active, form button[type="submit"][readonly], form button[type="submit"][readonly]:hover, form button[type="submit"].readonly, form button[type="submit"].readonly:hover, form button[type="submit"].readonly:active, form button[type="submit"][disabled], form button[type="submit"][disabled]:hover, form button[type="submit"].disabled, form button[type="submit"].disabled:hover, form button[type="submit"].disabled:active, form button[type="reset"][readonly], form button[type="reset"][readonly]:hover, form button[type="reset"].readonly, form button[type="reset"].readonly:hover, form button[type="reset"].readonly:active, form button[type="reset"][disabled], form button[type="reset"][disabled]:hover, form button[type="reset"].disabled, form button[type="reset"].disabled:hover, form button[type="reset"].disabled:active, form .button[readonly], form .button[readonly]:hover, form .button.readonly, form .button.readonly:hover, form .button.readonly:active, form .button[disabled], form .button[disabled]:hover, form .button.disabled, form .button.disabled:hover, form .button.disabled:active {
   border-color: #cccccc;
   cursor: no-drop;
   background: #e6e6e6;
 }
-/* line 85, scss/base/forms/_base.scss */
+/* line 85, scss/base/components/forms/_base.scss */
 form input[disabled], form input[disabled]:hover, form input.disabled, form input.disabled:hover, form input.disabled:active, form .input[disabled], form .input[disabled]:hover, form .input.disabled, form .input.disabled:hover, form .input.disabled:active, form select[disabled], form select[disabled]:hover, form select.disabled, form select.disabled:hover, form select.disabled:active, form textarea[disabled], form textarea[disabled]:hover, form textarea.disabled, form textarea.disabled:hover, form textarea.disabled:active, form button[type="submit"][disabled], form button[type="submit"][disabled]:hover, form button[type="submit"].disabled, form button[type="submit"].disabled:hover, form button[type="submit"].disabled:active, form button[type="reset"][disabled], form button[type="reset"][disabled]:hover, form button[type="reset"].disabled, form button[type="reset"].disabled:hover, form button[type="reset"].disabled:active, form .button[disabled], form .button[disabled]:hover, form .button.disabled, form .button.disabled:hover, form .button.disabled:active {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(50))";
   filter: alpha(opacity=50);
   opacity: 0.5;
 }
-/* line 91, scss/base/forms/_base.scss */
+/* line 91, scss/base/components/forms/_base.scss */
 form input, form .input, form select, form textarea {
   padding: 4.8px 9.6px;
   padding: 0.3rem 0.6rem;
   background: #FFFFFF;
 }
-/* line 97, scss/base/forms/_base.scss */
+/* line 97, scss/base/components/forms/_base.scss */
 form textarea {
   min-height: 100px;
   height: 125px;
 }
-/* line 103, scss/base/forms/_base.scss */
+/* line 103, scss/base/components/forms/_base.scss */
 form.form-block input[type="checkbox"], form.form-block input[type="radio"], form.form-inline-block input[type="checkbox"], form.form-inline-block input[type="radio"], form input[type="radio"], form input[type="checkbox"] {
   width: auto;
   height: auto;
@@ -2569,13 +2532,13 @@ form.form-block input[type="checkbox"], form.form-block input[type="radio"], for
   display: inline;
   vertical-align: middle;
 }
-/* line 111, scss/base/forms/_base.scss */
+/* line 111, scss/base/components/forms/_base.scss */
 form.form-block input[type="checkbox"] + label, form.form-block input[type="radio"] + label, form.form-inline-block input[type="checkbox"] + label, form.form-inline-block input[type="radio"] + label, form input[type="radio"] + label, form input[type="checkbox"] + label {
   margin: 0px 24px 0px 4.8px;
   margin: 0px 1.5rem 0px 0.3rem;
   vertical-align: middle;
 }
-/* line 118, scss/base/forms/_base.scss */
+/* line 118, scss/base/components/forms/_base.scss */
 form button[type="submit"], form button[type="reset"], form .button {
   padding: 0px 28.8px;
   padding: 0px 1.8rem;
@@ -2583,97 +2546,97 @@ form button[type="submit"], form button[type="reset"], form .button {
   text-align: center;
   background: #e6e6e6;
 }
-/* line 124, scss/base/forms/_base.scss */
+/* line 124, scss/base/components/forms/_base.scss */
 form button[type="submit"]:hover, form button[type="reset"]:hover, form .button:hover {
   background: #d9d9d9;
 }
-/* line 127, scss/base/forms/_base.scss */
+/* line 127, scss/base/components/forms/_base.scss */
 form button[type="submit"]:active, form button[type="reset"]:active, form .button:active {
   background: #cccccc;
 }
-/* line 134, scss/base/forms/_base.scss */
+/* line 134, scss/base/components/forms/_base.scss */
 form label.qty, form label.voucher, form label.coupon, form label.half, form label.small, form label.v-small, form .label.qty, form .label.voucher, form .label.coupon, form .label.half, form .label.small, form .label.v-small, form input.qty, form input.voucher, form input.coupon, form input.half, form input.small, form input.v-small, form select.qty, form select.voucher, form select.coupon, form select.half, form select.small, form select.v-small, form textarea.qty, form textarea.voucher, form textarea.coupon, form textarea.half, form textarea.small, form textarea.v-small {
   display: inline-block !important;
 }
-/* line 136, scss/base/forms/_base.scss */
+/* line 136, scss/base/components/forms/_base.scss */
 form label.qty + .note, form label.voucher + .note, form label.coupon + .note, form label.half + .note, form label.small + .note, form label.v-small + .note, form .label.qty + .note, form .label.voucher + .note, form .label.coupon + .note, form .label.half + .note, form .label.small + .note, form .label.v-small + .note, form input.qty + .note, form input.voucher + .note, form input.coupon + .note, form input.half + .note, form input.small + .note, form input.v-small + .note, form select.qty + .note, form select.voucher + .note, form select.coupon + .note, form select.half + .note, form select.small + .note, form select.v-small + .note, form textarea.qty + .note, form textarea.voucher + .note, form textarea.coupon + .note, form textarea.half + .note, form textarea.small + .note, form textarea.v-small + .note {
   margin: 7px 0 0 10px !important;
   display: inline-block !important;
 }
-/* line 141, scss/base/forms/_base.scss */
+/* line 141, scss/base/components/forms/_base.scss */
 form label.qty, form .label.qty, form input.qty, form select.qty, form textarea.qty {
   max-width: 56px;
 }
-/* line 144, scss/base/forms/_base.scss */
+/* line 144, scss/base/components/forms/_base.scss */
 form label.voucher, form label.coupon, form .label.voucher, form .label.coupon, form input.voucher, form input.coupon, form select.voucher, form select.coupon, form textarea.voucher, form textarea.coupon {
   max-width: 33.33333%;
   margin: 0;
   display: inline-block !important;
 }
-/* line 148, scss/base/forms/_base.scss */
+/* line 148, scss/base/components/forms/_base.scss */
 form label.voucher + button[type="submit"], form label.coupon + button[type="submit"], form .label.voucher + button[type="submit"], form .label.coupon + button[type="submit"], form input.voucher + button[type="submit"], form input.coupon + button[type="submit"], form select.voucher + button[type="submit"], form select.coupon + button[type="submit"], form textarea.voucher + button[type="submit"], form textarea.coupon + button[type="submit"] {
   max-width: 66.66667%;
   display: inline-block;
 }
-/* line 153, scss/base/forms/_base.scss */
+/* line 153, scss/base/components/forms/_base.scss */
 form label.full, form .label.full, form input.full, form select.full, form textarea.full {
   width: 100% !important;
   max-width: 100%;
 }
-/* line 157, scss/base/forms/_base.scss */
+/* line 157, scss/base/components/forms/_base.scss */
 form label.half, form .label.half, form input.half, form select.half, form textarea.half {
   max-width: 49%;
 }
-/* line 160, scss/base/forms/_base.scss */
+/* line 160, scss/base/components/forms/_base.scss */
 form label.small, form .label.small, form input.small, form select.small, form textarea.small {
   max-width: 33.33333%;
 }
-/* line 163, scss/base/forms/_base.scss */
+/* line 163, scss/base/components/forms/_base.scss */
 form label.v-small, form .label.v-small, form input.v-small, form select.v-small, form textarea.v-small {
   max-width: 16.66667%;
 }
 
 @media only screen and (max-width: 48em) {
-  /* line 173, scss/base/forms/_base.scss */
+  /* line 173, scss/base/components/forms/_base.scss */
   form input.voucher, form input.coupon, form select.voucher, form select.coupon, form textarea.voucher, form textarea.coupon {
     max-width: 49%;
   }
-  /* line 175, scss/base/forms/_base.scss */
+  /* line 175, scss/base/components/forms/_base.scss */
   form input.voucher + button[type="submit"], form input.coupon + button[type="submit"], form select.voucher + button[type="submit"], form select.coupon + button[type="submit"], form textarea.voucher + button[type="submit"], form textarea.coupon + button[type="submit"] {
     max-width: 49%;
   }
-  /* line 179, scss/base/forms/_base.scss */
+  /* line 179, scss/base/components/forms/_base.scss */
   form input.small, form select.small, form textarea.small {
     max-width: 49%;
   }
-  /* line 182, scss/base/forms/_base.scss */
+  /* line 182, scss/base/components/forms/_base.scss */
   form input.v-small, form select.v-small, form textarea.v-small {
     max-width: 33.33333%;
   }
 }
 @media only screen and (max-width: 28.4375em) {
-  /* line 193, scss/base/forms/_base.scss */
+  /* line 193, scss/base/components/forms/_base.scss */
   form input.v-small, form select.v-small, form textarea.v-small {
     max-width: 49%;
   }
 }
 @media only screen and (max-width: 22.5em) {
-  /* line 205, scss/base/forms/_base.scss */
+  /* line 205, scss/base/components/forms/_base.scss */
   form input.qty + .note, form input.voucher + .note, form input.coupon + .note, form input.half + .note, form input.small + .note, form input.v-small + .note, form select.qty + .note, form select.voucher + .note, form select.coupon + .note, form select.half + .note, form select.small + .note, form select.v-small + .note, form textarea.qty + .note, form textarea.voucher + .note, form textarea.coupon + .note, form textarea.half + .note, form textarea.small + .note, form textarea.v-small + .note {
     margin: 7px 0 0 0 !important;
   }
-  /* line 209, scss/base/forms/_base.scss */
+  /* line 209, scss/base/components/forms/_base.scss */
   form input.voucher, form input.coupon, form select.voucher, form select.coupon, form textarea.voucher, form textarea.coupon {
     max-width: 100%;
     width: 100%;
   }
-  /* line 212, scss/base/forms/_base.scss */
+  /* line 212, scss/base/components/forms/_base.scss */
   form input.voucher + button[type="submit"], form input.coupon + button[type="submit"], form select.voucher + button[type="submit"], form select.coupon + button[type="submit"], form textarea.voucher + button[type="submit"], form textarea.coupon + button[type="submit"] {
     max-width: 100%;
     width: 100%;
     margin: 4px 0 2px;
   }
-  /* line 218, scss/base/forms/_base.scss */
+  /* line 218, scss/base/components/forms/_base.scss */
   form input.v-small, form select.v-small, form textarea.v-small {
     max-width: 100%;
     width: 100%;
@@ -2684,39 +2647,39 @@ form label.v-small, form .label.v-small, form input.v-small, form select.v-small
    Base > Forms > Form Block
    Block level forms
 ========================================================================== */
-/* line 9, scss/base/forms/_form-block.scss */
+/* line 9, scss/base/components/forms/_form-block.scss */
 form.form-block .field-container label {
   margin-right: 6px;
   margin-right: 0.375rem;
 }
-/* line 12, scss/base/forms/_form-block.scss */
+/* line 12, scss/base/components/forms/_form-block.scss */
 form.form-block .field-container input, form.form-block .field-container .input, form.form-block .field-container select, form.form-block .field-container textarea {
   margin-left: 2%;
   display: inline-block;
   vertical-align: middle;
 }
-/* line 17, scss/base/forms/_form-block.scss */
+/* line 17, scss/base/components/forms/_form-block.scss */
 form.form-block .field-container input:first-child, form.form-block .field-container .input:first-child, form.form-block .field-container select:first-child, form.form-block .field-container textarea:first-child {
   margin-left: 0;
 }
-/* line 23, scss/base/forms/_form-block.scss */
+/* line 23, scss/base/components/forms/_form-block.scss */
 form.form-block .field-container span + input, form.form-block .field-container span .input, form.form-block .field-container span select, form.form-block .field-container span textarea, form.form-block .field-container span .field-container {
   margin: 0;
 }
-/* line 30, scss/base/forms/_form-block.scss */
+/* line 30, scss/base/components/forms/_form-block.scss */
 form.form-block label, form.form-block .label {
   display: block;
 }
-/* line 32, scss/base/forms/_form-block.scss */
+/* line 32, scss/base/components/forms/_form-block.scss */
 form.form-block label input[type="checkbox"], form.form-block label input[type="radio"], form.form-block .label input[type="checkbox"], form.form-block .label input[type="radio"] {
   margin: -2px 2px 0 0;
 }
-/* line 38, scss/base/forms/_form-block.scss */
+/* line 38, scss/base/components/forms/_form-block.scss */
 form.form-block input, form.form-block .input, form.form-block select, form.form-block textarea, form.form-block .field-container {
   width: 100%;
   display: block;
 }
-/* line 42, scss/base/forms/_form-block.scss */
+/* line 42, scss/base/components/forms/_form-block.scss */
 form.form-block input ~ .note, form.form-block .input ~ .note, form.form-block select ~ .note, form.form-block textarea ~ .note, form.form-block .field-container ~ .note {
   margin-left: 0;
   display: block;
@@ -2726,49 +2689,49 @@ form.form-block input ~ .note, form.form-block .input ~ .note, form.form-block s
    Base > Forms > Form Inline Block
    Inline Block level forms
 ========================================================================== */
-/* line 8, scss/base/forms/_form-inline-block.scss */
+/* line 8, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block .field-container {
   height: 40px;
 }
-/* line 10, scss/base/forms/_form-inline-block.scss */
+/* line 10, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block .field-container label {
   width: auto;
   margin-right: 6px;
   margin-right: 0.375rem;
 }
-/* line 16, scss/base/forms/_form-inline-block.scss */
+/* line 16, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block .field-container span + input, form.form-inline-block .field-container span .input, form.form-inline-block .field-container span select, form.form-inline-block .field-container span textarea, form.form-inline-block .field-container span .field-container {
   margin: 0;
 }
-/* line 23, scss/base/forms/_form-inline-block.scss */
+/* line 23, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block label, form.form-inline-block .label, form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 29, scss/base/forms/_form-inline-block.scss */
+/* line 29, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block textarea {
   vertical-align: top;
 }
-/* line 34, scss/base/forms/_form-inline-block.scss */
+/* line 34, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block label, form.form-inline-block .label {
   width: 35%;
   padding-right: 5%;
   line-height: 1.3;
 }
-/* line 38, scss/base/forms/_form-inline-block.scss */
+/* line 38, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block label input[type="checkbox"], form.form-inline-block label input[type="radio"], form.form-inline-block .label input[type="checkbox"], form.form-inline-block .label input[type="radio"] {
   margin: -2px 2px 0 0;
 }
-/* line 43, scss/base/forms/_form-inline-block.scss */
+/* line 43, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block label:first-of-type input, form.form-inline-block .label:first-of-type input {
   margin-left: 0;
 }
-/* line 50, scss/base/forms/_form-inline-block.scss */
+/* line 50, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
   width: 64%;
   margin: 0;
 }
-/* line 54, scss/base/forms/_form-inline-block.scss */
+/* line 54, scss/base/components/forms/_form-inline-block.scss */
 form.form-inline-block input ~ .note, form.form-inline-block .input ~ .note, form.form-inline-block select ~ .note, form.form-inline-block textarea ~ .note, form.form-inline-block .field-container ~ .note {
   margin-left: 35%;
 }
@@ -2777,22 +2740,22 @@ form.form-inline-block input ~ .note, form.form-inline-block .input ~ .note, for
    Base > Forms > Form Inline
    Inline forms
 ========================================================================== */
-/* line 7, scss/base/forms/_form-inline.scss */
+/* line 7, scss/base/components/forms/_form-inline.scss */
 form.form-inline .field-container {
   height: 40px;
 }
-/* line 12, scss/base/forms/_form-inline.scss */
+/* line 12, scss/base/components/forms/_form-inline.scss */
 form.form-inline label, form.form-inline .label, form.form-inline input, form.form-inline .input, form.form-inline select, form.form-inline textarea, form.form-inline .field-container {
   width: auto;
   margin: 0px 0px 0px 12px;
   margin: 0px 0px 0px 0.75rem;
   display: inline;
 }
-/* line 17, scss/base/forms/_form-inline.scss */
+/* line 17, scss/base/components/forms/_form-inline.scss */
 form.form-inline label:first-child, form.form-inline .label:first-child, form.form-inline input:first-child, form.form-inline .input:first-child, form.form-inline select:first-child, form.form-inline textarea:first-child, form.form-inline .field-container:first-child {
   margin-left: 0;
 }
-/* line 23, scss/base/forms/_form-inline.scss */
+/* line 23, scss/base/components/forms/_form-inline.scss */
 form.form-inline span + input, form.form-inline span .input, form.form-inline span select, form.form-inline span textarea, form.form-inline span .field-container {
   margin: 0;
 }
@@ -2801,14 +2764,14 @@ form.form-inline span + input, form.form-inline span .input, form.form-inline sp
    Base > Forms > Customised
    Custom form inputs.
 ========================================================================== */
-/* line 7, scss/base/forms/_customised.scss */
+/* line 7, scss/base/components/forms/_customised.scss */
 form .custom-checkbox, form .custom-radio {
   margin-right: 24px;
   margin-right: 1.5rem;
   position: relative;
   display: inline-block;
 }
-/* line 11, scss/base/forms/_customised.scss */
+/* line 11, scss/base/components/forms/_customised.scss */
 form .custom-checkbox label, form .custom-radio label {
   width: 17px;
   height: 17px;
@@ -2820,22 +2783,22 @@ form .custom-checkbox label, form .custom-radio label {
   text-indent: 1.5em;
   box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.08);
 }
-/* line 22, scss/base/forms/_customised.scss */
+/* line 22, scss/base/components/forms/_customised.scss */
 form .custom-checkbox label:active, form .custom-radio label:active {
   box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
 }
-/* line 26, scss/base/forms/_customised.scss */
+/* line 26, scss/base/components/forms/_customised.scss */
 form .custom-checkbox input, form .custom-radio input {
   width: 0 !important;
   height: 0 !important;
   position: absolute;
   visibility: hidden;
 }
-/* line 36, scss/base/forms/_customised.scss */
+/* line 36, scss/base/components/forms/_customised.scss */
 form .custom-checkbox label {
   border-radius: 0.2em;
 }
-/* line 39, scss/base/forms/_customised.scss */
+/* line 39, scss/base/components/forms/_customised.scss */
 form .custom-checkbox label:after {
   width: 7px;
   height: 3px;
@@ -2856,23 +2819,23 @@ form .custom-checkbox label:after {
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-/* line 55, scss/base/forms/_customised.scss */
+/* line 55, scss/base/components/forms/_customised.scss */
 form .custom-checkbox label:hover:after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(30))";
   filter: alpha(opacity=30);
   opacity: 0.3;
 }
-/* line 59, scss/base/forms/_customised.scss */
+/* line 59, scss/base/components/forms/_customised.scss */
 form .custom-checkbox input[type=checkbox]:checked + label:after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(80))";
   filter: alpha(opacity=80);
   opacity: 0.8;
 }
-/* line 66, scss/base/forms/_customised.scss */
+/* line 66, scss/base/components/forms/_customised.scss */
 form .custom-radio label {
   border-radius: 100%;
 }
-/* line 69, scss/base/forms/_customised.scss */
+/* line 69, scss/base/components/forms/_customised.scss */
 form .custom-radio label:after {
   width: 7px;
   height: 7px;
@@ -2886,19 +2849,19 @@ form .custom-radio label:after {
   opacity: 0;
   background: #999;
 }
-/* line 79, scss/base/forms/_customised.scss */
+/* line 79, scss/base/components/forms/_customised.scss */
 form .custom-radio label:hover:after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(30))";
   filter: alpha(opacity=30);
   opacity: 0.3;
 }
-/* line 83, scss/base/forms/_customised.scss */
+/* line 83, scss/base/components/forms/_customised.scss */
 form .custom-radio input[type=radio]:checked + label:after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(80))";
   filter: alpha(opacity=80);
   opacity: 0.8;
 }
-/* line 91, scss/base/forms/_customised.scss */
+/* line 91, scss/base/components/forms/_customised.scss */
 form .custom-select:after {
   width: 0;
   height: 0;
@@ -2915,7 +2878,7 @@ form .custom-select:after {
   display: inline-block;
   pointer-events: none;
 }
-/* line 105, scss/base/forms/_customised.scss */
+/* line 105, scss/base/components/forms/_customised.scss */
 form .custom-select select {
   padding-right: 36px;
   padding-right: 2.25rem;
@@ -2927,7 +2890,7 @@ form .custom-select select {
   -o-appearance: none;
   appearance: none;
 }
-/* line 115, scss/base/forms/_customised.scss */
+/* line 115, scss/base/components/forms/_customised.scss */
 form .custom-select select::-ms-expand {
   display: none;
 }
@@ -2936,100 +2899,100 @@ form .custom-select select::-ms-expand {
    Base > Forms > Notifications
    Form messages and responses.
 ========================================================================== */
-/* line 11, scss/base/forms/_notifications.scss */
+/* line 11, scss/base/components/forms/_notifications.scss */
 form.form-has-errors label.error {
   color: #b94a48;
 }
-/* line 14, scss/base/forms/_notifications.scss */
+/* line 14, scss/base/components/forms/_notifications.scss */
 form.form-has-errors label.status {
   color: #3a87ad;
 }
-/* line 17, scss/base/forms/_notifications.scss */
+/* line 17, scss/base/components/forms/_notifications.scss */
 form.form-has-errors label.success {
   color: #468847;
 }
-/* line 20, scss/base/forms/_notifications.scss */
+/* line 20, scss/base/components/forms/_notifications.scss */
 form.form-has-errors label.warning {
   color: #c09853;
 }
-/* line 28, scss/base/forms/_notifications.scss */
+/* line 28, scss/base/components/forms/_notifications.scss */
 form.form-has-errors input.error, form.form-has-errors .input.error, form.form-has-errors select.error, form.form-has-errors textarea.error, form.form-has-errors .field-container.error {
   color: #b94a48;
   border-color: #dca5a4;
   background-color: #f1dcdc;
 }
-/* line 33, scss/base/forms/_notifications.scss */
+/* line 33, scss/base/components/forms/_notifications.scss */
 form.form-has-errors input.error:focus, form.form-has-errors .input.error:focus, form.form-has-errors select.error:focus, form.form-has-errors textarea.error:focus, form.form-has-errors .field-container.error:focus {
   background-color: #eacac9;
 }
-/* line 37, scss/base/forms/_notifications.scss */
+/* line 37, scss/base/components/forms/_notifications.scss */
 form.form-has-errors input.status, form.form-has-errors .input.status, form.form-has-errors select.status, form.form-has-errors textarea.status, form.form-has-errors .field-container.status {
   color: #3a87ad;
   border-color: #8ec0d9;
   background-color: #c7e0ec;
 }
-/* line 42, scss/base/forms/_notifications.scss */
+/* line 42, scss/base/components/forms/_notifications.scss */
 form.form-has-errors input.status:focus, form.form-has-errors .input.status:focus, form.form-has-errors select.status:focus, form.form-has-errors textarea.status:focus, form.form-has-errors .field-container.status:focus {
   background-color: #b4d5e6;
 }
-/* line 46, scss/base/forms/_notifications.scss */
+/* line 46, scss/base/components/forms/_notifications.scss */
 form.form-has-errors input.success, form.form-has-errors .input.success, form.form-has-errors select.success, form.form-has-errors textarea.success, form.form-has-errors .field-container.success {
   color: #468847;
   border-color: #8ac38b;
   background-color: #bdddbd;
 }
-/* line 51, scss/base/forms/_notifications.scss */
+/* line 51, scss/base/components/forms/_notifications.scss */
 form.form-has-errors input.success:focus, form.form-has-errors .input.success:focus, form.form-has-errors select.success:focus, form.form-has-errors textarea.success:focus, form.form-has-errors .field-container.success:focus {
   background-color: #acd4ad;
 }
-/* line 55, scss/base/forms/_notifications.scss */
+/* line 55, scss/base/components/forms/_notifications.scss */
 form.form-has-errors input.warning, form.form-has-errors .input.warning, form.form-has-errors select.warning, form.form-has-errors textarea.warning, form.form-has-errors .field-container.warning {
   color: #c09853;
   border-color: #e2d0b0;
   background-color: #f7f1e8;
 }
-/* line 60, scss/base/forms/_notifications.scss */
+/* line 60, scss/base/components/forms/_notifications.scss */
 form.form-has-errors input.warning:focus, form.form-has-errors .input.warning:focus, form.form-has-errors select.warning:focus, form.form-has-errors textarea.warning:focus, form.form-has-errors .field-container.warning:focus {
   background-color: #f0e6d6;
 }
-/* line 67, scss/base/forms/_notifications.scss */
+/* line 67, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .msg {
   font-size: 14px;
   font-size: 0.875rem;
 }
-/* line 74, scss/base/forms/_notifications.scss */
+/* line 74, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .response--error .msg {
   color: #b94a48;
 }
-/* line 80, scss/base/forms/_notifications.scss */
+/* line 80, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .response--status .msg {
   color: #3a87ad;
 }
-/* line 86, scss/base/forms/_notifications.scss */
+/* line 86, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .response--success .msg {
   color: #468847;
 }
-/* line 92, scss/base/forms/_notifications.scss */
+/* line 92, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .response--warning .msg {
   color: #c09853;
 }
-/* line 99, scss/base/forms/_notifications.scss */
+/* line 99, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .field.field-has-errors ::-webkit-input-placeholder {
   color: #b94a48;
 }
-/* line 102, scss/base/forms/_notifications.scss */
+/* line 102, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .field.field-has-errors ::-moz-placeholder {
   color: #b94a48;
 }
-/* line 105, scss/base/forms/_notifications.scss */
+/* line 105, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .field.field-has-errors :-moz-placeholder {
   color: #b94a48;
 }
-/* line 108, scss/base/forms/_notifications.scss */
+/* line 108, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .field.field-has-errors :-ms-input-placeholder {
   color: #b94a48;
 }
-/* line 111, scss/base/forms/_notifications.scss */
+/* line 111, scss/base/components/forms/_notifications.scss */
 form.form-has-errors .field.field-has-errors ::placeholder {
   color: #b94a48;
 }
@@ -3038,29 +3001,66 @@ form.form-has-errors .field.field-has-errors ::placeholder {
    Base > Forms > Placeholders
    Form placeholder styles.
 ========================================================================== */
-/* line 6, scss/base/forms/_placeholders.scss */
+/* line 6, scss/base/components/forms/_placeholders.scss */
 form ::-webkit-input-placeholder {
   color: #DDDDDD;
 }
-/* line 9, scss/base/forms/_placeholders.scss */
+/* line 9, scss/base/components/forms/_placeholders.scss */
 form ::-moz-placeholder {
   color: #DDDDDD;
 }
-/* line 12, scss/base/forms/_placeholders.scss */
+/* line 12, scss/base/components/forms/_placeholders.scss */
 form :-moz-placeholder {
   color: #DDDDDD;
 }
-/* line 15, scss/base/forms/_placeholders.scss */
+/* line 15, scss/base/components/forms/_placeholders.scss */
 form :-ms-input-placeholder {
   color: #DDDDDD;
 }
-/* line 18, scss/base/forms/_placeholders.scss */
+/* line 18, scss/base/components/forms/_placeholders.scss */
 form ::placeholder {
   color: #DDDDDD;
 }
-/* line 21, scss/base/forms/_placeholders.scss */
+/* line 21, scss/base/components/forms/_placeholders.scss */
 form select {
   color: #DDDDDD;
+}
+
+/* ==========================================================================
+   Base > Blocks > Breadcrumb
+   Description goes here.
+========================================================================== */
+/* -- Breadcrumb -- */
+/* line 7, scss/base/blocks/_breadcrumbs.scss */
+.breadcrumb > a {
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Base > Blocks > Pagination
+   Description goes here.
+========================================================================== */
+/* -- Pagination -- */
+/* line 8, scss/base/blocks/_pagination.scss */
+.pagination .page-numbers {
+  padding: 6px 12px;
+  padding: 0.375rem 0.75rem;
+  border-radius: 3px;
+  display: inline-block;
+  color: #FFFFFF;
+  background: #C4122f;
+  -webkit-transition: background-color 300ms ease;
+  -moz-transition: background-color 300ms ease;
+  -o-transition: background-color 300ms ease;
+  transition: background-color 300ms ease;
+}
+/* line 16, scss/base/blocks/_pagination.scss */
+.pagination .page-numbers.current {
+  background: #950e24;
+}
+/* line 20, scss/base/blocks/_pagination.scss */
+.pagination .page-numbers:hover {
+  background: #950e24;
 }
 
 /* line 1, scss/base/javascript/_accordion.scss */
@@ -4013,6 +4013,10 @@ form select {
    Imports all the partials.
 ========================================================================== */
 /* ==========================================================================
+   Site > Placeholders
+   Some default placeholders for the framework.
+========================================================================== */
+/* ==========================================================================
    Site > Imports
    This file is for importing partials from other directories
    These are not part of the framework and the contents of this
@@ -4032,12 +4036,8 @@ form select {
 /* -- Base Icon -- */
 /* -- Icon Set Title -- */
 /* ==========================================================================
-   Base > Config > Placeholders
-   Some default placeholders for the framework.
-========================================================================== */
-/* ==========================================================================
-   Site > Rhythm
-   The framework rhythm.
+   Site > Typeset
+   App fonts and type settings.
 ========================================================================== */
 /* ==========================================================================
    Site > Global
