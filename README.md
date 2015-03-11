@@ -9,4 +9,4 @@ You can use this independently in your own project either via cloning this repo 
 
 	bower install framework-library
 
-Alternatively, the library will be installed automatically with the Project Wrapper repository available [here] (https://github.com/sdellow/Project-Wrapper)
+Alternatively, the library will be installed automatically with the Project Wrapper repository available [here] (https://github.com/sdellow/Project-Wrapper).
