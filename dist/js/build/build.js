@@ -4675,6 +4675,24 @@ if (typeof JSON !== 'object') {
         process_fields: function(){
             var _self = this;
 
+            // Put all required fields into array.
+            var fields_array = $('[required]', _self.$elem).map(function(){
+                if(_self.settings.onlyVisibleFields){
+                    if($(this).is(':visible')){
+                        return $(this).attr('name');
+                    }
+                }
+                else{
+                    return $(this).attr('name');
+                }
+            });
+            // Remove duplicates (jQuery.unique only works on DOM elements, we can't use DOM elements because they are ALL unique despite the same name).
+            fields_array = helpers.remove_duplicates(fields_array);
+            // Reverts the fields_array into an array of DOM elements.
+            _self.$element_array = $.map(fields_array, function(field, i){
+                return $('[name="' + field + '"]', _self.$elem);
+            });
+
             $.each(_self.$element_array, function(){
                 // Field type specific actions.
                 switch($(this).attr('type')){
