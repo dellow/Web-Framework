@@ -46,7 +46,7 @@ ol {
 		margin: 0;
 		position: relative;
 		border-radius: $border_radius_base;
-		font-weight: $font_weight_regular;
+		font-weight: regular;
 		font-family: $font_family_monospaced;
 		background: color(grey, light);
 		li {
@@ -70,7 +70,7 @@ hr {
 		border: 0;
 		display: block;
 		clear: both;
-    	@include rem(font-size, $font_size_h1);
+    	@include rem(font-size, 40px);
 		text-align: center;
 		// Pseudo
 		&:after {

@@ -126,24 +126,6 @@
 .u-block {
 	display: block;
 }
-ul.u-inline {
-	margin: 0;
-	li {
-		display: inline;
-	}
-}
-ul.u-inline-block {
-	margin: 0;
-	li {
-		display: inline-block;
-	}
-}
-ul.u-block {
-	margin: 0;
-	li {
-		display: block;
-	}
-}
 
 /* -- Positioning -- */
 .fl {
@@ -175,16 +157,6 @@ ul.u-block {
 .u-no-bullet {
 	list-style: none;
 }
-ul.u-horizontal {
-	li {
-		display: inline;
-	}
-}
-ul.u-horizontal-block {
-	li {
-		display: inline-block;
-	}
-}
 
 /* -- Text -- */
 .u-text-small {
@@ -204,30 +176,30 @@ ul.u-horizontal-block {
 }
 
 /* -- Weights & Cases -- */
-.u-regular {
-	font-weight: $font_weight_regular;
+.u-text-regular {
+	font-weight: $regular;
 }
-.u-bold {
-	font-weight: $font_weight_bold;
+.u-text-bold {
+	font-weight: $bold;
 }
-.u-italic {
+.u-text-italic {
 	font-style: italic;
 }
-.u-uppercase {
+.u-text-uppercase {
 	text-transform: uppercase;
 }
-.u-lowercase {
+.u-text-lowercase {
 	text-transform: lowercase;
 }
-.u-capitalize {
+.u-text-capitalize {
 	text-transform: capitalize;
 }
 
 /* -- Fonts -- */
-.u-serif {
+.u-text-serif {
 	font-family: serif;
 }
-.u-sans-serif {
+.u-text-sans-serif {
 	font-family: sans-serif;
 }
 
