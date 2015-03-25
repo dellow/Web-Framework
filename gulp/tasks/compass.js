@@ -2,7 +2,6 @@
 /* Require
 /* ================================================== */
 var gulp    = require('gulp'),
-	rename  = require('gulp-rename'),
 	compass = require('gulp-compass');
 
 /* ================================================== */

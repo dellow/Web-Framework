@@ -25,7 +25,9 @@
 				}
 			}
 			else {
-				console.log(message);
+				console.log('DEBUG: ------------------------------');
+				console.log('DEBUG: ' + message);
+				console.log('DEBUG: ------------------------------');
 			}
 		}
 	}
