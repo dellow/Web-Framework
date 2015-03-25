@@ -10,5 +10,9 @@ gulp.task('default', [
 	// All states
 	'browserify',
 	'compass',
-	'imagemin'
+	'imagemin',
+	// Development states
+	'dalek',
+	'jasmine',
+	'jshint'
 ]);

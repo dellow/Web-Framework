@@ -19,7 +19,9 @@ var url    = args.url,
 gulp.task('server', function(){
 
 	var compass    = function(){gulp.start('compass')},
-	    browserify = function(){gulp.start('browserify')};
+	    browserify = function(){gulp.start('browserify')},
+	    sprite     = function(){gulp.start('sprite')},
+	    imagemin   = function(){gulp.start('imagemin')};
 
 	if(url){
 		browserSync({
@@ -49,6 +51,12 @@ gulp.task('server', function(){
 
 	// Run Compass on SCSS file changes
 	gulp.watch(GLOBAL.dist_dir + 'css/scss/**/*.scss', compass);
+
+	// Run Imagemin on image updates
+	gulp.watch(GLOBAL.dist_dir + 'images/**/*', imagemin);
+
+	// Run Sprites on image updates
+	gulp.watch(GLOBAL.dist_dir + 'images/icons/sprite/*.png', sprite);
 
 	// Reload on file changes
 	gulp.watch([

@@ -11,6 +11,7 @@ var args  = require('yargs').argv,
 /* ================================================== */
 GLOBAL.args           = args.config;
 GLOBAL.is_development = (args.config == 'development' || args.config == undefined) ? true : false,
+GLOBAL.is_staging     = (args.config == 'staging') ? true : false,
 GLOBAL.is_production  = (args.config == 'production') ? true : false;
 GLOBAL.releases_dir   = './releases/';
 GLOBAL.src_dir        = './src/';
