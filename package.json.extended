@@ -51,8 +51,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "js": "browserify -t [ hbsfy -e hbs ] src/js/index.js -o src/build/build.js",
-    "css": "compass compile src/css/scss/main.scss"
+    "compile:js": "browserify -t [ hbsfy -e hbs ] src/dist/js/app/index.js -o src/dist/js/build/build.js",
+    "compile:css": "compass compile src/dist/css/scss/build.scss"
   },
   "private": true
 }

@@ -3,27 +3,20 @@
 # should be ignored to prevent any overwriting issues.
 # ---------------------------------------------------------------------------------
 bower_components/
-deploy/releases/
-logs/
 node_modules/
-releases/app_*
 .sass-cache/
 .vagrant/
+**/logs/
+
 
 
 # FILES
 # If a public repo any files with sensitive data like database connection
 # details should be ignored to prevent unauthorised access.
 # ---------------------------------------------------------------------------------
-# **/*.htaccess
+**/*.htaccess
 **/*.log
 
-
-# SITE
-# Files/Directories that probably should be ignored for a live project,
-# but for the sake of the Framework can't be ignored.
-# ---------------------------------------------------------------------------------
-# src/deploy/releases/
 
 
 # EXCEPTIONS

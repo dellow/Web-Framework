@@ -5,7 +5,6 @@ var gulp      = require('gulp'),
 	gulpif    = require('gulp-if'),
 	streamify = require('gulp-streamify'),
 	minify    = require('gulp-minify-css'),
-	filesize  = require('gulp-filesize'),
 	compass   = require('gulp-compass');
 
 /* ================================================== */
@@ -40,8 +39,6 @@ gulp.task('compass', function(){
 			noLineComments: true
 		}))
 		.on('error', handleError)
-		.pipe(filesize())
 		.pipe(gulpif(GLOBAL.is_production, streamify(minify())))
-		.pipe(filesize())
 		.pipe(gulp.dest(GLOBAL.dist_dir + 'css'));
 });
