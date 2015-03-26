@@ -97,14 +97,14 @@
  *
 **/
 
-;(function(Helpers, window, undefined){
+;(function(Helper, window, undefined){
 	'use strict';
 
 	/**
-	 * Helpers.log
+	 * Helper.log
 	 * Safe console log.
 	**/
-	Helpers.log = function(message, alertlog){
+	Helper.log = function(message, type, alertlog){
 		if(window.debugging){
 			alertlog = (typeof alertlog === 'undefined') ? false : true;
 			if(typeof console === 'undefined' || typeof console.log === 'undefined'){
@@ -113,23 +113,25 @@
 				}
 			}
 			else {
-				console.log('DEBUG: ------------------------------');
-				console.log('DEBUG: ' + message);
-				console.log('DEBUG: ------------------------------');
+				var color = (type == 'positive') ? '#097809' : (type == 'negative') ? '#c5211d' : (typeof type !== 'undefined') ? type : '#240ad0';
+				console.log('%c DEBUG: -----------------------------------------------', 'color: ' + color);
+				console.log('%c DEBUG: ' + message, 'color: ' + color);
+				console.log('%c DEBUG: -----------------------------------------------', 'color: ' + color);
+				console.log('');
 			}
 		}
 	}
 
 	/**
-	 * Helpers.mobile_mode
+	 * Helper.mobile_mode
 	 * Checks if the window size is below a certain breakpoint.
 	**/
-	Helpers.mobile_mode = function(breakpoint){
+	Helper.mobile_mode = function(breakpoint){
 		return (window.innerWidth <= breakpoint) ? true : false;
 	}
 
 	/**
-	 * Helpers.debounce
+	 * Helper.debounce
 	 * Returns a function, that, as long as it continues to be invoked, will not
 	 * be triggered. The function will be called after it stops being called for
 	 * N milliseconds. If `immediate` is passed, trigger the function on the
@@ -137,11 +139,11 @@
 	 *
 	 * $(window).on('resize', Module.test);
 	 *
-	 * Module.test = Helpers.debounce(function(){
+	 * Module.test = Helper.debounce(function(){
 	 *     console.log('This has been debounced');
 	 * }, 250);
 	**/
-	Helpers.debounce = function(func, wait, immediate){
+	Helper.debounce = function(func, wait, immediate){
 		var timeout;
 
 		return function(){
