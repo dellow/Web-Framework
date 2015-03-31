@@ -14,7 +14,10 @@
 
 	/**
 	 * Helper.log
-	 * Safe console log.
+	 * Customised and cross browser console.log.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Helper.log = function(message, type, alertlog){
 		if(window.debugging){
@@ -35,10 +38,13 @@
 	}
 
 	/**
-	 * Helper.mobile_mode
-	 * Checks if the window size is below a certain breakpoint.
+	 * Helper.breakpoint
+	 * Checks the window against a certain breakpoint.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
-	Helper.mobile_mode = function(breakpoint){
+	Helper.breakpoint = function(breakpoint){
 		return (window.innerWidth <= breakpoint) ? true : false;
 	}
 
@@ -54,6 +60,9 @@
 	 * Module.test = Helper.debounce(function(){
 	 *     console.log('This has been debounced');
 	 * }, 250);
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Helper.debounce = function(func, wait, immediate){
 		var timeout;
