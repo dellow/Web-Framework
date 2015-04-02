@@ -1,5 +1,4 @@
 # Project Wrapper & Workflow
-### By Stew Dellow | [hellostew.com](http://hellostew.com/ "Creative Web Developer")
 
 ## Contents
 1. [About](#about)
