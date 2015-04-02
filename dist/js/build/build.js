@@ -351,7 +351,7 @@ PageController.init($('.main'));
 	**/
 	Module.binds = function(breakpoint){
 		// Apply classes
-		if(Helpers.mobile_mode(breakpoint)){
+		if(Helpers.breakpoint(breakpoint)){
 			primary.addClass('mobile-animate');
 		}
 		else{
