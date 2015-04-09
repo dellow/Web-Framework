@@ -24,6 +24,7 @@
     "jquery-ui"        : "*",
     "backbone"         : "*",
     "dropzone"         : "*",
+    "handlebars"       : "*",
     "waypoints"        : "*",
     "fancybox"         : "*",
     "jquery-touchswipe": "*",
