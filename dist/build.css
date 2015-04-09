@@ -2058,18 +2058,14 @@ ul.alert.box li {
   margin: 0px 3.6px;
   margin: 0px 0.225rem;
 }
-/* line 13, scss/base/components/_menus.scss */
-.navigation li:first-child {
-  margin-left: 0;
-}
 
 /* -- Primary Navigation -- */
-/* line 22, scss/base/components/_menus.scss */
+/* line 18, scss/base/components/_menus.scss */
 .nav-primary li {
   display: inline-block;
   position: relative;
 }
-/* line 26, scss/base/components/_menus.scss */
+/* line 22, scss/base/components/_menus.scss */
 .nav-primary li .sub-menu {
   padding: 0 12px;
   margin-left: 0;
@@ -2080,45 +2076,45 @@ ul.alert.box li {
   z-index: 100;
   background: #FFFFFF;
 }
-/* line 35, scss/base/components/_menus.scss */
+/* line 31, scss/base/components/_menus.scss */
 .nav-primary li .sub-menu li {
   padding: 0;
   margin: 6px 0;
   display: block;
   white-space: nowrap;
 }
-/* line 40, scss/base/components/_menus.scss */
+/* line 36, scss/base/components/_menus.scss */
 .nav-primary li .sub-menu li .sub-menu {
   left: 100%;
   top: -5px;
 }
-/* line 47, scss/base/components/_menus.scss */
+/* line 43, scss/base/components/_menus.scss */
 .nav-primary li.current_page_item > a, .nav-primary li.current_page_parent > a {
   font-weight: bold;
 }
-/* line 51, scss/base/components/_menus.scss */
+/* line 47, scss/base/components/_menus.scss */
 .nav-primary li:first-child {
   padding-left: 0;
 }
-/* line 54, scss/base/components/_menus.scss */
+/* line 50, scss/base/components/_menus.scss */
 .nav-primary li:hover > .sub-menu {
   display: block;
 }
-/* line 59, scss/base/components/_menus.scss */
+/* line 55, scss/base/components/_menus.scss */
 .nav-primary.full-width {
   text-align: justify;
 }
-/* line 61, scss/base/components/_menus.scss */
+/* line 57, scss/base/components/_menus.scss */
 .nav-primary.full-width a {
   display: block;
 }
-/* line 65, scss/base/components/_menus.scss */
+/* line 61, scss/base/components/_menus.scss */
 .nav-primary.full-width:before {
   width: 100%;
   content: '';
   display: block;
 }
-/* line 70, scss/base/components/_menus.scss */
+/* line 66, scss/base/components/_menus.scss */
 .nav-primary.full-width:after {
   width: 100%;
   content: '';
@@ -2126,31 +2122,31 @@ ul.alert.box li {
 }
 
 /* -- Mobile Menu -- */
-/* line 79, scss/base/components/_menus.scss */
+/* line 75, scss/base/components/_menus.scss */
 .mobile-menu {
   width: 30px;
   height: 22px;
   display: none;
   cursor: pointer;
 }
-/* line 85, scss/base/components/_menus.scss */
+/* line 81, scss/base/components/_menus.scss */
 .mobile-menu.active-menu span {
   background-color: transparent;
 }
-/* line 87, scss/base/components/_menus.scss */
+/* line 83, scss/base/components/_menus.scss */
 .mobile-menu.active-menu span:before, .mobile-menu.active-menu span:after {
   top: 0;
   background: #C4122F;
 }
-/* line 91, scss/base/components/_menus.scss */
+/* line 87, scss/base/components/_menus.scss */
 .mobile-menu.active-menu span:before {
   transform: rotate(45deg);
 }
-/* line 94, scss/base/components/_menus.scss */
+/* line 90, scss/base/components/_menus.scss */
 .mobile-menu.active-menu span:after {
   transform: rotate(-45deg);
 }
-/* line 100, scss/base/components/_menus.scss */
+/* line 96, scss/base/components/_menus.scss */
 .mobile-menu span, .mobile-menu span:before, .mobile-menu span:after {
   width: 30px;
   height: 4px;
@@ -2165,17 +2161,17 @@ ul.alert.box li {
   -o-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
-/* line 111, scss/base/components/_menus.scss */
+/* line 107, scss/base/components/_menus.scss */
 .mobile-menu span:before {
   top: -8px;
 }
-/* line 114, scss/base/components/_menus.scss */
+/* line 110, scss/base/components/_menus.scss */
 .mobile-menu span:after {
   bottom: -8px;
 }
 
 @media only screen and (max-width: 48em) {
-  /* line 121, scss/base/components/_menus.scss */
+  /* line 117, scss/base/components/_menus.scss */
   .mobile-animate {
     max-height: 0px;
     display: block !important;
@@ -2187,36 +2183,27 @@ ul.alert.box li {
     transition: max-height 1000ms ease-in-out;
   }
 
-  /* line 128, scss/base/components/_menus.scss */
+  /* line 124, scss/base/components/_menus.scss */
   .mobile-menu {
     display: inline-block;
   }
 
-  /* line 131, scss/base/components/_menus.scss */
+  /* line 127, scss/base/components/_menus.scss */
   .nav-primary {
     width: 100%;
     display: none;
     position: absolute;
-    left: 0;
-    top: 100px;
     z-index: 100;
     background: #C4122F;
   }
-  /* line 138, scss/base/components/_menus.scss */
+  /* line 133, scss/base/components/_menus.scss */
   .nav-primary li {
     margin: 0;
     display: block;
   }
-  /* line 141, scss/base/components/_menus.scss */
+  /* line 136, scss/base/components/_menus.scss */
   .nav-primary li a {
-    padding: 6px 18px;
-    padding: 0.375rem 1.125rem;
     display: block;
-  }
-  /* line 144, scss/base/components/_menus.scss */
-  .nav-primary li a:hover {
-    color: #000000;
-    background: #950e24;
   }
 }
 /* ==========================================================================

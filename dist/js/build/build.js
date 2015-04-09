@@ -145,7 +145,7 @@
 	 *
 	 * $(window).on('resize', Module.test);
 	 *
-	 * Module.test = Helper.debounce(function(){
+	 * Module.test = Helpers.debounce(function(){
 	 *     console.log('This has been debounced');
 	 * }, 250);
      *
@@ -178,6 +178,7 @@
 	module.exports = Helpers;
 
 }(window.Helpers = window.Helpers || {}, window));
+
 },{}],3:[function(require,module,exports){
 /**
  *
@@ -340,7 +341,7 @@ PageController.init($('.main'));
 	 * Init method for this module.
 	**/
 	Module.init = function(breakpoint){
-		$(window).on('resize load', function(){
+		$(window).on('load resize',function(){
 			Module.binds(breakpoint);
 		});
 	}
@@ -349,7 +350,7 @@ PageController.init($('.main'));
 	 * Module.binds
 	 * Binds related to this module.
 	**/
-	Module.binds = function(breakpoint){
+	Module.binds = Helpers.debounce(function(breakpoint){
 		// Apply classes
 		if(Helpers.breakpoint(breakpoint)){
 			primary.addClass('mobile-animate');
@@ -362,7 +363,7 @@ PageController.init($('.main'));
 		$('.mobile-menu').on('click', function(){
 			Module.menu_reveal($(this), primary);
 		});
-	}
+	}, 250);
 
 	/**
 	 * Module.menu_reveal
@@ -391,6 +392,7 @@ PageController.init($('.main'));
 	module.exports = Menu;
 
 }(window.Menu = window.Menu || {}, jQuery, window));
+
 },{}],6:[function(require,module,exports){
 /**
  * Wiselinks-1.2.2
@@ -4629,7 +4631,7 @@ if (typeof JSON !== 'object') {
         defaultSuccessMsg       : 'The form has been successfully submitted.',
         defaultSuggestText      : 'Did you mean',
         errorBoxElement         : '<span/>',
-        preloaderTemplate       : '<div class="loader" title="1"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path fill="#000000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg></div>',
+        preloaderTemplate       : '<div class="loader" title="1"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path fill="#FFFFFF" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg></div>',
         validateElement         : $('.validate'),
         successElement          : $('.form-success'),
         validationMessage       : $('.error-message'),
@@ -5333,6 +5335,7 @@ if (typeof JSON !== 'object') {
     }
 
 })(jQuery, window);
+
 },{}],9:[function(require,module,exports){
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider

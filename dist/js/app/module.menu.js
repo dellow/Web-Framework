@@ -19,7 +19,7 @@
 	 * Init method for this module.
 	**/
 	Module.init = function(breakpoint){
-		$(window).on('resize load', function(){
+		$(window).on('load resize',function(){
 			Module.binds(breakpoint);
 		});
 	}
@@ -28,7 +28,7 @@
 	 * Module.binds
 	 * Binds related to this module.
 	**/
-	Module.binds = function(breakpoint){
+	Module.binds = Helpers.debounce(function(breakpoint){
 		// Apply classes
 		if(Helpers.breakpoint(breakpoint)){
 			primary.addClass('mobile-animate');
@@ -41,7 +41,7 @@
 		$('.mobile-menu').on('click', function(){
 			Module.menu_reveal($(this), primary);
 		});
-	}
+	}, 250);
 
 	/**
 	 * Module.menu_reveal

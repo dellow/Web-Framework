@@ -51,6 +51,19 @@
 	-ms-align-items    : center;
 	-o-align-items     : center;
 	align-items        : center;
+}
+%flex-vertical-align-all, %fva-all {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+
+	-webkit-align-items: center;
+	-moz-align-items   : center;
+	-ms-align-items    : center;
+	-o-align-items     : center;
+	align-items        : center;
 
 	-webkit-justify-content: center;
 	-moz-justify-content   : center;

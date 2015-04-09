@@ -9,10 +9,6 @@
 	}
 	li {
 		@include nudge(margin, 0 0.15);
-		// Pseudo
-		&:first-child {
-			margin-left: 0;
-		}
 	}
 }
 
@@ -132,19 +128,13 @@
 		width: 100%;
 		display: none;
 		position: absolute;
-		left: 0; top: 100px;
 		z-index: $zindex-1;
 		background: color(copy, link);
 		li {
 			margin: 0;
 			display: block;
 			a {
-				@include nudge(padding, 0.25 0.75);
 				display: block;
-				&:hover {
-					color: color(black);
-					background: darken(color(copy, link), 10%);
-				}
 			}
 		}
 	}

@@ -57,7 +57,7 @@
 	 *
 	 * $(window).on('resize', Module.test);
 	 *
-	 * Module.test = Helper.debounce(function(){
+	 * Module.test = Helpers.debounce(function(){
 	 *     console.log('This has been debounced');
 	 * }, 250);
      *
