@@ -10,7 +10,8 @@ var gulp      = require('gulp'),
 /* ================================================== */
 /* Vars
 /* ================================================== */
-var environment = (GLOBAL.is_production) ? 'production' : 'development',
+var minify 	    = (GLOBAL.args.config == undefined || GLOBAL.is_production) ? true : false,
+	environment = (GLOBAL.is_production) ? 'production' : 'development',
 	sourcemap 	= (GLOBAL.is_production) ? false : true,
 	logging   	= (GLOBAL.is_production) ? false : true;
 
@@ -39,6 +40,6 @@ gulp.task('compass', function(){
 			noLineComments: true
 		}))
 		.on('error', handleError)
-		.pipe(gulpif(GLOBAL.is_production, streamify(minify())))
+		.pipe(gulpif(minify, streamify(uglify()), streamify(beautify({indentSize: 4}))))
 		.pipe(gulp.dest(GLOBAL.dist_dir + 'css'));
 });

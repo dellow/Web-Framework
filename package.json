@@ -6,6 +6,7 @@
     "css-sprite"          : "^0.9.3",
     "fs-extra"            : "^0.16.3",
     "gulp"                : "^3.8.11",
+    "gulp-beautify"       : "^1.1.2",
     "gulp-compass"        : "^2.0.4",
     "gulp-concat"         : "^2.4.3",
     "gulp-if"             : "^1.2.5",

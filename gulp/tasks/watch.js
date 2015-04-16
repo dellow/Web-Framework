@@ -19,6 +19,8 @@ gulp.task('watch', function(){
 
 		// Run Browserify on JS file changes
 		gulp.watch(GLOBAL.dist_dir + 'js/**/*.js', browserify);
+		// Run Browserify on HBS file changes
+		gulp.watch(GLOBAL.dist_dir + 'js/**/*.hbs', browserify);
 		// Run Compass on SCSS file changes
 		gulp.watch(GLOBAL.dist_dir + 'css/scss/**/*.scss', compass);
 	});

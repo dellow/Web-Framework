@@ -11,19 +11,20 @@
 	2. [Production](#profiles--production)
 7. [Watch](#watch)
 8. [Server](#server)
-9. [PageSpeed](#pagespeed)
-10. [Release](#release)
-11. [Working with SCSS](#working-with-scss)
+9. [PageSpeed (Extended)](#pagespeed)
+10. [Working with SCSS](#working-with-scss)
 	1. [Debug Mode](#working-with-scss--debug-mode)
 	2. [Dev Mode](#working-with-scss--dev-mode)
 	3. [BEM](#working-with-scss--bem)
 	4. [Responsive](#working-with-scss--responsive)
-12. [Working with JavaScript](#working-with-javascript)
+11. [Working with JavaScript](#working-with-javascript)
 	1. [Requiring New Files](#working-with-javascript--requiring-new-files)
 
 <a name="about"></a>
 ## About
 This is a fast project wrapper and workflow that utilises Gulp. To use this as a full Framework please follow the installation instructions below. This will pull in the [Framework Library Repo](https://github.com/sdellow/Framework-Library) using Bower which is a CSS and JS Framework built using SASS and Browserify.
+
+This wrapper has been split into a 'normal' and 'extended' version. The extended version includes other modules and tasks such as Dalek, JSHint and Jasmine. You will need to rename the `package.json.extended` file to just `package.json` (overwriting the current one) and the `gulp.extended` directory to use the extended version.
 
 <a name="requirements"></a>
 ## Requirements
@@ -80,9 +81,11 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 - Browserify (Non minified)
 - Compass (Non minified with development mode activated)
 - Imagemin
-- Dalek
-- JSHint
-- Jasmine
+- Dalek (Extended)
+- JSHint (Extended)
+- Jasmine (Extended)
+
+> __Please note:__ When run without the `development` argument Browserify and Compass will run minified.
 
 <a name="profiles--production"></a>
 ### Production
@@ -95,42 +98,28 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Server](#server).
 
 The tasks that are run in the `watch` task are:
-- Browserify
-- Compass
-- Imagemin
-- Sprite
+- Browserify (On .js and .hbs files)
+- Compass (On .scss files)
 
-> __Please note:__ `watch` will run in development mode, so CSS and JS will not be minified for easier debugging. You should run `gulp --config production` to get a final minified output for your live environment.
+> __Please note:__ `watch` will minify CSS and JS.
 
 <a name="server"></a>
 ## Server
 You can launch the built in web server with BrowserSync simply by running `gulp server`. This will provide a local and external address to test your apps in sync with other browsers. `gulp server` will automatically look for changes in the following files: `.html`, `.php`, `.css`, `.js`, any images in the image folder and run the respective tasks on them.
 
 The tasks that are run in the `server` task are:
-- Browserify
-- Compass
-- Imagemin
-- Sprite
+- Browserify (On .js and .hbs files)
+- Compass (On .scss files)
 
 The `gulp server` command takes an optional parameter to provide a proxy URL, for example: `gulp server --url http://vagrant.dev/` (you must supply the root domain, i.e. no sub folders). If this is supplied you files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
 
-> __Please note:__ `server` will run in development mode, so CSS and JS will not be minified for easier debugging. You should run `gulp --config production` to get a final minified output for your live environment.
+> __Please note:__ `server` will minify CSS and JS.
 
 <a name="pagespeed"></a>
-## PageSpeed
+## PageSpeed (Extended)
 You can run Google PageSpeed insights by running `gulp psi`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp psi --url http://amazon.com --mode desktop`.
 
 This task will also create a text file depending on the requested domain to record all PageSpeed results. E.G. A request to test `http://google.com` will create a txt file in `logs/pagespeed/google.com` - all subsequent requests to this domain will be appended to this file.
-
-<a name="release"></a>
-## Release
-Release creates a snapshot of the application files from the `src` directory essentially creating a release for use. Each release is timestamped and appended with the current state.
-
-### Current
-Additionally a folder called `current` will be created inside the `release` directory. This is a consistently named directory for the latest release and is useful if you use an online deploy tool such as DeployHQ or dploy.io as you can set this directory as the root directory to deploy from whereas individual releases will be timestamped with no consistent name.
-
-### Profile
-The current profile will also effect the optimisation of the release. For example `gulp release` will create a release with `_development` appended to the end. The development profile (see [Profiles](#profiles)) will be run on the release. Likewise `gulp release --config production` will run the production profile on the release.
 
 <a name="working-with-scss"></a>
 ## Working with SCSS
@@ -221,8 +210,6 @@ By default the Framework is set to a Desktop First approach. This can (and proba
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
 All JavaScript modules should be added in `app` directory - these files will be compiled by Gulp into a global `build.js` file.
-
-Running Gulp in development mode with `gulp` will compile the JS without minification for easier debugging. Likewise `gulp --config production` will optimize the final build file with UglifyJS.
 
 <a name="working-with-javascript--requiring-new-files"></a>
 ### Requiring New Files
