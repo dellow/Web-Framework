@@ -24,7 +24,10 @@
 ## About
 This is a fast project wrapper and workflow that utilises Gulp. To use this as a full Framework please follow the installation instructions below. This will pull in the [Framework Library Repo](https://github.com/sdellow/Framework-Library) using Bower which is a CSS and JS Framework built using SASS and Browserify.
 
+### Extended Modules
 This wrapper has been split into a 'normal' and 'extended' version. The extended version includes other modules and tasks such as Dalek, JSHint and Jasmine. You will need to rename the `package.json.extended` file to just `package.json` (overwriting the current one) and the `gulp.extended` directory to use the extended version.
+
+Any part of this readme that requires the extended modules will be suffixed with '(Extended)'.
 
 <a name="requirements"></a>
 ## Requirements
