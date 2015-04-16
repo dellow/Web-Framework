@@ -14,6 +14,8 @@
     require('fancybox');
     // Require :: Plugins
     require('../plugins/jquery.equal-heights');
+    require('../plugins/jquery.googlemap');
+    require('../plugins/jquery.modals');
     require('../plugins/jquery.validation');
     // Require :: Vendor
     require('../plugins/vendor/jquery.slider');
@@ -23,10 +25,6 @@
      * Init method for this module.
     **/
     Module.init = function(){
-        Module.equal_heights();
-        Module.lightboxes();
-        Module.sliders();
-        Module.validation();
     }
 
     /**
@@ -38,6 +36,21 @@
         if(!$('.js-eh').length){return};
         // Init plugin.
         $('.js-eh').equalHeights();
+    }
+
+    /**
+     * Module.google_map
+     * Map events.
+    **/
+    Module.google_map = function(){
+        // DOM check.
+        if(!$('.js-google-map').length){return};
+        // Init plugin.
+        $('.js-google-map').googlemap({
+            locations: [
+                'United Kingdom'
+            ]
+        });
     }
 
     /**
@@ -54,6 +67,24 @@
             autoScale    : true,
             transitionIn : 'fade'
         });
+    }
+
+    /**
+     * Module.modals
+     * Modal events.
+    **/
+    Module.modals = function(){
+        // DOM check.
+        if(!$('.js-modal').length){return};
+        // Init plugin.
+        $('.js-modal').modal();
+        // Init plugin on load (or function call).
+        // $(window).modal({
+        //     type   : 'modal-slide-left',
+        //     content: 'Some content here.'
+        // });
+        // // Destroy created modal.
+        // $(window).destroyModal();
     }
 
     /**

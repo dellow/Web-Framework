@@ -11,8 +11,7 @@ gulp.task('compass', function(){
 	return gulp.src(GLOBAL.dist_dir + 'css/scss/**/*.scss')
 		.pipe(compass({
 			css             : GLOBAL.dist_dir + 'css',
-			sass            : 'dist/css/scss', // Temporary fix while compass doesn't accept './' in path
-			// sass         : GLOBAL.dist_dir + 'css/scss',
+			sass            : GLOBAL.dist_dir + 'css/scss',
 			sourcemap       : true,
 			force           : true,
 			relativeAssets  : true,

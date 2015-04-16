@@ -29,45 +29,14 @@
 		$(function(){
             // Run page load events.
 			Controller.page_load();
-
 			// Check Wiselinks is enabled.
 			if(window.wiselinks_enabled){
 				// Init WiseLinks
-				window.wiselinks = new Wiselinks(el);
-				// WiseLinks events
-				$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
-		            Helpers.log("Loading: " + url + " to " + $target.selector + " within '" + render);
-			    });
-
-				$(document).off('page:redirected').on('page:redirected', function(event, $target, render, url){
-		            Helpers.log("Redirected to: " + url);
-			    });
-
-				$(document).off('page:always').on('page:always', function(event, xhr, settings){
-		            Helpers.log("Wiselinks page loading completed");
-	            	// Run page load events.
-					Controller.page_load();
-			    });
-
-				$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
-		            Helpers.log("Wiselinks status: '" + status);
-
-		            // Check for Google Analytics.
-	        		if(window.ga_active){
-						// Register Analytics Page View.
-						ga('send', 'pageview', {
-							'page'      : url,
-							'dimension1': WURFL.complete_device_name,
-							'dimension2': WURFL.form_factor,
-							'dimension3': WURFL.is_mobile
-						});
-					}
-			    });
-
-				$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
-		            Helpers.log("Wiselinks status: '" + status);
-		            window.location.replace(window.config.base_url + '404');
-			    });
+				window.wiselinks = new Wiselinks(el, {
+					html4_normalize_path: false
+				});
+				// Do page events
+				Controller.page_events();
 			}
 	    });
 	}
@@ -81,10 +50,57 @@
 		Binds.init();
 	}
 
+	/**
+	 * Controller.page_events
+	 * Wiselinks page events.
+	**/
+	Controller.page_events = function(){
+		// Page loading.
+		$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
+			// Log it.
+	        Helpers.log("Loading: " + url + " to " + $target.selector + " within '" + render);
+	    });
+		// Page redirected.
+		$(document).off('page:redirected').on('page:redirected', function(event, $target, render, url){
+			// Log it.
+	        Helpers.log("Redirected to: " + url);
+	    });
+		// Every page load.
+		$(document).off('page:always').on('page:always', function(event, xhr, settings){
+			// Log it.
+	        Helpers.log("Wiselinks page loading completed");
+	    	// Run page load events.
+			Controller.page_load();
+	    });
+		// Page done loading.
+		$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
+			// Log it.
+	        Helpers.log("Wiselinks status: '" + status);
+	        // Check for Google Analytics.
+			if(window.ga_active){
+				// Register Analytics Page View.
+				ga('send', 'pageview', {
+					'page'      : url,
+					'dimension1': WURFL.complete_device_name,
+					'dimension2': WURFL.form_factor,
+					'dimension3': WURFL.is_mobile
+				});
+			}
+	    });
+		// Page can't be found.
+		$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
+			// Log it.
+	        Helpers.log("Wiselinks status: '" + status);
+	        // Redirect to 404.
+	        window.location.replace(window.config.base_url + '404');
+	    });
+	}
+
 	// Export
 	Controller.exports = PageController;
 
 }(window.PageController = window.PageController || {}, jQuery, window));
+
 },{"../controllers/wiselinks":6,"./module.binds":4,"./module.menu":5}],2:[function(require,module,exports){
 /**
  *
@@ -219,7 +235,7 @@ require('./controller.page');
 /* Go
 /* ======================================================== */
 PageController.init($('.main'));
-},{"./controller.page":1,"./helpers":2,"jquery":11}],4:[function(require,module,exports){
+},{"./controller.page":1,"./helpers":2,"jquery":13}],4:[function(require,module,exports){
 /**
  *
  * Module
@@ -236,6 +252,8 @@ PageController.init($('.main'));
     require('fancybox');
     // Require :: Plugins
     require('../plugins/jquery.equal-heights');
+    require('../plugins/jquery.googlemap');
+    require('../plugins/jquery.modals');
     require('../plugins/jquery.validation');
     // Require :: Vendor
     require('../plugins/vendor/jquery.slider');
@@ -245,10 +263,6 @@ PageController.init($('.main'));
      * Init method for this module.
     **/
     Module.init = function(){
-        Module.equal_heights();
-        Module.lightboxes();
-        Module.sliders();
-        Module.validation();
     }
 
     /**
@@ -260,6 +274,21 @@ PageController.init($('.main'));
         if(!$('.js-eh').length){return};
         // Init plugin.
         $('.js-eh').equalHeights();
+    }
+
+    /**
+     * Module.google_map
+     * Map events.
+    **/
+    Module.google_map = function(){
+        // DOM check.
+        if(!$('.js-google-map').length){return};
+        // Init plugin.
+        $('.js-google-map').googlemap({
+            locations: [
+                'United Kingdom'
+            ]
+        });
     }
 
     /**
@@ -276,6 +305,24 @@ PageController.init($('.main'));
             autoScale    : true,
             transitionIn : 'fade'
         });
+    }
+
+    /**
+     * Module.modals
+     * Modal events.
+    **/
+    Module.modals = function(){
+        // DOM check.
+        if(!$('.js-modal').length){return};
+        // Init plugin.
+        $('.js-modal').modal();
+        // Init plugin on load (or function call).
+        // $(window).modal({
+        //     type   : 'modal-slide-left',
+        //     content: 'Some content here.'
+        // });
+        // // Destroy created modal.
+        // $(window).destroyModal();
     }
 
     /**
@@ -319,7 +366,8 @@ PageController.init($('.main'));
     module.exports = Binds;
 
 }(window.Binds = window.Binds || {}, jQuery, window));
-},{"../plugins/jquery.equal-heights":7,"../plugins/jquery.validation":8,"../plugins/vendor/jquery.slider":9,"fancybox":10}],5:[function(require,module,exports){
+
+},{"../plugins/jquery.equal-heights":7,"../plugins/jquery.googlemap":8,"../plugins/jquery.modals":9,"../plugins/jquery.validation":10,"../plugins/vendor/jquery.slider":11,"fancybox":12}],5:[function(require,module,exports){
 /**
  *
  * Module
@@ -4522,6 +4570,454 @@ if (typeof JSON !== 'object') {
 },{}],8:[function(require,module,exports){
 /**
  *
+ * Google Map
+ * jquery.googlemap.js
+ *
+ * Copyright 2014, Stewart Dellow
+ * Some information on the license.
+ *
+ * $('.js-map').googlemap();
+ *
+ * canvas                   : String. The ID applied to the actual element used for the map canvas.
+ * locations                : Array. An array of locations to show on the map.
+ * apiKey                   : String. Optional. Google console API key to monitor usage.
+ * hoverThreshold           : String. Threshold when hovering before map events are available.
+ * mapStyles                : Object. See http://goo.gl/uuaJqF for more information on styling maps.
+ * mapZoom                  : Boolean. Default Zoom level when only one location is set.
+ * mapDisableDefaultUI      : Boolean. Disable the UI controls.
+ * mapStreetViewControl     : Boolean. Disable the street view man.
+ * mapDisableDoubleClickZoom: Boolean. Prevent double clicking the canvas from zooming in.
+ * mapScrollwheel           : Boolean. Prevent scrolling the map with the mouse wheel.
+ * mapDraggable             : Boolean. Prevent click dragging the map.
+ * markerAnimation          : Boolean. Allow markers to magically drop from the sky.
+ * markerIcon               : String. A custom icon for the markers.
+ * markerTitle              : String. A title for the markers.
+ *
+**/
+
+;(function($, window, undefined){
+    'use strict';
+
+    // Set helpers.
+    var helpers = {};
+
+    /**
+     * Plugin
+     * Return a unique plugin instance.
+    **/
+    var Plugin = function(elem, options){
+        this.elem     = elem;
+        this.$elem    = $(elem);
+        this.options  = options;
+        this.metadata = this.$elem.data('plugin-options');
+    }
+
+    /**
+     * $.fn.googlemap
+     * Return a unique plugin instance.
+    **/
+    $.fn.googlemap = function(options){
+        return this.each(function(){
+            new Plugin(this, options).init();
+        });
+    };
+
+    /**
+     * $.fn.googlemap.defaults
+     * Default options.
+    **/
+    $.fn.googlemap.defaults = {
+        canvas                   : 'map-canvas',
+        locations                : [],
+        apiKey                   : '',
+        map_type                 : 'roadmap',
+        hoverThreshold           : 500,
+        mapStyles                : null,
+        mapZoom                  : 15,
+        mapDisableDefaultUI      : false,
+        mapStreetViewControl     : true,
+        mapDisableDoubleClickZoom: true,
+        mapScrollwheel           : true,
+        mapDraggable             : true,
+        markerAnimation          : true,
+        markerIcon               : 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        markerTitle              : 'Location'
+    };
+
+    /**
+     * Plugin.prototype
+     * Init.
+    **/
+    Plugin.prototype = {
+        init: function(){
+            // this
+            var _self = this;
+
+            // Global settings.
+            _self.settings = $.extend({}, $.fn.googlemap.defaults, _self.options);
+
+            // API Key
+            _self.key = (_self.settings.apiKey !== '') ? '&key=' + _self.settings.apiKey : ''; // Must be empty string, not `null`.
+            // Canvas
+            _self.map_canvas = $('#' + _self.settings.canvas, _self.$elem);
+
+            // Do jQuery event binds.
+            _self.binds();
+            // Run the plugin.
+            _self.run();
+
+            return _self;
+        },
+        binds: function(){
+            var _self = this;
+
+            // Vars
+            var timeout, pointer_active = false;
+
+            // On events
+            $(document).on({
+                click: function(){
+                    if(!pointer_active){
+                        _self.$elem.addClass('map-is-active');
+                        _self.map_canvas.css({'pointer-events': 'auto'});
+                        pointer_active = true;
+                    }
+                },
+                mouseover: function(){
+                    if(!pointer_active){
+                        timeout = window.setTimeout(function(){
+                            window.clearTimeout(timeout);
+                            _self.$elem.addClass('map-is-active');
+                            _self.map_canvas.css({'pointer-events': 'auto'});
+                            pointer_active = true;
+                        }, _self.settings.hoverThreshold);
+                    }
+                },
+                mouseleave: function(){
+                    if(pointer_active){
+                        window.clearTimeout(timeout);
+                        _self.$elem.removeClass('map-is-active');
+                        _self.map_canvas.css({'pointer-events': 'none'});
+                        pointer_active = false;
+                    }
+                }
+            }, _self.selector);
+        },
+        run: function(){
+            var _self = this;
+
+            // Check for canvas.
+            if(_self.map_canvas.length){
+                // Run
+                _self.maps_init();
+            }
+            else{
+                helpers.log("Map canvas not available.");
+            }
+        },
+        maps_init: function(){
+            var _self = this;
+
+            // Load API.
+            $.getScript('https://www.google.com/jsapi', function(){
+
+                // Get API
+                google.load('maps', '3', {
+                    other_params: 'sensor=false&region=GB&libraries=geometry' + _self.key,
+                    callback: function(){
+
+                        // Map Type
+                        switch(_self.settings.map_type.toLowerCase()){
+                            case 'roadmap' : _self.settings.map_type = google.maps.MapTypeId.ROADMAP; break;
+                            case 'satellite' : _self.settings.map_type = google.maps.MapTypeId.SATELLITE; break;
+                            case 'terrain' : _self.settings.map_type = google.maps.MapTypeId.TERRAIN; break;
+                            case 'hybrid' : _self.settings.map_type = google.maps.MapTypeId.HYBRID; break;
+                        }
+                        // Start Bounds.
+                        _self.bounds = new google.maps.LatLngBounds();
+                        // Start Map.
+                        _self.map = new google.maps.Map(document.getElementById(_self.settings.canvas), {
+                            zoom                  : 5,
+                            center                : new google.maps.LatLng(51.5000, 0.1167),
+                            mapTypeId             : _self.settings.map_type,
+                            disableDefaultUI      : _self.settings.mapDisableDefaultUI,
+                            streetViewControl     : _self.settings.mapStreetViewControl,
+                            disableDoubleClickZoom: _self.settings.mapDisableDoubleClickZoom,
+                            scrollwheel           : _self.settings.mapScrollwheel,
+                            draggable             : _self.settings.mapDraggable,
+                            styles                : _self.settings.mapStyles
+                        });
+
+                        // Start Geocoder.
+                        var geocoder = new google.maps.Geocoder();
+                        // Loop through locations.
+                        for(var i = 0, ii = _self.settings.locations.length; i < ii; i++){
+                            geocoder.geocode({'address': _self.settings.locations[i]}, _self.geocode_found());
+                        }
+                    }
+                });
+            });
+        },
+        geocode_found: function(){
+            var _self = this;
+
+            return function(results, status){
+                // Check location has been found.
+                if(status === google.maps.GeocoderStatus.OK){
+                    // Start listeners
+                    _self.set_position(results[0].geometry.location);
+                }
+                else{
+                    helpers.log("Can't Geolocate that location.");
+                }
+            }
+        },
+        set_position: function(location){
+            var _self = this;
+
+            // Set a marker for the location.
+            var marker = new google.maps.Marker({
+                map      : _self.map,
+                position : location,
+                animation: (_self.settings.markerAnimation) ? google.maps.Animation.DROP : null,
+                icon     : _self.settings.markerIcon,
+                title    : _self.settings.markerTitle
+            });
+
+            // If we have more than one location use bounds to set the viewport. Otherwise
+            // set the zoom and center manually for a single location.
+            if(_self.settings.locations.length > 1){
+                // Extend the bounds of the map for each location.
+                _self.bounds.extend(location);
+                // Fit the bounds on each iteration.
+                _self.map.fitBounds(_self.bounds);
+            }
+            else{
+                _self.map.setCenter(location);
+                _self.map.setZoom(_self.settings.mapZoom);
+            }
+        }
+    }
+
+    /**
+     * helpers.log
+     * Returns a cross-browser safe message in the console.
+    **/
+    helpers.log = function(message, alertlog){
+        alertlog = (typeof alertlog === 'undefined') ? false : true;
+        if(typeof console === 'undefined' || typeof console.log === 'undefined'){
+            if(alertlog){
+                alert(message);
+            }
+        }
+        else {
+            console.log(message);
+        }
+    }
+
+})(jQuery, window);
+},{}],9:[function(require,module,exports){
+/**
+ *
+ * LightBox
+ * jquery.modals.js
+ *
+ * Copyright 2014, Stewart Dellow
+ * Some information on the license.
+ *
+ * $('.js-modal').modal();
+ *
+ * setting: Type. Description.
+ *
+**/
+
+;(function($, window, undefined){
+    'use strict';
+
+    // Set helpers.
+    var helpers = {};
+
+    /**
+     * Plugin
+     * Return a unique plugin instance.
+    **/
+    var Plugin = function(elem, options){
+        this.elem     = elem;
+        this.$elem    = $(elem);
+        this.options  = options;
+        this.metadata = this.$elem.data('plugin-options');
+    }
+
+    /**
+     * $.fn.modal
+     * Return a unique plugin instance.
+    **/
+    $.fn.modal = function(options){
+        return this.each(function(){
+            new Plugin(this, options).init();
+        });
+    };
+
+    /**
+     * $.fn.destroyModal
+     * Destroy any active modal windows.
+    **/
+    $.fn.destroyModal = function(){
+        new Plugin().destroy();
+    };
+
+    /**
+     * $.fn.modal.defaults
+     * Default options.
+    **/
+    $.fn.modal.defaults = {
+        template: '<div id="modal-window" class="modal"><div class="modal-content"><div><button class="modal-close">Close</button></div></div></div>',
+        type    : 'modal-slide-left',
+        content : ''
+    };
+
+    /**
+     * Plugin.prototype
+     * Init.
+    **/
+    Plugin.prototype = {
+        init: function(){
+            // this
+            var _self = this;
+
+            // Global settings.
+            _self.settings = $.extend({}, $.fn.modal.defaults, _self.options);
+
+            // Hide any open windows.
+            _self.destroy();
+
+            // Do jQuery event binds.
+            _self.binds();
+
+            // Detect if this is running on the window.
+            if($.isWindow(_self.elem)){
+                // Run the plugin.
+                _self.with_selector();
+            }
+            else{
+                // Do jQuery event binds.
+                _self.without_selector();
+            }
+
+            return _self;
+        },
+        binds: function(){
+            var _self = this;
+
+            // On escape key press.
+            $(document).on('keyup', function(e){
+                if(e.keyCode == 27){
+                    _self.destroy();
+                }
+            });
+            // On close.
+            $(document).on('click', '.modal-close', function(e){
+                e.preventDefault();
+
+                _self.destroy();
+            });
+        },
+        without_selector: function(){
+            var _self = this;
+
+            // On submit.
+            _self.$elem.on('click', function(e){
+                e.preventDefault();
+
+                _self.show_predefined_modal($(this));
+            });
+        },
+        with_selector: function(){
+            var _self = this;
+
+            _self.show_templated_modal();
+        },
+        show_templated_modal: function(){
+            var _self = this,
+                $target = $(_self.settings.template);
+
+            // Add type.
+            $target.addClass(_self.settings.type);
+
+            // Apply content.
+            $('.modal-content', $target).prepend(_self.settings.content);
+
+            // Add to DOM.
+            $('body').prepend($target);
+
+            // Do overlay.
+            this.apply_overlay($target);
+
+            // Show modal window.
+            setTimeout(function(){
+                $target.addClass('active modal-show');
+            }, 50);
+        },
+        show_predefined_modal: function(el){
+            // Determine target.
+            var target = el.data('modal-target'),
+                $target = $('#' + target);
+
+            // Do overlay.
+            this.apply_overlay($target);
+
+            // Show modal window.
+            if(target !== ''){
+                if($target.length){
+                    setTimeout(function(){
+                        $target.addClass('active modal-show');
+                    }, 50);
+                }
+                else{
+                    helpers.log("Target element can't be found.");
+                    return false;
+                }
+            }
+            else{
+                helpers.log("No target defined.");
+                return false;
+            }
+        },
+        hide_windows: function(){
+            $('.modal.active').removeClass('modal-show');
+        },
+        apply_overlay: function(el){
+            el.after('<div class="modal-overlay"></div>');
+        },
+        destroy_overlay: function(){
+            $('.modal-overlay').remove();
+        },
+        destroy: function(){
+            this.hide_windows();
+            this.destroy_overlay();
+        }
+    }
+
+    /**
+     * helpers.log
+     * Returns a cross-browser safe message in the console.
+    **/
+    helpers.log = function(message, alertlog){
+        alertlog = (typeof alertlog === 'undefined') ? false : true;
+        if(typeof console === 'undefined' || typeof console.log === 'undefined'){
+            if(alertlog){
+                alert(message);
+            }
+        }
+        else {
+            console.log(message);
+        }
+    }
+
+})(jQuery, window);
+},{}],10:[function(require,module,exports){
+/**
+ *
  * Form Validation
  * jquery.validation.js
  *
@@ -5336,7 +5832,7 @@ if (typeof JSON !== 'object') {
 
 })(jQuery, window);
 
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider
  * http://bxslider.com
@@ -6847,7 +7343,7 @@ if (typeof JSON !== 'object') {
 
 })(jQuery);
 
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /*!
  * fancyBox - jQuery Plugin
  * version: 2.1.5 (Fri, 14 Jun 2013)
@@ -8876,7 +9372,7 @@ module.exports = function(jQuery) {
     });
 }
 
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
