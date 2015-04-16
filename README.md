@@ -88,7 +88,7 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 - JSHint (Extended)
 - Jasmine (Extended)
 
-> __Please note:__ When run without the `development` argument Browserify and Compass will run minified.
+> __Please note:__ When run without the `development` argument Browserify and Compass will run minified. This is by design to allow easier one time updates, without having to do a new release.
 
 <a name="profiles--production"></a>
 ### Production
