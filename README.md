@@ -88,13 +88,13 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 - JSHint (Extended)
 - Jasmine (Extended)
 
-> __Please note:__ When run without the `development` argument Browserify and Compass will run minified. This is by design to allow easier one time updates, without having to do a new release.
-
 <a name="profiles--production"></a>
 ### Production
 - Browserify (Minified)
 - Compass (Minified)
 - Imagemin
+
+> __Please note:__ When run with the `production` or without the `development` argument Browserify and Compass will run minified. This is by design to allow easier one time updates, without having to do a new release. In order to create an easily debuggable stylesheet and build JS file you'll need to run gulp with the `development` argument.
 
 <a name="watch"></a>
 ## Watch
