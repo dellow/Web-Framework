@@ -12,7 +12,7 @@
 // Global settings.
 window.mobile_breakpoint = 768;
 window.wiselinks_enabled = true;
-window.debugging         = false;
+window.debugging         = true;
 window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
 /* ======================================================== */

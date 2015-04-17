@@ -5,11 +5,9 @@
  * Copyright 2015, Author Name
  * Some information on the license.
  *
- * Various helper functions in vanilla JavaScript.
- *
 **/
 
-;(function(Helper, window, undefined){
+;(function(Helper, $, window, undefined){
 	'use strict';
 
 	/**
@@ -86,7 +84,60 @@
 		};
 	}
 
+	/**
+	 * Helper.preloader
+	 * Generates a preloader.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+	Helper.preloader = function(el, destroy){
+		destroy = (typeof destroy === 'undefined') ? false : true;
+		el      = (typeof el === 'undefined') ? $('body') : el;
+		var loader = $('<div class="spinner-wrapper"><svg class="spinner" width="35px" height="35px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div>');
+
+		if(!destroy){
+			if(!$('.spinner-wrapper', el).length){
+				el.css({'position': 'relative'}).prepend(loader);
+			}
+		}
+		else{
+			$('.spinner-wrapper', el).fadeOut(500, function(){
+				$(this).remove();
+			})
+		}
+	}
+
+    /**
+     * Helper.ajax
+     * Returns a simple Ajax request. Should use the result with a promise.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     */
+    Helper.ajax = function(url, request){
+        return $.ajax({
+            url     : url,
+            type    : 'POST',
+            dataType: 'JSON',
+            data    : {
+                'ajaxrequest': true,
+                'request': request
+            },
+            beforeSend: function(jqXHR, settings){
+            	// Log full URL.
+            	Helpers.log(settings.url + '?' + settings.data);
+                // Add preloader.
+                Helper.preloader();
+            },
+            success: function(jqXHR){
+                // Destroy preloader.
+                Helper.preloader(true);
+            }
+        });
+    }
+
 	// Export
 	module.exports = Helpers;
 
-}(window.Helpers = window.Helpers || {}, window));
+}(window.Helpers = window.Helpers || {}, jQuery, window));
