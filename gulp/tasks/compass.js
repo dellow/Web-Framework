@@ -1,11 +1,13 @@
 /* ================================================== */
 /* Require
 /* ================================================== */
-var gulp      = require('gulp'),
-	gulpif    = require('gulp-if'),
-	streamify = require('gulp-streamify'),
-	minify    = require('gulp-minify-css'),
-	compass   = require('gulp-compass');
+var gulp         = require('gulp'),
+	util 	     = require('gulp-util'),
+	gulpif       = require('gulp-if'),
+	streamify    = require('gulp-streamify'),
+	minify       = require('gulp-minify-css'),
+	compass      = require('gulp-compass'),
+	notification = require('node-notifier');
 
 /* ================================================== */
 /* Vars
@@ -16,10 +18,21 @@ var minify 	    = (GLOBAL.args.config == undefined || GLOBAL.is_production) ? tr
 	logging   	= (GLOBAL.is_production) ? false : true;
 
 /* ================================================== */
-/* Handle Errors
+/* Functions
 /* ================================================== */
-function handleError(err) {
-	console.log(err.toString());
+function error_handler(err){
+	// Show notification.
+	notification.notify({
+		message: 'Error: ' + err.message
+	});
+	// Show in terminal log.
+	util.log(util.colors.red('Error'), err.message);
+}
+
+function compass_handler(err){
+	// Standard error.
+	error_handler(err);
+	// Don't break stream.
 	this.emit('end');
 }
 
@@ -39,7 +52,7 @@ gulp.task('compass', function(){
 			relativeAssets: true,
 			noLineComments: true
 		}))
-		.on('error', handleError)
+		.on('error', browserify_handler)
 		.pipe(gulpif(minify, streamify(uglify()), streamify(beautify({indentSize: 4}))))
 		.pipe(gulp.dest(GLOBAL.dist_dir + 'css'));
 });
