@@ -79,12 +79,12 @@
         // Init plugin.
         $('.js-modal').modal();
         // Init plugin on load (or function call).
-        // $(window).modal({
-        //     type   : 'modal-slide-left',
-        //     content: 'Some content here.'
-        // });
+        $(window).modal({
+            type   : 'modal-slide-left',
+            content: 'Some content here.'
+        });
         // // Destroy created modal.
-        // $(window).destroyModal();
+        $(window).destroyModal();
     }
 
     /**

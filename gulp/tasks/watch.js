@@ -14,11 +14,11 @@ gulp.task('watch', function(){
 			return console.log(err);
 		}
 
-		gulp.watch({glob: GLOBAL.dist_dir + 'css/scss/**/*.scss'}, function(){
+		gulp.watch({glob: GLOBAL.dist_dir + 'css/scss/**/*'}, function(){
 			gulp.start('compass');
 		});
 
-		gulp.watch({glob: GLOBAL.dist_dir + 'js/**/*.js'}, function(){
+		gulp.watch({glob: GLOBAL.dist_dir + 'js/**/*'}, function(){
 			gulp.start('browserify');
 		});
 	});

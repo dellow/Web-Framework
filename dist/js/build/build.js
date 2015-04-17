@@ -36,7 +36,7 @@
 					html4_normalize_path: false
 				});
 				// Do page events
-				Controller.page_events();
+				Controller.wiselinks_events();
 			}
 	    });
 	}
@@ -51,31 +51,31 @@
 	}
 
 	/**
-	 * Controller.page_events
+	 * Controller.wiselinks_events
 	 * Wiselinks page events.
 	**/
-	Controller.page_events = function(){
+	Controller.wiselinks_events = function(){
+		// Every page load.
+		$(document).off('page:always').on('page:always', function(event, xhr, settings){
+			// Log it.
+	        Helpers.log("Wiselinks page loading completed", "positive");
+	    	// Run page load events.
+			Controller.page_load();
+	    });
 		// Page loading.
 		$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
 			// Log it.
-	        Helpers.log("Loading: " + url + " to " + $target.selector + " within '" + render);
+	        Helpers.log("Loading: " + url + " to " + $target.selector + " within '" + render, "positive");
 	    });
 		// Page redirected.
 		$(document).off('page:redirected').on('page:redirected', function(event, $target, render, url){
 			// Log it.
-	        Helpers.log("Redirected to: " + url);
-	    });
-		// Every page load.
-		$(document).off('page:always').on('page:always', function(event, xhr, settings){
-			// Log it.
-	        Helpers.log("Wiselinks page loading completed");
-	    	// Run page load events.
-			Controller.page_load();
+	        Helpers.log("Redirected to: " + url, "positive");
 	    });
 		// Page done loading.
 		$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
 			// Log it.
-	        Helpers.log("Wiselinks status: '" + status);
+	        Helpers.log("Wiselinks status: '" + status, "positive");
 	        // Check for Google Analytics.
 			if(window.ga_active){
 				// Register Analytics Page View.
@@ -90,7 +90,7 @@
 		// Page can't be found.
 		$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
 			// Log it.
-	        Helpers.log("Wiselinks status: '" + status);
+	        Helpers.log("Wiselinks status: '" + status, "negative");
 	        // Redirect to 404.
 	        window.location.replace(window.config.base_url + '404');
 	    });
@@ -317,12 +317,12 @@ PageController.init($('.main'));
         // Init plugin.
         $('.js-modal').modal();
         // Init plugin on load (or function call).
-        // $(window).modal({
-        //     type   : 'modal-slide-left',
-        //     content: 'Some content here.'
-        // });
+        $(window).modal({
+            type   : 'modal-slide-left',
+            content: 'Some content here.'
+        });
         // // Destroy created modal.
-        // $(window).destroyModal();
+        $(window).destroyModal();
     }
 
     /**
