@@ -3,9 +3,7 @@
    Imports all the partials.
 ========================================================================== */
 // Core
-@import 'placeholders',
-		'imports',
-		'sprites',
+@import 'sprites',
 		'icons',
 		'typeset',
 		'global',
@@ -27,3 +25,13 @@
 // Misc
 @import 'fixes',
 		'breakpoints';
+
+// JavaScript
+// @import 'javascript/accordion';
+// @import 'javascript/bx-slider';
+// @import 'javascript/fancybox';
+// @import 'javascript/google-map';
+// @import 'javascript/modals';
+// @import 'javascript/preloaders';
+// @import 'javascript/tabs';
+// @import 'javascript/validation';

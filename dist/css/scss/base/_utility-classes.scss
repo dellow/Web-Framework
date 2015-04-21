@@ -7,7 +7,7 @@
 .msg-success {
 	color: rgba(138, 216, 54, 0.6);
 }
-.msg-failure {
+.msg-error {
 	color: rgba(255, 0, 0, 0.6);
 }
 
@@ -17,13 +17,6 @@
 }
 .clear {
 	clear: both;
-}
-
-/* -- Overflow Auto -- */
-.u-auto-overflow {
-	overflow: auto;
-	position: relative;
-	z-index: 1;
 }
 
 /* -- Resetting (This is a last resort) -- */
@@ -50,56 +43,78 @@
 }
 
 /* -- Nudge -- */
-
-/* -- Nudge -- */
 .u-nudge-top {
 	@include nudge(margin-top, 1);
-	&.x2 {
+	&--x2 {
 		@include nudge(margin-top, 2);
+	}
+	&--x3 {
+		@include nudge(margin-top, 3);
 	}
 }
 .u-nudge-right {
 	@include nudge(margin-right, 1);
-	&.x2 {
+	&--x2 {
 		@include nudge(margin-right, 2);
+	}
+	&--x3 {
+		@include nudge(margin-right, 3);
 	}
 }
 .u-nudge-bottom {
 	@include nudge(margin-bottom, 1);
-	&.x2 {
+	&--x2 {
 		@include nudge(margin-bottom, 2);
+	}
+	&--x3 {
+		@include nudge(margin-bottom, 3);
 	}
 }
 .u-nudge-left {
 	@include nudge(margin-left, 1);
-	&.x2 {
+	&--x2 {
 		@include nudge(margin-left, 2);
+	}
+	&--x3 {
+		@include nudge(margin-left, 3);
 	}
 }
 
 /* -- Pad -- */
 .u-pad-top {
 	@include nudge(padding-top, 1);
-	&.x2 {
+	&--x2 {
 		@include nudge(margin-top, 2);
+	}
+	&--x3 {
+		@include nudge(margin-top, 3);
 	}
 }
 .u-pad-right {
 	@include nudge(padding-right, 1);
-	&.x2 {
+	&--x2 {
 		@include nudge(margin-right, 2);
+	}
+	&--x3 {
+		@include nudge(margin-right, 3);
 	}
 }
 .u-pad-bottom {
 	@include nudge(padding-bottom, 1);
-	&.x2 {
+	&--x2 {
 		@include nudge(margin-bottom, 2);
+	}
+	&--x3 {
+		@include nudge(margin-bottom, 3);
 	}
 }
 .u-pad-left {
 	@include nudge(padding-left, 1);
-	&.x2 {
+	&--x2 {
 		@include nudge(margin-left, 2);
+	}
+	&--x3 {
+		@include nudge(margin-left, 3);
 	}
 }
 
@@ -114,6 +129,16 @@
 /* -- Vertical Alignment -- */
 .u-vert {
 	vertical-align: middle;
+}
+
+/* -- Overflow -- */
+.u-overflow-auto {
+	overflow: auto;
+	position: relative;
+	z-index: 1;
+}
+.u-overflow-hidden {
+	overflow: hidden;
 }
 
 /* -- Structure -- */
@@ -201,11 +226,4 @@
 }
 .u-text-sans-serif {
 	font-family: sans-serif;
-}
-
-/* -- CSS3 Columns -- */
-@for $i from 1 through 10 {
-	.u-columns-#{$i} {
-		-webkit-column-count: $i; -moz-column-count: $i; column-count: $i;
-	}
 }

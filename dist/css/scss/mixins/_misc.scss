@@ -27,11 +27,17 @@
  * .foo {@include underline(red);}
 **/
 @mixin underline($color){
-	@if($color == none){
+	@if( $color == none or $color == '' ){
 		background-image: none;
 		background-position: 0% 0%;
 		background-repeat: repeat;
 		background-size: auto;
+		&:hover {
+			background-image: none;
+			background-position: 0% 0%;
+			background-repeat: repeat;
+			background-size: auto;
+		}
 	}
 	@else{
 		background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, $color 50%);
