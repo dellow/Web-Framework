@@ -57,6 +57,8 @@ After cloning the repository simply run `bash install.sh` from your command line
 
 __All additional instructions below assume you have followed the installation process.__
 
+> __Hint:__ You can make the bash script executable by running `chmod u+x install.sh`. This will allow you to run the script like this: `./install.sh`.
+
 <a name="styleguide-examples"></a>
 ## Styleguide & Examples
 After installation there is a CSS styleguide located in `dist/.help/guides/styleguide.html` which outlines some of the elements in the Framework. You can also test the vertical rhythm `dist/.help/guides/rhythm.html`.
