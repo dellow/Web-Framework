@@ -510,13 +510,22 @@
                 ajax_promise.done(function(xhr){
                     // If error.
                     if(xhr.type == 'error'){
-                        // Loops through the response and adds them to the error_array.
-                        for(var i = 0, ii = xhr.fields.length; i < ii; i++){
+                        if(typeof xhr.field !== 'undefined'){
                             var obj = {
-                                input: $('[name="' + xhr.fields[i] + '"]', _self.$elem),
-                                msg  : xhr.responses[i]
+                                input: $('[name="' + xhr.field + '"]', _self.$elem),
+                                msg  : (typeof xhr.response !== 'undefined') ? xhr.response : xhr.responses[i]
                             }
                             _self.error_array.push(obj);
+                        }
+                        else{
+                            // Loops through the response and adds them to the error_array.
+                            for(var i = 0, ii = xhr.fields.length; i < ii; i++){
+                                var obj = {
+                                    input: $('[name="' + xhr.fields[i] + '"]', _self.$elem),
+                                    msg  : (typeof xhr.response !== 'undefined') ? xhr.response : xhr.responses[i]
+                                }
+                                _self.error_array.push(obj);
+                            }
                         }
                     }
 

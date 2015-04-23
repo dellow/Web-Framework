@@ -1022,7 +1022,7 @@ cite .profession {
   background-repeat: repeat-x;
   background-size: 100% 0.15rem;
 }
-.content p a:hover, .content p a:active, .content p a:focus, .content li a:hover, .content li a:active, .content li a:focus {
+.content p a:hover, .content li a:hover {
   background-image: -webkit-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: -moz-linear-gradient(top, transparent 50%, #ea1f40 50%);
   background-image: -o-linear-gradient(top, transparent 50%, #ea1f40 50%);

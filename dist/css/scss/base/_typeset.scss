@@ -118,7 +118,7 @@ cite {
 	p, li {
 		a {
 			@include underline(lighten(color(copy, link), 20%));
-			&:hover, &:active, &:focus {
+			&:hover {
 				background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(copy, hover), 20%) 50%);
 				background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(copy, hover), 20%) 50%);
 				background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, lighten(color(copy, hover), 20%) 50%);
