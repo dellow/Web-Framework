@@ -405,6 +405,10 @@ PageController.init($('.main'));
      * Form validation events.
     **/
     Module.validation = function(){
+        // Check captcha.
+        if($('#c_a_p_t_c_h_a').length){
+            $('#c_a_p_t_c_h_a').prop('checked', true);
+        }
         // DOM check.
         if(!$('.js-validate').length){return};
         // Init plugin.
@@ -5434,6 +5438,8 @@ if (typeof JSON !== 'object') {
             form = (typeof form !== 'undefined') ? form : this;
             // Remove error class from form.
             form.$elem.removeClass('form-has-errors');
+            // Remove generic form messages.
+            $('.form-messages').empty();
             // Remove error class from fields.
             $('.field-has-errors', form.$elem).removeClass('field-has-errors');
             // Remove error class from fieldsets.
@@ -5469,7 +5475,7 @@ if (typeof JSON !== 'object') {
                 var message = (_self.settings.msgSep) ? (error) ? _self.settings.msgSep + ' <span class="msg">' + error + '</span>' : '' : '<span class="msg">' + error + '</span>';
 
                 // Check element exists in the DOM.
-                if(el.length && el.attr('type') !== 'hidden'){
+                if(el.length && el.is(':input') && el.attr('type') !== 'hidden'){
                     // Apply error class to field.
                     el.addClass(_self.settings.errorClass).parent('.field').addClass('field-has-errors');
                     // Field specific actions.
@@ -5497,6 +5503,9 @@ if (typeof JSON !== 'object') {
                             scrollTop: (el.offset().top - 25)
                         }, 500);
                     }
+                }
+                else if(!el.is(':input')){
+                    el.prepend('<p>' + error + '</p>').show();
                 }
                 else{
                     _self.leftovers.push(error);
@@ -5563,7 +5572,7 @@ if (typeof JSON !== 'object') {
                 _self.success('js', parameters);
             }
             else{
-                _self.validation_failure();
+                _self.validation_error();
             }
         },
         server_validate_fields: function(){
@@ -5582,7 +5591,7 @@ if (typeof JSON !== 'object') {
                     if(xhr.type == 'error'){
                         if(typeof xhr.field !== 'undefined'){
                             var obj = {
-                                input: $('[name="' + xhr.field + '"]', _self.$elem),
+                                input: (xhr.field.indexOf('.') === 0) ? $(xhr.field) : $('[name="' + xhr.field + '"]', _self.$elem),
                                 msg  : (typeof xhr.response !== 'undefined') ? xhr.response : xhr.responses[i]
                             }
                             _self.error_array.push(obj);
@@ -5591,7 +5600,7 @@ if (typeof JSON !== 'object') {
                             // Loops through the response and adds them to the error_array.
                             for(var i = 0, ii = xhr.fields.length; i < ii; i++){
                                 var obj = {
-                                    input: $('[name="' + xhr.fields[i] + '"]', _self.$elem),
+                                    input: (xhr.field.indexOf('.') === 0) ? $(xhr.field) : $('[name="' + xhr.fields[i] + '"]', _self.$elem),
                                     msg  : (typeof xhr.response !== 'undefined') ? xhr.response : xhr.responses[i]
                                 }
                                 _self.error_array.push(obj);
@@ -5607,7 +5616,7 @@ if (typeof JSON !== 'object') {
                         _self.success('server', parameters);
                     }
                     else{
-                        _self.validation_failure();
+                        _self.validation_error();
                     }
                 }).fail(function(xhr, ajaxOptions, thrownError){
                     // Log it.
@@ -5615,8 +5624,6 @@ if (typeof JSON !== 'object') {
                     helpers.log(thrownError);
                     // Set error.
                     fatalerror = true;
-                    // Server error
-                    var error = (xhr.responseText !== '') ? xhr.responseText : thrownError;
                 });
             }
             // No form action.
@@ -5636,7 +5643,7 @@ if (typeof JSON !== 'object') {
             if(type == 'server'){
                 _self.$elem.fadeOut(_self.settings.fadeOutAnimationSpeed, function(){
                     // Validation Complete.
-                    _self.validation_complete();
+                    _self.validation_success();
                     // Fade in success element.
                     _self.$elem.prev(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
                     // Callback
@@ -5645,13 +5652,13 @@ if (typeof JSON !== 'object') {
             }
             else if(!_self.settings.disableAjax && type == 'js'){
                 // Ajax request.
-                var ajax_promise = _self.ajax_request(_self.form_action, _self.$elem.serialize());
+                var ajax_promise = _self.ajax_request(_self.form_action, _self.$elem.serialize() + '&' + _self.settings.serverID + '=true');
 
                 // Process promise.
                 ajax_promise.always(function(response){
                     _self.$elem.fadeOut(_self.settings.fadeOutAnimationSpeed, function(){
                         // Validation Complete.
-                        _self.validation_complete();
+                        _self.validation_success();
                         // Fade in success element.
                         _self.$elem.prev(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
                         // Callback
@@ -5663,7 +5670,7 @@ if (typeof JSON !== 'object') {
                 // Unbind submit.
                 _self.$elem.unbind('submit');
                 // Validation Complete.
-                _self.validation_complete();
+                _self.validation_success();
                 // Callback
                 _self.settings.successCallback.call(_self, callback_parameters);
                 // Trigger submit after unbind.
@@ -5686,11 +5693,13 @@ if (typeof JSON !== 'object') {
                 this.js_validate_fields();
             }
         },
-        validation_complete: function(){
+        validation_success: function(){
             // Destroy preloader.
             this.apply_preloader(this.button, true);
+            // Reset validation.
+            this.validation_reset();
         },
-        validation_failure: function(){
+        validation_error: function(){
             var _self = this;
 
             // Process for 0.5 second.
@@ -5710,6 +5719,8 @@ if (typeof JSON !== 'object') {
             this.reset_errors();
             // Clear localStorage.
             this.clear_localStorage();
+            // Reset all field values.
+            this.$elem.find('input[type="text"], input[type="email"], input[type="url"], textarea, select').val('');
         }
     }
 

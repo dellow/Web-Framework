@@ -115,6 +115,10 @@
      * Form validation events.
     **/
     Module.validation = function(){
+        // Check captcha.
+        if($('#c_a_p_t_c_h_a').length){
+            $('#c_a_p_t_c_h_a').prop('checked', true);
+        }
         // DOM check.
         if(!$('.js-validate').length){return};
         // Init plugin.
