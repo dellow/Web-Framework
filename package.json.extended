@@ -4,9 +4,9 @@
     "browserify-shim"     : "^3.8.5",
     "browser-sync"        : "^2.6.4",
     "css-sprite"          : "^0.9.8",
-    "fs-extra"            : "^0.18.1",
     "gulp"                : "^3.8.11",
     "gulp-beautify"       : "^1.1.2",
+    "gulp-cssbeautify"   : "^0.1.3",
     "gulp-compass"        : "^2.0.4",
     "gulp-concat"         : "^2.5.2",
     "gulp-if"             : "^1.2.5",
@@ -22,6 +22,7 @@
     "vinyl-source-stream" : "^1.1.0",
     "yargs"               : "^3.7.2",
 
+    "fs-extra"            : "^0.18.1",
     "dalek-reporter-html" : "^0.0.4",
     "dalek-reporter-junit": "^0.0.2",
     "dalek-browser-chrome": "^0.0.11",
