@@ -10,7 +10,7 @@
 	1. [Development](#profiles--development)
 	2. [Production](#profiles--production)
 7. [Watch](#watch)
-8. [Server](#server)
+8. [Sync](#sync)
 9. [PageSpeed (Extended)](#pagespeed)
 10. [Working with SCSS](#working-with-scss)
 	1. [Debug Mode](#working-with-scss--debug-mode)
@@ -108,17 +108,21 @@ The tasks that are run in the `watch` task are:
 
 > __Please note:__ `watch` will minify CSS and JS.
 
-<a name="server"></a>
-## Server
-You can launch the built in web server with BrowserSync simply by running `gulp server`. This will provide a local and external address to test your apps in sync with other browsers. `gulp server` will automatically look for changes in the following files: `.html`, `.php`, `.css`, `.js`, any images in the image folder and run the respective tasks on them.
+<a name="sync"></a>
+## Sync
+Like `watch` BrowserSync will compile `.scss`, `.js` and `.hbs` files automatically simply by running `gulp sync`. This will also provide a local and external address to test your app in sync with other browsers. `gulp sync` will automatically look for changes in `.html` and `.php` files and also the build `.css` and `.js` files and then reload all connected browsers.
 
-The tasks that are run in the `server` task are:
-- Browserify (On .js and .hbs files)
+The tasks that are run in the `sync` task are:
+- Browserify (On .js and .hbs files under the `app` directory)
 - Compass (On .scss files)
 
-The `gulp server` command takes an optional parameter to provide a proxy URL, for example: `gulp server --url http://vagrant.dev/` (you must supply the root domain, i.e. no sub folders). If this is supplied you files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
+The `gulp sync` command takes an optional parameter to provide a proxy URL, for example: `gulp sync --url vagrant.dev` (you must supply the root domain, i.e. no sub folders). If this is supplied your files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to the local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
 
-> __Please note:__ `server` will minify CSS and JS.
+By default `gulp sync` will also use the xip.io service for Wildcard DNS. This means you can use font services like fonts.com and typekit.com locally. You can disable xip.io by providing the `--xip=false` parameter e.g. `gulp sync --xip=false`.
+
+> __Please note:__ `sync` will minify CSS and JS.
+
+> __Please note:__ xip.io is blocked on some routers (BT for one for UK developers). You will need to use an alternative DNS address in this case. Google provide 8.8.8.8 and/or 8.8.4.4 for this purpose.
 
 <a name="pagespeed"></a>
 ## PageSpeed (Extended)

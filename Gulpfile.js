@@ -47,7 +47,7 @@ gulp.task('default', [
 
 
 /* =========================================================================== */
-/* Browsersync
+/* Browserify
 /* =========================================================================== */
 gulp.task('browserify', function(){
 	// Require.
@@ -63,69 +63,13 @@ gulp.task('browserify', function(){
 	// Task.
 	return browserify(dist_dir + 'js/app/')
 		.bundle()
-		.on('error', task_handler)
 		.pipe(source('index.js'))
+		.on('error', task_handler)
 		.pipe(gulpif(minify, streamify(uglify()), streamify(beautify({
 			indentSize: 4
 		}))))
 		.pipe(rename('build.js'))
 		.pipe(gulp.dest(dist_dir + 'js/build/'));
-});
-
-
-
-/* =========================================================================== */
-/* Browsersync
-/* =========================================================================== */
-gulp.task('server', function(){
-	// Require.
-	var browserSync = require('browser-sync'),
-		reload      = browserSync.reload;
-
-	// Vars.
-	var url        = args.url,
-		notify     = args.notify || false,
-		https      = args.https || false,
-		compass    = function(){gulp.start('compass')},
-	    browserify = function(){gulp.start('browserify')};
-
-	if(url){
-		browserSync({
-			open   : 'external',
-			browser: ['google chrome'],
-			notify : notify,
-			https  : https,
-			xip    : true,
-			proxy  : url
-		});
-	}
-	else{
-		browserSync({
-			open   : 'external',
-			browser: ['google chrome'],
-			notify : notify,
-			https  : https,
-			xip    : true,
-			server : {
-				baseDir: [src_dir]
-			}
-		});
-	}
-
-	// Run Browserify on JS file changes
-	gulp.watch(dist_dir + 'js/**/*.js', browserify);
-
-	// Run Compass on SCSS file changes
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', compass);
-
-	// Reload on file changes
-	gulp.watch([
-		src_dir + '**/*.hbs',
-		src_dir + '**/*.html',
-		src_dir + '**/*.php',
-		dist_dir + 'css/build.css',
-		dist_dir + 'js/build/build.js'
-	], reload);
 });
 
 
@@ -185,7 +129,7 @@ gulp.task('imagemin', function(){
 
 
 /* =========================================================================== */
-/* Sprites
+/* Sprite
 /* =========================================================================== */
 gulp.task('sprite', function(){
 	// Require.
@@ -211,6 +155,60 @@ gulp.task('sprite', function(){
 
 
 /* =========================================================================== */
+/* Sync
+/* =========================================================================== */
+gulp.task('sync', function(){
+	// Require.
+	var browserSync = require('browser-sync'),
+		reload      = browserSync.reload;
+
+	// Vars.
+	var url    = args.url || false,
+		notify = args.notify || false,
+		xip    = args.xip || true,
+		https  = args.https || false;
+
+	if(url){
+		browserSync.init({
+			open   : 'external',
+			browser: ['google chrome'],
+			notify : notify,
+			https  : https,
+			xip    : xip,
+			proxy  : url
+		});
+	}
+	else{
+		browserSync.init({
+			open   : 'external',
+			browser: ['google chrome'],
+			notify : notify,
+			https  : https,
+			xip    : xip,
+			server : {
+				baseDir: [src_dir]
+			}
+		});
+	}
+
+	// Run Browserify on JS file changes
+	gulp.watch(dist_dir + 'js/**/*.js', ['browserify']);
+	// Run Browserify on HBS file changes
+	gulp.watch(dist_dir + 'js/**/*.hbs', ['browserify']);
+	// Run Compass on SCSS file changes
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['compass']);
+	// Reload on file changes
+	gulp.watch([
+		src_dir + '**/*.html',
+		src_dir + '**/*.php',
+		dist_dir + 'css/build.css',
+		dist_dir + 'js/build/build.js'
+	], reload);
+});
+
+
+
+/* =========================================================================== */
 /* Watch
 /* =========================================================================== */
 gulp.task('watch', function(){
@@ -220,18 +218,15 @@ gulp.task('watch', function(){
 
 	// Task.
 	server.listen(35729, function(err){
-		var browserify = function(){gulp.start('browserify')},
-		    compass    = function(){gulp.start('compass')};
-
 		if(err){
 			return console.log(err);
 		}
 
 		// Run Browserify on JS file changes
-		gulp.watch(dist_dir + 'js/**/*.js', browserify);
+		gulp.watch(dist_dir + 'js/**/*.js', ['browserify']);
 		// Run Browserify on HBS file changes
-		gulp.watch(dist_dir + 'js/**/*.hbs', browserify);
+		gulp.watch(dist_dir + 'js/**/*.hbs', ['browserify']);
 		// Run Compass on SCSS file changes
-		gulp.watch(dist_dir + 'css/scss/**/*.scss', compass);
+		gulp.watch(dist_dir + 'css/scss/**/*.scss', ['compass']);
 	});
 });
