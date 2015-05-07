@@ -122,6 +122,7 @@ By default `gulp sync` will also use the xip.io service for Wildcard DNS. This m
 
 > __Please note:__ `sync` will minify CSS and JS.
 
+
 > __Please note:__ xip.io is blocked on some routers (BT for one for UK developers). You will need to use an alternative DNS address in this case. Google provide 8.8.8.8 and/or 8.8.4.4 for this purpose.
 
 <a name="pagespeed"></a>
