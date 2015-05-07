@@ -106,7 +106,7 @@ The tasks that are run in the `watch` task are:
 - Browserify (On .js and .hbs files)
 - Compass (On .scss files)
 
-> __Please note:__ `watch` will minify CSS and JS.
+> __Please note:__ The `watch` task will minify CSS and JS.
 
 <a name="sync"></a>
 ## Sync
