@@ -120,8 +120,7 @@ The `gulp sync` command takes an optional parameter to provide a proxy URL, for 
 
 By default `gulp sync` will also use the xip.io service for Wildcard DNS. This means you can use font services like fonts.com and typekit.com locally. You can disable xip.io by providing the `--xip=false` parameter e.g. `gulp sync --xip=false`.
 
-> __Please note:__ `sync` will minify CSS and JS.
-
+> __Please note:__ The `sync` task will minify CSS and JS.
 
 > __Please note:__ xip.io is blocked on some routers (BT for one for UK developers). You will need to use an alternative DNS address in this case. Google provide 8.8.8.8 and/or 8.8.4.4 for this purpose.
 
