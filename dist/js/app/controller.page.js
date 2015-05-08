@@ -16,7 +16,7 @@
 	'use strict';
 
 	// Require
-	require('../controllers/wiselinks');
+	require('../vendor/wiselinks');
 	require('./module.menu');
 	require('./module.binds');
 

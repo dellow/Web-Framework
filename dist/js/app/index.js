@@ -5,8 +5,6 @@
  * Copyright 2015, Author Name
  * Some information on the license.
  *
- * To include jQuery or any other library in a module pass it into the self invoking function.
- *
 **/
 
 // Global settings.
