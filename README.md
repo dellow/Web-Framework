@@ -37,11 +37,13 @@ Any part of this readme that requires the extended modules will be suffixed with
 - [Gulp](http://gulpjs.com)
 - [Bundler](http://bundler.io)
 
+> __Please note:__ These should be installed before using this Framework.
+
 ### Gems
 - [SASS 3.4.9](https://rubygems.org/gems/sass/versions/3.4.9)
 - [Compass 1.0.1](https://rubygems.org/gems/compass/versions/1.0.1)
 
-> __Please note:__ Required Gems will automatically install for you when using the automatic installer method below.
+> __Please note:__ Providing you have Bundler installed required Gems will automatically install for you when using the automatic installer method below.
 
 <a name="install"></a>
 ## Install
