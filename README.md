@@ -227,5 +227,5 @@ All initial files are loaded from `dist/js/app/index.js` but thanks to Browserif
 
 <a name="troubleshooting"></a>
 ## Troubleshooting
-#### The `gulp sync` command with a valid `url` argument loads an empty page.
+##### The `gulp sync` command with a valid `url` argument loads an empty page.
 Try running with the `xip=false` argument. If this works you're router probably blocks the xip.io service (and other wildcard services). You can fix this by using an alternative DNS address. Try Google's (8.8.8.8 and 8.8.4.4). You will also need to change this on your Smartphone and/or Tablet.
