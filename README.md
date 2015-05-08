@@ -88,12 +88,20 @@ Watch for changes to the application `.js`, `.hbs` and `.scss` files and sync/re
 
 <a name="profiles"></a>
 ## Profiles
-The Project Wrapper runs various profiles based on the environment variable. Just running `gulp` will run the `development` profile. Running any other profile requires the `--config` parameter, for example: `gulp --config production` will run the production profile. The following tasks are run for each profile:
+The Project Wrapper runs various profiles based on the environment variable. Just running `gulp` will run the `default` profile. Running any other profile requires the `--config` parameter, for example: `gulp --config production` will run the production profile. The following tasks are run for each profile:
 
 <a name="profiles--development"></a>
+### Default
+- Browserify (Minified)
+- Compass (Minified)
+- Imagemin
+- Dalek (Extended)
+- JSHint (Extended)
+- Jasmine (Extended)
+
 ### Development
 - Browserify (Non minified)
-- Compass (Non minified with development mode activated)
+- Compass (Non minified)
 - Imagemin
 - Dalek (Extended)
 - JSHint (Extended)
