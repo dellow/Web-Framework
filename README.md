@@ -19,6 +19,7 @@
 	4. [Responsive](#working-with-scss--responsive)
 11. [Working with JavaScript](#working-with-javascript)
 	1. [Requiring New Files](#working-with-javascript--requiring-new-files)
+12. [Troubleshooting](#troubleshooting)
 
 <a name="about"></a>
 ## About
@@ -122,8 +123,6 @@ By default `gulp sync` will also use the xip.io service for Wildcard DNS. This m
 
 > __Please note:__ The `sync` task will minify CSS and JS.
 
-> __Please note:__ xip.io is blocked with some routers / ISP's (BT in the UK). You will need to use an alternative DNS address in this case. Google provide `8.8.8.8` and/or `8.8.4.4` for this purpose.
-
 <a name="pagespeed"></a>
 ## PageSpeed (Extended)
 You can run Google PageSpeed insights by running `gulp psi`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp psi --url http://amazon.com --mode desktop`.
@@ -225,3 +224,8 @@ All JavaScript modules should be added in `app` directory - these files will be 
 All initial files are loaded from `dist/js/app/index.js` but thanks to Browserify you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
 
 	require('./javascript-file');
+
+<a name="troubleshooting"></a>
+## Troubleshooting
+### The `gulp sync` command with a valid `url` argument loads an empty page.
+Try running with the `xip=false` argument. If this works you're router probably blocks the xip.io service (and other wildcard services). You can fix this by using an alternative DNS address. Try Google's (8.8.8.8 and 8.8.4.4). You will also need to change this on your Smartphone and/or Tablet.
