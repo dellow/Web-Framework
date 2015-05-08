@@ -44,7 +44,7 @@ Any part of this readme that requires the extended modules will be suffixed with
 
 <a name="install"></a>
 ## Install
-> __Please note:__ Please make sure your system meets the requirements above.
+_Please make sure your system meets the requirements above._
 
 After cloning the repository simply run `bash install.sh` from your command line. This will do the following:
 
@@ -57,7 +57,7 @@ After cloning the repository simply run `bash install.sh` from your command line
 
 __All additional instructions below assume you have followed the installation process.__
 
-> __Hint:__ You can make the install script executable by running `chmod u+x install.sh`. This will allow you to run the script like this: `./install.sh`.
+> __Pro Tip:__ You can make the install script executable by running `chmod u+x install.sh`. This will allow you to run the script like this: `./install.sh`.
 
 <a name="styleguide-examples"></a>
 ## Styleguide & Examples
@@ -103,8 +103,8 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Server](#server).
 
 The tasks that are run in the `watch` task are:
-- Browserify (On .js and .hbs files)
-- Compass (On .scss files)
+- Browserify (On .js and .hbs files under the `app` directory)
+- Compass (On .scss files under the `scss` directory)
 
 > __Please note:__ The `watch` task will minify CSS and JS.
 
@@ -114,7 +114,7 @@ Like `watch` BrowserSync will compile `.scss`, `.js` and `.hbs` files automatica
 
 The tasks that are run in the `sync` task are:
 - Browserify (On .js and .hbs files under the `app` directory)
-- Compass (On .scss files)
+- Compass (On .scss files under the `scss` directory)
 
 The `gulp sync` command takes an optional parameter to provide a proxy URL, for example: `gulp sync --url vagrant.dev` (you must supply the root domain, i.e. no sub folders). If this is supplied your files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to the local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
 
