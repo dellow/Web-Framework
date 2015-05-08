@@ -68,15 +68,21 @@ These serve as ongoing platforms to test any changes you might make to the Frame
 
 <a name="using-gulp"></a>
 ## Using Gulp
-Run the default profile in development mode:
+Run the default profile:
 
 	gulp
-Run the production profile production mode:
+Run the development profile:
+
+	gulp --config development
+Run the production profile:
 
 	gulp --config production
-Watch for changes to the main JS and SASS files:
+Watch for changes to the application `.js`, `.hbs` and `.scss` files:
 
 	gulp watch
+Watch for changes to the application `.js`, `.hbs` and `.scss` files and sync/reload browsers and devices:
+
+	gulp sync
 
 <a name="profiles"></a>
 ## Profiles
