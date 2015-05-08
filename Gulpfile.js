@@ -7,7 +7,8 @@ var gulp         = require('gulp'),
 	args         = require('yargs').argv,
 	gulpif       = require('gulp-if'),
 	util 	     = require('gulp-util'),
-	streamify    = require('gulp-streamify'),
+	buffer       = require('vinyl-buffer'),
+	source       = require('vinyl-source-stream'),
 	notification = require('node-notifier');
 
 // Vars.
@@ -54,18 +55,16 @@ gulp.task('browserify', function(){
 	var browserify = require('browserify'),
 		rename     = require('gulp-rename'),
 		beautify   = require('gulp-beautify'),
-		uglify     = require('gulp-uglify'),
-		source     = require('vinyl-source-stream');
+		uglify     = require('gulp-uglify');
 
 	// Vars.
 	var should_min = (args.config == undefined || is_production) ? true : false;
 
 	// Task.
-	return browserify(dist_dir + 'js/app/')
-		.bundle()
-		.on('error', task_handler)
-		.pipe(source('index.js'))
-		.pipe(gulpif(should_min, streamify(uglify()), streamify(beautify({indentSize: 4}))))
+	return browserify(dist_dir + 'js/app/').bundle()
+	    .pipe(source('index.js'))
+	    .pipe(buffer())
+		.pipe(gulpif(should_min, uglify(), beautify({indentSize: 4})))
 		.pipe(rename('build.js'))
 		.pipe(gulp.dest(dist_dir + 'js/build/'));
 });
@@ -98,7 +97,8 @@ gulp.task('compass', function(){
 			noLineComments: true
 		}))
 		.on('error', task_handler)
-		.pipe(gulpif(should_min, streamify(minify()), streamify(cssbeautify({indent: '    ', autosemicolon: true}))))
+	    .pipe(buffer())
+		.pipe(gulpif(should_min, minify(), cssbeautify({indent: '    ', autosemicolon: true})))
 		.pipe(gulp.dest(dist_dir + 'css'));
 });
 
@@ -186,13 +186,11 @@ gulp.task('sync', function(){
 		});
 	}
 
-	// Run Browserify on JS file changes
-	gulp.watch(dist_dir + 'js/**/*.js', {debounceDelay: 4000}, ['browserify']);
-	// Run Browserify on HBS file changes
-	gulp.watch(dist_dir + 'js/**/*.hbs', {debounceDelay: 4000}, ['browserify']);
-	// Run Compass on SCSS file changes
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', {debounceDelay: 4000}, ['compass']);
-	// Reload on file changes
+	// Run Browserify on JS and HBS file changes.
+	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['browserify']);
+	// Run Compass on SCSS file changes.
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['compass']);
+	// Reload on file changes.
 	gulp.watch([
 		src_dir + '**/*.html',
 		src_dir + '**/*.php',
@@ -207,10 +205,8 @@ gulp.task('sync', function(){
 /* Watch
 /* =========================================================================== */
 gulp.task('watch', function(){
-	// Run Browserify on JS file changes
-	gulp.watch(dist_dir + 'js/**/*.js', {debounceDelay: 4000}, ['browserify']);
-	// Run Browserify on HBS file changes
-	gulp.watch(dist_dir + 'js/**/*.hbs', {debounceDelay: 4000}, ['browserify']);
-	// Run Compass on SCSS file changes
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', {debounceDelay: 4000}, ['compass']);
+	// Run Browserify on JS and HBS file changes.
+	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['browserify']);
+	// Run Compass on SCSS file changes.
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['compass']);
 });
