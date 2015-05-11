@@ -8,6 +8,7 @@ var gulp         = require('gulp'),
 	gulpif       = require('gulp-if'),
 	util 	     = require('gulp-util'),
 	buffer       = require('vinyl-buffer'),
+	header       = require('gulp-header'),
 	source       = require('vinyl-source-stream'),
 	notification = require('node-notifier');
 
