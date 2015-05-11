@@ -10,28 +10,35 @@
 ;(function(Module, $, window, undefined){
     'use strict';
 
-    // Require :: NPM
-    require('fancybox');
-    // Require :: Plugins
-    require('../plugins/jquery.equal-heights');
-    require('../plugins/jquery.googlemap');
-    require('../plugins/jquery.modals');
-    require('../plugins/jquery.validation');
-    // Require :: Vendor
-    require('../plugins/vendor/jquery.slider');
-
     /**
-     * Module.init
-     * Init method for this module.
+     * Module
+     * Constructor for this module.
     **/
-    Module.init = function(){
+    Module = function(){
+        // Require :: NPM
+        require('fancybox');
+        // Require :: Plugins
+        require('../plugins/jquery.equal-heights');
+        require('../plugins/jquery.googlemap');
+        require('../plugins/jquery.modals');
+        require('../plugins/jquery.validation');
+        // Require :: Vendor
+        require('../plugins/vendor/jquery.slider');
     }
 
     /**
-     * Module.equal_heights
+     * init
+     * Init method for this module.
+    **/
+    Module.prototype.init = function(){
+        // Call methods here.
+    }
+
+    /**
+     * equal_heights
      * Equal height elements.
     **/
-    Module.equal_heights = function(){
+    Module.prototype.equal_heights = function(){
         // DOM check.
         if(!$('.js-eh').length){return};
         // Init plugin.
@@ -39,10 +46,10 @@
     }
 
     /**
-     * Module.google_map
+     * google_map
      * Map events.
     **/
-    Module.google_map = function(){
+    Module.prototype.google_map = function(){
         // DOM check.
         if(!$('.js-google-map').length){return};
         // Init plugin.
@@ -54,10 +61,10 @@
     }
 
     /**
-     * Module.lightboxes
+     * lightboxes
      * Lightbox events.
     **/
-    Module.lightboxes = function(){
+    Module.prototype.lightboxes = function(){
         // DOM check.
         if(!$('.js-lightbox').length){return};
         // Init plugin.
@@ -70,10 +77,10 @@
     }
 
     /**
-     * Module.modals
+     * modals
      * Modal events.
     **/
-    Module.modals = function(){
+    Module.prototype.modals = function(){
         // DOM check.
         if(!$('.js-modal').length){return};
         // Init plugin.
@@ -88,10 +95,10 @@
     }
 
     /**
-     * Module.sliders
+     * sliders
      * Slider events.
     **/
-    Module.sliders = function(){
+    Module.prototype.sliders = function(){
         // DOM check.
         if(!$('.js-slider').length){return};
         // Init plugin.
@@ -111,10 +118,10 @@
     }
 
     /**
-     * Module.validation
+     * validation
      * Form validation events.
     **/
-    Module.validation = function(){
+    Module.prototype.validation = function(){
         // Check captcha.
         if($('#c_a_p_t_c_h_a').length){
             $('#c_a_p_t_c_h_a').prop('checked', true);
@@ -129,6 +136,6 @@
     }
 
     // Export
-    module.exports = Binds;
+    module.exports = Module;
 
-}(window.Binds = window.Binds || {}, jQuery, window));
+}(window.Binds = window.Binds || function(){}, jQuery, window));

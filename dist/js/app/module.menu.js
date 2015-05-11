@@ -10,63 +10,77 @@
 ;(function(Module, $, window, undefined){
 	'use strict';
 
-	var primary    = $('.nav-primary'),
-		navigation = $('.navigation'),
-		height 	   = primary.outerHeight();
+    /**
+     * Module
+     * Constructor for this module.
+    **/
+    Module = function(){
+		this.primary    = $('.nav-primary');
+		this.navigation = $('.navigation');
+		this.height     = this.primary.outerHeight();
+    }
 
 	/**
-	 * Module.init
+	 * init
 	 * Init method for this module.
 	**/
-	Module.init = function(breakpoint){
+	Module.prototype.init = function(breakpoint){
+		var _this = this;
+
+		// Start binds on window load / resize.
 		$(window).on('load resize',function(){
-			Module.binds(breakpoint);
+			_this.binds(breakpoint);
 		});
 	}
 
 	/**
-	 * Module.binds
-	 * Binds related to this module.
+	 * binds
+	 * jQuery event binds for this module.
 	**/
-	Module.binds = Helpers.debounce(function(breakpoint){
+	Module.prototype.binds = Helpers.debounce(function(breakpoint){
+		var _this = this;
+
 		// Apply classes
 		if(Helpers.breakpoint(breakpoint)){
-			primary.addClass('mobile-animate');
+			_this.primary.addClass('mobile-animate');
 		}
 		else{
-			primary.removeClass('mobile-animate');
+			_this.primary.removeClass('mobile-animate');
 		}
 
 		// Mobile menu button
 		$('.mobile-menu').on('click', function(){
-			Module.menu_reveal($(this), primary);
+			_this.menu_reveal($(this));
 		});
 	}, 250);
 
 	/**
-	 * Module.menu_reveal
+	 * menu_reveal
 	 * Adds class to menu.
 	**/
-	Module.menu_reveal = function(el, primary){
-		if(primary.height() < 5){
+	Module.prototype.menu_reveal = function(el){
+		var _this = this;
+
+		// Check height of primary menu.
+		if(_this.primary.height() < 5){
 			// Toggle class to button
 			el.addClass('active-menu');
 			// Slide down with CSS animation
-			primary.addClass('slide-down').css({'max-height': height + 'px'});
+			_this.primary.addClass('slide-down').css({'max-height': height + 'px'});
 		}
 		else{
 			// Toggle class to button
 			el.removeClass('active-menu');
 			// Slide down with CSS animation
-			primary.removeClass('slide-down').css({'max-height': ''});
+			_this.primary.removeClass('slide-down').css({'max-height': ''});
 			// If hidden remove the `display: block`
-			if(primary.is(':hidden')){
-				primary.css({'display': ''});
+			if(_this.primary.is(':hidden')){
+				_this.primary.css({'display': ''});
 			}
 		}
 	}
 
 	// Export
-	module.exports = Menu;
+	module.exports = Module;
 
-}(window.Menu = window.Menu || {}, jQuery, window));
+}(window.Menu = window.Menu || function(){}, jQuery, window));

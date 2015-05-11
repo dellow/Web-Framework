@@ -16,19 +16,28 @@
 ;(function(Controller, $, window, undefined){
 	'use strict';
 
-	// Require
-	require('../vendor/wiselinks');
-	require('./module.menu');
-	require('./module.binds');
+    /**
+     * Controller
+     * Constructor for this controller.
+    **/
+	Controller = function(){
+		// Require
+		require('../vendor/wiselinks');
+		this.Menu = require('./module.menu');
+		this.Binds = require('./module.binds');
+    }
 
 	/**
-	 * Controller.init
+	 * init
 	 * Init method for this module
 	**/
-	Controller.init = function(el){
+	Controller.prototype.init = function(el){
+		var _this = this;
+
+		// Document load.
 		$(function(){
             // Run page load events.
-			Controller.page_load();
+			_this.page_load();
 			// Check Wiselinks is enabled.
 			if(window.wiselinks_enabled){
 				// Init WiseLinks
@@ -36,31 +45,38 @@
 					html4_normalize_path: false
 				});
 				// Do page events
-				Controller.wiselinks_events();
+				_this.wiselinks_events();
 			}
 	    });
 	}
 
 	/**
-	 * Controller.page_load
+	 * page_load
 	 * Run on page load.
 	**/
-	Controller.page_load = function(){
-		Menu.init(window.mobile_breakpoint);
-		Binds.init();
+	Controller.prototype.page_load = function(){
+		// Init new instance.
+		var menu = new this.Menu();
+		menu.init(window.mobile_breakpoint);
+
+		// Init new instance.
+		var binds = new this.Binds();
+		binds.init();
 	}
 
 	/**
-	 * Controller.wiselinks_events
+	 * wiselinks_events
 	 * Wiselinks page events.
 	**/
-	Controller.wiselinks_events = function(){
+	Controller.prototype.wiselinks_events = function(){
+		var _this = this;
+
 		// Every page load.
 		$(document).off('page:always').on('page:always', function(event, xhr, settings){
 			// Log it.
 	        Helpers.log("Wiselinks page loading completed", "positive");
 	    	// Run page load events.
-			Controller.page_load();
+			_this.page_load();
 	    });
 		// Page loading.
 		$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
@@ -97,9 +113,9 @@
 	}
 
 	// Export
-	Controller.exports = PageController;
+	module.exports = Controller;
 
-}(window.PageController = window.PageController || {}, jQuery, window));
+}(window.PageController = window.PageController || function(){}, jQuery, window));
 
 },{"../vendor/wiselinks":11,"./module.binds":4,"./module.menu":5}],2:[function(require,module,exports){
 /**
@@ -281,12 +297,14 @@ require('./helpers');
 /* Controllers
 /* ======================================================== */
 // Page Controller.
-require('./controller.page');
+var PageController = require('./controller.page');
 
 /* ======================================================== */
-/* Go
+/* Router
 /* ======================================================== */
-PageController.init($('.main'));
+// Init new instance.
+var page_controller = new PageController();
+page_controller.init($('.main'));
 
 },{"./controller.page":1,"./helpers":2,"jquery":13}],4:[function(require,module,exports){
 /**
@@ -301,28 +319,35 @@ PageController.init($('.main'));
 ;(function(Module, $, window, undefined){
     'use strict';
 
-    // Require :: NPM
-    require('fancybox');
-    // Require :: Plugins
-    require('../plugins/jquery.equal-heights');
-    require('../plugins/jquery.googlemap');
-    require('../plugins/jquery.modals');
-    require('../plugins/jquery.validation');
-    // Require :: Vendor
-    require('../plugins/vendor/jquery.slider');
-
     /**
-     * Module.init
-     * Init method for this module.
+     * Module
+     * Constructor for this module.
     **/
-    Module.init = function(){
+    Module = function(){
+        // Require :: NPM
+        require('fancybox');
+        // Require :: Plugins
+        require('../plugins/jquery.equal-heights');
+        require('../plugins/jquery.googlemap');
+        require('../plugins/jquery.modals');
+        require('../plugins/jquery.validation');
+        // Require :: Vendor
+        require('../plugins/vendor/jquery.slider');
     }
 
     /**
-     * Module.equal_heights
+     * init
+     * Init method for this module.
+    **/
+    Module.prototype.init = function(){
+        // Call methods here.
+    }
+
+    /**
+     * equal_heights
      * Equal height elements.
     **/
-    Module.equal_heights = function(){
+    Module.prototype.equal_heights = function(){
         // DOM check.
         if(!$('.js-eh').length){return};
         // Init plugin.
@@ -330,10 +355,10 @@ PageController.init($('.main'));
     }
 
     /**
-     * Module.google_map
+     * google_map
      * Map events.
     **/
-    Module.google_map = function(){
+    Module.prototype.google_map = function(){
         // DOM check.
         if(!$('.js-google-map').length){return};
         // Init plugin.
@@ -345,10 +370,10 @@ PageController.init($('.main'));
     }
 
     /**
-     * Module.lightboxes
+     * lightboxes
      * Lightbox events.
     **/
-    Module.lightboxes = function(){
+    Module.prototype.lightboxes = function(){
         // DOM check.
         if(!$('.js-lightbox').length){return};
         // Init plugin.
@@ -361,10 +386,10 @@ PageController.init($('.main'));
     }
 
     /**
-     * Module.modals
+     * modals
      * Modal events.
     **/
-    Module.modals = function(){
+    Module.prototype.modals = function(){
         // DOM check.
         if(!$('.js-modal').length){return};
         // Init plugin.
@@ -379,10 +404,10 @@ PageController.init($('.main'));
     }
 
     /**
-     * Module.sliders
+     * sliders
      * Slider events.
     **/
-    Module.sliders = function(){
+    Module.prototype.sliders = function(){
         // DOM check.
         if(!$('.js-slider').length){return};
         // Init plugin.
@@ -402,10 +427,10 @@ PageController.init($('.main'));
     }
 
     /**
-     * Module.validation
+     * validation
      * Form validation events.
     **/
-    Module.validation = function(){
+    Module.prototype.validation = function(){
         // Check captcha.
         if($('#c_a_p_t_c_h_a').length){
             $('#c_a_p_t_c_h_a').prop('checked', true);
@@ -420,9 +445,9 @@ PageController.init($('.main'));
     }
 
     // Export
-    module.exports = Binds;
+    module.exports = Module;
 
-}(window.Binds = window.Binds || {}, jQuery, window));
+}(window.Binds = window.Binds || function(){}, jQuery, window));
 
 },{"../plugins/jquery.equal-heights":6,"../plugins/jquery.googlemap":7,"../plugins/jquery.modals":8,"../plugins/jquery.validation":9,"../plugins/vendor/jquery.slider":10,"fancybox":12}],5:[function(require,module,exports){
 /**
@@ -437,66 +462,80 @@ PageController.init($('.main'));
 ;(function(Module, $, window, undefined){
 	'use strict';
 
-	var primary    = $('.nav-primary'),
-		navigation = $('.navigation'),
-		height 	   = primary.outerHeight();
+    /**
+     * Module
+     * Constructor for this module.
+    **/
+    Module = function(){
+		this.primary    = $('.nav-primary');
+		this.navigation = $('.navigation');
+		this.height     = this.primary.outerHeight();
+    }
 
 	/**
-	 * Module.init
+	 * init
 	 * Init method for this module.
 	**/
-	Module.init = function(breakpoint){
+	Module.prototype.init = function(breakpoint){
+		var _this = this;
+
+		// Start binds on window load / resize.
 		$(window).on('load resize',function(){
-			Module.binds(breakpoint);
+			_this.binds(breakpoint);
 		});
 	}
 
 	/**
-	 * Module.binds
-	 * Binds related to this module.
+	 * binds
+	 * jQuery event binds for this module.
 	**/
-	Module.binds = Helpers.debounce(function(breakpoint){
+	Module.prototype.binds = Helpers.debounce(function(breakpoint){
+		var _this = this;
+
 		// Apply classes
 		if(Helpers.breakpoint(breakpoint)){
-			primary.addClass('mobile-animate');
+			_this.primary.addClass('mobile-animate');
 		}
 		else{
-			primary.removeClass('mobile-animate');
+			_this.primary.removeClass('mobile-animate');
 		}
 
 		// Mobile menu button
 		$('.mobile-menu').on('click', function(){
-			Module.menu_reveal($(this), primary);
+			_this.menu_reveal($(this));
 		});
 	}, 250);
 
 	/**
-	 * Module.menu_reveal
+	 * menu_reveal
 	 * Adds class to menu.
 	**/
-	Module.menu_reveal = function(el, primary){
-		if(primary.height() < 5){
+	Module.prototype.menu_reveal = function(el){
+		var _this = this;
+
+		// Check height of primary menu.
+		if(_this.primary.height() < 5){
 			// Toggle class to button
 			el.addClass('active-menu');
 			// Slide down with CSS animation
-			primary.addClass('slide-down').css({'max-height': height + 'px'});
+			_this.primary.addClass('slide-down').css({'max-height': height + 'px'});
 		}
 		else{
 			// Toggle class to button
 			el.removeClass('active-menu');
 			// Slide down with CSS animation
-			primary.removeClass('slide-down').css({'max-height': ''});
+			_this.primary.removeClass('slide-down').css({'max-height': ''});
 			// If hidden remove the `display: block`
-			if(primary.is(':hidden')){
-				primary.css({'display': ''});
+			if(_this.primary.is(':hidden')){
+				_this.primary.css({'display': ''});
 			}
 		}
 	}
 
 	// Export
-	module.exports = Menu;
+	module.exports = Module;
 
-}(window.Menu = window.Menu || {}, jQuery, window));
+}(window.Menu = window.Menu || function(){}, jQuery, window));
 
 },{}],6:[function(require,module,exports){
 /**

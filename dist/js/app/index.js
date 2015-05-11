@@ -29,9 +29,11 @@ require('./helpers');
 /* Controllers
 /* ======================================================== */
 // Page Controller.
-require('./controller.page');
+var PageController = require('./controller.page');
 
 /* ======================================================== */
-/* Go
+/* Router
 /* ======================================================== */
-PageController.init($('.main'));
+// Init new instance.
+var page_controller = new PageController();
+page_controller.init($('.main'));

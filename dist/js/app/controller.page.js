@@ -15,19 +15,28 @@
 ;(function(Controller, $, window, undefined){
 	'use strict';
 
-	// Require
-	require('../vendor/wiselinks');
-	require('./module.menu');
-	require('./module.binds');
+    /**
+     * Controller
+     * Constructor for this controller.
+    **/
+	Controller = function(){
+		// Require
+		require('../vendor/wiselinks');
+		this.Menu = require('./module.menu');
+		this.Binds = require('./module.binds');
+    }
 
 	/**
-	 * Controller.init
+	 * init
 	 * Init method for this module
 	**/
-	Controller.init = function(el){
+	Controller.prototype.init = function(el){
+		var _this = this;
+
+		// Document load.
 		$(function(){
             // Run page load events.
-			Controller.page_load();
+			_this.page_load();
 			// Check Wiselinks is enabled.
 			if(window.wiselinks_enabled){
 				// Init WiseLinks
@@ -35,31 +44,38 @@
 					html4_normalize_path: false
 				});
 				// Do page events
-				Controller.wiselinks_events();
+				_this.wiselinks_events();
 			}
 	    });
 	}
 
 	/**
-	 * Controller.page_load
+	 * page_load
 	 * Run on page load.
 	**/
-	Controller.page_load = function(){
-		Menu.init(window.mobile_breakpoint);
-		Binds.init();
+	Controller.prototype.page_load = function(){
+		// Init new instance.
+		var menu = new this.Menu();
+		menu.init(window.mobile_breakpoint);
+
+		// Init new instance.
+		var binds = new this.Binds();
+		binds.init();
 	}
 
 	/**
-	 * Controller.wiselinks_events
+	 * wiselinks_events
 	 * Wiselinks page events.
 	**/
-	Controller.wiselinks_events = function(){
+	Controller.prototype.wiselinks_events = function(){
+		var _this = this;
+
 		// Every page load.
 		$(document).off('page:always').on('page:always', function(event, xhr, settings){
 			// Log it.
 	        Helpers.log("Wiselinks page loading completed", "positive");
 	    	// Run page load events.
-			Controller.page_load();
+			_this.page_load();
 	    });
 		// Page loading.
 		$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
@@ -96,6 +112,6 @@
 	}
 
 	// Export
-	Controller.exports = PageController;
+	module.exports = Controller;
 
-}(window.PageController = window.PageController || {}, jQuery, window));
+}(window.PageController = window.PageController || function(){}, jQuery, window));
