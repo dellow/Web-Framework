@@ -12,7 +12,8 @@ var gulp         = require('gulp'),
 	notification = require('node-notifier');
 
 // Vars.
-var is_development = (args.config == 'development' || args.config == undefined) ? true : false,
+var version        = '1.0.0',
+	is_development = (args.config == 'development' || args.config == undefined) ? true : false,
 	is_production  = (args.config == 'production') ? true : false,
 	src_dir        = './src/',
 	dist_dir       = './src/dist/';
@@ -59,6 +60,14 @@ gulp.task('browserify', function(){
 
 	// Vars.
 	var should_min = (args.config == undefined || is_production) ? true : false;
+	// Header template.
+	var header_tpl = ['/* ==========================================================================',
+		'<%= type %> JavaScript',
+		'Application Version: <%= version %>',
+		'Compiled: <%= date %>',
+		'========================================================================== */',
+		'',
+		''].join('\n');
 
 	// Task.
 	return browserify(dist_dir + 'js/app/').bundle()
@@ -66,6 +75,11 @@ gulp.task('browserify', function(){
 	    .pipe(buffer())
 		.pipe(gulpif(should_min, uglify(), beautify({indentSize: 4})))
 		.pipe(rename('build.js'))
+		.pipe(header(header_tpl, {
+			type   : (should_min) ? 'Minified' : 'Unminified',
+			version: version,
+			date   : Date()
+		}))
 		.pipe(gulp.dest(dist_dir + 'js/build/'));
 });
 
@@ -82,6 +96,14 @@ gulp.task('compass', function(){
 
 	// Vars.
 	var should_min = (args.config == undefined || is_production) ? true : false;
+	// Header template.
+	var header_tpl = ['/* ==========================================================================',
+		'<%= type %> Stylesheet',
+		'Application Version: <%= version %>',
+		'Compiled: <%= date %>',
+		'========================================================================== */',
+		'',
+		''].join('\n');
 
 	// Task.
 	return gulp.src(dist_dir + 'css/scss/**/*.scss')
@@ -99,6 +121,11 @@ gulp.task('compass', function(){
 		.on('error', task_handler)
 	    .pipe(buffer())
 		.pipe(gulpif(should_min, minify(), cssbeautify({indent: '    ', autosemicolon: true})))
+		.pipe(header(header_tpl, {
+			type   : (should_min) ? 'Minified' : 'Unminified',
+			version: version,
+			date   : Date()
+		}))
 		.pipe(gulp.dest(dist_dir + 'css'));
 });
 
