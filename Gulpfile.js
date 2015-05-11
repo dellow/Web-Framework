@@ -67,7 +67,6 @@ gulp.task('browserify', function(){
 		'Application Version: <%= version %>',
 		'Compiled: <%= date %>',
 		'========================================================================== */',
-		'',
 		''].join('\n');
 
 	// Task.
@@ -103,7 +102,6 @@ gulp.task('compass', function(){
 		'Application Version: <%= version %>',
 		'Compiled: <%= date %>',
 		'========================================================================== */',
-		'',
 		''].join('\n');
 
 	// Task.
