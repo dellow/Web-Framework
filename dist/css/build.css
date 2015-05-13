@@ -1006,27 +1006,12 @@ cite .profession {
 }
 
 /* -- Content Areas -- */
-.content p {
+.content blockquote, .content dl, .content figure, .content > img, .content ol, .content p, .content pre, .content ul {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
 }
-.content p:last-child {
+.content blockquote:last-child, .content dl:last-child, .content figure:last-child, .content > img:last-child, .content ol:last-child, .content p:last-child, .content pre:last-child, .content ul:last-child {
   margin-bottom: 0;
-}
-.content p a, .content li a {
-  background-image: -webkit-linear-gradient(top, transparent 50%, #ef4d68 50%);
-  background-image: -moz-linear-gradient(top, transparent 50%, #ef4d68 50%);
-  background-image: -o-linear-gradient(top, transparent 50%, #ef4d68 50%);
-  background-image: linear-gradient(to bottom, transparent 50%, #ef4d68 50%);
-  background-position: 0 100%;
-  background-repeat: repeat-x;
-  background-size: 100% 0.15rem;
-}
-.content p a:hover, .content li a:hover {
-  background-image: -webkit-linear-gradient(top, transparent 50%, #ea1f40 50%);
-  background-image: -moz-linear-gradient(top, transparent 50%, #ea1f40 50%);
-  background-image: -o-linear-gradient(top, transparent 50%, #ea1f40 50%);
-  background-image: linear-gradient(to bottom, transparent 50%, #ea1f40 50%);
 }
 .content ul {
   list-style-type: disc;
@@ -2646,6 +2631,36 @@ form select {
    This file is for legacy browser fixes and hacks. Everything should
    be documented and explained for later review.
 ========================================================================== */
+/**
+ * Targets browsers with JavaScript disabled.
+ * Target: No JavaScript
+**/
+/**
+ * Targets all legacy versions of Internet Explorer
+ * with conditional statements in header.
+ * Target: IE6, IE7, IE8 & IE9
+**/
+/**
+ * Targets just IE6 with conditional statements in header.
+ * Target: IE6
+**/
+/**
+ * Targets just IE7 with conditional statements in header.
+ * Target: IE7
+**/
+/**
+ * Targets just IE8 with conditional statements in header.
+ * Target: IE8
+**/
+/**
+ * Targets just IE9 with conditional statements in header.
+ * Target: IE9
+**/
+/**
+ * Targets newer versions of Internet Explorer
+ * that support the -ms-height-contract media query
+ * Target: IE10, IE11
+**/
 /* ==========================================================================
    Site > Breakpoints
    Responsive partial for global responsive styles.
