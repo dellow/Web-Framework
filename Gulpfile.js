@@ -56,7 +56,6 @@ gulp.task('browserify', function(){
 	// Require.
 	var browserify = require('browserify'),
 		rename     = require('gulp-rename'),
-		beautify   = require('gulp-beautify'),
 		uglify     = require('gulp-uglify');
 
 	// Vars.
@@ -73,7 +72,7 @@ gulp.task('browserify', function(){
 	return browserify(dist_dir + 'js/app/').bundle()
 	    .pipe(source('index.js'))
 	    .pipe(buffer())
-		.pipe(gulpif(should_min, uglify(), beautify({indentSize: 4})))
+		.pipe(gulpif(should_min, uglify()))
 		.pipe(rename('build.js'))
 		.pipe(header(header_tpl, {
 			type   : (should_min) ? 'Minified' : 'Unminified',
@@ -90,9 +89,8 @@ gulp.task('browserify', function(){
 /* =========================================================================== */
 gulp.task('compass', function(){
 	// Require.
-	var compass     = require('gulp-compass'),
-		cssbeautify = require('gulp-cssbeautify'),
-		minify      = require('gulp-minify-css');
+	var compass = require('gulp-compass'),
+		minify  = require('gulp-minify-css');
 
 	// Vars.
 	var should_min = (args.config == undefined || is_production) ? true : false;
@@ -119,7 +117,7 @@ gulp.task('compass', function(){
 		}))
 		.on('error', task_handler)
 	    .pipe(buffer())
-		.pipe(gulpif(should_min, minify(), cssbeautify({indent: '    ', autosemicolon: true})))
+		.pipe(gulpif(should_min, minify()))
 		.pipe(header(header_tpl, {
 			type   : (should_min) ? 'Minified' : 'Unminified',
 			version: version,

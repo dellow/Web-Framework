@@ -6,7 +6,6 @@
     "css-sprite"         : "^0.9.8",
     "gulp"               : "^3.8.11",
     "gulp-beautify"      : "^1.1.2",
-    "gulp-cssbeautify"   : "^0.1.3",
     "gulp-compass"       : "^2.0.4",
     "gulp-concat"        : "^2.5.2",
     "gulp-header"        : "^1.2.2",
