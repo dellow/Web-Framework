@@ -4,19 +4,60 @@
 ========================================================================== */
 /* -- HTML -- */
 html {
-	min-height: 100%;
-	overflow-y: scroll;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
+	@include khtml();
 }
 
 /* -- Body -- */
 body {
- 	font-size: $font_size_base;
+	@include kbody();
     font-family: $font_family_base;
 	word-wrap: break-word;
-  	line-height: $line_height_base;
 	color: color(copy, body);
+}
+
+/* -- Heading Formatting -- */
+h1, h2, h3, h4, h5, h6 {
+	-webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	-moz-font-feature-settings   : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	-ms-font-feature-settings    : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	-o-font-feature-settings     : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	font-feature-settings        : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	&.collapse-margin {
+		margin: 0;
+	}
+}
+h1, .alpha {
+	@include ktype(5, 1, 0.5);
+}
+h2, .beta {
+	@include ktype(4, 1, 0.5);
+}
+h3, .gamma {
+	@include ktype(3, 1, 0.5);
+}
+h4, .delta {
+	@include ktype(2, 1, 0.5);
+}
+h5, .epsilon {
+	@include ktype(1, 1, 0);
+}
+h6, .zeta {
+	@include ktype(0, 1, 0);
+}
+
+/* -- General Margins -- */
+blockquote, dl, figure, ol, p, pre, ul {
+	@include ktype(0, 0, 0.75);
+}
+
+/* -- General Formatting -- */
+// Global.
+p, li {
+	-webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+	-moz-font-feature-settings   : 'kern' 1, 'onum' 1, 'liga' 1;
+	-ms-font-feature-settings    : 'kern' 1, 'onum' 1, 'liga' 1;
+	-o-font-feature-settings     : 'kern' 1, 'onum' 1, 'liga' 1;
+	font-feature-settings        : 'kern' 1, 'onum' 1, 'liga' 1;
 }
 
 /* -- Links, Buttons & Hover Styles -- */
@@ -34,60 +75,8 @@ a, button {
 	}
 }
 
-/* -- Heading Formatting -- */
-h1, h2, h3, h4, h5, h6 {
-	line-height: 1;
-	-webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	-moz-font-feature-settings   : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	-ms-font-feature-settings    : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	-o-font-feature-settings     : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	font-feature-settings        : 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	&.collapse-margin {
-		margin: 0;
-	}
-}
-h1, .alpha {
-	@include rem(font-size, $h1);
-	line-height: 1.4;
-}
-h2, .beta {
-	@include rem(font-size, $h2);
-	line-height: 1.6;
-}
-h3, .gamma {
-	@include rem(font-size, $h3);
-	line-height: 2;
-}
-h4, .delta {
-	@include rem(font-size, $h4);
-	line-height: 2;
-}
-h5, .epsilon {
-	@include rem(font-size, $h5);
-	line-height: 2;
-}
-h6, .zeta {
-	@include rem(font-size, $h6);
-	line-height: 2;
-}
 
-/* -- Paragraph -- */
-p {
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
-/* -- General Formatting -- */
-// Global.
-p, li {
-	-webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
-	-moz-font-feature-settings   : 'kern' 1, 'onum' 1, 'liga' 1;
-	-ms-font-feature-settings    : 'kern' 1, 'onum' 1, 'liga' 1;
-	-o-font-feature-settings     : 'kern' 1, 'onum' 1, 'liga' 1;
-	font-feature-settings        : 'kern' 1, 'onum' 1, 'liga' 1;
-}
-
+/* -- Other -- */
 // Citation
 cite {
 	// Descendants
@@ -99,8 +88,7 @@ cite {
 /* -- Content Areas -- */
 .content {
 	// Margins
-	blockquote, dl, figure, > img, ol, p, pre, ul {
-		@include nudge(margin-bottom, 1);
+	blockquote, dl, figure, ol, p, pre, ul {
 		&:last-child {
 			margin-bottom: 0;
 		}

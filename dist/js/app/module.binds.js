@@ -31,7 +31,14 @@
      * Init method for this module.
     **/
     Module.prototype.init = function(){
-        // Call methods here.
+        // Document ready.
+        $(function(){
+            // Call methods here.
+        });
+        // Window ready (images loaded).
+        $(window).on('load', function(){
+            // Call methods here.
+        });
     }
 
     /**

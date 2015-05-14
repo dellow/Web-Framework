@@ -284,8 +284,12 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 /* ======================================================== */
 /* Libraries
 /* ======================================================== */
-// jQuery
+// jQuery.
 var $ = jQuery = require('jquery');
+// Handlebars.
+// var H = Handlebars = require('handlebars');
+// Backbone.
+// var B = Backbone = require('backbone'); Backbone.$ = $;
 
 /* ======================================================== */
 /* Helpers
@@ -340,7 +344,14 @@ page_controller.init($('.main'));
      * Init method for this module.
     **/
     Module.prototype.init = function(){
-        // Call methods here.
+        // Document ready.
+        $(function(){
+            // Call methods here.
+        });
+        // Window ready (images loaded).
+        $(window).on('load', function(){
+            // Call methods here.
+        });
     }
 
     /**

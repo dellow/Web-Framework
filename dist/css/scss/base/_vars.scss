@@ -36,7 +36,7 @@ $font_family_base      : Arial, Verdana, sans-serif !default;
 $xlarge                : 30px !default;
 $large                 : 24px !default;
 $medium                : 20px !default;
-$font_size_base        : 16px !default;
+$regular               : 16px !default;
 $small                 : 12px !default;
 $tiny                  : 10px !default;
 // Headings
@@ -54,8 +54,14 @@ $medium                : 500 !default;
 $regular               : 400 !default;
 $light                 : 200 !default;
 $thin                  : 100 !default;
-// Line Height
-$line_height_base      : $mn !default;
+
+/**
+* Knife Variables
+**/
+$body-font-size:    16 !default;
+$body-line-height:  1.5 !default;
+$scale-factor:      1.333 !default;
+$ie8compatability:  false !default;
 
 /**
 * Colors

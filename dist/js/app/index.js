@@ -16,8 +16,12 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 /* ======================================================== */
 /* Libraries
 /* ======================================================== */
-// jQuery
+// jQuery.
 var $ = jQuery = require('jquery');
+// Handlebars.
+// var H = Handlebars = require('handlebars');
+// Backbone.
+// var B = Backbone = require('backbone'); Backbone.$ = $;
 
 /* ======================================================== */
 /* Helpers

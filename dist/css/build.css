@@ -126,6 +126,9 @@
 * Typography
 **/
 /**
+* Knife Variables
+**/
+/**
 * Colors
 **/
 /**
@@ -148,6 +151,10 @@
 /**
 * Colors
 **/
+/* Vars */
+/* - - - - - - -  Utility Functions - - - - - - - - - */
+/* - - - - - - - - -  Utility Mixins  - - - - - - - - - -  */
+/* - - - - - - - - -  Public Mixins  - - - - - - - - - -  */
 /* ==========================================================================
    Base > All
    Imports all the partials.
@@ -766,7 +773,7 @@ body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
 
 /* -- Weights & Cases -- */
 .u-text-regular {
-  font-weight: 400;
+  font-weight: 16px;
 }
 
 .u-text-bold {
@@ -806,6 +813,7 @@ body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
 .thumb {
   max-width: 20%;
   display: block;
+  clear: both;
 }
 .thumb .thumb--image {
   width: 100%;
@@ -907,19 +915,88 @@ hr.styled-seperator {
 ========================================================================== */
 /* -- HTML -- */
 html {
-  min-height: 100%;
-  overflow-y: scroll;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 /* -- Body -- */
 body {
-  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-family: Arial, Verdana, sans-serif;
   word-wrap: break-word;
-  line-height: 24px;
   color: #5f5659;
+}
+
+/* -- Heading Formatting -- */
+h1, h2, h3, h4, h5, h6 {
+  -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -ms-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+}
+h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
+  margin: 0;
+}
+
+h1, .alpha {
+  font-size: 4.25rem;
+  line-height: 4.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h2, .beta {
+  font-size: 3.1875rem;
+  line-height: 4.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h3, .gamma {
+  font-size: 2.375rem;
+  line-height: 3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h4, .delta {
+  font-size: 1.8125rem;
+  line-height: 3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h5, .epsilon {
+  font-size: 1.375rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+
+h6, .zeta {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+
+/* -- General Margins -- */
+blockquote, dl, figure, ol, p, pre, ul {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 0rem;
+  margin-bottom: 1.125rem;
+}
+
+/* -- General Formatting -- */
+p, li {
+  -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 }
 
 /* -- Links, Buttons & Hover Styles -- */
@@ -938,79 +1015,13 @@ a:active, button:active {
   color: #670919;
 }
 
-/* -- Heading Formatting -- */
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-  -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-  -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-  -ms-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-  -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-  font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-}
-h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
-  margin: 0;
-}
-
-h1, .alpha {
-  font-size: 48px;
-  font-size: 3rem;
-  line-height: 1.4;
-}
-
-h2, .beta {
-  font-size: 36px;
-  font-size: 2.25rem;
-  line-height: 1.6;
-}
-
-h3, .gamma {
-  font-size: 24px;
-  font-size: 1.5rem;
-  line-height: 2;
-}
-
-h4, .delta {
-  font-size: 18px;
-  font-size: 1.125rem;
-  line-height: 2;
-}
-
-h5, .epsilon {
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 2;
-}
-
-h6, .zeta {
-  font-size: 14px;
-  font-size: 0.875rem;
-  line-height: 2;
-}
-
-/* -- Paragraph -- */
-p:last-child {
-  margin-bottom: 0;
-}
-
-/* -- General Formatting -- */
-p, li {
-  -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
-  -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
-  -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
-  -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
-  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
-}
-
+/* -- Other -- */
 cite .profession {
   font-weight: 700;
 }
 
 /* -- Content Areas -- */
-.content blockquote, .content dl, .content figure, .content > img, .content ol, .content p, .content pre, .content ul {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
-}
-.content blockquote:last-child, .content dl:last-child, .content figure:last-child, .content > img:last-child, .content ol:last-child, .content p:last-child, .content pre:last-child, .content ul:last-child {
+.content blockquote:last-child, .content dl:last-child, .content figure:last-child, .content ol:last-child, .content p:last-child, .content pre:last-child, .content ul:last-child {
   margin-bottom: 0;
 }
 .content ul {
@@ -1051,7 +1062,7 @@ p code {
 }
 
 code {
-  font-weight: 400;
+  font-weight: 16px;
   font-family: "source-code-pro", monospace;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
@@ -2010,7 +2021,6 @@ form input, form .input, form select, form textarea, form button[type="submit"],
   position: relative;
   border-radius: 3px;
   cursor: pointer;
-  line-height: 24px;
   -webkit-transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
   -moz-transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
   -o-transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;

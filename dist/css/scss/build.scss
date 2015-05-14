@@ -9,8 +9,11 @@
 // 3. Site vars
 @import 'site/vars';
 
-// 4. Base
+// 4. Knife
+@import 'mixins/vendor/knife';
+
+// 5. Base
 @import 'base/#all';
 
-// 5. Site
+// 6. Site
 @import 'site/#all';

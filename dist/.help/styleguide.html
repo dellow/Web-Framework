@@ -25,11 +25,14 @@
 
 <div class="container">
 	<h1>Website Styleguide</h1>
-	<ul class="u-inline" role="menu">
-		<li role="menuitem"><a href="styleguide.html">General</a></li> |
-		<li role="menuitem"><a href="forms.html">Forms</a></li> |
-		<li role="menuitem"><a href="layout.html">Layout</a></li> |
-		<li role="menuitem"><a href="rhythm.html">Rhythm</a></li>
+	<ul role="menu">
+		<li class="u-inline" role="menuitem"><a href="styleguide.html">General</a></li>
+		&nbsp; | &nbsp;
+		<li class="u-inline" role="menuitem"><a href="forms.html">Forms</a></li>
+		&nbsp; | &nbsp;
+		<li class="u-inline" role="menuitem"><a href="layout.html">Layout</a></li>
+		&nbsp; | &nbsp;
+		<li class="u-inline" role="menuitem"><a href="rhythm.html">Rhythm</a></li>
 	</ul>
 </div>
 
@@ -494,88 +497,100 @@
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title"><code>ul</code></span></summary>
-<pre class="language-markup"><code>&lt;ul>
-	&lt;li>List item 1&lt;/li>
-	&lt;li>List item 2
-		&lt;ul>
-			&lt;li>Sub list item 1&lt;/li>
-			&lt;li>Sub list item 2&lt;/li>
-			&lt;li>Sub list item 3&lt;/li>
-		&lt;/ul>
-	&lt;/li>
-	&lt;li>List item 3&lt;/li>
-	&lt;li>List item 4&lt;/li>
-&lt;/ul></code></pre>
+<pre class="language-markup"><code>&lt;div class="content">
+	&lt;ul>
+		&lt;li>List item 1&lt;/li>
+		&lt;li>List item 2
+			&lt;ul>
+				&lt;li>Sub list item 1&lt;/li>
+				&lt;li>Sub list item 2&lt;/li>
+				&lt;li>Sub list item 3&lt;/li>
+			&lt;/ul>
+		&lt;/li>
+		&lt;li>List item 3&lt;/li>
+		&lt;li>List item 4&lt;/li>
+	&lt;/ul>
+&lt;/div></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<ul>
-					<li>List item 1</li>
-					<li>List item 2
-						<ul>
-							<li>Sub list item 1</li>
-							<li>Sub list item 2</li>
-							<li>Sub list item 3</li>
-						</ul>
-					</li>
-					<li>List item 3</li>
-					<li>List item 4</li>
-				</ul>
+				<div class="content">
+					<ul>
+						<li>List item 1</li>
+						<li>List item 2
+							<ul>
+								<li>Sub list item 1</li>
+								<li>Sub list item 2</li>
+								<li>Sub list item 3</li>
+							</ul>
+						</li>
+						<li>List item 3</li>
+						<li>List item 4</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title"><code>ol</code></span></summary>
-<pre class="language-markup"><code>&lt;ol>
-	&lt;li>List item 1&lt;/li>
-	&lt;li>List item 2
-		&lt;ol>
-			&lt;li>Sub list item 1&lt;/li>
-			&lt;li>Sub list item 2&lt;/li>
-			&lt;li>Sub list item 3&lt;/li>
-		&lt;/ol>
-	&lt;/li>
-	&lt;li>List item 3&lt;/li>
-	&lt;li>List item 4&lt;/li>
-&lt;/ol></code></pre>
+<pre class="language-markup"><code>&lt;div class="content">
+	&lt;ol>
+		&lt;li>List item 1&lt;/li>
+		&lt;li>List item 2
+			&lt;ol>
+				&lt;li>Sub list item 1&lt;/li>
+				&lt;li>Sub list item 2&lt;/li>
+				&lt;li>Sub list item 3&lt;/li>
+			&lt;/ol>
+		&lt;/li>
+		&lt;li>List item 3&lt;/li>
+		&lt;li>List item 4&lt;/li>
+	&lt;/ol>
+&lt;/div></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<ol>
-					<li>List item 1</li>
-					<li>List item 2
-						<ol>
-							<li>Sub list item 1</li>
-							<li>Sub list item 2</li>
-							<li>Sub list item 3</li>
-						</ol>
-					</li>
-					<li>List item 3</li>
-					<li>List item 4</li>
-				</ol>
+				<div class="content">
+					<ol>
+						<li>List item 1</li>
+						<li>List item 2
+							<ol>
+								<li>Sub list item 1</li>
+								<li>Sub list item 2</li>
+								<li>Sub list item 3</li>
+							</ol>
+						</li>
+						<li>List item 3</li>
+						<li>List item 4</li>
+					</ol>
+				</div>
 			</div>
 		</div>
 
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title"><code>dl</code></span></summary>
-<pre class="language-markup"><code>&lt;dl>
-	&lt;dt>First term.&lt;/dt>
-	&lt;dd>Definition of the above term.&lt;/dd>
-	&lt;dt>Second term.&lt;/dt>
-	&lt;dd>Definition of the above term.&lt;/dd>
-	&lt;dt>Third term.&lt;/dt>
-	&lt;dd>Definition of the above term.&lt;/dd>
-&lt;/dl></code></pre>
+<pre class="language-markup"><code>&lt;div class="content">
+	&lt;dl>
+		&lt;dt>First term.&lt;/dt>
+		&lt;dd>Definition of the above term.&lt;/dd>
+		&lt;dt>Second term.&lt;/dt>
+		&lt;dd>Definition of the above term.&lt;/dd>
+		&lt;dt>Third term.&lt;/dt>
+		&lt;dd>Definition of the above term.&lt;/dd>
+	&lt;/dl>
+&lt;/div></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<dl>
-					<dt>First term.</dt>
-					<dd>Definition of the above term.</dd>
-					<dt>Second term.</dt>
-					<dd>Definition of the above term.</dd>
-					<dt>Third term.</dt>
-					<dd>Definition of the above term.</dd>
-				</dl>
+				<div class="content">
+					<dl>
+						<dt>First term.</dt>
+						<dd>Definition of the above term.</dd>
+						<dt>Second term.</dt>
+						<dd>Definition of the above term.</dd>
+						<dt>Third term.</dt>
+						<dd>Definition of the above term.</dd>
+					</dl>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -1493,182 +1508,6 @@
 <div class="container">
 
 	<section>
-		<h2>Accordions</h2>
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Standard Accordion</span></summary>
-<pre class="language-markup"><code>&lt;div class="accordion" role="tablist" multiselectable="true">
-	&lt;div class="accordion__title" role="tablist">
-		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #1&lt;/button>
-	&lt;/div>
-	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
-		Accordion Content
-	&lt;/div>
-	&lt;div class="accordion__title" role="tablist">
-		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #2&lt;/button>
-	&lt;/div>
-	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
-		Accordion Content
-	&lt;/div>
-	&lt;div class="accordion__title" role="tablist">
-		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #3&lt;/button>
-	&lt;/div>
-	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
-		Accordion Content
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view">
-				<div class="accordion" role="tablist" multiselectable="true">
-					<div class="accordion__title" role="tablist">
-						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #1</button>
-					</div>
-					<div class="accordion__content" role="tabpanel" aria-hidden="true">
-						Accordion Content
-					</div>
-					<div class="accordion__title" role="tablist">
-						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #2</button>
-					</div>
-					<div class="accordion__content" role="tabpanel" aria-hidden="true">
-						Accordion Content
-					</div>
-					<div class="accordion__title" role="tablist">
-						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #3</button>
-					</div>
-					<div class="accordion__content" role="tabpanel" aria-hidden="true">
-						Accordion Content
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
-
-<hr class="styled-seperator">
-
-<div class="container">
-
-	<section>
-		<h2>Tabs</h2>
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Natural Tabs</span></summary>
-<pre class="language-markup"><code>&lt;div class="tabs">
-	&lt;ul class="tabs__nav" role="tablist">
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
-		&lt;/li>
-	&lt;/ul>
-	&lt;div class="tabs__system">
-		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-			&lt;p>Tab 1 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-			&lt;p>Tab 2 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-			&lt;p>Tab 3 content goes here.&lt;/p>
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view">
-				<div class="tabs">
-					<ul class="tabs__nav" role="tablist">
-						<li role="presentation">
-							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
-						</li>
-					</ul>
-					<div class="tabs__system">
-						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-							<p>Tab 1 content goes here.</p>
-						</div>
-						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-							<p>Tab 2 content goes here.</p>
-						</div>
-						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-							<p>Tab 3 content goes here.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Full Width Tabs</span></summary>
-<pre class="language-markup"><code>&lt;div class="tabs tabs-full-width">
-	&lt;ul class="tabs__nav" role="tablist">
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
-		&lt;/li>
-	&lt;/ul>
-	&lt;div class="tabs__system">
-		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-			&lt;p>Tab 1 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-			&lt;p>Tab 2 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-			&lt;p>Tab 3 content goes here.&lt;/p>
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view">
-				<div class="tabs tabs-full-width">
-					<ul class="tabs__nav" role="tablist">
-						<li role="presentation">
-							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
-						</li>
-					</ul>
-					<div class="tabs__system">
-						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-							<p>Tab 1 content goes here.</p>
-						</div>
-						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-							<p>Tab 2 content goes here.</p>
-						</div>
-						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-							<p>Tab 3 content goes here.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
-
-<hr class="styled-seperator">
-
-<div class="container">
-
-	<section>
 		<h2>Flexbox</h2>
 		<div class="pattern resizable">
 			<details class="pattern__details">
@@ -1971,7 +1810,186 @@
 <div class="container">
 
 	<section>
+		<h2>Accordions</h2>
+		<p>Styles are disabled in SCSS by default. Enable the partials for this module and try again.</p>
+		<div class="pattern resizable">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Standard Accordion</span></summary>
+<pre class="language-markup"><code>&lt;div class="accordion" role="tablist" multiselectable="true">
+	&lt;div class="accordion__title" role="tablist">
+		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #1&lt;/button>
+	&lt;/div>
+	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
+		Accordion Content
+	&lt;/div>
+	&lt;div class="accordion__title" role="tablist">
+		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #2&lt;/button>
+	&lt;/div>
+	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
+		Accordion Content
+	&lt;/div>
+	&lt;div class="accordion__title" role="tablist">
+		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #3&lt;/button>
+	&lt;/div>
+	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
+		Accordion Content
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="accordion" role="tablist" multiselectable="true">
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #1</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #2</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+					<div class="accordion__title" role="tablist">
+						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #3</button>
+					</div>
+					<div class="accordion__content" role="tabpanel" aria-hidden="true">
+						Accordion Content
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
+		<h2>Tabs</h2>
+		<p>Styles are disabled in SCSS by default. Enable the partials for this module and try again.</p>
+		<div class="pattern resizable">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Natural Tabs</span></summary>
+<pre class="language-markup"><code>&lt;div class="tabs">
+	&lt;ul class="tabs__nav" role="tablist">
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
+		&lt;/li>
+	&lt;/ul>
+	&lt;div class="tabs__system">
+		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+			&lt;p>Tab 1 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+			&lt;p>Tab 2 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+			&lt;p>Tab 3 content goes here.&lt;/p>
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="tabs">
+					<ul class="tabs__nav" role="tablist">
+						<li role="presentation">
+							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
+						</li>
+					</ul>
+					<div class="tabs__system">
+						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+							<p>Tab 1 content goes here.</p>
+						</div>
+						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+							<p>Tab 2 content goes here.</p>
+						</div>
+						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+							<p>Tab 3 content goes here.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pattern resizable">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Full Width Tabs</span></summary>
+<pre class="language-markup"><code>&lt;div class="tabs tabs-full-width">
+	&lt;ul class="tabs__nav" role="tablist">
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
+		&lt;/li>
+		&lt;li role="presentation">
+			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
+		&lt;/li>
+	&lt;/ul>
+	&lt;div class="tabs__system">
+		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+			&lt;p>Tab 1 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+			&lt;p>Tab 2 content goes here.&lt;/p>
+		&lt;/div>
+		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+			&lt;p>Tab 3 content goes here.&lt;/p>
+		&lt;/div>
+	&lt;/div>
+&lt;/div></code></pre>
+			</details>
+			<div class="pattern__view">
+				<div class="tabs tabs-full-width">
+					<ul class="tabs__nav" role="tablist">
+						<li role="presentation">
+							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
+						</li>
+						<li role="presentation">
+							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
+						</li>
+					</ul>
+					<div class="tabs__system">
+						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
+							<p>Tab 1 content goes here.</p>
+						</div>
+						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
+							<p>Tab 2 content goes here.</p>
+						</div>
+						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
+							<p>Tab 3 content goes here.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<hr class="styled-seperator">
+
+<div class="container">
+
+	<section>
 		<h2>Sliders / Carousels</h2>
+		<p>Styles are disabled in SCSS by default. Enable the partials for this module and try again.</p>
 		<p>Sliders are provided by the excellent <a href="http://bxslider.com" target="_blank">BX Slider</a>. These are basic examples and not predefined in the Framework. View the <a href="http://bxslider.com/options" target="_blank">BX Slider Options</a> to learn more about the extensive API.</p>
 		<div class="pattern resizable">
 			<details class="pattern__details">
@@ -2105,8 +2123,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script src="../js/plugins/jquery.extensions.js"></script>
-<script src="../js/plugins/jquery.slider.js"></script>
-<script src="../js/plugins/jquery.lightbox.js"></script>
+<script src="../js/plugins/vendor/jquery.slider.js"></script>
 <script src="../js/plugins/jquery.accordion.js"></script>
 <script src="../js/plugins/jquery.tabs.js"></script>
 <script src="../js/build/build.js"></script>
@@ -2119,8 +2136,7 @@
 	$(function(){
 		// Resizable
 		$('.resizable').resizable({
-			grid: 50,
-			containment: 'section'
+			grid: 50
 		});
 		// Accordion
 	    if($('.accordion').length){
@@ -2141,12 +2157,6 @@
 				moveSlides : 1,
 				minSlides  : 5,
 				maxSlides  : 5
-	        });
-	    }
-		// Lightbox
-	    if($('.lightbox').length){
-	        $('.lightbox').lightbox({
-	            // No options
 	        });
 	    }
 		// Tabs

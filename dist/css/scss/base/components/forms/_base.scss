@@ -66,7 +66,6 @@ form {
 		position: relative;
 		border-radius: $border_radius_base;
 		cursor: pointer;
-		line-height: $line_height_base;
 		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease);
 		// Pseudo
 		&:hover, &:active {
