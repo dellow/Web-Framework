@@ -48,10 +48,26 @@
 			_this.primary.removeClass('mobile-animate');
 		}
 
-		// Mobile menu button
-		$('.mobile-menu').on('click', function(){
-			_this.menu_reveal($(this));
-		});
+		// Sub menu buttons.
+		if(Helpers.breakpoint(breakpoint)){
+			// Remove max-height
+			// Mobile menu button.
+			$('.mobile-menu').on('click', function(){
+				_this.menu_reveal($(this), primary);
+			});
+			// Sub menu item.
+			$('a', primary).on('click', function(e){
+				// Cache this link.
+				var anchor = $(this);
+				// Check menu exists and isn't already active.
+				if(anchor.next('.sub-menu').length && !anchor.next('.sub-menu').hasClass('active-sub-menu')){
+					e.preventDefault();
+
+					$('.active-sub-menu', primary).slideUp(400).removeClass('active-sub-menu');
+					anchor.next('.sub-menu').addClass('active-sub-menu').slideDown(400);
+				}
+			});
+		}
 	}, 250);
 
 	/**

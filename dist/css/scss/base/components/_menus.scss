@@ -85,10 +85,10 @@
 				background: color(copy, link);
 			}
 			&:before {
-				transform: rotate(45deg);
+				@include transform(rotate(45deg));
 			}
 			&:after {
-				transform: rotate(-45deg);
+				@include transform(rotate(-45deg));
 			}
 		}
 	}
@@ -118,7 +118,7 @@
 		max-height: 0px;
 		display: block !important;
 		overflow-y: hidden !important;
-		-webkit-transform: translateZ(0) !important;
+		@include transform(translateZ(0));
 		@include transition(max-height 1000ms ease-in-out);
 	}
 	.mobile-menu {

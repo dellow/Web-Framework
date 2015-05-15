@@ -1777,9 +1777,15 @@ ul.alert.box li {
   background: #C4122F;
 }
 .mobile-menu.active-menu span:before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .mobile-menu.active-menu span:after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 .mobile-menu span, .mobile-menu span:before, .mobile-menu span:after {
@@ -1808,7 +1814,10 @@ ul.alert.box li {
     max-height: 0px;
     display: block !important;
     overflow-y: hidden !important;
-    -webkit-transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
     -webkit-transition: max-height 1000ms ease-in-out;
     -moz-transition: max-height 1000ms ease-in-out;
     -o-transition: max-height 1000ms ease-in-out;
