@@ -50,7 +50,6 @@
 
 		// Sub menu buttons.
 		if(Helpers.breakpoint(breakpoint)){
-			// Remove max-height
 			// Mobile menu button.
 			$('.mobile-menu').on('click', function(){
 				_this.menu_reveal($(this), primary);
@@ -63,7 +62,9 @@
 				if(anchor.next('.sub-menu').length && !anchor.next('.sub-menu').hasClass('active-sub-menu')){
 					e.preventDefault();
 
+					// Hide currently active sub menu.
 					$('.active-sub-menu', primary).slideUp(400).removeClass('active-sub-menu');
+					// Show requested sub menu.
 					anchor.next('.sub-menu').addClass('active-sub-menu').slideDown(400);
 				}
 			});
