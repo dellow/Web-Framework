@@ -74,6 +74,7 @@ gulp.task('browserify', function(){
 
 	// Task.
 	return browserify(dist_dir + 'js/app/').bundle()
+		.on('error', task_handler)
 	    .pipe(source('index.js'))
 	    .pipe(buffer())
 		.pipe(gulpif(should_min, uglify()))
