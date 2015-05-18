@@ -11,7 +11,7 @@
 	2. [Production](#profiles--production)
 7. [Watch](#watch)
 8. [Sync](#sync)
-9. [PageSpeed (Extended)](#pagespeed)
+9. [PageSpeed](#pagespeed)
 10. [Working with SCSS](#working-with-scss)
 	1. [Debug Mode](#working-with-scss--debug-mode)
 	2. [Dev Mode](#working-with-scss--dev-mode)
@@ -24,11 +24,6 @@
 <a name="about"></a>
 ## About
 This is a fast project wrapper and workflow that utilises Gulp. To use this as a full Framework please follow the installation instructions below. This will pull in the [Framework Library Repo](https://github.com/sdellow/Framework-Library) using Bower which is a CSS and JS Framework built using SASS and Browserify.
-
-### Extended Modules
-This wrapper has been split into a 'normal' and 'extended' version. The extended version includes other modules and tasks such as Dalek, JSHint and Jasmine. You will need to rename the `package.json.extended` file to just `package.json` (overwriting the current one) and the `Gulpfile.js.extended` file to use the extended version.
-
-Any part of this readme that requires the extended modules will be suffixed with '(Extended)'.
 
 <a name="requirements"></a>
 ## Requirements
@@ -95,17 +90,17 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 - Browserify (Minified)
 - Compass (Minified)
 - Imagemin
-- Dalek (Extended)
-- JSHint (Extended)
-- Jasmine (Extended)
+- Dalek
+- JSHint
+- Jasmine
 
 ### Development
 - Browserify (Non minified)
 - Compass (Non minified)
 - Imagemin
-- Dalek (Extended)
-- JSHint (Extended)
-- Jasmine (Extended)
+- Dalek
+- JSHint
+- Jasmine
 
 <a name="profiles--production"></a>
 ### Production
@@ -140,7 +135,7 @@ By default `gulp sync` will also use the xip.io service for Wildcard DNS. This m
 > __Please note:__ The `sync` task will minify CSS and JS.
 
 <a name="pagespeed"></a>
-## PageSpeed (Extended)
+## PageSpeed
 You can run Google PageSpeed insights by running `gulp psi`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp psi --url http://amazon.com --mode desktop`.
 
 This task will also create a text file depending on the requested domain to record all PageSpeed results. E.G. A request to test `http://google.com` will create a txt file in `logs/pagespeed/google.com` - all subsequent requests to this domain will be appended to this file.
