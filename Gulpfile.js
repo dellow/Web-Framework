@@ -1,6 +1,5 @@
 /* =========================================================================== */
-/* GLOBAL Requires & GLOBAL Variables
-/* Use very sparingly (http://stackoverflow.com/questions/5447771/node-js-global-variables)
+/* Requires & Vars
 /* =========================================================================== */
 // Require.
 var gulp         = require('gulp'),
@@ -38,7 +37,7 @@ function task_handler(err){
 
 
 /* =========================================================================== */
-/* Combined Tasks & Global Requires
+/* Combined Tasks
 /* =========================================================================== */
 // Task.
 gulp.task('default', [
