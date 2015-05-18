@@ -142,8 +142,8 @@ gulp.task('dalek', function(){
 		stylish = require('jshint-stylish');
 
     // Run on development only
-    if(GLOBAL.is_development){
-		return gulp.src(GLOBAL.dist_dir + 'js/spec/tests-dalek.js')
+    if(is_development){
+		return gulp.src(dist_dir + 'js/spec/tests-dalek.js')
 			.pipe(
 				dalek({
 					browser : [
@@ -189,8 +189,8 @@ gulp.task('jasmine', function(){
 	var jasmine = require('gulp-jasmine');
 
     // Run on development only
-    if(GLOBAL.is_development){
-		return gulp.src(GLOBAL.dist_dir + 'js/spec/test.js')
+    if(is_development){
+		return gulp.src(dist_dir + 'js/spec/test.js')
 	        .pipe(jasmine());
     }
 });
@@ -206,8 +206,8 @@ gulp.task('jshint', function(){
 		stylish = require('jshint-stylish');
 
     // Run on development only
-    if(GLOBAL.is_development){
-		return gulp.src(GLOBAL.dist_dir + 'js/app/**/*.js')
+    if(is_development){
+		return gulp.src(dist_dir + 'js/app/**/*.js')
 		    .pipe(jshint())
 		    .pipe(jshint.reporter(stylish));
 	}
