@@ -57,7 +57,7 @@
 	Controller.prototype.page_load = function(){
 		// Init new instance.
 		var menu = new this.Menu();
-		menu.init(window.mobile_breakpoint);
+		menu.init();
 
 		// Init new instance.
 		var binds = new this.Binds();
@@ -307,8 +307,8 @@ var PageController = require('./controller.page');
 /* Router
 /* ======================================================== */
 // Init new instance.
-var page_controller = new PageController();
-page_controller.init($('.main'));
+var pc = new PageController();
+pc.init($('.main'));
 
 },{"./controller.page":1,"./helpers":2,"jquery":13}],4:[function(require,module,exports){
 /**
@@ -360,9 +360,10 @@ page_controller.init($('.main'));
     **/
     Module.prototype.equal_heights = function(){
         // DOM check.
-        if(!$('.js-eh').length){return};
-        // Init plugin.
-        $('.js-eh').equalHeights();
+        if(!$('.js-eh').length){
+            // Init plugin.
+            $('.js-eh').equalHeights();
+        };
     }
 
     /**
@@ -371,13 +372,14 @@ page_controller.init($('.main'));
     **/
     Module.prototype.google_map = function(){
         // DOM check.
-        if(!$('.js-google-map').length){return};
-        // Init plugin.
-        $('.js-google-map').googlemap({
-            locations: [
-                'United Kingdom'
-            ]
-        });
+        if(!$('.js-google-map').length){
+            // Init plugin.
+            $('.js-google-map').googlemap({
+                locations: [
+                    'United Kingdom'
+                ]
+            });
+        };
     }
 
     /**
@@ -386,14 +388,15 @@ page_controller.init($('.main'));
     **/
     Module.prototype.lightboxes = function(){
         // DOM check.
-        if(!$('.js-lightbox').length){return};
-        // Init plugin.
-        $('.js-lightbox').fancybox({
-            autoWidth    : true,
-            autoHeight   : true,
-            autoScale    : true,
-            transitionIn : 'fade'
-        });
+        if(!$('.js-lightbox').length){
+            // Init plugin.
+            $('.js-lightbox').fancybox({
+                autoWidth    : true,
+                autoHeight   : true,
+                autoScale    : true,
+                transitionIn : 'fade'
+            });
+        };
     }
 
     /**
@@ -402,16 +405,17 @@ page_controller.init($('.main'));
     **/
     Module.prototype.modals = function(){
         // DOM check.
-        if(!$('.js-modal').length){return};
-        // Init plugin.
-        $('.js-modal').modal();
-        // Init plugin on load (or function call).
-        $(window).modal({
-            type   : 'modal-slide-left',
-            content: 'Some content here.'
-        });
-        // // Destroy created modal.
-        $(window).destroyModal();
+        if(!$('.js-modal').length){
+            // Init plugin.
+            $('.js-modal').modal();
+            // Init plugin on load (or function call).
+            $(window).modal({
+                type   : 'modal-slide-left',
+                content: 'Some content here.'
+            });
+            // // Destroy created modal.
+            $(window).destroyModal();
+        };
     }
 
     /**
@@ -420,21 +424,22 @@ page_controller.init($('.main'));
     **/
     Module.prototype.sliders = function(){
         // DOM check.
-        if(!$('.js-slider').length){return};
-        // Init plugin.
-        $('.js-slider').bxSlider({
-            auto        : true,
-            controls    : true,
-            pager       : false,
-            autoReload  : true,
-            infiniteLoop: true,
-            moveSlides  : 1,
-            breaks      : [
-                {screen: 0, slides: 1, pager: false},
-                {screen: 460, slides: 2},
-                {screen: 768, slides: 3}
-            ]
-        });
+        if($('.js-slider').length){
+            // Init plugin.
+            $('.js-slider').bxSlider({
+                auto        : true,
+                controls    : true,
+                pager       : false,
+                autoReload  : true,
+                infiniteLoop: true,
+                moveSlides  : 1,
+                breaks      : [
+                    {screen: 0, slides: 1, pager: false},
+                    {screen: 460, slides: 2},
+                    {screen: 768, slides: 3}
+                ]
+            });
+        };
     }
 
     /**
@@ -446,13 +451,15 @@ page_controller.init($('.main'));
         if($('#c_a_p_t_c_h_a').length){
             $('#c_a_p_t_c_h_a').prop('checked', true);
         }
+
         // DOM check.
-        if(!$('.js-validate').length){return};
-        // Init plugin.
-        $('.js-validate').validation({
-            serverValidation        : false,
-            appendErrorToPlaceholder: true
-        });
+        if($('.js-validate').length){
+            // Init plugin.
+            $('.js-validate').validation({
+                serverValidation        : false,
+                appendErrorToPlaceholder: true
+            });
+        };
     }
 
     // Export
@@ -478,21 +485,20 @@ page_controller.init($('.main'));
      * Constructor for this module.
     **/
     Module = function(){
-		this.primary    = $('.nav-primary');
-		this.navigation = $('.navigation');
-		this.height     = this.primary.outerHeight();
+		this.primary = $('.nav-primary');
+		this.pheight = this.primary.outerHeight();
     }
 
 	/**
 	 * init
 	 * Init method for this module.
 	**/
-	Module.prototype.init = function(breakpoint){
+	Module.prototype.init = function(){
 		var _this = this;
 
 		// Start binds on window load / resize.
 		$(window).on('load resize',function(){
-			_this.binds(breakpoint);
+			_this.binds();
 		});
 	}
 
@@ -500,63 +506,112 @@ page_controller.init($('.main'));
 	 * binds
 	 * jQuery event binds for this module.
 	**/
-	Module.prototype.binds = Helpers.debounce(function(breakpoint){
+	Module.prototype.binds = Helpers.debounce(function(){
 		var _this = this;
 
-		// Apply classes
-		if(Helpers.breakpoint(breakpoint)){
+		// Check window size.
+		if(Helpers.breakpoint(window.mobile_breakpoint)){
+			// Add 'mobile-animate' class to primary menu.
 			_this.primary.addClass('mobile-animate');
-		}
-		else{
-			_this.primary.removeClass('mobile-animate');
-		}
 
-		// Sub menu buttons.
-		if(Helpers.breakpoint(breakpoint)){
-			// Remove max-height
 			// Mobile menu button.
 			$('.mobile-menu').on('click', function(){
-				_this.menu_reveal($(this), primary);
+				_this.reveal_menu($(this), _this.primary);
 			});
+
 			// Sub menu item.
-			$('a', primary).on('click', function(e){
-				// Cache this link.
+			$('a', _this.primary).on('click', function(e){
+				// Cache DOM element.
 				var anchor = $(this);
 				// Check menu exists and isn't already active.
 				if(anchor.next('.sub-menu').length && !anchor.next('.sub-menu').hasClass('active-sub-menu')){
 					e.preventDefault();
 
-					$('.active-sub-menu', primary).slideUp(400).removeClass('active-sub-menu');
-					anchor.next('.sub-menu').addClass('active-sub-menu').slideDown(400);
+					// Reveal sub menu.
+					_this.show_sub_menu(anchor);
 				}
 			});
+		}
+		else{
+			// Remove 'mobile-animate' class to primary menu.
+			_this.primary.removeClass('mobile-animate');
 		}
 	}, 250);
 
 	/**
-	 * menu_reveal
+	 * reveal_menu
 	 * Adds class to menu.
 	**/
-	Module.prototype.menu_reveal = function(el){
+	Module.prototype.reveal_menu = function(el){
 		var _this = this;
 
 		// Check height of primary menu.
 		if(_this.primary.height() < 5){
-			// Toggle class to button
-			el.addClass('active-menu');
-			// Slide down with CSS animation
-			_this.primary.addClass('slide-down').css({'max-height': height + 'px'});
+			// Show menu.
+			_this.show_primary_menu(el);
 		}
 		else{
-			// Toggle class to button
-			el.removeClass('active-menu');
-			// Slide down with CSS animation
-			_this.primary.removeClass('slide-down').css({'max-height': ''});
-			// If hidden remove the `display: block`
-			if(_this.primary.is(':hidden')){
-				_this.primary.css({'display': ''});
-			}
+			// Hide menu.
+			_this.hide_primary_menu(el);
 		}
+	}
+
+	/**
+	 * hide_primary_menu
+	 * Hide menu.
+	**/
+	Module.prototype.hide_primary_menu = function(el){
+		var _this = this;
+
+		// Toggle class to button
+		el.removeClass('active-menu');
+		// Hide any open sub-menus.
+		_this.hide_sub_menu();
+		// Hide primary menu.
+		_this.primary.removeClass('slide-down').css({'max-height': ''});
+		// If hidden remove the `display: block`
+		if(_this.primary.is(':hidden')){
+			_this.primary.css({'display': ''});
+		}
+	}
+
+	/**
+	 * hide_sub_menu
+	 * Hide menu.
+	**/
+	Module.prototype.hide_sub_menu = function(){
+		var _this = this;
+
+		// Hide any open sub-menus.
+		$('.active-sub-menu', _this.primary).slideUp(400).removeClass('active-sub-menu');
+	}
+
+	/**
+	 * show_primary_menu
+	 * Show menu.
+	**/
+	Module.prototype.show_primary_menu = function(el){
+		var _this = this;
+
+		// Toggle class to button
+		el.addClass('active-menu');
+		// Slide down with CSS animation
+		_this.primary.addClass('slide-down').css({'max-height': _this.pheight + 'px'});
+	}
+
+	/**
+	 * show_sub_menu
+	 * Show menu.
+	**/
+	Module.prototype.show_sub_menu = function(el){
+		var _this = this;
+
+		// Extend primary menu max-height indefinitely.
+		_this.primary.css({'max-height': '9999px'});
+		// Hide any open sub-menus.
+		_this.hide_sub_menu();
+		// Show requested sub menu.
+		el.next('.sub-menu').addClass('active-sub-menu').slideDown(400);
 	}
 
 	// Export

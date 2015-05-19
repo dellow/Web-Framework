@@ -56,7 +56,7 @@
 	Controller.prototype.page_load = function(){
 		// Init new instance.
 		var menu = new this.Menu();
-		menu.init(window.mobile_breakpoint);
+		menu.init();
 
 		// Init new instance.
 		var binds = new this.Binds();

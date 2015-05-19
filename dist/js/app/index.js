@@ -39,5 +39,5 @@ var PageController = require('./controller.page');
 /* Router
 /* ======================================================== */
 // Init new instance.
-var page_controller = new PageController();
-page_controller.init($('.main'));
+var pc = new PageController();
+pc.init($('.main'));

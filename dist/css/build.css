@@ -1,5 +1,16 @@
 @charset "UTF-8";
 /* ==========================================================================
+   Site > Fonts
+   Local @font-face styles.
+========================================================================== */
+@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=89a4137c-7156-4ea4-90e7-335e9b15e92a");
+@font-face {
+  font-family: "FONT_NAME_HERE";
+  src: url("fonts/font_file.eot");
+  src: local("☺"), url("fonts/font_file.eot?#iefix") format("embedded-opentype"), url("fonts/font_file.woff2") format("woff2"), url("fonts/font_file.woff") format("woff"), url("fonts/font_file.ttf") format("truetype"), url("fonts/font_file.svg#ea016da2-37b8-42db-99f6-bb983eeba14b") format("svg");
+}
+/* ----------------------------------------------------------------------- */
+/* ==========================================================================
    Mixins > All
    Imports all the partials.
 ========================================================================== */
@@ -938,6 +949,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
   margin: 0;
+}
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+  margin-top: 0;
 }
 
 h1, .alpha {
