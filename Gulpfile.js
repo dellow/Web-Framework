@@ -10,7 +10,6 @@ var src_dir   = './',
 	dist_dir  = './dist/';
 
 
-
 /* =========================================================================== */
 /* Combined Tasks & Global Requires
 /* =========================================================================== */
@@ -71,11 +70,19 @@ gulp.task('compass', function(){
 /* =========================================================================== */
 gulp.task('jasmine', function(){
 	// Require.
-	var jasmine = require('gulp-jasmine');
+	var karma = require('gulp-karma');
+
+	// Files. (Also needs setting in karma.conf.js)
+	var tests = [
+		dist_dir + 'js/spec/jasmine/general.js'
+	];
 
     // Task.
-	return gulp.src(dist_dir + 'js/spec/tests-jasmine.js')
-        .pipe(jasmine());
+	return gulp.src(tests)
+		.pipe(karma({
+			configFile: 'karma.conf.js',
+			action    : 'run'
+		}));
 });
 
 
