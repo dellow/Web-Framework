@@ -134,30 +134,31 @@ gulp.task('compass', function(){
 
 
 /* =========================================================================== */
-/* Dalek
+/* Dalek (Development)
 /* =========================================================================== */
 gulp.task('dalek', function(){
+	// Check environment.
+	if(!is_development){return;}
+
 	// Require.
 	var dalek = require('gulp-dalek'),
 		stylish = require('jshint-stylish');
 
-    // Run on development only
-    if(is_development){
-		return gulp.src(dist_dir + 'js/spec/tests-dalek.js')
-			.pipe(
-				dalek({
-					browser : [
-						'phantomjs',
-						// 'chrome'
-					],
-					reporter: [
-						'console',
-						//'html',
-						//'junit'
-					]
-				})
-			);
-    }
+	// Task
+	return gulp.src(dist_dir + 'js/spec/dalek/general.js')
+		.pipe(
+			dalek({
+				browser : [
+					'phantomjs',
+					// 'chrome'
+				],
+				reporter: [
+					'console',
+					// 'html',
+					// 'junit'
+				]
+			})
+		);
 });
 
 
@@ -182,25 +183,37 @@ gulp.task('imagemin', function(){
 
 
 /* =========================================================================== */
-/* Jasmine
+/* Jasmine (Development)
 /* =========================================================================== */
 gulp.task('jasmine', function(){
-	// Vars.
-	var jasmine = require('gulp-jasmine');
+	// Check environment.
+	if(!is_development){return;}
 
-    // Run on development only
-    if(is_development){
-		return gulp.src(dist_dir + 'js/spec/test.js')
-	        .pipe(jasmine());
-    }
+	// Require.
+	var karma = require('gulp-karma');
+
+	// Files. (Also needs setting in karma.conf.js)
+	var tests = [
+		dist_dir + 'js/spec/jasmine/general.js'
+	];
+
+    // Task.
+	return gulp.src(tests)
+		.pipe(karma({
+			configFile: 'karma.conf.js',
+			action    : 'run'
+		}));
 });
 
 
 
 /* =========================================================================== */
-/* JSHint
+/* JSHint (Development)
 /* =========================================================================== */
 gulp.task('jshint', function(){
+	// Check environment.
+	if(!is_development){return;}
+
 	// Vars.
 	var jshint  = require('gulp-jshint'),
 		stylish = require('jshint-stylish');
