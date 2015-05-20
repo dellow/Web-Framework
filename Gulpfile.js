@@ -144,8 +144,14 @@ gulp.task('dalek', function(){
 	var dalek = require('gulp-dalek'),
 		stylish = require('jshint-stylish');
 
+	// Files.
+	var tests = [
+		dist_dir + 'js/spec/dalek/examples.js',
+		dist_dir + 'js/spec/dalek/general.js'
+	];
+
 	// Task
-	return gulp.src(dist_dir + 'js/spec/dalek/general.js')
+	return gulp.src(tests)
 		.pipe(
 			dalek({
 				browser : [
@@ -303,7 +309,7 @@ gulp.task('psi', options, function(){
 				mode     : mode,
 				url      : data.id
 			}))
-			.pipe(gulp.dest('./logs/pagespeed'));
+			.pipe(gulp.dest('./psi/'));
 
 			// Report
 			console.log("Log has been recorded to: " + file);

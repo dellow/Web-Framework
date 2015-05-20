@@ -2,24 +2,25 @@
 
 ## Contents
 1. [About](#about)
-2. [Requirements](#requirements)
-3. [Install](#install)
-4. [Styleguide & Examples](#styleguide-examples)
-5. [Using Gulp](#using-gulp)
-6. [Profiles](#profiles)
+1. [Requirements](#requirements)
+1. [Install](#install)
+1. [Styleguide & Examples](#styleguide-examples)
+1. [Using Gulp](#using-gulp)
+1. [Profiles](#profiles)
 	1. [Development](#profiles--development)
-	2. [Production](#profiles--production)
-7. [Watch](#watch)
-8. [Sync](#sync)
-9. [PageSpeed](#pagespeed)
-10. [Working with SCSS](#working-with-scss)
+	1. [Production](#profiles--production)
+1. [Watch](#watch)
+1. [Sync](#sync)
+1. [PageSpeed](#pagespeed)
+1. [Testing](#testing)
+1. [Working with SCSS](#working-with-scss)
 	1. [Debug Mode](#working-with-scss--debug-mode)
-	2. [Dev Mode](#working-with-scss--dev-mode)
-	3. [BEM](#working-with-scss--bem)
-	4. [Responsive](#working-with-scss--responsive)
-11. [Working with JavaScript](#working-with-javascript)
+	1. [Dev Mode](#working-with-scss--dev-mode)
+	1. [BEM](#working-with-scss--bem)
+	1. [Responsive](#working-with-scss--responsive)
+1. [Working with JavaScript](#working-with-javascript)
 	1. [Requiring New Files](#working-with-javascript--requiring-new-files)
-12. [Troubleshooting](#troubleshooting)
+1. [Troubleshooting](#troubleshooting)
 
 <a name="about"></a>
 ## About
@@ -138,7 +139,15 @@ By default `gulp sync` will also use the xip.io service for Wildcard DNS. This m
 ## PageSpeed
 You can run Google PageSpeed insights by running `gulp psi`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp psi --url http://amazon.com --mode desktop`.
 
-This task will also create a text file depending on the requested domain to record all PageSpeed results. E.G. A request to test `http://google.com` will create a txt file in `logs/pagespeed/google.com` - all subsequent requests to this domain will be appended to this file.
+This task will also create a text file depending on the requested domain to record all PageSpeed results. E.G. A request to test `http://google.com` will create a txt file in `psi/google.com` - all subsequent requests to this domain will be appended to this file.
+
+<a name="testing"></a>
+## Testing
+Client side JavaScript testing is done with Jasmine via Karma.
+
+Browser testing is done with DalekJS.
+
+_Documentation coming soon_
 
 <a name="working-with-scss"></a>
 ## Working with SCSS
