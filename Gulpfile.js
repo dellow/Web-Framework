@@ -70,13 +70,13 @@ gulp.task('compass', function(){
 /* =========================================================================== */
 gulp.task('dalek', function(){
 	// Require.
-	var dalek = require('gulp-dalek'),
-		stylish = require('jshint-stylish');
+	var dalek = require('gulp-dalek');
 
 	// Files.
 	var tests = [
-		dist_dir + 'js/spec/dalek/examples.js',
-		dist_dir + 'js/spec/dalek/general.js'
+		// dist_dir + 'js/spec/dalek/examples.js',
+		dist_dir + 'js/spec/dalek/elements.js',
+		dist_dir + 'js/spec/dalek/roles.js'
 	];
 
 	// Task
@@ -89,7 +89,7 @@ gulp.task('dalek', function(){
 				],
 				reporter: [
 					'console',
-					// 'html',
+					'html',
 					// 'junit'
 				]
 			})
