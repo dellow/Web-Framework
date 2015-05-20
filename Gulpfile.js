@@ -66,6 +66,39 @@ gulp.task('compass', function(){
 
 
 /* =========================================================================== */
+/* Dalek
+/* =========================================================================== */
+gulp.task('dalek', function(){
+	// Require.
+	var dalek = require('gulp-dalek'),
+		stylish = require('jshint-stylish');
+
+	// Files.
+	var tests = [
+		dist_dir + 'js/spec/dalek/examples.js',
+		dist_dir + 'js/spec/dalek/general.js'
+	];
+
+	// Task
+	return gulp.src(tests)
+		.pipe(
+			dalek({
+				browser : [
+					'phantomjs',
+					// 'chrome'
+				],
+				reporter: [
+					'console',
+					// 'html',
+					// 'junit'
+				]
+			})
+		);
+});
+
+
+
+/* =========================================================================== */
 /* Jasmine
 /* =========================================================================== */
 gulp.task('jasmine', function(){

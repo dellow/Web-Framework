@@ -5,7 +5,7 @@
  * Copyright 2015, Author Name
  * Some information on the license.
  *
- * Tests > General
+ * Jasmine Tests > General
  *
 **/
 

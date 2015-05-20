@@ -5,6 +5,8 @@
 .sass-cache/
 node_modules/
 bower_components/
+dalek/
+psi/
 
 
 # FILES
@@ -12,9 +14,3 @@ bower_components/
 # details should be ignored to prevent unauthorised access.
 # ---------------------------------------------------------------------------------
 *.log
-
-
-# TEMP
-# ---------------------------
-# JavaScript documentation isn't ready yet
-javascript.html
