@@ -34,20 +34,17 @@
 	Controller.prototype.init = function(el){
 		var _this = this;
 
-		// Document load.
-		$(function(){
-            // Run page load events.
-			_this.page_load();
-			// Check Wiselinks is enabled.
-			if(window.wiselinks_enabled){
-				// Init WiseLinks
-				window.wiselinks = new Wiselinks(el, {
-					html4_normalize_path: false
-				});
-				// Do page events
-				_this.wiselinks_events();
-			}
-	    });
+        // Run page load events.
+		_this.page_load();
+		// Check Wiselinks is enabled.
+		if(window.wiselinks_enabled){
+			// Init WiseLinks
+			window.wiselinks = new Wiselinks(el, {
+				html4_normalize_path: false
+			});
+			// Do page events
+			_this.wiselinks_events();
+		}
 	}
 
 	/**
@@ -281,9 +278,10 @@ window.wiselinks_enabled = true;
 window.debugging         = true;
 window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
-/* ======================================================== */
+
+/* ==========================================================================
 /* Libraries
-/* ======================================================== */
+========================================================================== */
 // jQuery.
 var $ = jQuery = require('jquery');
 // Handlebars.
@@ -291,21 +289,24 @@ var $ = jQuery = require('jquery');
 // Backbone.
 // var B = Backbone = require('backbone'); Backbone.$ = $;
 
-/* ======================================================== */
+
+/* ==========================================================================
 /* Helpers
-/* ======================================================== */
+========================================================================== */
 // Helpers.
 require('./helpers');
 
-/* ======================================================== */
+
+/* ==========================================================================
 /* Controllers
-/* ======================================================== */
+========================================================================== */
 // Page Controller.
 var PageController = require('./controller.page');
 
-/* ======================================================== */
+
+/* ==========================================================================
 /* Router
-/* ======================================================== */
+========================================================================== */
 // Init new instance.
 var pc = new PageController();
 pc.init($('.main'));

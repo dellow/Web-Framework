@@ -17,6 +17,7 @@ var src_dir   = './',
 gulp.task('default', [
 	'browserify',
 	'compass',
+	'dalek',
 	'jasmine',
 	'jshint'
 ]);

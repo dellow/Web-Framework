@@ -33,20 +33,17 @@
 	Controller.prototype.init = function(el){
 		var _this = this;
 
-		// Document load.
-		$(function(){
-            // Run page load events.
-			_this.page_load();
-			// Check Wiselinks is enabled.
-			if(window.wiselinks_enabled){
-				// Init WiseLinks
-				window.wiselinks = new Wiselinks(el, {
-					html4_normalize_path: false
-				});
-				// Do page events
-				_this.wiselinks_events();
-			}
-	    });
+        // Run page load events.
+		_this.page_load();
+		// Check Wiselinks is enabled.
+		if(window.wiselinks_enabled){
+			// Init WiseLinks
+			window.wiselinks = new Wiselinks(el, {
+				html4_normalize_path: false
+			});
+			// Do page events
+			_this.wiselinks_events();
+		}
 	}
 
 	/**
