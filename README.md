@@ -151,9 +151,9 @@ _Documentation coming soon_
 
 <a name="working-with-scss"></a>
 ## Working with SCSS
-Any new SCSS partials should be added in the `site` directory. `base` and `config` should be left as is so they can be overwritten and updated. Use the `site/_vars` partial to override any of the default variables set in `config/_vars`.
+Any new SCSS partials should be added in the `site` directory. `base` and `mixins` should be left as is so they can be overwritten and updated. Use the `site/_vars` partial to override any of the default variables set in `config/_vars` and set your own mixins in the `site` directory.
 
-Running Gulp in development mode with `gulp` will compile the CSS in expanded mode for easier debugging. Likewise `gulp --config production` will compile the final CSS file in nested mode.
+Running Gulp in default mode with `gulp` or production mode with `gulp --config production` will compile the CSS minified. Running in development mode with `gulp --config development` will compile the the CSS un-minified for easier debugging.
 
 <a name="working-with-scss--debug-mode"></a>
 ### Debug Mode
