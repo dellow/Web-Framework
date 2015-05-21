@@ -13,28 +13,36 @@
     /**
      * Module
      * Constructor for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module = function(){
 		this.primary = $('.nav-primary');
-		this.pheight = this.primary.outerHeight();
     }
 
 	/**
 	 * init
 	 * Init method for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.init = function(){
 		var _this = this;
 
 		// Start binds on window load / resize.
 		$(window).on('load resize',function(){
-			_this.binds();
+			return _this.binds();
 		});
 	}
 
 	/**
 	 * binds
 	 * jQuery event binds for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.binds = Helpers.debounce(function(){
 		var _this = this;
@@ -71,24 +79,22 @@
 	/**
 	 * reveal_menu
 	 * Adds class to menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.reveal_menu = function(el){
 		var _this = this;
 
-		// Check height of primary menu.
-		if(_this.primary.height() < 5){
-			// Show menu.
-			_this.show_primary_menu(el);
-		}
-		else{
-			// Hide menu.
-			_this.hide_primary_menu(el);
-		}
+		return (_this.primary.height() < 5) ? _this.show_primary_menu(el) : _this.hide_primary_menu(el);
 	}
 
 	/**
 	 * hide_primary_menu
 	 * Hide menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.hide_primary_menu = function(el){
 		var _this = this;
@@ -108,6 +114,9 @@
 	/**
 	 * hide_sub_menu
 	 * Hide menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.hide_sub_menu = function(){
 		var _this = this;
@@ -119,19 +128,27 @@
 	/**
 	 * show_primary_menu
 	 * Show menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.show_primary_menu = function(el){
 		var _this = this;
 
+		// Get menu height.
+		var menu_height = Helpers.mhi(_this.primary);
 		// Toggle class to button
 		el.addClass('active-menu');
 		// Slide down with CSS animation
-		_this.primary.addClass('slide-down').css({'max-height': _this.pheight + 'px'});
+		_this.primary.addClass('slide-down').css({'max-height': menu_height + 'px'});
 	}
 
 	/**
 	 * show_sub_menu
 	 * Show menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.show_sub_menu = function(el){
 		var _this = this;

@@ -19,6 +19,9 @@
     /**
      * Controller
      * Constructor for this controller.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
 	Controller = function(){
 		// Require
@@ -29,7 +32,10 @@
 
 	/**
 	 * init
-	 * Init method for this module
+	 * Init method for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Controller.prototype.init = function(el){
 		var _this = this;
@@ -50,6 +56,9 @@
 	/**
 	 * page_load
 	 * Run on page load.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Controller.prototype.page_load = function(){
 		// Init new instance.
@@ -64,6 +73,9 @@
 	/**
 	 * wiselinks_events
 	 * Wiselinks page events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Controller.prototype.wiselinks_events = function(){
 		var _this = this;
@@ -164,6 +176,24 @@
 	}
 
 	/**
+	 * Helper.mhi
+	 * Measures a hidden element.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+	Helper.mhi = function(el){
+		// Clone element.
+		var clone = el.clone();
+		// Place above viewport and measure height.
+		var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none'}).prependTo($('body')).height();
+		// Destroy the clone.
+		clone.remove();
+
+		return height;
+	}
+
+	/**
 	 * Helper.debounce
 	 * Returns a function, that, as long as it continues to be invoked, will not
 	 * be triggered. The function will be called after it stops being called for
@@ -183,20 +213,20 @@
 		var timeout;
 
 		return function(){
-			var context = this,
-				args = arguments;
+			var _this = this,
+				args  = arguments;
 
 			var later = function(){
 				timeout = null;
 				if(!immediate){
-					func.apply(context, args);
+					func.apply(_this, args);
 				}
 			};
-			var callNow = immediate && !timeout;
+			var call_now = immediate && !timeout;
 			clearTimeout(timeout);
 			timeout = setTimeout(later, wait);
-			if(callNow){
-				func.apply(context, args);
+			if(call_now){
+				func.apply(_this, args);
 			}
 		};
 	}
@@ -327,6 +357,9 @@ pc.init($('.main'));
     /**
      * Module
      * Constructor for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module = function(){
         // Require :: NPM
@@ -343,6 +376,9 @@ pc.init($('.main'));
     /**
      * init
      * Init method for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.init = function(){
         // Document ready.
@@ -358,6 +394,9 @@ pc.init($('.main'));
     /**
      * equal_heights
      * Equal height elements.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.equal_heights = function(){
         // DOM check.
@@ -370,6 +409,9 @@ pc.init($('.main'));
     /**
      * google_map
      * Map events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.google_map = function(){
         // DOM check.
@@ -386,6 +428,9 @@ pc.init($('.main'));
     /**
      * lightboxes
      * Lightbox events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.lightboxes = function(){
         // DOM check.
@@ -403,6 +448,9 @@ pc.init($('.main'));
     /**
      * modals
      * Modal events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.modals = function(){
         // DOM check.
@@ -422,6 +470,9 @@ pc.init($('.main'));
     /**
      * sliders
      * Slider events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.sliders = function(){
         // DOM check.
@@ -446,6 +497,9 @@ pc.init($('.main'));
     /**
      * validation
      * Form validation events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.validation = function(){
         // Check captcha.
@@ -484,28 +538,36 @@ pc.init($('.main'));
     /**
      * Module
      * Constructor for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module = function(){
 		this.primary = $('.nav-primary');
-		this.pheight = this.primary.outerHeight();
     }
 
 	/**
 	 * init
 	 * Init method for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.init = function(){
 		var _this = this;
 
 		// Start binds on window load / resize.
 		$(window).on('load resize',function(){
-			_this.binds();
+			return _this.binds();
 		});
 	}
 
 	/**
 	 * binds
 	 * jQuery event binds for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.binds = Helpers.debounce(function(){
 		var _this = this;
@@ -542,24 +604,22 @@ pc.init($('.main'));
 	/**
 	 * reveal_menu
 	 * Adds class to menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.reveal_menu = function(el){
 		var _this = this;
 
-		// Check height of primary menu.
-		if(_this.primary.height() < 5){
-			// Show menu.
-			_this.show_primary_menu(el);
-		}
-		else{
-			// Hide menu.
-			_this.hide_primary_menu(el);
-		}
+		return (_this.primary.height() < 5) ? _this.show_primary_menu(el) : _this.hide_primary_menu(el);
 	}
 
 	/**
 	 * hide_primary_menu
 	 * Hide menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.hide_primary_menu = function(el){
 		var _this = this;
@@ -579,6 +639,9 @@ pc.init($('.main'));
 	/**
 	 * hide_sub_menu
 	 * Hide menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.hide_sub_menu = function(){
 		var _this = this;
@@ -590,19 +653,27 @@ pc.init($('.main'));
 	/**
 	 * show_primary_menu
 	 * Show menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.show_primary_menu = function(el){
 		var _this = this;
 
+		// Get menu height.
+		var menu_height = Helpers.mhi(_this.primary);
 		// Toggle class to button
 		el.addClass('active-menu');
 		// Slide down with CSS animation
-		_this.primary.addClass('slide-down').css({'max-height': _this.pheight + 'px'});
+		_this.primary.addClass('slide-down').css({'max-height': menu_height + 'px'});
 	}
 
 	/**
 	 * show_sub_menu
 	 * Show menu.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Module.prototype.show_sub_menu = function(el){
 		var _this = this;

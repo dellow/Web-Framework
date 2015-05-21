@@ -47,6 +47,24 @@
 	}
 
 	/**
+	 * Helper.mhi
+	 * Measures a hidden element.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+	Helper.mhi = function(el){
+		// Clone element.
+		var clone = el.clone();
+		// Place above viewport and measure height.
+		var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none'}).prependTo($('body')).height();
+		// Destroy the clone.
+		clone.remove();
+
+		return height;
+	}
+
+	/**
 	 * Helper.debounce
 	 * Returns a function, that, as long as it continues to be invoked, will not
 	 * be triggered. The function will be called after it stops being called for
@@ -66,20 +84,20 @@
 		var timeout;
 
 		return function(){
-			var context = this,
-				args = arguments;
+			var _this = this,
+				args  = arguments;
 
 			var later = function(){
 				timeout = null;
 				if(!immediate){
-					func.apply(context, args);
+					func.apply(_this, args);
 				}
 			};
-			var callNow = immediate && !timeout;
+			var call_now = immediate && !timeout;
 			clearTimeout(timeout);
 			timeout = setTimeout(later, wait);
-			if(callNow){
-				func.apply(context, args);
+			if(call_now){
+				func.apply(_this, args);
 			}
 		};
 	}

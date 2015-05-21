@@ -13,6 +13,9 @@
     /**
      * Module
      * Constructor for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module = function(){
         // Require :: NPM
@@ -29,6 +32,9 @@
     /**
      * init
      * Init method for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.init = function(){
         // Document ready.
@@ -44,6 +50,9 @@
     /**
      * equal_heights
      * Equal height elements.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.equal_heights = function(){
         // DOM check.
@@ -56,6 +65,9 @@
     /**
      * google_map
      * Map events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.google_map = function(){
         // DOM check.
@@ -72,6 +84,9 @@
     /**
      * lightboxes
      * Lightbox events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.lightboxes = function(){
         // DOM check.
@@ -89,6 +104,9 @@
     /**
      * modals
      * Modal events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.modals = function(){
         // DOM check.
@@ -108,6 +126,9 @@
     /**
      * sliders
      * Slider events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.sliders = function(){
         // DOM check.
@@ -132,6 +153,9 @@
     /**
      * validation
      * Form validation events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
     Module.prototype.validation = function(){
         // Check captcha.

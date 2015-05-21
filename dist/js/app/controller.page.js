@@ -18,6 +18,9 @@
     /**
      * Controller
      * Constructor for this controller.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
     **/
 	Controller = function(){
 		// Require
@@ -28,7 +31,10 @@
 
 	/**
 	 * init
-	 * Init method for this module
+	 * Init method for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Controller.prototype.init = function(el){
 		var _this = this;
@@ -49,6 +55,9 @@
 	/**
 	 * page_load
 	 * Run on page load.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Controller.prototype.page_load = function(){
 		// Init new instance.
@@ -63,6 +72,9 @@
 	/**
 	 * wiselinks_events
 	 * Wiselinks page events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
 	**/
 	Controller.prototype.wiselinks_events = function(){
 		var _this = this;
