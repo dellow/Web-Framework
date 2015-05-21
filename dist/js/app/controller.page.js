@@ -39,8 +39,6 @@
 	Controller.prototype.init = function(el){
 		var _this = this;
 
-        // Run page load events.
-		_this.page_load();
 		// Check Wiselinks is enabled.
 		if(window.wiselinks_enabled){
 			// Init WiseLinks
@@ -48,8 +46,10 @@
 				html4_normalize_path: false
 			});
 			// Do page events
-			_this.wiselinks_events();
+			_this.wiselinks_binds();
 		}
+
+		return _this.page_load();
 	}
 
 	/**
@@ -70,13 +70,13 @@
 	}
 
 	/**
-	 * wiselinks_events
+	 * wiselinks_binds
 	 * Wiselinks page events.
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Controller.prototype.wiselinks_events = function(){
+	Controller.prototype.wiselinks_binds = function(){
 		var _this = this;
 
 		// Every page load.
