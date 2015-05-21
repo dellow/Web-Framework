@@ -112,7 +112,7 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 > __Please note:__ When run with the `production` or without the `development` argument Browserify and Compass will run minified. This is by design to allow easier one time updates, without having to do a new release. In order to create an easily debuggable stylesheet and build JS file you'll need to run gulp with the `development` argument.
 
 <a name="watch"></a>
-## Watch
+## Watch (Using _Gulp Watch_)
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Sync](#sync).
 
 The tasks that are run in the `watch` task are:
@@ -122,7 +122,7 @@ The tasks that are run in the `watch` task are:
 > __Please note:__ The `watch` task will minify CSS and JS.
 
 <a name="sync"></a>
-## Sync
+## Sync (Using _BrowserSync_)
 Like `watch` BrowserSync will compile `.scss`, `.js` and `.hbs` files automatically simply by running `gulp sync`. This will also provide a local and external address to test your app in sync with other browsers. `gulp sync` will automatically look for changes in `.html` and `.php` files and also the build `.css` and `.js` files and then reload all connected browsers.
 
 The tasks that are run in the `sync` task are:
