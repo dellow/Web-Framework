@@ -19,14 +19,14 @@
     **/
     Module = function(){
         // Require :: NPM
-        require('fancybox');
+        // require('fancybox');
         // Require :: Plugins
-        require('../plugins/jquery.equal-heights');
-        require('../plugins/jquery.googlemap');
-        require('../plugins/jquery.modals');
-        require('../plugins/jquery.validation');
+        // require('../plugins/jquery.equal-heights');
+        // require('../plugins/jquery.googlemap');
+        // require('../plugins/jquery.modals');
+        // require('../plugins/jquery.validation');
         // Require :: Vendor
-        require('../plugins/vendor/jquery.slider');
+        // require('../plugins/vendor/jquery.slider');
     }
 
     /**
