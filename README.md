@@ -161,7 +161,7 @@ By default debug mode is on but will only work in the default Gulp environment w
 
 <a name="working-with-scss--dev-mode"></a>
 ### Dev Mode
-The `site/_dev` partial is for experimental CSS that is only compiled in the default Gulp environment which is `development` mode. Any CSS in here will not compile on `gulp --config production`.
+The `site/_dev` partial is for experimental CSS that is only compiled in the default Gulp environment which is `development` mode. Any CSS in here will not compile on `gulp` or `gulp --config production`.
 
 <a name="working-with-scss--bem"></a>
 ### BEM Syntax

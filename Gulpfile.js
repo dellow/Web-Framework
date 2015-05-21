@@ -113,7 +113,7 @@ gulp.task('compass', function(){
 	return gulp.src(dist_dir + 'css/scss/**/*.scss')
 		.pipe(compass({
 			style         : 'expanded',
-			environment   : (is_production) ? 'production' : 'development',
+			environment   : (is_development) ? 'development' : 'production',
 			css           : dist_dir + 'css',
 			sass          : dist_dir + 'css/scss',
 			sourcemap     : (is_production) ? false : true,
