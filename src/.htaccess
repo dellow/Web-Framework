@@ -1,6 +1,7 @@
 # --------------------------------------------------------------------
 # REWRITES
 # --------------------------------------------------------------------
+#
 ## Replaces file extension. Default: .php
 <IfModule mod_rewrite.c>
     Options +FollowSymlinks
@@ -20,18 +21,21 @@
 # --------------------------------------------------------------------
 # 404 ERROR PREVENTION
 # --------------------------------------------------------------------
+#
 Options -MultiViews
 
 
 # --------------------------------------------------------------------
 # CUSTOMISED ERROR PAGES
 # --------------------------------------------------------------------
+#
 # ErrorDocument 404 /404.html
 
 
 # --------------------------------------------------------------------
 # CROSS ORIGIN ACCESS TO WEB FONTS
 # --------------------------------------------------------------------
+#
 <IfModule mod_headers.c>
     <FilesMatch "\.(ttf|ttc|otf|eot|otf|tt[cf]|woff2?)$">
         Header set Access-Control-Allow-Origin "*"
@@ -42,6 +46,7 @@ Options -MultiViews
 # --------------------------------------------------------------------
 # CORS-ENABLED IMAGES
 # --------------------------------------------------------------------
+#
 <IfModule mod_setenvif.c>
 	<IfModule mod_headers.c>
 		# mod_headers, y u no match by Content-Type?!
@@ -56,6 +61,7 @@ Options -MultiViews
 # --------------------------------------------------------------------
 # HEADERS
 # --------------------------------------------------------------------
+#
 <ifModule mod_headers.c>
 	Header unset ETag
 	Header unset X-Powered-By
@@ -72,6 +78,7 @@ FileETag None
 # --------------------------------------------------------------------
 # EXPIRES HEADERS & CACHING
 # --------------------------------------------------------------------
+#
 <IfModule mod_expires.c>
     ExpiresActive on
     ExpiresDefault                                      "access plus 1 month"
@@ -119,6 +126,7 @@ FileETag None
 # --------------------------------------------------------------------
 # COMPRESSION
 # --------------------------------------------------------------------
+#
 <IfModule mod_deflate.c>
 	<IfModule mod_setenvif.c>
 		<IfModule mod_headers.c>
@@ -180,6 +188,7 @@ FileETag None
 # --------------------------------------------------------------------
 # IMPROVE WEBSITE EXPERIENCE FOR IE USERS
 # --------------------------------------------------------------------
+#
 <IfModule mod_headers.c>
     Header set X-UA-Compatible "IE=edge"
     <FilesMatch "\.(appcache|atom|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|tt[cf]|txt|vcf|vtt|webapp|web[mp]|woff2?|xml|xpi)$">
@@ -195,6 +204,7 @@ FileETag None
 # --------------------------------------------------------------------
 # CORRECT MIME TYPES FOR ALL FILES
 # --------------------------------------------------------------------
+#
 ## AUDIO
 AddType audio/ogg                      oga ogg
 
@@ -226,6 +236,7 @@ AddType application/octet-stream       safariextz
 # --------------------------------------------------------------------
 # SECURITY
 # --------------------------------------------------------------------
+#
 ## SECURE HTACCESS FILE
 <Files .htaccess>
 	order allow,deny
@@ -247,13 +258,13 @@ AddType application/octet-stream       safariextz
 
 ## BLOCK ACCESS TO FILES THAT CAN EXPOSE SENSITIVE INFORMATION
 <FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op])|~)$">
-    # Apache < 2.3
+    ## Apache < 2.3
     <IfModule !mod_authz_core.c>
         Order allow,deny
         Deny from all
         Satisfy All
     </IfModule>
-    # Apache ≥ 2.3
+    ## Apache ≥ 2.3
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>
@@ -279,6 +290,7 @@ AddType application/octet-stream       safariextz
 # --------------------------------------------------------------------
 # BLOCKING
 # --------------------------------------------------------------------
+#
 ## https://github.com/Stevie-Ray/htaccess-referral-spam-blacklist-block
 <IfModule mod_rewrite.c>
 	RewriteEngine On
