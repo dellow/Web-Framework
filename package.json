@@ -39,15 +39,16 @@
     "yargs"                   : "^3.7.2"
   },
   "dependencies": {
-    "jquery"           : "*",
-    "jquery-ui"        : "*",
     "backbone"         : "*",
     "dropzone"         : "*",
-    "handlebars"       : "*",
-    "waypoints"        : "*",
     "fancybox"         : "*",
+    "handlebars"       : "*",
+    "jquery"           : "*",
+    "jquery-ui"        : "*",
     "jquery-touchswipe": "*",
-    "jquery.scrollto"  : "*"
+    "jquery.scrollto"  : "*",
+    "modernizr"        : "*",
+    "waypoints"        : "*"
   },
   "browserify": {
     "transform": [
