@@ -16,23 +16,21 @@ var version        = '1.0.0',
 	is_development = (args.config == 'development' || args.config == undefined) ? true : false,
 	is_production  = (args.config == 'production') ? true : false,
 	src_dir        = './src/',
-	dist_dir       = './src/dist/';
-
-// Functions.
-function error_handler(err){
-	// Show notification.
-	notification.notify({
-		message: 'Error: ' + err.message
-	});
-	// Show in terminal log.
-	util.log(util.colors.red('Error'), err.message);
-}
-function task_handler(err){
-	// Standard error.
-	error_handler(err);
-	// Don't break stream.
-	this.emit('end');
-}
+	dist_dir       = './src/dist/',
+	error_handler  = function(err){
+		// Show notification.
+		notification.notify({
+			message: 'Error: ' + err.message
+		});
+		// Show in terminal log.
+		util.log(util.colors.red('Error'), err.message);
+	},
+	task_handler = function(err){
+		// Standard error.
+		error_handler(err);
+		// Don't break stream.
+		this.emit('end');
+	}
 
 
 
@@ -42,9 +40,9 @@ function task_handler(err){
 // Task.
 gulp.task('default', [
 	// All states
-	'browserify',
-	'compass',
-	'imagemin',
+	'js',
+	'css',
+	'images',
 	// Development states
 	'dalek',
 	'jasmine',
@@ -54,13 +52,50 @@ gulp.task('default', [
 
 
 /* =========================================================================== */
-/* Browserify
+/* JS (Common)
 /* =========================================================================== */
-gulp.task('browserify', function(){
+gulp.task('js_common', function(){
 	// Require.
 	var browserify = require('browserify'),
-		rename     = require('gulp-rename'),
-		uglify     = require('gulp-uglify');
+		rename     = require('gulp-rename');
+
+	// Task.
+	return browserify(dist_dir + 'js/vendor/').bundle()
+		.on('error', task_handler)
+		.pipe(source('index.js'))
+	    .pipe(buffer())
+		.pipe(rename('common.js'))
+		.pipe(gulp.dest(dist_dir + 'js/build/'));
+});
+
+
+
+/* =========================================================================== */
+/* JS (App)
+/* =========================================================================== */
+gulp.task('js_app', function(){
+	// Require.
+	var browserify = require('browserify'),
+		rename     = require('gulp-rename');
+
+	// Task.
+	return browserify(dist_dir + 'js/app/').bundle()
+		.on('error', task_handler)
+	    .pipe(source('index.js'))
+	    .pipe(buffer())
+		.pipe(rename('app.js'))
+		.pipe(gulp.dest(dist_dir + 'js/build/'));
+});
+
+
+
+/* =========================================================================== */
+/* JS (Master)
+/* =========================================================================== */
+gulp.task('js', ['js_app'], function(){
+	// Require.
+	var concat = require('gulp-concat'),
+		uglify = require('gulp-uglify');
 
 	// Vars.
 	var should_min = (args.config == undefined || is_production) ? true : false;
@@ -74,29 +109,27 @@ gulp.task('browserify', function(){
 		''].join('\n');
 
 	// Task.
-	return browserify(dist_dir + 'js/app/').bundle()
-		.on('error', task_handler)
-	    .pipe(source('index.js'))
-	    .pipe(buffer())
+	return gulp.src([dist_dir + 'js/build/common.js', dist_dir + 'js/build/app.js'])
+	    .pipe(concat('main.js'))
 		.pipe(gulpif(should_min, uglify()))
-		.pipe(rename('build.js'))
 		.pipe(header(header_tpl, {
 			type   : (should_min) ? 'Minified' : 'Unminified',
 			version: version,
 			date   : Date()
 		}))
-		.pipe(gulp.dest(dist_dir + 'js/build/'));
+	    .pipe(gulp.dest(dist_dir + 'js/main'));
 });
 
 
 
 /* =========================================================================== */
-/* Compass
+/* CSS
 /* =========================================================================== */
-gulp.task('compass', function(){
+gulp.task('css', function(){
 	// Require.
-	var compass = require('gulp-compass'),
-		minify  = require('gulp-minify-css');
+	var compass      = require('gulp-compass'),
+		minify       = require('gulp-minify-css'),
+		autoprefixer = require('gulp-autoprefixer');
 
 	// Vars.
 	var should_min = (args.config == undefined || is_production) ? true : false;
@@ -125,6 +158,10 @@ gulp.task('compass', function(){
 		.on('error', task_handler)
 	    .pipe(buffer())
 		.pipe(gulpif(should_min, minify()))
+        .pipe(autoprefixer({
+            browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
+            cascade: false
+        }))
 		.pipe(header(header_tpl, {
 			type   : (should_min) ? 'Minified' : 'Unminified',
 			version: version,
@@ -174,17 +211,18 @@ gulp.task('dalek', function(){
 /* =========================================================================== */
 /* Imagemin
 /* =========================================================================== */
-gulp.task('imagemin', function(){
+gulp.task('images', function(){
 	// Require.
-	var imagemin = require('gulp-imagemin');
+	var imagemin = require('gulp-imagemin')
+		cache	 = require('gulp-cache');
 
 	// Task
     return gulp.src(dist_dir + 'images/**/*')
-        .pipe(imagemin({
+        .pipe(cache(imagemin({
             optimizationLevel: 3,
             progressive      : true,
             interlaced       : true
-        }))
+        })))
         .pipe(gulp.dest(dist_dir + 'images'));
 });
 
@@ -385,9 +423,9 @@ gulp.task('sync', function(){
 	}
 
 	// Run Browserify on JS and HBS file changes.
-	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['browserify']);
+	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
 	// Run Compass on SCSS file changes.
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['compass']);
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
 	// Reload on file changes.
 	gulp.watch([
 		src_dir + '**/*.html',
@@ -403,8 +441,8 @@ gulp.task('sync', function(){
 /* Watch
 /* =========================================================================== */
 gulp.task('watch', function(){
-	// Run Browserify on JS and HBS file changes.
-	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['browserify']);
-	// Run Compass on SCSS file changes.
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['compass']);
+	// Run JS Master on JS and HBS file changes.
+	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
+	// Run CSS on SCSS file changes.
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
 });
