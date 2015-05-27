@@ -17,13 +17,13 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 ;(function($, window, undefined){
     'use strict';
 
-	// Helpers.
+	// Require helpers globally.
 	require('./helpers');
 
-	// Page Controller.
+	// Require the page controller.
 	var Page = require('./controller.page');
 
-	// Init new instance.
+	// Init new instance of page controller.
 	var page = new Page();
 	page.init($('.main'));
 
@@ -109,8 +109,6 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 	**/
 	Controller.prototype.wiselinks_binds = function(){
 		var _this = this;
-
-		alert('here');
 
 		// Every page load.
 		$(document).off('page:always').on('page:always', function(event, xhr, settings){

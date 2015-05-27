@@ -54,30 +54,6 @@
  * .foo {@include underline(red);}
 **/
 /**
- * transition
- * Cross browser transition.
- *
- * .foo {@include transition(color $animation ease);}
-**/
-/**
- * transform
- * Cross browser transform.
- *
- * .foo {@include transform(scale(1.25));}
-**/
-/**
- * opacity
- * Cross browser opacity.
- *
- * .foo {@include opacity(0.7);}
-**/
-/**
- * trigram
- * Trigram for Heaven mobile icon.
- *
- * .foo {@include trigram(30px, 40px, #000000, #FF0000);}
-**/
-/**
  * arrow
  * CSS Arrow.
  *
@@ -176,17 +152,11 @@
 ========================================================================== */
 * {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 *:before, *:after {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -235,7 +205,7 @@ button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button;
+  appearance: button;
   cursor: pointer;
 }
 
@@ -256,6 +226,7 @@ input {
 
 input[type="checkbox"],
 input[type="radio"] {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0;
 }
@@ -267,14 +238,13 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="search"] {
   -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
   box-sizing: content-box;
-  -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 html, body, div, p, address, blockquote, ol, ul, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, pre, hr, menu, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
@@ -376,6 +346,7 @@ body:not(.no-debug) a[href*="javascript"]:after, body:not(.no-debug) [style]:not
   font-size: 14px;
   font-style: italic;
   white-space: nowrap;
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 body:not(.no-debug) img:after, body:not(.no-debug) ul > *:not(li):after, body:not(.no-debug) ol > *:not(li):after, body:not(.no-debug) form:after, body:not(.no-debug) button:after {
@@ -942,9 +913,6 @@ body {
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
   -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-  -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-  -ms-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-  -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 }
 h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
@@ -1007,9 +975,6 @@ blockquote, dl, figure, ol, p, pre, ul {
 /* -- General Formatting -- */
 p, li {
   -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
-  -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
-  -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
-  -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
   font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 }
 
@@ -1018,8 +983,6 @@ a, button {
   color: #C4122F;
   text-decoration: none;
   -webkit-transition: color 300ms ease, background 300ms ease;
-  -moz-transition: color 300ms ease, background 300ms ease;
-  -o-transition: color 300ms ease, background 300ms ease;
   transition: color 300ms ease, background 300ms ease;
 }
 a:hover, button:hover {
@@ -1079,10 +1042,7 @@ code {
   font-weight: 16px;
   font-family: "source-code-pro", monospace;
   white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -o-pre-wrap;
   word-wrap: break-word;
-  -webkit-tab-size: 4;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
@@ -1195,9 +1155,7 @@ ul.alert.box li {
   color: #FFFFFF;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  -webkit-transition: background 300ms ease, box-shadow 300ms ease;
-  -moz-transition: background 300ms ease, box-shadow 300ms ease;
-  -o-transition: background 300ms ease, box-shadow 300ms ease;
+  -webkit-transition: background 300ms ease, -webkit-box-shadow 300ms ease;
   transition: background 300ms ease, box-shadow 300ms ease;
 }
 .btn.standard {
@@ -1228,8 +1186,6 @@ ul.alert.box li {
   background: #950e24;
 }
 .btn.disabled {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(70))";
-  filter: alpha(opacity=70);
   opacity: 0.7;
   cursor: default;
 }
@@ -1239,6 +1195,7 @@ ul.alert.box li {
 }
 .btn:active {
   color: #FFFFFF;
+  -webkit-box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -1328,8 +1285,6 @@ ul.alert.box li {
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
   -webkit-transition: background 300ms ease, border-color 300ms ease;
-  -moz-transition: background 300ms ease, border-color 300ms ease;
-  -o-transition: background 300ms ease, border-color 300ms ease;
   transition: background 300ms ease, border-color 300ms ease;
 }
 .editable[contenteditable="false"]:hover {
@@ -1720,10 +1675,6 @@ ul.alert.box li {
 .navigation ul {
   margin-left: 0;
 }
-.navigation li {
-  margin: 0px 3.6px;
-  margin: 0px 0.225rem;
-}
 
 /* -- Primary Navigation -- */
 .nav-primary li {
@@ -1731,11 +1682,10 @@ ul.alert.box li {
   position: relative;
 }
 .nav-primary li .sub-menu {
-  padding: 0 12px;
   margin-left: 0;
   display: none;
   position: absolute;
-  left: -12px;
+  left: 0;
   top: 100%;
   z-index: 100;
   background: #FFFFFF;
@@ -1792,14 +1742,12 @@ ul.alert.box li {
 }
 .mobile-menu.active-menu span:before {
   -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .mobile-menu.active-menu span:after {
   -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 .mobile-menu span, .mobile-menu span:before, .mobile-menu span:after {
@@ -1812,8 +1760,6 @@ ul.alert.box li {
   cursor: pointer;
   background: #000000;
   -webkit-transition: all 300ms ease-in-out;
-  -moz-transition: all 300ms ease-in-out;
-  -o-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
 .mobile-menu span:before {
@@ -1829,12 +1775,8 @@ ul.alert.box li {
     display: block !important;
     overflow-y: hidden !important;
     -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -o-transform: translateZ(0);
     transform: translateZ(0);
     -webkit-transition: max-height 1000ms ease-in-out;
-    -moz-transition: max-height 1000ms ease-in-out;
-    -o-transition: max-height 1000ms ease-in-out;
     transition: max-height 1000ms ease-in-out;
   }
 
@@ -2003,8 +1945,6 @@ form .right {
 }
 form .note {
   font-size: 90%;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(65))";
-  filter: alpha(opacity=65);
   opacity: 0.65;
 }
 form span.note {
@@ -2045,8 +1985,6 @@ form input, form .input, form select, form textarea, form button[type="submit"],
   border-radius: 3px;
   cursor: pointer;
   -webkit-transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
-  -moz-transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
-  -o-transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
   transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
 }
 form input:hover, form input:active, form .input:hover, form .input:active, form select:hover, form select:active, form textarea:hover, form textarea:active, form button[type="submit"]:hover, form button[type="submit"]:active, form button[type="reset"]:hover, form button[type="reset"]:active, form .button:hover, form .button:active {
@@ -2061,8 +1999,6 @@ form input[readonly], form input[readonly]:hover, form input.readonly, form inpu
   background: #e6e6e6;
 }
 form input[disabled], form input[disabled]:hover, form input.disabled, form input.disabled:hover, form input.disabled:active, form .input[disabled], form .input[disabled]:hover, form .input.disabled, form .input.disabled:hover, form .input.disabled:active, form select[disabled], form select[disabled]:hover, form select.disabled, form select.disabled:hover, form select.disabled:active, form textarea[disabled], form textarea[disabled]:hover, form textarea.disabled, form textarea.disabled:hover, form textarea.disabled:active, form button[type="submit"][disabled], form button[type="submit"][disabled]:hover, form button[type="submit"].disabled, form button[type="submit"].disabled:hover, form button[type="submit"].disabled:active, form button[type="reset"][disabled], form button[type="reset"][disabled]:hover, form button[type="reset"].disabled, form button[type="reset"].disabled:hover, form button[type="reset"].disabled:active, form .button[disabled], form .button[disabled]:hover, form .button.disabled, form .button.disabled:hover, form .button.disabled:active {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(50))";
-  filter: alpha(opacity=50);
   opacity: 0.5;
 }
 form input, form .input, form select, form textarea {
@@ -2285,9 +2221,11 @@ form .custom-checkbox label, form .custom-radio label {
   cursor: pointer;
   white-space: nowrap;
   text-indent: 1.5em;
+  -webkit-box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.08);
 }
 form .custom-checkbox label:active, form .custom-radio label:active {
+  -webkit-box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
 }
 form .custom-checkbox input, form .custom-radio input {
@@ -2309,24 +2247,16 @@ form .custom-checkbox label:after {
   position: absolute;
   top: 4px;
   left: 3px;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(0))";
-  filter: alpha(opacity=0);
   opacity: 0;
   background: transparent;
   -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 form .custom-checkbox label:hover:after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(30))";
-  filter: alpha(opacity=30);
   opacity: 0.3;
 }
 form .custom-checkbox input[type=checkbox]:checked + label:after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(80))";
-  filter: alpha(opacity=80);
   opacity: 0.8;
 }
 form .custom-radio label {
@@ -2340,19 +2270,13 @@ form .custom-radio label:after {
   position: absolute;
   top: 4px;
   left: 4px;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(0))";
-  filter: alpha(opacity=0);
   opacity: 0;
   background: #999;
 }
 form .custom-radio label:hover:after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(30))";
-  filter: alpha(opacity=30);
   opacity: 0.3;
 }
 form .custom-radio input[type=radio]:checked + label:after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(80))";
-  filter: alpha(opacity=80);
   opacity: 0.8;
 }
 form .custom-select:after {
@@ -2376,10 +2300,6 @@ form .custom-select select {
   padding-right: 2.25rem;
   margin: 0;
   display: inline-block;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
   appearance: none;
 }
 form .custom-select select::-ms-expand {
@@ -2456,9 +2376,6 @@ form.form-has-errors .field.field-has-errors ::-webkit-input-placeholder {
 form.form-has-errors .field.field-has-errors ::-moz-placeholder {
   color: #b94a48;
 }
-form.form-has-errors .field.field-has-errors :-moz-placeholder {
-  color: #b94a48;
-}
 form.form-has-errors .field.field-has-errors :-ms-input-placeholder {
   color: #b94a48;
 }
@@ -2476,16 +2393,10 @@ form ::-webkit-input-placeholder {
 form ::-moz-placeholder {
   color: #DDDDDD;
 }
-form :-moz-placeholder {
-  color: #DDDDDD;
-}
 form :-ms-input-placeholder {
   color: #DDDDDD;
 }
 form ::placeholder {
-  color: #DDDDDD;
-}
-form select {
   color: #DDDDDD;
 }
 
@@ -2511,8 +2422,6 @@ form select {
   color: #FFFFFF;
   background: #C4122f;
   -webkit-transition: background-color 300ms ease;
-  -moz-transition: background-color 300ms ease;
-  -o-transition: background-color 300ms ease;
   transition: background-color 300ms ease;
 }
 .pagination .page-numbers.current {
@@ -2530,19 +2439,12 @@ form select {
 .oldie {
   /* -- Container -- */
   /* -- Grid -- */
-  /* -- Navigation -- */
 }
 .oldie .container {
   width: 1280px;
 }
 .oldie .grid .col + .col {
   padding-right: 0;
-}
-.oldie .navigation li .sub-menu {
-  display: none;
-}
-.oldie .navigation li:hover .sub-menu {
-  display: block;
 }
 
 /* ==========================================================================
@@ -2572,6 +2474,7 @@ form select {
     background: transparent !important;
     color: black !important;
     text-shadow: none !important;
+    -webkit-filter: none !important;
     filter: none !important;
     -ms-filter: none !important;
   }
@@ -2700,5 +2603,3 @@ form select {
    Use responsive mixin inside the correct partial for local responsive
    styles.
 ========================================================================== */
-
-/*# sourceMappingURL=build.css.map */

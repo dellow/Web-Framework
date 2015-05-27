@@ -40,77 +40,10 @@
 		}
 	}
 	@else{
-		background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, $color 50%);
-		background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, $color 50%);
-		background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, $color 50%);
 		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, $color 50%);
 		background-position: 0 100%;
 		background-repeat: repeat-x;
 		background-size: 100% 0.15rem;
-	}
-}
-
-/**
- * transition
- * Cross browser transition.
- *
- * .foo {@include transition(color $animation ease);}
-**/
-@mixin transition($pattern...){
-	-webkit-transition: $pattern;
-	-moz-transition   : $pattern;
-	-o-transition     : $pattern;
-	transition        : $pattern;
-}
-
-/**
- * transform
- * Cross browser transform.
- *
- * .foo {@include transform(scale(1.25));}
-**/
-@mixin transform($pattern...){
-	-webkit-transform: $pattern;
-	-moz-transform   : $pattern;
-	-o-transform     : $pattern;
-	transform        : $pattern;
-}
-
-/**
- * opacity
- * Cross browser opacity.
- *
- * .foo {@include opacity(0.7);}
-**/
-@mixin opacity($opacity){
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(" + $opacity * 100 + "))";
-	filter    : alpha(opacity=$opacity * 100);
-	opacity   : $opacity;
-}
-
-/**
- * trigram
- * Trigram for Heaven mobile icon.
- *
- * .foo {@include trigram(30px, 40px, #000000, #FF0000);}
-**/
-@mixin trigram($width, $size, $color, $hover){
-	position: relative;
-	padding-left: 1.25em;
-	font-size: $size;
-	&:before {
-		width: $width;
-		height: 0.15em;
-		content: "";
-		position: absolute;
-		left: 0;
-		box-shadow: 0 0.25em 0 0 $color, 0 0.5em 0 0 $color;
-		background: $color;
-		@include transition(background $animation ease, box-shadow $animation ease);
-	}
-	&:hover:before {
-		box-shadow: 0 0.25em 0 0 $hover, 0 0.5em 0 0 $hover;
-		background: $hover;
 	}
 }
 

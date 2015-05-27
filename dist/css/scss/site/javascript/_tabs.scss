@@ -16,7 +16,7 @@
 	    	z-index: $zindex-1;
 			vertical-align: bottom;
 			background: lighten(color(grey), 10%);
-			@include transition(color $animation ease, background-color $animation ease);
+			transition: color $animation ease, background-color $animation ease;
 			// Descendants
 	        button {
 	        	width: 100%;

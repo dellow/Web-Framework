@@ -23,8 +23,7 @@
      * @version 1.0.0
     **/
 	Controller = function(){
-		// Require
-		require('../vendor/wiselinks');
+		// Require :: Modules
 		this.Menu = require('./module.menu');
 		this.Binds = require('./module.binds');
     }

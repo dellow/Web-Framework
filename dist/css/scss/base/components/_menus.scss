@@ -7,9 +7,6 @@
 	ul {
 		margin-left: 0;
 	}
-	li {
-		@include nudge(margin, 0 0.15);
-	}
 }
 
 /* -- Primary Navigation -- */
@@ -20,12 +17,10 @@
 		position: relative;
 		// Descendants
 		.sub-menu {
-			$pad: 12px;
-			padding: 0 $pad;
 			margin-left: 0;
 			display: none;
 			position: absolute;
-			left: -$pad; top: 100%;
+			left: 0; top: 100%;
 			z-index: $zindex-1;
 			background: color(white);
 			li {
@@ -85,10 +80,10 @@
 				background: color(copy, link);
 			}
 			&:before {
-				@include transform(rotate(45deg));
+				transform: rotate(45deg);
 			}
 			&:after {
-				@include transform(rotate(-45deg));
+				transform: rotate(-45deg);
 			}
 		}
 	}
@@ -102,7 +97,7 @@
 			content: '';
 			cursor: pointer;
 			background: color(black);
-	  		@include transition(all $animation ease-in-out);
+	  		transition: all $animation ease-in-out;
 		}
 		&:before {
 			top: -8px;
@@ -118,8 +113,8 @@
 		max-height: 0px;
 		display: block !important;
 		overflow-y: hidden !important;
-		@include transform(translateZ(0));
-		@include transition(max-height 1000ms ease-in-out);
+		transform: translateZ(0);
+		transition: max-height 1000ms ease-in-out;
 	}
 	.mobile-menu {
 		display: inline-block;

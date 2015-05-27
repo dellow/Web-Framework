@@ -9,7 +9,7 @@
 	border-radius: 3px;
 	border-left: 1px solid transparent;
 	border-right: 1px solid transparent;
-	@include transition(background $animation ease, border-color $animation ease);
+	transition: background $animation ease, border-color $animation ease;
 	// Abstractions
 	&[contenteditable="false"]{
 		&:hover {

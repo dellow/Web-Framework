@@ -11,7 +11,7 @@
 		display: inline-block;
 		color: color(white);
 		background: color(red);
-		@include transition(background-color $animation ease);
+		transition: background-color $animation ease;
 		// Abstractions
 		&.current {
 			background: color(red, dark);

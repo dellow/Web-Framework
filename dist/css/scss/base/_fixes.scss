@@ -16,19 +16,4 @@
 			padding-right: 0;
 		}
 	}
-
-	/* -- Navigation -- */
-	.navigation {
-		li {
-			.sub-menu {
-				display: none;
-			}
-			// Pseudo
-			&:hover {
-				.sub-menu {
-					display: block;
-				}
-			}
-		}
-	}
 }

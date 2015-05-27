@@ -44,20 +44,16 @@ form {
 				content: '';
 				position: absolute;
 				top: 4px; left: 3px;
-				@include opacity(0);
+				opacity: 0;
 				background: transparent;
-				-webkit-transform: rotate(-45deg);
-				-moz-transform   : rotate(-45deg);
-				-o-transform     : rotate(-45deg);
-				-ms-transform    : rotate(-45deg);
-				transform        : rotate(-45deg);
+				transform: rotate(-45deg);
 			}
 			&:hover:after {
-				@include opacity(0.3);
+				opacity: 0.3;
 			}
 		}
 		input[type=checkbox]:checked + label:after {
-			@include opacity(0.8);
+			opacity: 0.8;
 		}
 	}
 
@@ -73,15 +69,15 @@ form {
 				border-radius: 50px;
 				position: absolute;
 				top: 4px; left: 4px;
-				@include opacity(0);
+				opacity: 0;
 				background: #999;
 			}
 			&:hover:after {
-				@include opacity(0.3);
+				opacity: 0.3;
 			}
 		}
 		input[type=radio]:checked + label:after {
-			@include opacity(0.8);
+			opacity: 0.8;
 		}
 	}
 
@@ -106,11 +102,7 @@ form {
 			@include rem(padding-right, 36px);
 			margin: 0;
 			display: inline-block;
-			-webkit-appearance: none;
-			-moz-appearance   : none;
-			-ms-appearance    : none;
-			-o-appearance     : none;
-			appearance        : none;
+			appearance: none;
 		}
 		select::-ms-expand {
 		    display: none;

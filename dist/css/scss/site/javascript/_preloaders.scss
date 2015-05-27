@@ -2,7 +2,7 @@ $offset  : 187;
 $duration: 1.4s;
 
 .spinner-wrapper {
-    @extend %flex-vertical-align;
+    @extend %fva;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -10,67 +10,22 @@ $duration: 1.4s;
     z-index: $zindex-10;
     text-align: center;
     .spinner {
-        -webkit-animation: rotator $duration linear infinite;
-        -moz-animation   : rotator $duration linear infinite;
-        -o-animation     : rotator $duration linear infinite;
-        animation        : rotator $duration linear infinite;
-    }
-}
-
-@-webkit-keyframes rotator {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(270deg);
-        transform: rotate(270deg);
+        animation: rotator $duration linear infinite;
+        .path {
+            stroke-dasharray: $offset;
+            stroke-dashoffset: 0;
+            transform-origin: center;
+            animation: dash $duration ease-in-out infinite, colors ($duration * 4) ease-in-out infinite;
+        }
     }
 }
 
 @keyframes rotator {
     0% {
-        -webkit-transform: rotate(0deg);
-        -moz-transform   : rotate(0deg);
-        -o-transform     : rotate(0deg);
-        transform        : rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-        -webkit-transform: rotate(270deg);
-        -moz-transform   : rotate(270deg);
-        -o-transform     : rotate(270deg);
-        transform        : rotate(270deg);
-    }
-}
-
-.path {
-    stroke-dasharray: $offset;
-    stroke-dashoffset: 0;
-    -webkit-transform-origin: center;
-    -moz-transform-origin   : center;
-    -o-transform-origin     : center;
-    transform-origin        : center;
-    -webkit-animation: dash $duration ease-in-out infinite, colors ($duration * 4) ease-in-out infinite;
-    -moz-animation   : dash $duration ease-in-out infinite, colors ($duration * 4) ease-in-out infinite;
-    -o-animation     : dash $duration ease-in-out infinite, colors ($duration * 4) ease-in-out infinite;
-    animation        : dash $duration ease-in-out infinite, colors ($duration * 4) ease-in-out infinite;
-}
-
-@-webkit-keyframes colors {
-    0% {
-        stroke: #4285F4;
-    }
-    25% {
-        stroke: #DE3E35;
-    }
-    50% {
-        stroke: #F7C223;
-    }
-    75% {
-        stroke: #1B9A59;
-    }
-    100% {
-        stroke: #4285F4;
+        transform: rotate(270deg);
     }
 }
 
@@ -92,38 +47,16 @@ $duration: 1.4s;
     }
 }
 
-@-webkit-keyframes dash {
-    0% {
-        stroke-dashoffset: 187;
-    }
-    50% {
-        stroke-dashoffset: 46.75;
-        -webkit-transform: rotate(135deg);
-        transform: rotate(135deg);
-    }
-    100% {
-        stroke-dashoffset: 187;
-        -webkit-transform: rotate(450deg);
-        transform: rotate(450deg);
-    }
-}
-
 @keyframes dash {
     0% {
         stroke-dashoffset: $offset;
     }
     50% {
         stroke-dashoffset: $offset/4;
-        -webkit-transform: rotate(135deg);
-        -moz-transform   : rotate(135deg);
-        -o-transform     : rotate(135deg);
-        transform        : rotate(135deg);
+        transform: rotate(135deg);
     }
     100% {
         stroke-dashoffset: $offset;
-        -webkit-transform: rotate(450deg);
-        -moz-transform   : rotate(450deg);
-        -o-transform     : rotate(450deg);
-        transform        : rotate(450deg);
+        transform: rotate(450deg);
     }
 }

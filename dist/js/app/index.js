@@ -13,35 +13,17 @@ window.wiselinks_enabled = true;
 window.debugging         = true;
 window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
+;(function($, window, undefined){
+    'use strict';
 
-/* ==========================================================================
-/* Libraries
-========================================================================== */
-// jQuery.
-var $ = jQuery = require('jquery');
-// Handlebars.
-// var H = Handlebars = require('handlebars');
-// Backbone.
-// var B = Backbone = require('backbone'); Backbone.$ = $;
+	// Require helpers globally.
+	require('./helpers');
 
+	// Require the page controller.
+	var Page = require('./controller.page');
 
-/* ==========================================================================
-/* Helpers
-========================================================================== */
-// Helpers.
-require('./helpers');
+	// Init new instance of page controller.
+	var page = new Page();
+	page.init($('.main'));
 
-
-/* ==========================================================================
-/* Controllers
-========================================================================== */
-// Page Controller.
-var PageController = require('./controller.page');
-
-
-/* ==========================================================================
-/* Router
-========================================================================== */
-// Init new instance.
-var pc = new PageController();
-pc.init($('.main'));
+}(jQuery, window));

@@ -27,18 +27,18 @@
     "gulp-dalek": "0.0.1",
     "dalek-reporter-html": "0.0.4",
     "dalek-reporter-junit": "0.0.2",
-    "dalek-browser-chrome": "0.0.11"
+    "dalek-browser-chrome": "0.0.11",
+    "gulp-autoprefixer": "^2.3.0",
+    "gulp-concat": "^2.5.2",
+    "merge-stream": "^0.1.7"
   },
   "dependencies": {
     "jquery": "*",
     "dropzone": "*",
     "waypoints": "*",
     "fancybox": "*",
+    "modernizr": "*",
     "jquery-touchswipe": "*",
     "jquery.scrollto": "*"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "private": true
+  }
 }

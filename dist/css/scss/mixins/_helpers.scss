@@ -72,10 +72,8 @@
 		margin-top: -$top;
 		left: -$gutter_width;
 		> [class*="col-"] {
-			max-width              : $col - $gutter_width;
-			-webkit-flex-basis     : $col - $gutter_width;
-			-ms-flex-preferred-size: $col - $gutter_width;
-			flex-basis             : $col - $gutter_width;
+			max-width: $col - $gutter_width;
+			flex-basis: $col - $gutter_width;
 			margin: #{$top}rem 0 0 $gutter_width;
 		}
 	}

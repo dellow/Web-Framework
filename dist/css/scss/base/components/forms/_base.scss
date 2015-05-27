@@ -18,7 +18,7 @@ form {
 	// Notes
 	.note {
 		font-size: 90%;
-		@include opacity(0.65);
+		opacity: 0.65;
 	}
 	span.note {
 		@include nudge(margin-left, 0.5);
@@ -66,7 +66,7 @@ form {
 		position: relative;
 		border-radius: $border_radius_base;
 		cursor: pointer;
-		@include transition(color $animation ease, background-color $animation ease, border-color $animation ease);
+		transition: color $animation ease, background-color $animation ease, border-color $animation ease;
 		// Pseudo
 		&:hover, &:active {
 			border-color: lighten(color(grey, dark), 50%);
@@ -81,7 +81,7 @@ form {
 			background: lighten(color(grey, dark), 70%);
 		}
 		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {
-			@include opacity(0.5);
+			opacity: 0.5;
 		}
 	}
 

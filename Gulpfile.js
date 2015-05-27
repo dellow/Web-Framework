@@ -10,13 +10,14 @@ var src_dir   = './',
 	dist_dir  = './dist/';
 
 
+
 /* =========================================================================== */
 /* Combined Tasks & Global Requires
 /* =========================================================================== */
 // Task.
 gulp.task('default', [
-	'browserify',
-	'compass',
+	'js',
+	'css',
 	'dalek',
 	'jasmine',
 	'jshint'
@@ -25,20 +26,52 @@ gulp.task('default', [
 
 
 /* =========================================================================== */
-/* Browserify
+/* JS (Common)
 /* =========================================================================== */
-gulp.task('browserify', function(){
+gulp.task('js_common', function(){
 	// Require.
 	var browserify = require('browserify'),
 		rename     = require('gulp-rename'),
 		source     = require('vinyl-source-stream');
 
 	// Task.
-	return browserify(dist_dir + 'js/app/')
-		.bundle()
+	return browserify(dist_dir + 'js/vendor/').bundle()
 		.pipe(source('index.js'))
-		.pipe(rename('build.js'))
+		.pipe(rename('common.js'))
 		.pipe(gulp.dest(dist_dir + 'js/build/'));
+});
+
+
+
+/* =========================================================================== */
+/* JS (App)
+/* =========================================================================== */
+gulp.task('js_app', function(){
+	// Require.
+	var browserify = require('browserify'),
+		rename     = require('gulp-rename'),
+		source     = require('vinyl-source-stream');
+
+	// Task.
+	return browserify(dist_dir + 'js/app/').bundle()
+		.pipe(source('index.js'))
+		.pipe(rename('app.js'))
+		.pipe(gulp.dest(dist_dir + 'js/build/'));
+});
+
+
+
+/* =========================================================================== */
+/* JS (Master)
+/* =========================================================================== */
+gulp.task('js', ['js_app'], function(){
+	// Require.
+	var concat = require('gulp-concat');
+
+	// Task.
+	return gulp.src([dist_dir + 'js/build/common.js', dist_dir + 'js/build/app.js'])
+	    .pipe(concat('main.js'))
+	    .pipe(gulp.dest(dist_dir + 'js/main'));
 });
 
 
@@ -48,7 +81,8 @@ gulp.task('browserify', function(){
 /* =========================================================================== */
 gulp.task('compass', function(){
 	// Require.
-	var compass = require('gulp-compass');
+	var compass = require('gulp-compass'),
+		autoprefixer = require('gulp-autoprefixer');
 
 	// Task.
 	return gulp.src(dist_dir + 'css/scss/**/*.scss')
@@ -61,6 +95,10 @@ gulp.task('compass', function(){
 			noLineComments  : true,
 			assetCacheBuster: false
 		}))
+        .pipe(autoprefixer({
+            browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
+            cascade: false
+        }))
 		.pipe(gulp.dest(dist_dir + 'css'));
 });
 
@@ -142,7 +180,7 @@ gulp.task('jshint', function(){
 /* =========================================================================== */
 gulp.task('watch', function(){
 	// Run Browserify on JS and HBS file changes.
-	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['browserify']);
+	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
 	// Run Compass on SCSS file changes.
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['compass']);
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
 });

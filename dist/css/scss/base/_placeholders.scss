@@ -16,60 +16,25 @@
 
 // Enable Flexbox
 %flex {
-	display               : -webkit-box;
-	display               : -webkit-flex;
-	display               : -ms-flexbox;
-	display               : flex;
-	-webkit-box-orient    : horizontal;
-	-webkit-box-direction : normal;
-	-webkit-flex-direction: row;
-	-ms-flex-direction    : row;
-	flex-direction        : row;
-	-webkit-flex-wrap     : wrap;
-	-ms-flex-wrap         : wrap;
-	flex-wrap             : wrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 // Preserve-3D method to prevent blurring
 %preserve-3d {
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style   : preserve-3d;
-	-o-transform-style     : preserve-3d;
-	transform-style        : preserve-3d;
+	transform-style: preserve-3d;
 }
 
 // Vertically align elements with display: flex;
 %flex-vertical-align, %fva {
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
 	display: flex;
-
-	-webkit-align-items: center;
-	-moz-align-items   : center;
-	-ms-align-items    : center;
-	-o-align-items     : center;
-	align-items        : center;
+	align-items: center;
 }
 %flex-vertical-align-all, %fva-all {
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
 	display: flex;
-
-	-webkit-align-items: center;
-	-moz-align-items   : center;
-	-ms-align-items    : center;
-	-o-align-items     : center;
-	align-items        : center;
-
-	-webkit-justify-content: center;
-	-moz-justify-content   : center;
-	-ms-justify-content    : center;
-	-o-justify-content     : center;
-	justify-content        : center;
+	align-items: center;
+	justify-content: center;
 }
 
 // Vertically align elements with transform:

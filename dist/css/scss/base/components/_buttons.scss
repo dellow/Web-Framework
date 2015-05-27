@@ -13,7 +13,7 @@
 	color: color(white);
 	text-align: center;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	@include transition(background $animation ease, box-shadow $animation ease);
+	transition: background $animation ease, box-shadow $animation ease;
 	// Abstractions
 	&.standard {
 		background: color(blue);
@@ -43,7 +43,7 @@
 		}
 	}
 	&.disabled {
-		@include opacity(0.7);
+		opacity: 0.7;
 		cursor: default;
 	}
 	// Pseudo

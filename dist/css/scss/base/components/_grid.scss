@@ -11,10 +11,8 @@
 	left: -$gutter;
 	// All columns
 	[class*="col-"] {
-		max-width              : $col_1 - $gutter;
-		-webkit-flex-basis     : $col_1 - $gutter;
-		-ms-flex-preferred-size: $col_1 - $gutter;
-		flex-basis             : $col_1 - $gutter;
+		max-width: $col_1 - $gutter;
+		flex-basis: $col_1 - $gutter;
 		margin: 1rem 0 0 $gutter;
 		// Abstractions
 		&.left {
@@ -29,16 +27,12 @@
 	}
 	@each $key, $value in $col_array {
 		.#{$key} {
-			max-width              : $value - $gutter;
-			-webkit-flex-basis     : $value - $gutter;
-			-ms-flex-preferred-size: $value - $gutter;
-			flex-basis             : $value - $gutter;
+			max-width: $value - $gutter;
+			flex-basis: $value - $gutter;
 		}
 		&.no-gutter .#{$key} {
-			max-width              : $value;
-			-webkit-flex-basis     : $value;
-			-ms-flex-preferred-size: $value;
-			flex-basis             : $value;
+			max-width: $value;
+			flex-basis: $value;
 			margin: 0;
 		}
 	}
