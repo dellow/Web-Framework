@@ -3,7 +3,7 @@
    Description goes here.
 ========================================================================== */
 /* -- Div Tables -- */
-div.table {
+div.table { // Qualified Selector
 	@extend %cf;
 	width: 100%;
 	.col {
@@ -21,7 +21,7 @@ div.table {
 /* -- Normal Tables -- */
 table {
 	// Abstractions
-	&.table {
+	&.table { // Qualified Selector
 		width: 100%;
 		border: 1px solid color(grey);
 		border-radius: $border_radius_base;
@@ -44,7 +44,7 @@ table {
 			}
 		}
 	}
-	&.table-highlight-horizontal {
+	&.table-highlight-horizontal { // Qualified Selector
 		tbody {
 			tr {
 				// Pseudo
@@ -57,7 +57,7 @@ table {
 			}
 		}
 	}
-	&.table-highlight-vertical {
+	&.table-highlight-vertical { // Qualified Selector
 		tbody {
 			tr {
 				th, td {

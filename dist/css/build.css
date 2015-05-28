@@ -792,40 +792,40 @@ body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
    Miscellaneous elements
 ========================================================================== */
 /* -- Images -- */
-.thumb {
+.page__thumb {
   max-width: 20%;
   display: block;
   clear: both;
 }
-.thumb .thumb--image {
+.page__thumb .thumb--image {
   width: 100%;
   border: 4px solid #DFDFDF;
 }
-.thumb.aligncenter, .thumb.alignnone {
+.page__thumb--aligncenter, .page__thumb--alignnone {
   margin: 24px auto;
   display: block;
 }
-.thumb.alignleft {
+.page__thumb--alignleft {
   margin-right: 24px;
   margin-right: 1.5rem;
   float: left;
 }
-.thumb.alignright {
+.page__thumb--alignright {
   margin-left: 24px;
   margin-left: 1.5rem;
   float: right;
 }
-.thumb img.alignleft, .thumb img.alignright, .thumb img.aligncenter, .thumb img.alignnone {
+.page__thumb img.page__thumb--alignleft, .page__thumb img.page__thumb--alignright, .page__thumb img.page__thumb--aligncenter, .page__thumb img.page__thumb--alignnone {
   width: 100%;
   border: 2px solid #efefef;
   border-radius: 3px;
 }
-.thumb > a {
+.page__thumb > a {
   display: block;
 }
 
 /* -- Code -- */
-ol.code {
+ol.ol__code {
   padding: 12px 18px;
   padding: 0.75rem 1.125rem;
   border: 1px solid #DDDDDD;
@@ -836,7 +836,7 @@ ol.code {
   font-family: "source-code-pro", monospace;
   background: #EDEDED;
 }
-ol.code li {
+ol.ol__code li {
   margin-bottom: 0;
   list-style: decimal-leading-zero;
   list-style-position: inside;
@@ -850,28 +850,7 @@ hr {
   border-color: #EFEFEF;
   border-color: rgba(0, 0, 0, 0.085);
 }
-hr.dots {
-  height: 0;
-  padding: 0;
-  margin: 24px 0px 48px;
-  margin: 1.5rem 0px 3rem;
-  border: 0;
-  display: block;
-  clear: both;
-  font-size: 40px;
-  font-size: 2.5rem;
-  text-align: center;
-}
-hr.dots:after {
-  height: 0;
-  padding-left: 24px;
-  padding-left: 1.5rem;
-  content: "·········";
-  color: #DDDDDD;
-  letter-spacing: 24px;
-  letter-spacing: 1.5rem;
-}
-hr.styled-seperator {
+hr.hr__styled-seperator {
   margin: 48px 0px;
   margin: 3rem 0px;
   border-bottom: 1px solid white;
@@ -993,41 +972,41 @@ a:active, button:active {
 }
 
 /* -- Other -- */
-cite .profession {
+cite .cite__profession {
   font-weight: 700;
 }
 
 /* -- Content Areas -- */
-.content blockquote:last-child, .content dl:last-child, .content figure:last-child, .content ol:last-child, .content p:last-child, .content pre:last-child, .content ul:last-child {
+.page__content blockquote:last-child, .page__content dl:last-child, .page__content figure:last-child, .page__content ol:last-child, .page__content p:last-child, .page__content pre:last-child, .page__content ul:last-child {
   margin-bottom: 0;
 }
-.content ul {
+.page__content ul {
   list-style-type: disc;
 }
-.content ul, .content ol {
+.page__content ul, .page__content ol {
   margin-left: 1.2em;
 }
-.content ul li, .content ol li {
+.page__content ul li, .page__content ol li {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
 }
-.content ul ul, .content ul ol, .content ol ul, .content ol ol {
+.page__content ul ul, .page__content ul ol, .page__content ol ul, .page__content ol ol {
   margin-left: 1.2em;
   list-style-type: circle;
 }
-.content dl dd {
+.page__content dl dd {
   margin-bottom: 2.4px;
   margin-bottom: 0.15rem;
   text-indent: 24px;
   text-indent: 1.5rem;
 }
-.content.leading-p p:first-of-type {
+.page__content.page__content--leading-p p:first-of-type {
   font-size: 20px;
   font-size: 1.25rem;
 }
 
 /* -- Hatnotes -- */
-.hatnote {
+.page__hatnote {
   padding-left: 24px;
   padding-left: 1.5rem;
   font-style: italic;
@@ -1274,39 +1253,6 @@ ul.alert.box li {
 }
 
 /* ==========================================================================
-   Base > Components > Content Editable
-   Description goes here.
-========================================================================== */
-/* -- Content Editable -- */
-.editable {
-  padding: 3px;
-  margin-left: -3px;
-  border-radius: 3px;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  -webkit-transition: background 300ms ease, border-color 300ms ease;
-  transition: background 300ms ease, border-color 300ms ease;
-}
-.editable[contenteditable="false"]:hover {
-  background: rgba(0, 0, 0, 0.2) !important;
-}
-.editable[contenteditable="false"]:focus {
-  background: rgba(0, 0, 0, 0.4) !important;
-}
-.editable:hover {
-  background: rgba(64, 179, 232, 0.2) !important;
-  border-left: 1px solid rgba(0, 0, 0, 0.4);
-  border-right: 1px solid rgba(0, 0, 0, 0.4);
-}
-.editable:focus {
-  background: rgba(64, 179, 232, 0.4) !important;
-}
-.editable + .editable {
-  padding-left: 2px;
-  margin-left: 2px;
-}
-
-/* ==========================================================================
    Base > Components > Grid
    Grid layouts.
 ========================================================================== */
@@ -1339,7 +1285,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 96%;
   flex-basis: 96%;
 }
-.flex-grid.no-gutter .col-1 {
+.flex-grid--no-gutter .col-1 {
   max-width: 100%;
   -webkit-flex-basis: 100%;
   -ms-flex-preferred-size: 100%;
@@ -1352,7 +1298,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 29.33%;
   flex-basis: 29.33%;
 }
-.flex-grid.no-gutter .col-1-3 {
+.flex-grid--no-gutter .col-1-3 {
   max-width: 33.33%;
   -webkit-flex-basis: 33.33%;
   -ms-flex-preferred-size: 33.33%;
@@ -1365,7 +1311,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 62.66%;
   flex-basis: 62.66%;
 }
-.flex-grid.no-gutter .col-2-3 {
+.flex-grid--no-gutter .col-2-3 {
   max-width: 66.66%;
   -webkit-flex-basis: 66.66%;
   -ms-flex-preferred-size: 66.66%;
@@ -1378,7 +1324,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 46%;
   flex-basis: 46%;
 }
-.flex-grid.no-gutter .col-1-2 {
+.flex-grid--no-gutter .col-1-2 {
   max-width: 50%;
   -webkit-flex-basis: 50%;
   -ms-flex-preferred-size: 50%;
@@ -1391,7 +1337,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 21%;
   flex-basis: 21%;
 }
-.flex-grid.no-gutter .col-1-4 {
+.flex-grid--no-gutter .col-1-4 {
   max-width: 25%;
   -webkit-flex-basis: 25%;
   -ms-flex-preferred-size: 25%;
@@ -1404,7 +1350,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 46%;
   flex-basis: 46%;
 }
-.flex-grid.no-gutter .col-2-4 {
+.flex-grid--no-gutter .col-2-4 {
   max-width: 50%;
   -webkit-flex-basis: 50%;
   -ms-flex-preferred-size: 50%;
@@ -1417,7 +1363,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 71%;
   flex-basis: 71%;
 }
-.flex-grid.no-gutter .col-3-4 {
+.flex-grid--no-gutter .col-3-4 {
   max-width: 75%;
   -webkit-flex-basis: 75%;
   -ms-flex-preferred-size: 75%;
@@ -1430,7 +1376,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 16%;
   flex-basis: 16%;
 }
-.flex-grid.no-gutter .col-1-5 {
+.flex-grid--no-gutter .col-1-5 {
   max-width: 20%;
   -webkit-flex-basis: 20%;
   -ms-flex-preferred-size: 20%;
@@ -1443,7 +1389,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 12.66%;
   flex-basis: 12.66%;
 }
-.flex-grid.no-gutter .col-1-6 {
+.flex-grid--no-gutter .col-1-6 {
   max-width: 16.66%;
   -webkit-flex-basis: 16.66%;
   -ms-flex-preferred-size: 16.66%;
@@ -1456,7 +1402,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 10.28%;
   flex-basis: 10.28%;
 }
-.flex-grid.no-gutter .col-1-7 {
+.flex-grid--no-gutter .col-1-7 {
   max-width: 14.28%;
   -webkit-flex-basis: 14.28%;
   -ms-flex-preferred-size: 14.28%;
@@ -1469,7 +1415,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 8.5%;
   flex-basis: 8.5%;
 }
-.flex-grid.no-gutter .col-1-8 {
+.flex-grid--no-gutter .col-1-8 {
   max-width: 12.5%;
   -webkit-flex-basis: 12.5%;
   -ms-flex-preferred-size: 12.5%;
@@ -1482,7 +1428,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 7.11%;
   flex-basis: 7.11%;
 }
-.flex-grid.no-gutter .col-1-9 {
+.flex-grid--no-gutter .col-1-9 {
   max-width: 11.11%;
   -webkit-flex-basis: 11.11%;
   -ms-flex-preferred-size: 11.11%;
@@ -1495,7 +1441,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 6%;
   flex-basis: 6%;
 }
-.flex-grid.no-gutter .col-1-10 {
+.flex-grid--no-gutter .col-1-10 {
   max-width: 10%;
   -webkit-flex-basis: 10%;
   -ms-flex-preferred-size: 10%;
@@ -1508,7 +1454,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 4.33%;
   flex-basis: 4.33%;
 }
-.flex-grid.no-gutter .col-1-12 {
+.flex-grid--no-gutter .col-1-12 {
   max-width: 8.33%;
   -webkit-flex-basis: 8.33%;
   -ms-flex-preferred-size: 8.33%;
@@ -1521,7 +1467,7 @@ ul.alert.box li {
   -ms-flex-preferred-size: 2.25%;
   flex-basis: 2.25%;
 }
-.flex-grid.no-gutter .col-1-16 {
+.flex-grid--no-gutter .col-1-16 {
   max-width: 6.25%;
   -webkit-flex-basis: 6.25%;
   -ms-flex-preferred-size: 6.25%;
@@ -1559,111 +1505,101 @@ ul.alert.box li {
 .grid [class*="col-"]:last-child {
   margin-bottom: 0;
 }
-.grid.no-gutter {
+.grid--no-gutter {
   width: 100%;
   left: 0;
 }
-.grid.no-gutter [class*="col-"] {
+.grid--no-gutter [class*="col-"] {
   margin: 0;
-}
-.grid.bricked {
-  display: inline-block;
-  letter-spacing: -4px;
-}
-.grid.bricked [class*="col-"] {
-  float: none;
-  display: inline-block;
-  vertical-align: top;
-  letter-spacing: normal;
 }
 .grid .col-1 {
   width: 96%;
 }
-.grid.no-gutter .col-1 {
+.grid--no-gutter .col-1 {
   width: 100%;
 }
 .grid .col-1-3 {
   width: 29.33%;
 }
-.grid.no-gutter .col-1-3 {
+.grid--no-gutter .col-1-3 {
   width: 33.33%;
 }
 .grid .col-2-3 {
   width: 62.66%;
 }
-.grid.no-gutter .col-2-3 {
+.grid--no-gutter .col-2-3 {
   width: 66.66%;
 }
 .grid .col-1-2 {
   width: 46%;
 }
-.grid.no-gutter .col-1-2 {
+.grid--no-gutter .col-1-2 {
   width: 50%;
 }
 .grid .col-1-4 {
   width: 21%;
 }
-.grid.no-gutter .col-1-4 {
+.grid--no-gutter .col-1-4 {
   width: 25%;
 }
 .grid .col-2-4 {
   width: 46%;
 }
-.grid.no-gutter .col-2-4 {
+.grid--no-gutter .col-2-4 {
   width: 50%;
 }
 .grid .col-3-4 {
   width: 71%;
 }
-.grid.no-gutter .col-3-4 {
+.grid--no-gutter .col-3-4 {
   width: 75%;
 }
 .grid .col-1-5 {
   width: 16%;
 }
-.grid.no-gutter .col-1-5 {
+.grid--no-gutter .col-1-5 {
   width: 20%;
 }
 .grid .col-1-6 {
   width: 12.66%;
 }
-.grid.no-gutter .col-1-6 {
+.grid--no-gutter .col-1-6 {
   width: 16.66%;
 }
 .grid .col-1-7 {
   width: 10.28%;
 }
-.grid.no-gutter .col-1-7 {
+.grid--no-gutter .col-1-7 {
   width: 14.28%;
 }
 .grid .col-1-8 {
   width: 8.5%;
 }
-.grid.no-gutter .col-1-8 {
+.grid--no-gutter .col-1-8 {
   width: 12.5%;
 }
 .grid .col-1-9 {
   width: 7.11%;
 }
-.grid.no-gutter .col-1-9 {
+.grid--no-gutter .col-1-9 {
   width: 11.11%;
 }
 .grid .col-1-10 {
   width: 6%;
 }
-.grid.no-gutter .col-1-10 {
+.grid--no-gutter .col-1-10 {
   width: 10%;
 }
 .grid .col-1-12 {
   width: 4.33%;
 }
-.grid.no-gutter .col-1-12 {
+.grid--no-gutter .col-1-12 {
   width: 8.33%;
 }
 .grid .col-1-16 {
   width: 2.25%;
 }
-.grid.no-gutter .col-1-16 {
+.grid--no-gutter .col-1-16 {
   width: 6.25%;
 }
 
@@ -1682,23 +1618,18 @@ ul.alert.box li {
   position: relative;
 }
 .nav-primary li .sub-menu {
-  margin-left: 0;
   display: none;
   position: absolute;
   left: 0;
   top: 100%;
   z-index: 100;
-  background: #FFFFFF;
 }
 .nav-primary li .sub-menu li {
-  padding: 0;
-  margin: 6px 0;
   display: block;
   white-space: nowrap;
 }
 .nav-primary li .sub-menu li .sub-menu {
   left: 100%;
-  top: -5px;
 }
 .nav-primary li.current_page_item > a, .nav-primary li.current_page_parent > a {
   font-weight: bold;
@@ -1708,22 +1639,6 @@ ul.alert.box li {
 }
 .nav-primary li:hover > .sub-menu {
   display: block;
-}
-.nav-primary.full-width {
-  text-align: justify;
-}
-.nav-primary.full-width a {
-  display: block;
-}
-.nav-primary.full-width:before {
-  width: 100%;
-  content: '';
-  display: block;
-}
-.nav-primary.full-width:after {
-  width: 100%;
-  content: '';
-  display: inline-block;
 }
 
 /* -- Mobile Menu -- */
@@ -2010,7 +1925,7 @@ form textarea {
   min-height: 100px;
   height: 125px;
 }
-form.form-block input[type="checkbox"], form.form-block input[type="radio"], form.form-inline-block input[type="checkbox"], form.form-inline-block input[type="radio"], form input[type="radio"], form input[type="checkbox"] {
+form .form-block input[type="checkbox"], .form-block form input[type="checkbox"], form .form-block input[type="radio"], .form-block form input[type="radio"], form .form-inline-block input[type="checkbox"], .form-inline-block form input[type="checkbox"], form .form-inline-block input[type="radio"], .form-inline-block form input[type="radio"], form input[type="radio"], form input[type="checkbox"] {
   width: auto;
   height: auto;
   margin: -2px 2px 0 0;
@@ -2018,7 +1933,7 @@ form.form-block input[type="checkbox"], form.form-block input[type="radio"], for
   display: inline;
   vertical-align: middle;
 }
-form.form-block input[type="checkbox"] + label, form.form-block input[type="radio"] + label, form.form-inline-block input[type="checkbox"] + label, form.form-inline-block input[type="radio"] + label, form input[type="radio"] + label, form input[type="checkbox"] + label {
+form .form-block input[type="checkbox"] + label, .form-block form input[type="checkbox"] + label, form .form-block input[type="radio"] + label, .form-block form input[type="radio"] + label, form .form-inline-block input[type="checkbox"] + label, .form-inline-block form input[type="checkbox"] + label, form .form-inline-block input[type="radio"] + label, .form-inline-block form input[type="radio"] + label, form input[type="radio"] + label, form input[type="checkbox"] + label {
   margin: 0px 24px 0px 4.8px;
   margin: 0px 1.5rem 0px 0.3rem;
   vertical-align: middle;
@@ -2111,32 +2026,32 @@ form label.v-small, form .label.v-small, form input.v-small, form select.v-small
    Base > Forms > Form Block
    Block level forms
 ========================================================================== */
-form.form-block .field-container label {
+.form-block .field-container label {
   margin-right: 6px;
   margin-right: 0.375rem;
 }
-form.form-block .field-container input, form.form-block .field-container .input, form.form-block .field-container select, form.form-block .field-container textarea {
+.form-block .field-container input, .form-block .field-container .input, .form-block .field-container select, .form-block .field-container textarea {
   margin-left: 2%;
   display: inline-block;
   vertical-align: middle;
 }
-form.form-block .field-container input:first-child, form.form-block .field-container .input:first-child, form.form-block .field-container select:first-child, form.form-block .field-container textarea:first-child {
+.form-block .field-container input:first-child, .form-block .field-container .input:first-child, .form-block .field-container select:first-child, .form-block .field-container textarea:first-child {
   margin-left: 0;
 }
-form.form-block .field-container span + input, form.form-block .field-container span .input, form.form-block .field-container span select, form.form-block .field-container span textarea, form.form-block .field-container span .field-container {
+.form-block .field-container span + input, .form-block .field-container span .input, .form-block .field-container span select, .form-block .field-container span textarea, .form-block .field-container span .field-container {
   margin: 0;
 }
-form.form-block label, form.form-block .label {
+.form-block label, .form-block .label {
   display: block;
 }
-form.form-block label input[type="checkbox"], form.form-block label input[type="radio"], form.form-block .label input[type="checkbox"], form.form-block .label input[type="radio"] {
+.form-block label input[type="checkbox"], .form-block label input[type="radio"], .form-block .label input[type="checkbox"], .form-block .label input[type="radio"] {
   margin: -2px 2px 0 0;
 }
-form.form-block input, form.form-block .input, form.form-block select, form.form-block textarea, form.form-block .field-container {
+.form-block input, .form-block .input, .form-block select, .form-block textarea, .form-block .field-container {
   width: 100%;
   display: block;
 }
-form.form-block input ~ .note, form.form-block .input ~ .note, form.form-block select ~ .note, form.form-block textarea ~ .note, form.form-block .field-container ~ .note {
+.form-block input ~ .note, .form-block .input ~ .note, .form-block select ~ .note, .form-block textarea ~ .note, .form-block .field-container ~ .note {
   margin-left: 0;
   display: block;
 }
@@ -2145,40 +2060,40 @@ form.form-block input ~ .note, form.form-block .input ~ .note, form.form-block s
    Base > Forms > Form Inline Block
    Inline Block level forms
 ========================================================================== */
-form.form-inline-block .field-container {
+.form-inline-block .field-container {
   height: 40px;
 }
-form.form-inline-block .field-container label {
+.form-inline-block .field-container label {
   width: auto;
   margin-right: 6px;
   margin-right: 0.375rem;
 }
-form.form-inline-block .field-container span + input, form.form-inline-block .field-container span .input, form.form-inline-block .field-container span select, form.form-inline-block .field-container span textarea, form.form-inline-block .field-container span .field-container {
+.form-inline-block .field-container span + input, .form-inline-block .field-container span .input, .form-inline-block .field-container span select, .form-inline-block .field-container span textarea, .form-inline-block .field-container span .field-container {
   margin: 0;
 }
-form.form-inline-block label, form.form-inline-block .label, form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
+.form-inline-block label, .form-inline-block .label, .form-inline-block input, .form-inline-block .input, .form-inline-block select, .form-inline-block textarea, .form-inline-block .field-container {
   display: inline-block;
   vertical-align: middle;
 }
-form.form-inline-block textarea {
+.form-inline-block textarea {
   vertical-align: top;
 }
-form.form-inline-block label, form.form-inline-block .label {
+.form-inline-block label, .form-inline-block .label {
   width: 35%;
   padding-right: 5%;
   line-height: 1.3;
 }
-form.form-inline-block label input[type="checkbox"], form.form-inline-block label input[type="radio"], form.form-inline-block .label input[type="checkbox"], form.form-inline-block .label input[type="radio"] {
+.form-inline-block label input[type="checkbox"], .form-inline-block label input[type="radio"], .form-inline-block .label input[type="checkbox"], .form-inline-block .label input[type="radio"] {
   margin: -2px 2px 0 0;
 }
-form.form-inline-block label:first-of-type input, form.form-inline-block .label:first-of-type input {
+.form-inline-block label:first-of-type input, .form-inline-block .label:first-of-type input {
   margin-left: 0;
 }
-form.form-inline-block input, form.form-inline-block .input, form.form-inline-block select, form.form-inline-block textarea, form.form-inline-block .field-container {
+.form-inline-block input, .form-inline-block .input, .form-inline-block select, .form-inline-block textarea, .form-inline-block .field-container {
   width: 64%;
   margin: 0;
 }
-form.form-inline-block input ~ .note, form.form-inline-block .input ~ .note, form.form-inline-block select ~ .note, form.form-inline-block textarea ~ .note, form.form-inline-block .field-container ~ .note {
+.form-inline-block input ~ .note, .form-inline-block .input ~ .note, .form-inline-block select ~ .note, .form-inline-block textarea ~ .note, .form-inline-block .field-container ~ .note {
   margin-left: 35%;
 }
 
@@ -2186,124 +2101,20 @@ form.form-inline-block input ~ .note, form.form-inline-block .input ~ .note, for
    Base > Forms > Form Inline
    Inline forms
 ========================================================================== */
-form.form-inline .field-container {
+.form-inline .field-container {
   height: 40px;
 }
-form.form-inline label, form.form-inline .label, form.form-inline input, form.form-inline .input, form.form-inline select, form.form-inline textarea, form.form-inline .field-container {
+.form-inline label, .form-inline .label, .form-inline input, .form-inline .input, .form-inline select, .form-inline textarea, .form-inline .field-container {
   width: auto;
   margin: 0px 0px 0px 12px;
   margin: 0px 0px 0px 0.75rem;
   display: inline;
 }
-form.form-inline label:first-child, form.form-inline .label:first-child, form.form-inline input:first-child, form.form-inline .input:first-child, form.form-inline select:first-child, form.form-inline textarea:first-child, form.form-inline .field-container:first-child {
+.form-inline label:first-child, .form-inline .label:first-child, .form-inline input:first-child, .form-inline .input:first-child, .form-inline select:first-child, .form-inline textarea:first-child, .form-inline .field-container:first-child {
   margin-left: 0;
 }
-form.form-inline span + input, form.form-inline span .input, form.form-inline span select, form.form-inline span textarea, form.form-inline span .field-container {
+.form-inline span + input, .form-inline span .input, .form-inline span select, .form-inline span textarea, .form-inline span .field-container {
   margin: 0;
-}
-
-/* ==========================================================================
-   Base > Forms > Customised
-   Custom form inputs.
-========================================================================== */
-form .custom-checkbox, form .custom-radio {
-  margin-right: 24px;
-  margin-right: 1.5rem;
-  position: relative;
-  display: inline-block;
-}
-form .custom-checkbox label, form .custom-radio label {
-  width: 17px;
-  height: 17px;
-  border: 1px solid #e0e0e0;
-  position: absolute;
-  top: 0;
-  cursor: pointer;
-  white-space: nowrap;
-  text-indent: 1.5em;
-  -webkit-box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.08);
-  box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.08);
-}
-form .custom-checkbox label:active, form .custom-radio label:active {
-  -webkit-box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
-}
-form .custom-checkbox input, form .custom-radio input {
-  width: 0 !important;
-  height: 0 !important;
-  position: absolute;
-  visibility: hidden;
-}
-form .custom-checkbox label {
-  border-radius: 0.2em;
-}
-form .custom-checkbox label:after {
-  width: 7px;
-  height: 3px;
-  border: 3px solid #999;
-  border-top: none;
-  border-right: none;
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 3px;
-  opacity: 0;
-  background: transparent;
-  -webkit-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-form .custom-checkbox label:hover:after {
-  opacity: 0.3;
-}
-form .custom-checkbox input[type=checkbox]:checked + label:after {
-  opacity: 0.8;
-}
-form .custom-radio label {
-  border-radius: 100%;
-}
-form .custom-radio label:after {
-  width: 7px;
-  height: 7px;
-  content: '';
-  border-radius: 50px;
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  opacity: 0;
-  background: #999;
-}
-form .custom-radio label:hover:after {
-  opacity: 0.3;
-}
-form .custom-radio input[type=radio]:checked + label:after {
-  opacity: 0.8;
-}
-form .custom-select:after {
-  width: 0;
-  height: 0;
-  margin-top: -.15rem;
-  border-top: .35rem solid;
-  border-right: .35rem solid transparent;
-  border-bottom: .35rem solid transparent;
-  border-left: .35rem solid transparent;
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 18px;
-  right: 1.125rem;
-  display: inline-block;
-  pointer-events: none;
-}
-form .custom-select select {
-  padding-right: 36px;
-  padding-right: 2.25rem;
-  margin: 0;
-  display: inline-block;
-  appearance: none;
-}
-form .custom-select select::-ms-expand {
-  display: none;
 }
 
 /* ==========================================================================

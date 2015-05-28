@@ -17,20 +17,15 @@
 		position: relative;
 		// Descendants
 		.sub-menu {
-			margin-left: 0;
 			display: none;
 			position: absolute;
 			left: 0; top: 100%;
 			z-index: $zindex-1;
-			background: color(white);
 			li {
-				padding: 0;
-				margin: 6px 0;
 				display: block;
 				white-space: nowrap;
 				.sub-menu {
 					left: 100%;
-					top: -5px;
 				}
 			}
 		}

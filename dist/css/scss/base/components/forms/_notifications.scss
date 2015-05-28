@@ -3,7 +3,7 @@
    Form messages and responses.
 ========================================================================== */
 form {
-	&.form-has-errors {
+	&.form-has-errors { // Qualified Selector
 
 		// Label
 		label {

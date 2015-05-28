@@ -18,9 +18,13 @@ var src_dir   = './',
 gulp.task('default', [
 	'js',
 	'css',
-	'dalek',
-	'jasmine',
 	'jshint'
+]);
+
+// Task.
+gulp.task('tests', [
+	'dalek',
+	'jasmine'
 ]);
 
 

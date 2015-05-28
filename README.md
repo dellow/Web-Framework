@@ -11,8 +11,9 @@ You can use this independently in your own project either via cloning this repo 
 Alternatively, the library will be installed automatically with the Project Wrapper repository available [here] (https://github.com/sdellow/Project-Wrapper).
 
 ## Reserved Classes
-The Framework does use some generic classes throughout. A lot of these will be filtered out in future releases as they are bad form. However until then this is a list of current classes you should avoid using with new elements:
+The Framework does use some generic or 'loose' classes throughout. A lot of these will be filtered out in future releases as they are not specific enough and bad form. However until then this is a list of current classes you should avoid using with new elements:
 
+    .active-*
     .alert
     .alpha
     .beta
@@ -24,6 +25,8 @@ The Framework does use some generic classes throughout. A lot of these will be f
     .col
     .color
     .container
+    .current_page_item
+    .current_page_parent
     .delta
     .disabled
     .epsilon
@@ -31,13 +34,14 @@ The Framework does use some generic classes throughout. A lot of these will be f
     .field
     .fl
     .fr
-    .form
+    .form-*
     .gamma
     .grid
     .hide-*
     .ie6
     .ie7
     .ie8
+    .js-* (For JavaScript binds)
     .label
     .left
     .mobile-animate
