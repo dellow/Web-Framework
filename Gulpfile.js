@@ -13,10 +13,10 @@ var gulp         = require('gulp'),
 
 // Vars.
 var version        = '1.0.0',
-	is_development = (args.config == 'development' || args.config == undefined) ? true : false,
-	is_production  = (args.config == 'production') ? true : false,
 	src_dir        = './src/',
 	dist_dir       = './src/dist/',
+	is_development = (args.config == 'development' || args.config == undefined) ? true : false,
+	is_production  = (args.config == 'production') ? true : false,
 	error_handler  = function(err){
 		// Show notification.
 		notification.notify({
@@ -173,6 +173,90 @@ gulp.task('css', function(){
 
 
 /* =========================================================================== */
+/* Images
+/* =========================================================================== */
+gulp.task('images', function(){
+	// Require.
+	var imagemin = require('gulp-imagemin')
+		cache	 = require('gulp-cache');
+
+	// Task
+    return gulp.src(dist_dir + 'images/**/*')
+        .pipe(cache(imagemin({
+            optimizationLevel: 3,
+            progressive      : true,
+            interlaced       : true
+        })))
+        .pipe(gulp.dest(dist_dir + 'images'));
+});
+
+
+
+/* =========================================================================== */
+/* Sync
+/* =========================================================================== */
+gulp.task('sync', function(){
+	// Require.
+	var browserSync = require('browser-sync'),
+		reload      = browserSync.reload;
+
+	// Vars.
+	var url    = args.url || false,
+		notify = args.notify || false,
+		xip    = args.xip || true,
+		https  = args.https || false;
+
+	if(url){
+		browserSync.init({
+			open   : 'external',
+			browser: ['google chrome'],
+			notify : notify,
+			https  : https,
+			xip    : xip,
+			proxy  : url
+		});
+	}
+	else{
+		browserSync.init({
+			open   : 'external',
+			browser: ['google chrome'],
+			notify : notify,
+			https  : https,
+			xip    : xip,
+			server : {
+				baseDir: [src_dir]
+			}
+		});
+	}
+
+	// Run Browserify on JS and HBS file changes.
+	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
+	// Run Compass on SCSS file changes.
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
+	// Reload on file changes.
+	gulp.watch([
+		src_dir + '**/*.html',
+		src_dir + '**/*.php',
+		dist_dir + 'css/build.css',
+		dist_dir + 'js/build/build.js'
+	], reload);
+});
+
+
+
+/* =========================================================================== */
+/* Watch
+/* =========================================================================== */
+gulp.task('watch', function(){
+	// Run JS Master on JS and HBS file changes.
+	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
+	// Run CSS on SCSS file changes.
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
+});
+
+
+
+/* =========================================================================== */
 /* Dalek (Development)
 /* =========================================================================== */
 gulp.task('dalek', function(){
@@ -204,26 +288,6 @@ gulp.task('dalek', function(){
 				]
 			})
 		);
-});
-
-
-
-/* =========================================================================== */
-/* Imagemin
-/* =========================================================================== */
-gulp.task('images', function(){
-	// Require.
-	var imagemin = require('gulp-imagemin')
-		cache	 = require('gulp-cache');
-
-	// Task
-    return gulp.src(dist_dir + 'images/**/*')
-        .pipe(cache(imagemin({
-            optimizationLevel: 3,
-            progressive      : true,
-            interlaced       : true
-        })))
-        .pipe(gulp.dest(dist_dir + 'images'));
 });
 
 
@@ -381,68 +445,4 @@ gulp.task('sprite', function(){
 			processor  : 'scss'
 	    }))
 	    .pipe(gulpif('*.png', gulp.dest(dist_dir + 'images/icons'), gulp.dest(dist_dir + 'css/scss/site')))
-});
-
-
-
-/* =========================================================================== */
-/* Sync
-/* =========================================================================== */
-gulp.task('sync', function(){
-	// Require.
-	var browserSync = require('browser-sync'),
-		reload      = browserSync.reload;
-
-	// Vars.
-	var url    = args.url || false,
-		notify = args.notify || false,
-		xip    = args.xip || true,
-		https  = args.https || false;
-
-	if(url){
-		browserSync.init({
-			open   : 'external',
-			browser: ['google chrome'],
-			notify : notify,
-			https  : https,
-			xip    : xip,
-			proxy  : url
-		});
-	}
-	else{
-		browserSync.init({
-			open   : 'external',
-			browser: ['google chrome'],
-			notify : notify,
-			https  : https,
-			xip    : xip,
-			server : {
-				baseDir: [src_dir]
-			}
-		});
-	}
-
-	// Run Browserify on JS and HBS file changes.
-	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
-	// Run Compass on SCSS file changes.
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
-	// Reload on file changes.
-	gulp.watch([
-		src_dir + '**/*.html',
-		src_dir + '**/*.php',
-		dist_dir + 'css/build.css',
-		dist_dir + 'js/build/build.js'
-	], reload);
-});
-
-
-
-/* =========================================================================== */
-/* Watch
-/* =========================================================================== */
-gulp.task('watch', function(){
-	// Run JS Master on JS and HBS file changes.
-	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
-	// Run CSS on SCSS file changes.
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
 });
