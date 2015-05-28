@@ -193,6 +193,18 @@ gulp.task('images', function(){
 
 
 /* =========================================================================== */
+/* Watch
+/* =========================================================================== */
+gulp.task('watch', function(){
+	// Run JS Master on JS and HBS file changes.
+	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
+	// Run CSS on SCSS file changes.
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
+});
+
+
+
+/* =========================================================================== */
 /* Sync
 /* =========================================================================== */
 gulp.task('sync', function(){
@@ -240,18 +252,6 @@ gulp.task('sync', function(){
 		dist_dir + 'css/build.css',
 		dist_dir + 'js/build/build.js'
 	], reload);
-});
-
-
-
-/* =========================================================================== */
-/* Watch
-/* =========================================================================== */
-gulp.task('watch', function(){
-	// Run JS Master on JS and HBS file changes.
-	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
-	// Run CSS on SCSS file changes.
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
 });
 
 
