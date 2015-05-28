@@ -65,7 +65,7 @@ gulp.task('js_common', function(){
 		.pipe(source('index.js'))
 	    .pipe(buffer())
 		.pipe(rename('common.js'))
-		.pipe(gulp.dest(dist_dir + 'js/build/'));
+		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
 });
 
 
@@ -84,7 +84,7 @@ gulp.task('js_app', function(){
 	    .pipe(source('index.js'))
 	    .pipe(buffer())
 		.pipe(rename('app.js'))
-		.pipe(gulp.dest(dist_dir + 'js/build/'));
+		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
 });
 
 
@@ -109,15 +109,15 @@ gulp.task('js', ['js_app'], function(){
 		''].join('\n');
 
 	// Task.
-	return gulp.src([dist_dir + 'js/build/common.js', dist_dir + 'js/build/app.js'])
-	    .pipe(concat('main.js'))
+	return gulp.src([dist_dir + 'js/compiled/common.js', dist_dir + 'js/compiled/app.js'])
+	    .pipe(concat('build.js'))
 		.pipe(gulpif(should_min, uglify()))
 		.pipe(header(header_tpl, {
 			type   : (should_min) ? 'Minified' : 'Unminified',
 			version: version,
 			date   : Date()
 		}))
-	    .pipe(gulp.dest(dist_dir + 'js/main'));
+	    .pipe(gulp.dest(dist_dir + 'js/build'));
 });
 
 
