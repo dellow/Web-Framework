@@ -46,24 +46,6 @@
 			display: block;
 		}
 	}
-	// Abstractions
-	&.full-width {
-		text-align: justify;
-		a {
-			display: block;
-		}
-		// Pseudo
-		&:before {
-			width: 100%;
-			content: '';
-			display: block;
-		}
-		&:after {
-			width: 100%;
-			content: '';
-			display: inline-block;
-		}
-	}
 }
 
 /* -- Mobile Menu -- */

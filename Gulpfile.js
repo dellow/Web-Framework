@@ -38,7 +38,7 @@ gulp.task('js_common', function(){
 	return browserify(dist_dir + 'js/vendor/').bundle()
 		.pipe(source('index.js'))
 		.pipe(rename('common.js'))
-		.pipe(gulp.dest(dist_dir + 'js/build/'));
+		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
 });
 
 
@@ -56,7 +56,7 @@ gulp.task('js_app', function(){
 	return browserify(dist_dir + 'js/app/').bundle()
 		.pipe(source('index.js'))
 		.pipe(rename('app.js'))
-		.pipe(gulp.dest(dist_dir + 'js/build/'));
+		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
 });
 
 
@@ -69,17 +69,17 @@ gulp.task('js', ['js_app'], function(){
 	var concat = require('gulp-concat');
 
 	// Task.
-	return gulp.src([dist_dir + 'js/build/common.js', dist_dir + 'js/build/app.js'])
-	    .pipe(concat('main.js'))
-	    .pipe(gulp.dest(dist_dir + 'js/main'));
+	return gulp.src([dist_dir + 'js/compiled/common.js', dist_dir + 'js/compiled/app.js'])
+	    .pipe(concat('build.js'))
+	    .pipe(gulp.dest(dist_dir + 'js/build'));
 });
 
 
 
 /* =========================================================================== */
-/* Compass
+/* CSS
 /* =========================================================================== */
-gulp.task('compass', function(){
+gulp.task('css', function(){
 	// Require.
 	var compass = require('gulp-compass'),
 		autoprefixer = require('gulp-autoprefixer');
@@ -100,6 +100,18 @@ gulp.task('compass', function(){
             cascade: false
         }))
 		.pipe(gulp.dest(dist_dir + 'css'));
+});
+
+
+
+/* =========================================================================== */
+/* Watch
+/* =========================================================================== */
+gulp.task('watch', function(){
+	// Run Browserify on JS and HBS file changes.
+	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
+	// Run Compass on SCSS file changes.
+	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
 });
 
 
@@ -171,16 +183,4 @@ gulp.task('jshint', function(){
 	return gulp.src(dist_dir + 'js/app/**/*.js')
 	    .pipe(jshint())
 	    .pipe(jshint.reporter(stylish));
-});
-
-
-
-/* =========================================================================== */
-/* Watch
-/* =========================================================================== */
-gulp.task('watch', function(){
-	// Run Browserify on JS and HBS file changes.
-	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
-	// Run Compass on SCSS file changes.
-	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
 });

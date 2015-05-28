@@ -30,7 +30,7 @@
 			max-width: $value - $gutter;
 			flex-basis: $value - $gutter;
 		}
-		&.no-gutter .#{$key} {
+		&--no-gutter .#{$key} {
 			max-width: $value;
 			flex-basis: $value;
 			margin: 0;
@@ -71,29 +71,19 @@
 		}
 	}
 	// Abstractions
-	&.no-gutter {
+	&--no-gutter {
 		width: $col_1;
 		left: 0;
 		[class*="col-"] {
 			margin: 0;
 		}
 	}
-	&.bricked {
-		display: inline-block; // Hack to prevent negative margin having weird effects
-		letter-spacing: -4px;
-		[class*="col-"] {
-			float: none;
-			display: inline-block;
-			vertical-align: top;
-			letter-spacing: normal;
-		}
-	}
-
+	// Columns.
 	@each $key, $value in $col_array {
 		.#{$key} {
 			width: $value - $gutter;
 		}
-		&.no-gutter .#{$key} {
+		&--no-gutter .#{$key} {
 			width: $value;
 		}
 	}

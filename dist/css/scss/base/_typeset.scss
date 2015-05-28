@@ -75,13 +75,13 @@ a, button {
 // Citation
 cite {
 	// Descendants
-	.profession {
+	.cite__profession {
 		font-weight: $bold;
 	}
 }
 
 /* -- Content Areas -- */
-.content {
+.page__content {
 	// Margins
 	blockquote, dl, figure, ol, p, pre, ul {
 		&:last-child {
@@ -111,7 +111,7 @@ cite {
 	}
 
 	// Leading intro paragraph.
-	&.leading-p {
+	&.page__content--leading-p {
 		p {
 			&:first-of-type {
  				@include rem(font-size, $medium);
@@ -121,7 +121,7 @@ cite {
 }
 
 /* -- Hatnotes -- */
-.hatnote {
+.page__hatnote {
 	@include nudge(padding-left, 1);
 	font-style: italic;
 }
