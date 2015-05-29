@@ -13604,6 +13604,8 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
      * @version 1.0.0
     **/
     Module.prototype.init = function(){
+        var _this = this;
+
         // Document ready.
         $(function(){
             // Call methods here.
