@@ -39,11 +39,11 @@ var version        = '1.0.0',
 /* =========================================================================== */
 // Task.
 gulp.task('default', [
-	// All states
+	// All states.
 	'js',
 	'css',
 	'images',
-	// Development states
+	// Development states.
 	'dalek',
 	'jasmine',
 	'jshint'
@@ -180,7 +180,7 @@ gulp.task('images', function(){
 	var imagemin = require('gulp-imagemin')
 		cache	 = require('gulp-cache');
 
-	// Task
+	// Task.
     return gulp.src(dist_dir + 'images/**/*')
         .pipe(cache(imagemin({
             optimizationLevel: 3,
@@ -273,7 +273,7 @@ gulp.task('dalek', function(){
 		dist_dir + 'js/spec/dalek/roles.js'
 	];
 
-	// Task
+	// Task.
 	return gulp.src(tests)
 		.pipe(
 			dalek({
@@ -328,7 +328,7 @@ gulp.task('jshint', function(){
 	var jshint  = require('gulp-jshint'),
 		stylish = require('jshint-stylish');
 
-    // Run on development only
+    // Run on development only.
     if(is_development){
 		return gulp.src(dist_dir + 'js/app/**/*.js')
 		    .pipe(jshint())
@@ -415,7 +415,7 @@ gulp.task('psi', options, function(){
 			}))
 			.pipe(gulp.dest('./psi/'));
 
-			// Report
+			// Report.
 			console.log("Log has been recorded to: " + file);
 		});
 	});
@@ -430,7 +430,7 @@ gulp.task('sprite', function(){
 	// Require.
 	var sprite = require('css-sprite').stream;
 
-	// Task
+	// Task.
 	return gulp.src(dist_dir + 'images/icons/sprite/*.png')
 	    .pipe(sprite({
 			base64     : false,
