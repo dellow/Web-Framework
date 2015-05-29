@@ -341,7 +341,7 @@ gulp.task('jshint', function(){
 /* =========================================================================== */
 /* PageSpeed
 /* =========================================================================== */
-gulp.task('psi', options, function(){
+gulp.task('psi', function(){
 	// Require.
 	var psi = require('psi'),
 		fs  = require('fs-extra');
