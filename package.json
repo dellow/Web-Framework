@@ -41,5 +41,6 @@
     "modernizr": "*",
     "jquery-touchswipe": "*",
     "jquery.scrollto": "*"
-  }
+  },
+  "private": true
 }
