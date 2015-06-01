@@ -75,14 +75,22 @@
         watch_window: function(el, breakpoint1, breakpoint2){
             var _self = this;
 
-            $(window).on('load resize', function(){
-                if($(window).width() > breakpoint1 && $(window).width() < breakpoint2){
-                    _self.calculate(el);
-                }
-                else{
-                    _self.reset_heights(el);
-                }
+            $(function(){
+                _self.run_heights(el, breakpoint1, breakpoint2);
             });
+            $(window).on('resize', function(){
+                _self.run_heights(el, breakpoint1, breakpoint2);
+            });
+        },
+        run_heights: function(el, breakpoint1, breakpoint2){
+            var _self = this;
+
+            if($(window).width() > breakpoint1 && $(window).width() < breakpoint2){
+                _self.calculate(el);
+            }
+            else{
+                _self.reset_heights(el);
+            }
         },
         reset_heights: function(el){
             var boxes = $('[data-eh="true"]', el);
