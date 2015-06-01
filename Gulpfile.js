@@ -328,12 +328,10 @@ gulp.task('jshint', function(){
 	var jshint  = require('gulp-jshint'),
 		stylish = require('jshint-stylish');
 
-    // Run on development only.
-    if(is_development){
-		return gulp.src(dist_dir + 'js/app/**/*.js')
-		    .pipe(jshint())
-		    .pipe(jshint.reporter(stylish));
-	}
+    // Task.
+	return gulp.src(dist_dir + 'js/app/**/*.js')
+	    .pipe(jshint())
+	    .pipe(jshint.reporter(stylish));
 });
 
 
