@@ -61,5 +61,6 @@
   "scripts": {
     "compile:js": "browserify -t [ hbsfy -e hbs ] src/dist/js/app/index.js -o src/dist/js/build/build.js",
     "compile:css": "compass compile src/dist/css/scss/build.scss"
-  }
+  },
+  "private": true
 }
