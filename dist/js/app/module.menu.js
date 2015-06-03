@@ -18,7 +18,7 @@
      * @version 1.0.0
     **/
     Module = function(){
-		this.primary = $('.nav-primary');
+    	this.primary = null;
     }
 
 	/**
@@ -33,6 +33,8 @@
 
 		// Start binds on window load / resize.
 		$(window).on('load resize',function(){
+			_this.primary = $('.nav-primary');
+
 			return _this.binds();
 		});
 	}

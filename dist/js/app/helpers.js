@@ -18,8 +18,8 @@
      * @version 1.0.0
 	**/
 	Helper.log = function(message, type, alertlog){
-		if(window.debugging){
-			alertlog = (typeof alertlog === 'undefined') ? false : true;
+		if(window.helper_log){
+			alertlog = (typeof alertlog === 'undefined') ? true : false;
 			if(typeof console === 'undefined' || typeof console.log === 'undefined'){
 				if(alertlog){
 					alert(message);
@@ -133,14 +133,18 @@
      * @since 1.0.0
      * @version 1.0.0
      */
-    Helper.ajax = function(url, request, type, preloader_el){
+    Helper.ajax = function(url, request, type, dataType, preloader_el){
+		// Set datatype.
+		dataType = (typeof dataType === 'undefined') ? 'JSON' : dataType;
     	// Set type.
 		type = (typeof type === 'undefined') ? 'POST' : type;
+    	// Set preloader.
+		preloader_el = (typeof preloader_el === 'undefined') ? $('body') : preloader_el;
 		// Request.
         return $.ajax({
             url     : url,
             type    : type,
-            dataType: 'JSON',
+            dataType: dataType,
             data    : {
                 'ajaxrequest': true,
                 'request': request

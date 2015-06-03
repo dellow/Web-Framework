@@ -9,4 +9,10 @@
 	min-width: $device;
 	margin: 0 auto;
 	position: relative;
+	&--small {
+		max-width: $tablet;
+	}
+	&--wide {
+		max-width: $desktop--wide;
+	}
 }

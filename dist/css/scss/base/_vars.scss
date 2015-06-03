@@ -58,7 +58,7 @@ $thin                  : 100 !default;
 /**
 * Knife Variables
 **/
-$body-font-size:    16 !default;
+$body-font-size:    16px !default;
 $body-line-height:  1.5 !default;
 $scale-factor:      1.333 !default;
 $ie8compatability:  false !default;
@@ -204,7 +204,8 @@ $col_array: (
 $device                        : 250px !default;
 $mobile                        : 455px !default;
 $tablet                        : 768px !default;
-$desktop                       : 1280px !default;
+$desktop                       : 1180px !default;
+$desktop--wide                 : 1400px !default;
 // iPhone 3
 $iphone3_dpi                   : 163 !default;
 $iphone3_dppx                  : 1 !default;

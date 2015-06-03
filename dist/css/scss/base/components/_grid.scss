@@ -73,9 +73,20 @@
 	// Abstractions
 	&--no-gutter {
 		width: $col_1;
+		margin-top: 0;
 		left: 0;
 		[class*="col-"] {
 			margin: 0;
+		}
+	}
+	&--bricked {
+		display: inline-block;
+		letter-spacing: -4px; // Hack to prevent negative margin having weird effects
+		[class*="col-"] {
+			float: none;
+			display: inline-block;
+			vertical-align: top;
+			letter-spacing: normal;
 		}
 	}
 	// Columns.
