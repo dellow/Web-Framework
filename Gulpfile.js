@@ -114,7 +114,7 @@ gulp.task('js', ['js_app'], function(){
 	return gulp.src([dist_dir + 'js/compiled/common.js', dist_dir + 'js/compiled/app.js'])
 	    .pipe(concat('build.js'))
 		.pipe(header(header_tpl_env, {
-			env: (should_min) ? 'production' : 'development'
+			env: (is_production) ? 'production' : 'development'
 		}))
 		.pipe(gulpif(is_production, uglify()))
 		.pipe(header(header_tpl, {
