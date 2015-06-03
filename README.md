@@ -266,11 +266,17 @@ __log__ only works in `development` mode, so you can safely leave `Helpers.log` 
 ##### breakpoint `Helpers.breakpoint(768)`
 For easy screen size checking. Will return true if the current screen size less than the passed value.
 
+***
+
 ##### mhi `Helpers.mhi($('.my-hidden-element'))`
 Measures the height of hidden elements and returns the value. By default jQuery will return 0 if you try to measure an element set to `display: none`. __mhi__ clones the element and inserts it off screen to measure it before destroying it.
 
+***
+
 ##### debounce `Helpers.debounce(callback, 250)`
 A simple debouncing method to help prevent constant firing of an event. Useful for on `scroll` or `resize` events.
+
+***
 
 ##### preloader `Helpers.preloader($('.parent-element'))`
 Inserts a pre-defined preloader in the given element. Can also destroy a created preloader by calling `Helpers.preloader(true);`.
