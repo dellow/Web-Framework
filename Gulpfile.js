@@ -15,8 +15,8 @@ var gulp         = require('gulp'),
 var version        = '1.0.0',
 	src_dir        = './src/',
 	dist_dir       = './src/dist/',
-	is_development = (args.config == 'development' || args.config == undefined) ? true : false,
-	is_production  = (args.config == 'production') ? true : false,
+	is_development = (args.config == 'development') ? true : false,
+	is_production  = (args.config == 'production' || args.config == undefined) ? true : false,
 	error_handler  = function(err){
 		// Show notification.
 		notification.notify({
@@ -97,9 +97,11 @@ gulp.task('js', ['js_app'], function(){
 	var concat = require('gulp-concat'),
 		uglify = require('gulp-uglify');
 
-	// Vars.
-	var should_min = (args.config == undefined || is_production) ? true : false;
 	// Header template.
+	var header_tpl_env = ['// Set environment variable',
+	'window.gulp_env = "<%= env %>";',
+	'',
+	''].join('\n');
 	var header_tpl = ['/* ==========================================================================',
 		'<%= type %> JavaScript',
 		'Application Version: <%= version %>',
@@ -111,9 +113,12 @@ gulp.task('js', ['js_app'], function(){
 	// Task.
 	return gulp.src([dist_dir + 'js/compiled/common.js', dist_dir + 'js/compiled/app.js'])
 	    .pipe(concat('build.js'))
-		.pipe(gulpif(should_min, uglify()))
+		.pipe(header(header_tpl_env, {
+			env: (should_min) ? 'production' : 'development'
+		}))
+		.pipe(gulpif(is_production, uglify()))
 		.pipe(header(header_tpl, {
-			type   : (should_min) ? 'Minified' : 'Unminified',
+			type   : (is_production) ? 'Minified' : 'Unminified',
 			version: version,
 			date   : Date()
 		}))
@@ -131,8 +136,6 @@ gulp.task('css', function(){
 		minify       = require('gulp-minify-css'),
 		autoprefixer = require('gulp-autoprefixer');
 
-	// Vars.
-	var should_min = (args.config == undefined || is_production) ? true : false;
 	// Header template.
 	var header_tpl = ['/* ==========================================================================',
 		'<%= type %> Stylesheet',
@@ -146,7 +149,7 @@ gulp.task('css', function(){
 	return gulp.src(dist_dir + 'css/scss/**/*.scss')
 		.pipe(compass({
 			style         : 'expanded',
-			environment   : (is_development) ? 'development' : 'production',
+			environment   : (is_production) ? 'production' : 'development',
 			css           : dist_dir + 'css',
 			sass          : dist_dir + 'css/scss',
 			sourcemap     : (is_production) ? false : true,
@@ -157,13 +160,13 @@ gulp.task('css', function(){
 		}))
 		.on('error', task_handler)
 	    .pipe(buffer())
-		.pipe(gulpif(should_min, minify()))
+		.pipe(gulpif(is_production, minify()))
         .pipe(autoprefixer({
             browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
             cascade: false
         }))
 		.pipe(header(header_tpl, {
-			type   : (should_min) ? 'Minified' : 'Unminified',
+			type   : (is_production) ? 'Minified' : 'Unminified',
 			version: version,
 			date   : Date()
 		}))
