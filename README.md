@@ -250,7 +250,7 @@ All initial files are loaded from `dist/js/app/index.js` but thanks to Browserif
 ### Helpers
 The `dist/js/app/helpers/js` file contains various global helper functions to aid with development. These can be called in any JS file within the `app` directory simple by calling `Helpers.<method_name>`. The methods are described below:
 
-#### log `Helpers.log('My console message');`
+##### log `Helpers.log('My console message');`
 Super powered, cross-browser supported `console.log`. Will check the browser supports console logging (will use `alert` otherwise, unless overrided). All console messages will be prefixed with "DEBUG" and encapsulated into sections to easier separate messages. A simple call would result in:
 
 	DEBUG: -----------------------------------------------
@@ -261,16 +261,16 @@ You can also supply a `type` parameter to customise the output colour (`Helpers.
 
 __log__ only works in `development` mode, so you can safely leave `Helpers.log` calls in your code knowing when you compile in `production` they will not output.
 
-#### breakpoint `Helpers.breakpoint(768)`
+##### breakpoint `Helpers.breakpoint(768)`
 For easy screen size checking. Will return true if the current screen size less than the passed value.
 
-#### mhi `Helpers.mhi($('.my-hidden-element'))`
+##### mhi `Helpers.mhi($('.my-hidden-element'))`
 Measures the height of hidden elements and returns the value. By default jQuery will return 0 if you try to measure an element set to `display: none`. __mhi__ clones the element and inserts it off screen to measure it before destroying it.
 
-#### debounce `Helpers.debounce(callback, 250)`
+##### debounce `Helpers.debounce(callback, 250)`
 A simple debouncing method to help prevent constant firing of an event. Useful for on `scroll` or `resize` events.
 
-#### preloader `Helpers.preloader($('.parent-element'))`
+##### preloader `Helpers.preloader($('.parent-element'))`
 Inserts a pre-defined preloader in the given element. Can also destroy a created preloader by calling `Helpers.preloader(true);`.
 
 <a name="troubleshooting"></a>
