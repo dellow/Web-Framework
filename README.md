@@ -261,6 +261,8 @@ You can also supply a `type` parameter to customise the output colour (`Helpers.
 
 __log__ only works in `development` mode, so you can safely leave `Helpers.log` calls in your code knowing when you compile in `production` they will not output.
 
+***
+
 ##### breakpoint `Helpers.breakpoint(768)`
 For easy screen size checking. Will return true if the current screen size less than the passed value.
 
