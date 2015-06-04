@@ -133,7 +133,6 @@ gulp.task('js', ['js_app'], function(){
 gulp.task('css', function(){
 	// Require.
 	var compass      = require('gulp-compass'),
-		minify       = require('gulp-minify-css'),
 		autoprefixer = require('gulp-autoprefixer');
 
 	// Header template.
@@ -148,7 +147,7 @@ gulp.task('css', function(){
 	// Task.
 	return gulp.src(dist_dir + 'css/scss/**/*.scss')
 		.pipe(compass({
-			style         : 'expanded',
+			style         : (is_production) ? 'compressed' : 'expanded',
 			environment   : (is_production) ? 'production' : 'development',
 			css           : dist_dir + 'css',
 			sass          : dist_dir + 'css/scss',
@@ -160,7 +159,6 @@ gulp.task('css', function(){
 		}))
 		.on('error', task_handler)
 	    .pipe(buffer())
-		.pipe(gulpif(is_production, minify()))
         .pipe(autoprefixer({
             browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
             cascade: false
