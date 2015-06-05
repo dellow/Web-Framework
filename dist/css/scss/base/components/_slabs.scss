@@ -4,7 +4,16 @@
    from the `.bg` class by being naturally padded to provide content space.
 ========================================================================== */
 .slab {
-	@include nudge(padding, 2 0);
+	@include nudge(padding, 1 0);
+	&--x2 {
+		@include nudge(padding, 2 0);
+	}
+	&--x3 {
+		@include nudge(padding, 3 0);
+	}
+	&--x4 {
+		@include nudge(padding, 4 0);
+	}
 }
 
 /* -- Slab colors -- */

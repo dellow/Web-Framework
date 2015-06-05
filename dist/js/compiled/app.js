@@ -11,9 +11,12 @@
 // Global settings.
 window.mobile_breakpoint = 768;
 window.wiselinks_enabled = true;
-window.debugging         = true;
+window.helper_log        = (typeof window.gulp_env == "undefined" || window.gulp_env == 'development') ? true : false;
 window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
+/* ======================================================== */
+/* Index
+/* ======================================================== */
 ;(function($, window, undefined){
     'use strict';
 
@@ -177,8 +180,8 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
      * @version 1.0.0
 	**/
 	Helper.log = function(message, type, alertlog){
-		if(window.debugging){
-			alertlog = (typeof alertlog === 'undefined') ? false : true;
+		if(window.helper_log){
+			alertlog = (typeof alertlog === 'undefined') ? true : false;
 			if(typeof console === 'undefined' || typeof console.log === 'undefined'){
 				if(alertlog){
 					alert(message);
@@ -292,14 +295,18 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
      * @since 1.0.0
      * @version 1.0.0
      */
-    Helper.ajax = function(url, request, type, preloader_el){
+    Helper.ajax = function(url, request, type, dataType, preloader_el){
+		// Set datatype.
+		dataType = (typeof dataType === 'undefined') ? 'JSON' : dataType;
     	// Set type.
 		type = (typeof type === 'undefined') ? 'POST' : type;
+    	// Set preloader.
+		preloader_el = (typeof preloader_el === 'undefined') ? $('body') : preloader_el;
 		// Request.
         return $.ajax({
             url     : url,
             type    : type,
-            dataType: 'JSON',
+            dataType: dataType,
             data    : {
                 'ajaxrequest': true,
                 'request': request
@@ -383,7 +390,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
     **/
     Module.prototype.equal_heights = function(){
         // DOM check.
-        if(!$('.js-eh').length){
+        if($('.js-eh').length){
             // Init plugin.
             $('.js-eh').equalHeights();
         };
@@ -398,7 +405,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
     **/
     Module.prototype.google_map = function(){
         // DOM check.
-        if(!$('.js-google-map').length){
+        if($('.js-google-map').length){
             // Init plugin.
             $('.js-google-map').googlemap({
                 locations: [
@@ -417,7 +424,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
     **/
     Module.prototype.lightboxes = function(){
         // DOM check.
-        if(!$('.js-lightbox').length){
+        if($('.js-lightbox').length){
             // Init plugin.
             $('.js-lightbox').fancybox({
                 autoWidth    : true,
@@ -437,7 +444,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
     **/
     Module.prototype.modals = function(){
         // DOM check.
-        if(!$('.js-modal').length){
+        if($('.js-modal').length){
             // Init plugin.
             $('.js-modal').modal();
             // Init plugin on load (or function call).
@@ -526,7 +533,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
      * @version 1.0.0
     **/
     Module = function(){
-		this.primary = $('.nav-primary');
+    	this.primary = null;
     }
 
 	/**
@@ -541,6 +548,8 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
 		// Start binds on window load / resize.
 		$(window).on('load resize',function(){
+			_this.primary = $('.nav-primary');
+
 			return _this.binds();
 		});
 	}

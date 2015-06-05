@@ -58,7 +58,7 @@
     **/
     Module.prototype.equal_heights = function(){
         // DOM check.
-        if(!$('.js-eh').length){
+        if($('.js-eh').length){
             // Init plugin.
             $('.js-eh').equalHeights();
         };
@@ -73,7 +73,7 @@
     **/
     Module.prototype.google_map = function(){
         // DOM check.
-        if(!$('.js-google-map').length){
+        if($('.js-google-map').length){
             // Init plugin.
             $('.js-google-map').googlemap({
                 locations: [
@@ -92,7 +92,7 @@
     **/
     Module.prototype.lightboxes = function(){
         // DOM check.
-        if(!$('.js-lightbox').length){
+        if($('.js-lightbox').length){
             // Init plugin.
             $('.js-lightbox').fancybox({
                 autoWidth    : true,
@@ -112,7 +112,7 @@
     **/
     Module.prototype.modals = function(){
         // DOM check.
-        if(!$('.js-modal').length){
+        if($('.js-modal').length){
             // Init plugin.
             $('.js-modal').modal();
             // Init plugin on load (or function call).

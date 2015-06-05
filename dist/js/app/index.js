@@ -10,9 +10,12 @@
 // Global settings.
 window.mobile_breakpoint = 768;
 window.wiselinks_enabled = true;
-window.helper_log         = (typeof window.gulp_env == "undefined" || window.gulp_env == 'development') ? true : false;
+window.helper_log        = (typeof window.gulp_env == "undefined" || window.gulp_env == 'development') ? true : false;
 window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
+/* ======================================================== */
+/* Index
+/* ======================================================== */
 ;(function($, window, undefined){
     'use strict';
 

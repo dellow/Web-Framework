@@ -12,6 +12,9 @@
 	&--small {
 		max-width: $tablet;
 	}
+	&--medium {
+		max-width: 960px;
+	}
 	&--wide {
 		max-width: $desktop--wide;
 	}
