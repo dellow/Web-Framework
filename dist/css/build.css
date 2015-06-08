@@ -668,11 +668,11 @@ body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
 
 /* -- Hide Elements -- */
 .u-hidden {
-  display: none;
+  display: none !important;
 }
 
 .u-show {
-  display: block;
+  display: block !important;
 }
 
 /* -- Vertical Alignment -- */
@@ -880,6 +880,9 @@ hr.hr__styled-seperator {
 }
 .container--small {
   max-width: 768px;
+}
+.container--medium {
+  max-width: 960px;
 }
 .container--wide {
   max-width: 1400px;
@@ -1746,8 +1749,20 @@ ul.alert.box li {
    from the `.bg` class by being naturally padded to provide content space.
 ========================================================================== */
 .slab {
+  padding: 24px 0px;
+  padding: 1.5rem 0px;
+}
+.slab--x2 {
   padding: 48px 0px;
   padding: 3rem 0px;
+}
+.slab--x3 {
+  padding: 72px 0px;
+  padding: 4.5rem 0px;
+}
+.slab--x4 {
+  padding: 96px 0px;
+  padding: 6rem 0px;
 }
 
 /* -- Slab colors -- */
