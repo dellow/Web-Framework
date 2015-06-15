@@ -13,6 +13,7 @@
 1. [Sync](#sync)
 1. [PageSpeed](#pagespeed)
 1. [Testing](#testing)
+1. [Release](#release)
 1. [Working with SCSS](#working-with-scss)
 	1. [Debug Mode](#working-with-scss--debug-mode)
 	1. [Dev Mode](#working-with-scss--dev-mode)
@@ -149,6 +150,14 @@ Client side JavaScript testing is done with Jasmine via Karma.
 Browser testing is done with DalekJS.
 
 _Documentation coming soon_
+
+<a name="release"></a>
+## Release
+There is a very simple release task which simply copies all the non-build files in the `src` directory to a `release` directory. The actual release directory will be suffixed with the version number set in the Gulpfile. If you do not increment the version number each subsequent release will overwrite the last.
+
+Files that will not be copied to the new release are:
+* Any file with extension `.scss`
+* Any JS files not in the `build` directory.
 
 <a name="working-with-scss"></a>
 ## Working with SCSS

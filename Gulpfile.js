@@ -445,3 +445,25 @@ gulp.task('sprite', function(){
 	    }))
 	    .pipe(gulpif('*.png', gulp.dest(dist_dir + 'images/icons'), gulp.dest(dist_dir + 'css/scss/site')))
 });
+
+
+
+/* =========================================================================== */
+/* Release
+/* =========================================================================== */
+gulp.task('release', function(){
+	// Vars.
+	var files = [
+        './src/**/*.*',
+        '!./src/**/*.scss',
+        '!./src/dist/js/app/**/*',
+        '!./src/dist/js/compiled/**/*',
+        '!./src/dist/js/plugins/**/*',
+        '!./src/dist/js/spec/**/*',
+        '!./src/dist/js/vendor/**/*',
+    ];
+
+    // Task.
+	return gulp.src(files, {base: src_dir})
+		.pipe(gulp.dest('releases/release-' + version));
+});
