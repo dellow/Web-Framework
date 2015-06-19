@@ -85,24 +85,21 @@ gulp.task('js', ['js_app'], function(){
 /* =========================================================================== */
 gulp.task('css', function(){
 	// Require.
-	var compass = require('gulp-compass'),
+	var sass         = require('gulp-sass'),
+		sourcemaps   = require('gulp-sourcemaps'),
 		autoprefixer = require('gulp-autoprefixer');
 
 	// Task.
 	return gulp.src(dist_dir + 'css/scss/**/*.scss')
-		.pipe(compass({
-			css             : dist_dir + 'css',
-			sass            : dist_dir + 'css/scss',
-			sourcemap       : true,
-			force           : true,
-			relativeAssets  : true,
-			noLineComments  : true,
-			assetCacheBuster: false
-		}))
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+	        outputStyle: 'expanded'
+	    }))
         .pipe(autoprefixer({
             browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
             cascade: false
         }))
+        .pipe(sourcemaps.write('/', {includeContent: false}))
 		.pipe(gulp.dest(dist_dir + 'css'));
 });
 

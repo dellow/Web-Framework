@@ -1,6 +1,6 @@
 {
   "name": "Framework Library",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "private": true,
   "authors": [
     "Stew Dellow <stewdellow@gmail.com>"
@@ -22,7 +22,6 @@
   "ignore": [
     "node_modules",
     "bower_components",
-    "gulp",
     "Gulpfile.js",
     "bower.json",
     "package.json",

@@ -3,7 +3,6 @@
     "browserify": "^9.0.8",
     "browserify-shim": "^3.8.5",
     "gulp": "^3.6.11",
-    "gulp-compass": "^2.0.4",
     "gulp-jasmine": "^2.0.1",
     "gulp-jshint": "^1.10.0",
     "gulp-rename": "^1.2.2",
@@ -29,9 +28,8 @@
     "dalek-reporter-junit": "0.0.2",
     "dalek-browser-chrome": "0.0.11",
     "gulp-autoprefixer": "^2.3.0",
-    "gulp-concat": "^2.5.2",
-    "merge-stream": "^0.1.7",
-    "gulpt": "^0.1.2"
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-sass": "^2.0.1"
   },
   "dependencies": {
     "jquery": "*",
