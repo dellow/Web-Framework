@@ -1,7 +1,7 @@
 # Project Library
 
 ## About
-SASS/Compass & JavaScript Library. Use independently within your own project or can be installed automatically by cloning the [Project Wrapper](https://github.com/sdellow/Project-Wrapper) repository instead to create a full framework and workflow.
+CSS & JavaScript Library. Use independently within your own project or can be installed automatically by cloning the [Project Wrapper](https://github.com/sdellow/Project-Wrapper) repository instead to create a full framework and workflow.
 
 ## Install
 You can use this independently in your own project either via cloning this repo and using the `dist` directory. Or simply by using bower and running:
