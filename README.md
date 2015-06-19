@@ -16,7 +16,6 @@
 1. [Release](#release)
 1. [Working with SCSS](#working-with-scss)
 	1. [Debug Mode](#working-with-scss--debug-mode)
-	1. [Dev Mode](#working-with-scss--dev-mode)
 	1. [BEM](#working-with-scss--bem)
 	1. [Responsive](#working-with-scss--responsive)
 1. [Working with JavaScript](#working-with-javascript)
@@ -39,7 +38,6 @@ This is a fast project wrapper and workflow that utilises Gulp as a build tool. 
 
 ### Gems
 - [SASS 3.4.9](https://rubygems.org/gems/sass/versions/3.4.9)
-- [Compass 1.0.1](https://rubygems.org/gems/compass/versions/1.0.1)
 
 > __Please note:__ Providing you have Bundler installed required Gems will automatically install for you when using the automatic installer method below.
 
@@ -168,10 +166,6 @@ Running Gulp in default mode with `gulp` or production mode with `gulp --config 
 <a name="working-with-scss--debug-mode"></a>
 ### Debug Mode
 By default debug mode is on but will only work in the default Gulp environment which is `development` mode. Adapted from [Harry Roberts' inuit.css](https://github.com/csswizardry/inuit.css), this will provide hints for potentially incorrect markup. You can override debug mode for a particular file by adding the `no-debug` class to the body.
-
-<a name="working-with-scss--dev-mode"></a>
-### Dev Mode
-The `site/_dev` partial is for experimental CSS that is only compiled in the default Gulp environment which is `development` mode. Any CSS in here will not compile on `gulp` or `gulp --config production`.
 
 <a name="working-with-scss--bem"></a>
 ### BEM Syntax

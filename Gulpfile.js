@@ -132,7 +132,8 @@ gulp.task('js', ['js_app'], function(){
 /* =========================================================================== */
 gulp.task('css', function(){
 	// Require.
-	var compass      = require('gulp-compass'),
+	var sass         = require('gulp-sass'),
+		sourcemaps   = require('gulp-sourcemaps'),
 		autoprefixer = require('gulp-autoprefixer');
 
 	// Header template.
@@ -146,23 +147,15 @@ gulp.task('css', function(){
 
 	// Task.
 	return gulp.src(dist_dir + 'css/scss/**/*.scss')
-		.pipe(compass({
-			style         : (is_production) ? 'compressed' : 'expanded',
-			environment   : (is_production) ? 'production' : 'development',
-			css           : dist_dir + 'css',
-			sass          : dist_dir + 'css/scss',
-			sourcemap     : (is_production) ? false : true,
-			logging       : (is_production) ? false : true,
-			force         : true,
-			relativeAssets: true,
-			noLineComments: true
-		}))
-		.on('error', task_handler)
-	    .pipe(buffer())
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+	        outputStyle: (is_production) ? 'compressed' : 'expanded'
+	    }))
         .pipe(autoprefixer({
             browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
             cascade: false
         }))
+        .pipe(sourcemaps.write('/', {includeContent: false}))
 		.pipe(header(header_tpl, {
 			type   : (is_production) ? 'Minified' : 'Unminified',
 			version: version,
