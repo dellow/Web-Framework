@@ -1,8 +1,7 @@
 /* ==========================================================================
    Base > Config > Debug
    Useful debug operations. Adapted from inuit.css by Harry Roberts.
-   Compass environment must be in 'development' mode and the $debug_mode
-   var set to true for this to work.
+   $debug_mode var must be set to true for this to work.
    Will display debug messages where applicable, using ::after pseudo
    classes. Pseudo classes only work on container elements.
 
@@ -10,7 +9,7 @@
    Yellow == Needs checking
    None   == No problemo!
 ========================================================================== */
-@if compass-env() == 'development' and $debug_mode == true {
+@if $debug_mode == true {
 	// Vars
 	$debug_outline_px: 2px;
 

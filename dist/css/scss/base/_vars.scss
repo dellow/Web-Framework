@@ -6,7 +6,7 @@
 /**
 * Config
 **/
-// Debug mode - Compass environment must be in 'development' mode for this to work.
+// Debug mode
 $debug_mode: false !default;
 // Mobule first - If true the 'respond-to' mixin by default uses `min-width`, if false it uses `max-width`.
 $mobile_first: false !default;

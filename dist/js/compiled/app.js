@@ -219,7 +219,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 		// Clone element.
 		var clone = el.clone();
 		// Place above viewport and measure height.
-		var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto'}).prependTo($('body')).height();
+		var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto'}).prependTo(el.parent()).outerHeight();
 		// Destroy the clone.
 		clone.remove();
 
