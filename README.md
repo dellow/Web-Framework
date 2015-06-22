@@ -241,7 +241,7 @@ By default the Framework is set to a Desktop First approach. This can (and proba
 
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
-All JavaScript modules should be added in `app` directory - these files will be compiled by Gulp into a global `main.js` file.
+All JavaScript modules should be added in `app` directory - these files will be compiled by Gulp into a global `build.js` file.
 
 <a name="working-with-javascript--requiring-new-files"></a>
 ### Requiring New Files
