@@ -52,84 +52,9 @@ gulp.task('default', [
 
 
 /* =========================================================================== */
-/* JS (Common)
-/* =========================================================================== */
-gulp.task('js_common', function(){
-	// Require.
-	var browserify = require('browserify'),
-		rename     = require('gulp-rename');
-
-	// Task.
-	return browserify(dist_dir + 'js/vendor/').bundle()
-		.on('error', task_handler)
-		.pipe(source('index.js'))
-	    .pipe(buffer())
-		.pipe(rename('common.js'))
-		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
-});
-
-
-
-/* =========================================================================== */
-/* JS (App)
-/* =========================================================================== */
-gulp.task('js_app', function(){
-	// Require.
-	var browserify = require('browserify'),
-		rename     = require('gulp-rename');
-
-	// Task.
-	return browserify(dist_dir + 'js/app/').bundle()
-		.on('error', task_handler)
-	    .pipe(source('index.js'))
-	    .pipe(buffer())
-		.pipe(rename('app.js'))
-		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
-});
-
-
-
-/* =========================================================================== */
-/* JS (Master)
-/* =========================================================================== */
-gulp.task('js', ['js_app'], function(){
-	// Require.
-	var concat = require('gulp-concat'),
-		uglify = require('gulp-uglify');
-
-	// Header template.
-	var header_tpl_env = ['// Set environment variable',
-	'window.gulp_env = "<%= env %>";',
-	'',
-	''].join('\n');
-	var header_tpl = ['/* ==========================================================================',
-		'<%= type %> JavaScript',
-		'Application Version: <%= version %>',
-		'Compiled: <%= date %>',
-		'========================================================================== */',
-		'',
-		''].join('\n');
-
-	// Task.
-	return gulp.src([dist_dir + 'js/compiled/common.js', dist_dir + 'js/compiled/app.js'])
-	    .pipe(concat('build.js'))
-		.pipe(header(header_tpl_env, {
-			env: (is_production) ? 'production' : 'development'
-		}))
-		.pipe(gulpif(is_production, uglify()))
-		.pipe(header(header_tpl, {
-			type   : (is_production) ? 'Minified' : 'Unminified',
-			version: version,
-			date   : Date()
-		}))
-	    .pipe(gulp.dest(dist_dir + 'js/build'));
-});
-
-
-
-/* =========================================================================== */
 /* CSS
 /* =========================================================================== */
+// CSS Build File.
 gulp.task('css', function(){
 	// Require.
 	var sass         = require('gulp-sass'),
@@ -167,21 +92,70 @@ gulp.task('css', function(){
 
 
 /* =========================================================================== */
-/* Images
+/* JavaScript Compiling
 /* =========================================================================== */
-gulp.task('images', function(){
+// JS Common Libraries & Vendors.
+gulp.task('js_common', function(){
 	// Require.
-	var imagemin = require('gulp-imagemin')
-		cache	 = require('gulp-cache');
+	var browserify = require('browserify'),
+		rename     = require('gulp-rename');
 
 	// Task.
-    return gulp.src(dist_dir + 'images/**/*')
-        .pipe(cache(imagemin({
-            optimizationLevel: 3,
-            progressive      : true,
-            interlaced       : true
-        })))
-        .pipe(gulp.dest(dist_dir + 'images'));
+	return browserify(dist_dir + 'js/vendor/').bundle()
+		.on('error', task_handler)
+		.pipe(source('index.js'))
+	    .pipe(buffer())
+		.pipe(rename('common.js'))
+		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
+});
+
+// JS Application Files.
+gulp.task('js_app', function(){
+	// Require.
+	var browserify = require('browserify'),
+		rename     = require('gulp-rename');
+
+	// Task.
+	return browserify(dist_dir + 'js/app/').bundle()
+		.on('error', task_handler)
+	    .pipe(source('index.js'))
+	    .pipe(buffer())
+		.pipe(rename('app.js'))
+		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
+});
+
+// JS Build File (Concatenated App & Common).
+gulp.task('js', ['js_app'], function(){
+	// Require.
+	var concat = require('gulp-concat'),
+		uglify = require('gulp-uglify');
+
+	// Header template.
+	var header_tpl_env = ['// Set environment variable',
+	'window.gulp_env = "<%= env %>";',
+	'',
+	''].join('\n');
+	var header_tpl = ['/* ==========================================================================',
+		'<%= type %> JavaScript',
+		'Application Version: <%= version %>',
+		'Compiled: <%= date %>',
+		'========================================================================== */',
+		'',
+		''].join('\n');
+
+	// Task.
+	return gulp.src([dist_dir + 'js/compiled/common.js', dist_dir + 'js/compiled/app.js'])
+	    .pipe(concat('build.js'))
+		.pipe(header(header_tpl_env, {
+			env: (is_production) ? 'production' : 'development'
+		}))
+		.pipe(gulpif(is_production, uglify()))
+		.pipe(header(header_tpl, {
+			type   : (is_production) ? 'Minified' : 'Unminified',
+			version: version,
+			date   : Date()
+		}))
+	    .pipe(gulp.dest(dist_dir + 'js/build'));
 });
 
 
@@ -199,7 +173,7 @@ gulp.task('watch', function(){
 
 
 /* =========================================================================== */
-/* Sync
+/* Sync (BrowserSync)
 /* =========================================================================== */
 gulp.task('sync', function(){
 	// Require.
@@ -251,8 +225,9 @@ gulp.task('sync', function(){
 
 
 /* =========================================================================== */
-/* Dalek (Development)
+/* Testing
 /* =========================================================================== */
+// Dalek - Browser Testing (Development Mode Only).
 gulp.task('dalek', function(){
 	// Check environment.
 	if(!is_development){return;}
@@ -284,11 +259,7 @@ gulp.task('dalek', function(){
 		);
 });
 
-
-
-/* =========================================================================== */
-/* Jasmine (Development)
-/* =========================================================================== */
+// Jasmine - Client Testing (Development Mode Only).
 gulp.task('jasmine', function(){
 	// Check environment.
 	if(!is_development){return;}
@@ -312,8 +283,9 @@ gulp.task('jasmine', function(){
 
 
 /* =========================================================================== */
-/* JSHint (Development)
+/* Task Tools
 /* =========================================================================== */
+// JSHint (Development Mode Only).
 gulp.task('jshint', function(){
 	// Check environment.
 	if(!is_development){return;}
@@ -328,11 +300,68 @@ gulp.task('jshint', function(){
 	    .pipe(jshint.reporter(stylish));
 });
 
+// Image Minification.
+gulp.task('images', function(){
+	// Require.
+	var imagemin = require('gulp-imagemin')
+		cache	 = require('gulp-cache');
+
+	// Task.
+    return gulp.src(dist_dir + 'images/**/*')
+        .pipe(cache(imagemin({
+            optimizationLevel: 3,
+            progressive      : true,
+            interlaced       : true
+        })))
+        .pipe(gulp.dest(dist_dir + 'images'));
+});
+
 
 
 /* =========================================================================== */
-/* PageSpeed
+/* One Off Tools
 /* =========================================================================== */
+// Image Sprites.
+gulp.task('sprite', function(){
+	// Require.
+	var sprite = require('css-sprite').stream;
+
+	// Task.
+	return gulp.src(dist_dir + 'images/icons/sprite/*.png')
+	    .pipe(sprite({
+			base64     : false,
+			retina     : false,
+			background : '#FFFFFF',
+			margin     : 5,
+			orientation: 'horizontal',
+			prefix     : 'css-sprite',
+			name       : 'sprite',
+			style      : dist_dir + 'css/scss/site/_sprites.scss',
+			cssPath    : '../images/icons/',
+			processor  : 'scss'
+	    }))
+	    .pipe(gulpif('*.png', gulp.dest(dist_dir + 'images/icons'), gulp.dest(dist_dir + 'css/scss/site')))
+});
+
+// App release.
+gulp.task('release', function(){
+	// Vars.
+	var files = [
+        './src/**/*.*',
+        '!./src/**/*.scss',
+        '!./src/dist/js/app/**/*',
+        '!./src/dist/js/compiled/**/*',
+        '!./src/dist/js/plugins/**/*',
+        '!./src/dist/js/spec/**/*',
+        '!./src/dist/js/vendor/**/*',
+    ];
+
+    // Task.
+	return gulp.src(files, {base: src_dir})
+		.pipe(gulp.dest('releases/release-' + version));
+});
+
+// Google Page Speed Tests.
 gulp.task('psi', function(){
 	// Require.
 	var psi = require('psi'),
@@ -411,52 +440,4 @@ gulp.task('psi', function(){
 			console.log("Log has been recorded to: " + file);
 		});
 	});
-});
-
-
-
-/* =========================================================================== */
-/* Sprite
-/* =========================================================================== */
-gulp.task('sprite', function(){
-	// Require.
-	var sprite = require('css-sprite').stream;
-
-	// Task.
-	return gulp.src(dist_dir + 'images/icons/sprite/*.png')
-	    .pipe(sprite({
-			base64     : false,
-			retina     : false,
-			background : '#FFFFFF',
-			margin     : 5,
-			orientation: 'horizontal',
-			prefix     : 'css-sprite',
-			name       : 'sprite',
-			style      : dist_dir + 'css/scss/site/_sprites.scss',
-			cssPath    : '../images/icons/',
-			processor  : 'scss'
-	    }))
-	    .pipe(gulpif('*.png', gulp.dest(dist_dir + 'images/icons'), gulp.dest(dist_dir + 'css/scss/site')))
-});
-
-
-
-/* =========================================================================== */
-/* Release
-/* =========================================================================== */
-gulp.task('release', function(){
-	// Vars.
-	var files = [
-        './src/**/*.*',
-        '!./src/**/*.scss',
-        '!./src/dist/js/app/**/*',
-        '!./src/dist/js/compiled/**/*',
-        '!./src/dist/js/plugins/**/*',
-        '!./src/dist/js/spec/**/*',
-        '!./src/dist/js/vendor/**/*',
-    ];
-
-    // Task.
-	return gulp.src(files, {base: src_dir})
-		.pipe(gulp.dest('releases/release-' + version));
 });
