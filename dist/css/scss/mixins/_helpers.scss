@@ -24,7 +24,7 @@
 
     @each $var in $px {
         @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
-            $return: append($return, #{$var/16px}$unit, space);
+            $return: append($return, #{$var/16px}+$unit, space);
         }
         @else {
             $return: append($return, $var, space);
