@@ -1,22 +1,22 @@
 @charset "UTF-8";
 
 // 1. Fonts
-@import 'site/fonts';
+@import 'fonts';
 
 // 2. Mixins
-@import 'mixins/#all';
+@import 'mixins/**/*';
 
-// 3. Config vars
-@import 'base/vars';
+// 3. Base vars
+@import 'vars_base';
 
 // 4. Site vars
-@import 'site/vars';
+@import 'vars_site';
 
-// 5. Knife
-@import 'mixins/vendor/knife';
+// 5. Vendors
+@import 'vendor/**/*';
 
 // 6. Base
 @import 'base/#all';
 
 // 7. Site
-@import 'site/#all';
+@import 'site/**/*';
