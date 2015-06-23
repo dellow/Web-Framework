@@ -59,6 +59,7 @@ gulp.task('css', function(){
 	// Require.
 	var sass         = require('gulp-sass'),
 		sourcemaps   = require('gulp-sourcemaps'),
+		globbing     = require('gulp-css-globbing'),
 		autoprefixer = require('gulp-autoprefixer');
 
 	// Header template.
@@ -71,7 +72,10 @@ gulp.task('css', function(){
 		''].join('\n');
 
 	// Task.
-	return gulp.src(dist_dir + 'css/scss/**/*.scss')
+	return gulp.src(dist_dir + 'css/scss/build.scss')
+		.pipe(globbing({
+			extensions: ['.scss']
+		}))
         .pipe(sourcemaps.init())
         .pipe(sass({
 	        outputStyle: (is_production) ? 'compressed' : 'expanded'
