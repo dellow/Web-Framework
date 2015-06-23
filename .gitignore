@@ -4,6 +4,7 @@
 # ---------------------------------------------------------------------------------
 bower_components/
 node_modules/
+releases/
 .sass-cache/
 .vagrant/
 **/logs/

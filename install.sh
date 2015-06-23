@@ -1,61 +1,46 @@
 #!/bin/bash
-#
-# install.sh
-#
-# HOW TO USE:
-# 1. Run
-#	bash install.sh
-#
-# NOTES:
-# This script will installs dependencies with NPM and Bower and
-# clean redundant files.
-#
-
-echo -e "\n------------------------------------------------"
-echo -e "Installation in progress. Please wait..."
 
 # ---------------------------------------------------------------------------
-# Vars.
+# Vars & Config.
 # ---------------------------------------------------------------------------
 #
-# Set the start time
-start_seconds="$(date +%s)"
+# Set the start time.
+START_SECONDS="$(date +%s)"
+
+
 
 # ------------------------------------------------------------------------
-# Remove initial `.git` directory.
+# Clean redundant directories and files
 # ------------------------------------------------------------------------
 #
-echo -e "Removing initial .git directory..."
-rm -rf .git/         && \
+# Dir - .git
+rm -rf .git/
+# Dir - .sass-cache
+rm -rf .sass-cache/
+# File - .gitkeep
+find . -name ".gitkeep" -print0 | xargs -0 rm -rf
 
-# ------------------------------------------------------------------------
-# Remove the `.sass-cache` directory.
-# ------------------------------------------------------------------------
-#
-echo -e "Removing .sass-cache directory..."
-rm -rf .sass-cache/  && \
+## Report.
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Removed redundant directories and files...$(tput sgr0)"
+echo -e "------------------------------------------------"
 
-# ------------------------------------------------------------------------
-# Remove .gitkeep files.
-# ------------------------------------------------------------------------
-#
-echo -e "Removing any .gitkeep files..."
-find . -name ".gitkeep" -print0 | xargs -0 rm -rf  && \
+
 
 # ------------------------------------------------------------------------
 # Initialize a new Git instance.
 # ------------------------------------------------------------------------
 #
-echo -e "Initialize new Git instance..."
-git init             && \
+# Command.
+git init
 
-# ------------------------------------------------------------------------
-# Remove the install script.
-# ------------------------------------------------------------------------
-#
-rm install.sh        && \
+## Report.
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Initialized new Git instance...$(tput sgr0)"
+echo -e "------------------------------------------------"
 
-echo -e "$(tput setaf 2)Some questions for you:$(tput sgr0)"
+
+
 # ------------------------------------------------------------------------
 # README
 # ------------------------------------------------------------------------
@@ -63,11 +48,18 @@ echo -e "$(tput setaf 2)Some questions for you:$(tput sgr0)"
 if [[ -e ./README.md ]]; then
 	read -p "$(tput setaf 5)Do you need the Readme file? y/n $(tput sgr0)" choice
 	if [[ $choice = "n" ]]; then
-		echo -e "$(tput setaf 3)Removing README.md...$(tput sgr0)"
+		# Command.
 		rm ./README.md
+
+		## Report.
+		echo -e "------------------------------------------------"
+		echo -e "$(tput setaf 2)Removed README.md file...$(tput sgr0)"
+		echo -e "------------------------------------------------"
 	fi
 	printf "\n"
 fi
+
+
 
 # ------------------------------------------------------------------------
 # htaccess
@@ -76,11 +68,18 @@ fi
 if [[ -e ./src/.htaccess ]]; then
 	read -p "$(tput setaf 5)Do you need the htaccess file? y/n $(tput sgr0)" choice
 	if [[ $choice = "n" ]]; then
-		echo -e "$(tput setaf 3)Removing .htaccess...$(tput sgr0)"
+		# Command.
 		rm ./src/.htaccess
+
+		## Report.
+		echo -e "------------------------------------------------"
+		echo -e "$(tput setaf 2)Removed .htaccess file...$(tput sgr0)"
+		echo -e "------------------------------------------------"
 	fi
 	printf "\n"
 fi
+
+
 
 # ------------------------------------------------------------------------
 # robots.txt
@@ -89,11 +88,18 @@ fi
 if [[ -e ./src/robots.txt ]]; then
 	read -p "$(tput setaf 5)Do you need the robots.txt file? y/n $(tput sgr0)" choice
 	if [[ $choice = "n" ]]; then
-		echo -e "$(tput setaf 3)Removing robots.txt...$(tput sgr0)"
+		# Command.
 		rm ./src/robots.txt
+
+		## Report.
+		echo -e "------------------------------------------------"
+		echo -e "$(tput setaf 2)Removed robots.txt file...$(tput sgr0)"
+		echo -e "------------------------------------------------"
 	fi
 	printf "\n"
 fi
+
+
 
 # ------------------------------------------------------------------------
 # Check for a commit.
@@ -101,68 +107,119 @@ fi
 #
 read -p "$(tput setaf 5)Do you want to do an initial commit? y/n $(tput sgr0)" choice
 if [[ $choice = "y" ]]; then
-	echo -e "$(tput setaf 3)Will do initial commit after install$(tput sgr0)"
+	# Command.
 	INITIAL_COMMIT=true
+
+	## Report.
+	echo -e "------------------------------------------------"
+	echo -e "$(tput setaf 2)Will do initial commit after install...$(tput sgr0)"
+	echo -e "------------------------------------------------"
 fi
 printf "\n"
+
+
 
 # ------------------------------------------------------------------------
 # Update / get dependencies with Bundler.
 # ------------------------------------------------------------------------
 #
-echo -e "Getting Bundler dependencies..."
-bundle install                                        && \
+# Command.
+bundle install
+
+## Report.
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Got Bundler dependencies...$(tput sgr0)"
+echo -e "------------------------------------------------"
+
+
 
 # ------------------------------------------------------------------------
 # Update / get dependencies with Bower.
 # ------------------------------------------------------------------------
 #
-echo -e "Getting Bower dependencies..."
-bower install                                        && \
+# Command.
+bower install
+
+## Report.
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Got Bower dependencies...$(tput sgr0)"
+echo -e "------------------------------------------------"
+
+
 
 # ------------------------------------------------------------------------
 # Update / get dependencies with NPM.
 # ------------------------------------------------------------------------
 #
-echo -e "Getting NPM dependencies..."
-npm install                                          && \
+# Command.
+npm install
+
+## Report.
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Got NPM dependencies...$(tput sgr0)"
+echo -e "------------------------------------------------"
+
+
 
 # ------------------------------------------------------------------------
-# Move bower dependency.
+# Move /dist/ folder to /src/
 # ------------------------------------------------------------------------
 #
-echo -e "Moving /dist/ directory to it's new home..."
-cp -r bower_components/framework-library/dist ./src  && \
+# Command.
+cp -r bower_components/framework-library/dist ./src
+
+## Report.
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Moved /dist/ directory to it's new home...$(tput sgr0)"
+echo -e "------------------------------------------------"
+
+
 
 # ------------------------------------------------------------------------
 # Git commit.
 # ------------------------------------------------------------------------
 #
 if [ "$INITIAL_COMMIT" = true ] ; then
-	echo -e "Adding files to Git..."
 	git add --all
-	echo -e "Committing files to Git..."
 	git commit -am "Initial commit"
+
+	## Report.
+	echo -e "------------------------------------------------"
+	echo -e "$(tput setaf 2)Done initial Git commit...$(tput sgr0)"
+	echo -e "------------------------------------------------"
 fi
 printf "\n"
+
+
 
 # ------------------------------------------------------------------------
 # Create a dev branch.
 # ------------------------------------------------------------------------
 #
-echo -e "Creating a dev branch..."
+# Command.
 git branch dev
+
+## Report.
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Created dev branch...$(tput sgr0)"
+echo -e "------------------------------------------------"
+
+
 
 # ---------------------------------------------------------------------------
 # Complete.
 # ---------------------------------------------------------------------------
 #
-end_seconds="$(date +%s)"
-echo -e "$(tput setaf 2)Framework installed successfully in "$(expr $end_seconds - $start_seconds)" seconds$(tput sgr0)"
-echo -e "------------------------------------------------\n"
+END_SECONDS="$(date +%s)"
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Framework successfully installed in "$(expr $END_SECONDS - $START_SECONDS)" seconds$(tput sgr0)"
+echo -e "------------------------------------------------"
+
+
 
 # ------------------------------------------------------------------------
 # Run a Git status.
 # ------------------------------------------------------------------------
 #
+# Command.
 git status
