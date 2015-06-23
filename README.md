@@ -119,7 +119,7 @@ The tasks that are run in the `watch` task are:
 - JS (On .js and .hbs files under the `app` directory)
 - CSS (On .scss files under the `scss` directory)
 
-> __Please note:__ The `watch` task will minify CSS and JS.
+> __Please note:__ The `watch` task will minify CSS and JS if run without any arguments.
 
 <a name="sync"></a>
 ## Sync (Using _BrowserSync_)
@@ -133,7 +133,7 @@ The `gulp sync` command takes an optional parameter to provide a proxy URL, for 
 
 By default `gulp sync` will also use the xip.io service for Wildcard DNS. This means you can use font services like fonts.com and typekit.com locally. You can disable xip.io by providing the `--xip=false` parameter e.g. `gulp sync --xip=false`.
 
-> __Please note:__ The `sync` task will minify CSS and JS.
+> __Please note:__ The `sync` task will minify CSS and JS if run without any arguments.
 
 <a name="pagespeed"></a>
 ## PageSpeed
@@ -288,3 +288,6 @@ Inserts a pre-defined preloader in the given element. Can also destroy a created
 ## Troubleshooting
 ##### The `gulp sync` command with a valid `url` argument loads an empty page.
 Try running with the `xip=false` argument. If this works you're router probably blocks the xip.io service (and other wildcard services). You can fix this by using an alternative DNS address. Try Google's (8.8.8.8 and 8.8.4.4). You will also need to change this on your Smartphone and/or Tablet.
+
+#### Using font services with BrowserSync.
+The gulp `sync` task uses the xip.io service by default. So to use webfont services like fonts.com and typekit.com with BrowserSync all you need to do is set `*.xip.io` as one of your allowed domains in the font service settings. Your fonts will now be available on all your devices using the URL provdided via the `sync` task.
