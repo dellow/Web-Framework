@@ -432,8 +432,13 @@ gulp.task('psi', function(){
 		return arr.join(',');
 	}
 	function get_name(str){
-		var matches = url.match(/^https?\:\/\/(?:www\.)?([^\/?#]+)(?:[\/?#]|$)/i),
-			domain = matches && matches[1];
+		if(str.indexOf('http://') !=-1 || str.indexOf('https://') !=-1 || str.indexOf('www://') !=-1){
+			var matches = url.match(/^https?\:\/\/(?:www\.)?([^\/?#]+)(?:[\/?#]|$)/i),
+				domain = matches && matches[1];
+		}
+		else{
+			var domain = str;
+		}
 
 	    return domain;
 	}
