@@ -2,11 +2,14 @@
 # Anything directory a user can modify the contents of on the server side
 # should be ignored to prevent any overwriting issues.
 # ---------------------------------------------------------------------------------
-bower_components/
-node_modules/
-releases/
 .sass-cache/
 .vagrant/
+bower_components/
+dalek/
+node_modules/
+psi/
+releases/
+report/
 **/logs/
 
 

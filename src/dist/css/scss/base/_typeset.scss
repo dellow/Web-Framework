@@ -1,0 +1,157 @@
+/* ==========================================================================
+   Base > Typeset
+   App fonts and type settings.
+========================================================================== */
+/* -- HTML -- */
+html {
+	@include khtml();
+}
+
+/* -- Body -- */
+body {
+	@include kbody();
+    font-family: $font_family_base;
+	word-wrap: break-word;
+	color: color(copy, body);
+}
+
+/* -- Heading Formatting -- */
+h1, h2, h3, h4, h5, h6 {
+	font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	&.collapse-margin {
+		margin: 0;
+	}
+	&:first-child {
+		margin-top: 0;
+	}
+}
+h1, .alpha {
+	@include ktype(5, 1, 0.5);
+}
+h2, .beta {
+	@include ktype(4, 1, 0.5);
+}
+h3, .gamma {
+	@include ktype(3, 1, 0.5);
+}
+h4, .delta {
+	@include ktype(2, 1, 0.5);
+}
+h5, .epsilon {
+	@include ktype(1, 1, 0);
+}
+h6, .zeta {
+	@include ktype(0, 1, 0);
+}
+
+/* -- General Type & Rhythm -- */
+blockquote, dl, figure, ol, p, pre, ul {
+	@include ktype(0, 0, 0.75);
+}
+
+/* -- General Formatting -- */
+// Global.
+p, li {
+	font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+}
+
+/* -- Links, Buttons & Hover Styles -- */
+// Links.
+a, button {
+	color: color(copy, link);
+	text-decoration: none;
+	transition: color $animation ease, background $animation ease;
+	// Pseudo
+	&:hover {
+		color: color(copy, hover);
+	}
+	&:active {
+		color: color(copy, active);
+	}
+}
+
+
+/* -- Other -- */
+// Citation
+cite {
+	// Descendants
+	.cite__profession {
+		font-weight: $bold;
+	}
+}
+
+/* -- Content Areas -- */
+.page__content {
+	// Margins
+	blockquote, dl, figure, ol, p, pre, ul {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Lists.
+	ul {
+		list-style-type: disc;
+	}
+	ul, ol {
+		margin-left: 1.2em;
+		li {
+			@include nudge(margin-bottom, 0.1);
+		}
+		ul, ol {
+			margin-left: 1.2em;
+			list-style-type: circle;
+		}
+	}
+	dl {
+		dd {
+			@include nudge(margin-bottom, 0.1);
+			@include nudge(text-indent, 1);
+		}
+	}
+
+	// Leading intro paragraph.
+	&.page__content--leading-p {
+		p {
+			&:first-of-type {
+ 				@include rem(font-size, $medium);
+			}
+		}
+	}
+}
+
+/* -- Hatnotes -- */
+.page__hatnote {
+	@include nudge(padding-left, 1);
+	font-style: italic;
+}
+
+/* -- Source Formatting -- */
+p {
+	code {
+		color: color(green);
+	}
+}
+code {
+	font-weight: $regular;
+	font-family: $font_family_monospaced;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	tab-size: 4;
+}
+pre {
+	@include nudge(padding, 0.5 0.75);
+	border: 1px solid color(grey);
+	position: relative;
+	border-radius: $border_radius_base;
+	background: color(grey, light);
+}
+kbd {
+	@include nudge(padding, 0.25 0.5);
+	margin: 0 0.25em;
+	display: inline-block;
+	border: 1px solid color(grey);
+	border-radius: $border_radius_base;
+	color: color(grey, medium);
+	background: color(grey, light);
+}

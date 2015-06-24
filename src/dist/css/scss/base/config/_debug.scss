@@ -1,0 +1,195 @@
+/* ==========================================================================
+   Base > Config > Debug
+   Useful debug operations. Adapted from inuit.css by Harry Roberts.
+   $debug_mode var must be set to true for this to work.
+   Will display debug messages where applicable, using ::after pseudo
+   classes. Pseudo classes only work on container elements.
+
+   Red    == Error
+   Yellow == Needs checking
+   None   == No problemo!
+========================================================================== */
+@if $debug_mode == true {
+	// Vars
+	$debug_outline_px: 2px;
+
+	body:not(.no-debug) {
+		/* -- Debug Box -- */
+		%debug {
+			padding: 5px 10px;
+			position: absolute;
+			top: 100%; left: -2px;
+			z-index: $zindex-1;
+			font-size: 14px;
+			font-style: italic;
+			white-space: nowrap;
+			box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+		}
+		%debug-red {
+			@extend %debug;
+			color: white;
+			background: red;
+		}
+		%debug-yellow {
+			@extend %debug;
+			color: black;
+			background: yellow;
+		}
+		%debug-reset {
+			padding: 0;
+			position: static;
+			top: auto; left: auto;
+			font-size: inherit;
+			content: "";
+		}
+
+		/* -- All -- */
+		* {
+			position: relative;
+		}
+
+		/* -- Empty elements -- */
+		:empty {
+		    outline: $debug_outline_px dashed yellow;
+		    &:after {
+		    	@extend %debug-yellow;
+		    	content: "Element is empty!";
+		    }
+		}
+
+		/* -- Images -- */
+		img {
+		    outline: $debug_outline_px dashed red;
+		    &:after {
+		    	@extend %debug-red;
+		    	content: "Missing [alt] attribute";
+		    }
+		}
+		img[alt] {
+		    outline: none;
+		    &:after {
+				@extend %debug-reset;
+		    }
+		}
+		img[alt=""] {
+		    outline: $debug_outline_px dashed yellow;
+		    &:after {
+		    	@extend %debug-yellow;
+		    	content: "[alt] attribute empty";
+		    }
+		}
+
+		/* -- Anchors -- */
+		a {
+		    outline: $debug_outline_px dashed yellow;
+		    &:after {
+		    	@extend %debug-yellow;
+		    	content: "Missing [title] attribute";
+		    }
+		}
+		a[title] {
+		    outline :none;
+		    &:after {
+				@extend %debug-reset;
+		    }
+		}
+		a[href="#"],
+		a[href*="javascript"] {
+		    outline: $debug_outline_px dashed yellow;
+		    &:after {
+		    	@extend %debug-yellow;
+		    	content: "# and JavaScript calls do not belong in [href] attribute!";
+		    }
+		}
+
+		/* -- Lists -- */
+		ul, ol {
+		    > *:not(li) {
+		        outline: $debug_outline_px dashed red;
+			    &:after {
+			    	@extend %debug-red;
+			    	content: "# and JavaScript calls do not belong in [href] attribute!";
+			    }
+		    }
+		}
+
+		/* -- Tables -- */
+		th {
+		    outline: $debug_outline_px dashed yellow;
+		}
+		th[scope] {
+		    outline: none;
+		}
+		table > tr {
+		    outline: $debug_outline_px dashed yellow;
+		}
+		tbody + tfoot {
+		    outline: $debug_outline_px dashed yellow;
+		}
+
+		/* -- Forms -- */
+		form {
+			position: relative;
+		    outline: $debug_outline_px dashed red;
+		    &:after {
+		    	@extend %debug-red;
+		    	content: "Missing [action] attribute.";
+		    }
+		}
+		form[action] {
+		    outline: none;
+		    &:after {
+				@extend %debug-reset;
+		    }
+		}
+
+		/* -- Form fields and buttons -- */
+		textarea,
+		input {
+		    outline: $debug_outline_px dashed red;
+		}
+		input[type] {
+		    outline: none;
+		}
+		textarea[rows][cols] {
+		    outline: none;
+		}
+		input[type=submit] {
+		    outline: $debug_outline_px dashed red;
+		}
+		input[type=submit][value] {
+		    outline: none;
+		}
+		button {
+		    outline: $debug_outline_px dashed red;
+		    &:after {
+		    	@extend %debug-red;
+		    	content: "Missing [type] attribute";
+		    }
+		}
+		button[type=submit] {
+		    outline: none;
+		    &:after {
+				@extend %debug-reset;
+		    }
+		}
+
+		/* -- Inline styles -- */
+		[style]:not(html):not(body) {
+			outline: $debug_outline_px dashed yellow;
+		    &:after {
+		    	@extend %debug-yellow;
+		    	content: "Using an inline style!";
+		    }
+		}
+
+		/* -- IDs -- */
+		[id]:not(form):not(input):not(select):not(textarea) {
+			outline: $debug_outline_px dashed yellow;
+		    &:after {
+		    	@extend %debug-yellow;
+		    	content: "Using ID's!";
+		    }
+		}
+	}
+}

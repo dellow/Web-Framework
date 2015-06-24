@@ -1,0 +1,229 @@
+/* ==========================================================================
+   Base > Utility Classes
+   A library of classes to achieve various things. Most are prefixed
+   with a 'u-'. These should be used sparingly.
+========================================================================== */
+/* -- Messages -- */
+.msg-success {
+	color: rgba(138, 216, 54, 0.6);
+}
+.msg-error {
+	color: rgba(255, 0, 0, 0.6);
+}
+
+/* -- Clearing -- */
+.cf {
+	@extend %cf;
+}
+.clear {
+	clear: both;
+}
+
+/* -- Resetting (This is a last resort) -- */
+.u-no-width {
+	width: auto !important;
+}
+.u-no-height {
+	height: auto !important;
+}
+.u-no-margin {
+	margin: 0 !important;
+}
+.u-no-padding {
+	padding: 0 !important;
+}
+.u-no-border {
+	border: 0 !important;
+}
+.u-no-bullet {
+	list-style: none !important;
+}
+.u-no-float {
+	float: none !important;
+}
+
+/* -- Nudge -- */
+.u-nudge-top {
+	@include nudge(margin-top, 1);
+	&--x2 {
+		@include nudge(margin-top, 2);
+	}
+	&--x3 {
+		@include nudge(margin-top, 3);
+	}
+}
+.u-nudge-right {
+	@include nudge(margin-right, 1);
+	&--x2 {
+		@include nudge(margin-right, 2);
+	}
+	&--x3 {
+		@include nudge(margin-right, 3);
+	}
+}
+.u-nudge-bottom {
+	@include nudge(margin-bottom, 1);
+	&--x2 {
+		@include nudge(margin-bottom, 2);
+	}
+	&--x3 {
+		@include nudge(margin-bottom, 3);
+	}
+}
+.u-nudge-left {
+	@include nudge(margin-left, 1);
+	&--x2 {
+		@include nudge(margin-left, 2);
+	}
+	&--x3 {
+		@include nudge(margin-left, 3);
+	}
+}
+
+/* -- Pad -- */
+.u-pad-top {
+	@include nudge(padding-top, 1);
+	&--x2 {
+		@include nudge(margin-top, 2);
+	}
+	&--x3 {
+		@include nudge(margin-top, 3);
+	}
+}
+.u-pad-right {
+	@include nudge(padding-right, 1);
+	&--x2 {
+		@include nudge(margin-right, 2);
+	}
+	&--x3 {
+		@include nudge(margin-right, 3);
+	}
+}
+.u-pad-bottom {
+	@include nudge(padding-bottom, 1);
+	&--x2 {
+		@include nudge(margin-bottom, 2);
+	}
+	&--x3 {
+		@include nudge(margin-bottom, 3);
+	}
+}
+.u-pad-left {
+	@include nudge(padding-left, 1);
+	&--x2 {
+		@include nudge(margin-left, 2);
+	}
+	&--x3 {
+		@include nudge(margin-left, 3);
+	}
+}
+
+/* -- Hide Elements -- */
+.u-hidden {
+	display: none !important;
+}
+.u-show {
+	display: block !important;
+}
+
+/* -- Vertical Alignment -- */
+.u-vert {
+	vertical-align: middle;
+}
+
+/* -- Overflow -- */
+.u-overflow-auto {
+	overflow: auto;
+	position: relative;
+	z-index: 1;
+}
+.u-overflow-hidden {
+	overflow: hidden;
+}
+
+/* -- Structure -- */
+.u-inline {
+	display: inline;
+}
+.u-inline-block {
+	display: inline-block;
+}
+.u-block {
+	display: block;
+}
+
+/* -- Positioning -- */
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.u-static {
+	position: static;
+}
+.u-relative {
+	position: relative;
+}
+.u-fixed {
+	position: fixed;
+}
+.u-absolute {
+	position: absolute;
+}
+
+/* -- Lists -- */
+.u-inside {
+	margin-left: $ul_indent_base;
+	ul, ol {
+		margin-left: $ul_indent_base;
+	}
+}
+.u-no-bullet {
+	list-style: none;
+}
+
+/* -- Text -- */
+.u-text-small {
+	font-size: 75%;
+}
+.u-text-big {
+	font-size: 150%;
+}
+.u-text-left {
+	text-align: left;
+}
+.u-text-right {
+	text-align: right;
+}
+.u-text-center {
+	text-align: center;
+}
+
+/* -- Weights & Cases -- */
+.u-text-regular {
+	font-weight: $regular;
+}
+.u-text-bold {
+	font-weight: $bold;
+}
+.u-text-italic {
+	font-style: italic;
+}
+.u-text-uppercase {
+	text-transform: uppercase;
+}
+.u-text-lowercase {
+	text-transform: lowercase;
+}
+.u-text-capitalize {
+	text-transform: capitalize;
+}
+
+/* -- Fonts -- */
+.u-text-serif {
+	font-family: serif;
+}
+.u-text-sans-serif {
+	font-family: sans-serif;
+}

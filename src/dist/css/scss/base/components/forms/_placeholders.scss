@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Base > Forms > Placeholders
+   Form placeholder styles.
+========================================================================== */
+form {
+	::-webkit-input-placeholder {
+		color: color(grey);
+	}
+	::-moz-placeholder {
+		color: color(grey);
+	}
+	:-moz-placeholder {
+		color: color(grey);
+	}
+	:-ms-input-placeholder {
+		color: color(grey);
+	}
+	::placeholder {
+		color: color(grey);
+	}
+}

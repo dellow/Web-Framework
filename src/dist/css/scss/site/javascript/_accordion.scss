@@ -1,0 +1,53 @@
+.accordion {
+	@include nudge(margin-bottom, 1);
+	.accordion__title {
+		@include nudge(padding, 0.25);
+		border: 1px solid color(grey);
+		border-top: 0;
+		position: relative;
+		background: lighten(color(grey), 10%);
+		transition: color $animation ease, background-color $animation ease;
+		// Elements
+		button {
+			width: 100%;
+			display: block;
+			.more {
+				&:after {
+					width: 20px;
+					display: inline-block;
+					content: "+";
+				}
+			}
+		}
+		// Abstractions
+		&.active__title {
+			background: lighten(color(grey), 3%);
+			button {
+				.more {
+					&:after {
+						content: "-";
+					}
+				}
+			}
+		}
+		// Pseudo
+		&:first-child {
+			border-top: 1px solid color(grey);
+		}
+		&:hover {
+			background: lighten(color(grey), 5%);
+		}
+		&:active {
+			background: lighten(color(grey), 1%);
+		}
+	}
+	.accordion__content {
+		@include nudge(padding, 0.75);
+		border: 1px solid color(grey);
+		display: none;
+		// Abstractions
+		&.active__content {
+			border-top: 0;
+		}
+	}
+}

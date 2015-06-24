@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Base > All
+   Imports all the partials.
+========================================================================== */
+// Config
+@import 'config/reset',
+		'config/debug';
+
+// Core
+@import 'placeholders',
+		'utility-classes',
+		'misc',
+		'core',
+		'typeset';
+
+// Components
+@import 'components/alerts',
+		'components/buttons',
+		'components/grid',
+		'components/menus',
+		'components/slabs',
+		'components/tables',
+		'components/forms/base',
+		'components/forms/form-block',
+		'components/forms/form-inline-block',
+		'components/forms/form-inline',
+		'components/forms/notifications',
+		'components/forms/placeholders';
+
+// Blocks
+@import 'blocks/breadcrumbs',
+		'blocks/pagination';
+
+// Misc
+@import 'fixes',
+		'breakpoints',
+		'print';

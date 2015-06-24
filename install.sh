@@ -134,20 +134,6 @@ echo -e "------------------------------------------------"
 
 
 # ------------------------------------------------------------------------
-# Update / get dependencies with Bower.
-# ------------------------------------------------------------------------
-#
-# Command.
-bower install
-
-## Report.
-echo -e "------------------------------------------------"
-echo -e "$(tput setaf 2)Got Bower dependencies...$(tput sgr0)"
-echo -e "------------------------------------------------"
-
-
-
-# ------------------------------------------------------------------------
 # Update / get dependencies with NPM.
 # ------------------------------------------------------------------------
 #
@@ -157,20 +143,6 @@ npm install
 ## Report.
 echo -e "------------------------------------------------"
 echo -e "$(tput setaf 2)Got NPM dependencies...$(tput sgr0)"
-echo -e "------------------------------------------------"
-
-
-
-# ------------------------------------------------------------------------
-# Move /dist/ folder to /src/
-# ------------------------------------------------------------------------
-#
-# Command.
-cp -r bower_components/framework-library/dist ./src
-
-## Report.
-echo -e "------------------------------------------------"
-echo -e "$(tput setaf 2)Moved /dist/ directory to it's new home...$(tput sgr0)"
 echo -e "------------------------------------------------"
 
 
@@ -212,7 +184,7 @@ echo -e "------------------------------------------------"
 #
 END_SECONDS="$(date +%s)"
 echo -e "------------------------------------------------"
-echo -e "$(tput setaf 2)Framework successfully installed in "$(expr $END_SECONDS - $START_SECONDS)" seconds$(tput sgr0)"
+echo -e "$(tput setaf 2)Web Framework successfully installed in "$(expr $END_SECONDS - $START_SECONDS)" seconds$(tput sgr0)"
 echo -e "------------------------------------------------"
 
 

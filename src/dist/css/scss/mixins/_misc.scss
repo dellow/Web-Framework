@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Mixins > Misc
+   Functions and mixins for various Framework operations.
+========================================================================== */
+/**
+ * retina-image
+ * Retina image replacement.
+ *
+ * .foo {@include retina-image('logo', 'png', 100px, 25px);}
+**/
+@mixin retina-image($image, $type, $width, $height){
+	@media (min--moz-device-pixel-ratio: 1.3),
+	     (-o-min-device-pixel-ratio: 2.6/2),
+	     (-webkit-min-device-pixel-ratio: 1.3),
+	     (min-device-pixel-ratio: 1.3),
+	     (min-resolution: 1.3dppx){
+		background-image: url($image + '@2x.' + $type);
+		background-size: $width $height;
+	}
+	background-image: url($image + '.' + $type);
+}
+
+/**
+ * underline
+ * Better underline.
+ *
+ * .foo {@include underline(red);}
+**/
+@mixin underline($color){
+	@if( $color == none or $color == '' ){
+		background-image: none;
+		background-position: 0% 0%;
+		background-repeat: repeat;
+		background-size: auto;
+		&:hover {
+			background-image: none;
+			background-position: 0% 0%;
+			background-repeat: repeat;
+			background-size: auto;
+		}
+	}
+	@else{
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, $color 50%);
+		background-position: 0 100%;
+		background-repeat: repeat-x;
+		background-size: 100% 0.15rem;
+	}
+}
+
+/**
+ * arrow
+ * CSS Arrow.
+ *
+ * .foo {@include arrow(15px, #f9f7f3, 10px, null, 5px, left);}
+**/
+@mixin arrow($size, $color, $top, $left, $margin, $position, $type: 'after'){
+	&:#{$type} {
+		width: 0;
+		height: 0;
+		position: relative;
+		display: inline-block;
+		top: $top;
+		@if($left != null){
+			left: $left;
+		}
+		border: solid transparent;
+		content: " ";
+		pointer-events: none;
+		@if($position == left){
+			@if($margin != null){
+				margin-right: $margin;
+			}
+			border-right-color: $color;
+		}
+		@else if($position == right){
+			@if($margin != null){
+				margin-left: $margin;
+			}
+			border-left-color: $color;
+		}
+		@else if($position == top){
+			@if($margin != null){
+				margin-bottom: $margin;
+			}
+			border-bottom-color: $color;
+		}
+		@else if($position == bottom){
+			@if($margin != null){
+				margin-top: $margin;
+			}
+			border-top-color: $color;
+		}
+		border-width: $size;
+	}
+}

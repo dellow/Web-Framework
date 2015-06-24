@@ -1,6 +1,33 @@
 {
-  "name": "Project Wrapper",
-  "dependencies": {
-    "framework-library": "*"
-  }
+  "name": "Web Framework",
+  "version": "2.0.0",
+  "private": true,
+  "authors": [
+    "Stew Dellow <stewdellow@gmail.com>"
+  ],
+  "description": "A frontend Framework and/or starting point for web projects.",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "compass",
+    "css",
+    "framework",
+    "html",
+    "javascript",
+    "jquery",
+    "sass"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "Gulpfile.js",
+    "bower.json",
+    "package.json",
+    "README.md",
+    "gemfile",
+    ".gitignore",
+    ".gitkeep"
+  ]
 }

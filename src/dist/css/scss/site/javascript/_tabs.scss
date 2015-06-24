@@ -1,0 +1,94 @@
+.tabs {
+	@include nudge(margin-bottom, 1);
+	overflow: hidden;
+	// Descendants
+	.tabs__nav {
+		@include nudge(padding, 0 1);
+		margin: 0;
+		white-space: nowrap;
+		// Elements
+		li {
+			margin: 0 0 0 -5px;
+			border: 1px solid color(grey);
+			border-bottom: 0;
+			display: inline-block;
+			position: relative;
+	    	z-index: $zindex-1;
+			vertical-align: bottom;
+			background: lighten(color(grey), 10%);
+			transition: color $animation ease, background-color $animation ease;
+			// Descendants
+	        button {
+	        	width: 100%;
+				@include nudge(padding, 0.25 0.5);
+	            display: block;
+	        }
+			// Pseudo
+	        &:first-child {
+	            border-radius: $border_radius_base 0 0;
+	        }
+	        &:last-child {
+	            border-radius: 0 $border_radius_base 0 0;
+	        }
+			&:hover {
+				background: lighten(color(grey), 5%);
+			}
+			&:active {
+				background: lighten(color(grey), 1%);
+			}
+			// Abstractions
+	        &.active__tab {
+	            bottom: -1px;
+	    		z-index: $zindex-2;
+	            border-radius: $border_radius_base $border_radius_base 0 0;
+	            color: color(copy, link);
+	            background: color(white);
+		        button {
+					@include nudge(padding, 0.35 0.5);
+		        }
+	        }
+		}
+	}
+	.tabs__system {
+		@include nudge(padding, 0.75);
+		border-radius: $border_radius_base;
+		border: 1px solid color(grey);
+		background: color(white);
+	}
+	// Abstractions
+	&.tabs-full-width {
+		// Descendants
+		.tabs__nav {
+			width: 100%;
+			padding: 0;
+			display: table;
+			table-layout: fixed;
+			// Descendants
+			li {
+				display: table-cell;
+				// Descendants
+				button {
+					text-align: center;
+				}
+				// Pseudo
+		        &:first-child {
+		            border-radius: $border_radius_base 0 0;
+		        }
+		        &:last-child {
+		            border-radius: 0 $border_radius_base 0 0;
+		        }
+				// Abstractions
+		        &.active__tab {
+		            bottom: 0;
+		            border-radius: 0;
+			        button {
+						@include nudge(padding, 0.25 0.5);
+			        }
+		        }
+			}
+		}
+		.tabs__system {
+			border-radius: 0 0 $border_radius_base $border_radius_base;
+		}
+	}
+}

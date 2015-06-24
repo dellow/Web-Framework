@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Base > Breakpoints
+   Responsive partial for global responsive styles.
+   Use responsive mixin inside the correct partial for local responsive
+   styles.
+========================================================================== */
+// Respond to tablet
+@include respond-to($tablet){
+	/* -- Exclusions -- */
+	$exclusions: (
+		'.hide-tablet'
+	);
+	@each $element in $exclusions {
+		#{$element} {
+			display: none;
+		}
+	}
+}
+
+// Respond to mobile
+@include respond-to($mobile){
+	/* -- Exclusions -- */
+	$exclusions: (
+		'.hide-mobile'
+	);
+	@each $element in $exclusions {
+		#{$element} {
+			display: none;
+		}
+	}
+}

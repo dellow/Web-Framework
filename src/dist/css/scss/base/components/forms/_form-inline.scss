@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Base > Forms > Form Inline
+   Inline forms
+========================================================================== */
+.form-inline {
+	// Field container
+	.field-container {
+		height: $form_field_height;
+	}
+
+	// Labels
+	label, .label, input, .input, select, textarea, .field-container {
+		width: auto;
+		@include nudge(margin, 0 0 0 0.5);
+		display: inline;
+		// Pseudo
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+	span {
+		// Siblings
+		+ input, .input, select, textarea, .field-container {
+			margin: 0;
+		}
+	}
+}

@@ -1,0 +1,169 @@
+/**
+ * These styles are just for the benefit of this
+ * styleguide. Do not use these in production
+**/
+
+/* Body */
+body {
+	font-family: 'Lato', sans-serif !important;
+	background: #F7F7F7 !important;
+}
+
+/* Tags */
+pre[class*="language-"] {
+	width: 100%;
+	margin: 1em 0;
+	font-size: 13px;
+}
+
+/* Standard */
+body {
+	padding: 2rem 0 !important;
+}
+
+body.styleguide > .container,
+body.styleguide section > .container {
+	width: 80%;
+}
+
+body.styleguide p,
+body.styleguide p:first-child,
+body.styleguide p:last-child,
+body.styleguide p:last-of-type {
+	margin-bottom: 13.71429px;
+	margin-bottom: 0.85714rem;
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+/* Resizable */
+.pattern.resizable {
+	overflow: hidden;
+}
+
+/* Elements */
+.page-header {
+	margin-bottom: 2rem;
+}
+
+/* Tables */
+div.guidetable {
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+div.guidetable ul {
+	display: table-row;
+}
+div.guidetable li {
+	display: table-cell;
+}
+
+/* Headers */
+.container > h1, section > h2 {
+	text-transform: uppercase;
+}
+
+/* Patterns */
+body.styleguide .pattern .pattern__view:not(.allow-margin) > * {
+	margin: 0;
+}
+.pattern {
+	margin-bottom: 2em;
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+}
+.pattern:last-child {
+	margin-bottom: 0;
+}
+.pattern .pattern__view {
+	height: 100%;
+	background: white;
+}
+.pattern .pattern__details {
+	padding: 5px 15px;
+	border-bottom: 1px solid #e5e5e5;
+	color: #004b6a;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
+	background: #F0F0F0;
+}
+.container .pattern .pattern__view {
+	padding: 15px 20px;
+}
+
+/* Tables */
+.guidetable {
+	margin-bottom: 25px;
+}
+
+/* Progress Bars */
+.styleguide .pattern .progress {
+	margin: 10px 0;
+}
+
+/* Grids */
+.styleguide .flex-grid [class*="col-"],
+.styleguide .grid [class*="col-"] {
+	padding: 10px;
+	background: #efefef;
+}
+
+/* Flexbox */
+.flexbox-example {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.flexbox-example li {
+	width: 24%;
+	padding: 10px;
+	margin: 0.5%;
+	list-style: none;
+	color: white;
+	background: #004b6a;
+}
+
+/* Colour Swatches */
+.color-swatches {
+	letter-spacing: -4px;
+}
+.color-swatches li div {
+	margin: 0 !important;
+}
+.color-swatches li {
+	display: inline-block;
+	vertical-align: top;
+	letter-spacing: normal;
+}
+.color-swatches li .bg {
+	height: 65px;
+}
+.color-swatches li .bg:after,
+.slab-swatches .slab:after  {
+	content: attr(class);
+	display: block;
+	color: white;
+	font-size: 11px;
+	text-align: center;
+	line-height: 65px;
+	-webkit-opacity: 0.2;
+	-moz-opacity: 0.2;
+	-o-opacity: 0.2;
+	opacity: 0.2;
+	-webkit-transition: opacity 500ms ease;
+	-moz-transition: opacity 500ms ease;
+	-o-transition: opacity 500ms ease;
+	transition: opacity 500ms ease;
+}
+.slab-swatches .slab:after {
+	font-size: 15px;
+	line-height: 1;
+}
+.color-swatches li .bg:hover:after,
+.slab-swatches .slab:hover:after {
+	-webkit-opacity: 0.7;
+	-moz-opacity: 0.7;
+	-o-opacity: 0.7;
+	opacity: 0.7;
+}

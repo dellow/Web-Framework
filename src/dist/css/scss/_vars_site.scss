@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Site > Vars
+   You can overwrite any of the config vars from here.
+========================================================================== */
+/**
+ * Config
+**/
+// Debug mode
+$debug_mode: true;
+
+/**
+* Colors
+**/
+// Map
+$site_colors: (
+	copy: (
+		header: #231f20,
+		body  : #5f5659,
+		link  : #C4122F,
+		hover : darken(#C4122F, 10%),
+		active: darken(#C4122F, 20%)
+	)
+);
+// Merge (again)
+$colors: map-merge($framework_colors, $site_colors);

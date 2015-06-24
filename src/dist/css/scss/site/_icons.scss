@@ -1,0 +1,23 @@
+/* ==========================================================================
+   Site > Icons
+   Iconography to be used throughout the sites. Will pull variables
+   from the _sprites.scss partial.
+========================================================================== */
+/* -- Base Icon -- */
+// .icon {
+// position: relative;
+// 	display: inline-block;
+// 	vertical-align: middle;
+// 	&:after {
+// 		@extend .css-sprite;
+// 		content: '';
+// 		display: inline-block !important;
+// 	}
+// }
+
+/* -- Icon Set Title -- */
+// .icon--set--name {
+// 	&:after {
+// 		@include sprite($icon-set-name);
+// 	}
+// }

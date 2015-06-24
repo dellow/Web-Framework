@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Base > Core
+   Important classes that are imperative to the framework
+========================================================================== */
+/* -- Container -- */
+.container {
+	width: 90%;
+	max-width: $desktop;
+	min-width: $device;
+	margin: 0 auto;
+	position: relative;
+	&--small {
+		max-width: $tablet;
+	}
+	&--medium {
+		max-width: 960px;
+	}
+	&--wide {
+		max-width: $desktop--wide;
+	}
+}

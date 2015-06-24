@@ -1,4 +1,4 @@
-# Project Wrapper & Workflow
+# Web Framework
 
 ## Contents
 1. [About](#about)
@@ -7,20 +7,21 @@
 1. [Styleguide & Examples](#styleguide-examples)
 1. [Using Gulp](#using-gulp)
 1. [Profiles](#profiles)
-	1. [Development](#profiles--development)
-	1. [Production](#profiles--production)
+    1. [Development](#profiles--development)
+    1. [Production](#profiles--production)
 1. [Watch](#watch)
 1. [Sync](#sync)
 1. [PageSpeed](#pagespeed)
 1. [Testing](#testing)
 1. [Release](#release)
 1. [Working with SCSS](#working-with-scss)
-	1. [Debug Mode](#working-with-scss--debug-mode)
-	1. [BEM](#working-with-scss--bem)
-	1. [Responsive](#working-with-scss--responsive)
+    1. [Debug Mode](#working-with-scss--debug-mode)
+    1. [BEM](#working-with-scss--bem)
+    1. [Responsive](#working-with-scss--responsive)
+    1. [Reserved Classes](#working-with-scss--reserved-classes)
 1. [Working with JavaScript](#working-with-javascript)
-	1. [Requiring New Files](#working-with-javascript--requiring-new-files)
-	1. [Helpers](#working-with-javascript--helpers)
+    1. [Requiring New Files](#working-with-javascript--requiring-new-files)
+    1. [Helpers](#working-with-javascript--helpers)
 1. [Troubleshooting](#troubleshooting)
 
 <a name="about"></a>
@@ -68,19 +69,19 @@ These serve as ongoing platforms to test any changes you might make to the Frame
 ## Using Gulp
 Run the default profile:
 
-	gulp
+    gulp
 Run the development profile:
 
-	gulp --config development
+    gulp --config development
 Run the production profile:
 
-	gulp --config production
+    gulp --config production
 Watch for changes to the application `.js`, `.hbs` and `.scss` files:
 
-	gulp watch
+    gulp watch
 Watch for changes to the application `.js`, `.hbs` and `.scss` files and sync/reload browsers and devices:
 
-	gulp sync
+    gulp sync
 
 <a name="profiles"></a>
 ## Profiles
@@ -175,39 +176,39 @@ You don't __have__ to use BEM. But it is recommended. Since Version 3.3, SASS in
 
 _Syntax_:
 
-	.block {
-	    &__element {
-	    }
-	    &--modifier {
-	    }
-	}
+    .block {
+        &__element {
+        }
+        &--modifier {
+        }
+    }
 
 _Will compile to_:
 
-	.block {
-	}
-	.block__element {
-	}
-	.block--modifier {
-	}
+    .block {
+    }
+    .block__element {
+    }
+    .block--modifier {
+    }
 
 <a name="working-with-scss--responsive"></a>
 ### Responsive
 The Framework comes with a `breakpoints` partial in both `base` and `site` these are only for global responsive changes and theoretically could be left untouched. You should use the `respond-to` mixin to create responsive styles at the bottom of the relevant partial file.
 
-	@include respond-to(768px){
-		.foo {
-			display: block;
-		}
-	}
+    @include respond-to(768px){
+        .foo {
+            display: block;
+        }
+    }
 
 There are also various specific variables for common devices set up in `base/vars` you can use those to create breakpoints:
 
-	@include respond-to($iphone5_portrait){
-		.foo {
-			display: block;
-		}
-	}
+    @include respond-to($iphone5_portrait){
+        .foo {
+            display: block;
+        }
+    }
 
 The `respond-to` mixin converts all values to `em` (see: [The EMs have it: Proportional Media Queries FTW!](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/)) and can take various arguments to create breakpoints for you.
 
@@ -215,29 +216,93 @@ You can use the above examples to create a simple query or specify two breakpoin
 
 _Syntax_:
 
-	@include respond-to(320px, 768px){
-		.foo {
-			display: block;
-		}
-	}
+    @include respond-to(320px, 768px){
+        .foo {
+            display: block;
+        }
+    }
 
 _Will compile to_:
 
-	@media only screen and (min-width: 20em) and (max-width: 48em){
-		.foo {
-			display: block;
-		}
-	}
+    @media only screen and (min-width: 20em) and (max-width: 48em){
+        .foo {
+            display: block;
+        }
+    }
 
 The above example will create a media query for styles between 320px and 768px. For more information and advanced use please see the `_responsive.scss` partial in the mixins directory.
 
 By default the Framework is set to a Desktop First approach. This can (and probably should) be changed in the `_vars.scss` partial simply by setting: `$mobile_first: true` - This will use `min-width` by default in the `respond-to` mixin otherwise it will use `max-width` by default. This can be overrode with each call to the mixin if the `$switch_operator` argument is passed `true`:
 
-	@include respond-to(320px, null, true){
-		.foo {
-			display: block;
-		}
-	}
+    @include respond-to(320px, null, true){
+        .foo {
+            display: block;
+        }
+    }
+
+<a name="working-with-scss--reserved-classes"></a>
+### Reserved Classes
+The Framework does use some generic or 'loose' classes throughout. A lot of these will be filtered out in future releases as they are not specific enough and bad form. However until then this is a list of current classes you should avoid using with new elements:
+
+    .active-*
+    .alert
+    .alpha
+    .beta
+    .bg
+    .btn
+    .box
+    .button
+    .center
+    .col
+    .container
+    .coupon
+    .current_page_item
+    .current_page_parent
+    .delta
+    .disabled
+    .epsilon
+    .error
+    .field
+    .fl
+    .fr
+    .form-*
+    .full
+    .gamma
+    .grid
+    .half
+    .hide-*
+    .ie6
+    .ie7
+    .ie8
+    .js-* (For JavaScript binds)
+    .label
+    .left
+    .loading
+    .mobile-animate
+    .mobile-menu
+    .navigation
+    .nav-*
+    .negative
+    .note
+    .oldie
+    .opp
+    .page__*
+    .positive
+    .qty
+    .readonly
+    .right
+    .small
+    .slab
+    .standard
+    .status
+    .sub-menu
+    .success
+    .table
+    .u-*
+    .v-small
+    .voucher
+    .warning
+    .zeta
 
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
@@ -247,7 +312,7 @@ All JavaScript modules should be added in `app` directory - these files will be 
 ### Requiring New Files
 All initial files are loaded from `dist/js/app/index.js` but thanks to Browserify you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
 
-	require('./javascript-file');
+    require('./javascript-file');
 
 <a name="working-with-javascript--helpers"></a>
 ### Helpers
@@ -256,9 +321,9 @@ The `dist/js/app/helpers/js` file contains various global helper functions to ai
 ##### log `Helpers.log('My console message');`
 Super powered, cross-browser supported `console.log`. Will check the browser supports console logging (will use `alert` otherwise, unless overrided). All console messages will be prefixed with "DEBUG" and encapsulated into sections to easier separate messages. A simple call would result in:
 
-	DEBUG: -----------------------------------------------
-	DEBUG: My console message
-	DEBUG: -----------------------------------------------
+    DEBUG: -----------------------------------------------
+    DEBUG: My console message
+    DEBUG: -----------------------------------------------
 
 You can also supply a `type` parameter to customise the output colour (`Helpers.log('My console message', 'negative');`). By default all messages output in blue, passing `positive` will output the colour in green, while passing `negative` will output in red. Alternatively you can pass a valid HEX value instead of a positive/negative string to output in that colour.
 

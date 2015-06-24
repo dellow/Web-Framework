@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Base > Components > Tables
+   Description goes here.
+========================================================================== */
+/* -- Div Tables -- */
+div.table { // Qualified Selector
+	@extend %cf;
+	width: 100%;
+	.col {
+		width: 48%;
+		padding: 0.5%;
+		margin-left: 1%;
+		float: left;
+		// Pseudo
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+}
+
+/* -- Normal Tables -- */
+table {
+	// Abstractions
+	&.table { // Qualified Selector
+		width: 100%;
+		border: 1px solid color(grey);
+		border-radius: $border_radius_base;
+		border-collapse: separate;
+	  	border-spacing: 0;
+		thead {
+			th {
+				border-top: 0;
+			}
+		}
+		td, th {
+			padding: 5px;
+			border-left: 1px solid #f2f2f2;
+			border-top: 1px solid #d9d9d9;
+			text-align: center;
+			vertical-align: middle;
+			// Pseudo
+			&:first-child {
+				border-left: 0;
+			}
+		}
+	}
+	&.table-highlight-horizontal { // Qualified Selector
+		tbody {
+			tr {
+				// Pseudo
+				&:nth-child(even) {
+					background: $color_even_base;
+				}
+				&:nth-child(odd) {
+					background: $color_odd_base;
+				}
+			}
+		}
+	}
+	&.table-highlight-vertical { // Qualified Selector
+		tbody {
+			tr {
+				th, td {
+					// Pseudo
+					&:nth-child(even) {
+						background: $color_even_base;
+					}
+					&:nth-child(odd) {
+						background: $color_odd_base;
+					}
+				}
+			}
+		}
+	}
+}
