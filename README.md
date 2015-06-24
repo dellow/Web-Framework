@@ -47,12 +47,13 @@ This is a fast project wrapper and workflow that utilises Gulp as a build tool. 
 ## Install
 _Please make sure your system meets the requirements above._
 
-### Bower
+#### Bower
 You can get Web Framework with bower simply by running `bower install web-framework`.
 
-### Git
+#### Git
 You can get Web Framework by cloning this repository simply by running `git clone git@github.com:sdellow/web-framework.git`.
 
+#### Init
 Once complete simply run `bash install.sh` from your command line. This will do the following:
 
 - Remove the Git wrapper and replace with a fresh Git initialisation.
