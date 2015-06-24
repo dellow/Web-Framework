@@ -55,10 +55,6 @@
     // jQuery Easing.
     // By gdsmith https://github.com/gdsmith/jquery.easing
     $.extend($.easing,{
-        swing: function (x, t, b, c, d) {
-            //alert($.easing.default);
-            return $.easing[$.easing.def](x, t, b, c, d);
-        },
         easeInQuad: function (x, t, b, c, d) {
             return c*(t/=d)*t + b;
         },

@@ -386,24 +386,24 @@
 		<div class="guidetable">
 			<ul class="color-swatches">
 				<li>
-					<div class="bg color-red"></div>
-					<div class="bg color-red opp"></div>
+					<div class="bg bg--color-red"></div>
+					<div class="bg bg--color-red opp"></div>
 				</li>
 				<li>
-					<div class="bg color-orange"></div>
-					<div class="bg color-orange opp"></div>
+					<div class="bg bg--color-orange"></div>
+					<div class="bg bg--color-orange opp"></div>
 				</li>
 				<li>
-					<div class="bg color-green"></div>
-					<div class="bg color-green opp"></div>
+					<div class="bg bg--color-green"></div>
+					<div class="bg bg--color-green opp"></div>
 				</li>
 				<li>
-					<div class="bg color-blue"></div>
-					<div class="bg color-blue opp"></div>
+					<div class="bg bg--color-blue"></div>
+					<div class="bg bg--color-blue opp"></div>
 				</li>
 				<li>
-					<div class="bg color-yellow"></div>
-					<div class="bg color-yellow opp"></div>
+					<div class="bg bg--color-yellow"></div>
+					<div class="bg bg--color-yellow opp"></div>
 				</li>
 			</ul>
 		</div>
@@ -411,11 +411,11 @@
 		<p>You can also use the same principle to create slabs. Slabs are much the same as adding a bg-color to an element except these are specifically used for colored layout and as such default with padding applied.</p>
 		<div class="guidetable">
 			<div class="slab-swatches">
-				<div class="slab color-red"></div>
-				<div class="slab color-orange"></div>
-				<div class="slab color-green"></div>
-				<div class="slab color-blue"></div>
-				<div class="slab color-yellow"></div>
+				<div class="slab slab--color-red"></div>
+				<div class="slab slab--color-orange"></div>
+				<div class="slab slab--color-green"></div>
+				<div class="slab slab--color-blue"></div>
+				<div class="slab slab--color-yellow"></div>
 			</div>
 		</div>
 	</section>
@@ -432,56 +432,74 @@
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Standard linked CTA's</span></summary>
-<pre class="language-markup"><code>&lt;a href="#" class="btn standard">CTA Standard&lt;/a>
-&lt;a href="#" class="btn positive">CTA Positive&lt;/a>
-&lt;a href="#" class="btn negative">CTA Negative&lt;/a></code></pre>
+<pre class="language-markup"><code>&lt;a href="#" class="btn btn--standard">CTA Standard&lt;/a>
+&lt;a href="#" class="btn btn--positive">CTA Positive&lt;/a>
+&lt;a href="#" class="btn btn--negative">CTA Negative&lt;/a></code></pre>
 			</details>
 			<div class="pattern__view">
-				<a href="#" class="btn standard">CTA Standard</a>
-				<a href="#" class="btn positive">CTA Positive</a>
-				<a href="#" class="btn negative">CTA Negative</a>
+				<a href="#" class="btn btn--standard">CTA Standard</a>
+				<a href="#" class="btn btn--positive">CTA Positive</a>
+				<a href="#" class="btn btn--negative">CTA Negative</a>
 			</div>
 		</div>
 
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Disabled CTA's</span></summary>
-<pre class="language-markup"><code>&lt;a href="#" class="btn standard disabled">CTA Standard&lt;/a>
-&lt;a href="#" class="btn positive disabled">CTA Positive&lt;/a>
-&lt;a href="#" class="btn negative disabled">CTA Negative&lt;/a></code></pre>
+<pre class="language-markup"><code>&lt;a href="#" class="btn btn--standard btn--disabled">CTA Standard&lt;/a>
+&lt;a href="#" class="btn btn--positive btn--disabled">CTA Positive&lt;/a>
+&lt;a href="#" class="btn btn--negative btn--disabled">CTA Negative&lt;/a></code></pre>
 			</details>
 			<div class="pattern__view">
-				<a href="#" class="btn standard disabled">CTA Standard</a>
-				<a href="#" class="btn positive disabled">CTA Positive</a>
-				<a href="#" class="btn negative disabled">CTA Negative</a>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">JavaScript CTA's (Buttons)</span></summary>
-<pre class="language-markup"><code>&lt;button class="btn standard">CTA Standard&lt;/button>
-&lt;button class="btn positive">CTA Positive&lt;/button>
-&lt;button class="btn negative">CTA Negative&lt;/button></code></pre>
-			</details>
-			<div class="pattern__view">
-				<button class="btn standard">CTA Standard</button>
-				<button class="btn positive">CTA Positive</button>
-				<button class="btn negative">CTA Negative</button>
+				<a href="#" class="btn btn--standard btn--disabled">CTA Standard</a>
+				<a href="#" class="btn btn--positive btn--disabled">CTA Positive</a>
+				<a href="#" class="btn btn--negative btn--disabled">CTA Negative</a>
 			</div>
 		</div>
 
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Coloured CTA's from Swatch</span></summary>
-<pre class="language-markup"><code>&lt;button class="btn color-red">CTA Red&lt;/button>
-&lt;button class="btn color-orange">CTA Orange&lt;/button>
-&lt;button class="btn color-blue">CTA Blue&lt;/button></code></pre>
+<pre class="language-markup"><code>&lt;button class="btn btn--color-red">CTA Red&lt;/button>
+&lt;button class="btn btn--color-orange">CTA Orange&lt;/button>
+&lt;button class="btn btn--color-blue">CTA Blue&lt;/button></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<button class="btn color-red">CTA Red</button>
-				<button class="btn color-orange">CTA Orange</button>
-				<button class="btn color-blue">CTA Blue</button>
+				<button class="btn btn--color-red">CTA Red</button>
+				<button class="btn btn--color-orange">CTA Orange</button>
+				<button class="btn btn--color-blue">CTA Blue</button>
+			</div>
+		</div>
+
+		<div class="pattern resizable">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Coloured CTA's as Buttons</span></summary>
+<pre class="language-markup"><code>&lt;button class="btn btn--color-red">CTA Red&lt;/button>
+&lt;button class="btn btn--color-orange">CTA Orange&lt;/button>
+&lt;button class="btn btn--color-blue">CTA Blue&lt;/button></code></pre>
+			</details>
+			<div class="pattern__view">
+				<button class="btn btn--color-red">CTA Red</button>
+				<button class="btn btn--color-orange">CTA Orange</button>
+				<button class="btn btn--color-blue">CTA Blue</button>
+			</div>
+		</div>
+
+		<div class="pattern resizable">
+			<details class="pattern__details">
+				<summary><span class="pattern__title">Coloured CTA's as Form Buttons</span></summary>
+<pre class="language-markup"><code>&lt;form>
+	&lt;button class="btn btn--color-red">CTA Red&lt;/button>
+	&lt;button class="btn btn--color-orange">CTA Orange&lt;/button>
+	&lt;button class="btn btn--color-blue">CTA Blue&lt;/button>
+&lt;/form></code></pre>
+			</details>
+			<div class="pattern__view allow-margin">
+				<form>
+					<button type="submit" class="btn btn--color-red">CTA Red</button>
+					<button type="submit" class="btn btn--color-orange">CTA Orange</button>
+					<button type="submit" class="btn btn--color-blue">CTA Blue</button>
+				</form>
 			</div>
 		</div>
 	</section>
@@ -890,15 +908,15 @@
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title"><code>button</code></span></summary>
-<pre class="language-markup"><code>&lt;button type="submit">Submit Button&lt;/button>
-&lt;button type="submit" disabled>Disabled Button&lt;/button>
-&lt;button type="reset">Reset Button&lt;/button></code></pre>
+<pre class="language-markup"><code>&lt;button type="submit" class="form-button">Submit Button&lt;/button>
+&lt;button type="reset" class="form-button">Reset Button&lt;/button>
+&lt;button type="submit" class="form-button" disabled>Disabled Button&lt;/button></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
 				<form>
-					<button type="submit">Submit Button</button>
-					<button type="submit" disabled>Disabled Button</button>
-					<button type="reset">Reset Button</button>
+					<button type="submit" class="form-button">Submit Button</button>
+					<button type="reset" class="form-button">Reset Button</button>
+					<button type="submit" class="form-button" disabled>Disabled Button</button>
 				</form>
 			</div>
 		</div>

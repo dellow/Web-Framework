@@ -15,34 +15,34 @@
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	transition: background $animation ease, box-shadow $animation ease;
 	// Abstractions
-	&.standard {
+	&--standard {
 		background: color(blue);
-		&.disabled:hover {
+		&--disabled:hover {
 			background: color(blue);
 		}
 		&:hover {
 			background: darken(color(blue), 10%);
 		}
 	}
-	&.positive {
+	&--positive {
 		background: color(green);
-		&.disabled:hover {
+		&--disabled:hover {
 			background: color(green);
 		}
 		&:hover {
 			background: darken(color(green), 10%);
 		}
 	}
-	&.negative {
+	&--negative {
 		background: color(red);
-		&.disabled:hover {
+		&--disabled:hover {
 			background: color(red);
 		}
 		&:hover {
 			background: darken(color(red), 10%);
 		}
 	}
-	&.disabled {
+	&--disabled {
 		opacity: 0.7;
 		cursor: default;
 	}
@@ -60,10 +60,10 @@
 @each $key, $value in $colors {
 	$class: "" + $key;
 	.btn {
-		&.color-#{$class} {
+		&--color-#{$class} {
 			background: color($key);
 			// Abstractions
-			&.disabled:hover {
+			&--disabled:hover {
 				background: color($key);
 			}
 			// Pseudo

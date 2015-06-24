@@ -23,8 +23,8 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .button
     .center
     .col
-    .color
     .container
+    .coupon
     .current_page_item
     .current_page_parent
     .delta
@@ -35,8 +35,10 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .fl
     .fr
     .form-*
+    .full
     .gamma
     .grid
+    .half
     .hide-*
     .ie6
     .ie7
@@ -44,6 +46,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .js-* (For JavaScript binds)
     .label
     .left
+    .loading
     .mobile-animate
     .mobile-menu
     .navigation
@@ -54,7 +57,10 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .opp
     .page__*
     .positive
+    .qty
+    .readonly
     .right
+    .small
     .slab
     .standard
     .status
@@ -62,5 +68,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .success
     .table
     .u-*
+    .v-small
+    .voucher
     .warning
     .zeta

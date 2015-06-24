@@ -638,6 +638,8 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 	Module.prototype.hide_sub_menu = function(){
 		var _this = this;
 
+		// Remove active menu item.
+		$('.active-menu-item', _this.primary).removeClass('active-menu-item');
 		// Hide any open sub-menus.
 		$('.active-sub-menu', _this.primary).slideUp(400).removeClass('active-sub-menu');
 	}
@@ -674,6 +676,8 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 		_this.primary.css({'max-height': '9999px'});
 		// Hide any open sub-menus.
 		_this.hide_sub_menu();
+		// Add active class to parent li.
+		el.parent().addClass('active-menu-item');
 		// Show requested sub menu.
 		el.next('.sub-menu').addClass('active-sub-menu').slideDown(400);
 	}

@@ -20,7 +20,7 @@
 @each $key, $value in $colors {
 	$class: "" + $key;
 	.bg, .slab {
-		&.color-#{$class} {
+		&--color-#{$class} {
 			color: inherit;
 			background: color($key);
 			// Abstractions

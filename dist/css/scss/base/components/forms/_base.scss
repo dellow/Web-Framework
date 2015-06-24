@@ -5,7 +5,7 @@
 form {
 	position: relative;
 
-	// Positioning
+	// Positioning.
 	.left {
 		width: 49%;
 		float: left;
@@ -15,7 +15,7 @@ form {
 		float: right;
 	}
 
-	// Notes
+	// Notes.
 	.note {
 		font-size: 90%;
 		opacity: 0.65;
@@ -24,7 +24,7 @@ form {
 		@include nudge(margin-left, 0.5);
 	}
 
-	// Field wrappers
+	// Field wrappers.
 	.field {
 		@include nudge(margin-bottom, 0.5);
 		position: relative;
@@ -35,12 +35,12 @@ form {
 		}
 	}
 
-	// Fieldset
+	// Fieldset.
 	fieldset {
 		@include nudge(margin-bottom, 1);
 	}
 
-	// Labels
+	// Labels.
 	label, .label {
 		margin: 0 0 5px;
 		position: relative;
@@ -58,14 +58,16 @@ form {
 		}
 	}
 
-	// All form elements
-	input, .input, select, textarea, button[type="submit"], button[type="reset"], .button {
+	// All form fields.
+	input, .input, select, textarea {
 		height: $form_field_height;
+		@include nudge(padding, 0.2 0.4);
 		border: 1px solid lighten(color(grey, dark), 60%);
 		vertical-align: top;
 		position: relative;
 		border-radius: $border_radius_base;
 		cursor: pointer;
+		background: color(white);
 		transition: color $animation ease, background-color $animation ease, border-color $animation ease;
 		// Pseudo
 		&:hover, &:active {
@@ -75,7 +77,7 @@ form {
 			border-color: lighten(color(grey, dark), 35%);
 		}
 		&[readonly], &[readonly]:hover, &.readonly, &.readonly:hover, &.readonly:active,
-		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active  {
+		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {
 			border-color: lighten(color(grey, dark), 60%);
 			cursor: no-drop;
 			background: lighten(color(grey, dark), 70%);
@@ -85,19 +87,13 @@ form {
 		}
 	}
 
-	// General fields
-	input, .input, select, textarea {
-		@include nudge(padding, 0.2 0.4);
-		background: color(white);
-	}
-
-	// Textareas
+	// Textareas.
 	textarea {
 		min-height: 100px; // Degradable
 		height: 125px;
 	}
 
-	// Radio & Checkboxes
+	// Radio & Checkboxes.
 	%radio-checkbox, input[type="radio"], input[type="checkbox"] {
 		width: auto;
 		height: auto;
@@ -112,22 +108,28 @@ form {
 		}
 	}
 
-	// Buttons
-	button[type="submit"], button[type="reset"], .button {
-		@include nudge(padding, 0 1.2);
-		border: 0;
-		text-align: center;
-		background: lighten(color(grey, dark), 70%);
-		// Pseudo
-		&:hover {
-			background: lighten(color(grey, dark), 65%);
-		}
-		&:active {
-			background: lighten(color(grey, dark), 60%);
+	// Buttons.
+	button, .button {
+		&.form-button {
+			@include nudge(padding, 0.35 1);
+			border-radius: $border_radius_base;
+			background: lighten(color(grey, dark), 70%);
+			&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {
+				cursor: no-drop;
+				color: rgba(color(copy, body), 0.7);
+				background: lighten(color(grey, dark), 75%);
+			}
+			// Pseudo
+			&:hover {
+				background: lighten(color(grey, dark), 65%);
+			}
+			&:active {
+				background: lighten(color(grey, dark), 60%);
+			}
 		}
 	}
 
-	// Specific Fields
+	// Specific Fields.
 	label, .label, input, select, textarea {
 		&.qty, &.voucher, &.coupon, &.half, &.small, &.v-small {
 			display: inline-block !important;
@@ -166,7 +168,7 @@ form {
 
 @include respond-to($tablet){
 	form {
-		// Specific Fields
+		// Specific Fields.
 		input, select, textarea {
 			&.voucher, &.coupon {
 				max-width: (100% / 2) - 1;
@@ -186,7 +188,7 @@ form {
 
 @include respond-to($mobile){
 	form {
-		// Specific Fields
+		// Specific Fields.
 		input, select, textarea {
 			&.v-small {
 				max-width: (100% / 2) - 1;
@@ -197,7 +199,7 @@ form {
 
 @include respond-to(360px){
 	form {
-		// Specific Fields
+		// Specific Fields.
 		input, select, textarea {
 			&.qty, &.voucher, &.coupon, &.half, &.small, &.v-small {
 				+ .note {
