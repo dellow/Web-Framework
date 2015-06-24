@@ -23,6 +23,7 @@
     1. [Requiring New Files](#working-with-javascript--requiring-new-files)
     1. [Helpers](#working-with-javascript--helpers)
 1. [Troubleshooting](#troubleshooting)
+1. [Changelog](#changelog)
 
 <a name="about"></a>
 ## About
@@ -46,7 +47,13 @@ This is a fast project wrapper and workflow that utilises Gulp as a build tool. 
 ## Install
 _Please make sure your system meets the requirements above._
 
-After cloning the repository simply run `bash install.sh` from your command line. This will do the following:
+### Bower
+You can get Web Framework with bower simply by running `bower install web-framework`.
+
+### Git
+You can get Web Framework by cloning this repository simply by running `git clone git@github.com:sdellow/web-framework.git`.
+
+Once complete simply run `bash install.sh` from your command line. This will do the following:
 
 - Remove the Git wrapper and replace with a fresh Git initialisation.
 - Remove any un-necessary files/directories.
@@ -356,3 +363,8 @@ Try running with the `xip=false` argument. If this works you're router probably 
 
 #### Using font services with BrowserSync.
 The gulp `sync` task uses the xip.io service by default. So to use webfont services like fonts.com and typekit.com with BrowserSync all you need to do is set `*.xip.io` as one of your allowed domains in the font service settings. Your fonts will now be available on all your devices using the URL provdided via the `sync` task.
+
+<a name="changelog"></a>
+## Changelog
+__2.0.0__: 
+* Merged the Project Wrapper and Project Libraries into one 'Web Framework' repository. We are now starting from version 2.0.0!
