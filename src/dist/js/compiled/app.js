@@ -1,40 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
  *
- * Application or Website name
- *
- * Copyright 2015, Author Name
- * Some information on the license.
- *
-**/
-
-// Global settings.
-window.mobile_breakpoint = 768;
-window.wiselinks_enabled = true;
-window.helper_log        = (typeof window.gulp_env == "undefined" || window.gulp_env == 'development') ? true : false;
-window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
-
-/* ======================================================== */
-/* Index
-/* ======================================================== */
-;(function($, window, undefined){
-    'use strict';
-
-	// Require helpers globally.
-	require('./helpers');
-
-	// Require the page controller.
-	var Page = require('./controller.page');
-
-	// Init new instance of page controller.
-	var page = new Page();
-	page.init($('.main'));
-
-}(jQuery, window));
-
-},{"./controller.page":2,"./helpers":3}],2:[function(require,module,exports){
-/**
- *
  * PageController
  *
  * Copyright 2015, Author Name
@@ -159,7 +125,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
 }(window.PageController = window.PageController || function(){}, jQuery, window));
 
-},{"./module.binds":4,"./module.menu":5}],3:[function(require,module,exports){
+},{"./module.binds":3,"./module.menu":4}],2:[function(require,module,exports){
 /**
  *
  * Helpers
@@ -329,7 +295,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
 }(window.Helpers = window.Helpers || {}, jQuery, window));
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /**
  *
  * Module
@@ -512,7 +478,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
 }(window.Binds = window.Binds || function(){}, jQuery, window));
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /**
  *
  * Module
@@ -687,4 +653,38 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 
 }(window.Menu = window.Menu || function(){}, jQuery, window));
 
-},{}]},{},[1]);
+},{}],5:[function(require,module,exports){
+/**
+ *
+ * Application or Website name
+ *
+ * Copyright 2015, Author Name
+ * Some information on the license.
+ *
+**/
+
+// Global settings.
+window.mobile_breakpoint = 768;
+window.wiselinks_enabled = true;
+window.helper_log        = (typeof window.gulp_env == "undefined" || window.gulp_env == 'development') ? true : false;
+window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
+
+/* ======================================================== */
+/* Index
+/* ======================================================== */
+;(function($, window, undefined){
+    'use strict';
+
+	// Require helpers globally.
+	require('./helpers');
+
+	// Require the page controller.
+	var Page = require('./controller.page');
+
+	// Init new instance of page controller.
+	var page = new Page();
+	page.init($('.main'));
+
+}(jQuery, window));
+
+},{"./controller.page":1,"./helpers":2}]},{},[5]);

@@ -19,6 +19,7 @@
     "gulp-imagemin"           : "^2.0.0",
     "gulp-jshint"             : "^1.0.0",
     "gulp-karma"              : "^0.0.4",
+    "gulp-notify"             : "^2.0.0",
     "gulp-phantom"            : "^0.0.6",
     "gulp-rename"             : "^1.0.0",
     "gulp-sass"               : "^2.0.0",
@@ -37,7 +38,6 @@
     "karma-opera-launcher"    : "^0.1.0",
     "karma-phantomjs-launcher": "^0.1.4",
     "psi"                     : "^1.0.0",
-    "node-notifier"           : "^4.0.0",
     "vinyl-source-stream"     : "^1.0.0",
     "vinyl-buffer"            : "^1.0.0",
     "yargs"                   : "^3.0.0"

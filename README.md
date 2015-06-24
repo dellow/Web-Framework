@@ -254,8 +254,8 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
 
     .active-*
     .alert
-    .alpha
-    .beta
+    .alpha (Headings)
+    .beta (Headings)
     .bg
     .btn
     .box
@@ -264,18 +264,18 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .col
     .container
     .coupon
-    .current_page_item
-    .current_page_parent
-    .delta
+    .current_page_item (WordPress Menu)
+    .current_page_parent (WordPress Menu)
+    .delta (Headings)
     .disabled
-    .epsilon
+    .epsilon (Headings)
     .error
     .field
     .fl
     .fr
     .form-*
     .full
-    .gamma
+    .gamma (Headings)
     .grid
     .half
     .hide-*
@@ -294,7 +294,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .note
     .oldie
     .opp
-    .page__*
+    .page__* (Global page var)
     .positive
     .qty
     .readonly
@@ -306,11 +306,11 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .sub-menu
     .success
     .table
-    .u-*
+    .u-* (Utility classes)
     .v-small
     .voucher
     .warning
-    .zeta
+    .zeta (Headings)
 
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
@@ -369,3 +369,5 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 ## Changelog
 __2.0.0__: 
 * Merged the Project Wrapper and Project Libraries into one 'Web Framework' repository. We are now starting from version 2.0.0!
+* Improve output from Notifier. Now alerted to errors and end of tasks.
+* Now easier to add additional Jasmine test files.

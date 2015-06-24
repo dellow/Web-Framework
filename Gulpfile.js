@@ -2,14 +2,14 @@
 /* Requires & Vars
 /* =========================================================================== */
 // Require.
-var gulp         = require('gulp'),
-	args         = require('yargs').argv,
-	gulpif       = require('gulp-if'),
-	util 	     = require('gulp-util'),
-	buffer       = require('vinyl-buffer'),
-	header       = require('gulp-header'),
-	source       = require('vinyl-source-stream'),
-	notification = require('node-notifier');
+var gulp   = require('gulp'),
+	args   = require('yargs').argv,
+	gulpif = require('gulp-if'),
+	util   = require('gulp-util'),
+	notify = require('gulp-notify'),
+	buffer = require('vinyl-buffer'),
+	header = require('gulp-header'),
+	source = require('vinyl-source-stream');
 
 // Vars.
 var version        = '1.0.0',
@@ -19,9 +19,9 @@ var version        = '1.0.0',
 	is_production  = (args.config == 'production' || args.config == undefined) ? true : false,
 	error_handler  = function(err){
 		// Show notification.
-		notification.notify({
+		gulp.src('gulpfile.js').pipe(notify({
 			message: 'Error: ' + err.message
-		});
+		}));
 		// Show in terminal log.
 		util.log(util.colors.red('Error'), err.message);
 	},
@@ -47,7 +47,12 @@ gulp.task('default', [
 	'dalek',
 	'jasmine',
 	'jshint'
-]);
+], function(){
+	// Show notification.
+	gulp.src('gulpfile.js').pipe(notify({
+		message: 'Default task is complete'
+	}));
+});
 
 
 
@@ -78,7 +83,11 @@ gulp.task('css', function(){
 		}))
         .pipe(sourcemaps.init())
         .pipe(sass({
-	        outputStyle: (is_production) ? 'compressed' : 'expanded'
+	        outputStyle: (is_production) ? 'compressed' : 'expanded',
+        	errLogToConsole: true,
+	        onError: function(err){
+	            return notify.write(err);
+	        }
 	    }))
         .pipe(autoprefixer({
             browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
@@ -90,7 +99,8 @@ gulp.task('css', function(){
 			version: version,
 			date   : Date()
 		}))
-		.pipe(gulp.dest(dist_dir + 'css'));
+		.pipe(gulp.dest(dist_dir + 'css'))
+		.pipe(notify({message: 'CSS task complete.'}));
 });
 
 
@@ -110,7 +120,8 @@ gulp.task('js_common', function(){
 		.pipe(source('index.js'))
 	    .pipe(buffer())
 		.pipe(rename('common.js'))
-		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
+		.pipe(gulp.dest(dist_dir + 'js/compiled/'))
+		.pipe(notify({message: 'JS Common task complete.'}));
 });
 
 // JS Application Files.
@@ -125,7 +136,8 @@ gulp.task('js_app', function(){
 	    .pipe(source('index.js'))
 	    .pipe(buffer())
 		.pipe(rename('app.js'))
-		.pipe(gulp.dest(dist_dir + 'js/compiled/'));
+		.pipe(gulp.dest(dist_dir + 'js/compiled/'))
+		.pipe(notify({message: 'JS App task complete.'}));
 });
 
 // JS Build File (Concatenated App & Common).
@@ -159,7 +171,9 @@ gulp.task('js', ['js_app'], function(){
 			version: version,
 			date   : Date()
 		}))
-	    .pipe(gulp.dest(dist_dir + 'js/build'));
+	    .pipe(gulp.dest(dist_dir + 'js/build'))
+		.on('error', task_handler)
+		.pipe(notify({message: 'JS Build task complete.'}));
 });
 
 
@@ -234,7 +248,15 @@ gulp.task('sync', function(){
 // Dalek - Browser Testing (Development Mode Only).
 gulp.task('dalek', function(){
 	// Check environment.
-	if(!is_development){return;}
+	if(!is_development){
+		if(this.seq.slice(-1)[0] == 'default'){
+			util.log(util.colors.yellow('Warning: Task skipped. Not run with default profile.'));
+			return;
+		}
+		else{
+			throw new Error('This task must be run in development mode. Try running `gulp ' + this.seq.slice(-1)[0] + ' --config development`.');
+		}
+	}
 
 	// Require.
 	var dalek = require('gulp-dalek');
@@ -260,28 +282,33 @@ gulp.task('dalek', function(){
 					// 'junit'
 				]
 			})
-		);
+		)
+		.on('error', task_handler);
 });
 
 // Jasmine - Client Testing (Development Mode Only).
 gulp.task('jasmine', function(){
 	// Check environment.
-	if(!is_development){return;}
+	if(!is_development){
+		if(this.seq.slice(-1)[0] == 'default'){
+			util.log(util.colors.yellow('Warning: Task skipped. Not run with default profile.'));
+			return;
+		}
+		else{
+			throw new Error('This task must be run in development mode. Try running `gulp ' + this.seq.slice(-1)[0] + ' --config development`.');
+		}
+	}
 
 	// Require.
 	var karma = require('gulp-karma');
 
-	// Files. (Also needs setting in karma.conf.js)
-	var tests = [
-		dist_dir + 'js/spec/jasmine/general.js'
-	];
-
     // Task.
-	return gulp.src(tests)
+	return gulp.src(dist_dir + 'js/spec/jasmine/*')
 		.pipe(karma({
 			configFile: 'karma.conf.js',
 			action    : 'run'
-		}));
+		}))
+		.on('error', task_handler);
 });
 
 
@@ -292,7 +319,15 @@ gulp.task('jasmine', function(){
 // JSHint (Development Mode Only).
 gulp.task('jshint', function(){
 	// Check environment.
-	if(!is_development){return;}
+	if(!is_development){
+		if(this.seq.slice(-1)[0] == 'default'){
+			util.log(util.colors.yellow('Warning: Task skipped. Not run with default profile.'));
+			return;
+		}
+		else{
+			throw new Error('This task must be run in development mode. Try running `gulp ' + this.seq.slice(-1)[0] + ' --config development`.');
+		}
+	}
 
 	// Vars.
 	var jshint  = require('gulp-jshint'),
@@ -301,7 +336,8 @@ gulp.task('jshint', function(){
     // Task.
 	return gulp.src(dist_dir + 'js/app/**/*.js')
 	    .pipe(jshint())
-	    .pipe(jshint.reporter(stylish));
+	    .pipe(jshint.reporter(stylish))
+		.pipe(notify({message: 'JSHint task complete.'}));
 });
 
 // Image Minification.
@@ -317,7 +353,8 @@ gulp.task('images', function(){
             progressive      : true,
             interlaced       : true
         })))
-        .pipe(gulp.dest(dist_dir + 'images'));
+        .pipe(gulp.dest(dist_dir + 'images'))
+		.pipe(notify({message: 'Images task complete.'}));
 });
 
 
@@ -345,6 +382,7 @@ gulp.task('sprite', function(){
 			processor  : 'scss'
 	    }))
 	    .pipe(gulpif('*.png', gulp.dest(dist_dir + 'images/icons'), gulp.dest(dist_dir + 'css/scss/site')))
+		.pipe(notify({message: 'Sprite task complete.'}));
 });
 
 // App release.
@@ -362,7 +400,8 @@ gulp.task('release', function(){
 
     // Task.
 	return gulp.src(files, {base: src_dir})
-		.pipe(gulp.dest('releases/release-' + version));
+		.pipe(gulp.dest('releases/release-' + version))
+		.pipe(notify({message: 'Release task complete.'}));
 });
 
 // Google Page Speed Tests.
@@ -438,10 +477,8 @@ gulp.task('psi', function(){
 				mode     : mode,
 				url      : data.id
 			}))
-			.pipe(gulp.dest('./psi/'));
-
-			// Report.
-			console.log("Log has been recorded to: " + file);
+			.pipe(gulp.dest('./psi/'))
+			.pipe(notify({message: 'PSI task complete. Log has been recorded to: ' + file}));
 		});
 	});
 });

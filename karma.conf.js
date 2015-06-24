@@ -5,18 +5,18 @@ module.exports = function(config){
         colors   : true,
         logLevel : config.LOG_INFO,
         autoWatch: false,
-        singleRun: true,
+        singleRun: false,
         frameworks: [
             'browserify',
             'jasmine'
         ],
         files: [
-            'src/dist/js/spec/jasmine/general.js'
+            'src/dist/js/spec/jasmine/*'
         ],
         exclude: [
         ],
         preprocessors: {
-            'src/dist/js/spec/jasmine/general.js': ['browserify']
+            'src/dist/js/spec/jasmine/*': ['browserify']
         },
         reporters: [
             'progress'
