@@ -1,24 +1,29 @@
 {
-  "name": "Web Framework",
+  "name": "web-framework",
   "version": "2.0.0",
-  "private": true,
+  "description": "A Gulp powered frontend Framework and/or starting point for web projects.",
+  "license": "MIT",
   "authors": [
     "Stew Dellow <stewdellow@gmail.com>"
   ],
-  "description": "A frontend Framework and/or starting point for web projects.",
   "moduleType": [
     "node"
   ],
+  "main": [
+    "src/dist/js/app/index.js",
+    "src/dist/js/vendor/index.js",
+    "src/dist/css/scss/build.scss",
+  ],
   "keywords": [
-    "compass",
+    "browserify",
     "css",
     "framework",
+    "gulp",
     "html",
     "javascript",
     "jquery",
     "sass"
   ],
-  "license": "MIT",
   "ignore": [
     "node_modules",
     "bower_components",
