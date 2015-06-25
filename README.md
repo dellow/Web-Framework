@@ -368,8 +368,12 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 <a name="changelog"></a>
 ## Changelog
 __2.0.1__: 
-* Bugfix: PSI task created a null file if URL didn't contain a protocol.
+* Fixed duplicate variable issue with font-size and font-weight.
+* Removed 'font_family_' prefix to font family variables.
+* Normalised the line height on buttons.
+
 __2.0.0__: 
+* Bugfix: PSI task created a null file if URL didn't contain a protocol.
 * Merged the Project Wrapper and Project Libraries into one 'Web Framework' repository. We are now starting from version 2.0.0!
 * Improve output from Notifier. Now alerted to errors and end of tasks.
 * Now easier to add additional Jasmine test files.

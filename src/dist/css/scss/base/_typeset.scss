@@ -10,7 +10,7 @@ html {
 /* -- Body -- */
 body {
 	@include kbody();
-    font-family: $font_family_base;
+    font-family: $base;
 	word-wrap: break-word;
 	color: color(copy, body);
 }
@@ -134,7 +134,7 @@ p {
 }
 code {
 	font-weight: $regular;
-	font-family: $font_family_monospaced;
+	font-family: $monospaced;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	tab-size: 4;

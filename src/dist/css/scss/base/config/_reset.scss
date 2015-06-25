@@ -26,7 +26,7 @@ sub {
 }
 input, select, textarea, button {
 	font-size: inherit;
-	font-family: $font_family_base;
+	font-family: $base;
 }
 label, button, a.button, details, input[type="button"], input[type="submit"] {
 	cursor: pointer;
