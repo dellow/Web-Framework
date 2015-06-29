@@ -59,7 +59,9 @@
      * @version 1.0.0
 	**/
 	Controller.prototype.page_load = function(){
+		// Init menus.
 		this.Menu.init();
+		// Init binds.
 		this.Binds.init();
 	}
 
