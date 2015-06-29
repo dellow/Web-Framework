@@ -1,6 +1,6 @@
 {
   "name": "web-framework",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A Gulp powered frontend framework, wrapper and workflow for web projects.",
   "license": "MIT",
   "authors": [
@@ -12,7 +12,7 @@
   "main": [
     "src/dist/js/app/index.js",
     "src/dist/js/vendor/index.js",
-    "src/dist/css/scss/build.scss",
+    "src/dist/css/scss/build.scss"
   ],
   "keywords": [
     "browserify",
@@ -26,13 +26,6 @@
   ],
   "ignore": [
     "node_modules",
-    "bower_components",
-    "Gulpfile.js",
-    "bower.json",
-    "package.json",
-    "README.md",
-    "gemfile",
-    ".gitignore",
-    ".gitkeep"
+    "bower_components"
   ]
 }
