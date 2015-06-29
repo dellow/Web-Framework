@@ -60,13 +60,8 @@
      * @version 1.0.0
 	**/
 	Controller.prototype.page_load = function(){
-		// Init new instance.
-		var menu = new this.Menu();
-		menu.init();
-
-		// Init new instance.
-		var binds = new this.Binds();
-		binds.init();
+		this.Menu.init();
+		this.Binds.init();
 	}
 
 	/**
@@ -121,7 +116,7 @@
 	}
 
 	// Export
-	module.exports = Controller;
+	module.exports = new Controller();
 
 }(window.PageController = window.PageController || function(){}, jQuery, window));
 
@@ -474,7 +469,7 @@
     }
 
     // Export
-    module.exports = Module;
+    module.exports = new Module();
 
 }(window.Binds = window.Binds || function(){}, jQuery, window));
 
@@ -649,7 +644,7 @@
 	}
 
 	// Export
-	module.exports = Module;
+	module.exports = new Module();
 
 }(window.Menu = window.Menu || function(){}, jQuery, window));
 
@@ -682,8 +677,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 	var Page = require('./controller.page');
 
 	// Init new instance of page controller.
-	var page = new Page();
-	page.init($('.main'));
+	Page.init($('.main'));
 
 }(jQuery, window));
 

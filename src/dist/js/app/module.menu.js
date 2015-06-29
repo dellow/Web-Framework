@@ -168,6 +168,6 @@
 	}
 
 	// Export
-	module.exports = Module;
+	module.exports = new Module();
 
 }(window.Menu = window.Menu || function(){}, jQuery, window));
