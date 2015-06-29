@@ -88,9 +88,9 @@ ga('create', window.config.ga, 'auto');
 ga('require', 'displayfeatures');
 // GA Page View.
 ga('send', 'pageview', {
-    'dimension1': WURFL.complete_device_name,
-    'dimension2': WURFL.form_factor,
-    'dimension3': WURFL.is_mobile
+    'dimension1': (typeof(WURFL) !== 'undefined') ? WURFL.complete_device_name : null,
+    'dimension2': (typeof(WURFL) !== 'undefined') ? WURFL.form_factor : null,
+    'dimension3': (typeof(WURFL) !== 'undefined') ? WURFL.is_mobil : null
 });
 </script>
 </head>

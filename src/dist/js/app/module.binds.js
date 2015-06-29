@@ -176,6 +176,6 @@
     }
 
     // Export
-    module.exports = Module;
+    module.exports = new Module();
 
 }(window.Binds = window.Binds || function(){}, jQuery, window));

@@ -26,7 +26,6 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 	var Page = require('./controller.page');
 
 	// Init new instance of page controller.
-	var page = new Page();
-	page.init($('.main'));
+	Page.init($('.main'));
 
 }(jQuery, window));

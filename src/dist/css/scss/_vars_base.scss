@@ -28,32 +28,24 @@ $mobile_menu       : 768px !default;
 * Typography
 **/
 // Faces
-$font_family_monospaced: 'source-code-pro', monospace !default;
-$font_family_serif     : Georgia !default;
-$font_family_sans_serif: Arial !default;
-$font_family_base      : Arial, Verdana, sans-serif !default;
+$monospaced: 'source-code-pro', monospace !default;
+$serif     : Georgia !default;
+$sans_serif: Arial !default;
+$base      : Arial, Verdana, sans-serif !default;
 // Sizes
-$xlarge                : 30px !default;
-$large                 : 24px !default;
-$medium                : 20px !default;
-$regular               : 16px !default;
-$small                 : 12px !default;
-$tiny                  : 10px !default;
-// Headings
-$h1                    : 48px !default;
-$h2                    : 36px !default;
-$h3                    : 24px !default;
-$h4                    : 18px !default;
-$h5                    : 16px !default;
-$h6                    : 14px !default;
+$xlarge    : 30px !default;
+$large     : 24px !default;
+$medium    : 20px !default;
+$regular   : 16px !default;
+$small     : 12px !default;
+$tiny      : 10px !default;
 // Weights
-$extra_bold            : 900 !default;
-$bold                  : 700 !default;
-$semibold              : 600 !default;
-$medium                : 500 !default;
-$regular               : 400 !default;
-$light                 : 200 !default;
-$thin                  : 100 !default;
+$extra_bold: 900 !default;
+$bold      : 700 !default;
+$semibold  : 600 !default;
+$normal    : 400 !default;
+$light     : 200 !default;
+$thin      : 100 !default;
 
 /**
 * Knife Variables

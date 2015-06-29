@@ -59,13 +59,10 @@
      * @version 1.0.0
 	**/
 	Controller.prototype.page_load = function(){
-		// Init new instance.
-		var menu = new this.Menu();
-		menu.init();
-
-		// Init new instance.
-		var binds = new this.Binds();
-		binds.init();
+		// Init menus.
+		this.Menu.init();
+		// Init binds.
+		this.Binds.init();
 	}
 
 	/**
@@ -120,6 +117,6 @@
 	}
 
 	// Export
-	module.exports = Controller;
+	module.exports = new Controller();
 
 }(window.PageController = window.PageController || function(){}, jQuery, window));

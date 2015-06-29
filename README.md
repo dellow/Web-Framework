@@ -367,6 +367,16 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 
 <a name="changelog"></a>
 ## Changelog
+<<<<<<< HEAD
+=======
+__2.0.1__: 
+* Fixed duplicate variable issue with font-size and font-weight.
+* Removed 'font_family_' prefix to font family variables.
+* Normalised the line height on buttons.
+* Now checks for WURFL before attempting to send dimensions.
+* Required modules don't need to be manually initiated.
+
+>>>>>>> dev
 __2.0.0__: 
 * Bugfix: PSI task created a null file if URL didn't contain a protocol.
 * Merged the Project Wrapper and Project Libraries into one 'Web Framework' repository. We are now starting from version 2.0.0!
