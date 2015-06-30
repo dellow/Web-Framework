@@ -183,7 +183,7 @@ gulp.task('js', ['js_app'], function(){
 /* =========================================================================== */
 gulp.task('watch', function(){
 	// Run JS Master on JS and HBS file changes.
-	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
+	gulp.watch([dist_dir + 'js/app/**/*.js', dist_dir + 'js/plugins/**/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
 	// Run CSS on SCSS file changes.
 	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
 });
@@ -228,7 +228,7 @@ gulp.task('sync', function(){
 	}
 
 	// Run Browserify on JS and HBS file changes.
-	gulp.watch([dist_dir + 'js/app/*.js', dist_dir + 'js/plugins/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
+	gulp.watch([dist_dir + 'js/app/**/*.js', dist_dir + 'js/plugins/**/*.js', dist_dir + 'js/**/*.hbs'], ['js']);
 	// Run Compass on SCSS file changes.
 	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
 	// Reload on file changes.
