@@ -202,10 +202,24 @@ _Will compile to_:
 
 <a name="working-with-scss--responsive"></a>
 ### Responsive
-The Framework comes with a `breakpoints` partial in both `base` and `site` these are only for global responsive changes and theoretically could be left untouched. You should use the `respond-to` mixin to create responsive styles at the bottom of the relevant partial file.
+The Framework comes with a `breakpoints` partial in both `base` and `site` these are only for global responsive changes and theoretically could be left untouched. You should use the `respond-to` mixin to create responsive styles either below the declaration you are defining like so:
 
+    .foo {
+        display: inline-block;
+    }
+    // Media query after the declaration.
     @include respond-to(768px){
         .foo {
+            display: block;
+        }
+    }
+
+Or you can add the `respond-to` mixin within the declaration itself. For example:
+
+    .foo {
+        display: inline-block;
+        // Media inside the declaration.
+        @include respond-to(768px){
             display: block;
         }
     }
