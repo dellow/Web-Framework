@@ -388,6 +388,7 @@ __2.0.1__:
 * Now checks for WURFL before attempting to send dimensions.
 * Required modules don't need to be manually initiated.
 * Fixed Modernizr library.
+* Helpers.log now checks if message is an array or object and outputs accordingly.
 
 __2.0.0__: 
 * Bugfix: PSI task created a null file if URL didn't contain a protocol.
