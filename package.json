@@ -3,7 +3,6 @@
     "browserify"              : "^10.0.0",
     "browserify-shim"         : "^3.0.0",
     "browser-sync"            : "^2.0.0",
-    "css-sprite"              : "^0.9.9",
     "dalek-reporter-html"     : "^0.0.4",
     "dalek-reporter-junit"    : "^0.0.2",
     "dalek-browser-chrome"    : "^0.0.11",
@@ -38,6 +37,8 @@
     "karma-opera-launcher"    : "^0.1.0",
     "karma-phantomjs-launcher": "^0.1.4",
     "psi"                     : "^1.0.0",
+    "sprity"                  : "^1.0.0",
+    "sprity-sass"             : "^1.0.0",
     "vinyl-source-stream"     : "^1.0.0",
     "vinyl-buffer"            : "^1.0.0",
     "yargs"                   : "^3.0.0"

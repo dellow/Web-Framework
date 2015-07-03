@@ -365,24 +365,25 @@ gulp.task('images', function(){
 // Image Sprites.
 gulp.task('sprite', function(){
 	// Require.
-	var sprite = require('css-sprite').stream;
+	var sprity = require('sprity');
 
 	// Task.
-	return gulp.src(dist_dir + 'images/icons/sprite/*.png')
-	    .pipe(sprite({
-			base64     : false,
-			retina     : false,
-			background : '#FFFFFF',
-			margin     : 5,
-			orientation: 'horizontal',
-			prefix     : 'css-sprite',
-			name       : 'sprite',
-			style      : dist_dir + 'css/scss/site/_sprites.scss',
-			cssPath    : '../images/icons/',
-			processor  : 'scss'
-	    }))
-	    .pipe(gulpif('*.png', gulp.dest(dist_dir + 'images/icons'), gulp.dest(dist_dir + 'css/scss/site')))
-		.pipe(notify({message: 'Sprite task complete.'}));
+    return sprity.src({
+		src         : dist_dir + 'images/icons/sprite/*.png',
+		style       : dist_dir + 'css/scss/site/_sprites.scss',
+		cssPath     : '../images/icons/',
+		margin      : 5,
+		base64      : false,
+		retina      : false,
+		background  : '#FFFFFF',
+		orientation : 'horizontal',
+		prefix      : 'css-sprite',
+		name        : 'sprite',
+		processor   : 'sass',
+		'style-type': 'scss'
+	})
+    .pipe(gulpif('*.png', gulp.dest(dist_dir + 'images/icons'), gulp.dest(dist_dir + 'css/scss/site')))
+	.pipe(notify({message: 'Sprite task complete.'}));
 });
 
 // App release.

@@ -389,6 +389,7 @@ __2.0.1__:
 * Required modules don't need to be manually initiated.
 * Fixed Modernizr library.
 * Helpers.log now checks if message is an array or object and outputs accordingly.
+* Upgraded deprecated `css-sprite` package to `spritey`.
 
 __2.0.0__: 
 * Bugfix: PSI task created a null file if URL didn't contain a protocol.

@@ -158,7 +158,7 @@
                 // Add preloader.
                 Helper.preloader(preloader_el);
             },
-            success: function(jqXHR){
+            complete: function(jqXHR){
                 // Destroy preloader.
                 Helper.preloader(preloader_el, true);
             }
