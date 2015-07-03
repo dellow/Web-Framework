@@ -27,7 +27,7 @@
 
 <a name="about"></a>
 ## About
-This is a fast project wrapper and workflow that utilises Gulp as a build tool. To use this as a full Framework please follow the installation instructions below. This will pull in the [Framework Library Repo](https://github.com/sdellow/Framework-Library) using Bower which is a CSS and JS Framework.
+This is a fast Framework and/or Project Wrapper and workflow for web projects  that utilises Gulp as a build tool.
 
 <a name="requirements"></a>
 ## Requirements
