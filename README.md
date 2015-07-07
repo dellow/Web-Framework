@@ -390,6 +390,10 @@ __2.0.1__:
 * Fixed Modernizr library.
 * Helpers.log now checks if message is an array or object and outputs accordingly.
 * Upgraded deprecated `css-sprite` package to `spritey`.
+* Added better separation in base files.
+* Consolidated form partials into one.
+* Improved font sizing and spacing.
+* Added new slide in mobile menu. Updated layout help file to reflect.
 
 __2.0.0__: 
 * Bugfix: PSI task created a null file if URL didn't contain a protocol.

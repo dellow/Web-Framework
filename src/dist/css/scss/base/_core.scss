@@ -2,6 +2,8 @@
    Base > Core
    Important classes that are imperative to the framework
 ========================================================================== */
+
+
 /* -- Container -- */
 .container {
 	width: 90%;
@@ -17,5 +19,23 @@
 	}
 	&--wide {
 		max-width: $desktop--wide;
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Page Wrapper -- */
+.page__wrapper {
+	transition: left $animation ease;
+	@include respond-to($mobile_menu){
+		height: 100%;
+		width: 100%;
+		top: 0; left: 0;
+		overflow: scroll;
+		&.active-menu {
+			position: fixed;
+		}
 	}
 }

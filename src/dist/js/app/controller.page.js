@@ -24,7 +24,7 @@
     **/
 	Controller = function(){
 		// Require :: Modules
-		this.Menu = require('./module.menu');
+		this.Menu = require('./module.mobile-menu-side');
 		this.Binds = require('./module.binds');
     }
 

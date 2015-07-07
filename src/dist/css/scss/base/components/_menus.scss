@@ -2,12 +2,18 @@
    Base > Components > Menus
    Styles for navigational menus.
 ========================================================================== */
+
+
 /* -- All Navigation -- */
 .navigation {
 	ul {
 		margin: 0;
 	}
 }
+
+
+/* ----------------------------------------------------------------------- */
+
 
 /* -- Primary Navigation -- */
 .nav-primary {
@@ -37,14 +43,58 @@
 		&:first-child {
 			padding-left: 0;
 		}
-		&:hover > .sub-menu {
+		&:hover {
+			> .sub-menu {
+				display: block;
+			}
+		}
+	}
+	// Responsive.
+	@include respond-to($mobile_menu){
+		width: 100%;
+		display: none;
+		position: absolute;
+		z-index: $zindex-1;
+		background: color(copy, link);
+		li {
+			margin: 0;
 			display: block;
+			a {
+				display: block;
+			}
 		}
 	}
 }
 
+
+/* ----------------------------------------------------------------------- */
+
+
+.page__mobile {
+	width: 0;
+	height: 100%;
+	float: left;
+	overflow: hidden;
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 1;
+	box-shadow: 3px 0 6px rgba(0,0,0,0.3);
+	background: color(red);
+	transition: width $animation ease;
+	&__close {
+		position: absolute;
+		top: 15px; right: 15px;
+		font-size: 28px;
+		color: color(white);
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
 /* -- Mobile Menu -- */
-.mobile-menu {
+.page__mobile-menu {
 	width: 30px;
 	height: 22px;
 	display: none;
@@ -83,31 +133,24 @@
 			bottom: -8px;
 		}
 	}
+	// Responsive.
+	@include respond-to($mobile_menu){
+		display: inline-block;
+	}
 }
 
-@include respond-to($mobile_menu){
-	.mobile-animate {
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Mobile Animate -- */
+.page__mobile-animate {
+	// Responsive
+	@include respond-to($mobile_menu){
 		max-height: 0px;
 		display: block !important;
 		overflow-y: hidden !important;
 		transform: translateZ(0);
 		transition: max-height 1000ms ease-in-out;
-	}
-	.mobile-menu {
-		display: inline-block;
-	}
-	.nav-primary {
-		width: 100%;
-		display: none;
-		position: absolute;
-		z-index: $zindex-1;
-		background: color(copy, link);
-		li {
-			margin: 0;
-			display: block;
-			a {
-				display: block;
-			}
-		}
 	}
 }

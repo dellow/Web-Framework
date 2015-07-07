@@ -28,12 +28,10 @@ describe('JavaScript addition operator', function(){
 ========================================================================== */
 // // Require.
 // var Binds = require('../../app/module.binds');
-// // Vars.
-// var binds = new Binds();
 
 // // Test.
 // describe('Binds tests', function(){
 //     it('Should return 20', function(){
-//         expect(binds.method_name(10)).toBe(20);
+//         expect(Binds.method_name(10)).toBe(20);
 //     });
 // });

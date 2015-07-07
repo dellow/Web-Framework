@@ -2,15 +2,17 @@
    Site > Vars
    You can overwrite any of the config vars from here.
 ========================================================================== */
-/**
- * Config
-**/
+
+
+/* -- Config -- */
 // Debug mode
 $debug_mode: true;
 
-/**
-* Colors
-**/
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Colors -- */
 // Map
 $site_colors: (
 	copy: (

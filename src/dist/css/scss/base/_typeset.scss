@@ -2,6 +2,8 @@
    Base > Typeset
    App fonts and type settings.
 ========================================================================== */
+
+
 /* -- HTML -- */
 html {
 	@include khtml();
@@ -10,53 +12,61 @@ html {
 /* -- Body -- */
 body {
 	@include kbody();
-    font-family: $base;
+    font-family: $base_font;
 	word-wrap: break-word;
 	color: color(copy, body);
 }
 
+
+/* ----------------------------------------------------------------------- */
+
+
 /* -- Heading Formatting -- */
-h1, h2, h3, h4, h5, h6 {
+h1, .alpha, h2, .beta, h3, .gamma, h4, .delta, h5, .epsilon, h6, .zeta {
 	font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	// Abstractions
 	&.collapse-margin {
 		margin: 0;
 	}
+	// Pseudo
 	&:first-child {
 		margin-top: 0;
 	}
 }
 h1, .alpha {
-	@include ktype(5, 1, 0.5);
+	@include ktype(6, 1, 0.5);
 }
 h2, .beta {
-	@include ktype(4, 1, 0.5);
+	@include ktype(5, 1, 0.25);
 }
 h3, .gamma {
-	@include ktype(3, 1, 0.5);
+	@include ktype(4, 0.5, 0.25);
 }
 h4, .delta {
-	@include ktype(2, 1, 0.5);
+	@include ktype(3, 0.5, 0.25);
 }
 h5, .epsilon {
-	@include ktype(1, 1, 0);
+	@include ktype(2, 0.5, 0);
 }
 h6, .zeta {
-	@include ktype(0, 1, 0);
+	@include ktype(1, 0.5, 0);
 }
+
+
+/* ----------------------------------------------------------------------- */
+
 
 /* -- General Type & Rhythm -- */
-blockquote, dl, figure, ol, p, pre, ul {
-	@include ktype(0, 0, 0.75);
-}
-
-/* -- General Formatting -- */
-// Global.
-p, li {
+p, li, dd {
+	@include ktype(0, 0, 0);
 	font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 }
 
+
+/* ----------------------------------------------------------------------- */
+
+
 /* -- Links, Buttons & Hover Styles -- */
-// Links.
 a, button {
 	color: color(copy, link);
 	text-decoration: none;
@@ -71,28 +81,20 @@ a, button {
 }
 
 
-/* -- Other -- */
-// Citation
-cite {
-	// Descendants
-	.cite__profession {
-		font-weight: $bold;
-	}
-}
+/* ----------------------------------------------------------------------- */
+
 
 /* -- Content Areas -- */
 .page__content {
 	// Margins
 	blockquote, dl, figure, ol, p, pre, ul {
+		@include ktype(0, 0, 0.75);
 		&:last-child {
 			margin-bottom: 0;
 		}
 	}
 
 	// Lists.
-	ul {
-		list-style-type: disc;
-	}
 	ul, ol {
 		margin-left: 1.2em;
 		li {
@@ -103,28 +105,42 @@ cite {
 			list-style-type: circle;
 		}
 	}
+	ul {
+		list-style-type: disc;
+	}
 	dl {
 		dd {
 			@include nudge(margin-bottom, 0.1);
 			@include nudge(text-indent, 1);
 		}
 	}
-
-	// Leading intro paragraph.
-	&.page__content--leading-p {
-		p {
-			&:first-of-type {
- 				@include rem(font-size, $medium);
-			}
-		}
-	}
 }
+
+
+/* ----------------------------------------------------------------------- */
+
 
 /* -- Hatnotes -- */
 .page__hatnote {
 	@include nudge(padding-left, 1);
 	font-style: italic;
 }
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Citation -- */
+cite {
+	// Descendants
+	.cite__profession {
+		font-weight: $bold;
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
 
 /* -- Source Formatting -- */
 p {

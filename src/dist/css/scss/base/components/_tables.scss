@@ -2,6 +2,8 @@
    Base > Components > Tables
    Description goes here.
 ========================================================================== */
+
+
 /* -- Div Tables -- */
 div.table { // Qualified Selector
 	@extend %cf;
@@ -17,6 +19,10 @@ div.table { // Qualified Selector
 		}
 	}
 }
+
+
+/* ----------------------------------------------------------------------- */
+
 
 /* -- Normal Tables -- */
 table {
