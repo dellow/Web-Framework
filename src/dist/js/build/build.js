@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified JavaScript
 Application Version: 1.0.0
-Compiled: Tue Jul 07 2015 15:01:27 GMT+0100 (BST)
+Compiled: Tue Jul 07 2015 15:31:36 GMT+0100 (BST)
 ========================================================================== */
 
 // Set environment variable
@@ -13768,13 +13768,13 @@ require('./wiselinks');
 	Module.prototype.init = function(){
 		var _this = this;
 
-        // Document ready.
-        $(function(){
+		// Start binds on window load / resize.
+		$(window).on('load resize',function(){
         	// Check screen is below mobile breakpoint.
 			if(Helpers.breakpoint(window.mobile_breakpoint)){
             	return _this.binds();
             }
-        });
+		});
 	}
 
 	/**

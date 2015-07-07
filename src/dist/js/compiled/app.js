@@ -517,13 +517,13 @@
 	Module.prototype.init = function(){
 		var _this = this;
 
-        // Document ready.
-        $(function(){
+		// Start binds on window load / resize.
+		$(window).on('load resize',function(){
         	// Check screen is below mobile breakpoint.
 			if(Helpers.breakpoint(window.mobile_breakpoint)){
             	return _this.binds();
             }
-        });
+		});
 	}
 
 	/**
