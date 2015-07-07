@@ -4,34 +4,25 @@
 ========================================================================== */
 // Config
 @import 'config/reset',
-		'config/debug';
-
-// Core
-@import 'placeholders',
+		'config/debug',
+		// Core
+		'placeholders',
 		'utility-classes',
 		'misc',
 		'core',
-		'typeset';
-
-// Components
-@import 'components/alerts',
+		'typeset',
+		// Components
+		'components/alerts',
 		'components/buttons',
 		'components/grid',
 		'components/menus',
 		'components/slabs',
 		'components/tables',
-		'components/forms/base',
-		'components/forms/form-block',
-		'components/forms/form-inline-block',
-		'components/forms/form-inline',
-		'components/forms/notifications',
-		'components/forms/placeholders';
-
-// Blocks
-@import 'blocks/breadcrumbs',
-		'blocks/pagination';
-
-// Misc
-@import 'fixes',
+		'components/forms',
+		// Blocks
+		'blocks/breadcrumbs',
+		'blocks/pagination',
+		// Misc
+		'fixes',
 		'breakpoints',
 		'print';

@@ -2,6 +2,8 @@
    Mixins > Helpers
    Functions and mixins that aid development or other mixins.
 ========================================================================== */
+
+
 /**
  * color
  * Gets color and tone from map.
@@ -11,6 +13,10 @@
 @function color($color, $tone: 'base'){
     @return map-get(map-get($colors, $color), $tone);
 }
+
+
+/* ----------------------------------------------------------------------- */
+
 
 /**
  * px-to-rem
@@ -33,6 +39,10 @@
 
     @return $return;
 }
+
+
+/* ----------------------------------------------------------------------- */
+
 
 /**
  * modify-grid
@@ -67,9 +77,9 @@
 		$flex_grid_selector: '.flex-grid, &.flex-grid';
 	}
 	#{$flex_grid_selector} {
-		$top: ($gutter_width / ($gutter_width * 0 + 1)) / 1.11;
+		$top: ($gutter_width / ($gutter_width * 0 + 1)) / 1.1;
 		width: 100% + $gutter_width;
-		margin-top: -$top;
+		margin-top: -$gutter_width;
 		left: -$gutter_width;
 		> [class*="col-"] {
 			max-width: $col - $gutter_width;

@@ -2,7 +2,9 @@
    Base > Placeholders
    Some default placeholders for the framework.
 ========================================================================== */
-// Clearing
+
+
+/* -- Clearing -- */
 %cf {
 	zoom: 1;
 	&:before, &:after {
@@ -14,19 +16,31 @@
 	}
 }
 
-// Enable Flexbox
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Enable Flexbox -- */
 %flex {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 
-// Preserve-3D method to prevent blurring
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Preserve-3D method to prevent blurring -- */
 %preserve-3d {
 	transform-style: preserve-3d;
 }
 
-// Vertically align elements with display: flex;
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Vertically align elements with display: flex; -- */
 %flex-vertical-align, %fva {
 	display: flex;
 	align-items: center;
@@ -37,7 +51,11 @@
 	justify-content: center;
 }
 
-// Vertically align elements with transform:
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Vertically align elements with transform: -- */
 %transform-vertical-align, %tva {
 	position: absolute;
 	top: 50%; left: 50%;

@@ -3,6 +3,8 @@
    Slabs create sections styled with a background colour. They differ
    from the `.bg` class by being naturally padded to provide content space.
 ========================================================================== */
+
+
 .slab {
 	@include nudge(padding, 1 0);
 	&--x2 {

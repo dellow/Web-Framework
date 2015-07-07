@@ -6,7 +6,7 @@ var $ = jQuery = require('jquery');
 // Wiselinks.
 require('./wiselinks');
 // Modernizr
-// var Modernizr = require('modernizr');
+var Modernizr = require('./modernizr');
 // Handlebars.
 // var H = Handlebars = require('handlebars');
 // Backbone.

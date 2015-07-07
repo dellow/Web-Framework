@@ -3,17 +3,19 @@
    The variables for use throughout the framework. These can
    be overwritten from the site/vars partial.
 ========================================================================== */
-/**
-* Config
-**/
+
+
+/* -- Config -- */
 // Debug mode
 $debug_mode: false !default;
 // Mobule first - If true the 'respond-to' mixin by default uses `min-width`, if false it uses `max-width`.
 $mobile_first: false !default;
 
-/**
-* Essentials
-**/
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Essentials -- */
 $mn                : 24px !default; // Three is not the magic number. Don't believe Del La Soul
 $gutter            : 2% !default;
 $fixedgutter       : 10px !default;
@@ -24,14 +26,17 @@ $box_shadow_base   : 0 0 5px rgba(69, 18, 11, 0.15) !default;
 $animation         : 300ms !default;
 $mobile_menu       : 768px !default;
 
-/**
-* Typography
-**/
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Typography -- */
 // Faces
 $monospaced: 'source-code-pro', monospace !default;
 $serif     : Georgia !default;
 $sans_serif: Arial !default;
-$base      : Arial, Verdana, sans-serif !default;
+$base_font : Arial, Verdana, sans-serif !default;
+
 // Sizes
 $xlarge    : 30px !default;
 $large     : 24px !default;
@@ -39,6 +44,7 @@ $medium    : 20px !default;
 $regular   : 16px !default;
 $small     : 12px !default;
 $tiny      : 10px !default;
+
 // Weights
 $extra_bold: 900 !default;
 $bold      : 700 !default;
@@ -47,17 +53,22 @@ $normal    : 400 !default;
 $light     : 200 !default;
 $thin      : 100 !default;
 
-/**
-* Knife Variables
-**/
-$body-font-size:    16px !default;
-$body-line-height:  1.5 !default;
-$scale-factor:      1.333 !default;
-$ie8compatability:  false !default;
 
-/**
-* Colors
-**/
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Knife Variables -- */
+$body-font-size  : 16px !default;
+$scale-factor    : 1.2 !default; // Major Second - Refer to Knife SCSS file for all ratios.
+$body-line-height: 1.5 !default;
+$scale-factor    : 1.333 !default;
+$ie8compatability: false !default;
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Colors -- */
 // Base
 $base_colors: (
 	black: (
@@ -105,6 +116,7 @@ $base_colors: (
 		active: darken(#C4122F, 20%)
 	)
 ) !default;
+
 // Social
 $social_colors: (
 	social: (
@@ -124,11 +136,14 @@ $social_colors: (
 		youtube   : #bb0000
 	)
 ) !default;
+
 // Site
 $site_colors          : () !default;
+
 // Merge
 $framework_colors     : map-merge($base_colors, $social_colors) !default;
 $colors               : map-merge($framework_colors, $site_colors) !default;
+
 // Useful
 $color_odd_base       : #EDEDED !default;
 $color_even_base      : #F4F4F4 !default;
@@ -137,9 +152,11 @@ $color_status         : #3a87ad !default;
 $color_success        : #468847 !default;
 $color_warning        : #c09853 !default;
 
-/**
-* Z-Index Scale
-**/
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Z-Index Scale -- */
 $zindex-1 : 100 !default;
 $zindex-2 : 200 !default;
 $zindex-3 : 300 !default;
@@ -151,9 +168,11 @@ $zindex-8 : 800 !default;
 $zindex-9 : 900 !default;
 $zindex-10: 1000 !default;
 
-/**
-* Percentage Column Widths
-**/
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Percentage Column Widths -- */
 $col_1   : 100% !default;
 $col_1-3 : 33.33% !default;
 $col_2-3 : 66.66% !default;
@@ -169,6 +188,7 @@ $col_1-9 : 11.11% !default;
 $col_1-10: 10% !default;
 $col_1-12: 8.33% !default;
 $col_1-16: 6.25% !default;
+
 // Column array
 $col_array: (
 	col-1   : $col_1,
@@ -188,16 +208,18 @@ $col_array: (
 	col-1-16: $col_1-16
 ) !default;
 
-/**
-* Device sizes
-* viewportsizes.com | screensiz.es | dpi.lv
-**/
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Device sizes :: viewportsizes.com | screensiz.es | dpi.lv -- */
 // Generic
 $device                        : 250px !default;
 $mobile                        : 568px !default;
 $tablet                        : 768px !default;
 $desktop                       : 1180px !default;
 $desktop--wide                 : 1400px !default;
+
 // iPhone 3
 $iphone3_dpi                   : 163 !default;
 $iphone3_dppx                  : 1 !default;
@@ -206,6 +228,7 @@ $iphone3_device_width          : 320px !default;
 $iphone3_device_height         : 480px !default;
 $iphone3_resolution_width      : ($iphone3_device_width * $iphone3_dppx) / $iphone3_downsampling !default;
 $iphone3_resolution_height     : ($iphone3_device_height * $iphone3_dppx) / $iphone3_downsampling !default;
+
 // iPhone 4
 $iphone4_dpi                   : 326 !default;
 $iphone4_dppx                  : 2 !default;
@@ -214,6 +237,7 @@ $iphone4_device_width          : 320px !default;
 $iphone4_device_height         : 480px !default;
 $iphone4_resolution_width      : ($iphone4_device_width * $iphone4_dppx) / $iphone4_downsampling !default;
 $iphone4_resolution_height     : ($iphone4_device_height * $iphone4_dppx) / $iphone4_downsampling !default;
+
 // iPhone 5
 $iphone5_dpi                   : 326 !default;
 $iphone5_dppx                  : 2 !default;
@@ -222,6 +246,7 @@ $iphone5_device_width          : 320px !default;
 $iphone5_device_height         : 568px !default;
 $iphone5_resolution_width      : ($iphone5_device_width * $iphone5_dppx) / $iphone5_downsampling !default;
 $iphone5_resolution_height     : ($iphone5_device_height * $iphone5_dppx) / $iphone5_downsampling !default;
+
 // iPhone 6
 $iphone6_dpi                   : 326 !default;
 $iphone6_dppx                  : 2 !default;
@@ -230,6 +255,7 @@ $iphone6_device_width          : 375px !default;
 $iphone6_device_height         : 667px !default;
 $iphone6_resolution_width      : ($iphone6_device_width * $iphone6_dppx) / $iphone6_downsampling !default;
 $iphone6_resolution_height     : ($iphone6_device_height * $iphone6_dppx) / $iphone6_downsampling !default;
+
 // iPhone 6 Plus
 $iphone6_plus_dpi              : 401 !default;
 $iphone6_plus_dppx             : 3 !default;
@@ -238,6 +264,7 @@ $iphone6_plus_device_width     : 414px !default;
 $iphone6_plus_device_height    : 736px !default;
 $iphone6_plus_resolution_width : ($iphone6_plus_device_width * $iphone6_plus_dppx) / $iphone6_plus_downsampling !default;
 $iphone6_plus_resolution_height: ($iphone6_plus_device_height * $iphone6_plus_dppx) / $iphone6_plus_downsampling !default;
+
 // iPad 1
 $ipad1_dpi                     : 132 !default;
 $ipad1_dppx                    : 1 !default;
@@ -246,6 +273,7 @@ $ipad1_device_width            : 768px !default;
 $ipad1_device_height           : 1024px !default;
 $ipad1_resolution_width        : ($ipad1_device_width * $ipad1_dppx) / $ipad1_downsampling !default;
 $ipad1_resolution_height       : ($ipad1_device_height * $ipad1_dppx) / $ipad1_downsampling !default;
+
 // iPad 2
 $ipad2_dpi                     : 132 !default;
 $ipad2_dppx                    : 1 !default;
@@ -254,6 +282,7 @@ $ipad2_device_width            : 768px !default;
 $ipad2_device_height           : 1024px !default;
 $ipad2_resolution_width        : ($ipad2_device_width * $ipad2_dppx) / $ipad2_downsampling !default;
 $ipad2_resolution_height       : ($ipad2_device_height * $ipad2_dppx) / $ipad2_downsampling !default;
+
 // iPad 3
 $ipad3_dpi                     : 264 !default;
 $ipad3_dppx                    : 2 !default;
@@ -262,6 +291,7 @@ $ipad3_device_width            : 768px !default;
 $ipad3_device_height           : 1024px !default;
 $ipad3_resolution_width        : ($ipad3_device_width * $ipad3_dppx) / $ipad3_downsampling !default;
 $ipad3_resolution_height       : ($ipad3_device_height * $ipad3_dppx) / $ipad3_downsampling !default;
+
 // iPad Mini
 $ipadmini_dpi                  : 163 !default;
 $ipadmini_dppx                 : 2 !default;
@@ -270,6 +300,7 @@ $ipadmini_device_width         : 768px !default;
 $ipadmini_device_height        : 1024px !default;
 $ipadmini_resolution_width     : ($ipadmini_device_width * $ipadmini_dppx) / $ipadmini_downsampling !default;
 $ipadmini_resolution_height    : ($ipadmini_device_height * $ipadmini_dppx) / $ipadmini_downsampling !default;
+
 // Nexus 4
 $nexus4_dpi                    : 318 !default;
 $nexus4_dppx                   : 1 !default;
@@ -278,6 +309,7 @@ $nexus4_device_width           : 384px !default;
 $nexus4_device_height          : 598px !default;
 $nexus4_resolution_width       : ($nexus4_device_width * $nexus4_dppx) / $nexus4_downsampling !default;
 $nexus4_resolution_height      : ($nexus4_device_height * $nexus4_dppx) / $nexus4_downsampling !default;
+
 // Nexus 5
 $nexus5_dpi                    : 445 !default;
 $nexus5_dppx                   : 1 !default;
@@ -286,6 +318,7 @@ $nexus5_device_width           : 360px !default;
 $nexus5_device_height          : 598px !default;
 $nexus5_resolution_width       : ($nexus5_device_width * $nexus5_dppx) / $nexus5_downsampling !default;
 $nexus5_resolution_height      : ($nexus5_device_height * $nexus5_dppx) / $nexus5_downsampling !default;
+
 // Nexus 7 2012
 $nexus7_2012_dpi               : 216 !default;
 $nexus7_2012_dppx              : 1.325 !default;
@@ -294,6 +327,7 @@ $nexus7_2012_device_width      : 601px !default;
 $nexus7_2012_device_height     : 962px !default;
 $nexus7_2012_resolution_width  : ($nexus7_2012_device_width * $nexus7_2012_dppx) / $nexus7_2012_downsampling !default;
 $nexus7_2012_resolution_height : ($nexus7_2012_device_height * $nexus7_2012_dppx) / $nexus7_2012_downsampling !default;
+
 // Nexus 7 2013
 $nexus7_2013_dpi               : 323 !default;
 $nexus7_2013_dppx              : 2 !default;
@@ -302,6 +336,7 @@ $nexus7_2013_device_width      : 600px !default;
 $nexus7_2013_device_height     : 960px !default;
 $nexus7_2013_resolution_width  : ($nexus7_2013_device_width * $nexus7_2013_dppx) / $nexus7_2013_downsampling !default;
 $nexus7_2013_resolution_height : ($nexus7_2013_device_height * $nexus7_2013_dppx) / $nexus7_2013_downsampling !default;
+
 // Nexus 10
 $nexus10_dpi                   : 300 !default;
 $nexus10_dppx                  : 2 !default;

@@ -27,7 +27,7 @@
 
 <a name="about"></a>
 ## About
-This is a fast project wrapper and workflow that utilises Gulp as a build tool. To use this as a full Framework please follow the installation instructions below. This will pull in the [Framework Library Repo](https://github.com/sdellow/Framework-Library) using Bower which is a CSS and JS Framework.
+This is a fast Framework and/or Project Wrapper and workflow for web projects  that utilises Gulp as a build tool.
 
 <a name="requirements"></a>
 ## Requirements
@@ -202,10 +202,24 @@ _Will compile to_:
 
 <a name="working-with-scss--responsive"></a>
 ### Responsive
-The Framework comes with a `breakpoints` partial in both `base` and `site` these are only for global responsive changes and theoretically could be left untouched. You should use the `respond-to` mixin to create responsive styles at the bottom of the relevant partial file.
+The Framework comes with a `breakpoints` partial in both `base` and `site` these are only for global responsive changes and theoretically could be left untouched. You should use the `respond-to` mixin to create responsive styles either below the declaration you are defining like so:
 
+    .foo {
+        display: inline-block;
+    }
+    // Media query after the declaration.
     @include respond-to(768px){
         .foo {
+            display: block;
+        }
+    }
+
+Or you can add the `respond-to` mixin within the declaration itself. For example:
+
+    .foo {
+        display: inline-block;
+        // Media inside the declaration.
+        @include respond-to(768px){
             display: block;
         }
     }
@@ -367,6 +381,14 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 
 <a name="changelog"></a>
 ## Changelog
+__2.0.2__: 
+* Fixed Modernizr library.
+* Helpers.log now checks if message is an array or object and outputs accordingly.
+* Upgraded deprecated `css-sprite` package to `spritey`.
+* Added better separation in base files.
+* Consolidated form partials into one.
+* Improved font sizing and spacing.
+* Added new slide in mobile menu. Updated layout help file to reflect.
 
 __2.0.1__: 
 * Fixed duplicate variable issue with font-size and font-weight.

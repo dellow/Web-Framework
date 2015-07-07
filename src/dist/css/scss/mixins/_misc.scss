@@ -2,6 +2,8 @@
    Mixins > Misc
    Functions and mixins for various Framework operations.
 ========================================================================== */
+
+
 /**
  * retina-image
  * Retina image replacement.
@@ -20,32 +22,9 @@
 	background-image: url($image + '.' + $type);
 }
 
-/**
- * underline
- * Better underline.
- *
- * .foo {@include underline(red);}
-**/
-@mixin underline($color){
-	@if( $color == none or $color == '' ){
-		background-image: none;
-		background-position: 0% 0%;
-		background-repeat: repeat;
-		background-size: auto;
-		&:hover {
-			background-image: none;
-			background-position: 0% 0%;
-			background-repeat: repeat;
-			background-size: auto;
-		}
-	}
-	@else{
-		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, $color 50%);
-		background-position: 0 100%;
-		background-repeat: repeat-x;
-		background-size: 100% 0.15rem;
-	}
-}
+
+/* ----------------------------------------------------------------------- */
+
 
 /**
  * arrow

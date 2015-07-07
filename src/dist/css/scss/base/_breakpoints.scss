@@ -4,6 +4,8 @@
    Use responsive mixin inside the correct partial for local responsive
    styles.
 ========================================================================== */
+
+
 // Respond to tablet
 @include respond-to($tablet){
 	/* -- Exclusions -- */
@@ -16,6 +18,10 @@
 		}
 	}
 }
+
+
+/* ----------------------------------------------------------------------- */
+
 
 // Respond to mobile
 @include respond-to($mobile){

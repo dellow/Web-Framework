@@ -1,0 +1,509 @@
+/* ==========================================================================
+   Base > Forms
+   Styling for elements within a form tag.
+========================================================================== */
+
+
+form {
+	position: relative;
+
+	// Positioning.
+	.left {
+		width: 49%;
+		float: left;
+	}
+	.right {
+		width: 49%;
+		float: right;
+	}
+
+	// Notes.
+	.note {
+		font-size: 90%;
+		opacity: 0.65;
+	}
+	span.note {
+		@include nudge(margin-left, 0.5);
+	}
+
+	// Field wrappers.
+	.field {
+		@include nudge(margin-bottom, 0.5);
+		position: relative;
+		@extend %cf;
+		// Abstractions
+		&.left, &.right {
+			margin-bottom: 0;
+		}
+	}
+
+	// Fieldset.
+	fieldset {
+		@include nudge(margin-bottom, 1);
+	}
+
+	// Labels.
+	label, .label {
+		margin: 0 0 5px;
+		position: relative;
+		abbr {
+			color: color(red);
+		}
+		input[type="radio"], input[type="checkbox"] {
+			@include nudge(margin-left, 0.5);
+		}
+		// Pseudo
+		&:first-child {
+			input[type="radio"], input[type="checkbox"] {
+				margin-left: 0;
+			}
+		}
+	}
+
+	// All form fields.
+	input, .input, select, textarea {
+		height: $form_field_height;
+		@include nudge(padding, 0.2 0.4);
+		border: 1px solid lighten(color(grey, dark), 60%);
+		vertical-align: top;
+		position: relative;
+		border-radius: $border_radius_base;
+		cursor: pointer;
+		background: color(white);
+		transition: color $animation ease, background-color $animation ease, border-color $animation ease;
+		// Pseudo
+		&:hover, &:active {
+			border-color: lighten(color(grey, dark), 50%);
+		}
+		&:focus {
+			border-color: lighten(color(grey, dark), 35%);
+		}
+		&[readonly], &[readonly]:hover, &.readonly, &.readonly:hover, &.readonly:active,
+		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {
+			border-color: lighten(color(grey, dark), 60%);
+			cursor: no-drop;
+			background: lighten(color(grey, dark), 70%);
+		}
+		&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {
+			opacity: 0.5;
+		}
+	}
+
+	// Textareas.
+	textarea {
+		min-height: 100px; // Degradable
+		height: 125px;
+	}
+
+	// Radio & Checkboxes.
+	%radio-checkbox, input[type="radio"], input[type="checkbox"] {
+		width: auto;
+		height: auto;
+		margin: -2px 2px 0 0;
+		border: 0;
+		display: inline;
+		vertical-align: middle;
+		// Siblings
+		& + label {
+			@include nudge(margin, 0 1 0 0.2);
+			vertical-align: middle;
+		}
+	}
+
+	// Buttons.
+	button, .button {
+		&.form-button {
+			@include nudge(padding, 0.35 1);
+			border-radius: $border_radius_base;
+			background: lighten(color(grey, dark), 70%);
+			&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {
+				cursor: no-drop;
+				color: rgba(color(copy, body), 0.7);
+				background: lighten(color(grey, dark), 75%);
+			}
+			// Pseudo
+			&:hover {
+				background: lighten(color(grey, dark), 65%);
+			}
+			&:active {
+				background: lighten(color(grey, dark), 60%);
+			}
+		}
+	}
+
+	// Specific Fields.
+	label, .label, input, select, textarea {
+		&.qty, &.voucher, &.coupon, &.half, &.small, &.v-small {
+			display: inline-block !important;
+			+ .note {
+				margin: 7px 0 0 10px !important;
+				display: inline-block !important;
+			}
+		}
+		&.qty {
+			max-width: 56px;
+		}
+		&.voucher, &.coupon {
+			max-width: (100% / 3);
+			margin: 0;
+			display: inline-block !important;
+			+ button[type="submit"] {
+				max-width: (100% / 1.5);
+				display: inline-block;
+			}
+		}
+		&.full {
+			width: 100% !important;
+			max-width: 100%;
+		}
+		&.half {
+			max-width: (100% / 2) - 1;
+		}
+		&.small {
+			max-width: (100% / 3);
+		}
+		&.v-small {
+			max-width: (100% / 6);
+		}
+	}
+}
+
+@include respond-to($tablet){
+	form {
+		// Specific Fields.
+		input, select, textarea {
+			&.voucher, &.coupon {
+				max-width: (100% / 2) - 1;
+				+ button[type="submit"] {
+					max-width: (100% / 2) - 1;
+				}
+			}
+			&.small {
+				max-width: (100% / 2) - 1;
+			}
+			&.v-small {
+				max-width: (100% / 3);
+			}
+		}
+	}
+}
+
+@include respond-to($mobile){
+	form {
+		// Specific Fields.
+		input, select, textarea {
+			&.v-small {
+				max-width: (100% / 2) - 1;
+			}
+		}
+	}
+}
+
+@include respond-to(360px){
+	form {
+		// Specific Fields.
+		input, select, textarea {
+			&.qty, &.voucher, &.coupon, &.half, &.small, &.v-small {
+				+ .note {
+					margin: 7px 0 0 0 !important;
+				}
+			}
+			&.voucher, &.coupon {
+				max-width: 100%;
+				width: 100%;
+				+ button[type="submit"] {
+					max-width: 100%;
+					width: 100%;
+					margin: 4px 0 2px;
+				}
+			}
+			&.v-small {
+				max-width: 100%;
+				width: 100%;
+				margin: 4px 0 2px;
+			}
+		}
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.form-block {
+	// Field container
+	.field-container {
+		label {
+			@include nudge(margin-right, 0.25);
+		}
+		input, .input, select, textarea {
+			margin-left: 2%;
+			display: inline-block;
+			vertical-align: middle;
+			// Pseudo
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		span {
+			// Sibling
+			+ input, .input, select, textarea, .field-container {
+				margin: 0;
+			}
+		}
+	}
+
+	// Labels
+	label, .label {
+		display: block;
+		input[type="checkbox"], input[type="radio"] {
+			margin: -2px 2px 0 0;
+		}
+	}
+
+	// All form elements
+	input, .input, select, textarea, .field-container {
+		width: 100%;
+		display: block;
+		// Sibling
+		~ .note {
+			margin-left: 0;
+			display: block;
+		}
+	}
+
+	// Radio & Checkboxes
+	input[type="checkbox"], input[type="radio"] {
+		@extend %radio-checkbox;
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.form-inline-block {
+	// Field container
+	.field-container {
+		height: $form_field_height;
+		label {
+			width: auto;
+			@include nudge(margin-right, 0.25);
+		}
+		span {
+			// Siblings
+			+ input, .input, select, textarea, .field-container {
+				margin: 0;
+			}
+		}
+	}
+
+	// All form elements
+	label, .label, input, .input, select, textarea, .field-container {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	// Textarea
+	textarea {
+		vertical-align: top;
+	}
+
+	// Labels
+	label, .label {
+		width: 35%;
+		padding-right: 5%;
+		input[type="checkbox"], input[type="radio"] {
+			margin: -2px 2px 0 0;
+		}
+		// Pseudo
+		&:first-of-type {
+			input {
+				margin-left: 0;
+			}
+		}
+	}
+
+	// All form elements
+	input, .input, select, textarea, .field-container {
+		width: 64%;
+		margin: 0;
+		// Siblings
+		~ .note {
+			margin-left: 35%;
+		}
+	}
+
+	// Radio & Checkboxes
+	input[type="checkbox"], input[type="radio"] {
+		@extend %radio-checkbox;
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.form-inline {
+	// Field container
+	.field-container {
+		height: $form_field_height;
+	}
+
+	// Labels
+	label, .label, input, .input, select, textarea, .field-container {
+		width: auto;
+		@include nudge(margin, 0 0 0 0.5);
+		display: inline;
+		// Pseudo
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+	span {
+		// Siblings
+		+ input, .input, select, textarea, .field-container {
+			margin: 0;
+		}
+	}
+}
+
+
+
+/* ----------------------------------------------------------------------- */
+
+
+form {
+	&.form-has-errors { // Qualified Selector
+
+		// Label
+		label {
+			// Abstractions
+			&.error {
+				color: $color_error;
+			}
+			&.status {
+				color: $color_status;
+			}
+			&.success {
+				color: $color_success;
+			}
+			&.warning {
+				color: $color_warning;
+			}
+		}
+
+		// Inputs
+		input, .input, select, textarea, .field-container {
+			// Abstractions
+			&.error {
+				color: $color_error;
+				border-color: lighten($color_error, 25%);
+				background-color: lighten($color_error, 40%);
+				// Pseudo
+				&:focus {
+					background-color: lighten($color_error, 35%);
+				}
+			}
+			&.status {
+				color: $color_status;
+				border-color: lighten($color_status, 25%);
+				background-color: lighten($color_status, 40%);
+				// Pseudo
+				&:focus {
+					background-color: lighten($color_status, 35%);
+				}
+			}
+			&.success {
+				color: $color_success;
+				border-color: lighten($color_success, 25%);
+				background-color: lighten($color_success, 40%);
+				// Pseudo
+				&:focus {
+					background-color: lighten($color_success, 35%);
+				}
+			}
+			&.warning {
+				color: $color_warning;
+				border-color: lighten($color_warning, 25%);
+				background-color: lighten($color_warning, 40%);
+				// Pseudo
+				&:focus {
+					background-color: lighten($color_warning, 35%);
+				}
+			}
+		}
+
+		// Messages
+		.msg {
+			@include rem(font-size, 14px);
+		}
+
+		// Responses
+		.response--error {
+			// Descendants
+			.msg {
+				color: $color_error;
+			}
+		}
+		.response--status {
+			// Descendants
+			.msg {
+				color: $color_status;
+			}
+		}
+		.response--success {
+			// Descendants
+			.msg {
+				color: $color_success;
+			}
+		}
+		.response--warning {
+			// Descendants
+			.msg {
+				color: $color_warning;
+			}
+		}
+
+		// Fields
+		.field.field-has-errors {
+			::-webkit-input-placeholder {
+				color: $color_error;
+			}
+			::-moz-placeholder {
+				color: $color_error;
+			}
+			:-moz-placeholder {
+				color: $color_error;
+			}
+			:-ms-input-placeholder {
+				color: $color_error;
+			}
+			::placeholder {
+				color: $color_error;
+			}
+		}
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+form {
+	::-webkit-input-placeholder {
+		color: color(grey);
+	}
+	::-moz-placeholder {
+		color: color(grey);
+	}
+	:-moz-placeholder {
+		color: color(grey);
+	}
+	:-ms-input-placeholder {
+		color: color(grey);
+	}
+	::placeholder {
+		color: color(grey);
+	}
+}

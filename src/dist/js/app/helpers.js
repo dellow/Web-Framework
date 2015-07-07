@@ -26,6 +26,9 @@
 				}
 			}
 			else {
+				if(message instanceof Array || message instanceof Object){
+					console.log(message);
+				}
 				var color = (type == 'positive') ? '#097809' : (type == 'negative') ? '#c5211d' : (typeof type !== 'undefined') ? type : '#240ad0';
 				console.log('%c DEBUG: -----------------------------------------------', 'color: ' + color);
 				console.log('%c DEBUG: ' + message, 'color: ' + color);
@@ -155,7 +158,7 @@
                 // Add preloader.
                 Helper.preloader(preloader_el);
             },
-            success: function(jqXHR){
+            complete: function(jqXHR){
                 // Destroy preloader.
                 Helper.preloader(preloader_el, true);
             }

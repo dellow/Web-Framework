@@ -8,6 +8,8 @@
 <head>
 <meta charset="utf-8">
 <title>Web Framework | Layout</title>
+<!-- Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- ============================================================================== -->
 <!--                                                                         STYLES -->
 <!-- ============================================================================== -->
@@ -15,81 +17,99 @@
 </head>
 <body class="no-debug">
 
-<!-- Header -->
-<header class="page-header container" role="banner" aria-label="primary">
-	<!-- Logo -->
-	<div class="logo-wrapper u-nudge-bottom">
-		<a href="HREF_HERE" title="TITLE_HERE" class="logo">
-			<img src="http://placehold.it/300x125&text=Logo">
-		</a>
-	</div>
-
-	<!-- Primary header navigation -->
-	<nav class="navigation" role="navigation">
-		<!-- Mobile menu button -->
-		<button class="mobile-menu"><span></span></button>
-		<!-- Desktop navigation -->
-		<ul class="nav-primary" role="menu">
-			<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #1</a></li>
-			<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #2</a></li>
-			<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #3</a></li>
-			<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #4</a></li>
-			<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #5 (Ajax)</a></li>
-			<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #6 (Ajax)</a></li>
-		</ul>
-	</nav>
-</header>
-
-<!-- Main -->
-<div class="main container" role="main">
-	<!-- Section -->
-	<section class="SECTION_CLASS_HERE slab">
-		<!-- Page title goes here -->
-		<h1>Page title goes here</h1>
-		<!-- Grid -->
-		<div class="grid">
-			<!-- Main content area -->
-			<div class="col-2-3 content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius pulvinar tortor a pellentesque. Aenean auctor tellus vel facilisis maximus. Duis eget nulla lorem. Sed ac nunc quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed quis lectus velit. Pellentesque accumsan orci nec venenatis tristique. Nullam commodo hendrerit egestas. Nunc ultricies arcu et vehicula tempor. In pharetra elementum vulputate. Ut nec purus tellus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-
-				<p>Donec eget laoreet leo. Donec at commodo purus. Integer eget massa lacinia, consectetur leo vitae, feugiat nisi. Nam consequat orci ut justo auctor sollicitudin. Morbi sed lorem non tortor porttitor semper nec dictum purus. Duis pulvinar leo libero, vel gravida risus aliquam non. Vivamus non euismod dolor. Sed magna tortor, faucibus in sem sed, lobortis lobortis dui. Praesent at elit non lacus tristique semper.</p>
-
-				<p>Sed elementum eleifend aliquet. Mauris at magna consequat, vestibulum nisl a, luctus turpis. Sed faucibus, neque quis pulvinar mattis, lectus nisl volutpat neque, quis finibus nisl eros ut nulla. Suspendisse quis dui volutpat, lacinia odio ut, viverra tortor. Morbi nec pretium ante. Integer volutpat bibendum pulvinar. Proin faucibus nisl a risus laoreet, sit amet sollicitudin erat egestas. Cras posuere pellentesque eleifend. Nunc pulvinar quis odio sit amet auctor. Etiam id massa malesuada, semper turpis nec, suscipit sapien. Nullam ac mattis nisi, quis porta risus. Maecenas nulla enim, vestibulum vel nulla sed, scelerisque rhoncus lectus. Sed scelerisque quam ac facilisis pulvinar.</p>
-			</div>
-
-			<!-- Sidebar -->
-			<aside class="col-1-3 sidebar" role="complimentary">
-				<!-- Module -->
-				<div class="module module--name u-nudge-bottom">
-					<h4>Module Title Goes Here</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius pulvinar tortor a pellentesque. Aenean auctor tellus vel facilisis maximus.</p>
-				</div>
-
-				<!-- Module -->
-				<div class="module module--name u-nudge-bottom">
-					<h4>Module Title Goes Here</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius pulvinar tortor a pellentesque. Aenean auctor tellus vel facilisis maximus.</p>
-				</div>
-			</aside>
-		</div>
-	</section>
+<!-- Mobile Menu -->
+<div class="page__mobile js-mobile-menu">
+	<!-- Close button -->
+	<button class="page__mobile__close js-close-mobile-menu">X</button>
+	<!-- Desktop navigation -->
+	<ul class="nav-primary" role="menu">
+		<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #1</a></li>
+		<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #2</a></li>
+		<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #3</a></li>
+		<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #4</a></li>
+		<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #5 (Ajax)</a></li>
+		<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #6 (Ajax)</a></li>
+	</ul>
 </div>
 
-<!-- Footer -->
-<footer class="page-footer container" role="contentinfo">
-	<div class="grid">
-		<div class="col-1-2">
-			<div class="colophon">
-				&copy; Company Name.
-			</div>
+<!-- Page Wrapper -->
+<div class="page__wrapper js-mobile-content">
+	<!-- Header -->
+	<header class="page-header container" role="banner" aria-label="primary">
+		<!-- Logo -->
+		<div class="logo-wrapper u-nudge-bottom">
+			<a href="HREF_HERE" title="TITLE_HERE" class="logo">
+				<img src="http://placehold.it/300x125&text=Logo">
+			</a>
 		</div>
-		<div class="col-1-2 right">
-			<div class="credit">
-				Web Design by Us
+
+		<!-- Primary header navigation -->
+		<nav class="navigation" role="navigation">
+			<!-- Mobile menu button -->
+			<button class="page__mobile-menu js-mobile-button"><span></span></button>
+			<!-- Desktop navigation -->
+			<ul class="nav-primary" role="menu">
+				<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #1</a></li>
+				<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #2</a></li>
+				<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #3</a></li>
+				<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #4</a></li>
+				<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #5 (Ajax)</a></li>
+				<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #6 (Ajax)</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Main -->
+	<div class="main container" role="main">
+		<!-- Section -->
+		<section class="SECTION_CLASS_HERE slab">
+			<!-- Page title goes here -->
+			<h1>Page title goes here</h1>
+			<!-- Grid -->
+			<div class="grid">
+				<!-- Main content area -->
+				<div class="col-2-3 content">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius pulvinar tortor a pellentesque. Aenean auctor tellus vel facilisis maximus. Duis eget nulla lorem. Sed ac nunc quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed quis lectus velit. Pellentesque accumsan orci nec venenatis tristique. Nullam commodo hendrerit egestas. Nunc ultricies arcu et vehicula tempor. In pharetra elementum vulputate. Ut nec purus tellus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+
+					<p>Donec eget laoreet leo. Donec at commodo purus. Integer eget massa lacinia, consectetur leo vitae, feugiat nisi. Nam consequat orci ut justo auctor sollicitudin. Morbi sed lorem non tortor porttitor semper nec dictum purus. Duis pulvinar leo libero, vel gravida risus aliquam non. Vivamus non euismod dolor. Sed magna tortor, faucibus in sem sed, lobortis lobortis dui. Praesent at elit non lacus tristique semper.</p>
+
+					<p>Sed elementum eleifend aliquet. Mauris at magna consequat, vestibulum nisl a, luctus turpis. Sed faucibus, neque quis pulvinar mattis, lectus nisl volutpat neque, quis finibus nisl eros ut nulla. Suspendisse quis dui volutpat, lacinia odio ut, viverra tortor. Morbi nec pretium ante. Integer volutpat bibendum pulvinar. Proin faucibus nisl a risus laoreet, sit amet sollicitudin erat egestas. Cras posuere pellentesque eleifend. Nunc pulvinar quis odio sit amet auctor. Etiam id massa malesuada, semper turpis nec, suscipit sapien. Nullam ac mattis nisi, quis porta risus. Maecenas nulla enim, vestibulum vel nulla sed, scelerisque rhoncus lectus. Sed scelerisque quam ac facilisis pulvinar.</p>
+				</div>
+
+				<!-- Sidebar -->
+				<aside class="col-1-3 sidebar" role="complimentary">
+					<!-- Module -->
+					<div class="module module--name u-nudge-bottom">
+						<h4>Module Title Goes Here</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius pulvinar tortor a pellentesque. Aenean auctor tellus vel facilisis maximus.</p>
+					</div>
+
+					<!-- Module -->
+					<div class="module module--name u-nudge-bottom">
+						<h4>Module Title Goes Here</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius pulvinar tortor a pellentesque. Aenean auctor tellus vel facilisis maximus.</p>
+					</div>
+				</aside>
 			</div>
-		</div>
+		</section>
 	</div>
-</footer>
+
+	<!-- Footer -->
+	<footer class="page-footer container" role="contentinfo">
+		<div class="grid">
+			<div class="col-1-2">
+				<div class="colophon">
+					&copy; Company Name.
+				</div>
+			</div>
+			<div class="col-1-2 right">
+				<div class="credit">
+					Web Design by Us
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
 
 <!-- ============================================================================== -->
 <!--                                                                     JAVASCRIPT -->
