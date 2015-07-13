@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Site > All
+   Imports all the partials.
+========================================================================== */
+@import // Core
+		'sprites',
+		'icons',
+		'typeset',
+		'global',
+		// Components
+		'components/components',
+		'components/buttons',
+		'components/grids',
+		'components/slabs',
+		'components/forms',
+		'components/menus',
+		// Blocks
+		'blocks/blocks',
+		// Core
+		'fixes',
+		'breakpoints';
+
+// JavaScript
+// @import 'javascript/accordion';
+// @import 'javascript/bx-slider';
+// @import 'javascript/fancybox';
+// @import 'javascript/google-map';
+// @import 'javascript/modals';
+// @import 'javascript/preloaders';
+// @import 'javascript/tabs';
+// @import 'javascript/validation';
