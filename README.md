@@ -382,6 +382,9 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 <a name="changelog"></a>
 ## Changelog
 __2.0.2__: 
+* Install now asks for a Git repository URL.
+
+__2.0.2__: 
 * Fixed Modernizr library.
 * Helpers.log now checks if message is an array or object and outputs accordingly.
 * Upgraded deprecated `css-sprite` package to `spritey`.

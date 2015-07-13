@@ -102,6 +102,24 @@ fi
 
 
 # ------------------------------------------------------------------------
+# Get Git origin.
+# ------------------------------------------------------------------------
+#
+read -p "$(tput setaf 5)Enter a URL for your repository. Leave blank if none. $(tput sgr0)" choice
+if [[ ! -z "$choice" ]]; then
+	# Command.
+	REPO_URL=$choice
+
+	## Report.
+	echo -e "------------------------------------------------"
+	echo -e "$(tput setaf 2)Git repository URL saved...$(tput sgr0)"
+	echo -e "------------------------------------------------"
+fi
+printf "\n"
+
+
+
+# ------------------------------------------------------------------------
 # Check for a commit.
 # ------------------------------------------------------------------------
 #
@@ -154,6 +172,12 @@ echo -e "------------------------------------------------"
 if [ "$INITIAL_COMMIT" = true ] ; then
 	git add --all
 	git commit -am "Initial commit"
+
+	# Do push.
+	if [[ ! -z "$REPO_URL" ]]; then
+		# Command.
+		git push origin --all
+	fi
 
 	## Report.
 	echo -e "------------------------------------------------"
