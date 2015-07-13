@@ -381,7 +381,7 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 
 <a name="changelog"></a>
 ## Changelog
-__2.0.2__: 
+__2.0.3__: 
 * Install now asks for a Git repository URL.
 
 __2.0.2__: 
