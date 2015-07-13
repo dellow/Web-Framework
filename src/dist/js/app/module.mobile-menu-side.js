@@ -18,10 +18,6 @@
      * @version 1.0.0
     **/
     Module = function(){
-		this.button  = $('.js-mobile-button');
-		this.menu    = $('.js-mobile-menu');
-		this.content = $('.js-mobile-content');
-
 		// Set active flag.
 		this.menu_active = false;
     }
@@ -36,13 +32,23 @@
 	Module.prototype.init = function(){
 		var _this = this;
 
-        // Document ready.
-        $(function(){
+		// Start binds on window load / resize.
+		$(window).on('load resize',function(){
+			// Vars.
+			_this.$button  = $('.js-mobile-button');
+			_this.$menu    = $('.js-mobile-menu');
+			_this.$content = $('.js-mobile-content');
         	// Check screen is below mobile breakpoint.
 			if(Helpers.breakpoint(window.mobile_breakpoint)){
             	return _this.binds();
             }
-        });
+            else{
+				// Reset flag.
+				_this.set_menu_flag(false);
+            	// Reset any menus.
+            	return _this.hide_primary_menu();
+            }
+		});
 	}
 
 	/**
@@ -56,28 +62,22 @@
 		var _this = this;
 
 		// Click on the mobile menu.
-		$('.js-mobile-button').on('click', function(){
+		this.$button.on('click', function(){
 			var _self = $(this);
 
 			// Run hide operations.
 			if(this.menu_active){
 				// Hide mobile menu.
 				_this.hide_primary_menu(_self);
-				// Wait 10ms.
-				setTimeout(function(){
-					// Set flag.
-					_this.menu_active = false;
-				}, 100);
+				// Set flag.
+				_this.set_menu_flag(false);
 			}
 			// Run show operations.
 			else{
 				// Show mobile menu.
 				_this.show_primary_menu(_self);
-				// Wait 10ms.
-				setTimeout(function(){
-					// Set flag.
-					_this.menu_active = true;
-				}, 100);
+				// Set flag.
+				_this.set_menu_flag(true);
 			}
 		});
 
@@ -96,25 +96,19 @@
 			if(_this.menu_active){
 				// Hide mobile menu.
 				_this.hide_primary_menu();
-				// Wait 10ms.
-				setTimeout(function(){
-					// Set flag.
-					_this.menu_active = false;
-				}, 100);
+				// Set flag.
+				_this.set_menu_flag(false);
 			}
 		});
 
 		// Close menu.
-		$('.js-mobile-content').on('click', function(){
+		this.$content.on('click', function(){
 			// Check menu is active.
 			if(_this.menu_active){
 				// Hide mobile menu.
 				_this.hide_primary_menu();
-				// Wait 10ms.
-				setTimeout(function(){
-					// Set flag.
-					_this.menu_active = false;
-				}, 100);
+				// Set flag.
+				_this.set_menu_flag(false);
 			}
 		});
 	}
@@ -129,14 +123,14 @@
 	Module.prototype.show_primary_menu = function(){
 		// Vars.
 		var doc_width = $(document).width(),
-			doc_90    = (doc_width / 100) * 90;
+			doc_85    = (doc_width / 100) * 85;
 
-		// Add 90% width to menu.
-		this.menu.css({'width': doc_90});
-		// Move page content 90% left.
-		this.content.addClass('active-menu').css({'left': doc_90});
+		// Add 85% width to menu.
+		this.$menu.css({'width': doc_85});
+		// Move page content 85% left.
+		this.$content.addClass('active-menu').css({'left': doc_85});
 		// Add active class to menu button.
-		this.button.addClass('active-menu');
+		this.$button.addClass('active-menu');
 	}
 
 	/**
@@ -150,16 +144,33 @@
 		var _this = this;
 
 		// Remove 90% width to menu.
-		_this.menu.css({'width': ''});
+		this.$menu.css({'width': ''});
 		// Move page content back to 0 left.
-		_this.content.css({'left': ''});
+		this.$content.css({'left': ''});
 		// Wait 10ms.
 		setTimeout(function(){
 			// Remove the active class.
-			_this.content.removeClass('active-menu');
+			_this.$content.removeClass('active-menu');
 			// Remove active class from menu button.
-			_this.button.removeClass('active-menu');
+			_this.$button.removeClass('active-menu');
 		}, 200);
+	}
+
+	/**
+	 * set_menu_flag
+	 * Set flag after 10ms
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+	Module.prototype.set_menu_flag = function(state){
+		var _this = this;
+
+		// Wait 10ms.
+		setTimeout(function(){
+			// Set flag.
+			_this.menu_active = state;
+		}, 100);
 	}
 
 	// Export
