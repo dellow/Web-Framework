@@ -278,8 +278,9 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .col
     .container
     .coupon
-    .current_page_item (WordPress Menu)
-    .current_page_parent (WordPress Menu)
+    .current
+    .current_page_item (WordPress Menus)
+    .current_page_parent (WordPress Menus)
     .delta (Headings)
     .disabled
     .epsilon (Headings)
@@ -292,6 +293,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .gamma (Headings)
     .grid
     .half
+    .has_sub_menu (WordPress Menus)
     .hide-*
     .ie6
     .ie7
@@ -305,11 +307,14 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .navigation
     .nav-*
     .negative
+    .next
     .note
     .oldie
     .opp
+    .page-numbers
     .page__* (Global page var)
     .positive
+    .prev
     .qty
     .readonly
     .right
