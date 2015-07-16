@@ -52,9 +52,13 @@
      * Default options.
     **/
     $.fn.modal.defaults = {
-        template: '<div id="modal-window" class="modal"><div class="modal-content"><div><button class="modal-close">Close</button></div></div></div>',
-        type    : 'modal-slide-left',
-        content : ''
+        template         : '<div id="modal-window" class="modal"><div class="modal-content"><div></div>',
+        type             : 'modal-slide-left',
+        content          : '',
+        confirmation     : false,
+        callback_positive: function(){}, // Must be a function.
+        callback_negative: function(){}, // Must be a function.
+        callback_closed  : '' // Must be a string.
     };
 
     /**
@@ -97,10 +101,26 @@
                 }
             });
             // On close.
-            $(document).on('click', '.modal-close', function(e){
+            $(document).on('click', '.js-modal-close', function(e){
                 e.preventDefault();
 
                 _self.destroy();
+
+                if(_self.settings.callback_closed !== ''){
+                    _self.settings.callback_closed.call();
+                }
+            });
+            // On confirmation :: Yes.
+            $(document).on('click', '.modal-confirmation-yes', function(e){
+                _self.destroy();
+
+                _self.settings.callback_positive.call();
+            });
+            // On confirmation :: No.
+            $(document).on('click', '.modal-confirmation-no', function(e){
+                _self.destroy();
+
+                _self.settings.callback_negative.call();
             });
         },
         without_selector: function(){
@@ -127,6 +147,14 @@
 
             // Apply content.
             $('.modal-content', $target).prepend(_self.settings.content);
+
+            // Confirmation?
+            if(_self.settings.confirmation){
+                $('.modal-content', $target).append('<button class="modal-confirmation-yes">Yes</button> | <button class="modal-confirmation-no">No</button>');
+            }
+            else{
+                $('.modal-content', $target).append('<button class="js-modal-close">Close</button>');
+            }
 
             // Add to DOM.
             $('body').prepend($target);
