@@ -19,7 +19,7 @@
     **/
     Module = function(){
         // Require :: NPM
-        // require('fancybox');
+        // require('fancybox')($);
         // Require :: Plugins
         // require('../plugins/jquery.equal-heights');
         // require('../plugins/jquery.googlemap');

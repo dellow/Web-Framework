@@ -85,7 +85,7 @@
         run_heights: function(el, breakpoint1, breakpoint2){
             var _self = this;
 
-            if($(window).width() > breakpoint1 && $(window).width() < breakpoint2){
+            if($(window).width() >= breakpoint1 && $(window).width() <= breakpoint2){
                 _self.calculate(el);
             }
             else{

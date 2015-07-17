@@ -278,8 +278,9 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .col
     .container
     .coupon
-    .current_page_item (WordPress Menu)
-    .current_page_parent (WordPress Menu)
+    .current
+    .current_page_item (WordPress Menus)
+    .current_page_parent (WordPress Menus)
     .delta (Headings)
     .disabled
     .epsilon (Headings)
@@ -292,6 +293,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .gamma (Headings)
     .grid
     .half
+    .has_sub_menu (WordPress Menus)
     .hide-*
     .ie6
     .ie7
@@ -305,11 +307,14 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .navigation
     .nav-*
     .negative
+    .next
     .note
     .oldie
     .opp
+    .page-numbers
     .page__* (Global page var)
     .positive
+    .prev
     .qty
     .readonly
     .right
@@ -381,6 +386,12 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 
 <a name="changelog"></a>
 ## Changelog
+__2.0.3__: 
+* Lots of bug fixes and improvements.
+* Install now asks for a Git repository URL.
+* Removed globbing for site SCSS.
+* Watch doesn't break stream on SASS error.
+
 __2.0.2__: 
 * Fixed Modernizr library.
 * Helpers.log now checks if message is an array or object and outputs accordingly.

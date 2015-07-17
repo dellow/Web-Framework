@@ -24,6 +24,7 @@ body {
 /* -- Heading Formatting -- */
 h1, .alpha, h2, .beta, h3, .gamma, h4, .delta, h5, .epsilon, h6, .zeta {
 	font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+	color: color(copy, header);
 	// Abstractions
 	&.collapse-margin {
 		margin: 0;
@@ -58,7 +59,6 @@ h6, .zeta {
 
 /* -- General Type & Rhythm -- */
 p, li, dd {
-	@include ktype(0, 0, 0);
 	font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 }
 
