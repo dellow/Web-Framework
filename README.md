@@ -387,8 +387,10 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 <a name="changelog"></a>
 ## Changelog
 __2.0.3__: 
+* Lots of bug fixes and improvements.
 * Install now asks for a Git repository URL.
 * Removed globbing for site SCSS.
+* Watch doesn't break stream on SASS error.
 
 __2.0.2__: 
 * Fixed Modernizr library.

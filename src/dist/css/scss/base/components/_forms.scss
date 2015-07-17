@@ -285,7 +285,6 @@ form {
 .form-inline-block {
 	// Field container
 	.field-container {
-		height: $form_field_height;
 		label {
 			width: auto;
 			@include nudge(margin-right, 0.25);
@@ -345,11 +344,6 @@ form {
 
 
 .form-inline {
-	// Field container
-	.field-container {
-		height: $form_field_height;
-	}
-
 	// Labels
 	label, .label, input, .input, select, textarea, .field-container {
 		width: auto;
