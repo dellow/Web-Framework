@@ -52,6 +52,7 @@
     "jquery-ui"        : "*",
     "jquery-touchswipe": "*",
     "jquery.scrollto"  : "*",
+    "underscore"       : "*",
     "waypoints"        : "*"
   },
   "browserify": {

@@ -110,7 +110,7 @@ gulp.task('css', function(){
 /* JavaScript Compiling
 /* =========================================================================== */
 // JS Common Libraries & Vendors.
-gulp.task('js_common', function(){
+gulp.task('js:common', function(){
 	// Require.
 	var browserify = require('browserify'),
 		rename     = require('gulp-rename');
@@ -126,7 +126,7 @@ gulp.task('js_common', function(){
 });
 
 // JS Application Files.
-gulp.task('js_app', function(){
+gulp.task('js:app', function(){
 	// Require.
 	var browserify = require('browserify'),
 		rename     = require('gulp-rename');
@@ -142,7 +142,7 @@ gulp.task('js_app', function(){
 });
 
 // JS Build File (Concatenated App & Common).
-gulp.task('js', ['js_app'], function(){
+gulp.task('js', ['js:app'], function(){
 	// Require.
 	var concat = require('gulp-concat'),
 		uglify = require('gulp-uglify');
