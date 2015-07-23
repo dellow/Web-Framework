@@ -4,7 +4,7 @@ Libraries
 // jQuery.
 var $ = jQuery = require('jquery');
 // Underscore
-// var _ = require('underscore');
+// var U = _ = require('underscore');
 // Handlebars.
 // var H = Handlebars = require('handlebars');
 // Backbone.
