@@ -389,6 +389,7 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 __2.0.4__: 
 * Changed name of JS Common and JS App tasks.
 * Added Underscore to common.
+* Added React to common.
 
 __2.0.3__: 
 * Lots of bug fixes and improvements.

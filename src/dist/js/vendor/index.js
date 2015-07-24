@@ -9,6 +9,8 @@ var $ = jQuery = require('jquery');
 // var H = Handlebars = require('handlebars');
 // Backbone.
 // var B = Backbone = require('backbone'); Backbone.$ = $;
+// React.
+// var R = React = require('react');
 // Wiselinks.
 require('./wiselinks');
 // Modernizr
