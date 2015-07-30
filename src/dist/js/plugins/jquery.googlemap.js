@@ -109,7 +109,6 @@
                 click: function(){
                     if(!pointer_active){
                         _self.$elem.addClass('map-is-active');
-                        _self.map_canvas.css({'pointer-events': 'auto'});
                         pointer_active = true;
                     }
                 },
@@ -118,7 +117,6 @@
                         timeout = window.setTimeout(function(){
                             window.clearTimeout(timeout);
                             _self.$elem.addClass('map-is-active');
-                            _self.map_canvas.css({'pointer-events': 'auto'});
                             pointer_active = true;
                         }, _self.settings.hoverThreshold);
                     }
@@ -127,7 +125,6 @@
                     if(pointer_active){
                         window.clearTimeout(timeout);
                         _self.$elem.removeClass('map-is-active');
-                        _self.map_canvas.css({'pointer-events': 'none'});
                         pointer_active = false;
                     }
                 }
