@@ -61,7 +61,7 @@
         locations                : [],
         apiKey                   : '',
         map_type                 : 'roadmap',
-        hoverThreshold           : 500,
+        hoverThreshold           : 1000,
         mapStyles                : null,
         mapZoom                  : 15,
         mapDisableDefaultUI      : false,
@@ -105,7 +105,7 @@
             var timeout, pointer_active = false;
 
             // On events
-            $(document).on({
+            _self.$elem.on({
                 click: function(){
                     if(!pointer_active){
                         _self.$elem.addClass('map-is-active');
@@ -113,7 +113,7 @@
                         pointer_active = true;
                     }
                 },
-                mouseover: function(){
+                mouseenter: function(){
                     if(!pointer_active){
                         timeout = window.setTimeout(function(){
                             window.clearTimeout(timeout);
@@ -131,7 +131,7 @@
                         pointer_active = false;
                     }
                 }
-            }, _self.selector);
+            });
         },
         run: function(){
             var _self = this;
