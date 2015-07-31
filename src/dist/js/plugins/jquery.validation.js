@@ -701,7 +701,7 @@
         var email_val = el.val(),
             match_val = suggester.get_match(email_val);
 
-        this.suggestion = el.next('.suggestion');
+        this.suggestion = el.next('.js-validation-suggestion');
         this.reveal_suggestion(form, el, match_val);
     }
 

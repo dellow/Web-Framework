@@ -294,7 +294,6 @@
 	module.exports = Helpers;
 
 }(window.Helpers = window.Helpers || {}, jQuery, window));
-
 },{}],3:[function(require,module,exports){
 /**
  *
