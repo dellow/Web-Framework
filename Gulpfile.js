@@ -99,7 +99,11 @@ gulp.task('css', function(){
 			version: version,
 			date   : Date()
 		}))
-        .pipe(sourcemaps.write('/', {includeContent: false}))
+        .pipe(sourcemaps.write('./', {
+			includeContent        : false,
+			sourceRoot            : '',
+			sourceMappingURLPrefix: ''
+        }))
 		.pipe(gulp.dest(dist_dir + 'css'))
 		.pipe(notify({message: 'CSS task complete.'}));
 });
