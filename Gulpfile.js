@@ -94,12 +94,12 @@ gulp.task('css', function(){
             browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
             cascade: false
         }))
-        .pipe(sourcemaps.write('/', {includeContent: false}))
 		.pipe(header(header_tpl, {
 			type   : (is_production) ? 'Minified' : 'Unminified',
 			version: version,
 			date   : Date()
 		}))
+        .pipe(sourcemaps.write('/', {includeContent: false}))
 		.pipe(gulp.dest(dist_dir + 'css'))
 		.pipe(notify({message: 'CSS task complete.'}));
 });
