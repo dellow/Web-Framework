@@ -390,6 +390,7 @@ __2.0.4__:
 * Changed name of JS Common and JS App tasks.
 * Added Underscore to common.
 * Added React to common.
+* Fixed CSS sourcemaps.
 
 __2.0.3__: 
 * Lots of bug fixes and improvements.
