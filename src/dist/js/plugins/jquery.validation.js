@@ -137,7 +137,7 @@
             // Cache the submit button element.
             _self.button      = $('button[type="submit"], input[type="submit"]', _self.$elem);
             // Success element.
-            _self.success_element = (_self.settings.successElement.length) ? _self.settings.successElement : _self.$elem.before($('<div class="form-success">' + _self.settings.defaultSuccessMsg + '</div>'));
+            _self.success_element = (_self.settings.successElement.length) ? _self.settings.successElement : _self.$elem.before($('<div class="js-validation-form-success">' + _self.settings.defaultSuccessMsg + '</div>'));
             // Empty array for elements. Set once the form is submitted.
             _self.$element_array = [];
 
