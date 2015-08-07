@@ -350,7 +350,7 @@
         setup_email_field: function(el){
             var _self = this;
 
-            el.after($('<div class="js-validation-suggestion">' + _self.settings.defaultSuggestText + ' <a href="#" class="js-validation-alternative-email"><span class="js-validation-address">address</span>@<span class="js-validation-domain">domain.com</span></a>?</div>').hide());
+            el.after($('<div class="js-validation-suggestion">' + _self.settings.defaultSuggestText + ' <a href="#" class="js-validation-alternative-email"><span class="js-validation-address">address</span>@<span class="js-validation-domain">domain.com</span></a>?</div>'));
 
             el.on('blur', function(){
                 suggester.init(_self, el, _self.settings.domains);
