@@ -94,12 +94,16 @@ gulp.task('css', function(){
             browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
             cascade: false
         }))
-        .pipe(sourcemaps.write('/', {includeContent: false}))
 		.pipe(header(header_tpl, {
 			type   : (is_production) ? 'Minified' : 'Unminified',
 			version: version,
 			date   : Date()
 		}))
+        .pipe(sourcemaps.write('./', {
+			includeContent        : false,
+			sourceRoot            : '',
+			sourceMappingURLPrefix: ''
+        }))
 		.pipe(gulp.dest(dist_dir + 'css'))
 		.pipe(notify({message: 'CSS task complete.'}));
 });
@@ -110,7 +114,7 @@ gulp.task('css', function(){
 /* JavaScript Compiling
 /* =========================================================================== */
 // JS Common Libraries & Vendors.
-gulp.task('js_common', function(){
+gulp.task('js:common', function(){
 	// Require.
 	var browserify = require('browserify'),
 		rename     = require('gulp-rename');
@@ -126,7 +130,7 @@ gulp.task('js_common', function(){
 });
 
 // JS Application Files.
-gulp.task('js_app', function(){
+gulp.task('js:app', function(){
 	// Require.
 	var browserify = require('browserify'),
 		rename     = require('gulp-rename');
@@ -142,7 +146,7 @@ gulp.task('js_app', function(){
 });
 
 // JS Build File (Concatenated App & Common).
-gulp.task('js', ['js_app'], function(){
+gulp.task('js', ['js:app'], function(){
 	// Require.
 	var concat = require('gulp-concat'),
 		uglify = require('gulp-uglify');

@@ -48,7 +48,6 @@
  * preloaderTemplate       : String. HTML template for the preloader. Can include inline styles or use in external stylesheet.
  * validateElement         : jQuery Element. A valid jQuery element to specify fields that aren't required but should be validated if entered.
  * successElement          : jQuery Element. A valid jQuery element that holds the success message.
- * validationMessage       : jQuery Element. A valid jQuery element that holds the error message.
  * customValidationMethod  : Function. Function containing any custom methods to validate against. Must return the element.
  * successCallback         : Function. Function to be called on success of validation. Provides array of fields as parameter if using server validation.
  *
@@ -102,17 +101,16 @@
         emailRegEx              : /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
         passRegEx               : /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
         urlRegEx                : /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
-        errorBoxClass           : 'response--error',
-        errorClass              : 'error',
+        errorBoxClass           : 'js-validation-error',
+        errorClass              : 'js-validation-field-error',
         msgSep                  : ' -',
         defaultErrorMsg         : 'Please enter a value',
         defaultSuccessMsg       : 'The form has been successfully submitted.',
         defaultSuggestText      : 'Did you mean',
         errorBoxElement         : '<span/>',
         preloaderTemplate       : '<div class="loader" title="1"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path fill="#FFFFFF" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg></div>',
-        validateElement         : $('.validate'),
-        successElement          : $('.form-success'),
-        validationMessage       : $('.error-message'),
+        validateElement         : $('.js-validation-validate'),
+        successElement          : $('.js-validation-form-success'),
         customValidationMethod  : null,
         successCallback         : function(parameters){}
     };
@@ -139,7 +137,7 @@
             // Cache the submit button element.
             _self.button      = $('button[type="submit"], input[type="submit"]', _self.$elem);
             // Success element.
-            _self.success_element = (_self.settings.successElement.length) ? _self.settings.successElement : _self.$elem.before($('<div class="form-success">' + _self.settings.defaultSuccessMsg + '</div>'));
+            _self.success_element = (_self.settings.successElement.length) ? _self.settings.successElement : _self.$elem.before($('<div class="js-validation-form-success">' + _self.settings.defaultSuccessMsg + '</div>'));
             // Empty array for elements. Set once the form is submitted.
             _self.$element_array = [];
 
@@ -174,8 +172,6 @@
             this.$elem.attr('novalidate', 'novalidate');
             // Process fields.
             this.process_fields();
-            // Hide all error messages if not done with CSS already.
-            this.$elem.children(this.settings.validationMessage.hide());
             // Get localStorage.
             this.get_localStorage();
         },
@@ -249,25 +245,34 @@
                 dataType: 'JSON'
             });
         },
-        apply_preloader: function(el, destroy){
-            // Set destroy.
-            destroy = (typeof destroy !== 'undefined') ? true : false;
-            // Destroy?
-            if(!destroy){
-                // Content.
-                var content = JSON.stringify(el.html());
-                // Loader.
-                var loader = $(this.settings.preloaderTemplate).hide();
-                // Apply preloader.
-                el.css({'width':el.outerWidth(),'height':el.outerHeight(),'position': 'relative'}).html(loader).attr('data-loader-content', content).addClass('loading');
-                loader.css({'position':'absolute','top':'50%','left':'50%','margin-left':-loader.outerWidth()/2,'margin-top':-loader.outerHeight()/2}).show();
-            }
-            else{
-                // Content.
-                var content = JSON.parse(el.data('loader-content'));
-                // Remove preloader
-                el.removeClass('loading').html(content).removeAttr('data-loader-content').css({'width':'','height':'','position':''});
-            }
+        apply_preloader: function(el){
+            // Content.
+            var content = JSON.stringify(el.html());
+            // Loader.
+            var loader = $(this.settings.preloaderTemplate).hide();
+            // Apply preloader.
+            el.css({
+                'width'   : el.outerWidth(),
+                'height'  : el.outerHeight(),
+                'position': 'relative'
+            }).html(loader).attr('data-loader-content', content).addClass('loading');
+            loader.css({
+                'position'   : 'absolute',
+                'top'        : '50%',
+                'left'       : '50%',
+                'margin-left': -loader.outerWidth() / 2,
+                'margin-top' : -loader.outerHeight() / 2
+            }).show();
+        },
+        destroy_preloader: function(el){
+            // Content.
+            var content = JSON.parse(el.data('loader-content'));
+            // Remove preloader
+            el.removeClass('loading').html(content).removeAttr('data-loader-content').css({
+                'width'   : '',
+                'height'  : '',
+                'position':''
+            });
         },
         disable_button: function(disable){
             if(this.settings.disableButtons){
@@ -345,7 +350,7 @@
         setup_email_field: function(el){
             var _self = this;
 
-            el.after($('<div class="suggestion">' + _self.settings.defaultSuggestText + ' <a href="#" class="alternative-email"><span class="address">address</span>@<span class="domain">domain.com</span></a>?</div>').hide());
+            el.after($('<div class="js-validation-suggestion">' + _self.settings.defaultSuggestText + ' <a href="#" class="js-validation-alternative-email"><span class="js-validation-address">address</span>@<span class="js-validation-domain">domain.com</span></a>?</div>'));
 
             el.on('blur', function(){
                 suggester.init(_self, el, _self.settings.domains);
@@ -363,15 +368,15 @@
             // Set form.
             form = (typeof form !== 'undefined') ? form : this;
             // Remove error class from form.
-            form.$elem.removeClass('form-has-errors');
+            form.$elem.removeClass('js-validation-form-has-errors');
             // Remove generic form messages.
-            $('.form-messages').empty();
+            $('.js-validation-form-messages').empty();
             // Remove error class from fields.
-            $('.field-has-errors', form.$elem).removeClass('field-has-errors');
+            $('.js-validation-field-has-errors', form.$elem).removeClass('js-validation-field-has-errors');
             // Remove error class from fieldsets.
-            $('.fieldset-has-errors', form.$elem).removeClass('fieldset-has-errors');
+            $('.js-validation-fieldset-has-errors', form.$elem).removeClass('js-validation-fieldset-has-errors');
             // Hide email suggester.
-            $('.suggestion', form.$elem).hide();
+            $('.js-validation-suggestion', form.$elem).hide();
             // Remove current classes.
             $('.' + form.settings.errorClass, form.$elem).removeClass(form.settings.errorClass);
             $('.' + form.settings.errorBoxClass, form.$elem).remove();
@@ -388,7 +393,7 @@
             // Un-disable stuff.
             _self.disable_button(false);
             // Add error class to form.
-            _self.$elem.addClass('form-has-errors');
+            _self.$elem.addClass('js-validation-form-has-errors');
             // Add new ones.
             $.each(arr, function(index){
                 if($(this) == undefined){return;}
@@ -398,12 +403,12 @@
                 // Get error message.
                 var error = (a[0].msg !== '') ? a[0].msg : _self.settings.defaultErrorMsg;
                 // Separator.
-                var message = (_self.settings.msgSep) ? (error) ? _self.settings.msgSep + ' <span class="msg">' + error + '</span>' : '' : '<span class="msg">' + error + '</span>';
+                var message = (_self.settings.msgSep) ? (error) ? _self.settings.msgSep + ' <span class="js-validation-msg">' + error + '</span>' : '' : '<span class="js-validation-msg">' + error + '</span>';
 
                 // Check element exists in the DOM.
                 if(el.length && el.is(':input') && el.attr('type') !== 'hidden'){
                     // Apply error class to field.
-                    el.addClass(_self.settings.errorClass).parent('.field').addClass('field-has-errors');
+                    el.addClass(_self.settings.errorClass).parent('.field').addClass('js-validation-field-has-errors');
                     // Field specific actions.
                     if(el.attr('type') === 'checkbox' || el.attr('type') === 'radio'){
                         // Add error element to field.
@@ -422,7 +427,7 @@
                         }
                     }
                     // Set errors on fieldset.
-                    el.closest('fieldset').addClass('fieldset-has-errors');
+                    el.closest('fieldset').addClass('js-validation-fieldset-has-errors');
                     // Scroll to first error field.
                     if(index == 0 && _self.settings.scrollToError){
                         $('html,body').animate({
@@ -441,7 +446,7 @@
         field_checker: function(field){
             var _self = this;
             var obj;
-            var msg = field.data('validation-message') || field.closest('.field').find(_self.settings.validationMessage).val() || field.closest('.field').find(_self.settings.validationMessage).text();
+            var msg = field.data('validation-message');
 
             // Checkboxes and radio.
             if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){
@@ -621,7 +626,7 @@
         },
         validation_success: function(){
             // Destroy preloader.
-            this.apply_preloader(this.button, true);
+            this.destroy_preloader(this.button);
             // Reset validation.
             this.validation_reset();
         },
@@ -633,12 +638,12 @@
                 // Set errors
                 _self.attach_errors(_self.error_array, _self.$elem);
                 // Destroy preloader.
-                _self.apply_preloader(_self.button, true);
+                _self.destroy_preloader(_self.button);
             }, 500);
         },
         validation_reset: function(){
             // Destroy preloader.
-            this.apply_preloader(this.button, true);
+            this.destroy_preloader(this.button);
             // Un-disable stuff.
             this.disable_button(false);
             // Remove errors.
@@ -696,7 +701,7 @@
         var email_val = el.val(),
             match_val = suggester.get_match(email_val);
 
-        this.suggestion = el.next('.suggestion');
+        this.suggestion = el.next('.js-validation-suggestion');
         this.reveal_suggestion(form, el, match_val);
     }
 
@@ -780,13 +785,13 @@
         if(result){
             Plugin.prototype.reset_errors(form);
             // Set email address.
-            $('.address', this.suggestion).text(result.address);
+            $('.js-validation-address', this.suggestion).text(result.address);
             // Set email domain.
-            $('.domain', this.suggestion).text(result.domain);
+            $('.js-validation-domain', this.suggestion).text(result.domain);
             // Reveal suggestion.
             this.suggestion.stop(true, false).slideDown(350);
             // Click event.
-            $('.alternative-email').on('click', function(e){
+            $('.js-validation-alternative-email').on('click', function(e){
                 e.preventDefault();
 
                 // Apply suggestion.
