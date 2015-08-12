@@ -32,7 +32,6 @@ This is a fast Framework and/or Project Wrapper and workflow for web projects  t
 <a name="requirements"></a>
 ## Requirements
 - [NodeJS](http://nodejs.org/)
-- [Bower](http://bower.io)
 - [Gulp](http://gulpjs.com)
 - [Bundler](http://bundler.io)
 
