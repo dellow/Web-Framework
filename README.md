@@ -32,7 +32,6 @@ This is a fast Framework and/or Project Wrapper and workflow for web projects  t
 <a name="requirements"></a>
 ## Requirements
 - [NodeJS](http://nodejs.org/)
-- [Bower](http://bower.io)
 - [Gulp](http://gulpjs.com)
 - [Bundler](http://bundler.io)
 
@@ -386,6 +385,9 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 
 <a name="changelog"></a>
 ## Changelog
+__2.0.5__: 
+* Bug fixes and improvements.
+
 __2.0.4__: 
 * Changed name of JS Common and JS App tasks.
 * Added Underscore to common.

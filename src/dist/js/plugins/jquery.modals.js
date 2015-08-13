@@ -194,12 +194,16 @@
         },
         hide_windows: function(){
             $('.modal.active').removeClass('modal-show');
+            this.destroy_modal();
         },
         apply_overlay: function(el){
             el.after('<div class="modal-overlay"></div>');
         },
         destroy_overlay: function(){
             $('.modal-overlay').remove();
+        },
+        destroy_modal: function(){
+            $('#modal-window').remove();
         },
         destroy: function(){
             this.hide_windows();

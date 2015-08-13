@@ -122,15 +122,18 @@
 	**/
 	Module.prototype.show_primary_menu = function(){
 		// Vars.
-		var doc_width = $(document).width(),
-			doc_85    = (doc_width / 100) * 85;
+		var doc_width  = $(document).width(),
+			doc_height = $(document).height(),
+			doc_90     = (doc_width / 100) * 90;
 
-		// Add 85% width to menu.
-		this.$menu.css({'width': doc_85});
-		// Move page content 85% left.
-		this.$content.addClass('active-menu').css({'left': doc_85});
+		// Add 90% width to menu.
+		this.$menu.css({'width': doc_90});
+		// Move page content 90% left.
+		this.$content.addClass('active-menu').css({'left': doc_90});
 		// Add active class to menu button.
 		this.$button.addClass('active-menu');
+		// Restrict body height.
+		$('body').css({'height': doc_height, 'overflow': 'hidden'});
 	}
 
 	/**
@@ -153,6 +156,8 @@
 			_this.$content.removeClass('active-menu');
 			// Remove active class from menu button.
 			_this.$button.removeClass('active-menu');
+			// Restrict body height.
+			$('body').css({'height': '', 'overflow': ''});
 		}, 200);
 	}
 
