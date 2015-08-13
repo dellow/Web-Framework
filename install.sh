@@ -179,6 +179,8 @@ if [ "$INITIAL_COMMIT" = true ] ; then
 	# Do push.
 	if [[ ! -z "$REPO_URL" ]]; then
 		# Command.
+		git remote add origin $REPO_URL
+		# Command.
 		git push origin --all
 	fi
 
