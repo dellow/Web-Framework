@@ -24,6 +24,7 @@ $border_radius_base: 3px !default;
 $ul_indent_base    : 1.2em !default;
 $box_shadow_base   : 0 0 5px rgba(69, 18, 11, 0.15) !default;
 $animation         : 300ms !default;
+$menu_animation    : 500ms !default;
 $mobile_menu       : 768px !default;
 
 
@@ -59,9 +60,9 @@ $thin      : 100 !default;
 
 /* -- Knife Variables -- */
 $body-font-size  : 16px !default;
-$scale-factor    : 1.2 !default; // Major Second - Refer to Knife SCSS file for all ratios.
+$scale-factor    : 1.125 !default; // Major Second - Refer to Knife SCSS file for all ratios.
 $body-line-height: 1.5 !default;
-$scale-factor    : 1.333 !default;
+$scale-factor    : 1.25 !default; // Change this to modify overall scale.
 $ie8compatability: false !default;
 
 

@@ -274,7 +274,9 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .box
     .button
     .center
+    .cite__profession
     .col
+    .collapse-margin
     .container
     .coupon
     .current
@@ -322,6 +324,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .standard
     .status
     .sub-menu
+    .sub-menu-active
     .success
     .table
     .u-* (Utility classes)
@@ -385,6 +388,14 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 
 <a name="changelog"></a>
 ## Changelog
+__2.0.6__: 
+* Bug fixes and improvements.
+* Added Google Analytics virtual page example in the validation callback.
+* Added sub-menu ability to mobile menus.
+* Added a simple hide/reveal method.
+* Removed margin on sprites.
+* Changed viewport to prevent zooming on mobile devices.
+
 __2.0.5__: 
 * Bug fixes and improvements.
 

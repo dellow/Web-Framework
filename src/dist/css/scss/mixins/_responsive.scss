@@ -15,7 +15,7 @@
 **/
 @mixin respond-to($breakpoint1, $breakpoint2: null, $switch_operator: false, $pixel_ratio: null, $device: false){
 	@if($breakpoint2 != null){
-		@media only screen and (min-width: px-to-rem($breakpoint1, em)) and (max-width: px-to-rem($breakpoint2, em)){
+		@media only screen and (min-width: px-to-rem($breakpoint1 + 1, em)) and (max-width: px-to-rem($breakpoint2, em)){
 			@content
 		}
 	}

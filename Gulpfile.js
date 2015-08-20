@@ -377,7 +377,7 @@ gulp.task('sprite', function(){
 		src         : dist_dir + 'images/icons/sprite/*.png',
 		style       : dist_dir + 'css/scss/site/_sprites.scss',
 		cssPath     : '../images/icons/',
-		margin      : 5,
+		margin      : 0,
 		base64      : false,
 		retina      : false,
 		background  : '#FFFFFF',
