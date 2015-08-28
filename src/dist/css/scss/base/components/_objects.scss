@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Base > Components > Objects
+   Various CSS objects used throughout an application.
+========================================================================== */
+
+
+/* -- Alternative Text -- */
+.obj-alt-text {
+	&--desktop {
+		@include respond-to($desktop){
+			span {
+				display: none !important;
+			}
+			&:after {
+				content: attr(data-alt-text);
+			}
+		}
+	}
+	&--tablet {
+		@include respond-to($tablet){
+			span {
+				display: none !important;
+			}
+			&:after {
+				content: attr(data-alt-text);
+			}
+		}
+	}
+	&--mobile {
+		@include respond-to($mobile){
+			span {
+				display: none !important;
+			}
+			&:after {
+				content: attr(data-alt-text);
+			}
+		}
+	}
+	&--device {
+		@include respond-to($device){
+			span {
+				display: none !important;
+			}
+			&:after {
+				content: attr(data-alt-text);
+			}
+		}
+	}
+}

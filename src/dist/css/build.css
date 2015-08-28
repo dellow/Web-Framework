@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified Stylesheet
 Application Version: 1.0.0
-Compiled: Thu Aug 20 2015 17:01:50 GMT+0100 (BST)
+Compiled: Fri Aug 28 2015 13:15:27 GMT+0100 (BST)
 ========================================================================== */
 
 @charset "UTF-8";
@@ -2046,6 +2046,47 @@ ul.alert.box li {
     transform: translateZ(0);
     -webkit-transition: max-height 500ms ease-in-out;
     transition: max-height 500ms ease-in-out;
+  }
+}
+
+/* ==========================================================================
+   Base > Components > Objects
+   Various CSS objects used throughout an application.
+========================================================================== */
+/* -- Alternative Text -- */
+@media only screen and (max-width: 73.75em) {
+  .obj-alt-text--desktop span {
+    display: none !important;
+  }
+  .obj-alt-text--desktop:after {
+    content: attr(data-alt-text);
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .obj-alt-text--tablet span {
+    display: none !important;
+  }
+  .obj-alt-text--tablet:after {
+    content: attr(data-alt-text);
+  }
+}
+
+@media only screen and (max-width: 35.5em) {
+  .obj-alt-text--mobile span {
+    display: none !important;
+  }
+  .obj-alt-text--mobile:after {
+    content: attr(data-alt-text);
+  }
+}
+
+@media only screen and (max-width: 15.625em) {
+  .obj-alt-text--device span {
+    display: none !important;
+  }
+  .obj-alt-text--device:after {
+    content: attr(data-alt-text);
   }
 }
 
