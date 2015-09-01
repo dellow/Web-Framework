@@ -4,12 +4,11 @@
 # ---------------------------------------------------------------------------------
 .sass-cache/
 .vagrant/
+./dalek/
+./psi/
+./releases/
 bower_components/
-dalek/
 node_modules/
-psi/
-releases/
-report/
 **/logs/
 
 
