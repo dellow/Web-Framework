@@ -389,7 +389,10 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 <a name="changelog"></a>
 ## Changelog
 __2.0.7__: 
-* Added missing Dalek test files.
+* Added missing DalekJS test files.
+* Added better formatting and task descriptions in `Gulpfile.js`.
+* Added responsive test example for DalekJS.
+* Added SCSS objects to base.
 
 __2.0.6__: 
 * Bug fixes and improvements.
