@@ -35,6 +35,7 @@ var version        = '1.0.0',
 
 /* =========================================================================== */
 /* Combined Tasks
+/* Tasks that are run when `gulp` is run.
 /* =========================================================================== */
 // Task.
 gulp.task('default', [
@@ -56,8 +57,8 @@ gulp.task('default', [
 
 /* =========================================================================== */
 /* CSS
+/* Compiles the SCSS files using SASS.
 /* =========================================================================== */
-// CSS Build File.
 gulp.task('css', function(){
 	// Require.
 	var sass         = require('gulp-sass'),
@@ -109,6 +110,9 @@ gulp.task('css', function(){
 
 /* =========================================================================== */
 /* JavaScript Compiling
+/* Compiles and bundles the JavaScript using Browserify. Common libraries
+/* are run on separate task to reduce compiling time. Run `gulp js:common`
+/* to rebuild the core libraries (jQuery, Underscore etc).
 /* =========================================================================== */
 // JS Common Libraries & Vendors.
 gulp.task('js:common', function(){
@@ -181,6 +185,7 @@ gulp.task('js', ['js:app'], function(){
 
 /* =========================================================================== */
 /* Watch
+/* Watches for .js, .hbs and .scss file changes and compile.
 /* =========================================================================== */
 gulp.task('watch', function(){
 	// Run JS Master on JS and HBS file changes.
@@ -192,6 +197,8 @@ gulp.task('watch', function(){
 
 /* =========================================================================== */
 /* Sync (BrowserSync)
+/* Watches for .js, .hbs and .scss file changes and compile while reloading
+/* all connected browsers with BrowserSync.
 /* =========================================================================== */
 gulp.task('sync', function(){
 	// Require.
@@ -243,6 +250,7 @@ gulp.task('sync', function(){
 
 /* =========================================================================== */
 /* Testing - Dalek (Development Mode Only).
+/* Runs all browser tests in `src/dist/js/spec/dalek` with DalekJS.
 /* =========================================================================== */
 gulp.task('dalek', function(){
 	// Check environment.
@@ -280,6 +288,7 @@ gulp.task('dalek', function(){
 
 /* =========================================================================== */
 /* Testing - Jasmine (Development Mode Only).
+/* Runs all client tests in `src/dist/js/spec/jasmine` with Jasmine.
 /* =========================================================================== */
 gulp.task('jasmine', function(){
 	// Check environment.
@@ -308,6 +317,7 @@ gulp.task('jasmine', function(){
 
 /* =========================================================================== */
 /* Tools - JSHint (Development Mode Only).
+/* Runs linting on the all .js files in `src/dist/js/app` with JSHint.
 /* =========================================================================== */
 gulp.task('jshint', function(){
 	// Check environment.
@@ -335,6 +345,7 @@ gulp.task('jshint', function(){
 
 /* =========================================================================== */
 /* Tools - Imagemin
+/* Optimises images for web with Imagemin.
 /* =========================================================================== */
 gulp.task('images', function(){
 	// Require.
@@ -355,6 +366,8 @@ gulp.task('images', function(){
 
 /* =========================================================================== */
 /* Tools - Sprite
+/* Bundles all files in `src/dist/images/icons/sprite` into a single sprite and adds
+/* SASS rules in `src/dist/css/scss/site/sprites.scss`.
 /* =========================================================================== */
 gulp.task('sprite', function(){
 	// Require.
@@ -382,6 +395,8 @@ gulp.task('sprite', function(){
 
 /* =========================================================================== */
 /* Tools - Release
+/* Copies all files except SASS, JS and HBS build files to a new release named
+/* by version in the `app` folder
 /* =========================================================================== */
 gulp.task('release', function(){
 	// Vars.
@@ -401,7 +416,13 @@ gulp.task('release', function(){
 		.pipe(notify({message: 'Release task complete.'}));
 });
 
-// Google Page Speed Tests.
+
+/* =========================================================================== */
+/* Tools - PSI
+/* Runs a Google Page Speed test on a given URL and stores the result in a
+/* logfile in `psi/<domain>`. Subsequent tests on the same URL will be
+/* appended to the same file.
+/* =========================================================================== */
 gulp.task('psi', function(){
 	// Require.
 	var psi = require('psi'),
@@ -465,7 +486,7 @@ gulp.task('psi', function(){
 			''].join('\n');
 
 		var dir  = get_name(url),
-			file = './logs/pagespeed/' + dir;
+			file = './psi/' + dir;
 
 		// Create file
 		fs.ensureFile(file, function(err){
