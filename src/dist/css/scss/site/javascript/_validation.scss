@@ -15,6 +15,10 @@
 
 
 form {
+	fieldset {
+		border: 1px solid transparent;
+	}
+
 	&.js-validation-form-has-errors { // Qualified Selector
 		// Label
 		label {
@@ -31,6 +35,12 @@ form {
 			&.js-validation-field-warning {
 				color: $color_warning;
 			}
+		}
+
+		// Fieldset
+		fieldset.js-validation-fieldset-has-errors {
+			border-color: lighten($color_error, 30%);
+			background-color: lighten($color_error, 45%);
 		}
 
 		// Inputs
