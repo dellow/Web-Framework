@@ -242,9 +242,8 @@ gulp.task('sync', function(){
 
 
 /* =========================================================================== */
-/* Testing
+/* Testing - Dalek (Development Mode Only).
 /* =========================================================================== */
-// Dalek - Browser Testing (Development Mode Only).
 gulp.task('dalek', function(){
 	// Check environment.
 	if(!is_development){
@@ -260,15 +259,8 @@ gulp.task('dalek', function(){
 	// Require.
 	var dalek = require('gulp-dalek');
 
-	// Files.
-	var tests = [
-		// dist_dir + 'js/spec/dalek/examples.js',
-		dist_dir + 'js/spec/dalek/elements.js',
-		dist_dir + 'js/spec/dalek/roles.js'
-	];
-
 	// Task.
-	return gulp.src(tests)
+	return gulp.src(dist_dir + 'js/spec/dalek/*.js')
 		.pipe(
 			dalek({
 				browser : [
@@ -285,7 +277,10 @@ gulp.task('dalek', function(){
 		.on('error', task_handler);
 });
 
-// Jasmine - Client Testing (Development Mode Only).
+
+/* =========================================================================== */
+/* Testing - Jasmine (Development Mode Only).
+/* =========================================================================== */
 gulp.task('jasmine', function(){
 	// Check environment.
 	if(!is_development){
@@ -312,9 +307,8 @@ gulp.task('jasmine', function(){
 
 
 /* =========================================================================== */
-/* Task Tools
+/* Tools - JSHint (Development Mode Only).
 /* =========================================================================== */
-// JSHint (Development Mode Only).
 gulp.task('jshint', function(){
 	// Check environment.
 	if(!is_development){
@@ -338,7 +332,10 @@ gulp.task('jshint', function(){
 		.pipe(notify({message: 'JSHint task complete.'}));
 });
 
-// Image Minification.
+
+/* =========================================================================== */
+/* Tools - Imagemin
+/* =========================================================================== */
 gulp.task('images', function(){
 	// Require.
 	var imagemin = require('gulp-imagemin')
@@ -357,9 +354,8 @@ gulp.task('images', function(){
 
 
 /* =========================================================================== */
-/* One Off Tools
+/* Tools - Sprite
 /* =========================================================================== */
-// Image Sprites.
 gulp.task('sprite', function(){
 	// Require.
 	var sprity = require('sprity');
@@ -383,7 +379,10 @@ gulp.task('sprite', function(){
 	.pipe(notify({message: 'Sprite task complete.'}));
 });
 
-// App release.
+
+/* =========================================================================== */
+/* Tools - Release
+/* =========================================================================== */
 gulp.task('release', function(){
 	// Vars.
 	var files = [
