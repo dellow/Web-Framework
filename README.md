@@ -393,6 +393,7 @@ __2.0.7__:
 * Added better formatting and task descriptions in `Gulpfile.js`.
 * Added responsive test example for DalekJS.
 * Added SCSS objects to base.
+* Fixed form styles.
 
 __2.0.6__: 
 * Bug fixes and improvements.
