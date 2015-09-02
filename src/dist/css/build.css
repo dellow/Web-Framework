@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified Stylesheet
 Application Version: 1.0.0
-Compiled: Fri Aug 28 2015 13:15:27 GMT+0100 (BST)
+Compiled: Wed Sep 02 2015 12:22:39 GMT+0100 (BST)
 ========================================================================== */
 
 @charset "UTF-8";
@@ -1906,6 +1906,8 @@ ul.alert.box li {
 /* ----------------------------------------------------------------------- */
 .active-menu + .page__mobile {
   left: 0;
+  -webkit-box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
 }
 
 .sub-menu-active.page__mobile {
@@ -1921,11 +1923,11 @@ ul.alert.box li {
   top: 0;
   left: -100%;
   z-index: 1;
-  -webkit-box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
-  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 3px 0 6px transparent;
+  box-shadow: 3px 0 6px transparent;
   background: #FFFFFF;
-  -webkit-transition: background 500ms ease, left 500ms ease;
-  transition: background 500ms ease, left 500ms ease;
+  -webkit-transition: background 300ms ease, left 300ms ease, -webkit-box-shadow 300ms ease;
+  transition: background 300ms ease, left 300ms ease, box-shadow 300ms ease;
 }
 
 .page__mobile.sub-menu-active {
@@ -2564,100 +2566,6 @@ form label.v-small, form .label.v-small, form input.v-small, form select.v-small
 
 .form-inline span + input, .form-inline span .input, .form-inline span select, .form-inline span textarea, .form-inline span .field-container {
   margin: 0;
-}
-
-/* ----------------------------------------------------------------------- */
-form.form-has-errors label.error {
-  color: #b94a48;
-}
-
-form.form-has-errors label.status {
-  color: #3a87ad;
-}
-
-form.form-has-errors label.success {
-  color: #468847;
-}
-
-form.form-has-errors label.warning {
-  color: #c09853;
-}
-
-form.form-has-errors input.error, form.form-has-errors .input.error, form.form-has-errors select.error, form.form-has-errors textarea.error, form.form-has-errors .field-container.error {
-  color: #b94a48;
-  border-color: #dca5a4;
-  background-color: #f1dcdc;
-}
-
-form.form-has-errors input.error:focus, form.form-has-errors .input.error:focus, form.form-has-errors select.error:focus, form.form-has-errors textarea.error:focus, form.form-has-errors .field-container.error:focus {
-  background-color: #eacac9;
-}
-
-form.form-has-errors input.status, form.form-has-errors .input.status, form.form-has-errors select.status, form.form-has-errors textarea.status, form.form-has-errors .field-container.status {
-  color: #3a87ad;
-  border-color: #8ec0d9;
-  background-color: #c7e0ec;
-}
-
-form.form-has-errors input.status:focus, form.form-has-errors .input.status:focus, form.form-has-errors select.status:focus, form.form-has-errors textarea.status:focus, form.form-has-errors .field-container.status:focus {
-  background-color: #b4d5e6;
-}
-
-form.form-has-errors input.success, form.form-has-errors .input.success, form.form-has-errors select.success, form.form-has-errors textarea.success, form.form-has-errors .field-container.success {
-  color: #468847;
-  border-color: #8ac38b;
-  background-color: #bdddbd;
-}
-
-form.form-has-errors input.success:focus, form.form-has-errors .input.success:focus, form.form-has-errors select.success:focus, form.form-has-errors textarea.success:focus, form.form-has-errors .field-container.success:focus {
-  background-color: #acd4ad;
-}
-
-form.form-has-errors input.warning, form.form-has-errors .input.warning, form.form-has-errors select.warning, form.form-has-errors textarea.warning, form.form-has-errors .field-container.warning {
-  color: #c09853;
-  border-color: #e2d0b0;
-  background-color: #f7f1e8;
-}
-
-form.form-has-errors input.warning:focus, form.form-has-errors .input.warning:focus, form.form-has-errors select.warning:focus, form.form-has-errors textarea.warning:focus, form.form-has-errors .field-container.warning:focus {
-  background-color: #f0e6d6;
-}
-
-form.form-has-errors .msg {
-  font-size: 14px;
-  font-size: 0.875rem;
-}
-
-form.form-has-errors .response--error .msg {
-  color: #b94a48;
-}
-
-form.form-has-errors .response--status .msg {
-  color: #3a87ad;
-}
-
-form.form-has-errors .response--success .msg {
-  color: #468847;
-}
-
-form.form-has-errors .response--warning .msg {
-  color: #c09853;
-}
-
-form.form-has-errors .field.field-has-errors ::-webkit-input-placeholder {
-  color: #b94a48;
-}
-
-form.form-has-errors .field.field-has-errors ::-moz-placeholder {
-  color: #b94a48;
-}
-
-form.form-has-errors .field.field-has-errors :-ms-input-placeholder {
-  color: #b94a48;
-}
-
-form.form-has-errors .field.field-has-errors ::placeholder {
-  color: #b94a48;
 }
 
 /* ----------------------------------------------------------------------- */
