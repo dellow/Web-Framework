@@ -4,9 +4,9 @@
 # ---------------------------------------------------------------------------------
 .sass-cache/
 .vagrant/
-./dalek_tests/
-./psi/
-./releases/
+dalek_tests/
+psi/
+releases/
 bower_components/
 node_modules/
 **/logs/
