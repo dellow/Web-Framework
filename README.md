@@ -33,7 +33,6 @@ This is a fast Framework and/or Project Wrapper and workflow for web projects  t
 ## Requirements
 - [NodeJS](http://nodejs.org/)
 - [Gulp](http://gulpjs.com)
-- [Bundler](http://bundler.io)
 
 > __Please note:__ These should be installed before using this Framework.
 
@@ -388,14 +387,14 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 
 <a name="changelog"></a>
 ## Changelog
-__2.0.7__: 
+__2.0.7__:
 * Added missing DalekJS test files.
 * Added better formatting and task descriptions in `Gulpfile.js`.
 * Added responsive test example for DalekJS.
 * Added SCSS objects to base.
 * Fixed form styles.
 
-__2.0.6__: 
+__2.0.6__:
 * Bug fixes and improvements.
 * Added Google Analytics virtual page example in the validation callback.
 * Added sub-menu ability to mobile menus.
@@ -403,22 +402,22 @@ __2.0.6__:
 * Removed margin on sprites.
 * Changed viewport to prevent zooming on mobile devices.
 
-__2.0.5__: 
+__2.0.5__:
 * Bug fixes and improvements.
 
-__2.0.4__: 
+__2.0.4__:
 * Changed name of JS Common and JS App tasks.
 * Added Underscore to common.
 * Added React to common.
 * Fixed CSS sourcemaps.
 
-__2.0.3__: 
+__2.0.3__:
 * Lots of bug fixes and improvements.
 * Install now asks for a Git repository URL.
 * Removed globbing for site SCSS.
 * Watch doesn't break stream on SASS error.
 
-__2.0.2__: 
+__2.0.2__:
 * Fixed Modernizr library.
 * Helpers.log now checks if message is an array or object and outputs accordingly.
 * Upgraded deprecated `css-sprite` package to `spritey`.
@@ -427,14 +426,14 @@ __2.0.2__:
 * Improved font sizing and spacing.
 * Added new slide in mobile menu. Updated layout help file to reflect.
 
-__2.0.1__: 
+__2.0.1__:
 * Fixed duplicate variable issue with font-size and font-weight.
 * Removed 'font_family_' prefix to font family variables.
 * Normalised the line height on buttons.
 * Now checks for WURFL before attempting to send dimensions.
 * Required modules don't need to be manually initiated.
 
-__2.0.0__: 
+__2.0.0__:
 * Bugfix: PSI task created a null file if URL didn't contain a protocol.
 * Merged the Project Wrapper and Project Libraries into one 'Web Framework' repository. We are now starting from version 2.0.0!
 * Improve output from Notifier. Now alerted to errors and end of tasks.

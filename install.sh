@@ -141,16 +141,18 @@ printf "\n"
 
 
 # ------------------------------------------------------------------------
-# Update / get dependencies with Bundler.
+# Update / get dependencies with Bundler if installed.
 # ------------------------------------------------------------------------
 #
-# Command.
-bundle install
+if [[ ! gem list bundler -i ]]; then
+	# Command.
+	bundle install
 
-## Report.
-echo -e "------------------------------------------------"
-echo -e "$(tput setaf 2)Got Bundler dependencies...$(tput sgr0)"
-echo -e "------------------------------------------------"
+	## Report.
+	echo -e "------------------------------------------------"
+	echo -e "$(tput setaf 2)Got Bundler dependencies...$(tput sgr0)"
+	echo -e "------------------------------------------------"
+fi
 
 
 
