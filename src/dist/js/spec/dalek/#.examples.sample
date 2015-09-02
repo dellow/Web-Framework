@@ -34,7 +34,7 @@ module.exports = {
 	},
 	'github.com - Take screenshot': function(test){
 		test.open('https://github.com')
-			.screenshot('dalek/screenshots/github-home.png')
+			.screenshot('dalek_tests/screenshots/github-home.png')
 			.done();
 	},
 	'github.com - Test protocol': function(test){
@@ -46,10 +46,10 @@ module.exports = {
 		test.open('https://github.com')
 			.assert.exists('a[href="/contact"]', 'Contact link exists')
 			.click('a[href="/contact"]')
-			.screenshot('dalek/screenshots/github-contact.png')
+			.screenshot('dalek_tests/screenshots/github-contact.png')
 			.assert.title().is('Contact GitHub · GitHub', 'Page title is correct')
 			.type('#form_name', 'The Doctor')
-			.screenshot('dalek/screenshots/github-contact-entered.png')
+			.screenshot('dalek_tests/screenshots/github-contact-entered.png')
 			.done();
 	},
 	'google.com - Page title testing': function(test){
