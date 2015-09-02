@@ -4,12 +4,14 @@
    be documented and explained for later review.
 ========================================================================== */
 
+
 /**
  * Targets browsers with JavaScript disabled.
  * Target: No JavaScript
 **/
 html.no-js {
 }
+
 
 /**
  * Targets all legacy versions of Internet Explorer
@@ -19,12 +21,14 @@ html.no-js {
 html.oldie {
 }
 
+
 /**
  * Targets just IE6 with conditional statements in header.
  * Target: IE6
 **/
 html.ie6 {
 }
+
 
 /**
  * Targets just IE7 with conditional statements in header.
@@ -33,6 +37,7 @@ html.ie6 {
 html.ie7 {
 }
 
+
 /**
  * Targets just IE8 with conditional statements in header.
  * Target: IE8
@@ -40,12 +45,14 @@ html.ie7 {
 html.ie8 {
 }
 
+
 /**
  * Targets just IE9 with conditional statements in header.
  * Target: IE9
 **/
 html.ie9 {
 }
+
 
 /**
  * Targets newer versions of Internet Explorer

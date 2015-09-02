@@ -430,9 +430,19 @@
                     el.closest('fieldset').addClass('js-validation-fieldset-has-errors');
                     // Scroll to first error field.
                     if(index == 0 && _self.settings.scrollToError){
-                        $('html,body').animate({
-                            scrollTop: (el.offset().top - 25)
-                        }, 500);
+                        // Determine fieldset.
+                        var fieldset = el.parentsUntil('fieldset').parent();
+                        // Check if el has parent fieldset.
+                        if(fieldset.length){
+                            $('html, body').animate({
+                                scrollTop: (fieldset.offset().top - 25)
+                            }, 500);
+                        }
+                        else{
+                            $('html, body').animate({
+                                scrollTop: (el.offset().top - 25)
+                            }, 500);
+                        }
                     }
                 }
                 else if(!el.is(':input')){

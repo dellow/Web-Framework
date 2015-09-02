@@ -17,21 +17,6 @@
 </head>
 <body class="no-debug">
 
-<!-- Mobile Menu -->
-<div class="page__mobile js-mobile-menu">
-	<!-- Close button -->
-	<button class="page__mobile__close js-close-mobile-menu">X</button>
-	<!-- Desktop navigation -->
-	<ul class="nav-primary" role="menu">
-		<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #1</a></li>
-		<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #2</a></li>
-		<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #3</a></li>
-		<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #4</a></li>
-		<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #5 (Ajax)</a></li>
-		<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #6 (Ajax)</a></li>
-	</ul>
-</div>
-
 <!-- Page Wrapper -->
 <div class="page__wrapper js-mobile-content">
 	<!-- Header -->
@@ -48,13 +33,36 @@
 			<!-- Mobile menu button -->
 			<button class="page__mobile-menu js-mobile-button"><span></span></button>
 			<!-- Desktop navigation -->
-			<ul class="nav-primary" role="menu">
-				<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #1</a></li>
-				<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #2</a></li>
-				<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #3</a></li>
-				<li role="menuitem"><a href="HREF_HERE" title="TITLE_HERE">Link #4</a></li>
-				<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #5 (Ajax)</a></li>
-				<li role="menuitem"><a href="/" title="TITLE_HERE" data-push="true">Link #6 (Ajax)</a></li>
+			<ul class="nav-primary nav-primary--desktop" role="menu">
+				<li role="menuitem">
+					<a href="HREF_HERE" title="TITLE_HERE">Link #1</a>
+					<ul class="sub-menu" role="menu" aria-hidden="true">
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #1</a>
+						</li>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #2</a>
+						</li>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #3</a>
+						</li>
+					</ul>
+				</li>
+				<li role="menuitem">
+					<a href="HREF_HERE" title="TITLE_HERE">Link #2</a>
+				</li>
+				<li role="menuitem">
+					<a href="HREF_HERE" title="TITLE_HERE">Link #3</a>
+				</li>
+				<li role="menuitem">
+					<a href="HREF_HERE" title="TITLE_HERE">Link #4</a>
+				</li>
+				<li role="menuitem">
+					<a href="/" title="TITLE_HERE" data-push="true">Link #5 (Ajax)</a>
+				</li>
+				<li role="menuitem">
+					<a href="/" title="TITLE_HERE" data-push="true">Link #6 (Ajax)</a>
+				</li>
 			</ul>
 		</nav>
 	</header>
@@ -109,6 +117,69 @@
 			</div>
 		</div>
 	</footer>
+</div>
+
+<!-- Mobile Menu -->
+<div class="page__mobile js-mobile-menu" aria-hidden="true">
+	<!-- Close button -->
+	<button class="page__mobile__close js-close-mobile-menu">X</button>
+	<!-- Mobile Inner -->
+	<div class="page__mobile__inner">
+		<!-- Mobile navigation -->
+		<ul class="nav-primary nav-primary--mobile" role="menu">
+			<li role="menuitem">
+				<a href="HREF_HERE" title="TITLE_HERE">Link #1</a>
+				<div class="sub-menu" aria-hidden="true">
+					<button class="sub-menu__close js-sub-menu-close">Back</button>
+					<ul>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #1</a>
+						</li>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #2</a>
+						</li>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #3</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li role="menuitem">
+				<a href="HREF_HERE" title="TITLE_HERE">Link #2</a>
+				<div class="sub-menu" aria-hidden="true">
+					<button class="sub-menu__close js-sub-menu-close">Back</button>
+					<ul>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #1</a>
+						</li>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #2</a>
+						</li>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #3</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li role="menuitem">
+				<a href="HREF_HERE" title="TITLE_HERE">Link #3</a>
+				<div class="sub-menu" aria-hidden="true">
+					<button class="sub-menu__close js-sub-menu-close">Back</button>
+					<ul>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #1</a>
+						</li>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #2</a>
+						</li>
+						<li role="menuitem">
+							<a href="HREF_HERE" title="TITLE_HERE">Sub Item #3</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
 </div>
 
 <!-- ============================================================================== -->

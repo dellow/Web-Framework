@@ -624,7 +624,7 @@
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Pagination</span></summary>
-<pre class="language-markup"><code>&lt;div class="module module--pagination">
+<pre class="language-markup"><code>&lt;section class="pagination">
 	&lt;a href="#" class="page-numbers prev">&laquo; Prev&lt;/a>
 	&lt;a href="#" class="page-numbers">1&lt;/a>
 	&lt;a href="#" class="page-numbers current">2&lt;/a>
@@ -632,10 +632,10 @@
 	&lt;a href="#" class="page-numbers">4&lt;/a>
 	&lt;a href="#" class="page-numbers">5&lt;/a>
 	&lt;a href="#" class="page-numbers next">Next &raquo;&lt;/a>
-&lt;/div></code></pre>
+&lt;/section></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<div class="module module--pagination">
+				<section class="pagination">
 					<a href="#" class="page-numbers prev">&laquo; Prev</a>
 					<a href="#" class="page-numbers">1</a>
 					<a href="#" class="page-numbers current">2</a>
@@ -643,7 +643,7 @@
 					<a href="#" class="page-numbers">4</a>
 					<a href="#" class="page-numbers">5</a>
 					<a href="#" class="page-numbers next">Next &raquo;</a>
-				</div>
+				</section>
 			</div>
 		</div>
 	</section>
@@ -659,38 +659,38 @@
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Breadcrumb</span></summary>
-<pre class="language-markup"><code>&lt;div class="module module--breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<pre class="language-markup"><code>&lt;section class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 	&lt;span itemprop="title">&lt;a href="/" title="Home" itemprop="url">Home&lt;/a>&lt;/span>
 	&lt;span>&raquo;&lt;/span>
 	&lt;span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">
-		&lt;a href="#" title="Link title" itemprop="url">&lt;span itemprop="title">Page Title&lt;/span>&lt;/a>
+		&lt;a href="HREF_HERE" title="TITLE_HERE" itemprop="url">&lt;span itemprop="title">Page Title&lt;/span>&lt;/a>
 	&lt;/span>
 	&lt;span>&raquo;&lt;/span>
 	&lt;span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">
-		&lt;a href="#" title="Link title" itemprop="url">&lt;span itemprop="title">Page Title&lt;/span>&lt;/a>
+		&lt;a href="HREF_HERE" title="TITLE_HERE" itemprop="url">&lt;span itemprop="title">Page Title&lt;/span>&lt;/a>
 	&lt;/span>
 	&lt;span>&raquo;&lt;/span>
 	&lt;span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">
 		&lt;span itemprop="title">Page Title&lt;/span>
 	&lt;/span>
-&lt;/div></code></pre>
+&lt;/section></code></pre>
 			</details>
 			<div class="pattern__view">
-				<div class="module module--breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+				<section class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 					<span itemprop="title"><a href="/" title="Home" itemprop="url">Home</a></span>
 					<span>&raquo;</span>
 					<span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">
-						<a href="#" title="Link title" itemprop="url"><span itemprop="title">Page Title</span></a>
+						<a href="HREF_HERE" title="TITLE_HERE" itemprop="url"><span itemprop="title">Page Title</span></a>
 					</span>
 					<span>&raquo;</span>
 					<span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">
-						<a href="#" title="Link title" itemprop="url"><span itemprop="title">Page Title</span></a>
+						<a href="HREF_HERE" title="TITLE_HERE" itemprop="url"><span itemprop="title">Page Title</span></a>
 					</span>
 					<span>&raquo;</span>
 					<span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">
 						<span itemprop="title">Page Title</span>
 					</span>
-				</div>
+				</section>
 			</div>
 		</div>
 	</section>

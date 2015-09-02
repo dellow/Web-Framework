@@ -126,6 +126,40 @@
     }
 
     /**
+     * reveal_dom_element
+     * Reveals a DOM element.
+     *
+     * Usage: <button class="js-reveal" data-reveal-target=".target" data-reveal-status="hidden">Click Me</button>
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+    **/
+    Module.prototype.reveal_dom_element = function(){
+        // Button click.
+        $('.js-reveal').on('click', function(){
+            var _self = $(this),
+                target = _self.data('reveal-target'),
+                status = _self.data('reveal-status');
+
+            // Check we have a target & status.
+            if(target && status){
+                if(status == 'visible'){
+                    // Hide element.
+                    $(target).addClass('u-hidden').removeClass('u-show');
+                    // Update all elements status.
+                    $('[data-reveal-target="' + target + '"]').data('reveal-status', 'hidden');
+                }
+                else{
+                    // Show element.
+                    $(target).addClass('u-show').removeClass('u-hidden');
+                    // Update all elements status.
+                    $('[data-reveal-target="' + target + '"]').data('reveal-status', 'visible');
+                }
+            }
+        });
+    }
+
+    /**
      * sliders
      * Slider events.
      *
@@ -162,7 +196,8 @@
     Module.prototype.validation = function(){
         // Check captcha.
         if($('#c_a_p_t_c_h_a').length){
-            $('#c_a_p_t_c_h_a').prop('checked', true);
+            // Set the captcha field value and check the box.
+            $('#c_a_p_t_c_h_a').prop('checked', true).val('c_a_p_t_c_h_a');
         }
 
         // DOM check.
@@ -170,7 +205,14 @@
             // Init plugin.
             $('.js-validate').validation({
                 serverValidation        : false,
-                appendErrorToPlaceholder: true
+                appendErrorToPlaceholder: true,
+                successCallback: function(){
+                    // Check for Google Analytics.
+                    if(window.ga_active){
+                        // Set a virtual page for GA.
+                        ga('send', 'pageview', '/contact-success.virtual');
+                    }
+                }
             });
         };
     }

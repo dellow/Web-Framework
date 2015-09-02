@@ -23,6 +23,7 @@
 /* -- Enable Flexbox -- */
 %flex {
 	display: flex;
+	display: flexbox; // IE10 Compatibility.
 	flex-direction: row;
 	flex-wrap: wrap;
 }

@@ -49,43 +49,78 @@
 			}
 		}
 	}
-	// Responsive.
-	@include respond-to($mobile_menu){
-		width: 100%;
-		display: none;
-		position: absolute;
-		z-index: $zindex-1;
-		background: color(copy, link);
-		li {
-			margin: 0;
-			display: block;
-			a {
-				display: block;
-			}
-		}
-	}
 }
 
 
 /* ----------------------------------------------------------------------- */
 
 
+.active-menu {
+	+ .page__mobile {
+		left: 0;
+		box-shadow: 3px 0 6px rgba(0,0,0,0.3);
+	}
+}
+
+.sub-menu-active {
+	&.page__mobile {
+		overflow: hidden;
+	}
+}
+
 .page__mobile {
-	width: 0;
+	width: 100%;
 	height: 100%;
 	float: left;
 	overflow-y: scroll;
-	position: absolute;
-	top: 0; left: 0;
+	position: fixed;
+	top: 0; left: -100%;
 	z-index: 1;
-	box-shadow: 3px 0 6px rgba(0,0,0,0.3);
-	background: color(red);
-	transition: width $animation ease;
+	box-shadow: 3px 0 6px rgba(0,0,0,0);
+	background: color(white);
+	transition: background $animation ease, left $animation ease, box-shadow $animation ease;
+	// Abstractions
+	&.sub-menu-active {
+		background: darken(color(white), 10%);
+	}
+	// Descendants
+	&__inner {
+		height: 100%;
+		position: relative;
+	}
 	&__close {
 		position: absolute;
 		top: 15px; right: 15px;
 		font-size: 28px;
 		color: color(white);
+	}
+	.nav-primary {
+		li {
+			display: block;
+			position: static;
+			// Descendants
+			.sub-menu {
+				width: 0;
+				height: 100%;
+				display: block;
+				position: absolute;
+				top: 0; left: -105%; // 105% to cover the box-shadow.
+				overflow-y: scroll;
+				box-shadow: 3px 0 6px rgba(0,0,0,0.3);
+				font-weight: normal;
+				background: color(white);
+				transition: width $menu_animation ease;
+				// Descendants
+				&__close {
+					position: absolute;
+					@include nudge(top, 1); @include nudge(left, 1);
+				}
+				// Abstractions
+				&.active-sub-menu {
+					left: 0;
+				}
+			}
+		}
 	}
 }
 
@@ -96,7 +131,7 @@
 /* -- Mobile Menu -- */
 .page__mobile-menu {
 	width: 30px;
-	height: 22px;
+	height: 21px;
 	display: none;
 	cursor: pointer;
 	&.active-menu {
@@ -124,7 +159,7 @@
 			content: '';
 			cursor: pointer;
 			background: color(black);
-	  		transition: all $animation ease-in-out;
+	  		transition: all $menu_animation ease-in-out;
 		}
 		&:before {
 			top: -8px;
@@ -151,6 +186,6 @@
 		display: block !important;
 		overflow-y: hidden !important;
 		transform: translateZ(0);
-		transition: max-height 1000ms ease-in-out;
+		transition: max-height $menu_animation ease-in-out;
 	}
 }

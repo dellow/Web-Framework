@@ -11,6 +11,7 @@
 	min-width: $device;
 	margin: 0 auto;
 	position: relative;
+	// Abstractions
 	&--small {
 		max-width: $tablet;
 	}
@@ -28,7 +29,9 @@
 
 /* -- Page Wrapper -- */
 .page__wrapper {
-	transition: left $animation ease;
+	position: relative;
+	transition: left $menu_animation ease;
+	// Responsive
 	@include respond-to($mobile_menu){
 		height: 100%;
 		width: 100%;
