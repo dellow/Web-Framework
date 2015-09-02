@@ -58,6 +58,7 @@
 .active-menu {
 	+ .page__mobile {
 		left: 0;
+		box-shadow: 3px 0 6px rgba(0,0,0,0.3);
 	}
 }
 
@@ -75,9 +76,9 @@
 	position: fixed;
 	top: 0; left: -100%;
 	z-index: 1;
-	box-shadow: 3px 0 6px rgba(0,0,0,0.3);
+	box-shadow: 3px 0 6px rgba(0,0,0,0);
 	background: color(white);
-	transition: background $menu_animation ease, left $menu_animation ease;
+	transition: background $animation ease, left $animation ease, box-shadow $animation ease;
 	// Abstractions
 	&.sub-menu-active {
 		background: darken(color(white), 10%);
