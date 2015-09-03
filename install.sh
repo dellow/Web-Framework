@@ -144,7 +144,7 @@ printf "\n"
 # Update / get dependencies with Bundler if installed.
 # ------------------------------------------------------------------------
 #
-if [[ ! gem list bundler -i ]]; then
+if ! gem list bundler -i; then
 	# Command.
 	bundle install
 
