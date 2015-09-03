@@ -196,15 +196,16 @@ printf "\n"
 
 
 # ------------------------------------------------------------------------
-# Create a dev branch.
+# Create dev & templates branches.
 # ------------------------------------------------------------------------
 #
 # Command.
 git branch dev
+git branch templates
 
 ## Report.
 echo -e "------------------------------------------------"
-echo -e "$(tput setaf 2)Created dev branch...$(tput sgr0)"
+echo -e "$(tput setaf 2)Created dev &templates branches...$(tput sgr0)"
 echo -e "------------------------------------------------"
 
 
