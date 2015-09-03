@@ -6,14 +6,10 @@
 
 
 // .icon {
+// 	@extend .css-sprite;
 // 	position: relative;
-// 	display: inline-block;
+// 	display: inline-block !important;
 // 	vertical-align: middle;
-// 	&:after {
-// 		@extend .css-sprite;
-// 		content: '';
-// 		display: inline-block !important;
-// 	}
 // }
 
 
@@ -21,7 +17,5 @@
 
 
 // .icon--set--name {
-// 	&:after {
-// 		@include sprite($icon-set-name);
-// 	}
+// 	@include sprite($icon-set-name);
 // }
