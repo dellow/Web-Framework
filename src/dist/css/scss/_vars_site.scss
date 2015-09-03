@@ -15,6 +15,11 @@ $debug_mode: true;
 /* -- Colors -- */
 // Map
 $site_colors: (
+	color: (
+		base : #FF0000,
+		light: lighten(#FF0000, 10%),
+		dark : darken(#FF0000, 10%)
+	),
 	copy: (
 		header: #231f20,
 		body  : #5f5659,
