@@ -105,13 +105,13 @@ $outputrems      : true !default;
 // PX font size and line height.
 @mixin pxType($fontSize, $lineHeight){
 	font-size: $fontSize;
-	line-height: $lineHeight;
+	line-height: stripUnits($lineHeight / $fontSize);
 }
 
 // REM font size and line height.
 @mixin remType($fontSize, $lineHeight){
 	font-size: calculateRem($fontSize);
-	line-height: calculateRem($lineHeight);
+	line-height: stripUnits($lineHeight / $fontSize);
 }
 
 // Top and Bottom margin in PX.
