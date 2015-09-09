@@ -390,6 +390,7 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 __2.1.1__:
 * Changed direct icon classes to not use :after pseudo class.
 * Made all line-heights outputted by Knife to be unitless.
+* Added jQuery ToolTipster for Tooltips.
 
 __2.1.0__:
 * Added missing DalekJS test files.
