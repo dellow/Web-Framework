@@ -24,7 +24,7 @@
         // require('../plugins/jquery.equal-heights');
         // require('../plugins/jquery.googlemap');
         // require('../plugins/jquery.modals');
-        // require('../plugins/vendor/jquery.tooltipster.js');
+        // require('../plugins/vendor/jquery.tooltipster');
         // require('../plugins/jquery.validation');
         // Require :: Vendor
         // require('../plugins/vendor/jquery.slider');
