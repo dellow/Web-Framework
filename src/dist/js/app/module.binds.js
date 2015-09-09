@@ -24,6 +24,7 @@
         // require('../plugins/jquery.equal-heights');
         // require('../plugins/jquery.googlemap');
         // require('../plugins/jquery.modals');
+        // require('../plugins/vendor/jquery.tooltipster.js');
         // require('../plugins/jquery.validation');
         // Require :: Vendor
         // require('../plugins/vendor/jquery.slider');
@@ -129,27 +130,43 @@
      * reveal_dom_element
      * Reveals a DOM element.
      *
-     * Usage: <button class="js-reveal" data-reveal-target=".target" data-reveal-status="hidden">Click Me</button>
+     * Usage: <button class="js-reveal" data-reveal-target=".target" data-reveal-alt="Alternative Text" data-reveal-status="hidden">Click Me</button>
      *
      * @since 1.0.0
      * @version 1.0.0
     **/
     Module.prototype.reveal_dom_element = function(){
         // Button click.
-        $('.js-reveal').on('click', function(){
-            var _self = $(this),
-                target = _self.data('reveal-target'),
-                status = _self.data('reveal-status');
+        $(document).on('click', '.js-reveal', function(){
+            var _self   = $(this),
+                target  = _self.data('reveal-target'),
+                modify1 = _self.text(),
+                modify2 = _self.data('reveal-alt'),
+                status  = _self.data('reveal-status');
 
             // Check we have a target & status.
             if(target && status){
                 if(status == 'visible'){
+                    // Check for modifier.
+                    if(modify2){
+                        // Change text.
+                        _self.text(modify2);
+                        // Update modifier.
+                        _self.data('reveal-alt', modify1);
+                    }
                     // Hide element.
                     $(target).addClass('u-hidden').removeClass('u-show');
                     // Update all elements status.
                     $('[data-reveal-target="' + target + '"]').data('reveal-status', 'hidden');
                 }
                 else{
+                    // Check for modifier.
+                    if(modify2){
+                        // Change text.
+                        _self.text(modify2);
+                        // Update modifier.
+                        _self.data('reveal-alt', modify1);
+                    }
                     // Show element.
                     $(target).addClass('u-show').removeClass('u-hidden');
                     // Update all elements status.
@@ -183,6 +200,32 @@
                     {screen: 768, slides: 3}
                 ]
             });
+        };
+    }
+
+    /**
+     * tooltips
+     * Tooltip events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+    **/
+    Module.prototype.tooltips = function(){
+        // DOM check.
+        if($('.js-tooltip').length){
+            // Init plugin.
+            $('.js-tooltip').tooltipster({
+                delay    : 100,
+                animation: 'fade',
+                trigger  : 'hover'
+            });
+            // Prevent click. This is for tooltips used in forms where
+            // we might use an anchor instead of a button. We do this
+            // so the button doesn't submit the form and trigger the
+            // validation script.
+            $('.js-tooltip').on('click', function(e){
+                e.preventDefault();
+            })
         };
     }
 

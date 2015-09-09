@@ -5,7 +5,6 @@
 
 /* -- Pagination -- */
 .pagination {
-	@extend %cf;
 	.page-numbers {
 		@include nudge(padding, 0.25 0.5);
 		border-radius: $border_radius_base;

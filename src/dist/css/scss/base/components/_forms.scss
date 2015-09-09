@@ -28,9 +28,9 @@ form {
 
 	// Field wrappers.
 	.field {
+		@extend %cf;
 		@include nudge(margin-bottom, 0.5);
 		position: relative;
-		@extend %cf;
 		// Abstractions
 		&.left, &.right {
 			margin-bottom: 0;
