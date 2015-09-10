@@ -85,7 +85,7 @@
 		// Page loading.
 		$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
 			// Log it.
-	        Helpers.log("Loading: " + url + " to " + $target.selector + " within '" + render, "positive");
+	        Helpers.log("Loading: " + url + " to " + $target.selector + " within " + render, "positive");
 	    });
 		// Page redirected.
 		$(document).off('page:redirected').on('page:redirected', function(event, $target, render, url){
@@ -95,7 +95,7 @@
 		// Page done loading.
 		$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
 			// Log it.
-	        Helpers.log("Wiselinks status: '" + status, "positive");
+	        Helpers.log("Wiselinks status: " + status, "positive");
 	        // Check for Google Analytics.
 			if(window.ga_active){
 				// Register Analytics Page View.
@@ -105,12 +105,14 @@
 					'dimension2': WURFL.form_factor,
 					'dimension3': WURFL.is_mobile
 				});
+				// Log it.
+		        Helpers.log("Analytics page view sent", "positive");
 			}
 	    });
 		// Page can't be found.
 		$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
 			// Log it.
-	        Helpers.log("Wiselinks status: '" + status, "negative");
+	        Helpers.log("Wiselinks status: " + status, "negative");
 	        // Redirect to 404.
 	        window.location.replace(window.config.base_url + '404');
 	    });
