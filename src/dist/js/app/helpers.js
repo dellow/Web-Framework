@@ -165,6 +165,22 @@
         });
     }
 
+    /**
+     * Helper.decode_entities
+     * Decodes HTML entities.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     */
+    Helper.decode_entities = function(string){
+    	// Create pseudo element.
+	    var pseudo = document.createElement('textarea');
+	    // Decode.
+	    pseudo.innerHTML = string;
+
+	    return pseudo.value;
+	}
+
 	// Export
 	module.exports = Helpers;
 
