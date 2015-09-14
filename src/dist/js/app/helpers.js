@@ -125,7 +125,7 @@
 		else{
 			$('.spinner-wrapper', el).fadeOut(500, function(){
 				$(this).remove();
-			})
+			});
 		}
 	}
 

@@ -391,6 +391,7 @@ __2.1.1__:
 * Changed direct icon classes to not use :after pseudo class.
 * Made all line-heights outputted by Knife to be unitless.
 * Added jQuery ToolTipster for Tooltips.
+* Moved JS call to footer again. Removing async attribute. Causes issues with GA.
 
 __2.1.0__:
 * Added missing DalekJS test files.
