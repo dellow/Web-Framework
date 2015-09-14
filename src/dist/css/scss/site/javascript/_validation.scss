@@ -23,16 +23,16 @@ form {
 		// Label
 		label {
 			// Abstractions
-			&.js-validation-field-error {
+			&, .js-validation-field-error {
 				color: $color_error;
 			}
-			&.js-validation-field-status {
+			&, .js-validation-field-status {
 				color: $color_status;
 			}
-			&.js-validation-field-success {
+			&, .js-validation-field-success {
 				color: $color_success;
 			}
-			&.js-validation-field-warning {
+			&, .js-validation-field-warning {
 				color: $color_warning;
 			}
 		}
