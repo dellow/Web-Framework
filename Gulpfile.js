@@ -402,12 +402,12 @@ gulp.task('release', function(){
 	// Vars.
 	var files = [
         './src/**/*.*',
-        '!./src/**/*.scss',
-        '!./src/dist/js/app/**/*',
-        '!./src/dist/js/compiled/**/*',
-        '!./src/dist/js/plugins/**/*',
-        '!./src/dist/js/spec/**/*',
-        '!./src/dist/js/vendor/**/*',
+        '!' + dist_dir + '/**/*.scss',
+        '!' + dist_dir + 'js/app/**/*',
+        '!' + dist_dir + 'js/compiled/**/*',
+        '!' + dist_dir + 'js/plugins/**/*',
+        '!' + dist_dir + 'js/spec/**/*',
+        '!' + dist_dir + 'js/vendor/**/*'
     ];
 
     // Task.
