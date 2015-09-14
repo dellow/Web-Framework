@@ -86,7 +86,7 @@
 		// Page loading.
 		$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
 			// Log it.
-	        Helpers.log("Loading: " + url + " to " + $target.selector + " within '" + render, "positive");
+	        Helpers.log("Loading: " + url + " to " + $target.selector + " within " + render, "positive");
 	    });
 		// Page redirected.
 		$(document).off('page:redirected').on('page:redirected', function(event, $target, render, url){
@@ -96,7 +96,7 @@
 		// Page done loading.
 		$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
 			// Log it.
-	        Helpers.log("Wiselinks status: '" + status, "positive");
+	        Helpers.log("Wiselinks status: " + status, "positive");
 	        // Check for Google Analytics.
 			if(window.ga_active){
 				// Register Analytics Page View.
@@ -106,12 +106,14 @@
 					'dimension2': WURFL.form_factor,
 					'dimension3': WURFL.is_mobile
 				});
+				// Log it.
+		        Helpers.log("Analytics page view sent", "positive");
 			}
 	    });
 		// Page can't be found.
 		$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
 			// Log it.
-	        Helpers.log("Wiselinks status: '" + status, "negative");
+	        Helpers.log("Wiselinks status: " + status, "negative");
 	        // Redirect to 404.
 	        window.location.replace(window.config.base_url + '404');
 	    });
@@ -250,7 +252,7 @@
 		else{
 			$('.spinner-wrapper', el).fadeOut(500, function(){
 				$(this).remove();
-			})
+			});
 		}
 	}
 
@@ -290,6 +292,22 @@
         });
     }
 
+    /**
+     * Helper.decode_entities
+     * Decodes HTML entities.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     */
+    Helper.decode_entities = function(string){
+    	// Create pseudo element.
+	    var pseudo = document.createElement('textarea');
+	    // Decode.
+	    pseudo.innerHTML = string;
+
+	    return pseudo.value;
+	}
+
 	// Export
 	module.exports = Helpers;
 
@@ -321,6 +339,7 @@
         // require('../plugins/jquery.equal-heights');
         // require('../plugins/jquery.googlemap');
         // require('../plugins/jquery.modals');
+        // require('../plugins/vendor/jquery.tooltipster');
         // require('../plugins/jquery.validation');
         // Require :: Vendor
         // require('../plugins/vendor/jquery.slider');
@@ -426,27 +445,43 @@
      * reveal_dom_element
      * Reveals a DOM element.
      *
-     * Usage: <button class="js-reveal" data-reveal-target=".target" data-reveal-status="hidden">Click Me</button>
+     * Usage: <button class="js-reveal" data-reveal-target=".target" data-reveal-alt="Alternative Text" data-reveal-status="hidden">Click Me</button>
      *
      * @since 1.0.0
      * @version 1.0.0
     **/
     Module.prototype.reveal_dom_element = function(){
         // Button click.
-        $('.js-reveal').on('click', function(){
-            var _self = $(this),
-                target = _self.data('reveal-target'),
-                status = _self.data('reveal-status');
+        $(document).on('click', '.js-reveal', function(){
+            var _self   = $(this),
+                target  = _self.data('reveal-target'),
+                modify1 = _self.text(),
+                modify2 = _self.data('reveal-alt'),
+                status  = _self.data('reveal-status');
 
             // Check we have a target & status.
             if(target && status){
                 if(status == 'visible'){
+                    // Check for modifier.
+                    if(modify2){
+                        // Change text.
+                        _self.text(modify2);
+                        // Update modifier.
+                        _self.data('reveal-alt', modify1);
+                    }
                     // Hide element.
                     $(target).addClass('u-hidden').removeClass('u-show');
                     // Update all elements status.
                     $('[data-reveal-target="' + target + '"]').data('reveal-status', 'hidden');
                 }
                 else{
+                    // Check for modifier.
+                    if(modify2){
+                        // Change text.
+                        _self.text(modify2);
+                        // Update modifier.
+                        _self.data('reveal-alt', modify1);
+                    }
                     // Show element.
                     $(target).addClass('u-show').removeClass('u-hidden');
                     // Update all elements status.
@@ -480,6 +515,32 @@
                     {screen: 768, slides: 3}
                 ]
             });
+        };
+    }
+
+    /**
+     * tooltips
+     * Tooltip events.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+    **/
+    Module.prototype.tooltips = function(){
+        // DOM check.
+        if($('.js-tooltip').length){
+            // Init plugin.
+            $('.js-tooltip').tooltipster({
+                delay    : 100,
+                animation: 'fade',
+                trigger  : 'hover'
+            });
+            // Prevent click. This is for tooltips used in forms where
+            // we might use an anchor instead of a button. We do this
+            // so the button doesn't submit the form and trigger the
+            // validation script.
+            $('.js-tooltip').on('click', function(e){
+                e.preventDefault();
+            })
         };
     }
 
