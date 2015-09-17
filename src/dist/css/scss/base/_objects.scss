@@ -52,6 +52,22 @@
 /* ----------------------------------------------------------------------- */
 
 
+/* -- Media Object -- */
+.obj-flex-media {
+	@extend %flex;
+	&__image {
+		max-width: 40%;
+		margin-right: 4%;
+	}
+	&__details {
+		flex: 1;
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
 /* -- Responsive YouTube Embed Container -- */
 .obj-embed-container {
 	max-width: 100%;

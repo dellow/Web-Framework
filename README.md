@@ -387,6 +387,10 @@ The gulp `sync` task uses the xip.io service by default. So to use webfont servi
 
 <a name="changelog"></a>
 ## Changelog
+__2.1.2__:
+* Moved base media objects to root of base.
+* Added media object.
+
 __2.1.1__:
 * Changed direct icon classes to not use :after pseudo class.
 * Made all line-heights outputted by Knife to be unitless.
