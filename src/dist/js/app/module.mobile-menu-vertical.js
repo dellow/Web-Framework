@@ -18,26 +18,14 @@
      * @version 1.0.0
     **/
     Module = function(){
-    	this.primary = null;
-    }
-
-	/**
-	 * init
-	 * Init method for this module.
-     *
-     * @since 1.0.0
-     * @version 1.0.0
-	**/
-	Module.prototype.init = function(){
 		var _this = this;
 
-		// Start binds on window load / resize.
-		$(window).on('load resize',function(){
-			_this.primary = $('.nav-primary');
+		// Cache the primary menu.
+    	this.primary = $('.nav-primary');
 
-			return _this.binds();
-		});
-	}
+		// Start binds on window load / resize.
+		$(window).on('load resize', $.proxy(_this.binds, _this));
+    }
 
 	/**
 	 * binds

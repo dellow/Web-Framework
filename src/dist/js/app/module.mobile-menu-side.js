@@ -21,6 +21,16 @@
 		// Set active flag.
 		this.menu_active = false;
 		this.sub_menu_active = false;
+
+		// Vars.
+		_this.$button    = $('.js-mobile-button');
+		_this.$menu      = $('.js-mobile-menu');
+		_this.$content   = $('.js-mobile-content');
+		_this.$close     = $('.js-close-mobile-menu');
+		_this.$sub_close = $('.js-sub-menu-close');
+
+		// Start binds on window load / resize.
+		$(window).on('load resize', $.proxy(_this.init, _this));
     }
 
 	/**
@@ -31,27 +41,16 @@
      * @version 1.0.0
 	**/
 	Module.prototype.init = function(){
-		var _this = this;
-
-		// Start binds on window load / resize.
-		$(window).on('load resize',function(){
-			// Vars.
-			_this.$button    = $('.js-mobile-button');
-			_this.$menu      = $('.js-mobile-menu');
-			_this.$content   = $('.js-mobile-content');
-			_this.$close     = $('.js-close-mobile-menu');
-			_this.$sub_close = $('.js-sub-menu-close');
-        	// Check screen is below mobile breakpoint.
-			if(Helpers.breakpoint(window.mobile_breakpoint)){
-            	return _this.binds();
-            }
-            else{
-				// Reset flag.
-				_this.set_menu_flag(false);
-            	// Reset any menus.
-            	return _this.hide_primary_menu();
-            }
-		});
+    	// Check screen is below mobile breakpoint.
+		if(Helpers.breakpoint(window.mobile_breakpoint)){
+        	return this.binds();
+        }
+        else{
+			// Reset flag.
+			this.set_menu_flag(false);
+        	// Reset any menus.
+        	return this.hide_primary_menu();
+        }
 	}
 
 	/**

@@ -18,6 +18,8 @@
      * @version 1.0.0
     **/
     Module = function(){
+        var _this = this;
+
         // Require :: NPM
         // require('fancybox')($);
         // Require :: Plugins
@@ -28,17 +30,6 @@
         // require('../plugins/jquery.validation');
         // Require :: Vendor
         // require('../plugins/vendor/jquery.slider');
-    }
-
-    /**
-     * init
-     * Init method for this module.
-     *
-     * @since 1.0.0
-     * @version 1.0.0
-    **/
-    Module.prototype.init = function(){
-        var _this = this;
 
         // Document ready.
         $(function(){

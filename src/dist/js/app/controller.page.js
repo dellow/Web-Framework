@@ -24,8 +24,8 @@
     **/
 	Controller = function(){
 		// Require :: Modules
-		this.Menu = require('./module.mobile-menu-side');
-		this.Binds = require('./module.binds');
+		require('./module.mobile-menu-side');
+		require('./module.binds');
     }
 
 	/**
@@ -36,8 +36,6 @@
      * @version 1.0.0
 	**/
 	Controller.prototype.init = function(el){
-		var _this = this;
-
 		// Check Wiselinks is enabled.
 		if(window.wiselinks_enabled){
 			// Init WiseLinks
@@ -45,24 +43,8 @@
 				html4_normalize_path: false
 			});
 			// Do page events
-			_this.wiselinks_binds();
+			return _this.wiselinks_binds();
 		}
-
-		return _this.page_load();
-	}
-
-	/**
-	 * page_load
-	 * Run on page load.
-     *
-     * @since 1.0.0
-     * @version 1.0.0
-	**/
-	Controller.prototype.page_load = function(){
-		// Init menus.
-		this.Menu.init();
-		// Init binds.
-		this.Binds.init();
 	}
 
 	/**
