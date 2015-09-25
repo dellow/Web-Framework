@@ -22,10 +22,10 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 	// Require helpers globally.
 	require('./helpers');
 
-	// Require the page controller.
-	var Page = require('./controller.page');
+	// Require the app controller.
+	window.App = require('./controller.app');
 
-	// Init new instance of page controller.
-	Page.init($('.main'));
+	// Init new instance of app controller.
+	App.init($('.main'));
 
 }(jQuery, window));

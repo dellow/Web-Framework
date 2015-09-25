@@ -1,12 +1,12 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
  *
- * PageController
+ * AppController
  *
  * Copyright 2015, Author Name
  * Some information on the license.
  *
- * Loads pages via Ajax thanks to WiseLinks.
+ * Inits Wiselinks and loads all the modules for the app.
  *
  * Just add '<a href="link.php" data-push="true">Page 2</a>'
  * to any link that needs to be loaded with Ajax.
@@ -25,8 +25,10 @@
     **/
 	Controller = function(){
 		// Require :: Modules
-		require('./module.mobile-menu-side');
-		require('./module.binds');
+		// We do not need to add this to vars but it means we can call the
+		// methods inside from outside the Module file.
+		this.ModuleBinds      = require('./module.binds');
+		this.ModuleMobileMenu = require('./module.mobile-menu-side');
     }
 
 	/**
@@ -175,6 +177,17 @@
 
 		return height;
 	}
+
+	/**
+	 * Helper.isEmpty
+	 * Checks if a value is empty, undefined or false.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Helper.isEmpty = function(value){
+        return (value == null || value === '' || value.length === 0);
+    }
 
 	/**
 	 * Helper.debounce
@@ -852,12 +865,12 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 	// Require helpers globally.
 	require('./helpers');
 
-	// Require the page controller.
-	var Page = require('./controller.page');
+	// Require the app controller.
+	window.App = require('./controller.app');
 
-	// Init new instance of page controller.
-	Page.init($('.main'));
+	// Init new instance of app controller.
+	App.init($('.main'));
 
 }(jQuery, window));
 
-},{"./controller.page":1,"./helpers":2}]},{},[5]);
+},{"./controller.app":1,"./helpers":2}]},{},[5]);

@@ -396,6 +396,7 @@ __2.1.2__:
 * Added sample module file.
 * Added missing React packages.
 * Added EMFILE error troubleshooting issue.
+* Added an isEmpty helper.
 
 __2.1.1__:
 * Changed direct icon classes to not use :after pseudo class.

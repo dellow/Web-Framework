@@ -68,6 +68,17 @@
 	}
 
 	/**
+	 * Helper.isEmpty
+	 * Checks if a value is empty, undefined or false.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Helper.isEmpty = function(value){
+        return (value == null || value === '' || value.length === 0);
+    }
+
+	/**
 	 * Helper.debounce
 	 * Returns a function, that, as long as it continues to be invoked, will not
 	 * be triggered. The function will be called after it stops being called for

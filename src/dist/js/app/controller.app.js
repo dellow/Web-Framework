@@ -1,11 +1,11 @@
 /**
  *
- * PageController
+ * AppController
  *
  * Copyright 2015, Author Name
  * Some information on the license.
  *
- * Loads pages via Ajax thanks to WiseLinks.
+ * Inits Wiselinks and loads all the modules for the app.
  *
  * Just add '<a href="link.php" data-push="true">Page 2</a>'
  * to any link that needs to be loaded with Ajax.
@@ -24,8 +24,10 @@
     **/
 	Controller = function(){
 		// Require :: Modules
-		require('./module.mobile-menu-side');
-		require('./module.binds');
+		// We do not need to add this to vars but it means we can call the
+		// methods inside from outside the Module file.
+		this.ModuleBinds      = require('./module.binds');
+		this.ModuleMobileMenu = require('./module.mobile-menu-side');
     }
 
 	/**
