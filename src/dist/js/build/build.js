@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified JavaScript
 Application Version: 1.0.0
-Compiled: Mon Sep 14 2015 17:28:36 GMT+0100 (BST)
+Compiled: Fri Sep 25 2015 11:34:38 GMT+0100 (BST)
 ========================================================================== */
 
 // Set environment variable
@@ -13276,8 +13276,8 @@ require('./wiselinks');
     **/
 	Controller = function(){
 		// Require :: Modules
-		this.Menu = require('./module.mobile-menu-side');
-		this.Binds = require('./module.binds');
+		require('./module.mobile-menu-side');
+		require('./module.binds');
     }
 
 	/**
@@ -13288,8 +13288,6 @@ require('./wiselinks');
      * @version 1.0.0
 	**/
 	Controller.prototype.init = function(el){
-		var _this = this;
-
 		// Check Wiselinks is enabled.
 		if(window.wiselinks_enabled){
 			// Init WiseLinks
@@ -13297,24 +13295,8 @@ require('./wiselinks');
 				html4_normalize_path: false
 			});
 			// Do page events
-			_this.wiselinks_binds();
+			return _this.wiselinks_binds();
 		}
-
-		return _this.page_load();
-	}
-
-	/**
-	 * page_load
-	 * Run on page load.
-     *
-     * @since 1.0.0
-     * @version 1.0.0
-	**/
-	Controller.prototype.page_load = function(){
-		// Init menus.
-		this.Menu.init();
-		// Init binds.
-		this.Binds.init();
 	}
 
 	/**
@@ -13373,7 +13355,7 @@ require('./wiselinks');
 	// Export
 	module.exports = new Controller();
 
-}(window.PageController = window.PageController || function(){}, jQuery, window));
+}(window.C = window.C || function(){}, jQuery, window));
 
 },{"./module.binds":3,"./module.mobile-menu-side":4}],2:[function(require,module,exports){
 /**
@@ -13584,6 +13566,8 @@ require('./wiselinks');
      * @version 1.0.0
     **/
     Module = function(){
+        var _this = this;
+
         // Require :: NPM
         // require('fancybox')($);
         // Require :: Plugins
@@ -13594,17 +13578,6 @@ require('./wiselinks');
         // require('../plugins/jquery.validation');
         // Require :: Vendor
         // require('../plugins/vendor/jquery.slider');
-    }
-
-    /**
-     * init
-     * Init method for this module.
-     *
-     * @since 1.0.0
-     * @version 1.0.0
-    **/
-    Module.prototype.init = function(){
-        var _this = this;
 
         // Document ready.
         $(function(){
@@ -13829,7 +13802,7 @@ require('./wiselinks');
     // Export
     module.exports = new Module();
 
-}(window.Binds = window.Binds || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, jQuery, window));
 
 },{}],4:[function(require,module,exports){
 /**
@@ -13855,6 +13828,16 @@ require('./wiselinks');
 		// Set active flag.
 		this.menu_active = false;
 		this.sub_menu_active = false;
+
+		// Vars.
+		_this.$button    = $('.js-mobile-button');
+		_this.$menu      = $('.js-mobile-menu');
+		_this.$content   = $('.js-mobile-content');
+		_this.$close     = $('.js-close-mobile-menu');
+		_this.$sub_close = $('.js-sub-menu-close');
+
+		// Start binds on window load / resize.
+		$(window).on('load resize', $.proxy(_this.init, _this));
     }
 
 	/**
@@ -13865,27 +13848,16 @@ require('./wiselinks');
      * @version 1.0.0
 	**/
 	Module.prototype.init = function(){
-		var _this = this;
-
-		// Start binds on window load / resize.
-		$(window).on('load resize',function(){
-			// Vars.
-			_this.$button    = $('.js-mobile-button');
-			_this.$menu      = $('.js-mobile-menu');
-			_this.$content   = $('.js-mobile-content');
-			_this.$close     = $('.js-close-mobile-menu');
-			_this.$sub_close = $('.js-sub-menu-close');
-        	// Check screen is below mobile breakpoint.
-			if(Helpers.breakpoint(window.mobile_breakpoint)){
-            	return _this.binds();
-            }
-            else{
-				// Reset flag.
-				_this.set_menu_flag(false);
-            	// Reset any menus.
-            	return _this.hide_primary_menu();
-            }
-		});
+    	// Check screen is below mobile breakpoint.
+		if(Helpers.breakpoint(window.mobile_breakpoint)){
+        	return this.binds();
+        }
+        else{
+			// Reset flag.
+			this.set_menu_flag(false);
+        	// Reset any menus.
+        	return this.hide_primary_menu();
+        }
 	}
 
 	/**
@@ -14104,7 +14076,7 @@ require('./wiselinks');
 	// Export
 	module.exports = new Module();
 
-}(window.Menu = window.Menu || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, jQuery, window));
 
 },{}],5:[function(require,module,exports){
 /**

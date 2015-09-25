@@ -32,7 +32,7 @@ label, button, a.button, details, input[type="button"], input[type="submit"] {
 	cursor: pointer;
 }
 button, select {
-	text-transform: none;
+	text-transform: inherit;
 	font-weight: inherit;
 }
 button {

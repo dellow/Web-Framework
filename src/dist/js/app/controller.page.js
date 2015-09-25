@@ -103,4 +103,4 @@
 	// Export
 	module.exports = new Controller();
 
-}(window.PageController = window.PageController || function(){}, jQuery, window));
+}(window.C = window.C || function(){}, jQuery, window));

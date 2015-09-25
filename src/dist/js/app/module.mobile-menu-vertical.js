@@ -158,4 +158,4 @@
 	// Export
 	module.exports = new Module();
 
-}(window.Menu = window.Menu || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, jQuery, window));

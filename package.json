@@ -37,6 +37,8 @@
     "karma-opera-launcher"    : "^0.1.0",
     "karma-phantomjs-launcher": "^0.1.4",
     "psi"                     : "^1.0.0",
+    "react"                   : "^0.13.3",
+    "react-tools"             : "^0.13.3",
     "reactify"                : "^1.0.0",
     "sprity"                  : "^1.0.0",
     "sprity-sass"             : "^1.0.0",

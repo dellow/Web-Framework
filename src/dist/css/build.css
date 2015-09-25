@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified Stylesheet
 Application Version: 1.0.0
-Compiled: Mon Sep 14 2015 17:27:44 GMT+0100 (BST)
+Compiled: Fri Sep 25 2015 11:33:41 GMT+0100 (BST)
 ========================================================================== */
 
 @charset "UTF-8";
@@ -186,7 +186,7 @@ label, button, a.button, details, input[type="button"], input[type="submit"] {
 }
 
 button, select {
-  text-transform: none;
+  text-transform: inherit;
   font-weight: inherit;
 }
 
@@ -528,7 +528,7 @@ body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
 
 /* ----------------------------------------------------------------------- */
 /* -- Enable Flexbox -- */
-.flex-grid {
+.obj-flex-media, .flex-grid {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -988,6 +988,79 @@ hr.hr__styled-seperator {
   .page__wrapper.active-menu {
     position: fixed;
   }
+}
+
+/* ==========================================================================
+   Base > Components > Objects
+   Various CSS objects used throughout an application.
+========================================================================== */
+/* -- Alternative Text -- */
+@media only screen and (max-width: 73.75em) {
+  .obj-alt-text--desktop span {
+    display: none !important;
+  }
+  .obj-alt-text--desktop:after {
+    content: attr(data-alt-text);
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .obj-alt-text--tablet span {
+    display: none !important;
+  }
+  .obj-alt-text--tablet:after {
+    content: attr(data-alt-text);
+  }
+}
+
+@media only screen and (max-width: 35.5em) {
+  .obj-alt-text--mobile span {
+    display: none !important;
+  }
+  .obj-alt-text--mobile:after {
+    content: attr(data-alt-text);
+  }
+}
+
+@media only screen and (max-width: 15.625em) {
+  .obj-alt-text--device span {
+    display: none !important;
+  }
+  .obj-alt-text--device:after {
+    content: attr(data-alt-text);
+  }
+}
+
+/* ----------------------------------------------------------------------- */
+/* -- Media Object -- */
+.obj-flex-media__image {
+  max-width: 40%;
+  margin-right: 4%;
+}
+
+.obj-flex-media__details {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+/* ----------------------------------------------------------------------- */
+/* -- Responsive YouTube Embed Container -- */
+.obj-embed-container {
+  max-width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+  overflow: hidden;
+}
+
+.obj-embed-container iframe, .obj-embed-container object, .obj-embed-container embed {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* ==========================================================================
@@ -2062,65 +2135,6 @@ ul.alert.box li {
     -webkit-transition: max-height 300ms ease-in-out;
     transition: max-height 300ms ease-in-out;
   }
-}
-
-/* ==========================================================================
-   Base > Components > Objects
-   Various CSS objects used throughout an application.
-========================================================================== */
-/* -- Alternative Text -- */
-@media only screen and (max-width: 73.75em) {
-  .obj-alt-text--desktop span {
-    display: none !important;
-  }
-  .obj-alt-text--desktop:after {
-    content: attr(data-alt-text);
-  }
-}
-
-@media only screen and (max-width: 48em) {
-  .obj-alt-text--tablet span {
-    display: none !important;
-  }
-  .obj-alt-text--tablet:after {
-    content: attr(data-alt-text);
-  }
-}
-
-@media only screen and (max-width: 35.5em) {
-  .obj-alt-text--mobile span {
-    display: none !important;
-  }
-  .obj-alt-text--mobile:after {
-    content: attr(data-alt-text);
-  }
-}
-
-@media only screen and (max-width: 15.625em) {
-  .obj-alt-text--device span {
-    display: none !important;
-  }
-  .obj-alt-text--device:after {
-    content: attr(data-alt-text);
-  }
-}
-
-/* ----------------------------------------------------------------------- */
-/* -- Responsive YouTube Embed Container -- */
-.obj-embed-container {
-  max-width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  position: relative;
-  overflow: hidden;
-}
-
-.obj-embed-container iframe, .obj-embed-container object, .obj-embed-container embed {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 /* ==========================================================================
