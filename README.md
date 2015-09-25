@@ -385,6 +385,9 @@ Try running with the `xip=false` argument. If this works you're router probably 
 #### Using font services with BrowserSync.
 The gulp `sync` task uses the xip.io service by default. So to use webfont services like fonts.com and typekit.com with BrowserSync all you need to do is set `*.xip.io` as one of your allowed domains in the font service settings. Your fonts will now be available on all your devices using the URL provdided via the `sync` task.
 
+#### Getting `Error EMFILE, open` errors when running Gulp tasks.
+This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in your commaned line then the Gulp command again and it should fix the error.
+
 <a name="changelog"></a>
 ## Changelog
 __2.1.2__:
@@ -392,6 +395,7 @@ __2.1.2__:
 * Added media object.
 * Added sample module file.
 * Added missing React packages.
+* Added EMFILE error troubleshooting issue.
 
 __2.1.1__:
 * Changed direct icon classes to not use :after pseudo class.
