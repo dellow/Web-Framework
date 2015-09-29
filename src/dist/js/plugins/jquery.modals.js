@@ -54,6 +54,7 @@
     $.fn.modal.defaults = {
         template         : '<div id="modal-window" class="modal"><div class="modal-content"><div></div>',
         type             : 'modal-slide-left',
+        show_close       : true,
         content          : '',
         confirmation     : false,
         callback_positive: function(){}, // Must be a function.
@@ -152,7 +153,7 @@
             if(_self.settings.confirmation){
                 $('.modal-content', $target).append('<button class="modal-confirmation-yes">Yes</button> | <button class="modal-confirmation-no">No</button>');
             }
-            else{
+            else if(_self.settings.show_close){
                 $('.modal-content', $target).append('<button class="js-modal-close">Close</button>');
             }
 
