@@ -7,7 +7,7 @@
  *
 **/
 
-;(function(Helper, $, window, undefined){
+;(function(Helper, window, undefined){
 	'use strict';
 
 	/**
@@ -195,4 +195,4 @@
 	// Export
 	module.exports = Helpers;
 
-}(window.Helpers = window.Helpers || {}, jQuery, window));
+}(window.Helpers = window.Helpers || {}, window));

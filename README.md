@@ -397,6 +397,9 @@ __2.1.2__:
 * Added missing React packages.
 * Added EMFILE error troubleshooting issue.
 * Added an isEmpty helper.
+* Fixed issue with Modernizr by adding via Browzernizr.
+* Fixed issue with duplicate call to build.js.
+* Made jQuery & $ vars global in all methods.
 
 __2.1.1__:
 * Changed direct icon classes to not use :after pseudo class.

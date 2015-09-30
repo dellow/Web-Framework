@@ -2,6 +2,7 @@
   "devDependencies": {
     "browserify"              : "^10.0.0",
     "browserify-shim"         : "^3.0.0",
+    "browsernizr"             : "^1.1.0",
     "browser-sync"            : "^2.0.0",
     "dalek-reporter-html"     : "^0.0.4",
     "dalek-reporter-junit"    : "^0.0.2",

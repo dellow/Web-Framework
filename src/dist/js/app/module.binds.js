@@ -7,7 +7,7 @@
  *
 **/
 
-;(function(Module, $, window, undefined){
+;(function(Module, window, undefined){
     'use strict';
 
     /**
@@ -21,7 +21,7 @@
         var _this = this;
 
         // Require :: NPM
-        // require('fancybox')($);
+        // require('fancybox');
         // Require :: Plugins
         // require('../plugins/jquery.equal-heights');
         // require('../plugins/jquery.googlemap');
@@ -254,4 +254,4 @@
     // Export
     module.exports = new Module();
 
-}(window.M = window.M || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, window));

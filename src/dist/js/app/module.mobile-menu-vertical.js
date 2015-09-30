@@ -7,7 +7,7 @@
  *
 **/
 
-;(function(Module, $, window, undefined){
+;(function(Module, window, undefined){
 	'use strict';
 
     /**
@@ -158,4 +158,4 @@
 	// Export
 	module.exports = new Module();
 
-}(window.M = window.M || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, window));

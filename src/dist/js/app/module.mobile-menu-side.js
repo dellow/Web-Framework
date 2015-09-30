@@ -7,7 +7,7 @@
  *
 **/
 
-;(function(Module, $, window, undefined){
+;(function(Module, window, undefined){
 	'use strict';
 
     /**
@@ -23,14 +23,14 @@
 		this.sub_menu_active = false;
 
 		// Vars.
-		_this.$button    = $('.js-mobile-button');
-		_this.$menu      = $('.js-mobile-menu');
-		_this.$content   = $('.js-mobile-content');
-		_this.$close     = $('.js-close-mobile-menu');
-		_this.$sub_close = $('.js-sub-menu-close');
+		this.$button    = $('.js-mobile-button');
+		this.$menu      = $('.js-mobile-menu');
+		this.$content   = $('.js-mobile-content');
+		this.$close     = $('.js-close-mobile-menu');
+		this.$sub_close = $('.js-sub-menu-close');
 
 		// Start binds on window load / resize.
-		$(window).on('load resize', $.proxy(_this.init, _this));
+		$(window).on('load resize', $.proxy(this.init, this));
     }
 
 	/**
@@ -269,4 +269,4 @@
 	// Export
 	module.exports = new Module();
 
-}(window.M = window.M || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, window));

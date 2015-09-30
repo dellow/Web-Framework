@@ -13,7 +13,7 @@
  *
 **/
 
-;(function(Controller, $, window, undefined){
+;(function(Controller, window, undefined){
 	'use strict';
 
     /**
@@ -25,8 +25,7 @@
     **/
 	Controller = function(){
 		// Require :: Modules
-		// We do not need to add this to vars but it means we can call the
-		// methods inside from outside the Module file.
+		// We do not need to declare with vars but it allows us to call internal methods externally.
 		this.ModuleBinds      = require('./module.binds');
 		this.ModuleMobileMenu = require('./module.mobile-menu-side');
     }
@@ -46,7 +45,7 @@
 				html4_normalize_path: false
 			});
 			// Do page events
-			return _this.wiselinks_binds();
+			return this.wiselinks_binds();
 		}
 	}
 
@@ -106,7 +105,7 @@
 	// Export
 	module.exports = new Controller();
 
-}(window.C = window.C || function(){}, jQuery, window));
+}(window.C = window.C || function(){}, window));
 
 },{"./module.binds":3,"./module.mobile-menu-side":4}],2:[function(require,module,exports){
 /**
@@ -118,7 +117,7 @@
  *
 **/
 
-;(function(Helper, $, window, undefined){
+;(function(Helper, window, undefined){
 	'use strict';
 
 	/**
@@ -306,7 +305,7 @@
 	// Export
 	module.exports = Helpers;
 
-}(window.Helpers = window.Helpers || {}, jQuery, window));
+}(window.Helpers = window.Helpers || {}, window));
 },{}],3:[function(require,module,exports){
 /**
  *
@@ -317,7 +316,7 @@
  *
 **/
 
-;(function(Module, $, window, undefined){
+;(function(Module, window, undefined){
     'use strict';
 
     /**
@@ -331,7 +330,7 @@
         var _this = this;
 
         // Require :: NPM
-        // require('fancybox')($);
+        // require('fancybox');
         // Require :: Plugins
         // require('../plugins/jquery.equal-heights');
         // require('../plugins/jquery.googlemap');
@@ -564,7 +563,7 @@
     // Export
     module.exports = new Module();
 
-}(window.M = window.M || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, window));
 
 },{}],4:[function(require,module,exports){
 /**
@@ -576,7 +575,7 @@
  *
 **/
 
-;(function(Module, $, window, undefined){
+;(function(Module, window, undefined){
 	'use strict';
 
     /**
@@ -592,14 +591,14 @@
 		this.sub_menu_active = false;
 
 		// Vars.
-		_this.$button    = $('.js-mobile-button');
-		_this.$menu      = $('.js-mobile-menu');
-		_this.$content   = $('.js-mobile-content');
-		_this.$close     = $('.js-close-mobile-menu');
-		_this.$sub_close = $('.js-sub-menu-close');
+		this.$button    = $('.js-mobile-button');
+		this.$menu      = $('.js-mobile-menu');
+		this.$content   = $('.js-mobile-content');
+		this.$close     = $('.js-close-mobile-menu');
+		this.$sub_close = $('.js-sub-menu-close');
 
 		// Start binds on window load / resize.
-		$(window).on('load resize', $.proxy(_this.init, _this));
+		$(window).on('load resize', $.proxy(this.init, this));
     }
 
 	/**
@@ -838,7 +837,7 @@
 	// Export
 	module.exports = new Module();
 
-}(window.M = window.M || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, window));
 
 },{}],5:[function(require,module,exports){
 /**
@@ -859,7 +858,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 /* ======================================================== */
 /* Index
 /* ======================================================== */
-;(function($, window, undefined){
+;(function(window, undefined){
     'use strict';
 
 	// Require helpers globally.
@@ -871,6 +870,6 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 	// Init new instance of app controller.
 	App.init($('.main'));
 
-}(jQuery, window));
+}(window));
 
 },{"./controller.app":1,"./helpers":2}]},{},[5]);

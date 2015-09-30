@@ -16,7 +16,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 /* ======================================================== */
 /* Index
 /* ======================================================== */
-;(function($, window, undefined){
+;(function(window, undefined){
     'use strict';
 
 	// Require helpers globally.
@@ -28,4 +28,4 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 	// Init new instance of app controller.
 	App.init($('.main'));
 
-}(jQuery, window));
+}(window));

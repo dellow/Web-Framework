@@ -1,13 +1,242 @@
 /* ==========================================================================
 Unminified JavaScript
 Application Version: 1.0.0
-Compiled: Fri Sep 25 2015 17:17:26 GMT+0100 (BST)
+Compiled: Wed Sep 30 2015 11:32:39 GMT+0100 (BST)
 ========================================================================== */
 
 // Set environment variable
 window.gulp_env = "development";
 
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var Modernizr = require('./lib/Modernizr'),
+    ModernizrProto = require('./lib/ModernizrProto'),
+    classes = require('./lib/classes'),
+    testRunner = require('./lib/testRunner'),
+    setClasses = require('./lib/setClasses');
+
+// Run each test
+testRunner();
+
+// Remove the "no-js" class if it exists
+setClasses(classes);
+
+delete ModernizrProto.addTest;
+delete ModernizrProto.addAsyncTest;
+
+// Run the things that are supposed to run after the tests
+for (var i = 0; i < Modernizr._q.length; i++) {
+  Modernizr._q[i]();
+}
+
+module.exports = Modernizr;
+
+},{"./lib/Modernizr":2,"./lib/ModernizrProto":3,"./lib/classes":4,"./lib/setClasses":8,"./lib/testRunner":9}],2:[function(require,module,exports){
+var ModernizrProto = require('./ModernizrProto');
+
+
+  // Fake some of Object.create
+  // so we can force non test results
+  // to be non "own" properties.
+  var Modernizr = function(){};
+  Modernizr.prototype = ModernizrProto;
+
+  // Leak modernizr globally when you `require` it
+  // rather than force it here.
+  // Overwrite name so constructor name is nicer :D
+  Modernizr = new Modernizr();
+
+  
+
+module.exports = Modernizr;
+},{"./ModernizrProto":3}],3:[function(require,module,exports){
+var tests = require('./tests');
+
+
+  var ModernizrProto = {
+    // The current version, dummy
+    _version: '__VERSION__',
+
+    // Any settings that don't work as separate modules
+    // can go in here as configuration.
+    _config: {
+      'classPrefix' : '',
+      'enableClasses' : true,
+      'enableJSClass' : true,
+      'usePrefixes' : true
+    },
+
+    // Queue of tests
+    _q: [],
+
+    // Stub these for people who are listening
+    on: function( test, cb ) {
+      // I don't really think people should do this, but we can
+      // safe guard it a bit.
+      // -- NOTE:: this gets WAY overridden in src/addTest for
+      // actual async tests. This is in case people listen to
+      // synchronous tests. I would leave it out, but the code
+      // to *disallow* sync tests in the real version of this
+      // function is actually larger than this.
+      var self = this;
+      setTimeout(function() {
+        cb(self[test]);
+      }, 0);
+    },
+
+    addTest: function( name, fn, options ) {
+      tests.push({name : name, fn : fn, options : options });
+    },
+
+    addAsyncTest: function (fn) {
+      tests.push({name : null, fn : fn});
+    }
+  };
+
+  
+
+module.exports = ModernizrProto;
+},{"./tests":10}],4:[function(require,module,exports){
+
+  var classes = [];
+  
+module.exports = classes;
+},{}],5:[function(require,module,exports){
+
+  var docElement = document.documentElement;
+  
+module.exports = docElement;
+},{}],6:[function(require,module,exports){
+
+  /**
+   * is returns a boolean for if typeof obj is exactly type.
+   */
+  function is( obj, type ) {
+    return typeof obj === type;
+  }
+  
+module.exports = is;
+},{}],7:[function(require,module,exports){
+var docElement = require('./docElement');
+
+
+  var isSVG = docElement.nodeName.toLowerCase() === 'svg';
+  
+
+module.exports = isSVG;
+},{"./docElement":5}],8:[function(require,module,exports){
+var Modernizr = require('./Modernizr');
+var docElement = require('./docElement');
+var isSVG = require('./isSVG');
+
+
+  // Pass in an and array of class names, e.g.:
+  //  ['no-webp', 'borderradius', ...]
+  function setClasses( classes ) {
+    var className = docElement.className;
+    var classPrefix = Modernizr._config.classPrefix || '';
+
+    if (isSVG) {
+      className = className.baseVal;
+    }
+
+    // Change `no-js` to `js` (we do this independently of the `enableClasses`
+    // option)
+    // Handle classPrefix on this too
+    if(Modernizr._config.enableJSClass) {
+      var reJS = new RegExp('(^|\\s)'+classPrefix+'no-js(\\s|$)');
+      className = className.replace(reJS, '$1'+classPrefix+'js$2');
+    }
+
+    if(Modernizr._config.enableClasses) {
+      // Add the new classes
+      className += ' ' + classPrefix + classes.join(' ' + classPrefix);
+      isSVG ? docElement.className.baseVal = className : docElement.className = className;
+    }
+
+  }
+
+  
+
+module.exports = setClasses;
+},{"./Modernizr":2,"./docElement":5,"./isSVG":7}],9:[function(require,module,exports){
+var tests = require('./tests');
+var Modernizr = require('./Modernizr');
+var classes = require('./classes');
+var is = require('./is');
+
+
+  // Run through all tests and detect their support in the current UA.
+  function testRunner() {
+    var featureNames;
+    var feature;
+    var aliasIdx;
+    var result;
+    var nameIdx;
+    var featureName;
+    var featureNameSplit;
+
+    for ( var featureIdx in tests ) {
+      featureNames = [];
+      feature = tests[featureIdx];
+      // run the test, throw the return value into the Modernizr,
+      //   then based on that boolean, define an appropriate className
+      //   and push it into an array of classes we'll join later.
+      //
+      //   If there is no name, it's an 'async' test that is run,
+      //   but not directly added to the object. That should
+      //   be done with a post-run addTest call.
+      if ( feature.name ) {
+        featureNames.push(feature.name.toLowerCase());
+
+        if (feature.options && feature.options.aliases && feature.options.aliases.length) {
+          // Add all the aliases into the names list
+          for (aliasIdx = 0; aliasIdx < feature.options.aliases.length; aliasIdx++) {
+            featureNames.push(feature.options.aliases[aliasIdx].toLowerCase());
+          }
+        }
+      }
+
+      // Run the test, or use the raw value if it's not a function
+      result = is(feature.fn, 'function') ? feature.fn() : feature.fn;
+
+
+      // Set each of the names on the Modernizr object
+      for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
+        featureName = featureNames[nameIdx];
+        // Support dot properties as sub tests. We don't do checking to make sure
+        // that the implied parent tests have been added. You must call them in
+        // order (either in the test, or make the parent test a dependency).
+        //
+        // Cap it to TWO to make the logic simple and because who needs that kind of subtesting
+        // hashtag famous last words
+        featureNameSplit = featureName.split('.');
+
+        if (featureNameSplit.length === 1) {
+          Modernizr[featureNameSplit[0]] = result;
+        } else {
+          // cast to a Boolean, if not one already
+          /* jshint -W053 */
+          if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+            Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+          }
+
+          Modernizr[featureNameSplit[0]][featureNameSplit[1]] = result;
+        }
+
+        classes.push((result ? '' : 'no-') + featureNameSplit.join('-'));
+      }
+    }
+  }
+
+  
+
+module.exports = testRunner;
+},{"./Modernizr":2,"./classes":4,"./is":6,"./tests":10}],10:[function(require,module,exports){
+
+  var tests = [];
+  
+module.exports = tests;
+},{}],11:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9219,13 +9448,7 @@ return jQuery;
 
 }));
 
-},{}],2:[function(require,module,exports){
-/* Modernizr 2.8.3 (Custom Build) | MIT & BSD
- * Build: http://modernizr.com/download/#-history-audio-video-localstorage-websockets-geolocation-svg-touch-shiv-cssclasses-teststyles-prefixes-domprefixes-load
- */
-;window.Modernizr=function(a,b,c){function A(a){j.cssText=a}function B(a,b){return A(m.join(a+";")+(b||""))}function C(a,b){return typeof a===b}function D(a,b){return!!~(""+a).indexOf(b)}function E(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:C(f,"function")?f.bind(d||b):f}return!1}var d="2.8.3",e={},f=!0,g=b.documentElement,h="modernizr",i=b.createElement(h),j=i.style,k,l={}.toString,m=" -webkit- -moz- -o- -ms- ".split(" "),n="Webkit Moz O ms",o=n.split(" "),p=n.toLowerCase().split(" "),q={svg:"http://www.w3.org/2000/svg"},r={},s={},t={},u=[],v=u.slice,w,x=function(a,c,d,e){var f,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:h+(d+1),l.appendChild(j);return f=["&#173;",'<style id="s',h,'">',a,"</style>"].join(""),l.id=h,(m?l:n).innerHTML+=f,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=g.style.overflow,g.style.overflow="hidden",g.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),g.style.overflow=k),!!i},y={}.hasOwnProperty,z;!C(y,"undefined")&&!C(y.call,"undefined")?z=function(a,b){return y.call(a,b)}:z=function(a,b){return b in a&&C(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=v.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(v.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(v.call(arguments)))};return e}),r.touch=function(){var c;return"ontouchstart"in a||a.DocumentTouch&&b instanceof DocumentTouch?c=!0:x(["@media (",m.join("touch-enabled),("),h,")","{#modernizr{top:9px;position:absolute}}"].join(""),function(a){c=a.offsetTop===9}),c},r.geolocation=function(){return"geolocation"in navigator},r.history=function(){return!!a.history&&!!history.pushState},r.websockets=function(){return"WebSocket"in a||"MozWebSocket"in a},r.video=function(){var a=b.createElement("video"),c=!1;try{if(c=!!a.canPlayType)c=new Boolean(c),c.ogg=a.canPlayType('video/ogg; codecs="theora"').replace(/^no$/,""),c.h264=a.canPlayType('video/mp4; codecs="avc1.42E01E"').replace(/^no$/,""),c.webm=a.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,"")}catch(d){}return c},r.audio=function(){var a=b.createElement("audio"),c=!1;try{if(c=!!a.canPlayType)c=new Boolean(c),c.ogg=a.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,""),c.mp3=a.canPlayType("audio/mpeg;").replace(/^no$/,""),c.wav=a.canPlayType('audio/wav; codecs="1"').replace(/^no$/,""),c.m4a=(a.canPlayType("audio/x-m4a;")||a.canPlayType("audio/aac;")).replace(/^no$/,"")}catch(d){}return c},r.localstorage=function(){try{return localStorage.setItem(h,h),localStorage.removeItem(h),!0}catch(a){return!1}},r.svg=function(){return!!b.createElementNS&&!!b.createElementNS(q.svg,"svg").createSVGRect};for(var F in r)z(r,F)&&(w=F.toLowerCase(),e[w]=r[F](),u.push((e[w]?"":"no-")+w));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)z(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof f!="undefined"&&f&&(g.className+=" "+(b?"":"no-")+a),e[a]=b}return e},A(""),i=k=null,function(a,b){function l(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x<style>"+b+"</style>",d.insertBefore(c.lastChild,d.firstChild)}function m(){var a=s.elements;return typeof a=="string"?a.split(" "):a}function n(a){var b=j[a[h]];return b||(b={},i++,a[h]=i,j[i]=b),b}function o(a,c,d){c||(c=b);if(k)return c.createElement(a);d||(d=n(c));var g;return d.cache[a]?g=d.cache[a].cloneNode():f.test(a)?g=(d.cache[a]=d.createElem(a)).cloneNode():g=d.createElem(a),g.canHaveChildren&&!e.test(a)&&!g.tagUrn?d.frag.appendChild(g):g}function p(a,c){a||(a=b);if(k)return a.createDocumentFragment();c=c||n(a);var d=c.frag.cloneNode(),e=0,f=m(),g=f.length;for(;e<g;e++)d.createElement(f[e]);return d}function q(a,b){b.cache||(b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag()),a.createElement=function(c){return s.shivMethods?o(c,a,b):b.createElem(c)},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+m().join().replace(/[\w\-]+/g,function(a){return b.createElem(a),b.frag.createElement(a),'c("'+a+'")'})+");return n}")(s,b.frag)}function r(a){a||(a=b);var c=n(a);return s.shivCSS&&!g&&!c.hasCSS&&(c.hasCSS=!!l(a,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),k||q(a,c),a}var c="3.7.0",d=a.html5||{},e=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,f=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,g,h="_html5shiv",i=0,j={},k;(function(){try{var a=b.createElement("a");a.innerHTML="<xyz></xyz>",g="hidden"in a,k=a.childNodes.length==1||function(){b.createElement("a");var a=b.createDocumentFragment();return typeof a.cloneNode=="undefined"||typeof a.createDocumentFragment=="undefined"||typeof a.createElement=="undefined"}()}catch(c){g=!0,k=!0}})();var s={elements:d.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video",version:c,shivCSS:d.shivCSS!==!1,supportsUnknownElements:k,shivMethods:d.shivMethods!==!1,type:"default",shivDocument:r,createElement:o,createDocumentFragment:p};a.html5=s,r(b)}(this,b),e._version=d,e._prefixes=m,e._domPrefixes=p,e._cssomPrefixes=o,e.testStyles=x,g.className=g.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(f?" js "+u.join(" "):""),e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
-
-},{}],3:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * Wiselinks-1.2.2
  * @copyright 2012-2014 Igor Alexandrov, Alexey Solilin, Julia Egorova, Alexandr Borisov
@@ -9234,7 +9457,6 @@ return jQuery;
 
 // Generated by CoffeeScript 1.7.1
 (function() {
-  var $ = jQuery;
   var DOMParser, Form, Link, Page, RequestManager, Response, Wiselinks;
 
   DOMParser = (function() {
@@ -13239,17 +13461,18 @@ if (typeof JSON !== 'object') {
 
 })(window);
 
-},{}],4:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /* ======================================================== */
-/* Modernizr
+/* Modernizr (via Browsernizr) (check browsernizr/test/** for tests)
 /* ======================================================== */
-var M = Modernizr = require('./modernizr');
+// require('browsernizr/test/css/transitions');
+var M = Modernizr = require('browsernizr');
 
 
 /* ======================================================== */
 /* jQuery
 /* ======================================================== */
-var $ = jQuery = require('jquery');
+var J = jQuery = $ = require('jquery');
 
 
 /* ======================================================== */
@@ -13281,7 +13504,7 @@ var $ = jQuery = require('jquery');
 /* ======================================================== */
 require('./wiselinks');
 
-},{"./modernizr":2,"./wiselinks":3,"jquery":1}]},{},[4]);
+},{"./wiselinks":12,"browsernizr":1,"jquery":11}]},{},[13]);
 
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
@@ -13298,7 +13521,7 @@ require('./wiselinks');
  *
 **/
 
-;(function(Controller, $, window, undefined){
+;(function(Controller, window, undefined){
 	'use strict';
 
     /**
@@ -13310,8 +13533,7 @@ require('./wiselinks');
     **/
 	Controller = function(){
 		// Require :: Modules
-		// We do not need to add this to vars but it means we can call the
-		// methods inside from outside the Module file.
+		// We do not need to declare with vars but it allows us to call internal methods externally.
 		this.ModuleBinds      = require('./module.binds');
 		this.ModuleMobileMenu = require('./module.mobile-menu-side');
     }
@@ -13331,7 +13553,7 @@ require('./wiselinks');
 				html4_normalize_path: false
 			});
 			// Do page events
-			return _this.wiselinks_binds();
+			return this.wiselinks_binds();
 		}
 	}
 
@@ -13391,7 +13613,7 @@ require('./wiselinks');
 	// Export
 	module.exports = new Controller();
 
-}(window.C = window.C || function(){}, jQuery, window));
+}(window.C = window.C || function(){}, window));
 
 },{"./module.binds":3,"./module.mobile-menu-side":4}],2:[function(require,module,exports){
 /**
@@ -13403,7 +13625,7 @@ require('./wiselinks');
  *
 **/
 
-;(function(Helper, $, window, undefined){
+;(function(Helper, window, undefined){
 	'use strict';
 
 	/**
@@ -13591,7 +13813,7 @@ require('./wiselinks');
 	// Export
 	module.exports = Helpers;
 
-}(window.Helpers = window.Helpers || {}, jQuery, window));
+}(window.Helpers = window.Helpers || {}, window));
 },{}],3:[function(require,module,exports){
 /**
  *
@@ -13602,7 +13824,7 @@ require('./wiselinks');
  *
 **/
 
-;(function(Module, $, window, undefined){
+;(function(Module, window, undefined){
     'use strict';
 
     /**
@@ -13616,7 +13838,7 @@ require('./wiselinks');
         var _this = this;
 
         // Require :: NPM
-        // require('fancybox')($);
+        // require('fancybox');
         // Require :: Plugins
         // require('../plugins/jquery.equal-heights');
         // require('../plugins/jquery.googlemap');
@@ -13849,7 +14071,7 @@ require('./wiselinks');
     // Export
     module.exports = new Module();
 
-}(window.M = window.M || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, window));
 
 },{}],4:[function(require,module,exports){
 /**
@@ -13861,7 +14083,7 @@ require('./wiselinks');
  *
 **/
 
-;(function(Module, $, window, undefined){
+;(function(Module, window, undefined){
 	'use strict';
 
     /**
@@ -13877,14 +14099,14 @@ require('./wiselinks');
 		this.sub_menu_active = false;
 
 		// Vars.
-		_this.$button    = $('.js-mobile-button');
-		_this.$menu      = $('.js-mobile-menu');
-		_this.$content   = $('.js-mobile-content');
-		_this.$close     = $('.js-close-mobile-menu');
-		_this.$sub_close = $('.js-sub-menu-close');
+		this.$button    = $('.js-mobile-button');
+		this.$menu      = $('.js-mobile-menu');
+		this.$content   = $('.js-mobile-content');
+		this.$close     = $('.js-close-mobile-menu');
+		this.$sub_close = $('.js-sub-menu-close');
 
 		// Start binds on window load / resize.
-		$(window).on('load resize', $.proxy(_this.init, _this));
+		$(window).on('load resize', $.proxy(this.init, this));
     }
 
 	/**
@@ -14123,7 +14345,7 @@ require('./wiselinks');
 	// Export
 	module.exports = new Module();
 
-}(window.M = window.M || function(){}, jQuery, window));
+}(window.M = window.M || function(){}, window));
 
 },{}],5:[function(require,module,exports){
 /**
@@ -14144,7 +14366,7 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 /* ======================================================== */
 /* Index
 /* ======================================================== */
-;(function($, window, undefined){
+;(function(window, undefined){
     'use strict';
 
 	// Require helpers globally.
@@ -14156,6 +14378,6 @@ window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
 	// Init new instance of app controller.
 	App.init($('.main'));
 
-}(jQuery, window));
+}(window));
 
 },{"./controller.app":1,"./helpers":2}]},{},[5]);

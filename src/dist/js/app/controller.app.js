@@ -12,7 +12,7 @@
  *
 **/
 
-;(function(Controller, $, window, undefined){
+;(function(Controller, window, undefined){
 	'use strict';
 
     /**
@@ -24,8 +24,7 @@
     **/
 	Controller = function(){
 		// Require :: Modules
-		// We do not need to add this to vars but it means we can call the
-		// methods inside from outside the Module file.
+		// We do not need to declare with vars but it allows us to call internal methods externally.
 		this.ModuleBinds      = require('./module.binds');
 		this.ModuleMobileMenu = require('./module.mobile-menu-side');
     }
@@ -45,7 +44,7 @@
 				html4_normalize_path: false
 			});
 			// Do page events
-			return _this.wiselinks_binds();
+			return this.wiselinks_binds();
 		}
 	}
 
@@ -105,4 +104,4 @@
 	// Export
 	module.exports = new Controller();
 
-}(window.C = window.C || function(){}, jQuery, window));
+}(window.C = window.C || function(){}, window));

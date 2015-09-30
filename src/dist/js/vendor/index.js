@@ -1,13 +1,14 @@
 /* ======================================================== */
-/* Modernizr
+/* Modernizr (via Browsernizr) (check browsernizr/test/** for tests)
 /* ======================================================== */
-var M = Modernizr = require('./modernizr');
+// require('browsernizr/test/css/transitions');
+var M = Modernizr = require('browsernizr');
 
 
 /* ======================================================== */
 /* jQuery
 /* ======================================================== */
-var $ = jQuery = require('jquery');
+var J = jQuery = $ = require('jquery');
 
 
 /* ======================================================== */
