@@ -148,17 +148,11 @@
      * @version 1.0.0
      */
     Helper.ajax = function(url, request, type, dataType, preloader_el){
-		// Set datatype.
-		dataType = (typeof dataType === 'undefined') ? 'JSON' : dataType;
-    	// Set type.
-		type = (typeof type === 'undefined') ? 'POST' : type;
-    	// Set preloader.
-		preloader_el = (typeof preloader_el === 'undefined') ? $('body') : preloader_el;
 		// Request.
         return $.ajax({
             url     : url,
-            type    : type,
-            dataType: dataType,
+            type    : (typeof type === 'undefined') ? 'POST' : type,
+            dataType: (typeof dataType === 'undefined') ? 'JSON' : dataType,
             data    : {
                 'ajaxrequest': true,
                 'request': request
@@ -167,11 +161,11 @@
             	// Log full URL.
             	Helpers.log(settings.url + '?' + settings.data);
                 // Add preloader.
-                Helper.preloader(preloader_el);
+                Helper.preloader((typeof preloader_el === 'undefined') ? $('body') : preloader_el);
             },
             complete: function(jqXHR){
                 // Destroy preloader.
-                Helper.preloader(preloader_el, true);
+                Helper.preloader((typeof preloader_el === 'undefined') ? $('body') : preloader_el, true);
             }
         });
     }

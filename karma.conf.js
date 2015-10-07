@@ -16,7 +16,7 @@ module.exports = function(config){
         exclude: [
         ],
         preprocessors: {
-            'src/dist/js/spec/jasmine/*': ['browserify']
+            'src/dist/js/spec/jasmine/*': ['browserify', 'sourcemap']
         },
         reporters: [
             'progress'
@@ -34,7 +34,7 @@ module.exports = function(config){
         ],
         browserify: {
             debug: true,
-            transform: []
+            transform: ['babelify'] // Seems to fix errors when testing against React {Link}
         },
         plugins: [
             'karma-chrome-launcher',
@@ -43,7 +43,8 @@ module.exports = function(config){
             'karma-opera-launcher',
             'karma-phantomjs-launcher',
             'karma-jasmine',
-            'karma-bro'
+            'karma-bro',
+            'karma-sourcemap-loader'
         ]
     });
 };
