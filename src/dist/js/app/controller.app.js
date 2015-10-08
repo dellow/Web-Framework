@@ -56,14 +56,12 @@
      * @version 1.0.0
 	**/
 	Controller.prototype.wiselinks_binds = function(){
-		var _this = this;
-
 		// Every page load.
 		$(document).off('page:always').on('page:always', function(event, xhr, settings){
 			// Log it.
 	        Helpers.log("Wiselinks page loading completed", "positive");
 	    	// Run page load events.
-			_this.page_load();
+			Controller.page_load();
 	    });
 		// Page loading.
 		$(document).off('page:loading').on('page:loading', function(event, $target, render, url){

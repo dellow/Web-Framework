@@ -18,8 +18,6 @@
      * @version 1.0.0
     **/
     Module = function(){
-        var _this = this;
-
         // Require :: NPM
         // require('fancybox');
         // Require :: Plugins

@@ -18,13 +18,14 @@
      * @version 1.0.0
     **/
     Module = function(){
-		var _this = this;
+        // Document ready.
+        $(function(){
+			// Cache the primary menu.
+	    	this.primary = $('.nav-primary');
 
-		// Cache the primary menu.
-    	this.primary = $('.nav-primary');
-
-		// Start binds on window load / resize.
-		$(window).on('load resize', $.proxy(_this.binds, _this));
+			// Start binds on window load / resize.
+			$(window).on('load resize', $.proxy(this.binds, this));
+        });
     }
 
 	/**
@@ -35,20 +36,18 @@
      * @version 1.0.0
 	**/
 	Module.prototype.binds = Helpers.debounce(function(){
-		var _this = this;
-
         // Check screen is below mobile breakpoint.
 		if(Helpers.breakpoint(window.mobile_breakpoint)){
 			// Add 'page__mobile-animate' class to primary menu.
-			_this.primary.addClass('page__mobile-animate');
+			this.primary.addClass('page__mobile-animate');
 
 			// Mobile menu button.
 			$('.js-mobile-button').on('click', function(){
-				_this.reveal_menu($(this), _this.primary);
+				Module.reveal_menu($(this), Module.primary);
 			});
 
 			// Sub menu item.
-			$('a', _this.primary).on('click', function(e){
+			$('a', this.primary).on('click', function(e){
 				// Cache DOM element.
 				var anchor = $(this);
 				// Check menu exists and isn't already active.
@@ -56,13 +55,13 @@
 					e.preventDefault();
 
 					// Reveal sub menu.
-					_this.show_sub_menu(anchor);
+					Module.show_sub_menu(anchor);
 				}
 			});
 		}
 		else{
 			// Remove 'page__mobile-animate' class to primary menu.
-			_this.primary.removeClass('page__mobile-animate');
+			this.primary.removeClass('page__mobile-animate');
 		}
 	}, 250);
 
@@ -74,9 +73,7 @@
      * @version 1.0.0
 	**/
 	Module.prototype.reveal_menu = function(el){
-		var _this = this;
-
-		return (_this.primary.height() < 5) ? _this.show_primary_menu(el) : _this.hide_primary_menu(el);
+		return (this.primary.height() < 5) ? this.show_primary_menu(el) : this.hide_primary_menu(el);
 	}
 
 	/**
@@ -87,14 +84,12 @@
      * @version 1.0.0
 	**/
 	Module.prototype.show_primary_menu = function(el){
-		var _this = this;
-
 		// Get menu height.
-		var menu_height = Helpers.mhi(_this.primary);
+		var menu_height = Helpers.mhi(this.primary);
 		// Toggle class to button
 		el.addClass('active-menu');
 		// Slide down with CSS animation
-		_this.primary.addClass('slide-down').css({'max-height': menu_height + 'px'});
+		this.primary.addClass('slide-down').css({'max-height': menu_height + 'px'});
 	}
 
 	/**
@@ -105,17 +100,15 @@
      * @version 1.0.0
 	**/
 	Module.prototype.hide_primary_menu = function(el){
-		var _this = this;
-
 		// Toggle class to button
 		el.removeClass('active-menu');
 		// Hide any open sub-menus.
-		_this.hide_sub_menu();
+		this.hide_sub_menu();
 		// Hide primary menu.
-		_this.primary.removeClass('slide-down').css({'max-height': ''});
+		this.primary.removeClass('slide-down').css({'max-height': ''});
 		// If hidden remove the `display: block`
-		if(_this.primary.is(':hidden')){
-			_this.primary.css({'display': ''});
+		if(this.primary.is(':hidden')){
+			this.primary.css({'display': ''});
 		}
 	}
 
@@ -127,12 +120,10 @@
      * @version 1.0.0
 	**/
 	Module.prototype.show_sub_menu = function(el){
-		var _this = this;
-
 		// Extend primary menu max-height indefinitely.
-		_this.primary.css({'max-height': '9999px'});
+		this.primary.css({'max-height': '9999px'});
 		// Hide any open sub-menus.
-		_this.hide_sub_menu();
+		this.hide_sub_menu();
 		// Add active class to parent li.
 		el.parent().addClass('active-menu-item');
 		// Show requested sub menu.
@@ -147,12 +138,10 @@
      * @version 1.0.0
 	**/
 	Module.prototype.hide_sub_menu = function(){
-		var _this = this;
-
 		// Remove active menu item.
-		$('.active-menu-item', _this.primary).removeClass('active-menu-item');
+		$('.active-menu-item', this.primary).removeClass('active-menu-item');
 		// Hide any open sub-menus.
-		$('.active-sub-menu', _this.primary).slideUp(400).removeClass('active-sub-menu');
+		$('.active-sub-menu', this.primary).slideUp(400).removeClass('active-sub-menu');
 	}
 
 	// Export
