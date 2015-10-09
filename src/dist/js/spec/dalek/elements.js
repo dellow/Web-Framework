@@ -9,20 +9,33 @@
  *
 **/
 
+var urls = {
+	home: 'http://google.com/'
+};
+
 module.exports = {
-	'Header element exists': function(test){
-		test.open('index.html')
-		.assert.exists('.page-header', 'Header element exists')
+	'Header element exists and has banner role': function(test){
+		test.open(urls.home)
+			.assert.exists('.page-header', 'Header element exists')
+			.assert.attr('.page-header', 'role', 'banner')
 			.done();
 	},
-	'Main element exists': function(test){
-		test.open('index.html')
-		.assert.exists('.main', 'Main element exists')
+	'Navigation element exists and has navigation role': function(test){
+		test.open(urls.home)
+			.assert.exists('.navigation', 'Navigation element exists')
+			.assert.attr('.navigation', 'role', 'navigation')
 			.done();
 	},
-	'Footer element exists': function(test){
-		test.open('index.html')
-		.assert.exists('.page-footer', 'Footer element exists')
+	'Main element exists and has main role': function(test){
+		test.open(urls.home)
+			.assert.exists('.main', 'Main element exists')
+			.assert.attr('.main', 'role', 'main')
+			.done();
+	},
+	'Footer element exists and contentinfo has role': function(test){
+		test.open(urls.home)
+			.assert.exists('.page-footer', 'Footer element exists')
+			.assert.attr('.page-footer', 'role', 'contentinfo')
 			.done();
 	}
 };
