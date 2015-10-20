@@ -84,6 +84,23 @@ form {
 			}
 		}
 
+		// Placeholder
+		::-webkit-input-placeholder {
+			color: $color_error;
+		}
+		::-moz-placeholder {
+			color: $color_error;
+		}
+		:-moz-placeholder {
+			color: $color_error;
+		}
+		:-ms-input-placeholder {
+			color: $color_error;
+		}
+		::placeholder {
+			color: $color_error;
+		}
+
 		// Messages
 		.msg {
 			@include rem(font-size, 14px);

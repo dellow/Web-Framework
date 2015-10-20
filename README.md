@@ -390,6 +390,10 @@ This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in
 
 <a name="changelog"></a>
 ## Changelog
+__2.1.3__:
+* General fixes and improvements.
+* Added better styling for form errors.
+
 __2.1.2__:
 * Moved base media objects to root of base.
 * Added media object.
