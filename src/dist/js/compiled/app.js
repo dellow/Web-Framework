@@ -57,14 +57,12 @@
      * @version 1.0.0
 	**/
 	Controller.prototype.wiselinks_binds = function(){
-		var _this = this;
-
 		// Every page load.
 		$(document).off('page:always').on('page:always', function(event, xhr, settings){
 			// Log it.
 	        Helpers.log("Wiselinks page loading completed", "positive");
 	    	// Run page load events.
-			_this.page_load();
+			Controller.page_load();
 	    });
 		// Page loading.
 		$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
@@ -258,17 +256,11 @@
      * @version 1.0.0
      */
     Helper.ajax = function(url, request, type, dataType, preloader_el){
-		// Set datatype.
-		dataType = (typeof dataType === 'undefined') ? 'JSON' : dataType;
-    	// Set type.
-		type = (typeof type === 'undefined') ? 'POST' : type;
-    	// Set preloader.
-		preloader_el = (typeof preloader_el === 'undefined') ? $('body') : preloader_el;
 		// Request.
         return $.ajax({
             url     : url,
-            type    : type,
-            dataType: dataType,
+            type    : (typeof type === 'undefined') ? 'POST' : type,
+            dataType: (typeof dataType === 'undefined') ? 'JSON' : dataType,
             data    : {
                 'ajaxrequest': true,
                 'request': request
@@ -277,11 +269,11 @@
             	// Log full URL.
             	Helpers.log(settings.url + '?' + settings.data);
                 // Add preloader.
-                Helper.preloader(preloader_el);
+                Helper.preloader((typeof preloader_el === 'undefined') ? $('body') : preloader_el);
             },
             complete: function(jqXHR){
                 // Destroy preloader.
-                Helper.preloader(preloader_el, true);
+                Helper.preloader((typeof preloader_el === 'undefined') ? $('body') : preloader_el, true);
             }
         });
     }
@@ -327,8 +319,6 @@
      * @version 1.0.0
     **/
     Module = function(){
-        var _this = this;
-
         // Require :: NPM
         // require('fancybox');
         // Require :: Plugins
@@ -586,19 +576,22 @@
      * @version 1.0.0
     **/
     Module = function(){
-		// Set active flag.
-		this.menu_active = false;
-		this.sub_menu_active = false;
+        // Document ready.
+        $(function(){
+			// Set active flag.
+			this.menu_active = false;
+			this.sub_menu_active = false;
 
-		// Vars.
-		this.$button    = $('.js-mobile-button');
-		this.$menu      = $('.js-mobile-menu');
-		this.$content   = $('.js-mobile-content');
-		this.$close     = $('.js-close-mobile-menu');
-		this.$sub_close = $('.js-sub-menu-close');
+			// Vars.
+			this.$button    = $('.js-mobile-button');
+			this.$menu      = $('.js-mobile-menu');
+			this.$content   = $('.js-mobile-content');
+			this.$close     = $('.js-close-mobile-menu');
+			this.$sub_close = $('.js-sub-menu-close');
 
-		// Start binds on window load / resize.
-		$(window).on('load resize', $.proxy(this.init, this));
+			// Start binds on window load / resize.
+			$(window).on('load resize', $.proxy(this.init, this));
+        });
     }
 
 	/**
@@ -629,92 +622,90 @@
      * @version 1.0.0
 	**/
 	Module.prototype.binds = function(){
-		var _this = this;
-
 		// Click on the mobile menu.
 		this.$button.on('click', function(){
 			var _self = $(this);
 
 			// Check sub menu is active first.
-			if(_this.sub_menu_active){
+			if(Module.sub_menu_active){
 				// Hide mobile menu.
-				_this.hide_sub_menu();
+				Module.hide_sub_menu();
 				// Set flag.
-				_this.sub_menu_active = false;
+				Module.sub_menu_active = false;
 			}
 			// Run hide operations.
-			else if(_this.menu_active){
+			else if(Module.menu_active){
 				// Hide mobile menu.
-				_this.hide_primary_menu(_self);
+				Module.hide_primary_menu(_self);
 				// Set flag.
-				_this.set_menu_flag(false);
+				Module.set_menu_flag(false);
 			}
 			// Run show operations.
 			else{
 				// Show mobile menu.
-				_this.show_primary_menu(_self);
+				Module.show_primary_menu(_self);
 				// Set flag.
-				_this.set_menu_flag(true);
+				Module.set_menu_flag(true);
 			}
 		});
 
 		// Sub Menu Close.
-		_this.$sub_close.on('click', function(){
+		Module.$sub_close.on('click', function(){
 			// Check sub menu is active first.
-			if(_this.sub_menu_active){
+			if(Module.sub_menu_active){
 				// Hide mobile menu.
-				_this.hide_sub_menu();
+				Module.hide_sub_menu();
 				// Set flag.
-				_this.sub_menu_active = false;
+				Module.sub_menu_active = false;
 			}
 		});
 
 		// Sub Menu Click.
-		$('a', _this.$menu).on('click', function(e){
+		$('a', Module.$menu).on('click', function(e){
 			var _self = $(this);
 
 			if(_self.next('.sub-menu').length){
 				e.preventDefault();
 				// Init sub menu.
-				_this.show_sub_menu(_self.next('.sub-menu'));
+				Module.show_sub_menu(_self.next('.sub-menu'));
 			}
 		});
 
 		// Escape key pressed.
 		$(document).on('keyup', function(e){
 			// Check key type & menu is active.
-			if(e.keyCode == 27 && _this.menu_active){
+			if(e.keyCode == 27 && Module.menu_active){
 				// Hide mobile menu.
-				_this.hide_primary_menu();
+				Module.hide_primary_menu();
 			}
 		});
 
 		// Close menu.
 		this.$close.on('click', function(){
 			// Check sub menu is active first.
-			if(_this.sub_menu_active){
+			if(Module.sub_menu_active){
 				// Hide mobile menu.
-				_this.hide_sub_menu();
+				Module.hide_sub_menu();
 				// Set flag.
-				_this.sub_menu_active = false;
+				Module.sub_menu_active = false;
 			}
 			// Check menu is active.
-			else if(_this.menu_active){
+			else if(Module.menu_active){
 				// Hide mobile menu.
-				_this.hide_primary_menu();
+				Module.hide_primary_menu();
 				// Set flag.
-				_this.set_menu_flag(false);
+				Module.set_menu_flag(false);
 			}
 		});
 
 		// Close menu.
 		this.$content.on('click', function(){
 			// Check menu is active.
-			if(_this.menu_active){
+			if(Module.menu_active){
 				// Hide mobile menu.
-				_this.hide_primary_menu();
+				Module.hide_primary_menu();
 				// Set flag.
-				_this.set_menu_flag(false);
+				Module.set_menu_flag(false);
 			}
 		});
 	}
@@ -750,19 +741,17 @@
      * @version 1.0.0
 	**/
 	Module.prototype.hide_primary_menu = function(){
-		var _this = this;
-
 		// Remove the active class.
-		_this.$content.removeClass('active-menu');
+		Module.$content.removeClass('active-menu');
 		// Remove active class from menu button.
-		_this.$button.removeClass('active-menu');
+		Module.$button.removeClass('active-menu');
 		// Remove the active class.
-		_this.$content.css({'left': ''});
+		Module.$content.css({'left': ''});
 
 		// Wait 10ms.
 		setTimeout(function(){
 			// Remove 90% width to menu.
-			_this.$menu.css({'width': ''});
+			Module.$menu.css({'width': ''});
 			// Restrict body height.
 			$('body').css({'height': '', 'overflow': ''});
 		}, 500); // Needs to be the same as the animation speed in the CSS.
@@ -776,18 +765,16 @@
      * @version 1.0.0
 	**/
 	Module.prototype.show_sub_menu = function(el){
-		var _this = this;
-
 		// Vars.
-		var menu_width = _this.$menu.width(),
+		var menu_width = Module.$menu.width(),
 			menu_95    = (menu_width / 100) * 95;
 
 		// Add 95% width to sub menu.
 		el.addClass('active-sub-menu').css({'width': menu_95});
 		// Wait 10ms.
 		setTimeout(function(){
-			_this.$menu.addClass('sub-menu-active');
-			_this.sub_menu_active = true;
+			Module.$menu.addClass('sub-menu-active');
+			Module.sub_menu_active = true;
 		}, 100);
 	}
 
@@ -799,19 +786,17 @@
      * @version 1.0.0
 	**/
 	Module.prototype.hide_sub_menu = function(el){
-		var _this = this;
-
 		// Set close button text.
 		this.$close.html('<i class="icon icon--menu--close"></i> Close Menu');
 		// Remove 80% width from sub menus.
 		$('.active-sub-menu').css({'width': ''});
 		// Wait 10ms.
 		setTimeout(function(){
-			_this.sub_menu_active = false;
+			Module.sub_menu_active = false;
 		}, 100);
 		// Wait 20ms.
 		setTimeout(function(){
-			_this.$menu.removeClass('sub-menu-active');
+			Module.$menu.removeClass('sub-menu-active');
 			// Remove active class from sub menus.
 			$('.active-sub-menu').removeClass('active-sub-menu');
 		}, 200);
@@ -825,12 +810,10 @@
      * @version 1.0.0
 	**/
 	Module.prototype.set_menu_flag = function(state){
-		var _this = this;
-
 		// Wait 10ms.
 		setTimeout(function(){
 			// Set flag.
-			_this.menu_active = state;
+			Module.menu_active = state;
 		}, 100);
 	}
 
@@ -849,20 +832,20 @@
  *
 **/
 
+// Require helpers globally.
+require('./helpers');
+
 // Global settings.
 window.mobile_breakpoint = 768;
 window.wiselinks_enabled = true;
-window.helper_log        = (typeof window.gulp_env == "undefined" || window.gulp_env == 'development') ? true : false;
-window.ga_active         = (typeof window.ga !== "undefined") ? true : false;
+window.helper_log        = (Helpers.isEmpty(window.gulp_env) || window.gulp_env == 'development') ? true : false;
+window.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
 
 /* ======================================================== */
 /* Index
 /* ======================================================== */
 ;(function(window, undefined){
     'use strict';
-
-	// Require helpers globally.
-	require('./helpers');
 
 	// Require the app controller.
 	window.App = require('./controller.app');
