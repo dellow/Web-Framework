@@ -48,8 +48,8 @@
     "reflux"                  : "^0.2.12",
     "sprity"                  : "^1.0.0",
     "sprity-sass"             : "^1.0.0",
-    "vinyl-source-stream"     : "^1.0.0",
     "vinyl-buffer"            : "^1.0.0",
+    "vinyl-source-stream"     : "^1.0.0",
     "yargs"                   : "^3.0.0"
   },
   "dependencies": {

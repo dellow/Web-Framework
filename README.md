@@ -390,6 +390,9 @@ This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in
 
 <a name="changelog"></a>
 ## Changelog
+__X.X.X__:
+* Fixed issue with duplicate dependencies.
+
 __2.1.3__:
 * General fixes and improvements.
 * Added better styling for form errors.
