@@ -420,10 +420,12 @@ gulp.task('release', function(){
         '!' + dist_dir + 'js/vendor/**/*'
     ];
 
+	// Vars.
+	var v = args.version || version;
+
     // Task.
 	return gulp.src(files, {base: src_dir})
-		.pipe(gulp.dest('releases/release-' + version))
-		.pipe(notify({message: 'Release task complete.'}));
+		.pipe(gulp.dest('releases/release-' + v));
 });
 
 
