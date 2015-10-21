@@ -392,6 +392,8 @@ This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in
 ## Changelog
 __X.X.X__:
 * Fixed issue with duplicate dependencies.
+* Separated sprites files into specific `png` directory.
+* Added new text colours utility class based on global colours array. e.g. `u-text-color-blue`.
 
 __2.1.3__:
 * General fixes and improvements.

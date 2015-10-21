@@ -281,3 +281,15 @@
 .u-text-sans-serif {
 	font-family: sans-serif;
 }
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Colours -- */
+@each $key, $value in $colors {
+	$class: "" + $key;
+	.u-text-color-#{$class} {
+		color: color($key);
+	}
+}

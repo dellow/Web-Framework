@@ -385,12 +385,12 @@ gulp.task('sprite', function(){
 
 	// Task.
     return sprity.src({
-		src         : dist_dir + 'images/icons/sprite/*.png',
+		src         : dist_dir + 'images/icons/png/*.png',
 		style       : dist_dir + 'css/scss/site/_sprites.scss',
 		cssPath     : '../images/icons/',
 		margin      : 0,
 		base64      : false,
-		retina      : false,
+		retina      : true,
 		background  : '#FFFFFF',
 		orientation : 'horizontal',
 		prefix      : 'css-sprite',
