@@ -36,6 +36,8 @@
      * @version 1.0.0
 	**/
 	Module.prototype.binds = Helpers.debounce(function(){
+		var _this = this;
+
         // Check screen is below mobile breakpoint.
 		if(Helpers.breakpoint(window.mobile_breakpoint)){
 			// Add 'page__mobile-animate' class to primary menu.
@@ -43,7 +45,7 @@
 
 			// Mobile menu button.
 			$('.js-mobile-button').on('click', function(){
-				Module.reveal_menu($(this), Module.primary);
+				_this.reveal_menu($(this), _this.primary);
 			});
 
 			// Sub menu item.
@@ -55,7 +57,7 @@
 					e.preventDefault();
 
 					// Reveal sub menu.
-					Module.show_sub_menu(anchor);
+					_this.show_sub_menu(anchor);
 				}
 			});
 		}

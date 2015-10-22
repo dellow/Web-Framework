@@ -390,11 +390,12 @@ This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in
 
 <a name="changelog"></a>
 ## Changelog
-__X.X.X__:
+__2.1.4__:
 * Fixed issue with duplicate dependencies.
 * Separated sprites files into specific `png` directory.
 * Added new text colours utility class based on global colours array. e.g. `u-text-color-blue`.
 * The `release` task now allows a version argument to specify the version number on the directory.
+* Fixed issue with `this` context.
 
 __2.1.3__:
 * General fixes and improvements.

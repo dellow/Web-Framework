@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified Stylesheet
 Application Version: 1.0.0
-Compiled: Tue Oct 20 2015 11:42:10 GMT+0100 (BST)
+Compiled: Thu Oct 22 2015 09:57:55 GMT+0100 (BST)
 ========================================================================== */
 
 @charset "UTF-8";
@@ -862,6 +862,44 @@ body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
 
 .u-text-sans-serif {
   font-family: sans-serif;
+}
+
+/* ----------------------------------------------------------------------- */
+/* -- Colours -- */
+.u-text-color-black {
+  color: #000000;
+}
+
+.u-text-color-white {
+  color: #FFFFFF;
+}
+
+.u-text-color-grey {
+  color: #DDDDDD;
+}
+
+.u-text-color-blue {
+  color: #3498DB;
+}
+
+.u-text-color-green {
+  color: #2ECC71;
+}
+
+.u-text-color-orange {
+  color: #E67E22;
+}
+
+.u-text-color-red {
+  color: #C4122f;
+}
+
+.u-text-color-yellow {
+  color: #F1C40F;
+}
+
+.u-text-color-color {
+  color: #FF0000;
 }
 
 /* ==========================================================================

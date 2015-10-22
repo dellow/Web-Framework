@@ -18,10 +18,12 @@
      * @version 1.0.0
     **/
     Module = function(){
+        var _this = this;
+
         // Document ready.
         $(function(){
             // Click event.
-            $('.js-mn-trigger').on('keyup', $.proxy(Module.init, Module));
+            $('.js-mn-trigger').on('keyup', $.proxy(_this.init, _this));
         });
     }
 
