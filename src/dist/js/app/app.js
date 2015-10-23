@@ -12,17 +12,17 @@
  *
 **/
 
-;(function(Controller, window, undefined){
+;(function(App, window, undefined){
 	'use strict';
 
     /**
-     * Controller
-     * Constructor for this controller.
+     * App
+     * Constructor for this App.
      *
      * @since 1.0.0
      * @version 1.0.0
     **/
-	Controller = function(){
+	App = function(){
 		// Require :: Modules
 		// We do not need to declare with vars but it allows us to call internal methods externally.
 		this.ModuleBinds      = require('./module.binds');
@@ -36,7 +36,7 @@
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Controller.prototype.init = function(el){
+	App.prototype.init = function(el){
 		// Check Wiselinks is enabled.
 		if(window.wiselinks_enabled){
 			// Init WiseLinks
@@ -55,7 +55,7 @@
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Controller.prototype.wiselinks_binds = function(){
+	App.prototype.wiselinks_binds = function(){
 		var _this = this;
 
 		// Every page load.
@@ -100,6 +100,6 @@
 	}
 
 	// Export
-	module.exports = new Controller();
+	module.exports = new App();
 
-}(window.C = window.C || function(){}, window));
+}(window.App = window.App || function(){}, window));

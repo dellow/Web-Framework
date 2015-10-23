@@ -22,10 +22,11 @@ window.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
 ;(function(window, undefined){
     'use strict';
 
-	// Require the app controller.
-	window.App = require('./controller.app');
-
-	// Init new instance of app controller.
+	// Require the App.
+	var A = App = require('./app');
+	// Init App.
 	App.init($('.main'));
+	// Log it.
+	Helpers.log(App);
 
 }(window));

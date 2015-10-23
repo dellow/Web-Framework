@@ -3,6 +3,7 @@
 __X.X.X__:
 * Fixed issue with `modify-grid` affecting nested grids when it shouldn't.
 * Updated Equal Heights plugin to optionally add widths too.
+* Changed the name of the App Controller to just App and made Global.
 
 __2.1.4__:
 * Fixed issue with duplicate dependencies.
