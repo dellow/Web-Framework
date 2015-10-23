@@ -38,6 +38,14 @@
     };
 
     /**
+     * $.fn.equalHeights.defaults
+     * Default options.
+    **/
+    $.fn.equalHeights.defaults = {
+        widths: false
+    }
+
+    /**
      * Plugin.prototype
      * Init.
     **/
@@ -46,6 +54,8 @@
             // this
             var _self = this;
 
+            // Global settings.
+            _self.settings = $.extend({}, $.fn.equalHeights.defaults, _self.options);
             // Run the plugin.
             _self.run();
 
@@ -58,62 +68,58 @@
             this.watch_window(this.$elem, breakpoints[0], breakpoints[1]);
         },
         calculate: function(el){
+            var _self = this;
+
             var boxes = $('[data-eh="true"]', el);
             // Reset the height attribute to `auto` (or nothing).
-            this.reset_heights(el);
+            this.reset_sizes(el);
             // Map all qualifying element heights to an array.
             var heights = boxes.map(function(){
                 return $(this).height();
             }).get();
+            // Map all qualifying element heights to an array.
+            var widths = boxes.map(function(){
+                return $(this).outerWidth() + $(this).css('margin-left');
+            }).get();
             // Get the largest value from the array.
-            var large = Math.max.apply(Math, heights);
+            var large_height = Math.max.apply(Math, heights);
+            var large_width = Math.max.apply(Math, widths);
             // Apply the CSS height to all qualifying elements.
             boxes.each(function(){
-                $(this).height(large);
+                $(this).height(large_height);
+                // Are we doing widths?
+                if(_self.settings.widths){
+                    $(this).css({'min-width': large_width});
+                }
             });
         },
         watch_window: function(el, breakpoint1, breakpoint2){
             var _self = this;
 
             $(function(){
-                _self.run_heights(el, breakpoint1, breakpoint2);
+                _self.run_sizes(el, breakpoint1, breakpoint2);
             });
             $(window).on('resize', function(){
-                _self.run_heights(el, breakpoint1, breakpoint2);
+                _self.run_sizes(el, breakpoint1, breakpoint2);
             });
         },
-        run_heights: function(el, breakpoint1, breakpoint2){
+        run_sizes: function(el, breakpoint1, breakpoint2){
             var _self = this;
 
-            if($(window).width() >= breakpoint1 && $(window).width() <= breakpoint2){
-                _self.calculate(el);
-            }
-            else{
-                _self.reset_heights(el);
-            }
+            return ($(window).width() >= breakpoint1 && $(window).width() <= breakpoint2) ?  _self.calculate(el) : _self.reset_sizes(el);
         },
-        reset_heights: function(el){
+        reset_sizes: function(el){
+            var _self = this;
+
             var boxes = $('[data-eh="true"]', el);
             // Reset the height attribute to `auto` (or nothing).
             boxes.each(function(){
                 $(this).css({'height': 'auto'});
+                // Are we doing widths?
+                if(_self.settings.widths){
+                    $(this).css({'min-width': 'none'});
+                }
             });
-        }
-    }
-
-    /**
-     * helpers.log
-     * Returns a cross-browser safe message in the console.
-    **/
-    helpers.log = function(message, alertlog){
-        alertlog = (typeof alertlog === 'undefined') ? false : true;
-        if(typeof console === 'undefined' || typeof console.log === 'undefined'){
-            if(alertlog){
-                alert(message);
-            }
-        }
-        else {
-            console.log(message);
         }
     }
 

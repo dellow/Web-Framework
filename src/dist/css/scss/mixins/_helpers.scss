@@ -54,7 +54,7 @@
 	$grid_selector     : '';
 	$flex_grid_selector: '';
 
-	@if($all){
+	@if($all == false){
 		$grid_selector: '> .grid, &.grid';
 	}
 	@else{
@@ -70,7 +70,7 @@
 		}
 	}
 
-	@if($all){
+	@if($all == false){
 		$flex_grid_selector: '> .flex-grid, &.flex-grid';
 	}
 	@else{

@@ -390,6 +390,10 @@ This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in
 
 <a name="changelog"></a>
 ## Changelog
+__X.X.X__:
+* Fixed issue with `modify-grid` affecting nested grids when it shouldn't.
+* Updated Equal Heights plugin to optionally add widths too.
+
 __2.1.4__:
 * Fixed issue with duplicate dependencies.
 * Separated sprites files into specific `png` directory.
