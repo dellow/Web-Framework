@@ -23,7 +23,7 @@
         // Document ready.
         $(function(){
             // Click event.
-            $('.js-mn-trigger').on('keyup', $.proxy(_this.init, _this));
+            $('.js-mn-trigger').on('click', $.proxy(_this.init, _this));
         });
     }
 
@@ -55,7 +55,6 @@
      * @version 1.0.0
     **/
     Module.prototype.method = function(self){
-        // Apply limit.
         return self.doaction();
     }
 
