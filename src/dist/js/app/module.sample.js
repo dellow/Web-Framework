@@ -40,7 +40,7 @@
 
         // Check a data attribute exists.
         if(data){
-            this.method(self);
+            this.some_method(data);
         }
         else{
             Helpers.log("Some message here.", "negative");
@@ -48,14 +48,14 @@
     }
 
     /**
-     * method
+     * some_method
      * NULLED.
      *
      * @since 1.0.0
      * @version 1.0.0
     **/
-    Module.prototype.method = function(self){
-        return self.doaction();
+    Module.prototype.some_method = function(data){
+        return this.do_action_with_data();
     }
 
     // Export
