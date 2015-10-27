@@ -5,6 +5,7 @@
 .sass-cache/
 .vagrant/
 dalek_tests/
+karma/
 psi/
 releases/
 bower_components/

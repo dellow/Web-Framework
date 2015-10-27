@@ -27,6 +27,10 @@
         });
     }
 
+    Module.prototype.test = function(){
+        return 'close';
+    }
+
     /**
      * init
      * Init method for this module.

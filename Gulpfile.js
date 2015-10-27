@@ -259,6 +259,35 @@ gulp.task('sync', function(){
 
 
 /* =========================================================================== */
+/* Testing - Jasmine (Development Mode Only).
+/* Runs all client tests with Jasmine.
+/* =========================================================================== */
+gulp.task('test:jasmine', function(){
+	// Check environment.
+	if(!is_development){
+		if(this.seq.slice(-1)[0] == 'default'){
+			util.log(util.colors.yellow('Warning: Task skipped. Not run with default profile.'));
+			return;
+		}
+		else{
+			throw new Error('This task must be run in development mode. Try running `gulp ' + this.seq.slice(-1)[0] + ' --config development`.');
+		}
+	}
+
+	// Require.
+	var karma = require('gulp-karma');
+
+    // Task.
+	return gulp.src('./test/unit/*')
+		.pipe(karma({
+			configFile: 'karma.conf.js',
+			action    : 'run'
+		}))
+		.on('error', task_handler);
+});
+
+
+/* =========================================================================== */
 /* Tools - JSHint (Development Mode Only).
 /* Runs linting on the all .js files in `src/dist/js/app` with JSHint.
 /* =========================================================================== */
