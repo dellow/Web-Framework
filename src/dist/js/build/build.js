@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified JavaScript
 Application Version: 1.0.0
-Compiled: Thu Oct 22 2015 10:01:26 GMT+0100 (BST)
+Compiled: Tue Oct 27 2015 11:46:04 GMT+0000 (GMT)
 ========================================================================== */
 
 // Set environment variable
@@ -13509,113 +13509,44 @@ require('./wiselinks');
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
  *
- * AppController
+ * App
  *
  * Copyright 2015, Author Name
  * Some information on the license.
  *
- * Inits Wiselinks and loads all the modules for the app.
- *
- * Just add '<a href="link.php" data-push="true">Page 2</a>'
- * to any link that needs to be loaded with Ajax.
- *
 **/
 
-;(function(Controller, window, undefined){
+;(function(App, window, undefined){
 	'use strict';
 
     /**
-     * Controller
-     * Constructor for this controller.
+     * App
+     * Constructor for App.
      *
      * @since 1.0.0
      * @version 1.0.0
     **/
-	Controller = function(){
+	App = function(){
 		// Require :: Modules
 		// We do not need to declare with vars but it allows us to call internal methods externally.
-		this.ModuleBinds      = require('./module.binds');
-		this.ModuleMobileMenu = require('./module.mobile-menu-side');
     }
 
 	/**
 	 * init
-	 * Init method for this module.
+	 * Init method.
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Controller.prototype.init = function(el){
-		// Check Wiselinks is enabled.
-		if(window.wiselinks_enabled){
-			// Init WiseLinks
-			window.wiselinks = new Wiselinks(el, {
-				html4_normalize_path: false
-			});
-			// Do page events
-			return this.wiselinks_binds();
-		}
-	}
-
-	/**
-	 * wiselinks_binds
-	 * Wiselinks page events.
-     *
-     * @since 1.0.0
-     * @version 1.0.0
-	**/
-	Controller.prototype.wiselinks_binds = function(){
-		var _this = this;
-
-		// Every page load.
-		$(document).off('page:always').on('page:always', function(event, xhr, settings){
-			// Log it.
-	        Helpers.log("Wiselinks page loading completed", "positive");
-	    	// Run page load events.
-			_this.page_load();
-	    });
-		// Page loading.
-		$(document).off('page:loading').on('page:loading', function(event, $target, render, url){
-			// Log it.
-	        Helpers.log("Loading: " + url + " to " + $target.selector + " within " + render, "positive");
-	    });
-		// Page redirected.
-		$(document).off('page:redirected').on('page:redirected', function(event, $target, render, url){
-			// Log it.
-	        Helpers.log("Redirected to: " + url, "positive");
-	    });
-		// Page done loading.
-		$(document).off('page:done').on('page:done', function(event, $target, status, url, data){
-			// Log it.
-	        Helpers.log("Wiselinks status: " + status, "positive");
-	        // Check for Google Analytics.
-			if(window.ga_active){
-				// Register Analytics Page View.
-				ga('send', 'pageview', {
-					'page'      : url,
-					'dimension1': WURFL.complete_device_name,
-					'dimension2': WURFL.form_factor,
-					'dimension3': WURFL.is_mobile
-				});
-				// Log it.
-		        Helpers.log("Analytics page view sent", "positive");
-			}
-	    });
-		// Page can't be found.
-		$(document).off('page:fail').on('page:fail', function(event, $target, status, url, error, code){
-			// Log it.
-	        Helpers.log("Wiselinks status: " + status, "negative");
-	        // Redirect to 404.
-	        window.location.replace(window.config.base_url + '404');
-	    });
+	App.prototype.init = function(){
 	}
 
 	// Export
-	module.exports = new Controller();
+	module.exports = new App();
 
-}(window.C = window.C || function(){}, window));
+}(window.App = window.App || function(){}, window));
 
-},{"./module.binds":3,"./module.mobile-menu-side":4}],2:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 /**
  *
  * Helpers
@@ -13644,12 +13575,14 @@ require('./wiselinks');
 				}
 			}
 			else {
-				if(message instanceof Array || message instanceof Object){
-					console.log(message);
-				}
 				var color = (type == 'positive') ? '#097809' : (type == 'negative') ? '#c5211d' : (typeof type !== 'undefined') ? type : '#240ad0';
 				console.log('%c DEBUG: -----------------------------------------------', 'color: ' + color);
-				console.log('%c DEBUG: ' + message, 'color: ' + color);
+				if(message instanceof Array || message instanceof Object){
+					console.log(' DEBUG:', message);
+				}
+				else{
+					console.log('%c DEBUG: ' + message, 'color: ' + color);
+				}
 				console.log('%c DEBUG: -----------------------------------------------', 'color: ' + color);
 				console.log('');
 			}
@@ -13837,10 +13770,10 @@ require('./wiselinks');
         // require('../plugins/jquery.equal-heights');
         // require('../plugins/jquery.googlemap');
         // require('../plugins/jquery.modals');
-        // require('../plugins/vendor/jquery.tooltipster');
         // require('../plugins/jquery.validation');
         // Require :: Vendor
         // require('../plugins/vendor/jquery.slider');
+        // require('../plugins/vendor/jquery.tooltipster');
 
         // Document ready.
         $(function(){
@@ -14349,6 +14282,48 @@ require('./wiselinks');
 },{}],5:[function(require,module,exports){
 /**
  *
+ * Public
+ *
+ * Copyright 2015, Author Name
+ * Some information on the license.
+ *
+**/
+
+;(function(Public, window, undefined){
+	'use strict';
+
+    /**
+     * Public
+     * Constructor for Public.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+    **/
+	Public = function(){
+		// Require :: Modules
+		// We do not need to declare with vars but it allows us to call internal methods externally.
+		this.Binds      = require('./module.binds');
+		this.MobileMenu = require('./module.mobile-menu-side');
+    }
+
+	/**
+	 * init
+	 * Init method.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+	Public.prototype.init = function(){
+	}
+
+	// Export
+	module.exports = new Public();
+
+}(window.Public = window.Public || function(){}, window));
+
+},{"./module.binds":3,"./module.mobile-menu-side":4}],6:[function(require,module,exports){
+/**
+ *
  * Application or Website name
  *
  * Copyright 2015, Author Name
@@ -14371,12 +14346,20 @@ window.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
 ;(function(window, undefined){
     'use strict';
 
-	// Require the app controller.
-	window.App = require('./controller.app');
+	// Require App.
+	var A = App = require('./app/app');
+	// Init App.
+	App.init();
+	// Log it.
+	Helpers.log(App);
 
-	// Init new instance of app controller.
-	App.init($('.main'));
+	// Require Public.
+	var P = Public = require('./public/public');
+	// Init App.
+	Public.init();
+	// Log it.
+	Helpers.log(Public);
 
 }(window));
 
-},{"./controller.app":1,"./helpers":2}]},{},[5]);
+},{"./app/app":1,"./helpers":2,"./public/public":5}]},{},[6]);

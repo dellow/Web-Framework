@@ -44,8 +44,6 @@ gulp.task('default', [
 	'css',
 	'images',
 	// Development states.
-	'dalek',
-	'jasmine',
 	'jshint'
 ], function(){
 	// Show notification.
@@ -130,24 +128,24 @@ gulp.task('js:common', function(){
 		.pipe(notify({message: 'JS Common task complete.'}));
 });
 
-// JS Application Files.
-gulp.task('js:app', function(){
+// JS All Files.
+gulp.task('js:all', function(){
 	// Require.
 	var browserify = require('browserify'),
 		rename     = require('gulp-rename');
 
 	// Task.
-	return browserify(dist_dir + 'js/app/').bundle()
+	return browserify(dist_dir + 'js/').bundle()
 		.on('error', task_handler)
 	    .pipe(source('index.js'))
 	    .pipe(buffer())
-		.pipe(rename('app.js'))
+		.pipe(rename('all.js'))
 		.pipe(gulp.dest(dist_dir + 'js/compiled/'))
-		.pipe(notify({message: 'JS App task complete.'}));
+		.pipe(notify({message: 'JS All task complete.'}));
 });
 
-// JS Build File (Concatenated App & Common).
-gulp.task('js', ['js:app'], function(){
+// JS Build File (Concatenated All & Common).
+gulp.task('js', ['js:all'], function(){
 	// Require.
 	var concat = require('gulp-concat'),
 		uglify = require('gulp-uglify');
@@ -166,7 +164,7 @@ gulp.task('js', ['js:app'], function(){
 		''].join('\n');
 
 	// Task.
-	return gulp.src([dist_dir + 'js/compiled/common.js', dist_dir + 'js/compiled/app.js'])
+	return gulp.src([dist_dir + 'js/compiled/common.js', dist_dir + 'js/compiled/all.js'])
 	    .pipe(concat('build.js'))
 		.pipe(header(header_tpl_env, {
 			env: (is_production) ? 'production' : 'development'
@@ -185,15 +183,16 @@ gulp.task('js', ['js:app'], function(){
 
 /* =========================================================================== */
 /* Watch
-/* Watches for .js, .hbs and .scss file changes and compile.
+/* Watches for .js, .jsx, .hbs and .scss file changes and compile.
 /* =========================================================================== */
 gulp.task('watch', function(){
 	// Run JS Master on JS and HBS file changes.
 	gulp.watch([
-		dist_dir + 'js/app/**/*.js',
-		dist_dir + 'js/app/**/*.jsx',
-		dist_dir + 'js/plugins/**/*.js',
-		dist_dir + 'js/**/*.hbs'
+		dist_dir + 'js/**/*.js',
+		dist_dir + 'js/**/*.jsx',
+		dist_dir + 'js/**/*.hbs',
+        '!' + dist_dir + 'js/build/*.js',
+        '!' + dist_dir + 'js/compiled/*.js'
 	], ['js']);
 	// Run CSS on SCSS file changes.
 	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
@@ -202,7 +201,7 @@ gulp.task('watch', function(){
 
 /* =========================================================================== */
 /* Sync (BrowserSync)
-/* Watches for .js, .hbs and .scss file changes and compile while reloading
+/* Watches for .js, .jsx, .hbs and .scss file changes and compile while reloading
 /* all connected browsers with BrowserSync.
 /* =========================================================================== */
 gulp.task('sync', function(){
@@ -241,10 +240,11 @@ gulp.task('sync', function(){
 
 	// Run Browserify on JS and HBS file changes.
 	gulp.watch([
-		dist_dir + 'js/app/**/*.js',
-		dist_dir + 'js/app/**/*.jsx',
-		dist_dir + 'js/plugins/**/*.js',
-		dist_dir + 'js/**/*.hbs'
+		dist_dir + 'js/**/*.js',
+		dist_dir + 'js/**/*.jsx',
+		dist_dir + 'js/**/*.hbs',
+        '!' + dist_dir + 'js/build/*.js',
+        '!' + dist_dir + 'js/compiled/*.js'
 	], ['js']);
 	// Run CSS on SCSS file changes.
 	gulp.watch(dist_dir + 'css/scss/**/*.scss', ['css']);
@@ -252,76 +252,9 @@ gulp.task('sync', function(){
 	gulp.watch([
 		// src_dir + '**/*.html',
 		// src_dir + '**/*.php',
-		dist_dir + 'css/build.css',
-		dist_dir + 'js/build/build.js'
+		dist_dir + 'css/build.css', // Master bundled file.
+		dist_dir + 'js/build/build.js' // Master bundled file.
 	], reload);
-});
-
-
-/* =========================================================================== */
-/* Testing - Dalek (Development Mode Only).
-/* Runs all browser tests in `src/dist/js/spec/dalek` with DalekJS.
-/* =========================================================================== */
-gulp.task('dalek', function(){
-	// Check environment.
-	if(!is_development){
-		if(this.seq.slice(-1)[0] == 'default'){
-			util.log(util.colors.yellow('Warning: Task skipped. Not run with default profile.'));
-			return;
-		}
-		else{
-			throw new Error('This task must be run in development mode. Try running `gulp ' + this.seq.slice(-1)[0] + ' --config development`.');
-		}
-	}
-
-	// Require.
-	var dalek = require('gulp-dalek');
-
-	// Task.
-	return gulp.src(dist_dir + 'js/spec/dalek/*.js')
-		.pipe(
-			dalek({
-				browser : [
-					'phantomjs',
-					// 'chrome'
-				],
-				reporter: [
-					'console',
-					// 'html',
-					// 'junit'
-				]
-			})
-		)
-		.on('error', task_handler);
-});
-
-
-/* =========================================================================== */
-/* Testing - Jasmine (Development Mode Only).
-/* Runs all client tests in `src/dist/js/spec/jasmine` with Jasmine.
-/* =========================================================================== */
-gulp.task('jasmine', function(){
-	// Check environment.
-	if(!is_development){
-		if(this.seq.slice(-1)[0] == 'default'){
-			util.log(util.colors.yellow('Warning: Task skipped. Not run with default profile.'));
-			return;
-		}
-		else{
-			throw new Error('This task must be run in development mode. Try running `gulp ' + this.seq.slice(-1)[0] + ' --config development`.');
-		}
-	}
-
-	// Require.
-	var karma = require('gulp-karma');
-
-    // Task.
-	return gulp.src(dist_dir + 'js/spec/jasmine/*')
-		.pipe(karma({
-			configFile: 'karma.conf.js',
-			action    : 'run'
-		}))
-		.on('error', task_handler);
 });
 
 
@@ -412,7 +345,7 @@ gulp.task('release', function(){
 	// Vars.
 	var files = [
         './src/**/*.*',
-        '!' + dist_dir + '/**/*.scss',
+        '!' + dist_dir + '**/*.scss',
         '!' + dist_dir + 'js/app/**/*',
         '!' + dist_dir + 'js/compiled/**/*',
         '!' + dist_dir + 'js/plugins/**/*',

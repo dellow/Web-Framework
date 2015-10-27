@@ -22,11 +22,18 @@ window.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
 ;(function(window, undefined){
     'use strict';
 
-	// Require the App.
-	var A = App = require('./app');
+	// Require App.
+	var A = App = require('./app/app');
 	// Init App.
-	App.init($('.main'));
+	App.init();
 	// Log it.
 	Helpers.log(App);
+
+	// Require Public.
+	var P = Public = require('./public/public');
+	// Init App.
+	Public.init();
+	// Log it.
+	Helpers.log(Public);
 
 }(window));

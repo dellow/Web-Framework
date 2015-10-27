@@ -1,25 +1,27 @@
 /**
  *
- * App
+ * Public
  *
  * Copyright 2015, Author Name
  * Some information on the license.
  *
 **/
 
-;(function(App, window, undefined){
+;(function(Public, window, undefined){
 	'use strict';
 
     /**
-     * App
-     * Constructor for App.
+     * Public
+     * Constructor for Public.
      *
      * @since 1.0.0
      * @version 1.0.0
     **/
-	App = function(){
+	Public = function(){
 		// Require :: Modules
 		// We do not need to declare with vars but it allows us to call internal methods externally.
+		this.Binds      = require('./module.binds');
+		this.MobileMenu = require('./module.mobile-menu-side');
     }
 
 	/**
@@ -29,10 +31,10 @@
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	App.prototype.init = function(){
+	Public.prototype.init = function(){
 	}
 
 	// Export
-	module.exports = new App();
+	module.exports = new Public();
 
-}(window.App = window.App || function(){}, window));
+}(window.Public = window.Public || function(){}, window));
