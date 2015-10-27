@@ -306,25 +306,20 @@ gulp.task('images', function(){
 
 
 /* =========================================================================== */
-/* Testing - Jasmine (Development Mode Only).
-/* Runs all unit tests with Jasmine.
+/* Testing - Jasmine
+/* Runs all unit tests with Jasmine via Karma.
 /* =========================================================================== */
-gulp.task('test:jasmine', function(){
+gulp.task('test:jasmine', function(done){
 	// Require.
-	var karma = require('gulp-karma');
+	var Server = require('karma').Server;
 
     // Task.
-	return gulp.src('./test/unit/*')
-		.pipe(karma({
-			configFile: './karma.conf.js',
-			action    : 'run'
-		}))
-		.on('error', task_handler);
+	return new Server({configFile:  __dirname + '/karma.conf.js'}, done).start();
 });
 
 
 /* =========================================================================== */
-/* Testing - Nightwatch (Development Mode Only).
+/* Testing - Nightwatch
 /* Runs all functional tests with Nightwatch.
 /* =========================================================================== */
 gulp.task('test:nightwatch', function(){
