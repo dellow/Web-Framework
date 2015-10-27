@@ -285,6 +285,27 @@ gulp.task('jshint', function(){
 
 
 /* =========================================================================== */
+/* Images
+/* Optimises images for web with Imagemin.
+/* =========================================================================== */
+gulp.task('images', function(){
+	// Require.
+	var imagemin = require('gulp-imagemin')
+		cache	 = require('gulp-cache');
+
+	// Task.
+    return gulp.src(dist_dir + 'images/**/*')
+        .pipe(cache(imagemin({
+            optimizationLevel: 3,
+            progressive      : true,
+            interlaced       : true
+        })))
+        .pipe(gulp.dest(dist_dir + 'images'))
+		.pipe(notify({message: 'Images task complete.'}));
+});
+
+
+/* =========================================================================== */
 /* Testing - Jasmine (Development Mode Only).
 /* Runs all unit tests with Jasmine.
 /* =========================================================================== */
@@ -315,27 +336,6 @@ gulp.task('test:nightwatch', function(){
 		.pipe(nightwatch({
 			configFile: './nightwatch.json'
 		}));
-});
-
-
-/* =========================================================================== */
-/* Tools - Imagemin
-/* Optimises images for web with Imagemin.
-/* =========================================================================== */
-gulp.task('images', function(){
-	// Require.
-	var imagemin = require('gulp-imagemin')
-		cache	 = require('gulp-cache');
-
-	// Task.
-    return gulp.src(dist_dir + 'images/**/*')
-        .pipe(cache(imagemin({
-            optimizationLevel: 3,
-            progressive      : true,
-            interlaced       : true
-        })))
-        .pipe(gulp.dest(dist_dir + 'images'))
-		.pipe(notify({message: 'Images task complete.'}));
 });
 
 
