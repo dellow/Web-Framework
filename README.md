@@ -150,9 +150,8 @@ This task will also create a text file depending on the requested domain to reco
 
 <a name="testing"></a>
 ## Testing
-Client side JavaScript testing is done with Jasmine via Karma.
-
-Browser testing is done with DalekJS.
+* Unit testing is done with Jasmine via Karma.
+* Functional testing is done with Nightwatch.
 
 _Documentation coming soon_
 
