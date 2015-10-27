@@ -40,7 +40,7 @@
 
     "jshint-stylish"          : "^1.0.0",
     "psi"                     : "^1.0.0",
-    "reflux"                  : "^0.2.12",
+    "flux"                    : "^2.1.1",
     "sprity"                  : "^1.0.0",
     "sprity-sass"             : "^1.0.0",
     "vinyl-buffer"            : "^1.0.0",
@@ -58,9 +58,9 @@
     "jquery.scrollto"  : "*",
     "moment"           : "*",
     "pikaday"          : "*",
-    "react"            : "*",
-    "react-router"     : "*",
-    "react-tools"      : "*",
+    "react"            : "^0.13.3",
+    "react-router"     : "^1.0.0-rc1",
+    "react-tools"      : "^0.13.3",
     "underscore"       : "*",
     "waypoints"        : "*"
   },
