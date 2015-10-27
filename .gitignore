@@ -6,6 +6,7 @@
 .vagrant/
 dalek_tests/
 karma/
+nightwatch/
 psi/
 releases/
 bower_components/

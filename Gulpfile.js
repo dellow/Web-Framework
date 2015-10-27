@@ -39,16 +39,25 @@ var version        = '1.0.0',
 /* =========================================================================== */
 // Task.
 gulp.task('default', [
-	// All states.
 	'js',
 	'css',
 	'images',
-	// Development states.
 	'jshint'
 ], function(){
 	// Show notification.
 	gulp.src('gulpfile.js').pipe(notify({
 		message: 'Default task is complete'
+	}));
+});
+
+// Task.
+gulp.task('tests', [
+	'test:jasmine',
+	'test:nightwatch'
+], function(){
+	// Show notification.
+	gulp.src('gulpfile.js').pipe(notify({
+		message: 'Tests task is complete'
 	}));
 });
 
@@ -259,50 +268,10 @@ gulp.task('sync', function(){
 
 
 /* =========================================================================== */
-/* Testing - Jasmine (Development Mode Only).
-/* Runs all client tests with Jasmine.
-/* =========================================================================== */
-gulp.task('test:jasmine', function(){
-	// Check environment.
-	if(!is_development){
-		if(this.seq.slice(-1)[0] == 'default'){
-			util.log(util.colors.yellow('Warning: Task skipped. Not run with default profile.'));
-			return;
-		}
-		else{
-			throw new Error('This task must be run in development mode. Try running `gulp ' + this.seq.slice(-1)[0] + ' --config development`.');
-		}
-	}
-
-	// Require.
-	var karma = require('gulp-karma');
-
-    // Task.
-	return gulp.src('./test/unit/*')
-		.pipe(karma({
-			configFile: 'karma.conf.js',
-			action    : 'run'
-		}))
-		.on('error', task_handler);
-});
-
-
-/* =========================================================================== */
-/* Tools - JSHint (Development Mode Only).
+/* JSHint.
 /* Runs linting on the all .js files in `src/dist/js/app` with JSHint.
 /* =========================================================================== */
 gulp.task('jshint', function(){
-	// Check environment.
-	if(!is_development){
-		if(this.seq.slice(-1)[0] == 'default'){
-			util.log(util.colors.yellow('Warning: Task skipped. Not run with default profile.'));
-			return;
-		}
-		else{
-			throw new Error('This task must be run in development mode. Try running `gulp ' + this.seq.slice(-1)[0] + ' --config development`.');
-		}
-	}
-
 	// Vars.
 	var jshint  = require('gulp-jshint'),
 		stylish = require('jshint-stylish');
@@ -312,6 +281,40 @@ gulp.task('jshint', function(){
 	    .pipe(jshint())
 	    .pipe(jshint.reporter(stylish))
 		.pipe(notify({message: 'JSHint task complete.'}));
+});
+
+
+/* =========================================================================== */
+/* Testing - Jasmine (Development Mode Only).
+/* Runs all unit tests with Jasmine.
+/* =========================================================================== */
+gulp.task('test:jasmine', function(){
+	// Require.
+	var karma = require('gulp-karma');
+
+    // Task.
+	return gulp.src('./test/unit/*')
+		.pipe(karma({
+			configFile: './karma.conf.js',
+			action    : 'run'
+		}))
+		.on('error', task_handler);
+});
+
+
+/* =========================================================================== */
+/* Testing - Nightwatch (Development Mode Only).
+/* Runs all functional tests with Nightwatch.
+/* =========================================================================== */
+gulp.task('test:nightwatch', function(){
+	// Require.
+	var nightwatch = require('gulp-nightwatch');
+
+    // Task.
+  	return gulp.src('')
+		.pipe(nightwatch({
+			configFile: './nightwatch.json'
+		}));
 });
 
 
@@ -367,7 +370,7 @@ gulp.task('sprite', function(){
 
 /* =========================================================================== */
 /* Tools - Release
-/* Copies all files except SASS, JS and HBS build files to a new release named
+/* Copies all files except SASS, JS, JSX and HBS build files to a new release named
 /* by version in the `app` folder
 /* =========================================================================== */
 gulp.task('release', function(){
@@ -479,3 +482,28 @@ gulp.task('psi', function(){
 		});
 	});
 });
+
+
+/* =========================================================================== */
+/* SAMPLE
+/* This is a sample task for the future.
+/* =========================================================================== */
+// gulp.task('sample', function(){
+// 	// Check environment.
+// 	if(!is_development){
+// 		if(this.seq.slice(-1)[0] == 'default'){
+// 			util.log(util.colors.yellow('Warning: Task skipped. Not run with default profile.'));
+// 			return;
+// 		}
+// 		else{
+// 			throw new Error('This task must be run in development mode. Try running `gulp ' + this.seq.slice(-1)[0] + ' --config development`.');
+// 		}
+// 	}
+
+// 	// Require.
+// 	var module = require('gulp-module');
+
+//     // Task.
+//   	return gulp.src(src_dir)
+// 		.pipe(module());
+// });

@@ -13,6 +13,7 @@
     "reactify"                : "^1.0.0",
 
     "gulp-karma"              : "^0.0.5",
+    "gulp-nightwatch"         : "^0.2.6",
     "phantomjs"               : "^1.9.18",
     "jasmine-core"            : "^2.3.4",
     "karma-browserify"        : "^4.4.0",
