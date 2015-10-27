@@ -22,11 +22,12 @@ window.$ = require('jquery');
 /* ======================================================== */
 /* Data
 /* ======================================================== */
+// Define function.
 var helloWorld = function(){
 	return 'Hello world!';
 }
-
-var Module = require('../../src/dist/js/public/module.sample');
+// Get module.
+var Module = require('../../src/dist/js/public/module.xxx');
 
 
 /* ======================================================== */
