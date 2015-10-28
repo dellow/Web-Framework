@@ -10,7 +10,7 @@
 **/
 
 var urls = {
-	home: 'http://cousins.vm1.dev/'
+	home: 'http://google.com/'
 };
 
 module.exports = {
