@@ -7,11 +7,11 @@ module.exports = function(config){
         autoWatch: false,
         singleRun: false,
         plugins: [
-            'karma-phantomjs-launcher',
-            'karma-jasmine',
             'karma-browserify',
-            'karma-spec-reporter',
-            'karma-html-reporter'
+            'karma-html-reporter',
+            'karma-jasmine',
+            'karma-phantomjs-launcher',
+            'karma-spec-reporter'
         ],
         frameworks: [
             'browserify',
