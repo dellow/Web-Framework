@@ -191,9 +191,10 @@
 		// Check if URL contains a ?.
 		if(url.indexOf('?') != -1){
 			// Split URL at ?
-			var url_params = url.split('?')[1];
+			var url_parsed = url.split('?')[1],
+				url_params = (!Helper.isEmpty(url_parsed)) ? url_parsed : false;
 
-			return JSON.parse('{"' + decodeURI(url_params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+			return (url_params) ? JSON.parse('{"' + decodeURI(url_params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}') : false;
 		}
 		else{
 			return {};
