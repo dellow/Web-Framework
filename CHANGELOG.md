@@ -1,5 +1,9 @@
 # Web Framework Changelog
 
+__X.X.X__:
+* General fixes and improvements.
+* Improved the `ajax` helper by parsing URL parameters automatically in the JSON body.
+
 __2.2.0__:
 * Fixed issue with `modify-grid` affecting nested grids when it shouldn't.
 * Updated Equal Heights plugin to optionally add widths too.
