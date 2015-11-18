@@ -186,32 +186,61 @@
     /**
      * Helper.ajax
      * Returns a simple Ajax request. Should use the result with a promise.
+     * Will automatically parse any URL parameters and place them in the JSON
+     * body instead.
      *
      * @since 1.0.0
      * @version 1.0.0
      */
     Helper.ajax = function(url, request, type, dataType, preloader_el){
+    	// Default data.
+    	var default_params = {
+			ajaxrequest: true,
+			request    : (!_.isEmpty(request)) ? request : false
+    	};
+    	// Get params (if any).
+    	var optional_params = Helper.parse_url_params(url);
+    	// Merge params to get data.
+    	var data = $.extend({}, default_params, optional_params);
 		// Request.
         return $.ajax({
-            url     : url,
-            type    : (typeof type === 'undefined') ? 'POST' : type,
-            dataType: (typeof dataType === 'undefined') ? 'JSON' : dataType,
-            data    : {
-                'ajaxrequest': true,
-                'request': request
-            },
+            url     : (url.indexOf('?') != -1) ? url.split('?')[0] : url,
+            type    : (!Helper.isEmpty(type)) ? type : 'POST',
+            dataType: (!Helper.isEmpty(dataType)) ? dataType : 'JSON',
+            data    : data,
             beforeSend: function(jqXHR, settings){
             	// Log full URL.
             	Helpers.log(settings.url + '?' + settings.data);
                 // Add preloader.
-                Helper.preloader((typeof preloader_el === 'undefined') ? $('body') : preloader_el);
+                Helper.preloader((Helper.isEmpty(preloader_el)) ? $('body') : preloader_el);
             },
             complete: function(jqXHR){
                 // Destroy preloader.
-                Helper.preloader((typeof preloader_el === 'undefined') ? $('body') : preloader_el, true);
+                Helper.preloader((Helper.isEmpty(preloader_el)) ? $('body') : preloader_el, true);
             }
         });
     }
+
+	/**
+	 * Helper.parse_url_params
+	 * Converts the URL parameters into an object.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+	Helper.parse_url_params = function(url){
+		// Check if URL contains a ?.
+		if(url.indexOf('?') != -1){
+			// Split URL at ?
+			var url_parsed = url.split('?')[1],
+				url_params = (!Helper.isEmpty(url_parsed)) ? url_parsed : false;
+
+			return (url_params) ? JSON.parse('{"' + decodeURI(url_params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}') : false;
+		}
+		else{
+			return {};
+		}
+	}
 
     /**
      * Helper.decode_entities

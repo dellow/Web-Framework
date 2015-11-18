@@ -1,6 +1,6 @@
 # Web Framework Changelog
 
-__X.X.X__:
+__2.2.1__:
 * General fixes and improvements.
 * Improved the `ajax` helper by parsing URL parameters automatically in the JSON body.
 
