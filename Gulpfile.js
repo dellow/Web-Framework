@@ -373,7 +373,10 @@ gulp.task('release', function(){
 	var files = [
         './src/**/*.*',
         '!' + dist_dir + '**/*.scss',
-        '!' + dist_dir + 'js/app/**/*',
+		'!' + dist_dir + 'js/index.js',
+		'!' + dist_dir + 'js/helpers.js',
+		'!' + dist_dir + 'js/app/**/*',
+        '!' + dist_dir + 'js/public/**/*',
         '!' + dist_dir + 'js/compiled/**/*',
         '!' + dist_dir + 'js/plugins/**/*',
         '!' + dist_dir + 'js/spec/**/*',
