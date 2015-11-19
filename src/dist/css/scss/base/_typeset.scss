@@ -35,22 +35,22 @@ h1, .alpha, h2, .beta, h3, .gamma, h4, .delta, h5, .epsilon, h6, .zeta {
 	}
 }
 h1, .alpha {
-	@include ktype(6, 1, 0.5);
+	@include ktype(6, 1, 0.5); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
 h2, .beta {
-	@include ktype(5, 1, 0.25);
+	@include ktype(5, 1, 0.25); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
 h3, .gamma {
-	@include ktype(4, 0.5, 0.25);
+	@include ktype(4, 0.5, 0.25); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
 h4, .delta {
-	@include ktype(3, 0.5, 0.25);
+	@include ktype(3, 0.5, 0.25); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
 h5, .epsilon {
-	@include ktype(2, 0.5, 0);
+	@include ktype(2, 0.5, 0); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
 h6, .zeta {
-	@include ktype(1, 0.5, 0);
+	@include ktype(1, 0.5, 0); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
 
 

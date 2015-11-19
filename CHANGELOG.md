@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__X.X.X__:
+* Changed the release task `version` parameter to `ver` to prevent clashes with Node Version check.
+
 __2.2.1__:
 * General fixes and improvements.
 * Improved the `ajax` helper by parsing URL parameters automatically in the JSON body.

@@ -381,7 +381,7 @@ gulp.task('release', function(){
     ];
 
 	// Vars.
-	var v = args.version || version;
+	var v = args.ver || ver;
 
     // Task.
 	return gulp.src(files, {base: src_dir})
