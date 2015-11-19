@@ -19,6 +19,24 @@ form {
 		border: 1px solid transparent;
 	}
 
+	.js-validation-field-has-errors {
+		::-webkit-input-placeholder {
+			color: $color_error;
+		}
+		::-moz-placeholder {
+			color: $color_error;
+		}
+		:-moz-placeholder {
+			color: $color_error;
+		}
+		:-ms-input-placeholder {
+			color: $color_error;
+		}
+		::placeholder {
+			color: $color_error;
+		}
+	}
+
 	&.js-validation-form-has-errors { // Qualified Selector
 		// Label
 		label {
@@ -84,23 +102,6 @@ form {
 			}
 		}
 
-		// Placeholder
-		::-webkit-input-placeholder {
-			color: $color_error;
-		}
-		::-moz-placeholder {
-			color: $color_error;
-		}
-		:-moz-placeholder {
-			color: $color_error;
-		}
-		:-ms-input-placeholder {
-			color: $color_error;
-		}
-		::placeholder {
-			color: $color_error;
-		}
-
 		// Messages
 		.msg {
 			@include rem(font-size, 14px);
@@ -129,25 +130,6 @@ form {
 			// Descendants
 			.msg {
 				color: $color_warning;
-			}
-		}
-
-		// Fields
-		.field.field-has-errors {
-			::-webkit-input-placeholder {
-				color: $color_error;
-			}
-			::-moz-placeholder {
-				color: $color_error;
-			}
-			:-moz-placeholder {
-				color: $color_error;
-			}
-			:-ms-input-placeholder {
-				color: $color_error;
-			}
-			::placeholder {
-				color: $color_error;
 			}
 		}
 	}
