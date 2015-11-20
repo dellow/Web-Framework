@@ -15,7 +15,7 @@
 	color: color(white);
 	text-align: center;
 	line-height: 1;
-	transition: background $animation ease, box-shadow $animation ease;
+	transition: background $animation ease, box-shadow $animation ease, color $animation ease;
 	// Abstractions
 	&--standard {
 		background: color(blue);
