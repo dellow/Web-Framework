@@ -21,6 +21,8 @@ node_modules/
 # ---------------------------------------------------------------------------------
 ## For development purposes.
 RELEASE_PROCESS.md
+## ToDo
+**/todo.txt
 ## Might differ depending on environment.
 **/.htaccess
 ## Might differ depending on environment.
