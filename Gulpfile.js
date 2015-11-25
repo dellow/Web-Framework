@@ -315,7 +315,7 @@ gulp.task('test:jasmine', function(done){
 	var Server = require('karma').Server;
 
     // Task.
-	return new Server({configFile:  __dirname + '/karma.conf.js'}, done).start();
+	return new Server({configFile: __dirname + '/karma.conf.js'}, done).start();
 });
 
 
@@ -330,7 +330,7 @@ gulp.task('test:nightwatch', function(){
     // Task.
   	return gulp.src('')
 		.pipe(nightwatch({
-			configFile: './nightwatch.json'
+			configFile: __dirname + '/nightwatch.json'
 		}));
 });
 
