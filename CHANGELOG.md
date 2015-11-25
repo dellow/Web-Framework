@@ -10,6 +10,7 @@ __X.X.X__:
 * Added Babelify to the JS task permanently.
 * Updated React library and add React Test Utils.
 * Added Function-Bind polyfill for tests.
+* Improved the side mobile menu style and function.
 
 __2.2.1__:
 * General fixes and improvements.

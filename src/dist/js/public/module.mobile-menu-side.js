@@ -95,17 +95,6 @@
 			}
 		});
 
-		// Sub Menu Close.
-		_this.$sub_close.on('click', function(){
-			// Check sub menu is active first.
-			if(_this.sub_menu_active){
-				// Hide mobile menu.
-				_this.hide_sub_menu();
-				// Set flag.
-				_this.sub_menu_active = false;
-			}
-		});
-
 		// Sub Menu Click.
 		$('a', _this.$menu).on('click', function(e){
 			var _self = $(this);
@@ -120,9 +109,20 @@
 		// Escape key pressed.
 		$(document).on('keyup', function(e){
 			// Check key type & menu is active.
-			if(e.keyCode == 27 && _this.menu_active){
+			if(e.keyCode == 27){
 				// Hide mobile menu.
-				_this.hide_primary_menu();
+				_this.$close.trigger('click');
+			}
+		});
+
+		// Sub Menu Close.
+		this.$sub_close.on('click', function(){
+			// Check sub menu is active first.
+			if(_this.sub_menu_active){
+				// Hide mobile menu.
+				_this.hide_sub_menu();
+				// Set flag.
+				_this.sub_menu_active = false;
 			}
 		});
 
@@ -137,17 +137,6 @@
 			}
 			// Check menu is active.
 			else if(_this.menu_active){
-				// Hide mobile menu.
-				_this.hide_primary_menu();
-				// Set flag.
-				_this.set_menu_flag(false);
-			}
-		});
-
-		// Close menu.
-		this.$content.on('click', function(){
-			// Check menu is active.
-			if(_this.menu_active){
 				// Hide mobile menu.
 				_this.hide_primary_menu();
 				// Set flag.
@@ -239,7 +228,7 @@
 		var _this = this;
 
 		// Set close button text.
-		this.$close.html('<i class="icon icon--menu--close"></i> Close Menu');
+		this.$close.html('X');
 		// Remove 80% width from sub menus.
 		$('.active-sub-menu').css({'width': ''});
 		// Wait 10ms.
