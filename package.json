@@ -51,6 +51,7 @@
     "dropzone"         : "*",
     "fancybox"         : "*",
     "handlebars"       : "*",
+    "history"          : "*",
     "jquery"           : "*",
     "jquery-ui"        : "*",
     "jquery-touchswipe": "*",
@@ -58,7 +59,7 @@
     "moment"           : "*",
     "pikaday"          : "*",
     "react"            : "^0.13.3",
-    "react-router"     : "^1.0.0-rc1",
+    "react-router"     : "^1.0.0",
     "react-tools"      : "^0.13.3",
     "underscore"       : "*",
     "waypoints"        : "*"
