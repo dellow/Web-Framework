@@ -27,7 +27,7 @@ var helloWorld = function(){
 	return 'Hello world!';
 }
 // Get module.
-var Module = require('../../src/dist/js/public/module.xxx');
+// var Module = require('../../src/dist/js/public/module.sample');
 
 
 /* ======================================================== */
@@ -48,7 +48,7 @@ describe('Hello world', function(){
         expect(helloWorld()).toContain('world');
     });
 	// Spec.
-	it('says close', function(){
-		expect(Module.test()).toEqual('close');
-	});
+	// it('says close', function(){
+	// 	expect(Module.test()).toEqual('close');
+	// });
 });
