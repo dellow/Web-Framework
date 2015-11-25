@@ -4,6 +4,7 @@ __X.X.X__:
 * Changed the release task `version` parameter to `ver` to prevent clashes with Node Version check.
 * Added more exclusions in the release task due to changes to the JS directory.
 * Added undefined to list of isEmpty Helper values.
+* Fixed Ajax helper calling Underscore isEmpty rather than internal helpers.
 
 __2.2.1__:
 * General fixes and improvements.

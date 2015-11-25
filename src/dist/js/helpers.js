@@ -155,7 +155,7 @@
     	// Default data.
     	var default_params = {
 			ajaxrequest: true,
-			request    : (!_.isEmpty(request)) ? request : false
+			request    : (!Helper.isEmpty(request)) ? request : false
     	};
     	// Get params (if any).
     	var optional_params = Helper.parse_url_params(url);
