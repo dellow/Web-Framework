@@ -77,7 +77,7 @@
      * @version 1.0.0
 	**/
     Helper.isEmpty = function(value){
-        return (value == null || value === '' || value.length === 0);
+        return (value == undefined || value == null || value === '' || value.length === 0);
     }
 
 	/**
