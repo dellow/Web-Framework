@@ -5,6 +5,7 @@ __X.X.X__:
 * Added more exclusions in the release task due to changes to the JS directory.
 * Added undefined to list of isEmpty Helper values.
 * Fixed Ajax helper calling Underscore isEmpty rather than internal helpers.
+* Improved sample module.
 
 __2.2.1__:
 * General fixes and improvements.

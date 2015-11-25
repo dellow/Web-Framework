@@ -35,12 +35,14 @@
      * @version 1.0.0
     **/
     Module.prototype.init = function(e){
-        var self = $(e.currentTarget),
-            data = self.data('sample') || false;
+        // Globally cache this element.
+        this.$self = $(e.currentTarget);
+        // Vars.
+        var data_attr = self.data('sample') || false;
 
         // Check a data attribute exists.
-        if(data){
-            this.some_method(data);
+        if(data_attr){
+            this.some_method(data_attr);
         }
         else{
             Helpers.log("Some message here.", "negative");
@@ -54,7 +56,7 @@
      * @since 1.0.0
      * @version 1.0.0
     **/
-    Module.prototype.some_method = function(data){
+    Module.prototype.some_method = function(data_attr){
         return this.do_action_with_data();
     }
 
