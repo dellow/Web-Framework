@@ -61,7 +61,7 @@
 	Helper.mhi = function(el){
 		// Clone element.
 		var clone = el.clone();
-		// Place above viewport and measure height.
+		// Add to DOM in place and measure height.
 		var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto'}).prependTo(el.parent()).outerHeight();
 		// Destroy the clone.
 		clone.remove();
