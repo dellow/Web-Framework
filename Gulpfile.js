@@ -315,7 +315,12 @@ gulp.task('test:jasmine', function(done){
 	var Server = require('karma').Server;
 
     // Task.
-	return new Server({configFile: __dirname + '/karma.conf.js'}, done).start();
+	return new Server({
+		configFile: __dirname + '/karma.conf.js',
+		singleRun: true
+	}, function(exitCode){
+	    done();
+	}).start();
 });
 
 
