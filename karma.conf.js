@@ -5,7 +5,7 @@ module.exports = function(config){
         colors   : true,
         logLevel : config.LOG_DISABLE,
         // logLevel : config.LOG_DEBUG,
-        autoWatch: true,
+        autoWatch: false,
         singleRun: true,
         plugins: [
             'karma-browserify',
