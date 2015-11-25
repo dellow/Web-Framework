@@ -125,10 +125,11 @@ gulp.task('css', function(){
 gulp.task('js:common', function(){
 	// Require.
 	var browserify = require('browserify'),
+		babelify   = require('babelify'),
 		rename     = require('gulp-rename');
 
 	// Task.
-	return browserify(dist_dir + 'js/vendor/').bundle()
+	return browserify(dist_dir + 'js/vendor/').transform(babelify).bundle()
 		.on('error', task_handler)
 		.pipe(source('index.js'))
 	    .pipe(buffer())
