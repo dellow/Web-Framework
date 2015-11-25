@@ -8,6 +8,7 @@ __X.X.X__:
 * Improved sample module.
 * Fixed issue with tests not running automatically.
 * Added Babelify to the JS task permanently.
+* Updated React library and add React Test Utils.
 
 __2.2.1__:
 * General fixes and improvements.
