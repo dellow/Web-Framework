@@ -6,6 +6,7 @@ __X.X.X__:
 * Added undefined to list of isEmpty Helper values.
 * Fixed Ajax helper calling Underscore isEmpty rather than internal helpers.
 * Improved sample module.
+* Fixed issue with tests not running automatically.
 
 __2.2.1__:
 * General fixes and improvements.

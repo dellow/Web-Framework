@@ -4,8 +4,8 @@ module.exports = function(config){
         port     : 9876,
         colors   : true,
         logLevel : config.LOG_DEBUG,
-        autoWatch: false,
-        singleRun: false,
+        autoWatch: true,
+        singleRun: true,
         plugins: [
             'karma-browserify',
             'karma-html-reporter',
@@ -34,7 +34,7 @@ module.exports = function(config){
         ],
         browserify: {
             debug: false,
-            transform: ['babelify'] // Seems to fix errors when testing against React {Link}
+            transform: ['babelify']
         },
         htmlReporter: {
             outputDir              : './karma/',
@@ -43,7 +43,7 @@ module.exports = function(config){
             namedFiles             : false,
             pageTitle              : null,
             urlFriendlyName        : false,
-            reportName             : 'report-summary-filename',
+            reportName             : 'report',
             preserveDescribeNesting: false,
             foldAll                : false
         }
