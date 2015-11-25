@@ -9,6 +9,7 @@ __X.X.X__:
 * Fixed issue with tests not running automatically.
 * Added Babelify to the JS task permanently.
 * Updated React library and add React Test Utils.
+* Added Function-Bind polyfill for tests.
 
 __2.2.1__:
 * General fixes and improvements.

@@ -49,6 +49,7 @@
   "dependencies": {
     "dropzone"               : "*",
     "fancybox"               : "*",
+    "function-bind"          : "*",
     "handlebars"             : "*",
     "history"                : "*",
     "jquery"                 : "*",
