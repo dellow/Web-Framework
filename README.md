@@ -27,10 +27,14 @@
 
 <a name="about"></a>
 ## About
-This is a fast Framework and/or Project Wrapper and workflow for web projects  that utilises Gulp as a build tool.
+This is a fast Framework and/or Project Wrapper and workflow for web projects  that utilises Gulp as a build tool. It's also set up to work with Travis CI which will run any defined spec tests by default.
+
+Testing is done with Jasmine for unit tests and Nightwatch for functional tests.
 
 <a name="requirements"></a>
 ## Requirements
+The only two system requirements are Node and Gulp. All other dependencies of this Framework will be downloaded and installed when the install process is run.
+
 - [NodeJS](http://nodejs.org/)
 - [Gulp](http://gulpjs.com)
 

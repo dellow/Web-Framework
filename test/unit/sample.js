@@ -41,7 +41,7 @@ describe('Hello world', function(){
 	});
 	// Spec.
 	it('says hello', function(){
-		expect(helloWorld()).toNotEqual('Hi!');
+		expect(helloWorld()).not.toEqual('Hi!');
 	});
 	// Spec.
     it('says world', function(){
