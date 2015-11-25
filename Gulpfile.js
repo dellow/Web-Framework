@@ -51,13 +51,13 @@ gulp.task('default', [
 });
 
 // Task.
-gulp.task('tests', [
+gulp.task('test', [
 	'test:jasmine',
 	'test:nightwatch'
 ], function(){
 	// Show notification.
 	gulp.src('gulpfile.js').pipe(notify({
-		message: 'Tests task is complete'
+		message: 'Test task is complete'
 	}));
 });
 
