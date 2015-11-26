@@ -59,6 +59,7 @@
     "moment"                 : "*",
     "pikaday"                : "*",
     "react"                  : "^0.14.3",
+    "react-dom"              : "^0.14.3",
     "react-tools"            : "^0.13.3",
     "react-addons-test-utils": "^0.14.3",
     "react-router"           : "^1.0.0",
