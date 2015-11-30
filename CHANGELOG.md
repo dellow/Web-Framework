@@ -11,6 +11,8 @@ __X.X.X__:
 * Updated React library and add React Test Utils.
 * Added Function-Bind polyfill for tests.
 * Improved the side mobile menu style and function.
+* Improved form validation styling.
+* Added better validation errors if using the placeholder error and the field is not empty but invalid.
 
 __2.2.1__:
 * General fixes and improvements.

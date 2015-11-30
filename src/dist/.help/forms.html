@@ -43,10 +43,64 @@
 	<section>
 		<div class="pattern resizable">
 			<div class="pattern__details">
+				<span class="pattern__title">Contact</span>
+			</div>
+			<div class="pattern__view">
+				<!-- JS Validation Success Response -->
+				<div class="js-validation-form-success">
+					Thanks. The form has successfully been submitted!
+				</div>
+				<!-- PHP Form Responses -->
+				<div class="page__form__php-responses">
+
+				</div>
+				<!-- Form -->
+				<form class="page__form__contact page__form--block js-validate" action="http://thispageurl.com/contact/" method="post">
+					<fieldset>
+						<!-- Name -->
+						<div class="field">
+							<label for="contact__fullname">Name <abbr title="Required">*</abbr></label>
+							<input type="text" name="contact[fullname]" id="contact__fullname" placeholder="e.g. John Smith" data-validation-message="Please enter your name" aria-required="true" required>
+							<span class="note">A note about this field.</span>
+						</div>
+						<!-- Name -->
+						<div class="field">
+							<label for="contact__emailaddress">Email Address <abbr title="Required">*</abbr></label>
+							<input type="email" name="contact[emailaddress]" id="contact__emailaddress" placeholder="e.g. john.smith@example.com" data-validation-message="Please enter a valid email address" aria-required="true" required>
+							<span class="note">A note about this field.</span>
+						</div>
+						<!-- Telephone -->
+						<div class="field">
+							<label for="contact__telephone">Phone</label>
+							<input type="text" name="contact[telephone]" id="contact__telephone">
+							<span class="note">A note about this field.</span>
+						</div>
+						<!-- Message -->
+						<div class="field">
+							<label for="contact__message">Your Message</label>
+							<textarea name="contact[message]" id="contact__message" placeholder="Your message"></textarea>
+							<span class="note">A note about this field.</span>
+						</div>
+					</fieldset>
+					<button type="submit" class="form-button">Submit</button>
+				</form>
+			</div>
+		</div>
+	</section>
+
+</div>
+
+<hr class="hr__styled-seperator">
+
+<div class="container">
+
+	<section>
+		<div class="pattern resizable">
+			<div class="pattern__details">
 				<span class="pattern__title">Checkout</span>
 			</div>
 			<div class="pattern__view">
-				<form class="js-validate form-block" action="http://thispageurl.com/contact/" method="post">
+				<form class="js-validate page__form--block" action="http://thispageurl.com/contact/" method="post">
 					<fieldset>
 						<!-- Text input -->
 						<div class="field">
@@ -99,7 +153,7 @@
 
 	<section>
 		<h2>Abstractions</h2>
-		<p>Use the display selector on the right hand side to switch between form style types. These abstractions are controlled via a <code>form-*</code> class on the <code>&lt;form></code> element. For example block style forms would have a <code>.form-block</code> class.</p>
+		<p>Use the display selector on the right hand side to switch between form style types. These abstractions are controlled via a <code>form-*</code> class on the <code>&lt;form></code> element. For example block style forms would have a <code>.page__form--block</code> class.</p>
 		<p>You can test the jQuery Form Validation script by trying to submit the form without any values. This page can also be saved as a .php file and tested with the included PHP Mailer script.</p>
 		<div class="pattern resizable">
 			<div class="pattern__details">
@@ -121,7 +175,7 @@
 				<div class="form-success">
 					<p>Thanks for submitting the form!</p>
 				</div>
-				<form class="js-validate form-block" action="http://thispageurl.com/contact/" method="post">
+				<form class="js-validate page__form--block" action="http://thispageurl.com/contact/" method="post">
 					<!-- Text input -->
 					<div class="field">
 						<label for="exampleForm__fullname">Name <abbr title="Required">*</abbr></label>
@@ -244,7 +298,7 @@
 			var data = 'form-' + $(this).data('switch');
 			var text = $(this).text();
 
-			$('.js-validate').removeClass('form-block form-inline-block form-inline').addClass(data);
+			$('.js-validate').removeClass('page__form--block page__form--inline-block page__form--inline').addClass(data);
 			$('.js-title').text(text);
 		});
 	});

@@ -375,6 +375,9 @@
             $('.js-validation-field-has-errors', form.$elem).removeClass('js-validation-field-has-errors');
             // Remove error class from fieldsets.
             $('.js-validation-fieldset-has-errors', form.$elem).removeClass('js-validation-fieldset-has-errors');
+            // Remove error class from inputs with placeholder error..
+            $('.js-validation-field--placeholder', form.$elem).removeClass('js-validation-field--placeholder');
+            $('.js-validation-field--placeholder--span', form.$elem).remove();
             // Hide email suggester.
             $('.js-validation-suggestion', form.$elem).hide();
             // Remove current classes.
@@ -418,8 +421,19 @@
                     }
                     else{
                         if(_self.settings.appendErrorToPlaceholder){
+                            // Find label.
                             el.parent().find('label, .label').addClass(_self.settings.errorClass);
-                            el.attr('placeholder', error);
+                            // Check value length.
+                            if(el.val().length > 0){
+                                // Add error class to placeholder.
+                                el.parent('.field').addClass('js-validation-field--placeholder');
+                                // Add a span to the field.
+                                el.before('<span class="js-validation-field--placeholder--span">' + error + '</span>');
+                            }
+                            else{
+                                // Add error to placeholder.
+                                el.attr('placeholder', error);
+                            }
                         }
                         else{
                             // Add error element to field.
@@ -586,7 +600,7 @@
                     // Validation Complete.
                     _self.validation_success();
                     // Fade in success element.
-                    _self.$elem.prev(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
+                    _self.$elem.parent().find(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
                     // Callback
                     _self.settings.successCallback.call(_self, callback_parameters);
                 });
@@ -601,7 +615,7 @@
                         // Validation Complete.
                         _self.validation_success();
                         // Fade in success element.
-                        _self.$elem.prev(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
+                        _self.$elem.parent().find(_self.success_element).fadeIn((_self.settings.fadeOutAnimationSpeed / 2));
                         // Callback
                         _self.settings.successCallback.call(_self, callback_parameters);
                     });

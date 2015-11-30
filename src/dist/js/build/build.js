@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified JavaScript
 Application Version: 1.0.0
-Compiled: Wed Nov 18 2015 09:54:49 GMT+0000 (GMT)
+Compiled: Mon Nov 30 2015 12:04:31 GMT+0000 (GMT)
 ========================================================================== */
 
 // Set environment variable
@@ -13610,7 +13610,7 @@ require('./wiselinks');
 	Helper.mhi = function(el){
 		// Clone element.
 		var clone = el.clone();
-		// Place above viewport and measure height.
+		// Add to DOM in place and measure height.
 		var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto'}).prependTo(el.parent()).outerHeight();
 		// Destroy the clone.
 		clone.remove();
@@ -13626,7 +13626,7 @@ require('./wiselinks');
      * @version 1.0.0
 	**/
     Helper.isEmpty = function(value){
-        return (value == null || value === '' || value.length === 0);
+        return (value == undefined || value == null || value === '' || value.length === 0);
     }
 
 	/**
@@ -13704,7 +13704,7 @@ require('./wiselinks');
     	// Default data.
     	var default_params = {
 			ajaxrequest: true,
-			request    : (!_.isEmpty(request)) ? request : false
+			request    : (!Helper.isEmpty(request)) ? request : false
     	};
     	// Get params (if any).
     	var optional_params = Helper.parse_url_params(url);
@@ -14127,17 +14127,6 @@ require('./wiselinks');
 			}
 		});
 
-		// Sub Menu Close.
-		_this.$sub_close.on('click', function(){
-			// Check sub menu is active first.
-			if(_this.sub_menu_active){
-				// Hide mobile menu.
-				_this.hide_sub_menu();
-				// Set flag.
-				_this.sub_menu_active = false;
-			}
-		});
-
 		// Sub Menu Click.
 		$('a', _this.$menu).on('click', function(e){
 			var _self = $(this);
@@ -14152,9 +14141,20 @@ require('./wiselinks');
 		// Escape key pressed.
 		$(document).on('keyup', function(e){
 			// Check key type & menu is active.
-			if(e.keyCode == 27 && _this.menu_active){
+			if(e.keyCode == 27){
 				// Hide mobile menu.
-				_this.hide_primary_menu();
+				_this.$close.trigger('click');
+			}
+		});
+
+		// Sub Menu Close.
+		this.$sub_close.on('click', function(){
+			// Check sub menu is active first.
+			if(_this.sub_menu_active){
+				// Hide mobile menu.
+				_this.hide_sub_menu();
+				// Set flag.
+				_this.sub_menu_active = false;
 			}
 		});
 
@@ -14169,17 +14169,6 @@ require('./wiselinks');
 			}
 			// Check menu is active.
 			else if(_this.menu_active){
-				// Hide mobile menu.
-				_this.hide_primary_menu();
-				// Set flag.
-				_this.set_menu_flag(false);
-			}
-		});
-
-		// Close menu.
-		this.$content.on('click', function(){
-			// Check menu is active.
-			if(_this.menu_active){
 				// Hide mobile menu.
 				_this.hide_primary_menu();
 				// Set flag.
@@ -14271,7 +14260,7 @@ require('./wiselinks');
 		var _this = this;
 
 		// Set close button text.
-		this.$close.html('<i class="icon icon--menu--close"></i> Close Menu');
+		this.$close.html('X');
 		// Remove 80% width from sub menus.
 		$('.active-sub-menu').css({'width': ''});
 		// Wait 10ms.

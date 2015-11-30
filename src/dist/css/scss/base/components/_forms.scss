@@ -230,7 +230,7 @@ form {
 /* ----------------------------------------------------------------------- */
 
 
-.form-block {
+.page__form--block {
 	// Field container
 	.field-container {
 		label {
@@ -282,7 +282,7 @@ form {
 /* ----------------------------------------------------------------------- */
 
 
-.form-inline-block {
+.page__form--inline-block {
 	// Field container
 	.field-container {
 		label {
@@ -343,7 +343,7 @@ form {
 /* ----------------------------------------------------------------------- */
 
 
-.form-inline {
+.page__form--inline {
 	// Labels
 	label, .label, input, .input, select, textarea, .field-container {
 		width: auto;

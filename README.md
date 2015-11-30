@@ -272,7 +272,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .alpha (Headings)
     .beta (Headings)
     .bg
-    .btn
+    .btn (Buttons class namespace)
     .box
     .button
     .center
@@ -291,7 +291,6 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .field
     .fl
     .fr
-    .form-*
     .full
     .gamma (Headings)
     .grid
@@ -301,7 +300,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .ie6
     .ie7
     .ie8
-    .js-* (For JavaScript binds)
+    .js-* (JavaScript bind namespace)
     .label
     .left
     .loading
@@ -315,7 +314,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .oldie
     .opp
     .page-numbers
-    .page__* (Global page var)
+    .page__* (Global Page class namespace)
     .positive
     .prev
     .qty
@@ -329,7 +328,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .sub-menu-active
     .success
     .table
-    .u-* (Utility classes)
+    .u-* (Utility classes namespace)
     .v-small
     .voucher
     .warning
