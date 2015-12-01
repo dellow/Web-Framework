@@ -16,6 +16,12 @@
 	&--x4 {
 		@include nudge(padding, 4 0);
 	}
+    &--ntp {
+        padding-top: 0;
+    }
+    &--nbp {
+        padding-bottom: 0;
+    }
 }
 
 /* -- Slab colors -- */
