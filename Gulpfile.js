@@ -61,8 +61,8 @@ gulp.task('default', [
 
 // Task.
 gulp.task('test', [
-	'test:jasmine',
-	'test:nightwatch'
+	'test:unit',
+	'test:functional'
 ], function(){
 	// Show notification.
 	gulp.src('gulpfile.js').pipe(notify({
@@ -316,10 +316,10 @@ gulp.task('images', function(){
 
 
 /* =========================================================================== */
-/* Testing - Jasmine
+/* Testing - Unit
 /* Runs all unit tests with Jasmine via Karma.
 /* =========================================================================== */
-gulp.task('test:jasmine', function(done){
+gulp.task('test:unit', function(done){
 	// Require.
 	var Server = require('karma').Server;
 
@@ -334,10 +334,10 @@ gulp.task('test:jasmine', function(done){
 
 
 /* =========================================================================== */
-/* Testing - Nightwatch
+/* Testing - Functional
 /* Runs all functional tests with Nightwatch.
 /* =========================================================================== */
-gulp.task('test:nightwatch', function(){
+gulp.task('test:functional', function(){
 	// Require.
 	var nightwatch = require('gulp-nightwatch');
 

@@ -14,6 +14,7 @@ __X.X.X__:
 * Improved form validation styling.
 * Added better validation errors if using the placeholder error and the field is not empty but invalid.
 * Updated some comments and the year to the 2016.
+* Changed the name of the test tasks to `unit` and `functional` irrespective of the test suites used.
 
 __2.2.1__:
 * General fixes and improvements.
