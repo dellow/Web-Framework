@@ -3,7 +3,7 @@
  *
  * App
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -43,7 +43,7 @@
  *
  * Helpers
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -267,7 +267,7 @@
  *
  * Module
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -526,7 +526,7 @@
  *
  * Module
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -794,7 +794,7 @@
  *
  * Public
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -836,7 +836,7 @@
  *
  * Application or Website name
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/

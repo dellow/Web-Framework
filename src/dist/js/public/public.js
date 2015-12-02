@@ -2,7 +2,7 @@
  *
  * Public
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/

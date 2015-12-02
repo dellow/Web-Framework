@@ -13,6 +13,7 @@ __X.X.X__:
 * Improved the side mobile menu style and function.
 * Improved form validation styling.
 * Added better validation errors if using the placeholder error and the field is not empty but invalid.
+* Updated some comments and the year to the 2016.
 
 __2.2.1__:
 * General fixes and improvements.

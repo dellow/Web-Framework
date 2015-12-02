@@ -1,3 +1,12 @@
+/**
+ *
+ * Karma - Runs unit tests for us.
+ *
+ * Copyright 2016, Author Name
+ * Some information on the license.
+ *
+**/
+
 module.exports = function(config){
     config.set({
         basePath : '',

@@ -11,6 +11,7 @@
   ],
   "main": [
     "src/dist/js/app/index.js",
+    "src/dist/js/public/index.js",
     "src/dist/js/vendor/index.js",
     "src/dist/css/scss/build.scss"
   ],

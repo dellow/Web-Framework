@@ -45,7 +45,7 @@ var ModernizrProto = require('./ModernizrProto');
   // Overwrite name so constructor name is nicer :D
   Modernizr = new Modernizr();
 
-  
+
 
 module.exports = Modernizr;
 },{"./ModernizrProto":3}],3:[function(require,module,exports){
@@ -92,18 +92,18 @@ var tests = require('./tests');
     }
   };
 
-  
+
 
 module.exports = ModernizrProto;
 },{"./tests":10}],4:[function(require,module,exports){
 
   var classes = [];
-  
+
 module.exports = classes;
 },{}],5:[function(require,module,exports){
 
   var docElement = document.documentElement;
-  
+
 module.exports = docElement;
 },{}],6:[function(require,module,exports){
 
@@ -113,14 +113,14 @@ module.exports = docElement;
   function is( obj, type ) {
     return typeof obj === type;
   }
-  
+
 module.exports = is;
 },{}],7:[function(require,module,exports){
 var docElement = require('./docElement');
 
 
   var isSVG = docElement.nodeName.toLowerCase() === 'svg';
-  
+
 
 module.exports = isSVG;
 },{"./docElement":5}],8:[function(require,module,exports){
@@ -155,7 +155,7 @@ var isSVG = require('./isSVG');
 
   }
 
-  
+
 
 module.exports = setClasses;
 },{"./Modernizr":2,"./docElement":5,"./isSVG":7}],9:[function(require,module,exports){
@@ -228,13 +228,13 @@ var is = require('./is');
     }
   }
 
-  
+
 
 module.exports = testRunner;
 },{"./Modernizr":2,"./classes":4,"./is":6,"./tests":10}],10:[function(require,module,exports){
 
   var tests = [];
-  
+
 module.exports = tests;
 },{}],11:[function(require,module,exports){
 /*!
@@ -13511,7 +13511,7 @@ require('./wiselinks');
  *
  * App
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -13551,7 +13551,7 @@ require('./wiselinks');
  *
  * Helpers
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -13775,7 +13775,7 @@ require('./wiselinks');
  *
  * Module
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -14034,7 +14034,7 @@ require('./wiselinks');
  *
  * Module
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -14302,7 +14302,7 @@ require('./wiselinks');
  *
  * Public
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -14344,7 +14344,7 @@ require('./wiselinks');
  *
  * Application or Website name
  *
- * Copyright 2015, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
