@@ -181,19 +181,3 @@
 		display: inline-block;
 	}
 }
-
-
-/* ----------------------------------------------------------------------- */
-
-
-/* -- Mobile Animate -- */
-.page__mobile-animate {
-	// Responsive
-	@include respond-to($mobile_menu){
-		max-height: 0px;
-		display: block !important;
-		overflow-y: hidden !important;
-		transform: translateZ(0);
-		transition: max-height $menu_animation ease-in-out;
-	}
-}

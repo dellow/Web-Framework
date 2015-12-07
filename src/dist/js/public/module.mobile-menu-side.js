@@ -96,7 +96,7 @@
 		});
 
 		// Sub Menu Click.
-		$('a', _this.$menu).on('click', function(e){
+		$(_this.$menu).on('click', 'a', function(e){
 			var _self = $(this);
 
 			if(_self.next('.sub-menu').length){

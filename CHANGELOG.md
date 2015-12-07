@@ -15,6 +15,7 @@ __X.X.X__:
 * Added better validation errors if using the placeholder error and the field is not empty but invalid.
 * Updated some comments and the year to the 2016.
 * Changed the name of the test tasks to `unit` and `functional` irrespective of the test suites used.
+* Removed Wiselinks and Vertical Menu.
 
 __2.2.1__:
 * General fixes and improvements.
