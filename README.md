@@ -309,7 +309,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .qty
     .readonly (Form element replication)
     .right
-    .sect-* (Section block)
+    .sect-* (Section block namespace)
     .small
     .slab
     .status (Alerts: Type)

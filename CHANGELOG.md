@@ -17,7 +17,7 @@ __2.3.0__:
 * Changed the name of the test tasks to `unit` and `functional` irrespective of the test suites used.
 * Removed Wiselinks and Vertical Menu.
 * Annotation fixes.
-* Re-named `pagination` and `breadcrumb` blocks to use `sect-` prefix.
+* Re-named `pagination` and `breadcrumb` blocks to use `sect-` namespace.
 
 __2.2.1__:
 * General fixes and improvements.
