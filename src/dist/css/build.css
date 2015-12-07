@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified Stylesheet
 Application Version: 1.0.0
-Compiled: Mon Nov 30 2015 12:07:30 GMT+0000 (GMT)
+Compiled: Mon Dec 07 2015 16:51:02 GMT+0000 (GMT)
 ========================================================================== */
 
 @charset "UTF-8";
@@ -775,11 +775,11 @@ body:not(.no-debug) [id]:not(form):not(input):not(select):not(textarea):after {
 
 /* ----------------------------------------------------------------------- */
 /* -- Positioning -- */
-.fl {
+.u-fl, .alignleft {
   float: left;
 }
 
-.fr {
+.u-fr, .alignright {
   float: right;
 }
 
@@ -1129,56 +1129,56 @@ body {
 
 /* ----------------------------------------------------------------------- */
 /* -- Heading Formatting -- */
-h1, .alpha, h2, .beta, h3, .gamma, h4, .delta, h5, .epsilon, h6, .zeta {
+h1, h2, h3, h4, h5, h6 {
   -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   color: #231f20;
 }
 
-h1.collapse-margin, .alpha.collapse-margin, h2.collapse-margin, .beta.collapse-margin, h3.collapse-margin, .gamma.collapse-margin, h4.collapse-margin, .delta.collapse-margin, h5.collapse-margin, .epsilon.collapse-margin, h6.collapse-margin, .zeta.collapse-margin {
+h1.collapse-margin, h2.collapse-margin, h3.collapse-margin, h4.collapse-margin, h5.collapse-margin, h6.collapse-margin {
   margin: 0;
 }
 
-h1:first-child, .alpha:first-child, h2:first-child, .beta:first-child, h3:first-child, .gamma:first-child, h4:first-child, .delta:first-child, h5:first-child, .epsilon:first-child, h6:first-child, .zeta:first-child {
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
   margin-top: 0;
 }
 
-h1, .alpha {
+h1 {
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   font-size: 2.0625rem;
   line-height: 1.45455;
 }
 
-h2, .beta {
+h2 {
   margin-top: 1.5rem;
   margin-bottom: 0.375rem;
   font-size: 1.8125rem;
   line-height: 1.65517;
 }
 
-h3, .gamma {
+h3 {
   margin-top: 0.75rem;
   margin-bottom: 0.375rem;
   font-size: 1.625rem;
   line-height: 1.84615;
 }
 
-h4, .delta {
+h4 {
   margin-top: 0.75rem;
   margin-bottom: 0.375rem;
   font-size: 1.4375rem;
   line-height: 1.04348;
 }
 
-h5, .epsilon {
+h5 {
   margin-top: 0.75rem;
   margin-bottom: 0rem;
   font-size: 1.3125rem;
   line-height: 1.14286;
 }
 
-h6, .zeta {
+h6 {
   margin-top: 0.75rem;
   margin-bottom: 0rem;
   font-size: 1.125rem;
@@ -2003,7 +2003,7 @@ ul.alert.box li {
   position: relative;
 }
 
-.nav-primary li .sub-menu {
+.nav-primary li__sub-menu {
   display: none;
   position: absolute;
   left: 0;
@@ -2011,12 +2011,12 @@ ul.alert.box li {
   z-index: 100;
 }
 
-.nav-primary li .sub-menu li {
+.nav-primary li__sub-menu li {
   display: block;
   white-space: nowrap;
 }
 
-.nav-primary li .sub-menu li .sub-menu {
+.nav-primary li__sub-menu li__sub-menu {
   left: 100%;
 }
 
@@ -2091,7 +2091,7 @@ ul.alert.box li {
   position: static;
 }
 
-.page__mobile .nav-primary li .sub-menu {
+.page__mobile .nav-primary li__sub-menu {
   width: 0;
   height: 100%;
   display: block;
@@ -2107,7 +2107,7 @@ ul.alert.box li {
   transition: width 300ms ease;
 }
 
-.page__mobile .nav-primary li .sub-menu__close {
+.page__mobile .nav-primary li__sub-menu__close {
   position: absolute;
   top: 24px;
   top: 1.5rem;
@@ -2115,7 +2115,7 @@ ul.alert.box li {
   left: 1.5rem;
 }
 
-.page__mobile .nav-primary li .sub-menu.active-sub-menu {
+.page__mobile .nav-primary li__sub-menu.active-sub-menu {
   left: 0;
 }
 
@@ -2176,20 +2176,6 @@ ul.alert.box li {
   }
 }
 
-/* ----------------------------------------------------------------------- */
-/* -- Mobile Animate -- */
-@media only screen and (max-width: 48em) {
-  .page__mobile-animate {
-    max-height: 0px;
-    display: block !important;
-    overflow-y: hidden !important;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-transition: max-height 300ms ease-in-out;
-    transition: max-height 300ms ease-in-out;
-  }
-}
-
 /* ==========================================================================
    Base > Components > Slabs
    Slabs create sections styled with a background colour. They differ
@@ -2215,6 +2201,14 @@ ul.alert.box li {
   padding: 6rem 0rem;
 }
 
+.slab--ntp {
+  padding-top: 0;
+}
+
+.slab--nbp {
+  padding-bottom: 0;
+}
+
 /* -- Slab colors -- */
 .bg--color-black, .slab--color-black {
   color: inherit;
@@ -2231,7 +2225,7 @@ ul.alert.box li {
   background: #DDDDDD;
 }
 
-.bg--color-grey.opp, .slab--color-grey.opp {
+.bg--color-grey__.opp, .slab--color-grey__.opp {
   background: #333333;
 }
 
@@ -2240,7 +2234,7 @@ ul.alert.box li {
   background: #3498DB;
 }
 
-.bg--color-blue.opp, .slab--color-blue.opp {
+.bg--color-blue__.opp, .slab--color-blue__.opp {
   background: #217dbb;
 }
 
@@ -2249,7 +2243,7 @@ ul.alert.box li {
   background: #2ECC71;
 }
 
-.bg--color-green.opp, .slab--color-green.opp {
+.bg--color-green__.opp, .slab--color-green__.opp {
   background: #25a25a;
 }
 
@@ -2258,7 +2252,7 @@ ul.alert.box li {
   background: #E67E22;
 }
 
-.bg--color-orange.opp, .slab--color-orange.opp {
+.bg--color-orange__.opp, .slab--color-orange__.opp {
   background: #bf6516;
 }
 
@@ -2267,7 +2261,7 @@ ul.alert.box li {
   background: #C4122f;
 }
 
-.bg--color-red.opp, .slab--color-red.opp {
+.bg--color-red__.opp, .slab--color-red__.opp {
   background: #950e24;
 }
 
@@ -2276,7 +2270,7 @@ ul.alert.box li {
   background: #F1C40F;
 }
 
-.bg--color-yellow.opp, .slab--color-yellow.opp {
+.bg--color-yellow__.opp, .slab--color-yellow__.opp {
   background: #c29d0b;
 }
 
@@ -2293,7 +2287,7 @@ ul.alert.box li {
   background: #FF0000;
 }
 
-.bg--color-color.opp, .slab--color-color.opp {
+.bg--color-color__.opp, .slab--color-color__.opp {
   background: #cc0000;
 }
 
@@ -2360,7 +2354,7 @@ table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight
 }
 
 /* ==========================================================================
-   Base > Forms
+   Base > Components > Forms
    Styling for elements within a form tag.
 ========================================================================== */
 form {
@@ -2696,7 +2690,7 @@ form ::placeholder {
    Base > Blocks > Breadcrumb
 ========================================================================== */
 /* -- Breadcrumb -- */
-.breadcrumb > a {
+.sect-breadcrumb > a {
   font-weight: bold;
 }
 
@@ -2704,7 +2698,7 @@ form ::placeholder {
    Base > Blocks > Pagination
 ========================================================================== */
 /* -- Pagination -- */
-.pagination .page-numbers {
+.sect-pagination__numbers {
   padding: 6px 12px;
   padding: 0.375rem 0.75rem;
   border-radius: 3px;
@@ -2715,11 +2709,11 @@ form ::placeholder {
   transition: background-color 300ms ease;
 }
 
-.pagination .page-numbers.current {
+.sect-pagination__numbers--active {
   background: #950e24;
 }
 
-.pagination .page-numbers:hover {
+.sect-pagination__numbers:hover {
   background: #950e24;
 }
 
@@ -2748,21 +2742,7 @@ form ::placeholder {
    Use responsive mixin inside the correct partial for local responsive
    styles.
 ========================================================================== */
-@media only screen and (max-width: 48em) {
-  /* -- Exclusions -- */
-  .hide-tablet {
-    display: none;
-  }
-}
-
 /* ----------------------------------------------------------------------- */
-@media only screen and (max-width: 35.5em) {
-  /* -- Exclusions -- */
-  .hide-mobile {
-    display: none;
-  }
-}
-
 /* ==========================================================================
    Base > Print
    Print styling
@@ -2852,34 +2832,60 @@ form ::placeholder {
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
+/* ==========================================================================
+   Site > Objects
+   Styling for small reusable components.
+========================================================================== */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
+/* ==========================================================================
+   Site > Components > Buttons
+   Styles for buttons. These are not form buttons but clickable
+   anchors such as Call to Actions.
+========================================================================== */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
+/* ==========================================================================
+   Site > Components > Grid
+   Grid layouts.
+========================================================================== */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
+/* ==========================================================================
+   Site > Components > Slabs
+   Slabs create sections styled with a background colour. They differ
+   from the `.bg` class by being naturally padded to provide content space.
+========================================================================== */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
+/* ==========================================================================
+   Site > Components > Forms
+   Styling for elements within a form tag.
+========================================================================== */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
+/* ==========================================================================
+   Site > Components > Menus
+   Styles for navigational menus.
+========================================================================== */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
+/* ==========================================================================
+   Site > Blocks > Sections
+   Global sections of styling.
+========================================================================== */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */

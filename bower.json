@@ -1,6 +1,6 @@
 {
   "name": "web-framework",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "A Gulp powered frontend framework, wrapper and workflow for web projects.",
   "license": "MIT",
   "authors": [
