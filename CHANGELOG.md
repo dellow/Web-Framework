@@ -16,6 +16,8 @@ __X.X.X__:
 * Updated some comments and the year to the 2016.
 * Changed the name of the test tasks to `unit` and `functional` irrespective of the test suites used.
 * Removed Wiselinks and Vertical Menu.
+* Annotation fixes.
+* Re-named `pagination` and `breadcrumb` blocks to use `sect-` prefix.
 
 __2.2.1__:
 * General fixes and improvements.

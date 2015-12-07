@@ -99,10 +99,10 @@
 		$(_this.$menu).on('click', 'a', function(e){
 			var _self = $(this);
 
-			if(_self.next('.sub-menu').length){
+			if(_self.next('ul').length){
 				e.preventDefault();
 				// Init sub menu.
-				_this.show_sub_menu(_self.next('.sub-menu'));
+				_this.show_sub_menu(_self.next('ul'));
 			}
 		});
 

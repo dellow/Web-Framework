@@ -387,23 +387,23 @@
 			<ul class="color-swatches">
 				<li>
 					<div class="bg bg--color-red"></div>
-					<div class="bg bg--color-red opp"></div>
+					<div class="bg bg--color-red bg--color-red__opp"></div>
 				</li>
 				<li>
 					<div class="bg bg--color-orange"></div>
-					<div class="bg bg--color-orange opp"></div>
+					<div class="bg bg--color-orange bg--color-orange__opp"></div>
 				</li>
 				<li>
 					<div class="bg bg--color-green"></div>
-					<div class="bg bg--color-green opp"></div>
+					<div class="bg bg--color-green bg--color-green__opp"></div>
 				</li>
 				<li>
 					<div class="bg bg--color-blue"></div>
-					<div class="bg bg--color-blue opp"></div>
+					<div class="bg bg--color-blue bg--color-blue__opp"></div>
 				</li>
 				<li>
 					<div class="bg bg--color-yellow"></div>
-					<div class="bg bg--color-yellow opp"></div>
+					<div class="bg bg--color-yellow bg--color-yellow__opp"></div>
 				</li>
 			</ul>
 		</div>
@@ -624,25 +624,25 @@
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Pagination</span></summary>
-<pre class="language-markup"><code>&lt;section class="pagination">
-	&lt;a href="#" class="page-numbers prev">&laquo; Prev&lt;/a>
-	&lt;a href="#" class="page-numbers">1&lt;/a>
-	&lt;a href="#" class="page-numbers current">2&lt;/a>
-	&lt;a href="#" class="page-numbers">3&lt;/a>
-	&lt;a href="#" class="page-numbers">4&lt;/a>
-	&lt;a href="#" class="page-numbers">5&lt;/a>
-	&lt;a href="#" class="page-numbers next">Next &raquo;&lt;/a>
+<pre class="language-markup"><code>&lt;section class="sect-pagination">
+	&lt;a href="#" class="sect-pagination__page-numbers sect-pagination__page-numbers--prev">&laquo; Prev&lt;/a>
+	&lt;a href="#" class="sect-pagination__page-numbers">1&lt;/a>
+	&lt;a href="#" class="sect-pagination__page-numbers sect-pagination__page-numbers--active">2&lt;/a>
+	&lt;a href="#" class="sect-pagination__page-numbers">3&lt;/a>
+	&lt;a href="#" class="sect-pagination__page-numbers">4&lt;/a>
+	&lt;a href="#" class="sect-pagination__page-numbers">5&lt;/a>
+	&lt;a href="#" class="sect-pagination__page-numbers sect-pagination__page-numbers--next">Next &raquo;&lt;/a>
 &lt;/section></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<section class="pagination">
-					<a href="#" class="page-numbers prev">&laquo; Prev</a>
-					<a href="#" class="page-numbers">1</a>
-					<a href="#" class="page-numbers current">2</a>
-					<a href="#" class="page-numbers">3</a>
-					<a href="#" class="page-numbers">4</a>
-					<a href="#" class="page-numbers">5</a>
-					<a href="#" class="page-numbers next">Next &raquo;</a>
+				<section class="sect-pagination">
+					<a href="#" class="sect-pagination__page-numbers sect-pagination__page-numbers--prev">&laquo; Prev</a>
+					<a href="#" class="sect-pagination__page-numbers">1</a>
+					<a href="#" class="sect-pagination__page-numbers sect-pagination__page-numbers--active">2</a>
+					<a href="#" class="sect-pagination__page-numbers">3</a>
+					<a href="#" class="sect-pagination__page-numbers">4</a>
+					<a href="#" class="sect-pagination__page-numbers">5</a>
+					<a href="#" class="sect-pagination__page-numbers sect-pagination__page-numbers--next">Next &raquo;</a>
 				</section>
 			</div>
 		</div>
@@ -659,7 +659,7 @@
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Breadcrumb</span></summary>
-<pre class="language-markup"><code>&lt;section class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<pre class="language-markup"><code>&lt;section class="sect-breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 	&lt;span itemprop="title">&lt;a href="/" title="Home" itemprop="url">Home&lt;/a>&lt;/span>
 	&lt;span>&raquo;&lt;/span>
 	&lt;span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -676,7 +676,7 @@
 &lt;/section></code></pre>
 			</details>
 			<div class="pattern__view">
-				<section class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+				<section class="sect-breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 					<span itemprop="title"><a href="/" title="Home" itemprop="url">Home</a></span>
 					<span>&raquo;</span>
 					<span itemscope itemprop="child" itemtype="http://data-vocabulary.org/Breadcrumb">

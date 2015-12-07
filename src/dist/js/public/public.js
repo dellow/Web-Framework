@@ -20,7 +20,7 @@
 	Public = function(){
 		// Require :: Modules
 		// We do not need to declare with vars but it allows us to call internal methods externally.
-		this.Binds      = require('./module.binds');
+		this.Plugins    = require('./module.plugins');
 		this.MobileMenu = require('./module.mobile-menu-side');
     }
 

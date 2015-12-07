@@ -22,7 +22,7 @@
 		display: inline-block;
 		position: relative;
 		// Descendants
-		.sub-menu {
+		&__sub-menu {
 			display: none;
 			position: absolute;
 			left: 0; top: 100%;
@@ -30,7 +30,7 @@
 			li {
 				display: block;
 				white-space: nowrap;
-				.sub-menu {
+				&__sub-menu {
 					left: 100%;
 				}
 			}
@@ -107,7 +107,7 @@
 			display: block;
 			position: static;
 			// Descendants
-			.sub-menu {
+			&__sub-menu {
 				width: 0;
 				height: 100%;
 				display: block;

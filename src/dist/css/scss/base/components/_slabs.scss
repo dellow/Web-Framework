@@ -32,7 +32,7 @@
 			color: inherit;
 			background: color($key);
 			// Abstractions
-			&.opp {
+			&__.opp {
 				background: color($key, dark);
 			}
 		}

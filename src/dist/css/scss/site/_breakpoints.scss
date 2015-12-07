@@ -4,6 +4,8 @@
    Use responsive mixin inside the correct partial for local responsive
    styles.
 ========================================================================== */
+
+
 // Respond to desktop
 @include respond-to($desktop){
 }

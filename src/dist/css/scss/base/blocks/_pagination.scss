@@ -4,8 +4,8 @@
 
 
 /* -- Pagination -- */
-.pagination {
-	.page-numbers {
+.sect-pagination {
+	&__numbers {
 		@include nudge(padding, 0.25 0.5);
 		border-radius: $border_radius_base;
 		display: inline-block;
@@ -13,8 +13,12 @@
 		background: color(red);
 		transition: background-color $animation ease;
 		// Abstractions
-		&.current {
+		&--active {
 			background: color(red, dark);
+		}
+		&--prev {
+		}
+		&--next {
 		}
 		// Pseudo
 		&:hover {

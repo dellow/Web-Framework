@@ -22,7 +22,7 @@ body {
 
 
 /* -- Heading Formatting -- */
-h1, .alpha, h2, .beta, h3, .gamma, h4, .delta, h5, .epsilon, h6, .zeta {
+h1, h2, h3, h4, h5, h6 {
 	font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 	color: color(copy, header);
 	// Abstractions
@@ -34,22 +34,22 @@ h1, .alpha, h2, .beta, h3, .gamma, h4, .delta, h5, .epsilon, h6, .zeta {
 		margin-top: 0;
 	}
 }
-h1, .alpha {
+h1 {
 	@include ktype(6, 1, 0.5); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
-h2, .beta {
+h2 {
 	@include ktype(5, 1, 0.25); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
-h3, .gamma {
+h3 {
 	@include ktype(4, 0.5, 0.25); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
-h4, .delta {
+h4 {
 	@include ktype(3, 0.5, 0.25); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
-h5, .epsilon {
+h5 {
 	@include ktype(2, 0.5, 0); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
-h6, .zeta {
+h6 {
 	@include ktype(1, 0.5, 0); // scale, before, after, line-height, offset, pull, push, ie-compatability
 }
 

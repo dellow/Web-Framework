@@ -10,7 +10,6 @@
 @include respond-to($tablet){
 	/* -- Exclusions -- */
 	$exclusions: (
-		'.hide-tablet'
 	);
 	@each $element in $exclusions {
 		#{$element} {
@@ -27,7 +26,6 @@
 @include respond-to($mobile){
 	/* -- Exclusions -- */
 	$exclusions: (
-		'.hide-mobile'
 	);
 	@each $element in $exclusions {
 		#{$element} {
