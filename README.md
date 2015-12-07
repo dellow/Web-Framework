@@ -86,10 +86,10 @@ Run the development profile:
 Run the production profile:
 
     gulp --config production
-Watch for changes to the application `.js`, `.hbs` and `.scss` files:
+Watch for changes to the application `.js`, `.jsx`, `.hbs` and `.scss` files:
 
     gulp watch
-Watch for changes to the application `.js`, `.hbs` and `.scss` files and sync/reload browsers and devices:
+Watch for changes to the application `.js`, `.jsx`, `.hbs` and `.scss` files and sync/reload browsers and devices:
 
     gulp sync
 
