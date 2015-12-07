@@ -97,28 +97,25 @@ Watch for changes to the application `.js`, `.jsx`, `.hbs` and `.scss` files and
 ## Profiles
 The Project Wrapper runs various profiles based on the environment variable. Just running `gulp` will run the `default` profile. Running any other profile requires the `--config` parameter, for example: `gulp --config production` will run the production profile. The following tasks are run for each profile:
 
-<a name="profiles--development"></a>
 ### Default
 - JS (Minified)
 - CSS (Minified)
 - Images
-- Dalek
 - JSHint
-- Jasmine
 
+<a name="profiles--development"></a>
 ### Development
 - JS (Non minified)
 - CSS (Non minified)
 - Images
-- Dalek
 - JSHint
-- Jasmine
 
 <a name="profiles--production"></a>
 ### Production
 - JS (Minified)
 - CSS (Minified)
 - Images
+- JSHint
 
 > __Please note:__ When run with the `production` or without the `development` argument JS and CSS tasks will run minified and the JS 'gulp_env' variable will be set to 'production'. This is by design to allow easier one time updates, without having to do a new release. In order to create an easily debuggable stylesheet and build JS file you'll need to run gulp with the `development` argument.
 
@@ -127,8 +124,8 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Sync](#sync).
 
 The tasks that are run in the `watch` task are:
-- JS (On .js and .hbs files under the `app` directory)
-- CSS (On .scss files under the `scss` directory)
+- JS (On `.js`, `.jsx` and `.hbs` files under the `app` and `public` directory)
+- CSS (On `.scss` files under the `scss` directory)
 
 > __Please note:__ The `watch` task will minify CSS and JS if run without any arguments.
 
@@ -137,8 +134,8 @@ The tasks that are run in the `watch` task are:
 Like `watch` BrowserSync will compile `.scss`, `.js` and `.hbs` files automatically simply by running `gulp sync`. This will also provide a local and external address to test your app in sync with other browsers. `gulp sync` will automatically look for changes in `.html` and `.php` files and also the build `.css` and `.js` files and then reload all connected browsers.
 
 The tasks that are run in the `sync` task are:
-- JS (On .js and .hbs files under the `app` directory)
-- CSS (On .scss files under the `scss` directory)
+- JS (On `.js`, `.jsx` and `.hbs` files under the `app` and `public` directory)
+- CSS (On `.scss` files under the `scss` directory)
 
 The `gulp sync` command takes an optional parameter to provide a proxy URL, for example: `gulp sync --url vagrant.dev` (you must supply the root domain, i.e. no sub folders). If this is supplied your files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to the local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
 
