@@ -17,37 +17,41 @@
 
 /* -- Primary Navigation -- */
 .nav-primary {
-	// Descendants
-	li {
-		display: inline-block;
-		position: relative;
-		// Abstractions
-		&.current_page_item > a, &.current_page_parent > a {
-			font-weight: bold;
-		}
-		// Pseudo
-		&:first-child {
-			padding-left: 0;
-		}
-		&:hover {
-			> [class*="sub-menu"] {
-				display: block;
-			}
-		}
-	}
-    // Descendants
+    &--desktop {
+        // Descendants
+        li {
+            display: inline-block;
+            position: relative;
+            // Abstractions
+            &.current_page_item > a, &.current_page_parent > a {
+                font-weight: bold;
+            }
+            // Pseudo
+            &:first-child {
+                padding-left: 0;
+            }
+            &:hover {
+                > [class*="sub-menu"] {
+                    display: block;
+                }
+            }
+        }
+        // Descendants
+        .nav-primary__sub-menu {
+            position: absolute;
+            left: 0; top: 100%;
+            z-index: $zindex-1;
+            li {
+                display: block;
+                white-space: nowrap;
+            }
+            &__sub-menu {
+                left: 100%;
+            }
+        }
+    }
     &__sub-menu {
         display: none;
-        position: absolute;
-        left: 0; top: 100%;
-        z-index: $zindex-1;
-        li {
-            display: block;
-            white-space: nowrap;
-        }
-        &__sub-menu {
-            left: 100%;
-        }
     }
 }
 
