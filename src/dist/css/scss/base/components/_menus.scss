@@ -21,20 +21,6 @@
 	li {
 		display: inline-block;
 		position: relative;
-		// Descendants
-		&__sub-menu {
-			display: none;
-			position: absolute;
-			left: 0; top: 100%;
-			z-index: $zindex-1;
-			li {
-				display: block;
-				white-space: nowrap;
-				&__sub-menu {
-					left: 100%;
-				}
-			}
-		}
 		// Abstractions
 		&.current_page_item > a, &.current_page_parent > a {
 			font-weight: bold;
@@ -44,11 +30,25 @@
 			padding-left: 0;
 		}
 		&:hover {
-			> .sub-menu {
+			> [class*="sub-menu"] {
 				display: block;
 			}
 		}
 	}
+    // Descendants
+    &__sub-menu {
+        display: none;
+        position: absolute;
+        left: 0; top: 100%;
+        z-index: $zindex-1;
+        li {
+            display: block;
+            white-space: nowrap;
+        }
+        &__sub-menu {
+            left: 100%;
+        }
+    }
 }
 
 
