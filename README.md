@@ -264,59 +264,72 @@ By default the Framework is set to a Desktop First approach. This can (and proba
 ### Reserved Classes
 The Framework does use some generic or 'loose' classes throughout. A lot of these will be filtered out in future releases as they are not specific enough and bad form. However until then this is a list of current classes you should avoid using with new elements:
 
+#### Namespaces
     .active-* (For elements actively displaying a part of the DOM)
     .alert (Alerts namespace)
+    .bg (Backgrounds namespace)
+    .btn (Buttons class namespace)
+    .grid (Grid namespace)
+    .js-* (JavaScript bind namespace)
+    .nav-* (Navigation menu namespace)
+    .page__* (Global Page class namespace)
+    .sect-* (Section block namespace)
+    .u-* (Utility classes namespace)
+
+#### WordPress Specific
     .alignleft (WordPress TinyMCE)
     .alignright (WordPress TinyMCE)
-    .bg
-    .btn (Buttons class namespace)
+    .current_page_item (WordPress Menus)
+    .current_page_parent (WordPress Menus)
+    .has_sub_menu (WordPress Menus)
+    .size-small (WordPress Image Sizing)
+    .size-medium (WordPress Image Sizing)
+    .size-large (WordPress Image Sizing)
+    .wp-* (WordPress namespace)
+
+#### Misc
+    .button (Form element replication)
+    .container 
+    .disabled (Form element replication)
+    .error (Alerts: Type)
+    .field (Form field wrapper)
+    .input (Form element replication)
+    .navigation (Navigation wrapper)
+    .readonly (Form element replication)
+    .status (Alerts: Type)
+    .success (Alerts: Type)
+    .table
+    .warning (Alerts: Type)
+
+#### Browser
+    .ie6
+    .ie7
+    .ie8
+    .oldie
+
+#### To Be Deprecated or Namespaced
     .box
-    .button
     .center
     .cite__profession
     .col
     .collapse-margin
-    .container 
     .coupon
-    .current_page_item (WordPress Menus)
-    .current_page_parent (WordPress Menus)
-    .disabled (Form element replication)
-    .error (Alerts: Type)
-    .field (Form field wrapper)
     .full
-    .grid (Grid namespace)
     .half
-    .has_sub_menu (WordPress Menus)
-    .input (Form element replication)
-    .ie6
-    .ie7
-    .ie8
-    .js-* (JavaScript bind namespace)
     .label
     .left
     .loading
     .mobile-menu
-    .navigation (Navigation wrapper)
-    .nav-* (Navigation menu namespace)
     .next
     .note
-    .oldie
-    .page__* (Global Page class namespace)
     .prev
     .qty
-    .readonly (Form element replication)
     .right
-    .sect-* (Section block namespace)
     .small
     .slab
-    .status (Alerts: Type)
     .sub-menu-active
-    .success (Alerts: Type)
-    .table
-    .u-* (Utility classes namespace)
     .v-small
     .voucher
-    .warning (Alerts: Type)
 
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
