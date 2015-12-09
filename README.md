@@ -339,7 +339,7 @@ All application JavaScript modules (think: Routing, Framework Logic etc) should 
 
 All public JavaScript modules (think: Event Listeners, Plugin binds etc) should be added in `public` directory - these files will be compiled by Gulp into the global `build.js` file.
 
-The only JavaScript file that will hit the server will be at `src/dist/js/build/build.js`.
+The only JavaScript file that will hit the server should be at `src/dist/js/build/build.js`.
 
 <a name="working-with-javascript--requiring-new-files"></a>
 ### Requiring New Files
