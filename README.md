@@ -333,17 +333,23 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
 
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
-All JavaScript modules should be added in `app` directory - these files will be compiled by Gulp into a global `build.js` file.
+The JavaScript is split into directories, some of these are for libraries / frameworks / plugins that will not be on the final server. Some are for the actual modules.
+
+All application JavaScript modules (think: Routing, Framework Logic etc) should be added in `app` directory - these files will be compiled by Gulp into the global `build.js` file.
+
+All public JavaScript modules (think: Event Listeners, Plugin binds etc) should be added in `public` directory - these files will be compiled by Gulp into the global `build.js` file.
+
+The only JavaScript file that will hit the server will be at `src/dist/js/build/build.js`.
 
 <a name="working-with-javascript--requiring-new-files"></a>
 ### Requiring New Files
-All initial files are loaded from `dist/js/app/index.js` but thanks to Browserify you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
+All initial files are loaded from `dist/js/index.js` but thanks to Browserify you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
 
     require('./javascript-file');
 
 <a name="working-with-javascript--helpers"></a>
 ### Helpers
-The `dist/js/app/helpers/js` file contains various global helper functions to aid with development. These can be called in any JS file within the `app` directory simple by calling `Helpers.<method_name>`. The methods are described below:
+The `dist/js/helpers/js` file contains various global helper functions to aid with development. These can be called in any JS file within the `app` directory simple by calling `Helpers.<method_name>`. The methods are described below:
 
 ##### log `Helpers.log('My console message');`
 Super powered, cross-browser supported `console.log`. Will check the browser supports console logging (will use `alert` otherwise, unless overrided). All console messages will be prefixed with "DEBUG" and encapsulated into sections to easier separate messages. A simple call would result in:
