@@ -3,6 +3,7 @@
 __X.X.X__:
 * CSS debug mode disabled by default.
 * Fixed sub menus.
+* Changed the `retina-image` mixin to just `retina` and improved output.
 
 __2.3.0__:
 * Changed the release task `version` parameter to `ver` to prevent clashes with Node Version check.
