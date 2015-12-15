@@ -373,13 +373,33 @@ Measures the height of hidden elements and returns the value. By default jQuery 
 
 ***
 
+##### isEmpty `Helpers.isEmpty(var)`
+Returns false if a variable is undefined, null, empty, has no length or falsy. Will return true otherwise.
+
+***
+
 ##### debounce `Helpers.debounce(callback, 250)`
 A simple debouncing method to help prevent constant firing of an event. Useful for on `scroll` or `resize` events.
 
 ***
 
 ##### preloader `Helpers.preloader($('.parent-element'))`
-Inserts a pre-defined preloader in the given element. Can also destroy a created preloader by calling `Helpers.preloader(true);`.
+Inserts a pre-defined preloader in the given element. Can also destroy a created preloader by calling `Helpers.preloader($('.parent-element'), true);`.
+
+***
+
+##### ajax `Helpers.ajax('http://api/.com/endpoint/')`
+A wrapper for making jQuery Ajax Promises. Will automatically add a preloaded on request of data and remove it when completed.
+
+***
+
+##### parse_url_params `Helpers.parse_url_params('http://api/.com/endpoint/?param1=true&param2=true')`
+Parses a URL for parameters and returns them in JavaScript object.
+
+***
+
+##### decode_entities `Helpers.decode_entities('<p>This is a string with paragraphs</p>')`
+Will simply parse HTML tags from a JavaScript string.
 
 <a name="troubleshooting"></a>
 ## Troubleshooting

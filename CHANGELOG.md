@@ -6,6 +6,7 @@ __X.X.X__:
 * Changed the `retina-image` mixin to just `retina` and improved output.
 * Typeset margins and font-size improvements.
 * Removed `collapse-margin` reserved class.
+* Added missing Helpers from docs.
 
 __2.3.0__:
 * Changed the release task `version` parameter to `ver` to prevent clashes with Node Version check.
