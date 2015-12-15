@@ -4,6 +4,8 @@ __X.X.X__:
 * CSS debug mode disabled by default.
 * Fixed sub menus.
 * Changed the `retina-image` mixin to just `retina` and improved output.
+* Typeset margins and font-size improvements.
+* Removed `collapse-margin` reserved class.
 
 __2.3.0__:
 * Changed the release task `version` parameter to `ver` to prevent clashes with Node Version check.
@@ -90,13 +92,13 @@ __2.0.4__:
 * Added React to common.
 * Fixed CSS sourcemaps.
 
-__2.0.3__: 
+__2.0.3__:
 * Lots of bug fixes and improvements.
 * Install now asks for a Git repository URL.
 * Removed globbing for site SCSS.
 * Watch doesn't break stream on SASS error.
 
-__2.0.2__: 
+__2.0.2__:
 * Fixed Modernizr library.
 * Helpers.log now checks if message is an array or object and outputs accordingly.
 * Upgraded deprecated `css-sprite` package to `spritey`.
@@ -105,14 +107,14 @@ __2.0.2__:
 * Improved font sizing and spacing.
 * Added new slide in mobile menu. Updated layout help file to reflect.
 
-__2.0.1__: 
+__2.0.1__:
 * Fixed duplicate variable issue with font-size and font-weight.
 * Removed 'font_family_' prefix to font family variables.
 * Normalised the line height on buttons.
 * Now checks for WURFL before attempting to send dimensions.
 * Required modules don't need to be manually initiated.
 
-__2.0.0__: 
+__2.0.0__:
 * Bugfix: PSI task created a null file if URL didn't contain a protocol.
 * Merged the Project Wrapper and Project Libraries into one 'Web Framework' repository. We are now starting from version 2.0.0!
 * Improve output from Notifier. Now alerted to errors and end of tasks.

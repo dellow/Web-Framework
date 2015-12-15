@@ -289,7 +289,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
 
 #### Misc
     .button (Form element replication)
-    .container 
+    .container
     .disabled (Form element replication)
     .error (Alerts: Type)
     .field (Form field wrapper)
@@ -312,7 +312,6 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .center
     .cite__profession
     .col
-    .collapse-margin
     .coupon
     .full
     .half

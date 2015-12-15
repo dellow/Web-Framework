@@ -16,13 +16,11 @@ $mobile_first: false !default;
 
 
 /* -- Essentials -- */
-$mn                : 24px !default; // Three is not the magic number. Don't believe Del La Soul
+$mn                : 24px !default;
 $gutter            : 2% !default;
-$fixedgutter       : 10px !default;
 $form_field_height : 40px !default;
 $border_radius_base: 3px !default;
 $ul_indent_base    : 1.2em !default;
-$box_shadow_base   : 0 0 5px rgba(69, 18, 11, 0.15) !default;
 $animation         : 300ms !default;
 $menu_animation    : 300ms !default;
 $mobile_menu       : 768px !default;
@@ -59,11 +57,11 @@ $thin      : 100 !default;
 
 
 /* -- Knife Variables -- */
-$body-font-size  : 16px !default;
-$scale-factor    : 1.125 !default; // Major Second - Refer to Knife SCSS file for all ratios.
-$body-line-height: 1.5 !default;
-$scale-factor    : 1.25 !default; // Change this to modify overall scale.
-$ie8compatability: false !default;
+$body-font-size  : 16px;
+$scale-factor    : 1.125; // Major Second - Refer to Knife SCSS file for all ratios.
+$body-line-height: 1.8;
+$scale-factor    : 1.15; // Change this to modify overall scale.
+$ie8compatability: false;
 
 
 /* ----------------------------------------------------------------------- */
