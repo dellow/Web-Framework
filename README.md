@@ -389,7 +389,7 @@ Inserts a pre-defined preloader in the given element. Can also destroy a created
 ***
 
 ##### ajax `Helpers.ajax('http://api/.com/endpoint/')`
-A wrapper for making jQuery Ajax Promises. Will automatically add a preloaded on request of data and remove it when completed.
+A wrapper for making jQuery Ajax Promises. Will automatically add a preloader on request of data and remove it when completed.
 
 ***
 
