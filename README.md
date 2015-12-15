@@ -407,10 +407,10 @@ Will simply parse HTML tags from a JavaScript string.
 Try running with the `xip=false` argument. If this works you're router probably blocks the xip.io service (and other wildcard services). You can fix this by using an alternative DNS address. Try Google's (8.8.8.8 and 8.8.4.4). You will also need to change this on your Smartphone and/or Tablet.
 
 #### Using font services with BrowserSync.
-The gulp `sync` task uses the xip.io service by default. So to use webfont services like fonts.com and typekit.com with BrowserSync all you need to do is set `*.xip.io` as one of your allowed domains in the font service settings. Your fonts will now be available on all your devices using the URL provdided via the `sync` task.
+The gulp `sync` task uses the xip.io service by default. So to use webfont services like fonts.com and typekit.com with BrowserSync all you need to do is set `*.xip.io` as one of your allowed domains in the font service settings. Your fonts will now be available on all your devices using the URL provided via the `sync` task.
 
 #### Getting `Error EMFILE, open` errors when running Gulp tasks.
-This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in your commaned line then the Gulp command again and it should fix the error.
+This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in your command line then the Gulp command again and it should fix the error.
 
 <a name="changelog"></a>
 ## Changelog
