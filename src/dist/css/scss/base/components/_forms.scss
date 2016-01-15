@@ -103,6 +103,8 @@ form {
 		border: 0;
 		display: inline;
 		vertical-align: middle;
+	    -webkit-appearance: checkbox;
+	    appearance: checkbox;
 		// Siblings
 		& + label {
 			@include nudge(margin, 0 1 0 0.2);

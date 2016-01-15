@@ -368,6 +368,11 @@ For easy screen size checking. Will return true if the current screen size less 
 
 ***
 
+##### throw `Helpers.throw('This is an error')`
+Throws a JavaScript error.
+
+***
+
 ##### mhi `Helpers.mhi($('.my-hidden-element'))`
 Measures the height of hidden elements and returns the value. By default jQuery will return 0 if you try to measure an element set to `display: none`. __mhi__ clones the element and inserts it off screen to measure it before destroying it.
 

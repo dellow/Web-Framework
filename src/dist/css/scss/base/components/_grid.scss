@@ -15,7 +15,7 @@
 	[class*="col-"] {
 		max-width: $col_1 - $gutter;
 		flex-basis: $col_1 - $gutter;
-		margin: 1rem 0 0 $gutter;
+		margin: $gutter 0 0 $gutter;
 		// Abstractions
 		&.left {
 			text-align: left;
@@ -27,6 +27,15 @@
 			text-align: center;
 		}
 	}
+	// Abstractions
+	&--no-gutter {
+		width: $col_1;
+		margin-top: 0;
+		left: 0;
+		[class*="col-"] {
+			margin: 0;
+		}
+	}
 	@each $key, $value in $col_array {
 		.#{$key} {
 			max-width: $value - $gutter;
@@ -35,7 +44,6 @@
 		&--no-gutter .#{$key} {
 			max-width: $value;
 			flex-basis: $value;
-			margin: 0;
 		}
 	}
 }
@@ -79,10 +87,9 @@
 	// Abstractions
 	&--no-gutter {
 		width: $col_1;
-		margin-top: 0;
 		left: 0;
 		[class*="col-"] {
-			margin: 0;
+			margin-left: 0;
 		}
 	}
 	&--bricked {
