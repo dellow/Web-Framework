@@ -1,12 +1,13 @@
 # Web Framework Changelog
 
-__X.X.X__:
+__2.3.1__:
 * CSS debug mode disabled by default.
 * Fixed sub menus.
 * Changed the `retina-image` mixin to just `retina` and improved output.
 * Typeset margins and font-size improvements.
 * Removed `collapse-margin` reserved class.
 * Added missing Helpers from docs.
+* Lots of fixes and improvements.
 
 __2.3.0__:
 * Changed the release task `version` parameter to `ver` to prevent clashes with Node Version check.
