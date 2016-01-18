@@ -41,6 +41,17 @@
 	}
 
 	/**
+	 * Helper.throw
+	 * Throws a custom error.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+	Helper.throw = function(msg){
+        throw new Error(msg);
+    }
+
+	/**
 	 * Helper.breakpoint
 	 * Checks the window against a certain breakpoint.
      *
@@ -154,13 +165,13 @@
     Helper.ajax = function(url, request, type, dataType, preloader_el){
     	// Default data.
     	var default_params = {
-			ajaxrequest: true,
-			request    : (!Helper.isEmpty(request)) ? request : false
+			ajaxrequest: true
     	};
+		var request_params = (!Helper.isEmpty(request)) ? request : {};
     	// Get params (if any).
     	var optional_params = Helper.parse_url_params(url);
     	// Merge params to get data.
-    	var data = $.extend({}, default_params, optional_params);
+    	var data = $.extend({}, default_params, optional_params, request_params);
 		// Request.
         return $.ajax({
             url     : (url.indexOf('?') != -1) ? url.split('?')[0] : url,

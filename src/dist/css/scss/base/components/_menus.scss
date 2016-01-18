@@ -17,38 +17,54 @@
 
 /* -- Primary Navigation -- */
 .nav-primary {
-	// Descendants
-	li {
-		display: inline-block;
-		position: relative;
-		// Descendants
-		&__sub-menu {
-			display: none;
-			position: absolute;
-			left: 0; top: 100%;
-			z-index: $zindex-1;
-			li {
-				display: block;
-				white-space: nowrap;
-				&__sub-menu {
-					left: 100%;
-				}
-			}
-		}
-		// Abstractions
-		&.current_page_item > a, &.current_page_parent > a {
-			font-weight: bold;
-		}
-		// Pseudo
-		&:first-child {
-			padding-left: 0;
-		}
-		&:hover {
-			> .sub-menu {
-				display: block;
-			}
-		}
-	}
+    &--desktop {
+        // Descendants
+        li {
+            display: inline-block;
+            position: relative;
+            // Abstractions
+            &.current_page_item > a, &.current_page_parent > a {
+                font-weight: bold;
+            }
+            // Pseudo
+            &:first-child {
+                padding-left: 0;
+            }
+            &:hover {
+                > [class*="sub-menu"] {
+                    display: block;
+                }
+            }
+        }
+        // Descendants
+        .nav-primary__sub-menu {
+            position: absolute;
+            left: 0; top: 100%;
+            z-index: $zindex-1;
+            li {
+                display: block;
+                white-space: nowrap;
+            }
+            &__sub-menu {
+                left: 100%;
+            }
+        }
+    }
+    &__sub-menu {
+        display: none;
+    }
+    &--mobile {
+        height: 100%;
+        .nav-primary__sub-menu {
+            width: 100%;
+            height: 100%;
+            @include nudge(padding, 1.5 1);
+            position: absolute;
+            top: 0; left: 0;
+            z-index: $zindex-1;
+            overflow-y: scroll;
+        }
+    }
 }
 
 

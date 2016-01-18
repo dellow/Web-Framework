@@ -25,10 +25,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 	color: color(copy, header);
-	// Abstractions
-	&.collapse-margin {
-		margin: 0;
-	}
 	// Pseudo
 	&:first-child {
 		margin-top: 0;
@@ -88,7 +84,7 @@ a, button {
 .page__content {
 	// Margins
 	blockquote, dl, figure, ol, p, pre, ul {
-		@include ktype(0, 0, 0.75);
+		@include ktype(0, 0, 0.75); // scale, before, after, line-height, offset, pull, push, ie-compatability
 		&:last-child {
 			margin-bottom: 0;
 		}

@@ -86,10 +86,10 @@ Run the development profile:
 Run the production profile:
 
     gulp --config production
-Watch for changes to the application `.js`, `.hbs` and `.scss` files:
+Watch for changes to the application `.js`, `.jsx`, `.hbs` and `.scss` files:
 
     gulp watch
-Watch for changes to the application `.js`, `.hbs` and `.scss` files and sync/reload browsers and devices:
+Watch for changes to the application `.js`, `.jsx`, `.hbs` and `.scss` files and sync/reload browsers and devices:
 
     gulp sync
 
@@ -97,28 +97,25 @@ Watch for changes to the application `.js`, `.hbs` and `.scss` files and sync/re
 ## Profiles
 The Project Wrapper runs various profiles based on the environment variable. Just running `gulp` will run the `default` profile. Running any other profile requires the `--config` parameter, for example: `gulp --config production` will run the production profile. The following tasks are run for each profile:
 
-<a name="profiles--development"></a>
 ### Default
 - JS (Minified)
 - CSS (Minified)
 - Images
-- Dalek
 - JSHint
-- Jasmine
 
+<a name="profiles--development"></a>
 ### Development
 - JS (Non minified)
 - CSS (Non minified)
 - Images
-- Dalek
 - JSHint
-- Jasmine
 
 <a name="profiles--production"></a>
 ### Production
 - JS (Minified)
 - CSS (Minified)
 - Images
+- JSHint
 
 > __Please note:__ When run with the `production` or without the `development` argument JS and CSS tasks will run minified and the JS 'gulp_env' variable will be set to 'production'. This is by design to allow easier one time updates, without having to do a new release. In order to create an easily debuggable stylesheet and build JS file you'll need to run gulp with the `development` argument.
 
@@ -127,8 +124,8 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Sync](#sync).
 
 The tasks that are run in the `watch` task are:
-- JS (On .js and .hbs files under the `app` directory)
-- CSS (On .scss files under the `scss` directory)
+- JS (On `.js`, `.jsx` and `.hbs` files under the `app` and `public` directory)
+- CSS (On `.scss` files under the `scss` directory)
 
 > __Please note:__ The `watch` task will minify CSS and JS if run without any arguments.
 
@@ -137,8 +134,8 @@ The tasks that are run in the `watch` task are:
 Like `watch` BrowserSync will compile `.scss`, `.js` and `.hbs` files automatically simply by running `gulp sync`. This will also provide a local and external address to test your app in sync with other browsers. `gulp sync` will automatically look for changes in `.html` and `.php` files and also the build `.css` and `.js` files and then reload all connected browsers.
 
 The tasks that are run in the `sync` task are:
-- JS (On .js and .hbs files under the `app` directory)
-- CSS (On .scss files under the `scss` directory)
+- JS (On `.js`, `.jsx` and `.hbs` files under the `app` and `public` directory)
+- CSS (On `.scss` files under the `scss` directory)
 
 The `gulp sync` command takes an optional parameter to provide a proxy URL, for example: `gulp sync --url vagrant.dev` (you must supply the root domain, i.e. no sub folders). If this is supplied your files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to the local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
 
@@ -267,73 +264,91 @@ By default the Framework is set to a Desktop First approach. This can (and proba
 ### Reserved Classes
 The Framework does use some generic or 'loose' classes throughout. A lot of these will be filtered out in future releases as they are not specific enough and bad form. However until then this is a list of current classes you should avoid using with new elements:
 
+#### Namespaces
     .active-* (For elements actively displaying a part of the DOM)
     .alert (Alerts namespace)
+    .bg (Backgrounds namespace)
+    .btn (Buttons class namespace)
+    .grid (Grid namespace)
+    .js-* (JavaScript bind namespace)
+    .nav-* (Navigation menu namespace)
+    .page__* (Global Page class namespace)
+    .sect-* (Section block namespace)
+    .u-* (Utility classes namespace)
+
+#### WordPress Specific
     .alignleft (WordPress TinyMCE)
     .alignright (WordPress TinyMCE)
-    .bg
-    .btn (Buttons class namespace)
-    .box
-    .button
-    .center
-    .cite__profession
-    .col
-    .collapse-margin
-    .container 
-    .coupon
     .current_page_item (WordPress Menus)
     .current_page_parent (WordPress Menus)
+    .has_sub_menu (WordPress Menus)
+    .size-small (WordPress Image Sizing)
+    .size-medium (WordPress Image Sizing)
+    .size-large (WordPress Image Sizing)
+    .wp-* (WordPress namespace)
+
+#### Misc
+    .button (Form element replication)
+    .container
     .disabled (Form element replication)
     .error (Alerts: Type)
     .field (Form field wrapper)
-    .full
-    .grid (Grid namespace)
-    .half
-    .has_sub_menu (WordPress Menus)
     .input (Form element replication)
+    .navigation (Navigation wrapper)
+    .readonly (Form element replication)
+    .status (Alerts: Type)
+    .success (Alerts: Type)
+    .table
+    .warning (Alerts: Type)
+
+#### Browser
     .ie6
     .ie7
     .ie8
-    .js-* (JavaScript bind namespace)
+    .oldie
+
+#### To Be Deprecated or Namespaced
+    .box
+    .center
+    .cite__profession
+    .col
+    .coupon
+    .full
+    .half
     .label
     .left
     .loading
     .mobile-menu
-    .navigation (Navigation wrapper)
-    .nav-* (Navigation menu namespace)
     .next
     .note
-    .oldie
-    .page__* (Global Page class namespace)
     .prev
     .qty
-    .readonly (Form element replication)
     .right
-    .sect-* (Section block)
     .small
     .slab
-    .status (Alerts: Type)
     .sub-menu-active
-    .success (Alerts: Type)
-    .table
-    .u-* (Utility classes namespace)
     .v-small
     .voucher
-    .warning (Alerts: Type)
 
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
-All JavaScript modules should be added in `app` directory - these files will be compiled by Gulp into a global `build.js` file.
+The JavaScript is split into directories, some of these are for libraries / frameworks / plugins that will not be on the final server. Some are for the actual modules.
+
+All application JavaScript modules (think: Routing, Framework Logic etc) should be added in `app` directory - these files will be compiled by Gulp into the global `build.js` file.
+
+All public JavaScript modules (think: Event Listeners, Plugin binds etc) should be added in `public` directory - these files will be compiled by Gulp into the global `build.js` file.
+
+The only JavaScript file that will hit the server should be at `src/dist/js/build/build.js`.
 
 <a name="working-with-javascript--requiring-new-files"></a>
 ### Requiring New Files
-All initial files are loaded from `dist/js/app/index.js` but thanks to Browserify you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
+All initial files are loaded from `dist/js/index.js` but thanks to Browserify you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
 
     require('./javascript-file');
 
 <a name="working-with-javascript--helpers"></a>
 ### Helpers
-The `dist/js/app/helpers/js` file contains various global helper functions to aid with development. These can be called in any JS file within the `app` directory simple by calling `Helpers.<method_name>`. The methods are described below:
+The `dist/js/helpers/js` file contains various global helper functions to aid with development. These can be called in any JS file within the `app` directory simple by calling `Helpers.<method_name>`. The methods are described below:
 
 ##### log `Helpers.log('My console message');`
 Super powered, cross-browser supported `console.log`. Will check the browser supports console logging (will use `alert` otherwise, unless overrided). All console messages will be prefixed with "DEBUG" and encapsulated into sections to easier separate messages. A simple call would result in:
@@ -353,8 +368,18 @@ For easy screen size checking. Will return true if the current screen size less 
 
 ***
 
+##### throw `Helpers.throw('This is an error')`
+Throws a JavaScript error.
+
+***
+
 ##### mhi `Helpers.mhi($('.my-hidden-element'))`
 Measures the height of hidden elements and returns the value. By default jQuery will return 0 if you try to measure an element set to `display: none`. __mhi__ clones the element and inserts it off screen to measure it before destroying it.
+
+***
+
+##### isEmpty `Helpers.isEmpty(var)`
+Returns false if a variable is undefined, null, empty, has no length or falsy. Will return true otherwise.
 
 ***
 
@@ -364,7 +389,22 @@ A simple debouncing method to help prevent constant firing of an event. Useful f
 ***
 
 ##### preloader `Helpers.preloader($('.parent-element'))`
-Inserts a pre-defined preloader in the given element. Can also destroy a created preloader by calling `Helpers.preloader(true);`.
+Inserts a pre-defined preloader in the given element. Can also destroy a created preloader by calling `Helpers.preloader($('.parent-element'), true);`.
+
+***
+
+##### ajax `Helpers.ajax('http://api/.com/endpoint/')`
+A wrapper for making jQuery Ajax Promises. Will automatically add a preloader on request of data and remove it when completed.
+
+***
+
+##### parse_url_params `Helpers.parse_url_params('http://api/.com/endpoint/?param1=true&param2=true')`
+Parses a URL for parameters and returns them in JavaScript object.
+
+***
+
+##### decode_entities `Helpers.decode_entities('<p>This is a string with paragraphs</p>')`
+Will simply parse HTML tags from a JavaScript string.
 
 <a name="troubleshooting"></a>
 ## Troubleshooting
@@ -372,10 +412,10 @@ Inserts a pre-defined preloader in the given element. Can also destroy a created
 Try running with the `xip=false` argument. If this works you're router probably blocks the xip.io service (and other wildcard services). You can fix this by using an alternative DNS address. Try Google's (8.8.8.8 and 8.8.4.4). You will also need to change this on your Smartphone and/or Tablet.
 
 #### Using font services with BrowserSync.
-The gulp `sync` task uses the xip.io service by default. So to use webfont services like fonts.com and typekit.com with BrowserSync all you need to do is set `*.xip.io` as one of your allowed domains in the font service settings. Your fonts will now be available on all your devices using the URL provdided via the `sync` task.
+The gulp `sync` task uses the xip.io service by default. So to use webfont services like fonts.com and typekit.com with BrowserSync all you need to do is set `*.xip.io` as one of your allowed domains in the font service settings. Your fonts will now be available on all your devices using the URL provided via the `sync` task.
 
 #### Getting `Error EMFILE, open` errors when running Gulp tasks.
-This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in your commaned line then the Gulp command again and it should fix the error.
+This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in your command line then the Gulp command again and it should fix the error.
 
 <a name="changelog"></a>
 ## Changelog
