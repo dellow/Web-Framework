@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__X.X.X__:
+* Added ES6 Shim to dependencies.
+
 __2.3.1__:
 * CSS debug mode disabled by default.
 * Fixed sub menus.
