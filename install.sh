@@ -69,7 +69,7 @@ fi
 # ------------------------------------------------------------------------
 #
 if [[ -e ./src/.htaccess ]]; then
-	read -p "$(tput setaf 5)Do you need the htaccess file? y/n $(tput sgr0)" choice
+	read -p "$(tput setaf 5)Do you need the htaccess file? If you use Apache it would best to keep this. y/n $(tput sgr0)" choice
 	if [[ $choice = "n" ]]; then
 		# Command.
 		rm ./src/.htaccess

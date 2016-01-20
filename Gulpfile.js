@@ -150,11 +150,10 @@ gulp.task('js:common', function(){
 gulp.task('js:all', function(){
 	// Require.
 	var browserify = require('browserify'),
-		babelify   = require('babelify'),
 		rename     = require('gulp-rename');
 
 	// Task.
-	return browserify(dist_dir + 'js/').transform(babelify).bundle()
+	return browserify(dist_dir + 'js/').bundle()
 		.on('error', task_handler)
 	    .pipe(source('index.js'))
 	    .pipe(buffer())
@@ -394,7 +393,6 @@ gulp.task('release', function(){
         '!' + dist_dir + 'js/public/**/*',
         '!' + dist_dir + 'js/compiled/**/*',
         '!' + dist_dir + 'js/plugins/**/*',
-        '!' + dist_dir + 'js/spec/**/*',
         '!' + dist_dir + 'js/vendor/**/*'
     ];
 

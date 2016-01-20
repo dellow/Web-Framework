@@ -43,8 +43,7 @@ module.exports = function(config){
             'PhantomJS'
         ],
         browserify: {
-            debug: false,
-            transform: ['babelify']
+            debug: false
         },
         htmlReporter: {
             outputDir              : './karma/',

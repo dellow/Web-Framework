@@ -1,4 +1,4 @@
-# Web Framework
+# Web Framework Readme
 
 ## Contents
 1. [About](#about)
@@ -27,7 +27,7 @@
 
 <a name="about"></a>
 ## About
-This is a fast Framework and/or Project Wrapper and workflow for web projects  that utilises Gulp as a build tool. It's also set up to work with Travis CI which will run any defined spec tests by default.
+This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises Gulp as a build tool. It's also set up to work with Travis CI which will run any defined spec tests by default.
 
 Testing is done with Jasmine for unit tests and Nightwatch for functional tests.
 

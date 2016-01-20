@@ -1,3 +1,4 @@
+# ---------------------------------------------------------------------------------
 # DIRECTORIES
 # Anything directory a user can modify the contents of on the server side
 # should be ignored to prevent any overwriting issues.
@@ -14,23 +15,19 @@ node_modules/
 
 
 
+# ---------------------------------------------------------------------------------
 # FILES
 # If a public repo any files with sensitive data like database connection
 # details should be ignored to prevent unauthorised access.
 # ---------------------------------------------------------------------------------
-## For development purposes.
 RELEASE_PROCESS.md
-## ToDo
-**/todo.txt
-## Might differ depending on environment.
 **/.htaccess
-## Might differ depending on environment.
 **/robots.txt
-## Remove log files.
 **/*.log
 
 
 
+# ---------------------------------------------------------------------------------
 # EXCEPTIONS
 # Directories that are ignored that have a few exceptions.
 # ---------------------------------------------------------------------------------
