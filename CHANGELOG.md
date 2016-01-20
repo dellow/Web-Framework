@@ -2,7 +2,8 @@
 
 __X.X.X__:
 * Added ES6 Shim to dependencies.
-* Re-added missing gulp dependency
+* Re-added missing gulp dependency.
+* Fixed issue with missing css-globbing dependency.
 
 __2.3.1__:
 * CSS debug mode disabled by default.
