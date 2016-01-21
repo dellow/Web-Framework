@@ -1,6 +1,7 @@
 # Web Framework Changelog
 
 __X.X.X__:
+* Split all Gulp tasks into their own directories and introduced a global config.
 * Added ES6 Shim to dependencies.
 * Re-added missing gulp dependency.
 * Fixed issue with missing css-globbing dependency.

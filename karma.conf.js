@@ -2,8 +2,8 @@
  *
  * Karma - Runs unit tests for us.
  *
- * Copyright 2016, Author Name
- * Some information on the license.
+ * Copyright 2016, Web Framework by Stewart Dellow
+ * MIT License (MIT)
  *
 **/
 

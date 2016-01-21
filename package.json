@@ -36,6 +36,7 @@
     "jshint"                  : "^2.9.1-rc1",
     "jshint-stylish"          : "^2.1.0",
     "psi"                     : "^2.0.2",
+    "require-dir"             : "^0.3.0",
     "sprity"                  : "^1.0.8",
     "sprity-sass"             : "^1.0.4",
     "vinyl-buffer"            : "^1.0.0",

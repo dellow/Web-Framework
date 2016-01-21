@@ -86,10 +86,10 @@ Run the development profile:
 Run the production profile:
 
     gulp --config production
-Watch for changes to the application `.js`, `.jsx`, `.hbs` and `.scss` files:
+Watch for changes to the application `.js`, `.hbs` and `.scss` files:
 
     gulp watch
-Watch for changes to the application `.js`, `.jsx`, `.hbs` and `.scss` files and sync/reload browsers and devices:
+Watch for changes to the application `.js`, `.hbs` and `.scss` files and sync/reload browsers and devices:
 
     gulp sync
 
@@ -124,7 +124,7 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Sync](#sync).
 
 The tasks that are run in the `watch` task are:
-- JS (On `.js`, `.jsx` and `.hbs` files under the `app` and `public` directory)
+- JS (On `.js` and `.hbs` files under the `app` and `public` directory)
 - CSS (On `.scss` files under the `scss` directory)
 
 > __Please note:__ The `watch` task will minify CSS and JS if run without any arguments.
@@ -134,7 +134,7 @@ The tasks that are run in the `watch` task are:
 Like `watch` BrowserSync will compile `.scss`, `.js` and `.hbs` files automatically simply by running `gulp sync`. This will also provide a local and external address to test your app in sync with other browsers. `gulp sync` will automatically look for changes in `.html` and `.php` files and also the build `.css` and `.js` files and then reload all connected browsers.
 
 The tasks that are run in the `sync` task are:
-- JS (On `.js`, `.jsx` and `.hbs` files under the `app` and `public` directory)
+- JS (On `.js` and `.hbs` files under the `app` and `public` directory)
 - CSS (On `.scss` files under the `scss` directory)
 
 The `gulp sync` command takes an optional parameter to provide a proxy URL, for example: `gulp sync --url vagrant.dev` (you must supply the root domain, i.e. no sub folders). If this is supplied your files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to the local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
@@ -158,7 +158,7 @@ _Documentation coming soon_
 
 <a name="release"></a>
 ## Release
-There is a very simple release task which simply copies all the non-build files in the `src` directory to a `release` directory. The actual release directory will be suffixed with the version number set in the Gulpfile. If you do not increment the version number each subsequent release will overwrite the last.
+There is a very simple release task which simply copies all the non-build files in the `src` directory to a `release` directory. The actual release directory will be suffixed with the version number set in `gulpfile.js/config.json`. If you do not increment the version number each subsequent release will overwrite the last.
 
 Files that will not be copied to the new release are:
 * Any file with extension `.scss`
