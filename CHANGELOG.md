@@ -1,6 +1,6 @@
 # Web Framework Changelog
 
-__X.X.X__:
+__2.4.0__:
 * Split all Gulp tasks into their own directories and introduced a global config.
 * Added ES6 Shim to dependencies.
 * Re-added missing gulp dependency.
