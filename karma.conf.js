@@ -12,8 +12,6 @@ module.exports = function(config){
         basePath : '',
         port     : 9876,
         colors   : true,
-        logLevel : config.LOG_DISABLE,
-        // logLevel : config.LOG_DEBUG,
         autoWatch: false,
         singleRun: true,
         plugins: [

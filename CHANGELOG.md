@@ -1,5 +1,11 @@
 # Web Framework Changelog
 
+__X.X.X__:
+* Added Function Bing to dependencies.
+* Removed logging from Karma Config which seemed to fix Karma Start errors.
+* Updated Travis config to install Karma CLI.
+* Changed Functional tests to Integration.
+
 __2.4.0__:
 * Split all Gulp tasks into their own directories and introduced a global config.
 * Added ES6 Shim to dependencies.
