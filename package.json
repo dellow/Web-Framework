@@ -44,8 +44,9 @@
     "yargs"                   : "^3.31.0"
   },
   "dependencies": {
-    "handlebars": "*",
-    "jquery"    : "*"
+    "function-bind": "*",
+    "handlebars"   : "*",
+    "jquery"       : "*"
   },
   "browserify": {
     "transform": [
