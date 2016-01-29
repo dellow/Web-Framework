@@ -49,7 +49,7 @@
 			processor   : 'sass',
 			'style-type': 'scss'
 		})
-	    .pipe(gulpif('*.png', gulp.dest(config.dist + 'images/icons'), gulp.dest(config.dist + 'css/scss/site')))
+	    .pipe(gulpif('*.png', gulp.dest(config.sprite.dest1), gulp.dest(config.sprite.dest2)))
 		.pipe(notify({message: 'Sprite task complete.'}));
 	}
 

@@ -23,6 +23,8 @@
     },
     "sprite": {
         "src": "./src/dist/images/icons/png/*.png",
+        "dest1": "./src/dist/images/icons/",
+        "dest2": "./src/dist/css/scss/site/",
         "style": "./src/dist/css/scss/site/_sprites.scss",
         "cssPath": "../images/icons/",
         "background": "#FFFFFF"
