@@ -81,7 +81,7 @@
 				sourceRoot            : '',
 				sourceMappingURLPrefix: ''
 	        }))
-			.pipe(gulp.dest(config.dist + 'css'))
+			.pipe(gulp.dest(config.css.dest))
 			.pipe(notify({message: 'CSS task complete.'}));
 	}
 

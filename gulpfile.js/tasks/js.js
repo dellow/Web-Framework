@@ -1,4 +1,4 @@
-/**
+ /**
  *
  * Gulpfile > Tasks > JS
  *
@@ -46,12 +46,12 @@
 	/* Task (Common Libraries & Vendors.)
 	/* =========================================================================== */
 	GulpTask1 = function(){
-		return browserify(config.dist + 'js/vendor/').bundle()
+		return browserify(config.js.src1).bundle()
 			.on('error', handleErrors)
 			.pipe(source('index.js'))
 		    .pipe(buffer())
 			.pipe(rename('common.js'))
-			.pipe(gulp.dest(config.dist + 'js/compiled/'))
+			.pipe(gulp.dest(config.js.dest1))
 			.pipe(notify({message: 'JS Common task complete.'}));
 	}
 
@@ -60,12 +60,12 @@
 	/* Task (All Files.)
 	/* =========================================================================== */
 	GulpTask2 = function(){
-		return browserify(config.dist + 'js/').bundle()
+		return browserify(config.js.src2).bundle()
 			.on('error', handleErrors)
 		    .pipe(source('index.js'))
 		    .pipe(buffer())
 			.pipe(rename('all.js'))
-			.pipe(gulp.dest(config.dist + 'js/compiled/'))
+			.pipe(gulp.dest(config.js.dest2))
 			.pipe(notify({message: 'JS All task complete.'}));
 	}
 
@@ -94,7 +94,7 @@
 			'',
 			''].join('\n');
 
-		return gulp.src([config.dist + 'js/compiled/common.js', config.dist + 'js/compiled/all.js'])
+		return gulp.src(config.js.src3)
 		    .pipe(concat('build.js'))
 			.pipe(header(header_tpl_env, {
 				env: (is_production) ? 'production' : 'development'
@@ -105,7 +105,7 @@
 				version: version,
 				date   : Date()
 			}))
-		    .pipe(gulp.dest(config.dist + 'js/build'))
+			.pipe(gulp.dest(config.js.dest3))
 			.on('error', handleErrors)
 			.pipe(notify({message: 'JS Build task complete.'}));
 	}

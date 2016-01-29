@@ -3,10 +3,20 @@
     "src" : "./src/",
     "dist" : "./src/dist/",
     "css": {
-        "src": "./src/dist/css/scss/build.scss"
+        "src": "./src/dist/css/scss/build.scss",
+        "dest": "./src/dist/css/"
     },
     "images": {
-        "src": "./src/dist/images/**/*"
+        "src": "./src/dist/images/**/*",
+        "dest": "./src/dist/images/"
+    },
+    "js": {
+        "src1": "./src/dist/js/vendor/",
+        "dest1": "./src/dist/js/compiled/",
+        "src2": "./src/dist/js/",
+        "dest2": "./src/dist/js/compiled/",
+        "src3": ["./src/dist/js/compiled/common.js", "./src/dist/js/compiled/all.js"],
+        "dest3": "./src/dist/js/build/"
     },
     "jshint": {
         "src": "./src/dist/js/app/**/*.js"

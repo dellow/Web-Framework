@@ -42,7 +42,7 @@
 	            progressive      : true,
 	            interlaced       : true
 	        })))
-	        .pipe(gulp.dest(config.dist + 'images'))
+	        .pipe(gulp.dest(config.images.dest))
 			.pipe(notify({message: 'Images task complete.'}));
 	}
 
