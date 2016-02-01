@@ -1,7 +1,10 @@
 # Web Framework Changelog
 
+__X.X.X__:
+* Added iphone6 apple touch icons.
+
 __2.4.1__:
-* Added Function Bing to dependencies.
+* Added Function Bind to dependencies.
 * Removed logging from Karma Config which seemed to fix Karma Start errors.
 * Updated Travis config to install Karma CLI.
 * Changed Functional tests to Integration.
