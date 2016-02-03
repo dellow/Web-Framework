@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified JavaScript
 Application Version: 1.0.0
-Compiled: Fri Jan 29 2016 09:58:59 GMT+0000 (GMT)
+Compiled: Wed Feb 03 2016 15:48:13 GMT+0000 (GMT)
 ========================================================================== */
 
 // Set environment variable
@@ -9679,6 +9679,7 @@ var J = jQuery = $ = require('jquery');
 		}
 		else{
 			$('.spinner-wrapper', el).fadeOut(500, function(){
+				el.css({'position': ''}).prepend(loader);
 				$(this).remove();
 			});
 		}

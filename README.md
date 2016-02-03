@@ -9,6 +9,9 @@
 1. [Profiles](#profiles)
     1. [Development](#profiles--development)
     1. [Production](#profiles--production)
+1. [Tasks](#tasks)
+    1. [Default](#tasks--default)
+    1. [Assets](#tasks--assets)
 1. [Watch](#watch)
 1. [Sync](#sync)
 1. [PageSpeed](#pagespeed)
@@ -108,6 +111,57 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 - CSS (Minified)
 - Images
 - JSHint
+
+<a name="tasks"></a>
+## Profiles
+There are various singular tasks in the framework that are outlined below. There are also some tasks that run multiple sub tasks to make development easier, these are:
+
+### Multiple Tasks
+<a name="tasks--default"></a>
+### Default
+- CSS
+- JS
+- JSHint
+- Images
+
+<a name="tasks--assets"></a>
+### Assets
+- CSS
+- JS
+
+### Singular Tasks
+### CSS
+_Coming soon_
+
+### Images
+_Coming soon_
+
+### JS
+_Coming soon_
+
+### JSHint
+_Coming soon_
+
+### PSI
+_Coming soon_
+
+### Release
+_Coming soon_
+
+### Sample
+_Coming soon_
+
+### Sprite
+_Coming soon_
+
+### Sync
+_Coming soon_
+
+### Test
+_Coming soon_
+
+### Watch
+_Coming soon_
 
 <a name="watch"></a>
 ## Watch (Using _Gulp Watch_)
