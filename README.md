@@ -77,10 +77,10 @@ These serve as ongoing platforms to test any changes you might make to the Frame
 
 <a name="using-gulp"></a>
 ## Using Gulp
-Run the default profile:
+Run the development profile:
 
     gulp
-Run the development profile:
+or
 
     gulp --config development
 Run the production profile:
@@ -95,20 +95,12 @@ Watch for changes to the application `.js`, `.hbs` and `.scss` files and sync/re
 
 <a name="profiles"></a>
 ## Profiles
-The Project Wrapper runs various profiles based on the environment variable. Just running `gulp` will run the `default` profile. Running any other profile requires the `--config` parameter, for example: `gulp --config production` will run the production profile. The following tasks are run for each profile:
-
-### Default
-- JS (Minified)
-- CSS (Minified)
-- Images
-- JSHint
+The Project Wrapper runs various profiles based on the environment variable. Just running `gulp` will run the `development` profile. Running any other profile requires the `--config` parameter, for example: `gulp --config production` will run the production profile. The following tasks are run for each profile:
 
 <a name="profiles--development"></a>
 ### Development
 - JS (Non minified)
 - CSS (Non minified)
-- Images
-- JSHint
 
 <a name="profiles--production"></a>
 ### Production
@@ -116,8 +108,6 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 - CSS (Minified)
 - Images
 - JSHint
-
-> __Please note:__ When run with the `production` or without the `development` argument JS and CSS tasks will run minified and the JS 'gulp_env' variable will be set to 'production'. This is by design to allow easier one time updates, without having to do a new release. In order to create an easily debuggable stylesheet and build JS file you'll need to run gulp with the `development` argument.
 
 <a name="watch"></a>
 ## Watch (Using _Gulp Watch_)

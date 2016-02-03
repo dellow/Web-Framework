@@ -2,6 +2,7 @@
 
 __X.X.X__:
 * Added iphone6 apple touch icons.
+* Running any task without a config argument now compiles in the `development` profile by default.
 
 __2.4.1__:
 * Added Function Bind to dependencies.

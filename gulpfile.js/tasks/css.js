@@ -47,8 +47,8 @@
 	GulpTask = function(){
 		// Vars
 		var version = config.version, // Need this for Headers.
-			is_development = (args.config == 'development') ? true : false,
-			is_production  = (args.config == 'production' || args.config == undefined) ? true : false;
+			is_development = (args.config == 'development' || args.config == undefined) ? true : false,
+			is_production  = (args.config == 'production') ? true : false;
 
 		// Header template.
 		var header_tpl = ['/* ==========================================================================',
