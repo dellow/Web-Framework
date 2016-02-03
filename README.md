@@ -118,42 +118,42 @@ There are various singular tasks in the framework that are outlined below. There
 
 ### Multiple Tasks
 <a name="tasks--default"></a>
-### Default
+#### Default
 - CSS
 - JS
 - JSHint
 - Images
 
 <a name="tasks--assets"></a>
-### Assets
+#### Assets
 - CSS
 - JS
 
 ### Singular Tasks
 <a name="tasks--css"></a>
-### CSS
-_Coming soon_
+#### CSS
+_Documentation coming soon_
 
 <a name="tasks--images"></a>
-### Images
-_Coming soon_
+#### Images
+_Documentation coming soon_
 
 <a name="tasks--js"></a>
-### JS
-_Coming soon_
+#### JS
+_Documentation coming soon_
 
 <a name="tasks--jshint"></a>
-### JSHint
-_Coming soon_
+#### JSHint
+_Documentation coming soon_
 
 <a name="tasks--pagespeed"></a>
-### PageSpeed
+#### PageSpeed
 You can run Google PageSpeed insights by running `gulp psi`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp psi --url http://amazon.com --mode desktop`.
 
 This task will also create a text file depending on the requested domain to record all PageSpeed results. E.G. A request to test `http://google.com` will create a txt file in `psi/google.com` - all subsequent requests to this domain will be appended to this file.
 
 <a name="tasks--release"></a>
-### Release
+#### Release
 There is a very simple release task which simply copies all the non-build files in the `src` directory to a `release` directory. The actual release directory will be suffixed with the version number set in `gulpfile.js/config.json`. If you do not increment the version number each subsequent release will overwrite the last.
 
 Files that will not be copied to the new release are:
@@ -161,15 +161,15 @@ Files that will not be copied to the new release are:
 * Any JS files not in the `build` directory.
 
 <a name="tasks--sample"></a>
-### Sample
-_Coming soon_
+#### Sample
+_Documentation coming soon_
 
 <a name="tasks--sprite"></a>
-### Sprite
-_Coming soon_
+#### Sprite
+_Documentation coming soon_
 
 <a name="tasks--sync"></a>
-### Sync (Using _BrowserSync_)
+#### Sync (Using _BrowserSync_)
 Like `watch` BrowserSync will compile `.scss`, `.js` and `.hbs` files automatically simply by running `gulp sync`. This will also provide a local and external address to test your app in sync with other browsers. `gulp sync` will automatically look for changes in `.html` and `.php` files and also the build `.css` and `.js` files and then reload all connected browsers.
 
 The tasks that are run in the `sync` task are:
@@ -183,11 +183,11 @@ By default `gulp sync` will also use the xip.io service for Wildcard DNS. This m
 > __Please note:__ The `sync` task will minify CSS and JS if run without any arguments.
 
 <a name="tasks--test"></a>
-### Test
-_Coming soon_
+#### Test
+_Documentation coming soon_
 
 <a name="tasks--watch"></a>
-### Watch (Using _Gulp Watch_)
+#### Watch (Using _Gulp Watch_)
 You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Sync](#sync).
 
 The tasks that are run in the `watch` task are:
