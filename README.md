@@ -12,11 +12,11 @@
 1. [Tasks](#tasks)
     1. [Default](#tasks--default)
     1. [Assets](#tasks--assets)
-1. [Watch](#watch)
-1. [Sync](#sync)
-1. [PageSpeed](#pagespeed)
+    1. [PageSpeed](#tasks--pagespeed)
+    1. [Release](#tasks--release)
+    1. [Sync](#tasks--sync)
+    1. [Watch](#tasks--watch)
 1. [Testing](#testing)
-1. [Release](#release)
 1. [Working with SCSS](#working-with-scss)
     1. [Debug Mode](#working-with-scss--debug-mode)
     1. [BEM](#working-with-scss--bem)
@@ -130,51 +130,46 @@ There are various singular tasks in the framework that are outlined below. There
 - JS
 
 ### Singular Tasks
+<a name="tasks--css"></a>
 ### CSS
 _Coming soon_
 
+<a name="tasks--images"></a>
 ### Images
 _Coming soon_
 
+<a name="tasks--js"></a>
 ### JS
 _Coming soon_
 
+<a name="tasks--jshint"></a>
 ### JSHint
 _Coming soon_
 
-### PSI
-_Coming soon_
+<a name="tasks--pagespeed"></a>
+### PageSpeed
+You can run Google PageSpeed insights by running `gulp psi`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp psi --url http://amazon.com --mode desktop`.
 
+This task will also create a text file depending on the requested domain to record all PageSpeed results. E.G. A request to test `http://google.com` will create a txt file in `psi/google.com` - all subsequent requests to this domain will be appended to this file.
+
+<a name="tasks--release"></a>
 ### Release
-_Coming soon_
+There is a very simple release task which simply copies all the non-build files in the `src` directory to a `release` directory. The actual release directory will be suffixed with the version number set in `gulpfile.js/config.json`. If you do not increment the version number each subsequent release will overwrite the last.
 
+Files that will not be copied to the new release are:
+* Any file with extension `.scss`
+* Any JS files not in the `build` directory.
+
+<a name="tasks--sample"></a>
 ### Sample
 _Coming soon_
 
+<a name="tasks--sprite"></a>
 ### Sprite
 _Coming soon_
 
-### Sync
-_Coming soon_
-
-### Test
-_Coming soon_
-
-### Watch
-_Coming soon_
-
-<a name="watch"></a>
-## Watch (Using _Gulp Watch_)
-You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Sync](#sync).
-
-The tasks that are run in the `watch` task are:
-- JS (On `.js` and `.hbs` files under the `app` and `public` directory)
-- CSS (On `.scss` files under the `scss` directory)
-
-> __Please note:__ The `watch` task will minify CSS and JS if run without any arguments.
-
-<a name="sync"></a>
-## Sync (Using _BrowserSync_)
+<a name="tasks--sync"></a>
+### Sync (Using _BrowserSync_)
 Like `watch` BrowserSync will compile `.scss`, `.js` and `.hbs` files automatically simply by running `gulp sync`. This will also provide a local and external address to test your app in sync with other browsers. `gulp sync` will automatically look for changes in `.html` and `.php` files and also the build `.css` and `.js` files and then reload all connected browsers.
 
 The tasks that are run in the `sync` task are:
@@ -187,11 +182,19 @@ By default `gulp sync` will also use the xip.io service for Wildcard DNS. This m
 
 > __Please note:__ The `sync` task will minify CSS and JS if run without any arguments.
 
-<a name="pagespeed"></a>
-## PageSpeed
-You can run Google PageSpeed insights by running `gulp psi`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp psi --url http://amazon.com --mode desktop`.
+<a name="tasks--test"></a>
+### Test
+_Coming soon_
 
-This task will also create a text file depending on the requested domain to record all PageSpeed results. E.G. A request to test `http://google.com` will create a txt file in `psi/google.com` - all subsequent requests to this domain will be appended to this file.
+<a name="tasks--watch"></a>
+### Watch (Using _Gulp Watch_)
+You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Sync](#sync).
+
+The tasks that are run in the `watch` task are:
+- JS (On `.js` and `.hbs` files under the `app` and `public` directory)
+- CSS (On `.scss` files under the `scss` directory)
+
+> __Please note:__ The `watch` task will minify CSS and JS if run without any arguments.
 
 <a name="testing"></a>
 ## Testing
@@ -199,14 +202,6 @@ This task will also create a text file depending on the requested domain to reco
 * Functional testing is done with Nightwatch.
 
 _Documentation coming soon_
-
-<a name="release"></a>
-## Release
-There is a very simple release task which simply copies all the non-build files in the `src` directory to a `release` directory. The actual release directory will be suffixed with the version number set in `gulpfile.js/config.json`. If you do not increment the version number each subsequent release will overwrite the last.
-
-Files that will not be copied to the new release are:
-* Any file with extension `.scss`
-* Any JS files not in the `build` directory.
 
 <a name="working-with-scss"></a>
 ## Working with SCSS
