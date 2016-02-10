@@ -1,6 +1,6 @@
 # Web Framework Changelog
 
-__X.X.X__:
+__2.4.2__:
 * Added iphone6 apple touch icons.
 * Running any task without a config argument now compiles in the `development` profile by default.
 
