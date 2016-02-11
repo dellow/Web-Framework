@@ -167,3 +167,16 @@ kbd {
 	color: color(grey, medium);
 	background: color(grey, light);
 }
+
+
+/* ----------------------------------------------------------------------- */
+
+
+@each $key, $value in $colors {
+	$class: "" + $key;
+	.text {
+		&--color-#{$class} {
+			color: color($key);
+		}
+	}
+}

@@ -1,5 +1,10 @@
 # Web Framework Changelog
 
+__X.X.X__:
+* Added a 'text' namespace for adding color.
+* Removed resetting margin on navigation as it's not needed anymore.
+* Added a 'semibold' utility class.
+
 __2.4.2__:
 * Added iphone6 apple touch icons.
 * Running any task without a config argument now compiles in the `development` profile by default.

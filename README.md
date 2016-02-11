@@ -313,6 +313,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .nav-* (Navigation menu namespace)
     .page__* (Global Page class namespace)
     .sect-* (Section block namespace)
+    .text-* (Text coloring)
     .u-* (Utility classes namespace)
 
 #### WordPress Specific
