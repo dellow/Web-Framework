@@ -4,6 +4,7 @@ __X.X.X__:
 * Added a 'text' namespace for adding color.
 * Removed resetting margin on navigation as it's not needed anymore.
 * Added a 'semibold' utility class.
+* Fixed Sprite task missing dependency and added retina option.
 
 __2.4.2__:
 * Added iphone6 apple touch icons.

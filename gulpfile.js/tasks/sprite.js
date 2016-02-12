@@ -20,6 +20,7 @@
 	/* =========================================================================== */
 	var gulp   = require('gulp'),
 		args   = require('yargs').argv,
+		gulpif = require('gulp-if'),
 		notify = require('gulp-notify'),
 		buffer = require('vinyl-buffer'),
 		source = require('vinyl-source-stream');
@@ -41,13 +42,18 @@
 			cssPath     : config.sprite.cssPath,
 			margin      : 0,
 			base64      : false,
-			retina      : true,
 			background  : config.sprite.background,
 			orientation : 'horizontal',
 			prefix      : 'css-sprite',
 			name        : 'sprite',
 			processor   : 'sass',
-			'style-type': 'scss'
+			'style-type': 'scss',
+			dimension   : [{
+				ratio: 1, dpi: 72
+			},
+			{
+				ratio: 2, dpi: 192
+			}]
 		})
 	    .pipe(gulpif('*.png', gulp.dest(config.sprite.dest1), gulp.dest(config.sprite.dest2)))
 		.pipe(notify({message: 'Sprite task complete.'}));
