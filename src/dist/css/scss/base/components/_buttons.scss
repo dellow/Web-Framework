@@ -45,8 +45,9 @@
 		}
 	}
 	&--disabled {
-		opacity: 0.7;
+		opacity: 0.5;
 		cursor: default;
+		pointer-events: none;
 	}
 	// Pseudo
 	&:hover {
@@ -59,19 +60,11 @@
 	}
 }
 
-
-/* ----------------------------------------------------------------------- */
-
-
 @each $key, $value in $colors {
 	$class: "" + $key;
 	.btn {
 		&--color-#{$class} {
 			background: color($key);
-			// Abstractions
-			&--disabled:hover {
-				background: color($key);
-			}
 			// Pseudo
 			&:hover {
 				background: color($key, dark);

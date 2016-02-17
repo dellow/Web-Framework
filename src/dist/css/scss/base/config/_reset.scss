@@ -62,7 +62,7 @@ input::-moz-focus-inner {
 input {
 	line-height: normal;
 }
-input, textarea {
+input[type="text"], input[type="email"], input[type="url"], textarea {
 	appearance: none;
 }
 input[type="checkbox"],
