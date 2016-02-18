@@ -15,10 +15,6 @@
             &.current_page_item > a, &.current_page_parent > a {
                 font-weight: bold;
             }
-            // Pseudo
-            &:first-child {
-                padding-left: 0;
-            }
             &:hover {
                 > [class*="sub-menu"] {
                     display: block;
@@ -37,6 +33,10 @@
             &__sub-menu {
                 left: 100%;
             }
+        }
+        // Responsive
+        @include respond-to($mobile_menu){
+            display: none;
         }
     }
     &__sub-menu {
