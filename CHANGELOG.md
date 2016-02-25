@@ -1,6 +1,6 @@
 # Web Framework Changelog
 
-__X.X.X__:
+__2.5.0__:
 * Added a 'text' namespace for adding color.
 * Removed resetting margin on navigation as it's not needed anymore.
 * Added a 'semibold' utility class.
