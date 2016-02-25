@@ -263,4 +263,4 @@
 	// Export
 	module.exports = new Module();
 
-}(window.M = window.M || function(){}, window));
+}(function(){}, window));

@@ -113,7 +113,7 @@
 	// Task
 	gulp.task('js:common', GulpTask1);
 	gulp.task('js:all', GulpTask2);
-	gulp.task('js', ['js:all'], GulpTask3);
+	gulp.task('js', ['env', 'js:all'], GulpTask3);
 
 	// Export
 	module.exports = {

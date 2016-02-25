@@ -71,7 +71,6 @@
 <!-- ============================================================================== -->
 <script>
 window.config = {
-	ga      : "UA-XXXXXXXX-1",
 	base_url: ""
 }
 </script>
@@ -80,12 +79,10 @@ window.config = {
 <!-- ============================================================================== -->
 <script src="//wurfl.io/wurfl.js"></script>
 <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+// Google Autotrack - https://github.com/googleanalytics/autotrack
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 // GA Account ID.
-ga('create', window.config.ga, 'auto');
+ga('create', 'UA-XXXXXXXX-1', 'auto');
 // Require: Display features.
 ga('require', 'displayfeatures');
 // GA Page View.
@@ -95,6 +92,7 @@ ga('send', 'pageview', {
     'dimension3': (typeof(WURFL) !== 'undefined') ? WURFL.is_mobile : null
 });
 </script>
+<script src="//www.google-analytics.com/analytics.js" async></script>
 </head>
 <body>
 	<!-- Start DOM elements here. -->

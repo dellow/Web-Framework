@@ -5,6 +5,9 @@ __X.X.X__:
 * Removed resetting margin on navigation as it's not needed anymore.
 * Added a 'semibold' utility class.
 * Fixed Sprite task missing dependency and added retina option.
+* Added Google Autotrack.
+* JavaScript now uses Browserify Global.
+* Gulp JS task now sets the node environment based on the Gulp config arguments.
 
 __2.4.2__:
 * Added iphone6 apple touch icons.

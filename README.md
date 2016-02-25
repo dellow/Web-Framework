@@ -80,13 +80,13 @@ These serve as ongoing platforms to test any changes you might make to the Frame
 
 <a name="using-gulp"></a>
 ## Using Gulp
-Run the development profile:
+Run the development profile (will set the Node environment to `development`):
 
     gulp
 or
 
     gulp --config development
-Run the production profile:
+Run the production profile (will set the Node environment to `production`):
 
     gulp --config production
 Watch for changes to the application `.js`, `.hbs` and `.scss` files:
@@ -113,7 +113,7 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 - JSHint
 
 <a name="tasks"></a>
-## Profiles
+## Tasks
 There are various singular tasks in the framework that are outlined below. There are also some tasks that run multiple sub tasks to make development easier, these are:
 
 ### Multiple Tasks

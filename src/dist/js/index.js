@@ -7,33 +7,25 @@
  *
 **/
 
+// Google Analytics Autotrack.
+require('autotrack');
+
 // Require helpers globally.
-require('./helpers');
+global.Helpers = require('./helpers');
 
-// Global settings.
-window.mobile_breakpoint = 768;
-window.wiselinks_enabled = true;
-window.helper_log        = (Helpers.isEmpty(window.gulp_env) || window.gulp_env == 'development') ? true : false;
-window.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
+// Get config.
+require('./config');
 
-/* ======================================================== */
-/* Index
-/* ======================================================== */
-;(function(window, undefined){
-    'use strict';
+// Require App.
+global.App = require('./app/app');
+// Init App.
+App.init();
+// Log it.
+Helpers.log(App);
 
-	// Require App.
-	var A = App = require('./app/app');
-	// Init App.
-	App.init();
-	// Log it.
-	Helpers.log(App);
-
-	// Require Public.
-	var P = Public = require('./public/public');
-	// Init App.
-	Public.init();
-	// Log it.
-	Helpers.log(Public);
-
-}(window));
+// Require Public.
+global.Public = require('./public/public');
+// Init App.
+Public.init();
+// Log it.
+Helpers.log(Public);

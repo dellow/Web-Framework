@@ -9440,41 +9440,37 @@ return jQuery;
 }));
 
 },{}],12:[function(require,module,exports){
+(function (global){
 /* ======================================================== */
 /* Modernizr (via Browsernizr) (check browsernizr/test/** for tests)
 /* ======================================================== */
 // require('browsernizr/test/css/transitions');
-var M = Modernizr = require('browsernizr');
+global.Modernizr = require('browsernizr');
 
 
 /* ======================================================== */
 /* jQuery
 /* ======================================================== */
-var J = jQuery = $ = require('jquery');
+global.jQuery = $ = require('jquery');
 
 
 /* ======================================================== */
 /* Underscore
 /* ======================================================== */
-// var U = _ = require('underscore');
+// global._ = require('underscore');
 
 
 /* ======================================================== */
 /* Handlebars
 /* ======================================================== */
-// var H = Handlebars = require('handlebars');
-
-
-/* ======================================================== */
-/* Backbone
-/* ======================================================== */
-// var B = Backbone = require('backbone'); Backbone.$ = $;
+// global.Handlebars = require('handlebars');
 
 
 /* ======================================================== */
 /* React
 /* ======================================================== */
-// var R = React = require('react'); window.React = R;
-// var RD = ReactDOM = require('react-dom');
+// global.React = require('react');
+// global.ReactDOM = require('react-dom');
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"browsernizr":1,"jquery":11}]},{},[12]);
