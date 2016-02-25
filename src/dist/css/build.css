@@ -1,7 +1,7 @@
 /* ==========================================================================
 Unminified Stylesheet
 Application Version: 1.0.0
-Compiled: Wed Feb 10 2016 16:35:15 GMT+0000 (GMT)
+Compiled: Thu Feb 25 2016 16:34:45 GMT+0000 (GMT)
 ========================================================================== */
 
 @charset "UTF-8";
@@ -230,7 +230,7 @@ input {
   line-height: normal;
 }
 
-input, textarea {
+input[type="text"], input[type="email"], input[type="url"], textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -691,6 +691,10 @@ svg:not(:root) {
   font-weight: 16px;
 }
 
+.u-text-semibold {
+  font-weight: 600;
+}
+
 .u-text-bold {
   font-weight: 700;
 }
@@ -1143,6 +1147,43 @@ kbd {
   background: #EDEDED;
 }
 
+/* ----------------------------------------------------------------------- */
+.text--color-black {
+  color: #000000;
+}
+
+.text--color-white {
+  color: #FFFFFF;
+}
+
+.text--color-grey {
+  color: #DDDDDD;
+}
+
+.text--color-blue {
+  color: #3498DB;
+}
+
+.text--color-green {
+  color: #2ECC71;
+}
+
+.text--color-orange {
+  color: #E67E22;
+}
+
+.text--color-red {
+  color: #C4122f;
+}
+
+.text--color-yellow {
+  color: #F1C40F;
+}
+
+.text--color-color {
+  color: #FF0000;
+}
+
 /* ==========================================================================
    Base > Components > Alerts
    Styles for various success and error alerts
@@ -1280,8 +1321,9 @@ ul.alert.box li {
 }
 
 .btn--disabled {
-  opacity: 0.7;
+  opacity: 0.5;
   cursor: default;
+  pointer-events: none;
 }
 
 .btn:hover {
@@ -1299,23 +1341,11 @@ ul.alert.box li {
   background: #000000;
 }
 
-.btn--color-black--disabled:hover {
-  background: #000000;
-}
-
 .btn--color-white {
   background: #FFFFFF;
 }
 
-.btn--color-white--disabled:hover {
-  background: #FFFFFF;
-}
-
 .btn--color-grey {
-  background: #DDDDDD;
-}
-
-.btn--color-grey--disabled:hover {
   background: #DDDDDD;
 }
 
@@ -1327,19 +1357,11 @@ ul.alert.box li {
   background: #3498DB;
 }
 
-.btn--color-blue--disabled:hover {
-  background: #3498DB;
-}
-
 .btn--color-blue:hover {
   background: #217dbb;
 }
 
 .btn--color-green {
-  background: #2ECC71;
-}
-
-.btn--color-green--disabled:hover {
   background: #2ECC71;
 }
 
@@ -1351,19 +1373,11 @@ ul.alert.box li {
   background: #E67E22;
 }
 
-.btn--color-orange--disabled:hover {
-  background: #E67E22;
-}
-
 .btn--color-orange:hover {
   background: #bf6516;
 }
 
 .btn--color-red {
-  background: #C4122f;
-}
-
-.btn--color-red--disabled:hover {
   background: #C4122f;
 }
 
@@ -1375,19 +1389,11 @@ ul.alert.box li {
   background: #F1C40F;
 }
 
-.btn--color-yellow--disabled:hover {
-  background: #F1C40F;
-}
-
 .btn--color-yellow:hover {
   background: #c29d0b;
 }
 
 .btn--color-color {
-  background: #FF0000;
-}
-
-.btn--color-color--disabled:hover {
   background: #FF0000;
 }
 
@@ -1831,12 +1837,6 @@ ul.alert.box li {
    Base > Components > Menus
    Styles for navigational menus.
 ========================================================================== */
-/* -- All Navigation -- */
-.navigation ul {
-  margin: 0;
-}
-
-/* ----------------------------------------------------------------------- */
 /* -- Primary Navigation -- */
 .nav-primary--desktop li {
   display: inline-block;
@@ -1845,10 +1845,6 @@ ul.alert.box li {
 
 .nav-primary--desktop li.current_page_item > a, .nav-primary--desktop li.current_page_parent > a {
   font-weight: bold;
-}
-
-.nav-primary--desktop li:first-child {
-  padding-left: 0;
 }
 
 .nav-primary--desktop li:hover > [class*="sub-menu"] {
@@ -1869,6 +1865,12 @@ ul.alert.box li {
 
 .nav-primary--desktop .nav-primary__sub-menu__sub-menu {
   left: 100%;
+}
+
+@media only screen and (max-width: 48em) {
+  .nav-primary--desktop {
+    display: none;
+  }
 }
 
 .nav-primary__sub-menu {
