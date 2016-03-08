@@ -8,10 +8,9 @@
 .btn {
 	height: auto;
 	@include nudge(padding, 0.5 0.75);
+    border: 2px solid transparent;
 	display: inline-block;
-	border-radius: $border_radius_base;
-	vertical-align: middle;
-	cursor: pointer;
+	vertical-align: top;
 	color: color(white);
 	text-align: center;
 	line-height: 1;
@@ -50,25 +49,31 @@
 		pointer-events: none;
 	}
 	// Pseudo
-	&:hover {
+	&:hover, &:active {
 		color: color(white);
-		text-decoration: none;
-	}
-	&:active {
-		color: color(white);
-		box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
 	}
 }
 
+
+/* ----------------------------------------------------------------------- */
+
+
 @each $key, $value in $colors {
-	$class: "" + $key;
 	.btn {
-		&--color-#{$class} {
+		&--color-#{"" + $key} {
 			background: color($key);
 			// Pseudo
 			&:hover {
 				background: color($key, dark);
 			}
+            &.btn--outline {
+                border-color: color($key);
+                background: none;
+                &:hover {
+    				color: color($key, dark);
+    				background: color($key);
+                }
+            }
 		}
 	}
 }

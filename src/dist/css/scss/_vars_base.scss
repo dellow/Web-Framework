@@ -71,10 +71,14 @@ $ie8compatability: false;
 // Base
 $base_colors: (
 	black: (
-		base: #000000
+		base: #000000,
+		light: lighten(#000000, 50%),
+		dark : darken(#000000, 50%)
 	),
 	white: (
-		base: #FFFFFF
+		base: #FFFFFF,
+		light: lighten(#FFFFFF, 50%),
+		dark : darken(#FFFFFF, 50%)
 	),
 	grey: (
 		base  : #DDDDDD,
