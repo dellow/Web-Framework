@@ -4,6 +4,36 @@
 ========================================================================== */
 
 
+/* -- Body -- */
+body {
+	&:before, &:after {
+		display: none;
+	}
+	&:after {
+		content: "" + strip-unit($mobile_menu); // Output the mobile menu size.
+	}
+	// Responsive
+	@include respond-to-range(mobile){
+		&:before {
+			content: "mobile";
+		}
+	}
+	@include respond-to-range(tablet){
+		&:before {
+			content: "tablet";
+		}
+	}
+	@include respond-to-range(desktop){
+		&:before {
+			content: "desktop";
+		}
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
 /* -- Container -- */
 .container {
 	width: 90%;

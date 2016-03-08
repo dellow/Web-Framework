@@ -4,6 +4,7 @@ __X.X.X__:
 * Improved button components and added outline class.
 * Really cleaned up how typeset it defined. Removed knife, not uses native PX and % values.
 * Added `respond-to-range` mixin which specifically sets a style within a device range.
+* The SASS var `$mobile_menu` is now synched with the JS window var.
 
 __2.5.0__:
 * Added a 'text' namespace for adding color.

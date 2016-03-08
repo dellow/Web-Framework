@@ -13,6 +13,9 @@ require('autotrack');
 // Require helpers globally.
 global.Helpers = require('./helpers');
 
+// Require breakpoint globally.
+global.Breakpoint = require('./breakpoint');
+
 // Get config.
 require('./config');
 
