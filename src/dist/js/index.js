@@ -9,26 +9,36 @@
 
 // Google Analytics Autotrack.
 require('autotrack');
-
 // Require helpers globally.
 global.Helpers = require('./helpers');
-
 // Require breakpoint globally.
 global.Breakpoint = require('./breakpoint');
-
 // Get config.
 require('./config');
 
-// Require App.
+
+/**
+ * App
+ * Start the app service.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+**/
 global.App = require('./app/app');
 // Init App.
 App.init();
 // Log it.
 Helpers.log(App);
 
-// Require Public.
+/**
+ * Public
+ * Start the public service.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+**/
 global.Public = require('./public/public');
-// Init App.
+// Init Public.
 Public.init();
 // Log it.
 Helpers.log(Public);
