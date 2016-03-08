@@ -12,7 +12,7 @@
 		@include nudge(margin-bottom, 1);
 		border: 1px solid; border-left: 7px solid;
 		position: relative;
-		border-radius: $border_radius_base;
+		border-radius: $base_border_radius;
 		// Descendants
 		a {
 			color: inherit;

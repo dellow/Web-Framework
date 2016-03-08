@@ -249,9 +249,9 @@
 
 /* -- Lists -- */
 .u-inside {
-	margin-left: $ul_indent_base;
+	margin-left: $base_ul_indent;
 	ul, ol {
-		margin-left: $ul_indent_base;
+		margin-left: $base_ul_indent;
 	}
 }
 .u-no-bullet {

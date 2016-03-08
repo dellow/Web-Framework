@@ -26,6 +26,28 @@
 
 
 /**
+ * vw
+ * Output a selector with px fallback and vw values, so that modern browsers will use the vw values.
+ *
+ * .foo {@include vw(font-size, 20px, 1280);}
+**/
+@mixin vw($selector, $size, $screen){
+    $num: strip-unit($screen);
+    $vw-context: ($num*.01) * 1px;
+
+    @include rem(#{$selector}, $size);
+    #{$selector}: ($size/$vw-context) * 1vw;
+    // Responsive
+    @include respond-to($screen / 1.25){
+        font-size: $size;
+    }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
  * nudge
  * Primarily for use with Margin and Padding. Outputs an even spacing based on the Magic Number
  * in REM units with a PX fallback for legacy browsers.

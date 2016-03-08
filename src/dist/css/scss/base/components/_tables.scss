@@ -30,7 +30,7 @@ table {
 	&.table { // Qualified Selector
 		width: 100%;
 		border: 1px solid color(grey);
-		border-radius: $border_radius_base;
+		border-radius: $base_border_radius;
 		border-collapse: separate;
 	  	border-spacing: 0;
 		thead {

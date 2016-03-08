@@ -6,24 +6,21 @@
 
 
 /* -- Config -- */
-// Debug mode
-$debug_mode: false !default;
-// Mobule first - If true the 'respond-to' mixin by default uses `min-width`, if false it uses `max-width`.
-$mobile_first: false !default;
+$debug_mode  : false !default;
+$mn          : 24px !default;
+$gutter      : 2% !default;
+$animation   : 300ms !default;
+$mobile_menu : 768px !default;
 
 
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Essentials -- */
-$mn                : 24px !default;
-$gutter            : 2% !default;
-$form_field_height : 40px !default;
-$border_radius_base: 3px !default;
-$ul_indent_base    : 1.2em !default;
-$animation         : 300ms !default;
-$menu_animation    : 300ms !default;
-$mobile_menu       : 768px !default;
+/* -- Base -- */
+$base_font_size     : 16px !default;
+$base_field_height  : 40px !default;
+$base_border_radius : 3px !default;
+$base_ul_indent     : 1.2em !default;
 
 
 /* ----------------------------------------------------------------------- */
@@ -37,12 +34,12 @@ $sans_serif: Arial !default;
 $base_font : Arial, Verdana, sans-serif !default;
 
 // Sizes
-$xlarge    : 30px !default;
-$large     : 24px !default;
-$medium    : 20px !default;
-$regular   : 16px !default;
-$small     : 12px !default;
-$tiny      : 10px !default;
+$xlarge  : 30px !default;
+$large   : 24px !default;
+$medium  : 20px !default;
+$regular : 16px !default;
+$small   : 12px !default;
+$tiny    : 10px !default;
 
 // Weights
 $extrabold : 900 !default;
@@ -51,17 +48,6 @@ $semibold  : 600 !default;
 $normal    : 400 !default;
 $light     : 200 !default;
 $thin      : 100 !default;
-
-
-/* ----------------------------------------------------------------------- */
-
-
-/* -- Knife Variables -- */
-$body-font-size  : 16px;
-$scale-factor    : 1.125; // Major Second - Refer to Knife SCSS file for all ratios.
-$body-line-height: 1.8;
-$scale-factor    : 1.15; // Change this to modify overall scale.
-$ie8compatability: false;
 
 
 /* ----------------------------------------------------------------------- */

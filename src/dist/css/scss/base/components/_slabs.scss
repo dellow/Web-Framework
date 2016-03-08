@@ -26,9 +26,8 @@
 
 /* -- Slab colors -- */
 @each $key, $value in $colors {
-	$class: "" + $key;
 	.bg, .slab {
-		&--color-#{$class} {
+		&--color-#{"" + $key} {
 			color: inherit;
 			background: color($key);
 			// Abstractions

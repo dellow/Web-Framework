@@ -239,7 +239,7 @@ _Will compile to_:
 
 <a name="working-with-scss--responsive"></a>
 ### Responsive
-The Framework comes with a `breakpoints` partial in both `base` and `site` these are only for global responsive changes and theoretically could be left untouched. You should use the `respond-to` mixin to create responsive styles either below the declaration you are defining like so:
+You should use the `respond-to` mixin to create responsive styles either below the declaration you are defining like so:
 
     .foo {
         display: inline-block;
@@ -269,7 +269,13 @@ There are also various specific variables for common devices set up in `base/var
         }
     }
 
-The `respond-to` mixin converts all values to `em` (see: [The EMs have it: Proportional Media Queries FTW!](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/)) and can take various arguments to create breakpoints for you.
+Or if you want to target a predefined range, say 'tablet' you can using the `respond-to-range` mixin. These will use the $mobile, $tablet and $desktop vars, which you can overwrite in `vars_site.scss`.
+
+    @include respond-to-range(tablet){
+        .foo {
+            display: block;
+        }
+    }
 
 You can use the above examples to create a simple query or specify two breakpoints to create a `min-width / max-width` query:
 

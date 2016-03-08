@@ -6,12 +6,19 @@
 
 /* -- HTML -- */
 html {
-	@include khtml();
+	font-size: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 /* -- Body -- */
 body {
-	@include kbody();
+	font-size: $base_font_size;
+    line-height: 1.6;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-moz-font-feature-settings: "liga" on;
     font-family: $base_font;
 	word-wrap: break-word;
 	color: color(copy, body);
@@ -25,28 +32,30 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 	color: color(copy, header);
-	// Pseudo
-	&:first-child {
-		margin-top: 0;
-	}
 }
 h1 {
-	@include ktype(6, 1, 0.5); // scale, before, after, line-height, offset, pull, push, ie-compatability
+	@include nudge(margin, 0.5 0 1);
+	font-size: 200%; // 32px @ 16px Base Size
 }
 h2 {
-	@include ktype(5, 1, 0.25); // scale, before, after, line-height, offset, pull, push, ie-compatability
+	@include nudge(margin, 0.5 0);
+	font-size: 150%; // 24px @ 16px Base Size
 }
 h3 {
-	@include ktype(4, 0.5, 0.25); // scale, before, after, line-height, offset, pull, push, ie-compatability
+	@include nudge(margin, 0.5 0);
+	font-size: 117%; // 18.72px @ 16px Base Size
 }
 h4 {
-	@include ktype(3, 0.5, 0.25); // scale, before, after, line-height, offset, pull, push, ie-compatability
+	@include nudge(margin, 0.5 0);
+	font-size: 100%; // 16px @ 16px Base Size
 }
 h5 {
-	@include ktype(2, 0.5, 0); // scale, before, after, line-height, offset, pull, push, ie-compatability
+	@include nudge(margin, 0.5 0);
+	font-size: 83%; // 13.28px @ 16px Base Size
 }
 h6 {
-	@include ktype(1, 0.5, 0); // scale, before, after, line-height, offset, pull, push, ie-compatability
+	@include nudge(margin, 0.5 0);
+	font-size: 67%; // 10.72px @ 16px Base Size
 }
 
 
@@ -76,20 +85,22 @@ a, button {
 	}
 }
 
+/* ----------------------------------------------------------------------- */
+
+/* -- Margins -- */
+blockquote, img, dl, figure, ol, p, pre, ul {
+	@include nudge(margin-bottom, 1);
+	// Pseudo
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
 
 /* ----------------------------------------------------------------------- */
 
 
 /* -- Content Areas -- */
 .page__content {
-	// Margins
-	blockquote, dl, figure, ol, p, pre, ul {
-		@include ktype(0, 0, 0.75); // scale, before, after, line-height, offset, pull, push, ie-compatability
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-
 	// Lists.
 	ul, ol {
 		margin-left: 1.2em;
@@ -155,7 +166,7 @@ pre {
 	@include nudge(padding, 0.5 0.75);
 	border: 1px solid color(grey);
 	position: relative;
-	border-radius: $border_radius_base;
+	border-radius: $base_border_radius;
 	background: color(grey, light);
 }
 kbd {
@@ -163,7 +174,7 @@ kbd {
 	margin: 0 0.25em;
 	display: inline-block;
 	border: 1px solid color(grey);
-	border-radius: $border_radius_base;
+	border-radius: $base_border_radius;
 	color: color(grey, medium);
 	background: color(grey, light);
 }
@@ -173,9 +184,8 @@ kbd {
 
 
 @each $key, $value in $colors {
-	$class: "" + $key;
 	.text {
-		&--color-#{$class} {
+		&--color-#{"" + $key} {
 			color: color($key);
 		}
 	}

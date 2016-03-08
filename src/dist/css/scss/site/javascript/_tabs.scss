@@ -25,10 +25,10 @@
 	        }
 			// Pseudo
 	        &:first-child {
-	            border-radius: $border_radius_base 0 0;
+	            border-radius: $base_border_radius 0 0;
 	        }
 	        &:last-child {
-	            border-radius: 0 $border_radius_base 0 0;
+	            border-radius: 0 $base_border_radius 0 0;
 	        }
 			&:hover {
 				background: lighten(color(grey), 5%);
@@ -40,7 +40,7 @@
 	        &.active__tab {
 	            bottom: -1px;
 	    		z-index: $zindex-2;
-	            border-radius: $border_radius_base $border_radius_base 0 0;
+	            border-radius: $base_border_radius $base_border_radius 0 0;
 	            color: color(copy, link);
 	            background: color(white);
 		        button {
@@ -51,7 +51,7 @@
 	}
 	.tabs__system {
 		@include nudge(padding, 0.75);
-		border-radius: $border_radius_base;
+		border-radius: $base_border_radius;
 		border: 1px solid color(grey);
 		background: color(white);
 	}
@@ -72,10 +72,10 @@
 				}
 				// Pseudo
 		        &:first-child {
-		            border-radius: $border_radius_base 0 0;
+		            border-radius: $base_border_radius 0 0;
 		        }
 		        &:last-child {
-		            border-radius: 0 $border_radius_base 0 0;
+		            border-radius: 0 $base_border_radius 0 0;
 		        }
 				// Abstractions
 		        &.active__tab {
@@ -88,7 +88,7 @@
 			}
 		}
 		.tabs__system {
-			border-radius: 0 0 $border_radius_base $border_radius_base;
+			border-radius: 0 0 $base_border_radius $base_border_radius;
 		}
 	}
 }

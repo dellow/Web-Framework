@@ -6,47 +6,49 @@
 
 /**
  * respond-to
- * Responsive breakpoints converted to em value.
- *
- * @uses px-to-rem()
- * @uses $mobile_first
+ * Responsive breakpoints.
  *
  * @include respond-to(768px){.foo {display: block;}}
 **/
-@mixin respond-to($breakpoint1, $breakpoint2: null, $switch_operator: false, $pixel_ratio: null, $device: false){
+@mixin respond-to($breakpoint1, $breakpoint2: null, $mobileFirst: false){
 	@if($breakpoint2 != null){
-		@media only screen and (min-width: px-to-rem($breakpoint1 + 1, em)) and (max-width: px-to-rem($breakpoint2, em)){
+		@media only screen and (min-width: $breakpoint1 + 1) and (max-width: $breakpoint2){
 			@content
-		}
-	}
-	@else if($device){
-		@if($pixel_ratio != null){
-			@media only screen and (min-device-width: px-to-rem($breakpoint1, em)) and (max-device-width: px-to-rem($breakpoint2, em)) and (-webkit-min-device-pixel-ratio: $pixel_ratio){
-				@content
-			}
-		}
-		@else{
-			@media only screen and (min-device-width: px-to-rem($breakpoint1, em)) and (max-device-width: px-to-rem($breakpoint2, em)){
-				@content
-			}
-		}
+		};
 	}
 	@else{
-		@if($switch_operator){
-			// If $mobile_first is set to true use min-width.
-			$operator: if($mobile_first, 'max-width', 'min-width');
+		// If $mobileFirst is set to true use min-width.
+		$operator: if($mobileFirst, 'max-width', 'min-width');
+		@media only screen and ($operator: $breakpoint1){
+			@content
+		};
+	}
+}
 
-			@media only screen and ($operator: px-to-rem($breakpoint1, em)){
-				@content
-			}
-		}
-		@else{
-			// if $mobile_first is set to false use max-width.
-			$operator: if($mobile_first, 'min-width', 'max-width');
 
-			@media only screen and ($operator: px-to-rem($breakpoint1, em)){
-				@content
-			}
-		}
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * respond-to-range
+ * Responsive breakpoints.
+ *
+ * @include respond-to-range(mobile){.foo {display: block;}}
+**/
+@mixin respond-to-range($range){
+	@if($range == mobile){
+		@media only screen and (min-width: 0) and (max-width: ($tablet - 1)){
+			@content
+		};
+	}
+	@else if($range == tablet){
+		@media only screen and (min-width: ($mobile + 1)) and (max-width: ($desktop - 1)){
+			@content
+		};
+	}
+	@else if($range == desktop){
+		@media only screen and (min-width: ($desktop + 1)){
+			@content
+		};
 	}
 }

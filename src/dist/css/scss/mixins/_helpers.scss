@@ -19,6 +19,22 @@
 
 
 /**
+ * strip-unit
+ * Simply strips the unit from any string.
+**/
+@function strip-unit($number){
+    @if type-of($number) == 'number' and not unitless($number){
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
  * px-to-rem
  * Takes a single value or a list of values and replaces px units with rem
  * Zero values will remain 0.
@@ -29,7 +45,6 @@
     $return: ();
 
     @each $var in $px {
-
         @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
             $return: append($return, #{$var/16px+$unit}, space);
         }

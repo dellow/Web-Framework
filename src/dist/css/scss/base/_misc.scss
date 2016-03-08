@@ -33,7 +33,7 @@
 		&.page__thumb--alignleft, &.page__thumb--alignright, &.page__thumb--aligncenter, &.page__thumb--alignnone {
 			width: 100%;
 			border: 2px solid #efefef;
-			border-radius: $border_radius_base;
+			border-radius: $base_border_radius;
 		}
 	}
 	> a {
@@ -52,7 +52,7 @@ ol {
 		border: 1px solid color(grey);
 		margin: 0;
 		position: relative;
-		border-radius: $border_radius_base;
+		border-radius: $base_border_radius;
 		font-weight: regular;
 		font-family: $monospaced;
 		background: color(grey, light);

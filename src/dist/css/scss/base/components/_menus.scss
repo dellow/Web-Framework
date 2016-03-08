@@ -122,7 +122,7 @@
 				box-shadow: 3px 0 6px rgba(0,0,0,0.3);
 				font-weight: normal;
 				background: color(white);
-				transition: width $menu_animation ease;
+				transition: width $animation ease;
 				// Descendants
 				&__close {
 					position: absolute;
@@ -172,7 +172,7 @@
 			content: '';
 			cursor: pointer;
 			background: color(black);
-	  		transition: all $menu_animation ease-in-out;
+	  		transition: all $animation ease-in-out;
 		}
 		&:before {
 			top: -8px;

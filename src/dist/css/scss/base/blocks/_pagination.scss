@@ -7,7 +7,7 @@
 .sect-pagination {
 	&__numbers {
 		@include nudge(padding, 0.25 0.5);
-		border-radius: $border_radius_base;
+		border-radius: $base_border_radius;
 		display: inline-block;
 		color: color(white);
 		background: color(red);
