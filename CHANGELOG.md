@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__X.X.X__:
+* Improved button components and added outline class.
+
 __2.5.0__:
 * Added a 'text' namespace for adding color.
 * Removed resetting margin on navigation as it's not needed anymore.
