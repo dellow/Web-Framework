@@ -27,6 +27,17 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 }
+.oldie {
+	%flex {
+		@extend %cf;
+		> div {
+			float: left;
+			+ div {
+				float: right;
+			}
+		}
+	}
+}
 
 
 /* ----------------------------------------------------------------------- */

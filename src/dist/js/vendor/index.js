@@ -28,3 +28,9 @@ global.jQuery = $ = require('jquery');
 /* ======================================================== */
 // global.React = require('react');
 // global.ReactDOM = require('react-dom');
+
+
+/* ======================================================== */
+/* Google Analytics Autotrack
+/* ======================================================== */
+require('autotrack');
