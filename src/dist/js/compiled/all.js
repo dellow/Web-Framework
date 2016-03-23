@@ -1184,10 +1184,10 @@ module.exports = delegate;
  *
 **/
 
-window.mobile_breakpoint = 768;
+window.config.mobile_breakpoint = 768;
 window.wiselinks_enabled = true;
-window.helper_log        = (Helpers.isEmpty(window.gulp_env) || window.gulp_env == 'development') ? true : false;
-window.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
+window.config.helper_log        = (Helpers.isEmpty(window.gulp_env) || window.gulp_env == 'development') ? true : false;
+window.config.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
 },{}],19:[function(require,module,exports){
 /**
  *
@@ -1209,7 +1209,7 @@ window.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
      * @version 1.0.0
 	**/
 	Helpers.log = function(message, type, alertlog){
-		if(window.helper_log){
+		if(window.config.helper_log){
 			alertlog = (typeof alertlog === 'undefined') ? true : false;
 			if(typeof console === 'undefined' || typeof console.log === 'undefined'){
 				if(alertlog){
@@ -1475,7 +1475,7 @@ window.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
 	**/
 	Module.prototype.init = function(){
     	// Check screen is below mobile breakpoint.
-		if(Helpers.breakpoint(window.mobile_breakpoint)){
+		if(Helpers.breakpoint(window.config.mobile_breakpoint)){
         	return this.binds();
         }
         else{
@@ -1938,7 +1938,7 @@ window.ga_active         = (Helpers.isEmpty(window.ga)) ? false : true;
                 appendErrorToPlaceholder: true,
                 successCallback: function(){
                     // Check for Google Analytics.
-                    if(window.ga_active){
+                    if(window.config.ga_active){
                         // Set a virtual page for GA.
                         ga('send', 'pageview', '/contact-success.virtual');
                     }

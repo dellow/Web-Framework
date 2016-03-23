@@ -242,7 +242,7 @@
                 appendErrorToPlaceholder: true,
                 successCallback: function(){
                     // Check for Google Analytics.
-                    if(window.ga_active){
+                    if(window.config.ga_active){
                         // Set a virtual page for GA.
                         ga('send', 'pageview', '/contact-success.virtual');
                     }

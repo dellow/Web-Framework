@@ -18,7 +18,7 @@
      * @version 1.0.0
 	**/
 	Helpers.log = function(message, type, alertlog){
-		if(window.helper_log){
+		if(window.config.helper_log){
 			alertlog = (typeof alertlog === 'undefined') ? true : false;
 			if(typeof console === 'undefined' || typeof console.log === 'undefined'){
 				if(alertlog){

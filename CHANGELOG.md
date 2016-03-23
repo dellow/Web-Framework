@@ -5,6 +5,9 @@ __X.X.X__:
 * Really cleaned up how typeset it defined. Removed knife, not uses native PX and % values.
 * Added `respond-to-range` mixin which specifically sets a style within a device range.
 * The SASS var `$mobile_menu` is now synched with the JS window var.
+* Added all JavaScript `window` vars in `config` namespace.
+* Fixed issue with Safari and the SCSS / JS mobile breakpoint feature.
+* Removed redundant `sensor` parameter from the Google Maps plugin.
 
 __2.5.0__:
 * Added a 'text' namespace for adding color.

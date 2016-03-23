@@ -150,7 +150,7 @@
 
                 // Get API
                 google.load('maps', '3', {
-                    other_params: 'sensor=false&region=GB&libraries=geometry' + _self.key,
+                    other_params: 'region=GB&libraries=geometry' + _self.key,
                     callback: function(){
 
                         // Map Type

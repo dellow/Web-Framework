@@ -19,9 +19,9 @@
     **/
     Breakpoint.refreshValue = function(){
         // Set the range.
-        window.current_breakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
+        window.config.current_breakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/["']/g, "");
         // Set the menu_breakpoint.
-        window.menu_breakpoint = window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/\"/g, '');
+        window.config.menu_breakpoint = window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/["']/g, "");
     };
 
     /**
@@ -34,7 +34,7 @@
         // Get current breakpoint.
         Breakpoint.refreshValue();
         // Log it.
-        Helpers.log('The current breakpoint is: ' + window.current_breakpoint + ' and the mobile menu size is: ' + window.menu_breakpoint);
+        Helpers.log('The current breakpoint is: ' + window.config.current_breakpoint + ' and the mobile menu size is: ' + window.config.menu_breakpoint);
     });
 
     // Export
