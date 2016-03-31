@@ -101,7 +101,7 @@ a, button {
 blockquote, img, dl, figure, ol, p, pre, ul {
 	@include nudge(margin-bottom, 1);
 	// Pseudo
-	&:last-child {
+	&:last-of-type {
 		margin-bottom: 0;
 	}
 }
