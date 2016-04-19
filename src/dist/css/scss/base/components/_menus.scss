@@ -22,7 +22,7 @@
             }
         }
         // Descendants
-        .nav-primary__sub-menu {
+        .sub-menu {
             position: absolute;
             left: 0; top: 100%;
             z-index: $zindex-1;
@@ -30,7 +30,7 @@
                 display: block;
                 white-space: nowrap;
             }
-            &__sub-menu {
+            .sub-menu {
                 left: 100%;
             }
         }
@@ -39,19 +39,37 @@
             display: none;
         }
     }
-    &__sub-menu {
+    .sub-menu {
         display: none;
     }
     &--mobile {
         height: 100%;
-        .nav-primary__sub-menu {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0; left: 0;
-            z-index: $zindex-1;
-            overflow-y: scroll;
-        }
+        position: relative;
+		li {
+			display: block;
+			position: static;
+			// Descendants
+			.sub-menu {
+				width: 0;
+				height: 100%;
+				display: block;
+				position: absolute;
+				top: 0; left: -105%; // 105% to cover the box-shadow.
+                z-index: $zindex-1;
+				overflow-y: scroll;
+				background: color(white);
+				// Descendants
+				&__close {
+					position: absolute;
+					@include nudge(top, 1); @include nudge(left, 1);
+				}
+				// Abstractions
+				&.active-sub-menu {
+                    width: 100%;
+					left: 0;
+				}
+			}
+		}
     }
 }
 
@@ -92,7 +110,7 @@
 	transition: left $animation ease, box-shadow $animation ease;
 	// Abstractions
 	&.sub-menu-active {
-		background: darken(color(white), 10%);
+		background: darken(color(white), 3%);
 	}
 	// Descendants
 	&__inner {
@@ -105,34 +123,6 @@
 		z-index: $zindex-1;
 		font-size: 28px;
 		color: color(black);
-	}
-	.nav-primary {
-		li {
-			display: block;
-			position: static;
-			// Descendants
-			&__sub-menu {
-				width: 0;
-				height: 100%;
-				display: block;
-				position: absolute;
-				top: 0; left: -105%; // 105% to cover the box-shadow.
-				overflow-y: scroll;
-				box-shadow: 3px 0 6px rgba(0,0,0,0.3);
-				font-weight: normal;
-				background: color(white);
-				transition: width $animation ease;
-				// Descendants
-				&__close {
-					position: absolute;
-					@include nudge(top, 1); @include nudge(left, 1);
-				}
-				// Abstractions
-				&.active-sub-menu {
-					left: 0;
-				}
-			}
-		}
 	}
 }
 
