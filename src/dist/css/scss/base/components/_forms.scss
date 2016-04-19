@@ -62,12 +62,12 @@ form {
 
 	// All form fields.
 	input, .input, select, textarea {
-		height: $form_field_height;
+		height: $base_field_height;
 		@include nudge(padding, 0.2 0.4);
 		border: 1px solid lighten(color(grey, dark), 60%);
 		vertical-align: top;
 		position: relative;
-		border-radius: $border_radius_base;
+		border-radius: $base_border_radius;
 		cursor: pointer;
 		background: color(white);
 		transition: color $animation ease, background-color $animation ease, border-color $animation ease;
@@ -96,9 +96,9 @@ form {
 	}
 
 	// Radio & Checkboxes.
-	input[type="radio"], input[type="checkbox"] {
-		width: auto;
-		height: auto;
+	%radio-checkbox, input[type="radio"], input[type="checkbox"] {
+		width: auto !important;
+		height: auto !important;
 		margin: -2px 2px 0 0;
 		border: 0;
 		display: inline;
@@ -114,7 +114,7 @@ form {
 	button, .button {
 		&.form-button {
 			@include nudge(padding, 0.35 1);
-			border-radius: $border_radius_base;
+			border-radius: $base_border_radius;
 			background: lighten(color(grey, dark), 70%);
 			&[disabled], &[disabled]:hover, &.disabled, &.disabled:hover, &.disabled:active {
 				cursor: no-drop;
@@ -161,9 +161,6 @@ form {
 		}
 		&.small {
 			max-width: (100% / 3);
-		}
-		&.m-small {
-			max-width: (100% / 4);
 		}
 		&.v-small {
 			max-width: (100% / 6);
@@ -274,6 +271,11 @@ form {
 			display: block;
 		}
 	}
+
+	// Radio & Checkboxes
+	input[type="checkbox"], input[type="radio"] {
+		@extend %radio-checkbox;
+	}
 }
 
 
@@ -329,6 +331,11 @@ form {
 		~ .note {
 			margin-left: 35%;
 		}
+	}
+
+	// Radio & Checkboxes
+	input[type="checkbox"], input[type="radio"] {
+		@extend %radio-checkbox;
 	}
 }
 

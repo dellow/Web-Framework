@@ -1,6 +1,6 @@
 # Web Framework Changelog
 
-__X.X.X__:
+__2.5.1__:
 * Improved button components and added outline class.
 * Really cleaned up how typeset it defined. Removed knife, not uses native PX and % values.
 * Added `respond-to-range` mixin which specifically sets a style within a device range.
@@ -8,6 +8,7 @@ __X.X.X__:
 * Added all JavaScript `window` vars in `config` namespace.
 * Fixed issue with Safari and the SCSS / JS mobile breakpoint feature.
 * Removed redundant `sensor` parameter from the Google Maps plugin.
+* Lots of minor fixes and improvements to general CSS styles.
 
 __2.5.0__:
 * Added a 'text' namespace for adding color.
