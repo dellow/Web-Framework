@@ -470,7 +470,7 @@
         field_checker: function(field){
             var _self = this;
             var obj;
-            var msg = field.data('validation-message');
+            var msg = field.data('validation-message') | '';
 
             // Checkboxes and radio.
             if((field.attr('type') === 'checkbox' || field.attr('type') === 'radio') && field.serializeArray().length == 0){
