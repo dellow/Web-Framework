@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__2.X.X__:
+* Fixed preloader destroy.
+
 __2.5.1__:
 * Improved button components and added outline class.
 * Really cleaned up how typeset it defined. Removed knife, not uses native PX and % values.

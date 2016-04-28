@@ -148,7 +148,7 @@
 		}
 		else{
 			$('.spinner-wrapper', el).fadeOut(500, function(){
-				el.css({'position': ''}).prepend(loader);
+				el.css({'position': ''});
 				$(this).remove();
 			});
 		}
