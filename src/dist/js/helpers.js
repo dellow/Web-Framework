@@ -27,14 +27,14 @@
 			}
 			else {
 				var color = (type == 'positive') ? '#097809' : (type == 'negative') ? '#c5211d' : (typeof type !== 'undefined') ? type : '#240ad0';
-				console.log('%c DEBUG: -----------------------------------------------', 'color: ' + color);
+				console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;');
 				if(message instanceof Array || message instanceof Object){
-					console.log(' DEBUG:', message);
+					console.log(message);
 				}
 				else{
-					console.log('%c DEBUG: ' + message, 'color: ' + color);
+					console.log('%c' + message, 'color: ' + color);
 				}
-				console.log('%c DEBUG: -----------------------------------------------', 'color: ' + color);
+				console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;');
 				console.log('');
 			}
 		}

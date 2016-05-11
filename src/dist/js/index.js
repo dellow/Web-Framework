@@ -7,6 +7,8 @@
  *
 **/
 
+// Get error handling.
+require('./errors');
 // Require helpers globally.
 global.Helpers = require('./helpers');
 // Require breakpoint globally.

@@ -2,6 +2,7 @@
 
 __2.X.X__:
 * Fixed preloader destroy.
+* Added better error handling.
 
 __2.5.1__:
 * Improved button components and added outline class.
