@@ -1,9 +1,10 @@
 # Web Framework Changelog
 
-__2.X.X__:
+__2.5.2__:
 * Fixed preloader destroy.
 * Added better error handling.
 * Added a `minify` task. Removed minification by default from any profile.
+* Lots of fixes and improvements.
 
 __2.5.1__:
 * Improved button components and added outline class.

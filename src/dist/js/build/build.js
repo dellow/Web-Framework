@@ -1,9 +1,3 @@
-/* ==========================================================================
-Unminified JavaScript
-Application Version: 1.0.0
-Compiled: Tue Apr 19 2016 16:35:00 GMT+0100 (BST)
-========================================================================== */
-
 // Set environment variable
 window.gulp_env = "development";
 
@@ -9583,6 +9577,24 @@ window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
 },{}],4:[function(require,module,exports){
 /**
  *
+ * Application or Website name
+ *
+ * Copyright 2016, Author Name
+ * Some information on the license.
+ *
+**/
+
+window.onerror = function(errorMsg, url, lineNumber, column, errorObj){
+    console.log('%c-- ERROR ---------------------------------------------------------', 'color:#c5211d;font-weight:bold;');
+    console.log('%cMessage: ' + errorMsg, 'color: #c5211d');
+    console.log('Script: ' + url + ':' + lineNumber);
+    console.debug('Line: ' + lineNumber + ' | Column: ' + column);
+    // console.log('StackTrace: ' +  errorObj);
+    console.log('%c-- ERROR ---------------------------------------------------------', 'color:#c5211d;font-weight:bold;');
+}
+},{}],5:[function(require,module,exports){
+/**
+ *
  * Helpers
  *
  * Copyright 2016, Author Name
@@ -9610,14 +9622,14 @@ window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
 			}
 			else {
 				var color = (type == 'positive') ? '#097809' : (type == 'negative') ? '#c5211d' : (typeof type !== 'undefined') ? type : '#240ad0';
-				console.log('%c DEBUG: -----------------------------------------------', 'color: ' + color);
+				console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;');
 				if(message instanceof Array || message instanceof Object){
-					console.log(' DEBUG:', message);
+					console.log(message);
 				}
 				else{
-					console.log('%c DEBUG: ' + message, 'color: ' + color);
+					console.log('%c' + message, 'color: ' + color);
 				}
-				console.log('%c DEBUG: -----------------------------------------------', 'color: ' + color);
+				console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;');
 				console.log('');
 			}
 		}
@@ -9731,7 +9743,7 @@ window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
 		}
 		else{
 			$('.spinner-wrapper', el).fadeOut(500, function(){
-				el.css({'position': ''}).prepend(loader);
+				el.css({'position': ''});
 				$(this).remove();
 			});
 		}
@@ -9817,7 +9829,7 @@ window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
 
 }({}, window));
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  *
  * Module
@@ -10085,7 +10097,7 @@ window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
 
 }(function(){}, window));
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  *
  * Module
@@ -10216,7 +10228,9 @@ window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
     **/
     Module.prototype.reveal_dom_element = function(){
         // Button click.
-        $(document).on('click', '.js-reveal', function(){
+        $(document).on('click', '.js-reveal', function(e){
+            e.preventDefault();
+            
             var _self   = $(this),
                 target  = _self.data('reveal-target'),
                 modify1 = _self.text(),
@@ -10344,7 +10358,7 @@ window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
 
 }(function(){}, window));
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  *
  * Public
@@ -10386,7 +10400,7 @@ window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
 
 }(window.Public = window.Public || function(){}, window));
 
-},{"./module.mobile-menu-side":5,"./module.plugins":6}],8:[function(require,module,exports){
+},{"./module.mobile-menu-side":6,"./module.plugins":7}],9:[function(require,module,exports){
 (function (global){
 /**
  *
@@ -10397,6 +10411,8 @@ window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
  *
 **/
 
+// Get error handling.
+require('./errors');
 // Require helpers globally.
 global.Helpers = require('./helpers');
 // Require breakpoint globally.
@@ -10431,4 +10447,4 @@ Public.init();
 // Log it.
 Helpers.log(Public);
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./app/app":1,"./breakpoint":2,"./config":3,"./helpers":4,"./public/public":7}]},{},[8]);
+},{"./app/app":1,"./breakpoint":2,"./config":3,"./errors":4,"./helpers":5,"./public/public":8}]},{},[9]);
