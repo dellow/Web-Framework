@@ -21,6 +21,7 @@ node_modules/
 # details should be ignored to prevent unauthorised access.
 # ---------------------------------------------------------------------------------
 RELEASE_PROCESS.md
+release.sh
 **/.htaccess
 **/robots.txt
 **/*.log
