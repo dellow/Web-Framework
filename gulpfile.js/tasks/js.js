@@ -84,23 +84,10 @@
 			'',
 			''].join('\n');
 
-		// Header template.
-		var header_tpl = ['/* ==========================================================================',
-			'JavaScript',
-			'Application Version: <%= version %>',
-			'Compiled: <%= date %>',
-			'========================================================================== */',
-			'',
-			''].join('\n');
-
 		return gulp.src(config.js.src3)
 		    .pipe(concat('build.js'))
 			.pipe(header(header_tpl_env, {
 				env: (is_production) ? 'production' : 'development'
-			}))
-			.pipe(header(header_tpl, {
-				version: version,
-				date   : Date()
 			}))
 			.pipe(gulp.dest(config.js.dest3))
 			.on('error', handleErrors)
