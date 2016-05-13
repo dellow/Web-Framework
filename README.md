@@ -12,6 +12,7 @@
 1. [Tasks](#tasks)
     1. [Default](#tasks--default)
     1. [Assets](#tasks--assets)
+    1. [Minify](#tasks--minify)
     1. [PageSpeed](#tasks--pagespeed)
     1. [Release](#tasks--release)
     1. [Sync](#tasks--sync)
@@ -102,13 +103,13 @@ The Project Wrapper runs various profiles based on the environment variable. Jus
 
 <a name="profiles--development"></a>
 ### Development
-- JS (Non minified)
-- CSS (Non minified)
+- JS
+- CSS
 
 <a name="profiles--production"></a>
 ### Production
-- JS (Minified)
-- CSS (Minified)
+- JS
+- CSS
 - Images
 - JSHint
 
@@ -137,6 +138,10 @@ _Documentation coming soon_
 <a name="tasks--images"></a>
 #### Images
 _Documentation coming soon_
+
+<a name="tasks--minify"></a>
+#### Minify
+By default CSS and JS is not minified in either environment. Running `gulp minify` will minify both assets.
 
 <a name="tasks--js"></a>
 #### JS
@@ -206,8 +211,6 @@ _Documentation coming soon_
 <a name="working-with-scss"></a>
 ## Working with SCSS
 Any new SCSS partials should be added in the `site` directory. `base` and `mixins` should be left as is so they can be overwritten and updated. Use the `site/_vars` partial to override any of the default variables set in `config/_vars` and set your own mixins in the `site` directory.
-
-Running Gulp in default mode with `gulp` or production mode with `gulp --config production` will compile the CSS minified. Running in development mode with `gulp --config development` will compile the the CSS un-minified for easier debugging.
 
 <a name="working-with-scss--debug-mode"></a>
 ### Debug Mode

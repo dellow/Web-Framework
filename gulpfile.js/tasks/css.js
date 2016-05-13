@@ -36,7 +36,6 @@
 	/* Task Dependencies
 	/* =========================================================================== */
 	var sass         = require('gulp-sass'),
-	    header       = require('gulp-header'),
 		sourcemaps   = require('gulp-sourcemaps'),
 		autoprefixer = require('gulp-autoprefixer');
 
@@ -45,24 +44,10 @@
 	/* Task
 	/* =========================================================================== */
 	GulpTask = function(){
-		// Vars
-		var version = config.version, // Need this for Headers.
-			is_development = (args.config == 'development' || args.config == undefined) ? true : false,
-			is_production  = (args.config == 'production') ? true : false;
-
-		// Header template.
-		var header_tpl = ['/* ==========================================================================',
-			'<%= type %> Stylesheet',
-			'Application Version: <%= version %>',
-			'Compiled: <%= date %>',
-			'========================================================================== */',
-			'',
-			''].join('\n');
-
 		return gulp.src(config.css.src)
 	        .pipe(sourcemaps.init())
 	        .pipe(sass({
-		        outputStyle: (is_production) ? 'compressed' : 'expanded',
+		        outputStyle: 'expanded',
 	        	errLogToConsole: true,
 		        onError: handleErrors
 		    }))
@@ -71,11 +56,6 @@
 	            browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
 	            cascade: false
 	        }))
-			.pipe(header(header_tpl, {
-				type   : (is_production) ? 'Minified' : 'Unminified',
-				version: version,
-				date   : Date()
-			}))
 	        .pipe(sourcemaps.write('./', {
 				includeContent        : false,
 				sourceRoot            : '',

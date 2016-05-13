@@ -4,6 +4,7 @@
     "dist" : "./src/dist/",
     "css": {
         "src": "./src/dist/css/scss/build.scss",
+        "file": "./src/dist/css/build.css",
         "dest": "./src/dist/css/"
     },
     "images": {
@@ -11,6 +12,8 @@
         "dest": "./src/dist/images/"
     },
     "js": {
+        "file": "./src/dist/js/build/build.js",
+        "dest": "./src/dist/js/build/",
         "src1": "./src/dist/js/vendor/",
         "dest1": "./src/dist/js/compiled/",
         "src2": "./src/dist/js/",

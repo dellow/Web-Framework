@@ -38,8 +38,7 @@
 	var browserify = require('browserify'),
 	    header     = require('gulp-header'),
 	    rename     = require('gulp-rename'),
-	    concat     = require('gulp-concat'),
-		uglify     = require('gulp-uglify');
+	    concat     = require('gulp-concat');
 
 
 	/* =========================================================================== */
@@ -87,7 +86,7 @@
 
 		// Header template.
 		var header_tpl = ['/* ==========================================================================',
-			'<%= type %> JavaScript',
+			'JavaScript',
 			'Application Version: <%= version %>',
 			'Compiled: <%= date %>',
 			'========================================================================== */',
@@ -99,9 +98,7 @@
 			.pipe(header(header_tpl_env, {
 				env: (is_production) ? 'production' : 'development'
 			}))
-			.pipe(gulpif(is_production, uglify()))
 			.pipe(header(header_tpl, {
-				type   : (is_production) ? 'Minified' : 'Unminified',
 				version: version,
 				date   : Date()
 			}))
@@ -113,7 +110,7 @@
 	// Task
 	gulp.task('js:common', GulpTask1);
 	gulp.task('js:all', GulpTask2);
-	gulp.task('js', ['env', 'js:all'], GulpTask3);
+	gulp.task('js', ['js:all'], GulpTask3);
 
 	// Export
 	module.exports = {

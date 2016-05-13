@@ -3,6 +3,7 @@
 __2.X.X__:
 * Fixed preloader destroy.
 * Added better error handling.
+* Added a `minify` task. Removed minification by default from any profile.
 
 __2.5.1__:
 * Improved button components and added outline class.
