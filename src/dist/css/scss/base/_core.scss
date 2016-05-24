@@ -60,6 +60,7 @@ body {
 /* -- Page Wrapper -- */
 .page__wrapper {
 	position: relative;
+	z-index: 1;
 	transition: left $animation ease;
 	// Responsive
 	@include respond-to($mobile_menu){
