@@ -81,3 +81,55 @@
     #{$selector}: $px_sizes;
     #{$selector}: $rem_sizes;
 }
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * slab
+ * Set's a consistent slab size.
+ *
+ * .foo {@include slab(2);}
+**/
+@mixin slab($size, $modifier: false){
+	// Desktop.
+	@include respond-to-range(desktop){
+		@if($modifier == 'ntp'){
+			@include nudge(padding-bottom, $size);
+		}
+		@else if($modifier == 'nbp'){
+			@include nudge(padding-top, $size);
+		}
+		@else {
+			@include nudge(padding-top, $size);
+			@include nudge(padding-bottom, $size);
+		}
+	}
+	// Tablet.
+	@include respond-to-range(tablet){
+		@if($modifier == 'ntp'){
+			@include nudge(padding-bottom, ($size / 2));
+		}
+		@else if($modifier == 'nbp'){
+			@include nudge(padding-top, ($size / 2));
+		}
+		@else {
+			@include nudge(padding-top, ($size / 2));
+			@include nudge(padding-bottom, ($size / 2));
+		}
+	}
+	// Mobile.
+	@include respond-to-range(mobile){
+		@if($modifier == 'ntp'){
+			@include nudge(padding-bottom, ($size / 2));
+		}
+		@else if($modifier == 'nbp'){
+			@include nudge(padding-top, ($size / 2));
+		}
+		@else {
+			@include nudge(padding-top, ($size / 2));
+			@include nudge(padding-bottom, ($size / 2));
+		}
+	}
+}

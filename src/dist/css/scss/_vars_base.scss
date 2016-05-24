@@ -204,10 +204,12 @@ $col_array: (
 
 /* -- Device sizes :: viewportsizes.com | screensiz.es | dpi.lv -- */
 // Generic
+$container                     : 1180px !default;
+
 $device                        : 250px !default;
 $mobile                        : 568px !default;
 $tablet                        : 768px !default;
-$desktop                       : 1180px !default;
+$desktop                       : 1024px !default;
 $desktop--wide                 : 1400px !default;
 
 // iPhone 3

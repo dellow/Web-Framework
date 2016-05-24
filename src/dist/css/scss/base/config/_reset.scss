@@ -63,6 +63,7 @@ input {
 	line-height: normal;
 }
 input[type="text"], input[type="email"], input[type="url"], textarea {
+    min-width: 0; // Better for flexbox implementations.
 	appearance: none;
 }
 input[type="checkbox"],

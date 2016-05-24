@@ -40,7 +40,7 @@
 			src         : config.sprite.src,
 			style       : config.sprite.style,
 			cssPath     : config.sprite.cssPath,
-			margin      : 0,
+			margin      : 2,
 			base64      : false,
 			background  : config.sprite.background,
 			orientation : 'horizontal',

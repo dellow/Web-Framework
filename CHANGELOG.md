@@ -1,5 +1,10 @@
 # Web Framework Changelog
 
+__2.X.X__:
+* Much improved CSS slabs. Can now use a slab mixin to create a low maintenance responsive padded area.
+* Formatting of SCSS files.
+* Lots of fixes and improvements.
+
 __2.5.2__:
 * Fixed preloader destroy.
 * Added better error handling.

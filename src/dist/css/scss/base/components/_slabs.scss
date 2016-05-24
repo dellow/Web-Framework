@@ -7,14 +7,11 @@
 
 .slab {
 	@include nudge(padding, 1 0);
-	&--x2 {
-		@include nudge(padding, 2 0);
-	}
-	&--x3 {
-		@include nudge(padding, 3 0);
-	}
-	&--x4 {
-		@include nudge(padding, 4 0);
+	// Create slabs 1 - 10.
+	@for $i from 1 through 10 {
+		&--x#{$i} {
+			@include nudge(padding, $i 0);
+		}
 	}
     &--ntp {
         padding-top: 0;
@@ -22,7 +19,14 @@
     &--nbp {
         padding-bottom: 0;
     }
+	&--last {
+		@include nudge(padding-bottom, 3);
+	}
 }
+
+
+/* ----------------------------------------------------------------------- */
+
 
 /* -- Slab colors -- */
 @each $key, $value in $colors {
