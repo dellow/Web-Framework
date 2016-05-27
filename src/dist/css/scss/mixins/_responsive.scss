@@ -37,17 +37,17 @@
 **/
 @mixin respond-to-range($range){
 	@if($range == mobile){
-		@media only screen and (min-width: 0) and (max-width: ($tablet)){
+		@media only screen and (min-width: 0) and (max-width: ($tablet - 1)){
 			@content
 		};
 	}
 	@else if($range == tablet){
-		@media only screen and (min-width: ($tablet + 1)) and (max-width: ($desktop)){
+		@media only screen and (min-width: ($tablet)) and (max-width: ($desktop - 1)){
 			@content
 		};
 	}
 	@else if($range == desktop){
-		@media only screen and (min-width: ($desktop + 1)){
+		@media only screen and (min-width: ($desktop)){
 			@content
 		};
 	}
