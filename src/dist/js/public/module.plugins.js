@@ -130,7 +130,7 @@
         // Button click.
         $(document).on('click', '.js-reveal', function(e){
             e.preventDefault();
-            
+
             var _self   = $(this),
                 target  = _self.data('reveal-target'),
                 modify1 = _self.text(),
