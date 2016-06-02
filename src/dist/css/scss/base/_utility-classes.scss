@@ -322,6 +322,25 @@
 /* ----------------------------------------------------------------------- */
 
 
+.u-hide-tablet {
+	display: none;
+	// Responsive.
+	@include respond-to($tablet + 1, null, true){
+		display: block;
+	}
+}
+.u-hide-mobile {
+	display: none;
+	// Responsive.
+	@include respond-to($mobile + 1, null, true){
+		display: block;
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
 /* -- Colours -- */
 @each $key, $value in $colors {
 	$class: "" + $key;
