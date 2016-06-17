@@ -1,51 +1,17 @@
 {
   "devDependencies": {
-    "autotrack"               : "^0.5.0",
-
-    "browserify"              : "^12.0.1",
-    "browsernizr"             : "^2.0.1",
-    "browser-sync"            : "^2.10.1",
-    "fs-extra"                : "^0.26.2",
-
-    "hbsfy"                   : "^2.4.1",
-
-    "gulp-nightwatch"         : "^0.2.6",
-    "phantomjs"               : "^1.9.19",
-    "jasmine-core"            : "^2.4.1",
-    "jasmine-react"           : "^1.1.0",
-    "karma"                   : "^0.13.15",
-    "karma-browserify"        : "^4.4.2",
-    "karma-jasmine"           : "^0.3.6",
-    "karma-phantomjs-launcher": "^0.2.1",
-    "karma-html-reporter"     : "^0.2.7",
-    "karma-spec-reporter"     : "^0.0.21",
-
-    "gulp"                    : "^3.9.0",
-    "gulp-autoprefixer"       : "^3.1.0",
-    "gulp-cache"              : "^0.4.1",
-    "gulp-concat"             : "^2.6.0",
-    "gulp-header"             : "^1.7.1",
-    "gulp-if"                 : "^2.0.0",
-    "gulp-imagemin"           : "^2.4.0",
-    "gulp-jshint"             : "^2.0.0",
-    "gulp-minifier"           : "^0.1.4",
-    "gulp-notify"             : "^2.2.0",
-    "gulp-rename"             : "^1.2.2",
-    "gulp-sass"               : "^2.1.1",
-    "gulp-sourcemaps"         : "^1.6.0",
-    "gulp-util"               : "^3.0.7",
-
-    "jshint"                  : "^2.9.1-rc1",
-    "jshint-stylish"          : "^2.1.0",
-    "psi"                     : "^2.0.2",
-    "require-dir"             : "^0.3.0",
-    "sprity"                  : "^1.0.8",
-    "sprity-sass"             : "^1.0.4",
-    "vinyl-buffer"            : "^1.0.0",
-    "vinyl-source-stream"     : "^1.1.0",
-    "yargs"                   : "^3.31.0"
+    "autoprefixer"  : "^6.3.6",
+    "browserify"    : "^12.0.1",
+    "concat-cli"    : "^4.0.0",
+    "hbsfy"         : "^2.4.1",
+    "node-sass"     : "^3.7.0",
+    "parallelshell" : "^2.0.0",
+    "postcss-cli"   : "^2.5.2",
+    "watch"         : "^0.18.0"
   },
   "dependencies": {
+    "autotrack"    : "^0.5.0",
+    "browsernizr"  : "^2.0.1",
     "function-bind": "*",
     "handlebars"   : "*",
     "jquery"       : "*"
@@ -56,8 +22,17 @@
     ]
   },
   "scripts": {
-    "compile:js": "browserify -t [ hbsfy -e hbs ] src/dist/js/index.js -o src/dist/js/build/build.js",
-    "compile:css": "compass compile src/dist/css/scss/build.scss"
+    "autoprefixer": "postcss -u autoprefixer -b 'last 2 versions' -r src/dist/css/build.css",
+
+    "js:common": "browserify src/dist/js/common/index.js -o src/dist/js/compiled/common.js",
+    "js:app": "browserify -t [ hbsfy -e hbs ] src/dist/js/app/index.js -o src/dist/js/compiled/app.js",
+    "js:build": "npm run js:app && concat-cli -f src/dist/js/compiled/*.js -o src/dist/js/build/build.js",
+    "js:watch": "watch 'npm run js:build' src/dist/js/public/ src/dist/js/app/",
+
+    "css:build": "node-sass --include-path scss src/dist/css/scss/build.scss src/dist/css/build.css | npm run autoprefixer",
+    "css:watch": "watch 'npm run css:build' src/dist/css/scss/",
+
+    "watch": "parallelshell 'npm run js:watch' 'npm run css:watch'"
   },
   "private": true
 }

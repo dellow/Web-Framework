@@ -1,46 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
  *
- * App
- *
- * Copyright 2016, Author Name
- * Some information on the license.
- *
-**/
-
-;(function(App, window, undefined){
-	'use strict';
-
-    /**
-     * App
-     * Constructor for App.
-     *
-     * @since 1.0.0
-     * @version 1.0.0
-    **/
-	App = function(){
-		// Require :: Modules
-		// We do not need to declare with vars but it allows us to call internal methods externally.
-    }
-
-	/**
-	 * init
-	 * Init method.
-     *
-     * @since 1.0.0
-     * @version 1.0.0
-	**/
-	App.prototype.init = function(){
-	}
-
-	// Export
-	module.exports = new App();
-
-}(window.App = window.App || function(){}, window));
-
-},{}],2:[function(require,module,exports){
-/**
- *
  * Breakpoint
  *
  * Copyright 2016, Author Name
@@ -59,30 +19,41 @@
      * @version 1.0.0
     **/
     Breakpoint.refreshValue = function(){
-        // Set the range.
-        window.config.current_breakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/["']/g, "");
-        // Set the menu_breakpoint.
-        window.config.menu_breakpoint = window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/["']/g, "");
+        // Set the current.
+        this.current = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/["']/g, "");
+        // Set the menu.
+        this.menu = window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/["']/g, "");
     };
 
     /**
-     * If window is resized, reset the current breakpoint
+     * If window is resized, reset the current breakpoint.
      *
      * @since 1.0.0
      * @version 1.0.0
  	**/
-    $(window).on('load resize', function(){
+    $(window).on('resize', function(){
         // Get current breakpoint.
         Breakpoint.refreshValue();
         // Log it.
-        Helpers.log('The current breakpoint is: ' + window.config.current_breakpoint + ' and the mobile menu size is: ' + window.config.menu_breakpoint);
+        Helpers.log('The current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu);
     });
+
+    /**
+     * On load get window size.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+ 	**/
+    // Get current breakpoint.
+    Breakpoint.refreshValue();
+    // Log it.
+    Helpers.log('The current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu);
 
     // Export
     module.exports = Breakpoint;
 
 }({}, window));
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 /**
  *
  * Application or Website name
@@ -94,7 +65,7 @@
 
 window.config.helper_log = (Helpers.isEmpty(window.gulp_env) || window.gulp_env == 'development') ? true : false;
 window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /**
  *
  * Application or Website name
@@ -112,7 +83,7 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj){
     // console.log('StackTrace: ' +  errorObj);
     console.log('%c-- ERROR ---------------------------------------------------------', 'color:#c5211d;font-weight:bold;');
 }
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /**
  *
  * Helpers
@@ -349,7 +320,93 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj){
 
 }({}, window));
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
+(function (global){
+/**
+ *
+ * Application or Website name
+ *
+ * Copyright 2016, Author Name
+ * Some information on the license.
+ *
+**/
+
+// Get error handling.
+require('./errors');
+// Require helpers globally.
+global.Helpers = require('./helpers');
+// Require breakpoint globally.
+global.Breakpoint = require('./breakpoint');
+// Get config.
+require('./config');
+
+
+/**
+ * Private
+ * Start the private service.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+**/
+global.Private = require('./private/private');
+// Init Private.
+Private.init();
+// Log it.
+Helpers.log(Private);
+
+/**
+ * Public
+ * Start the public service.
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+**/
+global.Public = require('./public/public');
+// Init Public.
+Public.init();
+// Log it.
+Helpers.log(Public);
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./breakpoint":1,"./config":2,"./errors":3,"./helpers":4,"./private/private":6,"./public/public":9}],6:[function(require,module,exports){
+/**
+ *
+ * App
+ *
+ * Copyright 2016, Author Name
+ * Some information on the license.
+ *
+**/
+
+;(function(App, window, undefined){
+	'use strict';
+
+    /**
+     * App
+     * Constructor for App.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+    **/
+	App = function(){
+		// Require :: Modules
+		// We do not need to declare with vars but it allows us to call internal methods externally.
+    }
+
+	/**
+	 * init
+	 * Init method.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+	App.prototype.init = function(){
+	}
+
+	// Export
+	module.exports = new App();
+
+}(window.App = window.App || function(){}, window));
+},{}],7:[function(require,module,exports){
 /**
  *
  * Module
@@ -616,8 +673,7 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj){
 	module.exports = new Module();
 
 }(function(){}, window));
-
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  *
  * Module
@@ -750,7 +806,7 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj){
         // Button click.
         $(document).on('click', '.js-reveal', function(e){
             e.preventDefault();
-            
+
             var _self   = $(this),
                 target  = _self.data('reveal-target'),
                 modify1 = _self.text(),
@@ -877,8 +933,7 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj){
     module.exports = new Module();
 
 }(function(){}, window));
-
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  *
  * Public
@@ -919,52 +974,4 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj){
 	module.exports = new Public();
 
 }(window.Public = window.Public || function(){}, window));
-
-},{"./module.mobile-menu-side":6,"./module.plugins":7}],9:[function(require,module,exports){
-(function (global){
-/**
- *
- * Application or Website name
- *
- * Copyright 2016, Author Name
- * Some information on the license.
- *
-**/
-
-// Get error handling.
-require('./errors');
-// Require helpers globally.
-global.Helpers = require('./helpers');
-// Require breakpoint globally.
-global.Breakpoint = require('./breakpoint');
-// Get config.
-require('./config');
-
-
-/**
- * App
- * Start the app service.
- *
- * @since 1.0.0
- * @version 1.0.0
-**/
-global.App = require('./app/app');
-// Init App.
-App.init();
-// Log it.
-Helpers.log(App);
-
-/**
- * Public
- * Start the public service.
- *
- * @since 1.0.0
- * @version 1.0.0
-**/
-global.Public = require('./public/public');
-// Init Public.
-Public.init();
-// Log it.
-Helpers.log(Public);
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./app/app":1,"./breakpoint":2,"./config":3,"./errors":4,"./helpers":5,"./public/public":8}]},{},[9]);
+},{"./module.mobile-menu-side":7,"./module.plugins":8}]},{},[5]);

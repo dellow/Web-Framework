@@ -18,17 +18,17 @@ require('./config');
 
 
 /**
- * App
- * Start the app service.
+ * Private
+ * Start the private service.
  *
  * @since 1.0.0
  * @version 1.0.0
 **/
-global.App = require('./app/app');
-// Init App.
-App.init();
+global.Private = require('./private/private');
+// Init Private.
+Private.init();
 // Log it.
-Helpers.log(App);
+Helpers.log(Private);
 
 /**
  * Public
