@@ -1,9 +1,17 @@
 # Web Framework Changelog
 
-__2.X.X__:
+__3.0.0__:
+* Completely removed Gulp and now used `npm run` to process tasks.
 * Much improved CSS slabs. Can now use a slab mixin to create a low maintenance responsive padded area.
 * Formatting of SCSS files.
 * Lots of fixes and improvements.
+* BrowserSync task removed.
+* PSI task removed.
+* Release task removed.
+* Default task removed.
+* Moved Browsernizr and Autotrack to dependencies from devDependencies.
+* Changed structure of the JS build files and directory.
+* Updated documentation.
 
 __2.5.2__:
 * Fixed preloader destroy.

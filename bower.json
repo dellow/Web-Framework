@@ -1,19 +1,13 @@
 {
   "name": "web-framework",
   "version": "2.5.2",
-  "description": "A Gulp powered frontend framework, wrapper and workflow for web projects.",
+  "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web projects that utilises NPM as a build tool.",
   "license": "MIT",
   "authors": [
     "Stew Dellow <stewdellow@gmail.com>"
   ],
   "moduleType": [
     "node"
-  ],
-  "main": [
-    "src/dist/js/app/index.js",
-    "src/dist/js/public/index.js",
-    "src/dist/js/vendor/index.js",
-    "src/dist/css/scss/build.scss"
   ],
   "keywords": [
     "browserify",

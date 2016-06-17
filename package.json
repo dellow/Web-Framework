@@ -1,6 +1,8 @@
 {
   "name": "web-framework",
   "version": "2.5.2",
+  "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web projects that utilises NPM as a build tool.",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer"  : "^6.3.6",
     "browserify"    : "^12.0.1",
@@ -8,6 +10,7 @@
     "hbsfy"         : "^2.4.1",
     "imagemin-cli"  : "^3.0.0",
     "minifier"      : "^0.7.1",
+    "nightwatch"    : "^0.9.4",
     "node-sass"     : "^3.7.0",
     "parallelshell" : "^2.0.0",
     "postcss-cli"   : "^2.5.2",
@@ -49,11 +52,13 @@
     "minify:images": "imagemin src/dist/images/**/**/* -o src/dist/images",
     "minify:js": "minify --output src/dist/js/build/build.js src/dist/js/build/build.js",
 
+    "test:integration": "nightwatch",
+
     "sprite": "sprity create src/dist/images/icons/sprite/ src/dist/images/icons/png/*.png -c ../images/icons/ -s ../../../css/scss/site/_sprites.scss -p sass -n sprite --prefix css-sprite --orientation horizontal --background '#FFFFFF' --margin '2' -d 2:192",
 
-    "version:patch": "npm version patch --git-tag-version=false",
-    "version:minor": "npm version minor --git-tag-version=false",
-    "version:major": "npm version major --git-tag-version=false",
+    "version:patch": "npm version patch --git-tag-version=false && bower version patch",
+    "version:minor": "npm version minor --git-tag-version=false && bower version minor",
+    "version:major": "npm version major --git-tag-version=false && bower version major",
 
     "watch": "parallelshell 'npm run js:watch' 'npm run css:watch'"
   },

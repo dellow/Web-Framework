@@ -5,49 +5,38 @@
 1. [Requirements](#requirements)
 1. [Install](#install)
 1. [Styleguide & Examples](#styleguide-examples)
-1. [Using Gulp](#using-gulp)
-1. [Profiles](#profiles)
-    1. [Development](#profiles--development)
-    1. [Production](#profiles--production)
-1. [Tasks](#tasks)
-    1. [Default](#tasks--default)
-    1. [Assets](#tasks--assets)
-    1. [Minify](#tasks--minify)
-    1. [PageSpeed](#tasks--pagespeed)
-    1. [Release](#tasks--release)
-    1. [Sync](#tasks--sync)
-    1. [Watch](#tasks--watch)
+1. [Scripts](#scripts)
+    1. [Assets](#scripts--assets)
+    1. [Autoprefixer](#scripts--autoprefixer)
+    1. [CSS](#scripts--css)
+    1. [JS](#scripts--js)
+    1. [Minify](#scripts--minify)
+    1. [Sprite](#scripts--sprite)
+    1. [Test](#scripts--test)
+    1. [Watch](#scripts--watch)
 1. [Testing](#testing)
 1. [Working with SCSS](#working-with-scss)
-    1. [Debug Mode](#working-with-scss--debug-mode)
     1. [BEM](#working-with-scss--bem)
     1. [Responsive](#working-with-scss--responsive)
     1. [Reserved Classes](#working-with-scss--reserved-classes)
 1. [Working with JavaScript](#working-with-javascript)
     1. [Requiring New Files](#working-with-javascript--requiring-new-files)
     1. [Helpers](#working-with-javascript--helpers)
-1. [Troubleshooting](#troubleshooting)
 1. [Changelog](#changelog)
 
 <a name="about"></a>
 ## About
-This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises Gulp as a build tool. It's also set up to work with Travis CI which will run any defined spec tests by default.
+This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises NPM as a build tool. It's also set up to work with Travis CI which will run any defined spec tests by default.
 
 Testing is done with Jasmine for unit tests and Nightwatch for functional tests.
 
 <a name="requirements"></a>
 ## Requirements
-The only two system requirements are Node and Gulp. All other dependencies of this Framework will be downloaded and installed when the install process is run.
+The only system requirement is Node. All other dependencies of this Framework will be downloaded and installed when the install process is run.
 
 - [NodeJS](http://nodejs.org/)
-- [Gulp](http://gulpjs.com)
 
-> __Please note:__ These should be installed before using this Framework.
-
-### Gems
-- [SASS 3.4.9](https://rubygems.org/gems/sass/versions/3.4.9)
-
-> __Please note:__ Providing you have Bundler installed required Gems will automatically install for you when using the automatic installer method below.
+> __Please note:__ This should be installed before using this Framework.
 
 <a name="install"></a>
 ## Install
@@ -64,9 +53,8 @@ Once complete simply run `bash install.sh` from your command line. This will do 
 
 - Remove the Git wrapper and replace with a fresh Git initialisation.
 - Remove any un-necessary files/directories.
-- Get all Ruby Gem dependencies.
 - Get all Bower dependencies.
-- Get all NPM dependencies, such as Gulp modules and JavaScript libraries (You can not use Gulp until this step is complete).
+- Get all NPM dependencies.
 - Does an initial commit on the new Git initialisation.
 
 __All additional instructions below assume you have followed the installation process.__
@@ -75,146 +63,53 @@ __All additional instructions below assume you have followed the installation pr
 
 <a name="styleguide-examples"></a>
 ## Styleguide & Examples
-After installation there is a CSS styleguide located in `dist/.help/guides/styleguide.html` which outlines some of the elements in the Framework. You can also test the vertical rhythm `dist/.help/guides/rhythm.html`.
+After installation there is a CSS styleguide located in `dist/.help/guides/styleguide.html` which outlines some of the elements in the Framework. You can also review the vertical rhythm `dist/.help/guides/rhythm.html`.
 
 These serve as ongoing platforms to test any changes you might make to the Framework.
 
-<a name="using-gulp"></a>
-## Using Gulp
-Run the development profile (will set the Node environment to `development`):
+<a name="scripts"></a>
+## Scripts
+There are various singular scripts in the framework that are outlined below. There are also some scripts that run multiple sub scripts to make development easier, these are:
 
-    gulp
-or
-
-    gulp --config development
-Run the production profile (will set the Node environment to `production`):
-
-    gulp --config production
-Watch for changes to the application `.js`, `.hbs` and `.scss` files:
-
-    gulp watch
-Watch for changes to the application `.js`, `.hbs` and `.scss` files and sync/reload browsers and devices:
-
-    gulp sync
-
-<a name="profiles"></a>
-## Profiles
-The Project Wrapper runs various profiles based on the environment variable. Just running `gulp` will run the `development` profile. Running any other profile requires the `--config` parameter, for example: `gulp --config production` will run the production profile. The following tasks are run for each profile:
-
-<a name="profiles--development"></a>
-### Development
-- JS
-- CSS
-
-<a name="profiles--production"></a>
-### Production
-- JS
-- CSS
-- Images
-- JSHint
-
-<a name="tasks"></a>
-## Tasks
-There are various singular tasks in the framework that are outlined below. There are also some tasks that run multiple sub tasks to make development easier, these are:
-
-### Multiple Tasks
-<a name="tasks--default"></a>
-#### Default
-- CSS
-- JS
-- JSHint
-- Images
-
-<a name="tasks--assets"></a>
-#### Assets
-- CSS
-- JS
-
-### Singular Tasks
-<a name="tasks--css"></a>
-#### CSS
+<a name="scripts--assets"></a>
+### Assets
 _Documentation coming soon_
 
-<a name="tasks--images"></a>
-#### Images
+<a name="scripts--autoprefixer"></a>
+### Autoprefixer
 _Documentation coming soon_
 
-<a name="tasks--minify"></a>
-#### Minify
-By default CSS and JS is not minified in either environment. Running `gulp minify` will minify both assets.
-
-<a name="tasks--js"></a>
-#### JS
+<a name="scripts--css"></a>
+### CSS
 _Documentation coming soon_
 
-<a name="tasks--jshint"></a>
-#### JSHint
+<a name="scripts--js"></a>
+### JS
 _Documentation coming soon_
 
-<a name="tasks--pagespeed"></a>
-#### PageSpeed
-You can run Google PageSpeed insights by running `gulp psi`. By default this will check `http://google.com` in `desktop` mode. You can specify a URL and mode simply by passing the relevant parameter. For example to test amazon.com simply run `gulp psi --url http://amazon.com --mode desktop`.
-
-This task will also create a text file depending on the requested domain to record all PageSpeed results. E.G. A request to test `http://google.com` will create a txt file in `psi/google.com` - all subsequent requests to this domain will be appended to this file.
-
-<a name="tasks--release"></a>
-#### Release
-There is a very simple release task which simply copies all the non-build files in the `src` directory to a `release` directory. The actual release directory will be suffixed with the version number set in `gulpfile.js/config.json`. If you do not increment the version number each subsequent release will overwrite the last.
-
-Files that will not be copied to the new release are:
-* Any file with extension `.scss`
-* Any JS files not in the `build` directory.
-
-<a name="tasks--sample"></a>
-#### Sample
+<a name="scripts--minify"></a>
+### Minify
 _Documentation coming soon_
 
-<a name="tasks--sprite"></a>
-#### Sprite
+<a name="scripts--sprite"></a>
+### Sprite
 _Documentation coming soon_
 
-<a name="tasks--sync"></a>
-#### Sync (Using _BrowserSync_)
-Like `watch` BrowserSync will compile `.scss`, `.js` and `.hbs` files automatically simply by running `gulp sync`. This will also provide a local and external address to test your app in sync with other browsers. `gulp sync` will automatically look for changes in `.html` and `.php` files and also the build `.css` and `.js` files and then reload all connected browsers.
-
-The tasks that are run in the `sync` task are:
-- JS (On `.js` and `.hbs` files under the `app` and `public` directory)
-- CSS (On `.scss` files under the `scss` directory)
-
-The `gulp sync` command takes an optional parameter to provide a proxy URL, for example: `gulp sync --url vagrant.dev` (you must supply the root domain, i.e. no sub folders). If this is supplied your files will be served through a proxy. This means you could serve a local environment such as Vagrant on a local network without any additional changes to the local environment (in Vagrant's case, the .Vagrantfile). If the URL parameter is not provided, files from the `./src` directory will be served instead.
-
-By default `gulp sync` will also use the xip.io service for Wildcard DNS. This means you can use font services like fonts.com and typekit.com locally. You can disable xip.io by providing the `--xip=false` parameter e.g. `gulp sync --xip=false`.
-
-> __Please note:__ The `sync` task will minify CSS and JS if run without any arguments.
-
-<a name="tasks--test"></a>
-#### Test
+<a name="scripts--test"></a>
+### Test
 _Documentation coming soon_
 
-<a name="tasks--watch"></a>
-#### Watch (Using _Gulp Watch_)
-You can automatically compile CSS and JS on save by 'watching'. Simply run `gulp watch` to automatically compile. For live browser reloading see [Sync](#sync).
-
-The tasks that are run in the `watch` task are:
-- JS (On `.js` and `.hbs` files under the `app` and `public` directory)
-- CSS (On `.scss` files under the `scss` directory)
-
-> __Please note:__ The `watch` task will minify CSS and JS if run without any arguments.
+<a name="scripts--watch"></a>
+### Watch
+_Documentation coming soon_
 
 <a name="testing"></a>
 ## Testing
-* Unit testing is done with Jasmine via Karma.
-* Functional testing is done with Nightwatch.
-
 _Documentation coming soon_
 
 <a name="working-with-scss"></a>
 ## Working with SCSS
 Any new SCSS partials should be added in the `site` directory. `base` and `mixins` should be left as is so they can be overwritten and updated. Use the `site/_vars` partial to override any of the default variables set in `config/_vars` and set your own mixins in the `site` directory.
-
-<a name="working-with-scss--debug-mode"></a>
-### Debug Mode
-By default debug mode is on but will only work in the default Gulp environment which is `development` mode. Adapted from [Harry Roberts' inuit.css](https://github.com/csswizardry/inuit.css), this will provide hints for potentially incorrect markup. You can override debug mode for a particular file by adding the `no-debug` class to the body.
 
 <a name="working-with-scss--bem"></a>
 ### BEM Syntax
@@ -383,21 +278,21 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
 ## Working with JavaScript
 The JavaScript is split into directories, some of these are for libraries / frameworks / plugins that will not be on the final server. Some are for the actual modules.
 
-All application JavaScript modules (think: Routing, Framework Logic etc) should be added in `app` directory - these files will be compiled by Gulp into the global `build.js` file.
+All application JavaScript modules (think: Routing, Framework Logic etc) should be added in `dist/js/app/private` directory - these files will be compiled into the global `build.js` file.
 
-All public JavaScript modules (think: Event Listeners, Plugin binds etc) should be added in `public` directory - these files will be compiled by Gulp into the global `build.js` file.
+All public JavaScript modules (think: Event Listeners, Plugin binds etc) should be added in `dist/js/app/public` directory - these files will be compiled into the global `build.js` file.
 
 The only JavaScript file that will hit the server should be at `src/dist/js/build/build.js`.
 
 <a name="working-with-javascript--requiring-new-files"></a>
 ### Requiring New Files
-All initial files are loaded from `dist/js/index.js` but thanks to Browserify you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
+All initial files are loaded from `dist/js/app/index.js` but thanks to Browserify you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
 
     require('./javascript-file');
 
 <a name="working-with-javascript--helpers"></a>
 ### Helpers
-The `dist/js/helpers/js` file contains various global helper functions to aid with development. These can be called in any JS file within the `app` directory simple by calling `Helpers.<method_name>`. The methods are described below:
+The `dist/js/app/helpers/js` file contains various global helper functions to aid with development. These can be called in any JS file within the `app` directory simple by calling `Helpers.<method_name>`. The methods are described below:
 
 ##### log `Helpers.log('My console message');`
 Super powered, cross-browser supported `console.log`. Will check the browser supports console logging (will use `alert` otherwise, unless overrided). All console messages will be prefixed with "DEBUG" and encapsulated into sections to easier separate messages. A simple call would result in:
@@ -408,17 +303,15 @@ Super powered, cross-browser supported `console.log`. Will check the browser sup
 
 You can also supply a `type` parameter to customise the output colour (`Helpers.log('My console message', 'negative');`). By default all messages output in blue, passing `positive` will output the colour in green, while passing `negative` will output in red. Alternatively you can pass a valid HEX value instead of a positive/negative string to output in that colour.
 
-__log__ only works in `development` mode, so you can safely leave `Helpers.log` calls in your code knowing when you compile in `production` they will not output.
+***
+
+##### throw `Helpers.throw('This is an error')`
+Throws a JavaScript error.
 
 ***
 
 ##### breakpoint `Helpers.breakpoint(768)`
 For easy screen size checking. Will return true if the current screen size less than the passed value.
-
-***
-
-##### throw `Helpers.throw('This is an error')`
-Throws a JavaScript error.
 
 ***
 
@@ -454,17 +347,6 @@ Parses a URL for parameters and returns them in JavaScript object.
 
 ##### decode_entities `Helpers.decode_entities('<p>This is a string with paragraphs</p>')`
 Will simply parse HTML tags from a JavaScript string.
-
-<a name="troubleshooting"></a>
-## Troubleshooting
-##### The `gulp sync` command with a valid `url` argument loads an empty page.
-Try running with the `xip=false` argument. If this works you're router probably blocks the xip.io service (and other wildcard services). You can fix this by using an alternative DNS address. Try Google's (8.8.8.8 and 8.8.4.4). You will also need to change this on your Smartphone and/or Tablet.
-
-#### Using font services with BrowserSync.
-The gulp `sync` task uses the xip.io service by default. So to use webfont services like fonts.com and typekit.com with BrowserSync all you need to do is set `*.xip.io` as one of your allowed domains in the font service settings. Your fonts will now be available on all your devices using the URL provided via the `sync` task.
-
-#### Getting `Error EMFILE, open` errors when running Gulp tasks.
-This is memory limit issue in OSX/Linux systems. Simply run `ulimit -n 10000` in your command line then the Gulp command again and it should fix the error.
 
 <a name="changelog"></a>
 ## Changelog
