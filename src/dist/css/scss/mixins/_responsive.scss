@@ -42,12 +42,12 @@
 		};
 	}
 	@else if($range == tablet){
-		@media only screen and (min-width: ($tablet)) and (max-width: ($desktop - 1)){
+		@media only screen and (min-width: ($tablet)) and (max-width: ($desktop)){
 			@content
 		};
 	}
 	@else if($range == desktop){
-		@media only screen and (min-width: ($desktop)){
+		@media only screen and (min-width: ($desktop + 1)){
 			@content
 		};
 	}

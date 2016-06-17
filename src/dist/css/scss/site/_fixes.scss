@@ -14,16 +14,7 @@ html.no-js {
 
 
 /**
- * Targets all legacy versions of Internet Explorer
- * with conditional statements in header.
- * Target: IE6, IE7, IE8 & IE9
-**/
-html.oldie {
-}
-
-
-/**
- * Targets just IE6 with conditional statements in header.
+ * Targets just IE6 via conditional statements in header.
  * Target: IE6
 **/
 html.ie6 {
@@ -31,7 +22,7 @@ html.ie6 {
 
 
 /**
- * Targets just IE7 with conditional statements in header.
+ * Targets just IE7 via conditional statements in header.
  * Target: IE7
 **/
 html.ie7 {
@@ -39,7 +30,7 @@ html.ie7 {
 
 
 /**
- * Targets just IE8 with conditional statements in header.
+ * Targets just IE8 via conditional statements in header.
  * Target: IE8
 **/
 html.ie8 {
@@ -47,7 +38,7 @@ html.ie8 {
 
 
 /**
- * Targets just IE9 with conditional statements in header.
+ * Targets just IE9 via conditional statements in header.
  * Target: IE9
 **/
 html.ie9 {
@@ -55,9 +46,24 @@ html.ie9 {
 
 
 /**
- * Targets newer versions of Internet Explorer
- * that support the -ms-height-contract media query
+ * Targets all legacy versions of Internet Explorer via conditional statements in header.
+ * Target: IE6, IE7, IE8 & IE9
+**/
+html.oldie {
+}
+
+
+/**
+ * Targets IE10 & IE11 via '-ms-high-contrast' media query.
  * Target: IE10, IE11
 **/
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+}
+
+
+/**
+ * Targets Edge via '-ms-accelerator' media query.
+ * Target: Edge
+**/
+@media screen and (-ms-accelerator: true){
 }
