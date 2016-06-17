@@ -1,12 +1,20 @@
 {
+  "name": "web-framework",
+  "version": "2.5.2",
   "devDependencies": {
     "autoprefixer"  : "^6.3.6",
     "browserify"    : "^12.0.1",
     "concat-cli"    : "^4.0.0",
     "hbsfy"         : "^2.4.1",
+    "imagemin-cli"  : "^3.0.0",
+    "minifier"      : "^0.7.1",
     "node-sass"     : "^3.7.0",
     "parallelshell" : "^2.0.0",
     "postcss-cli"   : "^2.5.2",
+    "sprity-cli"    : "^1.0.1",
+    "sprity-lwip"   : "^1.0.6",
+    "sprity-sass"   : "^1.0.4",
+    "sprity"        : "^1.0.8",
     "watch"         : "^0.18.0"
   },
   "dependencies": {
@@ -22,15 +30,30 @@
     ]
   },
   "scripts": {
+    "assets": "npm run css:build && npm run js:build",
+    "minify": "npm run minify:css && npm run minify:images && npm run minify:js",
+
     "autoprefixer": "postcss -u autoprefixer -b 'last 2 versions' -r src/dist/css/build.css",
+    "env:production": "NODE_ENV=production",
+    "env:staging": "NODE_ENV=staging",
+
+    "css:build": "node-sass --include-path scss src/dist/css/scss/build.scss src/dist/css/build.css | npm run autoprefixer",
+    "css:watch": "watch 'npm run css:build' src/dist/css/scss/",
 
     "js:common": "browserify src/dist/js/common/index.js -o src/dist/js/compiled/common.js",
     "js:app": "browserify -t [ hbsfy -e hbs ] src/dist/js/app/index.js -o src/dist/js/compiled/app.js",
     "js:build": "npm run js:app && concat-cli -f src/dist/js/compiled/*.js -o src/dist/js/build/build.js",
     "js:watch": "watch 'npm run js:build' src/dist/js/public/ src/dist/js/app/",
 
-    "css:build": "node-sass --include-path scss src/dist/css/scss/build.scss src/dist/css/build.css | npm run autoprefixer",
-    "css:watch": "watch 'npm run css:build' src/dist/css/scss/",
+    "minify:css": "minify --output src/dist/css/build.css src/dist/css/build.css",
+    "minify:images": "imagemin src/dist/images/**/**/* -o src/dist/images",
+    "minify:js": "minify --output src/dist/js/build/build.js src/dist/js/build/build.js",
+
+    "sprite": "sprity create src/dist/images/icons/sprite/ src/dist/images/icons/png/*.png -c ../images/icons/ -s ../../../css/scss/site/_sprites.scss -p sass -n sprite --prefix css-sprite --orientation horizontal --background '#FFFFFF' --margin '2' -d 2:192",
+
+    "version:patch": "npm version patch --git-tag-version=false",
+    "version:minor": "npm version minor --git-tag-version=false",
+    "version:major": "npm version major --git-tag-version=false",
 
     "watch": "parallelshell 'npm run js:watch' 'npm run css:watch'"
   },
