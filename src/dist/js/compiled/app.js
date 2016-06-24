@@ -63,7 +63,6 @@
  *
 **/
 
-window.config.helper_log = (Helpers.isEmpty(window.gulp_env) || window.gulp_env == 'development') ? true : false;
 window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
 },{}],3:[function(require,module,exports){
 /**
@@ -104,25 +103,23 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj){
      * @version 1.0.0
 	**/
 	Helpers.log = function(message, type, alertlog){
-		if(window.config.helper_log){
-			alertlog = (typeof alertlog === 'undefined') ? true : false;
-			if(typeof console === 'undefined' || typeof console.log === 'undefined'){
-				if(alertlog){
-					alert(message);
-				}
+		alertlog = (typeof alertlog === 'undefined') ? true : false;
+		if(typeof console === 'undefined' || typeof console.log === 'undefined'){
+			if(alertlog){
+				alert(message);
 			}
-			else {
-				var color = (type == 'positive') ? '#097809' : (type == 'negative') ? '#c5211d' : (typeof type !== 'undefined') ? type : '#240ad0';
-				console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;');
-				if(message instanceof Array || message instanceof Object){
-					console.log(message);
-				}
-				else{
-					console.log('%c' + message, 'color: ' + color);
-				}
-				console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;');
-				console.log('');
+		}
+		else {
+			var color = (type == 'positive') ? '#097809' : (type == 'negative') ? '#c5211d' : (typeof type !== 'undefined') ? type : '#240ad0';
+			console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;');
+			if(message instanceof Array || message instanceof Object){
+				console.log(message);
 			}
+			else{
+				console.log('%c' + message, 'color: ' + color);
+			}
+			console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;');
+			console.log('');
 		}
 	}
 

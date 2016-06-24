@@ -12,6 +12,7 @@ __3.0.0__:
 * Moved Browsernizr and Autotrack to dependencies from devDependencies.
 * Changed structure of the JS build files and directory.
 * Updated documentation.
+* Added global events system.
 
 __2.5.2__:
 * Fixed preloader destroy.

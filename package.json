@@ -5,9 +5,9 @@
   "license": "MIT",
   "devDependencies": {
     "autoprefixer"  : "^6.3.6",
-    "browserify"    : "^12.0.1",
+    "browserify"    : "^13.0.1",
     "concat-cli"    : "^4.0.0",
-    "hbsfy"         : "^2.4.1",
+    "hbsfy"         : "^2.7.0",
     "imagemin-cli"  : "^3.0.0",
     "minifier"      : "^0.7.1",
     "nightwatch"    : "^0.9.4",
@@ -21,8 +21,8 @@
     "watch"         : "^0.18.0"
   },
   "dependencies": {
-    "autotrack"    : "^0.5.0",
-    "browsernizr"  : "^2.0.1",
+    "autotrack"    : "*",
+    "browsernizr"  : "*",
     "function-bind": "*",
     "handlebars"   : "*",
     "jquery"       : "*"
@@ -32,25 +32,43 @@
       "hbsfy"
     ]
   },
+  "config": {
+    "css": {
+      "dirSCSS": "src/dist/css/scss/",
+      "dest": "src/dist/css/build.css",
+      "src": "src/dist/css/scss/build.scss"
+    },
+    "js": {
+      "dirApp": "src/dist/js/app/",
+      "dirPrivate": "src/dist/js/public/",
+      "dirPublic": "src/dist/js/private/",
+      "commonIndex": "src/dist/js/common/index.js",
+      "commonCompiled": "src/dist/js/compiled/common.js",
+      "appIndex": "src/dist/js/app/index.js",
+      "appCompiled": "src/dist/js/compiled/app.js",
+      "compiledAll": "src/dist/js/compiled/*.js",
+      "dest": "src/dist/js/build/build.js"
+    }
+  },
   "scripts": {
     "assets": "npm run css:build && npm run js:build",
     "minify": "npm run minify:css && npm run minify:images && npm run minify:js",
 
-    "autoprefixer": "postcss -u autoprefixer -b 'last 2 versions' -r src/dist/css/build.css",
+    "autoprefixer": "postcss -u autoprefixer -b 'last 2 versions' -r $npm_package_config_css_dest",
     "env:production": "NODE_ENV=production",
     "env:staging": "NODE_ENV=staging",
 
-    "css:build": "node-sass --include-path scss src/dist/css/scss/build.scss src/dist/css/build.css | npm run autoprefixer",
-    "css:watch": "watch 'npm run css:build' src/dist/css/scss/",
+    "css:build": "node-sass --include-path scss $npm_package_config_css_src $npm_package_config_css_dest | npm run autoprefixer",
+    "css:watch": "watch 'npm run css:build' $npm_package_config_css_dirSCSS",
 
-    "js:common": "browserify src/dist/js/common/index.js -o src/dist/js/compiled/common.js",
-    "js:app": "browserify -t [ hbsfy -e hbs ] src/dist/js/app/index.js -o src/dist/js/compiled/app.js",
-    "js:build": "npm run js:app && concat-cli -f src/dist/js/compiled/*.js -o src/dist/js/build/build.js",
-    "js:watch": "watch 'npm run js:build' src/dist/js/public/ src/dist/js/app/",
+    "js:common": "browserify $npm_package_config_js_commonIndex -o $npm_package_config_js_commonCompiled",
+    "js:app": "browserify -t [ hbsfy -e hbs ] $npm_package_config_js_appIndex -o $npm_package_config_js_appCompiled",
+    "js:build": "npm run js:app && concat-cli -f $npm_package_config_js_compiledAll -o $npm_package_config_js_dest",
+    "js:watch": "watch 'npm run js:build' $npm_package_config_js_dirApp",
 
-    "minify:css": "minify --output src/dist/css/build.css src/dist/css/build.css",
+    "minify:css": "minify --output $npm_package_config_css_dest $npm_package_config_css_dest",
     "minify:images": "imagemin src/dist/images/**/**/* -o src/dist/images",
-    "minify:js": "minify --output src/dist/js/build/build.js src/dist/js/build/build.js",
+    "minify:js": "minify --output $npm_package_config_js_dest $npm_package_config_js_dest",
 
     "test:integration": "nightwatch",
 

@@ -28,6 +28,24 @@
     }
 
     /**
+     * events
+     * Event listeners for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+    **/
+    Module.prototype.events = Public.events.extend({
+		events: {
+			'click a[href="#"]': 'preventDefault'
+		},
+        preventDefault: function(e){
+            e.preventDefault();
+
+            alert('Hash link clicked!');
+		}
+    });
+
+    /**
      * init
      * Init method for this module.
      *
