@@ -10,11 +10,6 @@
   src: url("fonts/socicon.eot");
   src: local("☺"), url("fonts/socicon.eot?#iefix") format("embedded-opentype"), url("fonts/socicon.woff") format("woff"), url("fonts/socicon.ttf") format("truetype"), url("fonts/socicon.svg") format("svg"); }
 
-.test {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none; }
-
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Mixins > All

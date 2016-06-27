@@ -1,38 +1,68 @@
 /**
  *
- * App
+ * Private
  *
  * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
 
-;(function(App, window, undefined){
+;(function(Private, window, undefined){
 	'use strict';
 
     /**
-     * App
-     * Constructor for App.
+     * Private
+     * Constructor for Private.
      *
      * @since 1.0.0
      * @version 1.0.0
     **/
-	App = function(){
-		// Require :: Modules
-		// We do not need to declare with vars but it allows us to call internal methods externally.
+	Private = function(){
     }
 
 	/**
-	 * init
-	 * Init method.
+	 * modules
+	 * Private modules.
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	App.prototype.init = function(){
+    Private.prototype.modules = {
+	}
+
+	/**
+	 * init
+	 * Module init method.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Private.prototype.init = function(){
+		this.getChildModules();
+	}
+
+	/**
+	 * init
+	 * Module init method.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Private.prototype.init = function(){
+		getModules.call(this);
+	}
+
+	/**
+	 * getModules
+	 * Loads any child modules.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    var getModules = function(){
 	}
 
 	// Export
-	module.exports = new App();
+	module.exports = new Private();
 
-}(window.App = window.App || function(){}, window));
+}(window.Private = window.Private || function(){}, window));

@@ -364,45 +364,75 @@ Public.init();
 // Log it.
 Helpers.log(Public);
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./breakpoint":1,"./config":2,"./errors":3,"./helpers":4,"./private/private":6,"./public/public":9}],6:[function(require,module,exports){
+},{"./breakpoint":1,"./config":2,"./errors":3,"./helpers":4,"./private/private":6,"./public/public":10}],6:[function(require,module,exports){
 /**
  *
- * App
+ * Private
  *
  * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
 
-;(function(App, window, undefined){
+;(function(Private, window, undefined){
 	'use strict';
 
     /**
-     * App
-     * Constructor for App.
+     * Private
+     * Constructor for Private.
      *
      * @since 1.0.0
      * @version 1.0.0
     **/
-	App = function(){
-		// Require :: Modules
-		// We do not need to declare with vars but it allows us to call internal methods externally.
+	Private = function(){
     }
 
 	/**
-	 * init
-	 * Init method.
+	 * modules
+	 * Private modules.
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	App.prototype.init = function(){
+    Private.prototype.modules = {
+	}
+
+	/**
+	 * init
+	 * Module init method.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Private.prototype.init = function(){
+		this.getChildModules();
+	}
+
+	/**
+	 * init
+	 * Module init method.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Private.prototype.init = function(){
+		getModules.call(this);
+	}
+
+	/**
+	 * getModules
+	 * Loads any child modules.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    var getModules = function(){
 	}
 
 	// Export
-	module.exports = new App();
+	module.exports = new Private();
 
-}(window.App = window.App || function(){}, window));
+}(window.Private = window.Private || function(){}, window));
 },{}],7:[function(require,module,exports){
 /**
  *
@@ -933,6 +963,54 @@ Helpers.log(Public);
 },{}],9:[function(require,module,exports){
 /**
  *
+ * Module
+ *
+ * Copyright 2016, Author Name
+ * Some information on the license.
+ *
+**/
+
+;(function(Module, window, undefined){
+    'use strict';
+
+    /**
+     * Module
+     * Constructor for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+    **/
+    Module = function(){
+    }
+
+    /**
+     * events
+     * Event listeners for this module.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+    **/
+    Module.prototype.events = Public.events.extend({
+		events: {
+			'click .js--moduleName--trigger': 'method'
+		},
+        method: function(e){
+            // // Globally cache this element.
+            // this.$self = $(e.currentTarget);
+            // // Data attribute.
+            // var data_attr = self.data('sample') || false;
+
+            alert('Target clicked.');
+		}
+    });
+
+    // Export
+    module.exports = new Module();
+
+}(function(){}, window));
+},{}],10:[function(require,module,exports){
+/**
+ *
  * Public
  *
  * Copyright 2016, Author Name
@@ -951,24 +1029,84 @@ Helpers.log(Public);
      * @version 1.0.0
     **/
 	Public = function(){
-		// Require :: Modules
-		// We do not need to declare with vars but it allows us to call internal methods externally.
-		this.Plugins    = require('./module.plugins');
-		this.MobileMenu = require('./module.mobile-menu-side');
     }
 
 	/**
-	 * init
-	 * Init method.
+	 * modules
+	 * Public modules.
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Public.prototype.init = function(){
+    Public.prototype.modules = {
+	}
+
+	/**
+	 * events
+	 * Public events listeners.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Public.prototype.events = {
+        events:	{},
+        extend: function(args){
+            // Extend.
+            var extension = $.extend({}, this, args);
+            // Setup events.
+            $.each(extension.events, function(name, callback){
+                extension.register(name, callback);
+            });
+
+            return extension;
+        },
+        register: function(name, callback){
+            var _this = this;
+            // Cache event.
+            var event = name.substr(0, name.indexOf(' '));
+            // Cache selector.
+            var selector = name.substr(name.indexOf(' ')+1);
+            // Add event.
+            $(document).on(event, selector, function(e){
+                // Append $el to event object
+                e.$el = $(this);
+                // Event
+                if(typeof _this.event === 'function'){
+                    e = _this.event(e);
+                }
+                // Callback
+                _this[callback].apply(_this, [e]);
+            });
+        }
+    }
+
+	/**
+	 * init
+	 * Module init method.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Public.prototype.init = function(){
+		getModules.call(this);
+	}
+
+	/**
+	 * getModules
+	 * Loads any child modules.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    var getModules = function(){
+		// Require :: Modules
+		this.modules.Plugins      = require('./module.plugins');
+		this.modules.MobileMenu   = require('./module.mobile-menu-side');
+		this.modules.ModuleSample = require('./module.sample');
 	}
 
 	// Export
 	module.exports = new Public();
 
 }(window.Public = window.Public || function(){}, window));
-},{"./module.mobile-menu-side":7,"./module.plugins":8}]},{},[5]);
+},{"./module.mobile-menu-side":7,"./module.plugins":8,"./module.sample":9}]},{},[5]);

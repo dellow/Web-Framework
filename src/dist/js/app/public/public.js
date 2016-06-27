@@ -18,11 +18,17 @@
      * @version 1.0.0
     **/
 	Public = function(){
-		// Require :: Modules
-		// We do not need to declare with vars but it allows us to call internal methods externally.
-		this.Plugins    = require('./module.plugins');
-		this.MobileMenu = require('./module.mobile-menu-side');
     }
+
+	/**
+	 * modules
+	 * Public modules.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Public.prototype.modules = {
+	}
 
 	/**
 	 * events
@@ -62,6 +68,31 @@
             });
         }
     }
+
+	/**
+	 * init
+	 * Module init method.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    Public.prototype.init = function(){
+		getModules.call(this);
+	}
+
+	/**
+	 * getModules
+	 * Loads any child modules.
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+	**/
+    var getModules = function(){
+		// Require :: Modules
+		this.modules.Plugins      = require('./module.plugins');
+		this.modules.MobileMenu   = require('./module.mobile-menu-side');
+		this.modules.ModuleSample = require('./module.sample');
+	}
 
 	// Export
 	module.exports = new Public();

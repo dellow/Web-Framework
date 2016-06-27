@@ -43,9 +43,9 @@
       "dirPrivate": "src/dist/js/public/",
       "dirPublic": "src/dist/js/private/",
       "commonIndex": "src/dist/js/common/index.js",
-      "commonCompiled": "src/dist/js/compiled/common.js",
+      "commonCompiled": "src/dist/js/compiled/1common.js",
       "appIndex": "src/dist/js/app/index.js",
-      "appCompiled": "src/dist/js/compiled/app.js",
+      "appCompiled": "src/dist/js/compiled/2app.js",
       "compiledAll": "src/dist/js/compiled/*.js",
       "dest": "src/dist/js/build/build.js"
     }
