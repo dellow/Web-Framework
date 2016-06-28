@@ -47,7 +47,7 @@
 	**/
 	Module.prototype.init = function(){
     	// Check screen is below mobile breakpoint.
-		if(Helpers.breakpoint(window.config.mobile_breakpoint)){
+		if(Breakpoint.current == 'mobile'){
         	return this.binds();
         }
         else{

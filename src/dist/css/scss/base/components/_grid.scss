@@ -16,6 +16,8 @@
 		max-width: $col_1 - $gutter;
 		flex-basis: $col_1 - $gutter;
 		margin: $gutter 0 0 $gutter;
+		display: flex;
+		flex-direction: column;
 		// Abstractions
 		&.left {
 			text-align: left;
