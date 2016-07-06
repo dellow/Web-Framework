@@ -62,14 +62,4 @@ body {
 	position: relative;
 	z-index: 1;
 	transition: left $animation ease;
-	// Responsive
-	@include respond-to($mobile_menu){
-		height: 100%;
-		width: 100%;
-		top: 0; left: 0;
-		overflow: scroll;
-		&.active-menu {
-			position: fixed;
-		}
-	}
 }
