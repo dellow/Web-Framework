@@ -52,9 +52,9 @@
         }
         else{
 			// Reset flag.
-			this.set_menu_flag(false);
+			this.setMenuFlag(false);
         	// Reset any menus.
-        	return this.hide_primary_menu();
+        	return this.hidePrimaryMenu();
         }
 	}
 
@@ -75,23 +75,23 @@
 			// Check sub menu is active first.
 			if(_this.sub_menu_active){
 				// Hide mobile menu.
-				_this.hide_sub_menu();
+				_this.hideSubMenu();
 				// Set flag.
 				_this.sub_menu_active = false;
 			}
 			// Run hide operations.
 			else if(_this.menu_active){
 				// Hide mobile menu.
-				_this.hide_primary_menu(_self);
+				_this.hidePrimaryMenu(_self);
 				// Set flag.
-				_this.set_menu_flag(false);
+				_this.setMenuFlag(false);
 			}
 			// Run show operations.
 			else{
 				// Show mobile menu.
-				_this.show_primary_menu(_self);
+				_this.showPrimaryMenu(_self);
 				// Set flag.
-				_this.set_menu_flag(true);
+				_this.setMenuFlag(true);
 			}
 		});
 
@@ -102,7 +102,7 @@
 			if(_self.next('ul').length){
 				e.preventDefault();
 				// Init sub menu.
-				_this.show_sub_menu(_self.next('ul'));
+				_this.showSubMenu(_self.next('ul'));
 			}
 		});
 
@@ -120,7 +120,7 @@
 			// Check sub menu is active first.
 			if(_this.sub_menu_active){
 				// Hide mobile menu.
-				_this.hide_sub_menu();
+				_this.hideSubMenu();
 				// Set flag.
 				_this.sub_menu_active = false;
 			}
@@ -131,31 +131,30 @@
 			// Check sub menu is active first.
 			if(_this.sub_menu_active){
 				// Hide mobile menu.
-				_this.hide_sub_menu();
+				_this.hideSubMenu();
 				// Set flag.
 				_this.sub_menu_active = false;
 			}
 			// Check menu is active.
 			else if(_this.menu_active){
 				// Hide mobile menu.
-				_this.hide_primary_menu();
+				_this.hidePrimaryMenu();
 				// Set flag.
-				_this.set_menu_flag(false);
+				_this.setMenuFlag(false);
 			}
 		});
 	}
 
 	/**
-	 * show_primary_menu
+	 * showPrimaryMenu
 	 * Show menu.
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Module.prototype.show_primary_menu = function(){
+	Module.prototype.showPrimaryMenu = function(){
 		// Vars.
 		var doc_width  = $(document).width(),
-			doc_height = $(document).height(),
 			doc_85     = (doc_width / 100) * 85;
 
 		// Add 85% width to menu.
@@ -165,17 +164,17 @@
 		// Add active class to menu button.
 		this.$button.addClass('active-menu');
 		// Restrict body height.
-		$('body').css({'height': doc_height, 'overflow': 'hidden'});
+		$('body').addClass('u-noscroll');
 	}
 
 	/**
-	 * hide_primary_menu
+	 * hidePrimaryMenu
 	 * Hide menu.
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Module.prototype.hide_primary_menu = function(){
+	Module.prototype.hidePrimaryMenu = function(){
 		var _this = this;
 
 		// Remove the active class.
@@ -190,18 +189,18 @@
 			// Remove 90% width to menu.
 			_this.$menu.css({'width': ''});
 			// Restrict body height.
-			$('body').css({'height': '', 'overflow': ''});
+			$('body').removeClass('u-noscroll');
 		}, 500); // Needs to be the same as the animation speed in the CSS.
 	}
 
 	/**
-	 * show_sub_menu
+	 * showSubMenu
 	 * Show sub menu.
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Module.prototype.show_sub_menu = function(el){
+	Module.prototype.showSubMenu = function(el){
 		var _this = this;
 
 		// Vars.
@@ -218,13 +217,13 @@
 	}
 
 	/**
-	 * hide_sub_menu
+	 * hideSubMenu
 	 * Hides sub menu.
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Module.prototype.hide_sub_menu = function(el){
+	Module.prototype.hideSubMenu = function(el){
 		var _this = this;
 
 		// Set close button text.
@@ -244,13 +243,13 @@
 	}
 
 	/**
-	 * set_menu_flag
+	 * setMenuFlag
 	 * Set flag after 10ms
      *
      * @since 1.0.0
      * @version 1.0.0
 	**/
-	Module.prototype.set_menu_flag = function(state){
+	Module.prototype.setMenuFlag = function(state){
 		var _this = this;
 
 		// Wait 10ms.

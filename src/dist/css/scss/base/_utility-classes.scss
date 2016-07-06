@@ -5,6 +5,19 @@
 ========================================================================== */
 
 
+/* -- Body / HTML Classes -- */
+body, html {
+	&.u-noscroll {
+	    -webkit-overflow-scrolling: touch;
+	    overflow: hidden;
+	    position: fixed;
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
 /* -- Messages -- */
 .msg-success {
 	color: rgba(138, 216, 54, 0.6);
@@ -322,6 +335,7 @@
 /* ----------------------------------------------------------------------- */
 
 
+/* -- Responsive -- */
 .u-hide-tablet {
 	display: none;
 	// Responsive.

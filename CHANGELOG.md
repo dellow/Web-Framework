@@ -13,6 +13,7 @@ __3.0.0__:
 * Changed structure of the JS build files and directory.
 * Updated documentation.
 * Added global events system.
+* Added 'u-noscroll' utility class.
 
 __2.5.2__:
 * Fixed preloader destroy.
