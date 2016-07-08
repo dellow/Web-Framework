@@ -4,6 +4,71 @@
 ========================================================================== */
 
 
+/* -- Form Fields -- */
+.obj-form-field {
+	@extend %flex;
+	@include nudge(margin-bottom, 0.5);
+	&__note {
+		@include nudge(margin-left, 0.25);
+		color: color(grey);
+		font-size: 75%;
+	}
+	&__title {
+		width: 100%; // Seems unneccessary but gives us flexibility.
+	}
+	&__body {
+		@extend %flex;
+		width: 100%; // Seems unneccessary but gives us flexibility.
+	}
+	&__button {
+		@include nudge(padding, 0.5 0.75);
+		background: color(grey);
+	}
+	input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+		width: 100%;
+		flex: 1;
+		&.full {
+			width: 100%;
+		}
+		&.half {
+			width: (100% / 2) - 1;
+			flex: none;
+		}
+		&.small {
+			width: (100% / 3);
+			flex: none;
+		}
+		&.v-small {
+			width: (100% / 6);
+			flex: none;
+		}
+	}
+	button {
+		@include nudge(margin-left, 0.25);
+	}
+	label {
+		input[type="checkbox"], input[type="radio"] {
+			@include nudge(margin, 0 0.25 0 0.75);
+		}
+		+ .obj-form-field__note {
+			@include nudge(margin-left, 0.75);
+    		line-height: 2.4;
+		}
+		&:first-child {
+			input[type="checkbox"], input[type="radio"] {
+				margin-left: 0;
+			}
+		}
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
 /* -- Alternative Text -- */
 .obj-alt-text {
 	&--desktop {

@@ -13,12 +13,10 @@
 <!--                                                              STYLEGUIDE STYLES -->
 <!-- ============================================================================== -->
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900">
-<link rel="stylesheet" href="dist/prism/prism.css">
 <link rel="stylesheet" href="dist/styleguide.css">
 <!-- ============================================================================== -->
 <!--                                                                         STYLES -->
 <!-- ============================================================================== -->
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="../css/build.css" media="all">
 </head>
 <body class="styleguide no-debug">
@@ -29,8 +27,6 @@
 		<li class="u-inline" role="menuitem"><a href="styleguide.html">General</a></li>
 		&nbsp; | &nbsp;
 		<li class="u-inline" role="menuitem"><a href="forms.html">Forms</a></li>
-		&nbsp; | &nbsp;
-		<li class="u-inline" role="menuitem"><a href="layout.html">Layout</a></li>
 		&nbsp; | &nbsp;
 		<li class="u-inline" role="menuitem"><a href="rhythm.html">Rhythm</a></li>
 	</ul>
@@ -43,265 +39,319 @@
 	<section>
 		<div class="pattern resizable">
 			<div class="pattern__details">
-				<span class="pattern__title">Contact</span>
+				<span class="pattern__title">Form Fields</span>
 			</div>
 			<div class="pattern__view">
-				<!-- JS Validation Success Response -->
-				<div class="js-validation-form-success">
-					Thanks. The form has successfully been submitted!
-				</div>
-				<!-- PHP Form Responses -->
-				<div class="page__form__php-responses">
-
-				</div>
 				<!-- Form -->
-				<form class="page__form__contact page__form--block js-validate" action="http://thispageurl.com/contact/" method="post">
+				<form class="page__form__example" action="" method="post">
 					<fieldset>
-						<!-- Name -->
-						<div class="field">
-							<label for="contact__fullname">Name <abbr title="Required">*</abbr></label>
-							<input type="text" name="contact[fullname]" id="contact__fullname" placeholder="e.g. John Smith" data-validation-message="Please enter your name" aria-required="true" required>
-							<span class="note">A note about this field.</span>
+						<!-- 'text' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__textfield"><code>text</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="text" name="example[textfield]" id="example__textfield" placeholder="This is a text field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
 						</div>
-						<!-- Name -->
-						<div class="field">
-							<label for="contact__emailaddress">Email Address <abbr title="Required">*</abbr></label>
-							<input type="email" name="contact[emailaddress]" id="contact__emailaddress" placeholder="e.g. john.smith@example.com" data-validation-message="Please enter a valid email address" aria-required="true" required>
-							<span class="note">A note about this field.</span>
+						<!-- 'url' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__urlfield"><code>url</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="url" name="example[urlfield]" id="example__urlfield" placeholder="This is a url field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
 						</div>
-						<!-- Telephone -->
-						<div class="field">
-							<label for="contact__telephone">Phone</label>
-							<input type="text" name="contact[telephone]" id="contact__telephone">
-							<span class="note">A note about this field.</span>
+						<!-- 'search' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__searchfield"><code>search</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="search" name="example[searchfield]" id="example__searchfield" placeholder="This is a search field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
 						</div>
-						<!-- Message -->
-						<div class="field">
-							<label for="contact__message">Your Message</label>
-							<textarea name="contact[message]" id="contact__message" placeholder="Your message"></textarea>
-							<span class="note">A note about this field.</span>
+						<!-- 'time' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__timefield"><code>time</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="time" name="example[timefield]" id="example__timefield" placeholder="This is a time field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'date' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__datefield"><code>date</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="date" name="example[datefield]" id="example__datefield" placeholder="This is a date field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'week' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__weekfield"><code>week</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="week" name="example[weekfield]" id="example__weekfield" placeholder="This is a week field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'month' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__monthfield"><code>month</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="month" name="example[monthfield]" id="example__monthfield" placeholder="This is a month field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'email' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__emailfield"><code>email</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="email" name="example[emailfield]" id="example__emailfield" placeholder="This is a email field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'number' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__numberfield"><code>number</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="number" name="example[numberfield]" id="example__numberfield" placeholder="This is a number field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'password' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__passwordfield"><code>password</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="password" name="example[passwordfield]" id="example__passwordfield" placeholder="This is a password field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'range' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__rangefield"><code>range</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="range" name="example[rangefield]" id="example__rangefield" placeholder="This is a range field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'color' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__colorfield"><code>color</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="color" name="example[colorfield]" id="example__colorfield" placeholder="This is a color field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'textarea' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__textareafield"><code>textarea</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<textarea name="example[textareafield]" id="example__textareafield" placeholder="This is a textarea field" aria-required="true" required></textarea>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'select' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__selectfield"><code>select</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<select name="example[selectfield]" id="example__selectfield">
+									<option value="" disabled>Please Select</option>
+									<option value="Option #1">Option #1</option>
+									<option value="Option #2">Option #2</option>
+									<option value="Option #3">Option #3</option>
+									<option value="Option #4">Option #4</option>
+									<option value="Option #5">Option #5</option>
+									<option value="Option #6">Option #6</option>
+								</select>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'checkbox' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								Checkboxes <abbr title="Required">*</abbr>
+							</div>
+							<div class="obj-form-field__body">
+								<label for="example__checkboxfield1">
+									<input type="checkbox" name="example[checkboxfield][]" id="example__checkboxfield1" aria-required="true" required>
+									<code>checkbox</code> Field 1
+								</label>
+								<label for="example__checkboxfield2">
+									<input type="checkbox" name="example[checkboxfield][]" id="example__checkboxfield2" aria-required="true" required>
+									<code>checkbox</code> Field 2
+								</label>
+								<label for="example__checkboxfield3">
+									<input type="checkbox" name="example[checkboxfield][]" id="example__checkboxfield3" aria-required="true" required>
+									<code>checkbox</code> Field 3
+								</label>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- 'radio' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								Radios <abbr title="Required">*</abbr>
+							</div>
+							<div class="obj-form-field__body">
+								<label for="example__radiofield1">
+									<input type="radio" name="example[radiofield]" id="example__radiofield1" aria-required="true" required>
+									<code>radio</code> Field 1
+								</label>
+								<label for="example__radiofield2">
+									<input type="radio" name="example[radiofield]" id="example__radiofield2" aria-required="true" required>
+									<code>radio</code> Field 2
+								</label>
+								<label for="example__radiofield3">
+									<input type="radio" name="example[radiofield]" id="example__radiofield3" aria-required="true" required>
+									<code>radio</code> Field 3
+								</label>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- Small field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__textfieldsmall">Small <code>text</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="text" name="example[textfieldsmall]" id="example__textfieldsmall" class="small" placeholder="This is a text field" aria-required="true" required>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
+						</div>
+						<!-- Field with trailing button -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__textfieldsmall"><code>text</code> Field with trailing button <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="text" name="example[textfieldsmall]" id="example__textfieldsmall" placeholder="This is a text field" aria-required="true" required>
+								<button class="btn btn--color-red">Apply</button>
+							</div>
+						</div>
+						<!-- Small field with trailing button -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__textfieldsmall">Small <code>text</code> Field with trailing button <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="text" name="example[textfieldsmall]" id="example__textfieldsmall" class="small" placeholder="This is a text field" aria-required="true" required>
+								<button class="btn btn--color-red">Apply</button>
+							</div>
+						</div>
+						<!-- 'select' field with trailing 'button' -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__selectfield"><code>select</code> Field with trailing button <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<select name="example[selectfield]" id="example__selectfield">
+									<option value="" disabled>Please Select</option>
+									<option value="Option #1">Option #1</option>
+									<option value="Option #2">Option #2</option>
+									<option value="Option #3">Option #3</option>
+									<option value="Option #4">Option #4</option>
+									<option value="Option #5">Option #5</option>
+									<option value="Option #6">Option #6</option>
+								</select>
+								<button class="btn btn--color-red">Apply</button>
+							</div>
+						</div>
+						<!-- 'select' field with trailing 'select' -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__selectfield"><code>select</code> Field with trailing <code>select</code> <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<select name="example[selectfield]" id="example__selectfield">
+									<option value="" disabled>Please Select</option>
+									<option value="Option #1">Option #1</option>
+									<option value="Option #2">Option #2</option>
+									<option value="Option #3">Option #3</option>
+									<option value="Option #4">Option #4</option>
+									<option value="Option #5">Option #5</option>
+									<option value="Option #6">Option #6</option>
+								</select>
+								<select name="example[selectfield]" id="example__selectfield">
+									<option value="" disabled>Please Select</option>
+									<option value="Option #1">Option #1</option>
+									<option value="Option #2">Option #2</option>
+									<option value="Option #3">Option #3</option>
+									<option value="Option #4">Option #4</option>
+									<option value="Option #5">Option #5</option>
+									<option value="Option #6">Option #6</option>
+								</select>
+							</div>
+						</div>
+						<!-- 'select' field with trailing 'select' with 'v.small' class -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__selectfield"><code>select</code> Field with trailing <code>select</code> with <code>v.small</code> class <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<select name="example[selectfield]" id="example__selectfield" class="v-small">
+									<option value="" disabled>Please Select</option>
+									<option value="Option #1">Option #1</option>
+									<option value="Option #2">Option #2</option>
+									<option value="Option #3">Option #3</option>
+									<option value="Option #4">Option #4</option>
+									<option value="Option #5">Option #5</option>
+									<option value="Option #6">Option #6</option>
+								</select>
+								<select name="example[selectfield]" id="example__selectfield" class="v-small">
+									<option value="" disabled>Please Select</option>
+									<option value="Option #1">Option #1</option>
+									<option value="Option #2">Option #2</option>
+									<option value="Option #3">Option #3</option>
+									<option value="Option #4">Option #4</option>
+									<option value="Option #5">Option #5</option>
+									<option value="Option #6">Option #6</option>
+								</select>
+							</div>
+						</div>
+						<!-- Disabled 'text' field -->
+						<div class="obj-form-field">
+							<div class="obj-form-field__title">
+								<label for="example__textfield">Disabled <code>text</code> Field <abbr title="Required">*</abbr></label>
+							</div>
+							<div class="obj-form-field__body">
+								<input type="text" name="example[textfield]" id="example__textfield" placeholder="This is a text field" aria-required="true" required disabled>
+								<span class="obj-form-field__note">A note about this field.</span>
+							</div>
 						</div>
 					</fieldset>
-					<button type="submit" class="form-button">Submit</button>
+					<button type="submit" class="obj-form-field__button">Submit</button>
 				</form>
 			</div>
 		</div>
 	</section>
 
 </div>
-
-<hr class="hr__styled-seperator">
-
-<div class="container">
-
-	<section>
-		<div class="pattern resizable">
-			<div class="pattern__details">
-				<span class="pattern__title">Checkout</span>
-			</div>
-			<div class="pattern__view">
-				<form class="js-validate page__form--block" action="http://thispageurl.com/contact/" method="post">
-					<fieldset>
-						<!-- Text input -->
-						<div class="field">
-							<label for="cart__voucher">Voucher or Gift Code</label>
-							<input type="text" name="cart[voucher]" id="cart__voucher" class="voucher">
-							<button class="form-button">Apply Code</button>
-						</div>
-					</fieldset>
-					<fieldset>
-						<!-- Text input -->
-						<div class="field">
-							<label for="cart__fullname">Name On Card <abbr title="Required">*</abbr></label>
-							<input type="text" name="cart[fullname]" id="cart__fullname" placeholder="Mr John Smith" data-validation-message="Please enter the name on your card" aria-required="true" required>
-						</div>
-						<!-- Text input -->
-						<div class="field">
-							<label for="cart__number">Card Number <abbr title="Required">*</abbr></label>
-							<input type="text" name="cart[number]" id="cart__number" placeholder="1234 5678 8765 4321" data-validation-message="Please enter a valid card number" aria-required="true" required>
-						</div>
-						<!-- Text input -->
-						<div class="field">
-							<label for="cart__exp_month">Expiration Date <abbr title="Required">*</abbr></label>
-							<select name="cart[exp_month]" id="cart__exp_month" class="v-small" data-validation-message="Please choose an expiry month" aria-required="true" required>
-								<option value="">Month</option>
-								<option value="Jan">Jan</option>
-							</select>
-							<select name="cart[exp_year]" id="cart__exp_year" class="v-small" data-validation-message="Please choose an expiry year" aria-required="true" required>
-								<option value="">Year</option>
-								<option value="2015">2015</option>
-							</select>
-						</div>
-						<!-- Text input -->
-						<div class="field">
-							<label for="cart__securitycode">Security Code <abbr title="Required">*</abbr></label>
-							<input type="text" name="cart[securitycode]" id="cart__securitycode" class="v-small" placeholder="123" data-validation-message="Please enter a valid security code" aria-required="true" required>
-							<span class="note"><a href="HREF_HERE">What's This?</a></span>
-						</div>
-					</fieldset>
-					<button type="submit" class="form-button">Submit</button>
-				</form>
-			</div>
-		</div>
-	</section>
-
-</div>
-
-<hr class="hr__styled-seperator">
-
-<div class="container">
-
-	<section>
-		<h2>Abstractions</h2>
-		<p>Use the display selector on the right hand side to switch between form style types. These abstractions are controlled via a <code>form-*</code> class on the <code>&lt;form></code> element. For example block style forms would have a <code>.page__form--block</code> class.</p>
-		<p>You can test the jQuery Form Validation script by trying to submit the form without any values. This page can also be saved as a .php file and tested with the included PHP Mailer script.</p>
-		<div class="pattern resizable">
-			<div class="pattern__details">
-				<span class="pattern__title">
-					<div class="grid">
-						<div class="col-1-2"><span class="js-title">Block</span> Form</div>
-						<div class="col-1-2 right">
-							<small>
-								Switch to:
-								<button class="js-switch" data-switch="block">Block</button> |
-								<button class="js-switch" data-switch="inline-block">Inline Block</button> |
-								<button class="js-switch" data-switch="inline">Inline</button>
-							</small>
-						</div>
-					</div>
-				</span>
-			</div>
-			<div class="pattern__view">
-				<div class="form-success">
-					<p>Thanks for submitting the form!</p>
-				</div>
-				<form class="js-validate page__form--block" action="http://thispageurl.com/contact/" method="post">
-					<!-- Text input -->
-					<div class="field">
-						<label for="exampleForm__fullname">Name <abbr title="Required">*</abbr></label>
-						<input type="text" name="exampleForm[fullname]" id="exampleForm__fullname" placeholder="e.g. John Smith" data-validation-message="Please enter your name" aria-required="true" required>
-						<span class="note">A note about this field.</span>
-					</div>
-					<!-- Float -->
-					<div class="field">
-						<!-- Readonly Input -->
-						<div class="field left">
-							<label for="exampleForm__readonly">Readonly Input <abbr title="Required">*</abbr></label>
-							<input type="text" name="exampleForm[readonly]" id="exampleForm__readonly" value="A readonly value" readonly>
-							<span class="note">A note about this field.</span>
-						</div>
-						<!-- Disabled Input -->
-						<div class="field right">
-							<label for="form_disabled">Disabled Input <abbr title="Required">*</abbr></label>
-							<input type="text" name="exampleForm[disabled]" id="form_disabled" value="A disabled value" disabled>
-							<span class="note">A note about this field.</span>
-						</div>
-					</div>
-					<!-- Email input -->
-					<div class="field">
-						<label for="exampleForm__emailaddress">Email Address <abbr title="Required">*</abbr></label>
-						<input type="email" name="exampleForm[emailaddress]" id="exampleForm__emailaddress" placeholder="e.g. john.smith@hotmail.com" data-validation-message="Please enter a valid email address" aria-required="true" required>
-						<span class="note">A note about this field.</span>
-					</div>
-					<!-- Checkbox input -->
-					<div class="field">
-						<div class="label">Please choose a checkbox option <abbr title="Required">*</abbr></div>
-						<div class="field-container">
-							<label for="exampleForm__checkbox_option1">
-								<input type="checkbox" name="exampleForm[checkbox_option][]" id="exampleForm__checkbox_option1" value="Option #1" aria-required="true" required>
-								Option #1
-							</label>
-							<label for="exampleForm__checkbox_option2">
-								<input type="checkbox" name="exampleForm[checkbox_option][]" id="exampleForm__checkbox_option2" value="Option #2" aria-required="true" required>
-								Option #2
-							</label>
-							<label for="exampleForm__checkbox_option3">
-								<input type="checkbox" name="exampleForm[checkbox_option][]" id="exampleForm__checkbox_option3" value="Option #3" aria-required="true" required>
-								Option #3
-							</label>
-							<!-- Dummy -->
-							<input type="hidden" name="exampleForm[checkbox_option][dummy]" value="">
-							<span class="error-message">Please choose a checkbox option</span>
-						</div>
-						<span class="note">A note about this field.</span>
-					</div>
-					<!-- Radio input -->
-					<div class="field">
-						<div class="label">Please choose a radio option <abbr title="Required">*</abbr></div>
-						<div class="field-container">
-							<label for="exampleForm__radio_option1">
-								<input type="radio" name="exampleForm[radio_option][]" id="exampleForm__radio_option1" value="Option #1" aria-required="true" required>
-								Option #1
-							</label>
-							<label for="exampleForm__radio_option2">
-								<input type="radio" name="exampleForm[radio_option][]" id="exampleForm__radio_option2" value="Option #2" aria-required="true" required>
-								Option #2
-							</label>
-							<label for="exampleForm__radio_option3">
-								<input type="radio" name="exampleForm[radio_option][]" id="exampleForm__radio_option3" value="Option #3" aria-required="true" required>
-								Option #3
-							</label>
-							<!-- Dummy -->
-							<input type="hidden" name="exampleForm[radio_option][dummy]" value="">
-							<span class="error-message">Please choose a radio option</span>
-						</div>
-						<span class="note">A note about this field.</span>
-					</div>
-					<!-- Select box -->
-					<div class="field">
-						<label for="exampleForm__select_option">Please choose a select option <abbr title="Required">*</abbr></label>
-						<select name="exampleForm[select_option]" id="exampleForm__select_option" data-validation-message="Please choose a select option" aria-required="true" required>
-							<option value="">Please Select</option>
-							<option value="Option #1">Option #1</option>
-							<option value="Option #2">Option #2</option>
-							<option value="Option #3">Option #3</option>
-							<option value="Option #4">Option #4</option>
-						</select>
-						<span class="note">A note about this field.</span>
-					</div>
-					<!-- Textarea -->
-					<div class="field">
-						<label for="exampleForm__message">Message <abbr title="Required">*</abbr></label>
-						<textarea name="exampleForm[message]" id="exampleForm__message" data-validation-message="Please enter a message" aria-required="true" required></textarea>
-						<span class="note">A note about this field.</span>
-					</div>
-					<button type="submit" class="form-button">Submit</button>
-					<button type="reset" class="form-button">Reset</button>
-				</form>
-			</div>
-		</div>
-	</section>
-</div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<script src="../js/plugins/jquery.validation.js"></script>
-<script src="dist/prism/prism.js"></script>
-<script>
-	/**
-	 * These scripts are just for the benefit of this
-	 * styleguide. Do not use these in production.
-	**/
-	$(function(){
-		// Validation
-		$('.js-validate').validation({
-			serverValidation        : false,
-			appendErrorToPlaceholder: true
-		});
-
-		// Resizable
-		$('.resizable').resizable({
-			grid: 50,
-			containment: 'section'
-		});
-		// Switcher
-		$('.js-switch').on('click', function(){
-			var data = 'form-' + $(this).data('switch');
-			var text = $(this).text();
-
-			$('.js-validate').removeClass('page__form--block page__form--inline-block page__form--inline').addClass(data);
-			$('.js-title').text(text);
-		});
-	});
-</script>
 </body>
 </html>

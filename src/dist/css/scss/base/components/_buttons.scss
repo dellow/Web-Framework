@@ -6,7 +6,6 @@
 
 
 .btn {
-	height: auto;
 	@include nudge(padding, 0.5 0.75);
     border: 2px solid transparent;
 	display: inline-block;

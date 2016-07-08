@@ -30,8 +30,6 @@
 		&nbsp; | &nbsp;
 		<li class="u-inline" role="menuitem"><a href="forms.html">Forms</a></li>
 		&nbsp; | &nbsp;
-		<li class="u-inline" role="menuitem"><a href="layout.html">Layout</a></li>
-		&nbsp; | &nbsp;
 		<li class="u-inline" role="menuitem"><a href="rhythm.html">Rhythm</a></li>
 	</ul>
 </div>
@@ -756,168 +754,6 @@
 				<div class="alert box warning">
 					This is the warning text. Here is a <a href="#" title="Link title">default link</a>
 				</div>
-			</div>
-		</div>
-	</section>
-
-</div>
-
-<hr class="hr__styled-seperator">
-
-<div class="container">
-
-	<section>
-		<h2>Forms</h2>
-		<p>Please view the additional <a href="forms.html">forms styleguide</a> for a complete form usage example and see all the various abstractions. The forms styleguide also invokes the built in jQuery form validation script and has a PHP mailer example.</p>
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title"><code>label</code></span></summary>
-<pre class="language-markup"><code>&lt;label for="field_id">Field Name&lt;/label>
-&lt;label for="field_id">Field Name (Required) &lt;abbr>*&lt;/abbr>&lt;/label>
-&lt;div class="label">Field Name&lt;/div>
-&lt;div class="label">Field Name (Required) &lt;abbr>*&lt;/abbr>&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<form>
-					<label for="field_id">Field Name</label>
-				</form>
-				<form>
-					<label for="field_id">Field Name (Required) <abbr>*</abbr></label>
-				</form>
-				<form>
-					<div class="label">Field Name (via Class)</div>
-				</form>
-				<form>
-					<div class="label">Field Name (via Class) (Required) <abbr>*</abbr></div>
-				</form>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title"><code>input[type="text"]</code></span></summary>
-<pre class="language-markup"><code>&lt;input type="text">
-&lt;span class="note">A note about this field.&lt;/span></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<form>
-					<input type="text">
-					<span class="note">A note about this field.</span>
-				</form>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title"><code>input[type="text"] readonly</code></span></summary>
-<pre class="language-markup"><code>&lt;input type="text" value="Field value" readonly>
-&lt;span class="note">A note about this field.&lt;/span></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<form>
-					<input type="text" value="Field value" readonly>
-					<span class="note">A note about this field.</span>
-				</form>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title"><code>input[type="text"] disabled</code></span></summary>
-<pre class="language-markup"><code>&lt;input type="text" value="Field value" disabled>
-&lt;span class="note">A note about this field.&lt;/span></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<form>
-					<input type="text" value="Field value" disabled>
-					<span class="note">A note about this field.</span>
-				</form>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title"><code>select</code></span></summary>
-<pre class="language-markup"><code>&lt;select>
-	&lt;option value="">Please Select&lt;/option>
-	&lt;option value="Option #1">Option #1&lt;/option>
-	&lt;option value="Option #2">Option #2&lt;/option>
-	&lt;option value="Option #3">Option #3&lt;/option>
-&lt;/select>
-&lt;span class="note">A note about this field.&lt;/span></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<form>
-					<select>
-						<option value="">Please Select</option>
-						<option value="Option #1">Option #1</option>
-						<option value="Option #2">Option #2</option>
-						<option value="Option #3">Option #3</option>
-					</select>
-					<span class="note">A note about this field.</span>
-				</form>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title"><code>input[type="checkbox"]</code></span></summary>
-<pre class="language-markup"><code><label>&lt;label>&lt;input type="checkbox" name="checkbox[]"> Option #1&lt;/label>
-&lt;label>&lt;input type="checkbox" name="checkbox[]"> Option #2&lt;/label>
-&lt;label>&lt;input type="checkbox" name="checkbox[]"> Option #3&lt;/label></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<form>
-					<label><input type="checkbox" name="checkbox[]"> Option #1</label>
-					<label><input type="checkbox" name="checkbox[]"> Option #2</label>
-					<label><input type="checkbox" name="checkbox[]"> Option #3</label>
-				</form>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title"><code>input[type="radio"]</code></span></summary>
-<pre class="language-markup"><code><label>&lt;label>&lt;input type="radio" name="radio"> Option #1&lt;/label>
-&lt;label>&lt;input type="radio" name="radio"> Option #2&lt;/label>
-&lt;label>&lt;input type="radio" name="radio"> Option #3&lt;/label></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<form>
-					<label><input type="radio" name="radio"> Option #1</label>
-					<label><input type="radio" name="radio"> Option #2</label>
-					<label><input type="radio" name="radio"> Option #3</label>
-				</form>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title"><code>textarea</code></span></summary>
-<pre class="language-markup"><code>&lt;textarea>&lt;/textarea>
-&lt;span class="note">A note about this field.&lt;/span></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<form>
-					<textarea></textarea>
-					<span class="note">A note about this field.</span>
-				</form>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title"><code>button</code></span></summary>
-<pre class="language-markup"><code>&lt;button type="submit" class="form-button">Submit Button&lt;/button>
-&lt;button type="reset" class="form-button">Reset Button&lt;/button>
-&lt;button type="submit" class="form-button" disabled>Disabled Button&lt;/button></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<form>
-					<button type="submit" class="form-button">Submit Button</button>
-					<button type="reset" class="form-button">Reset Button</button>
-					<button type="submit" class="form-button" disabled>Disabled Button</button>
-				</form>
 			</div>
 		</div>
 	</section>
@@ -2144,7 +1980,6 @@
 <script src="../js/plugins/vendor/jquery.slider.js"></script>
 <script src="../js/plugins/jquery.accordion.js"></script>
 <script src="../js/plugins/jquery.tabs.js"></script>
-<script src="../js/build/build.js"></script>
 <script src="dist/prism/prism.js"></script>
 <script>
 	/**

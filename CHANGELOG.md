@@ -14,6 +14,7 @@ __3.0.0__:
 * Updated documentation.
 * Added global events system.
 * Added 'u-noscroll' utility class.
+* Completely changed how forms are styled. Uses flexbox by default.
 
 __2.5.2__:
 * Fixed preloader destroy.
