@@ -16,6 +16,7 @@
     1. [Watch](#scripts--watch)
 1. [Testing](#testing)
 1. [Working with SCSS](#working-with-scss)
+    1. [Mixins](#working-with-scss--mixinss)
     1. [BEM](#working-with-scss--bem)
     1. [Responsive](#working-with-scss--responsive)
     1. [Reserved Classes](#working-with-scss--reserved-classes)
@@ -110,6 +111,10 @@ _Documentation coming soon_
 <a name="working-with-scss"></a>
 ## Working with SCSS
 Any new SCSS partials should be added in the `site` directory. `base` and `mixins` should be left as is so they can be overwritten and updated. Use the `site/_vars` partial to override any of the default variables set in `config/_vars` and set your own mixins in the `site` directory.
+
+<a name="working-with-scss--mixins"></a>
+### SCSS Mixins
+_Documentation coming soon_
 
 <a name="working-with-scss--bem"></a>
 ### BEM Syntax

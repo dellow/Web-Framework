@@ -5,6 +5,25 @@
 
 
 /**
+ * scale
+ * Scale any property.
+ *
+ * .foo {@include scale(font-size, 20px, 960px 18px, 860px 16px);}
+**/
+@mixin scale($selector, $default, $breakpoints...){
+	#{$selector}: $default;
+    @each $breakpoint in $breakpoints {
+		@include respond-to(nth($breakpoint, 1)){
+			#{$selector}: nth($breakpoint, 2);
+		}
+	}
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
  * respond-to
  * Responsive breakpoints.
  *

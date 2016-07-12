@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.1.0__:
+* Added the new `scale` mixin to allow responsive scaling of any property easily.
+
 __3.0.0__:
 * Completely removed Gulp and now used `npm run` to process tasks.
 * Much improved CSS slabs. Can now use a slab mixin to create a low maintenance responsive padded area.
