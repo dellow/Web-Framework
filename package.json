@@ -1,31 +1,31 @@
 {
   "name": "web-framework",
-  "version": "2.5.2",
+  "version": "3.0.0",
   "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web projects that utilises NPM as a build tool.",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer"  : "^6.3.6",
-    "browserify"    : "^13.0.1",
-    "concat-cli"    : "^4.0.0",
-    "hbsfy"         : "^2.7.0",
-    "imagemin-cli"  : "^3.0.0",
-    "minifier"      : "^0.7.1",
-    "nightwatch"    : "^0.9.4",
-    "node-sass"     : "^3.7.0",
-    "parallelshell" : "^2.0.0",
-    "postcss-cli"   : "^2.5.2",
-    "sprity-cli"    : "^1.0.1",
-    "sprity-lwip"   : "^1.0.6",
-    "sprity-sass"   : "^1.0.4",
-    "sprity"        : "^1.0.8",
-    "watch"         : "^0.18.0"
+    "autoprefixer": "^6.3.6",
+    "browserify": "^13.0.1",
+    "concat-cli": "^4.0.0",
+    "hbsfy": "^2.7.0",
+    "imagemin-cli": "^3.0.0",
+    "minifier": "^0.7.1",
+    "nightwatch": "^0.9.4",
+    "node-sass": "^3.7.0",
+    "parallelshell": "^2.0.0",
+    "postcss-cli": "^2.5.2",
+    "sprity-cli": "^1.0.1",
+    "sprity-lwip": "^1.0.6",
+    "sprity-sass": "^1.0.4",
+    "sprity": "^1.0.8",
+    "watch": "^0.18.0"
   },
   "dependencies": {
-    "autotrack"    : "*",
-    "browsernizr"  : "*",
+    "autotrack": "*",
+    "browsernizr": "*",
     "function-bind": "*",
-    "handlebars"   : "*",
-    "jquery"       : "*"
+    "handlebars": "*",
+    "jquery": "*"
   },
   "browserify": {
     "transform": [
@@ -53,31 +53,23 @@
   "scripts": {
     "assets": "npm run css:build && npm run js:build",
     "minify": "npm run minify:css && npm run minify:images && npm run minify:js",
-
     "autoprefixer": "postcss -u autoprefixer -b 'last 2 versions' -r $npm_package_config_css_dest",
     "env:production": "NODE_ENV=production",
     "env:staging": "NODE_ENV=staging",
-
     "css:build": "node-sass --include-path scss $npm_package_config_css_src $npm_package_config_css_dest | npm run autoprefixer",
     "css:watch": "watch 'npm run css:build' $npm_package_config_css_dirSCSS",
-
     "js:common": "browserify $npm_package_config_js_commonIndex -o $npm_package_config_js_commonCompiled",
     "js:app": "browserify -t [ hbsfy -e hbs ] $npm_package_config_js_appIndex -o $npm_package_config_js_appCompiled",
     "js:build": "npm run js:app && concat-cli -f $npm_package_config_js_compiledAll -o $npm_package_config_js_dest",
     "js:watch": "watch 'npm run js:build' $npm_package_config_js_dirApp",
-
     "minify:css": "minify --output $npm_package_config_css_dest $npm_package_config_css_dest",
     "minify:images": "imagemin src/dist/images/**/**/* -o src/dist/images",
     "minify:js": "minify --output $npm_package_config_js_dest $npm_package_config_js_dest",
-
     "test:integration": "nightwatch",
-
     "sprite": "sprity create src/dist/images/icons/sprite/ src/dist/images/icons/png/*.png -c ../images/icons/ -s ../../../css/scss/site/_sprites.scss -p sass -n sprite --prefix css-sprite --orientation horizontal --background '#FFFFFF' --margin '2' -d 2:192",
-
     "version:patch": "npm version patch --git-tag-version=false && bower version patch",
     "version:minor": "npm version minor --git-tag-version=false && bower version minor",
     "version:major": "npm version major --git-tag-version=false && bower version major",
-
     "watch": "parallelshell 'npm run js:watch' 'npm run css:watch'"
   },
   "private": true
