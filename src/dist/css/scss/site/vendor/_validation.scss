@@ -20,16 +20,16 @@ form {
 		label {
 			// Abstractions
 			&.js-validation-field-error {
-				color: $color_error;
+				color: $color_error !important;
 			}
 			&.js-validation-field-status {
-				color: $color_status;
+				color: $color_status !important;
 			}
 			&.js-validation-field-success {
-				color: $color_success;
+				color: $color_success !important;
 			}
 			&.js-validation-field-warning {
-				color: $color_warning;
+				color: $color_warning !important;
 			}
 		}
 
@@ -37,8 +37,8 @@ form {
 		fieldset {
 			&.js-validation-fieldset-has-errors {
 				@include nudge(padding, 1);
-				border-color: lighten($color_error, 30%);
-				background-color: lighten($color_error, 45%);
+				border-color: lighten($color_error, 30%) !important;
+				background-color: lighten($color_error, 45%) !important;
 			}
 		}
 
@@ -47,19 +47,19 @@ form {
 			// Placeholders.
 			&.js-validation-field-has-errors {
 				::-webkit-input-placeholder {
-					color: $color_error;
+					color: $color_error !important;
 				}
 				::-moz-placeholder {
-					color: $color_error;
+					color: $color_error !important;
 				}
 				:-moz-placeholder {
-					color: $color_error;
+					color: $color_error !important;
 				}
 				:-ms-input-placeholder {
-					color: $color_error;
+					color: $color_error !important;
 				}
 				::placeholder {
-					color: $color_error;
+					color: $color_error !important;
 				}
 			}
 			// Abstractions
@@ -81,39 +81,39 @@ form {
 		input, .input, select, textarea, .field-container {
 			// Abstractions
 			&.js-validation-field-error {
-				color: $color_error;
-				border-color: lighten($color_error, 25%);
-				background-color: lighten($color_error, 40%);
+				color: $color_error !important;;
+				border-color: lighten($color_error, 25%) !important;;
+				background-color: lighten($color_error, 40%) !important;;
 				// Pseudo
 				&:focus {
-					background-color: lighten($color_error, 35%);
+					background-color: lighten($color_error, 35%) !important;;
 				}
 			}
 			&.js-validation-field-status {
-				color: $color_status;
-				border-color: lighten($color_status, 25%);
-				background-color: lighten($color_status, 40%);
+				color: $color_status !important;;
+				border-color: lighten($color_status, 25%) !important;;
+				background-color: lighten($color_status, 40%) !important;;
 				// Pseudo
 				&:focus {
-					background-color: lighten($color_status, 35%);
+					background-color: lighten($color_status, 35%) !important;;
 				}
 			}
 			&.js-validation-field-success {
-				color: $color_success;
-				border-color: lighten($color_success, 25%);
-				background-color: lighten($color_success, 40%);
+				color: $color_success !important;;
+				border-color: lighten($color_success, 25%) !important;;
+				background-color: lighten($color_success, 40%) !important;;
 				// Pseudo
 				&:focus {
-					background-color: lighten($color_success, 35%);
+					background-color: lighten($color_success, 35%) !important;;
 				}
 			}
 			&.js-validation-field-warning {
-				color: $color_warning;
-				border-color: lighten($color_warning, 25%);
-				background-color: lighten($color_warning, 40%);
+				color: $color_warning !important;;
+				border-color: lighten($color_warning, 25%) !important;;
+				background-color: lighten($color_warning, 40%) !important;;
 				// Pseudo
 				&:focus {
-					background-color: lighten($color_warning, 35%);
+					background-color: lighten($color_warning, 35%) !important;;
 				}
 			}
 		}
