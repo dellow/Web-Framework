@@ -95,10 +95,12 @@ a, button {
 	}
 }
 
+
 /* ----------------------------------------------------------------------- */
 
-/* -- Margins -- */
-blockquote, img, dl, figure, ol, p, pre, ul {
+
+/* -- Standard Margins -- */
+blockquote, dl, ol, p, pre, ul {
 	@include nudge(margin-bottom, 1);
 	// Pseudo
 	&:last-child {
@@ -106,11 +108,23 @@ blockquote, img, dl, figure, ol, p, pre, ul {
 	}
 }
 
+
 /* ----------------------------------------------------------------------- */
 
 
 /* -- Content Areas -- */
 .page__content {
+	// Margins
+	img, figure {
+		@include nudge(margin-bottom, 1);
+		img { // No margin on inner images.
+			margin: 0;
+		}
+		// Pseudo
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 	// Lists.
 	ul, ol {
 		margin-left: 1.2em;
