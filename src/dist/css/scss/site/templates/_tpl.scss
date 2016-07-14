@@ -1,0 +1,29 @@
+
+
+.tpl-content {
+    @include slab(2);
+    background: color(grey2);
+    .container {
+        @extend %flex;
+    }
+    &__left {
+        width: 65%;
+        position: relative;
+        // Responsive.
+        @include respond-to($tablet){
+            width: 100%;
+        }
+    }
+    &__right {
+        width: 30%;
+        margin-left: auto;
+        position: relative;
+        // Responsive.
+        @include respond-to($tablet){
+            width: 100%;
+        }
+    }
+}
+
+
+/* ----------------------------------------------------------------------- */
