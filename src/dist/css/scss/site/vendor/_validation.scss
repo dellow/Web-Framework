@@ -117,6 +117,23 @@ form {
 				}
 			}
 		}
+
+		// Placeholders
+		::-webkit-input-placeholder {
+			color: $color_error;
+		}
+		::-moz-placeholder {
+			color: $color_error;
+		}
+		:-moz-placeholder {
+			color: $color_error;
+		}
+		:-ms-input-placeholder {
+			color: $color_error;
+		}
+		::placeholder {
+			color: $color_error;
+		}
 	}
 
 	// Fieldsets
