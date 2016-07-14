@@ -40,7 +40,6 @@ form {
 
 	button {
 		height: $base_field_height;
-		padding-top: 0 !important; padding-bottom: 0 !important; // This helps overwrite the padding if this has the .btn class.
 		display: inline-block;
 		vertical-align: top;
 		line-height: $base_field_height;
