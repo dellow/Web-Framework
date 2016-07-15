@@ -60,6 +60,7 @@ body {
 /* -- Page Wrapper -- */
 .page__wrapper {
 	position: relative;
+	left: 0; // Default position for animating.
 	z-index: 1;
 	transition: left $animation ease;
 }
