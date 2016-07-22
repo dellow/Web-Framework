@@ -5,10 +5,7 @@
 # ---------------------------------------------------------------------------------
 .sass-cache/
 .vagrant/
-karma/
 nightwatch/
-psi/
-releases/
 bower_components/
 node_modules/
 **/logs/
