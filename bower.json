@@ -1,6 +1,6 @@
 {
   "name": "web-framework",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web projects that utilises NPM as a build tool.",
   "license": "MIT",
   "authors": [
@@ -10,14 +10,16 @@
     "node"
   ],
   "keywords": [
-    "browserify",
     "css",
     "framework",
-    "gulp",
     "html",
     "javascript",
     "jquery",
-    "sass"
+    "npm",
+    "sass",
+    "workflow",
+    "wrapper",
+    "webpack"
   ],
   "ignore": [
     "node_modules",

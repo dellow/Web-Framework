@@ -2,6 +2,8 @@
 
 __3.1.0__:
 * Added the new `scale` mixin to allow responsive scaling of any property easily.
+* Switched to using Webpack rather than Browserify.
+* The index now loads `common.js` and `app.js` as two separate files rather that one bundled one.
 
 __3.0.0__:
 * Completely removed Gulp and now used `npm run` to process tasks.

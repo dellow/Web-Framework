@@ -29,11 +29,13 @@
 ## About
 This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises NPM as a build tool. It's also set up to work with Travis CI which will run any defined spec tests by default.
 
-Testing is done with Jasmine for unit tests and Nightwatch for functional tests.
+JavaScript is compiled with WebPack and the CSS pre-processed with SASS.
+
+Testing is done with Jasmine for unit tests and Nightwatch for functional/integration tests.
 
 <a name="requirements"></a>
 ## Requirements
-The only system requirement is Node. All other dependencies of this Framework will be downloaded and installed when the install process is run.
+The only system requirement is Node & NPM. All other dependencies of this Framework will be downloaded and installed when the install process is run.
 
 - [NodeJS](http://nodejs.org/)
 
@@ -291,7 +293,7 @@ The only JavaScript file that will hit the server should be at `src/dist/js/buil
 
 <a name="working-with-javascript--requiring-new-files"></a>
 ### Requiring New Files
-All initial files are loaded from `dist/js/app/index.js` but thanks to Browserify you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
+All initial files are loaded from `dist/js/app/index.js` but thanks to Webpack you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
 
     require('./javascript-file');
 

@@ -1,24 +1,23 @@
 {
   "name": "web-framework",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web projects that utilises NPM as a build tool.",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
-    "browserify": "^13.0.1",
     "concat-cli": "^4.0.0",
-    "hbsfy": "^2.7.0",
     "imagemin-cli": "^3.0.0",
     "minifier": "^0.7.1",
     "nightwatch": "^0.9.4",
     "node-sass": "^3.7.0",
     "parallelshell": "^2.0.0",
     "postcss-cli": "^2.5.2",
+    "sprity": "^1.0.8",
     "sprity-cli": "^1.0.1",
     "sprity-lwip": "^1.0.6",
     "sprity-sass": "^1.0.4",
-    "sprity": "^1.0.8",
-    "watch": "^0.18.0"
+    "watch": "^0.18.0",
+    "webpack": "^1.13.1"
   },
   "dependencies": {
     "autotrack": "*",
@@ -27,11 +26,6 @@
     "handlebars": "*",
     "jquery": "*"
   },
-  "browserify": {
-    "transform": [
-      "hbsfy"
-    ]
-  },
   "config": {
     "css": {
       "dirSCSS": "src/dist/css/scss/",
@@ -39,15 +33,7 @@
       "src": "src/dist/css/scss/build.scss"
     },
     "js": {
-      "dirApp": "src/dist/js/app/",
-      "dirPrivate": "src/dist/js/public/",
-      "dirPublic": "src/dist/js/private/",
-      "commonIndex": "src/dist/js/common/index.js",
-      "commonCompiled": "src/dist/js/compiled/1common.js",
-      "appIndex": "src/dist/js/app/index.js",
-      "appCompiled": "src/dist/js/compiled/2app.js",
-      "compiledAll": "src/dist/js/compiled/*.js",
-      "dest": "src/dist/js/build/build.js"
+      "dirApp": "src/dist/js/app/"
     }
   },
   "scripts": {
@@ -58,10 +44,11 @@
     "env:staging": "NODE_ENV=staging",
     "css:build": "node-sass --include-path scss $npm_package_config_css_src $npm_package_config_css_dest | npm run autoprefixer",
     "css:watch": "watch 'npm run css:build' $npm_package_config_css_dirSCSS",
-    "js:common": "browserify $npm_package_config_js_commonIndex -o $npm_package_config_js_commonCompiled",
-    "js:app": "browserify -t [ hbsfy -e hbs ] $npm_package_config_js_appIndex -o $npm_package_config_js_appCompiled",
-    "js:build": "npm run js:app && concat-cli -f $npm_package_config_js_compiledAll -o $npm_package_config_js_dest",
-    "js:watch": "watch 'npm run js:build' $npm_package_config_js_dirApp",
+    "js:common": "webpack --progress --color -p --config webpack.common.config.js",
+    "js:app": "NODE_ENV=development webpack --progress --color --config webpack.app.config.js",
+    "js:prod": "NODE_ENV=production webpack --progress --color -p --config webpack.app.config.js",
+    "js:all": "npm run build:common && npm run build:dev",
+    "js:watch": "watch 'npm run js:app' $npm_package_config_js_dirApp",
     "minify:css": "minify --output $npm_package_config_css_dest $npm_package_config_css_dest",
     "minify:images": "imagemin src/dist/images/**/**/* -o src/dist/images",
     "minify:js": "minify --output $npm_package_config_js_dest $npm_package_config_js_dest",
