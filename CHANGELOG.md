@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.2.0__:
+* Updated SocIcon.
+
 __3.1.0__:
 * Added the new `scale` mixin to allow responsive scaling of any property easily.
 * Switched to using Webpack rather than Browserify.
