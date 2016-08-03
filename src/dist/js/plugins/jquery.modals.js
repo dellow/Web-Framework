@@ -40,11 +40,11 @@
     };
 
     /**
-     * $.fn.destroyModal
-     * Destroy any active modal windows.
+     * $.fn.destroyAllModals
+     * Destroy all active modal windows.
     **/
-    $.fn.destroyModal = function(){
-        new Plugin().destroy();
+    $.fn.destroyAllModals = function(){
+        new Plugin().destroyAll();
     };
 
     /**
@@ -52,14 +52,15 @@
      * Default options.
     **/
     $.fn.modal.defaults = {
-        template         : '<div id="modal-window" class="modal"><div class="modal-content"><div></div>',
-        type             : 'modal-slide-left',
-        show_close       : true,
-        content          : '',
-        confirmation     : false,
-        callback_positive: function(){}, // Must be a function.
-        callback_negative: function(){}, // Must be a function.
-        callback_closed  : '' // Must be a string.
+        template       : '<div class="modal"><div class="modal-content"><div></div>',
+        type           : 'modal-slide-left',
+        content        : '',
+        overlayColor   : 'rgba(0, 0, 0, 0.75)',
+        backgroundColor: '#0073AA',
+        width          : '50%',
+    	max_width      : '650px',
+    	min_width      : '350px',
+        appendTarget   : 'body'
     };
 
     /**
@@ -68,163 +69,82 @@
     **/
     Plugin.prototype = {
         init: function(){
-            // this
-            var _self = this;
+            // Extend & cache settings.
+            this.s = $.extend({}, $.fn.modal.defaults, this.options);
+            // Set the initial modal template.
+            this.$tpl = $(this.s.template);
+            // Set the initial overlay template.
+            this.$overlay = $('<div class="modal-overlay"></div>').css({'background-color' : this.s.overlayColor});
+            // Hide any open modals.
+            this.destroyAll();
+            // Create modal.
+            this.createModal();
+            // Create overlay.
+            this.createOverlay();
+            // Start event listeners.
+            this.listeners();
 
-            // Global settings.
-            _self.settings = $.extend({}, $.fn.modal.defaults, _self.options);
-
-            // Hide any open windows.
-            _self.destroy();
-
-            // Do jQuery event binds.
-            _self.binds();
-
-            // Detect if this is running on the window.
-            if($.isWindow(_self.elem)){
-                // Run the plugin.
-                _self.with_selector();
-            }
-            else{
-                // Do jQuery event binds.
-                _self.without_selector();
-            }
-
-            return _self;
+            return this;
         },
-        binds: function(){
-            var _self = this;
+        listeners: function(){
+            var _this = this;
 
-            // On escape key press.
-            $(document).on('keyup', function(e){
-                if(e.keyCode == 27){
-                    _self.destroy();
-                }
-            });
-            // On close.
             $(document).on('click', '.js-modal-close', function(e){
                 e.preventDefault();
-
-                _self.destroy();
-
-                if(_self.settings.callback_closed !== ''){
-                    _self.settings.callback_closed.call();
-                }
-            });
-            // On confirmation :: Yes.
-            $(document).on('click', '.modal-confirmation-yes', function(e){
-                _self.destroy();
-
-                _self.settings.callback_positive.call();
-            });
-            // On confirmation :: No.
-            $(document).on('click', '.modal-confirmation-no', function(e){
-                _self.destroy();
-
-                _self.settings.callback_negative.call();
+                // Destroy modal.
+                _this.destroyAll();
             });
         },
-        without_selector: function(){
-            var _self = this;
-
-            // On submit.
-            _self.$elem.on('click', function(e){
-                e.preventDefault();
-
-                _self.show_predefined_modal($(this));
+        createModal: function(){
+            // Add classes.
+            this.$tpl.addClass(this.s.type).find('.modal-content').show().addClass(this.getModalClasses());
+            // Add inline styles.
+            this.$tpl.css({
+                'width'   : this.s.width,
+                'maxWidth': this.s.max_width,
+                'minWidth': this.s.min_width
+            }).find('.modal-content').css({
+                'background-color': this.s.backgroundColor,
             });
-        },
-        with_selector: function(){
-            var _self = this;
-
-            _self.show_templated_modal();
-        },
-        show_templated_modal: function(){
-            var _self = this,
-                $target = $(_self.settings.template);
-
-            // Add type.
-            $target.addClass(_self.settings.type);
-
             // Apply content.
-            $('.modal-content', $target).prepend(_self.settings.content);
+            $('.modal-content', this.$tpl).prepend(this.getModalContent());
+            // Apply modal to DOM.
+            this.applyModal();
+            // Show modal.
+            this.showModal();
+        },
+        getModalContent: function(){
+            return (typeof this.s.content !== 'string') ? this.s.content.html() : this.s.content;
+        },
+        getModalClasses: function(){
+            return (typeof this.s.content !== 'string') ? this.s.content.attr('class') : '';
+        },
+        applyModal: function(){
+            return $(this.s.appendTarget).prepend(this.$tpl);
+        },
+        showModal: function(){
+            var _this = this;
 
-            // Confirmation?
-            if(_self.settings.confirmation){
-                $('.modal-content', $target).append('<button class="modal-confirmation-yes">Yes</button> | <button class="modal-confirmation-no">No</button>');
-            }
-            else if(_self.settings.show_close){
-                $('.modal-content', $target).append('<button class="js-modal-close">Close</button>');
-            }
-
-            // Add to DOM.
-            $('body').prepend($target);
-
-            // Do overlay.
-            this.apply_overlay($target);
-
-            // Show modal window.
             setTimeout(function(){
-                $target.addClass('active modal-show');
+                return _this.$tpl.addClass('active modal-show');
             }, 50);
         },
-        show_predefined_modal: function(el){
-            // Determine target.
-            var target = el.data('modal-target'),
-                $target = $('#' + target);
-
-            // Do overlay.
-            this.apply_overlay($target);
-
-            // Show modal window.
-            if(target !== ''){
-                if($target.length){
-                    setTimeout(function(){
-                        $target.addClass('active modal-show');
-                    }, 50);
-                }
-                else{
-                    helpers.log("Target element can't be found.");
-                    return false;
-                }
-            }
-            else{
-                helpers.log("No target defined.");
-                return false;
-            }
+        destroyModal: function(){
+            return $('.modal').remove();
         },
-        hide_windows: function(){
-            $('.modal.active').removeClass('modal-show');
-            this.destroy_modal();
+        createOverlay: function(){
+            // Apply overlay to DOM.
+            this.applyOverlay();
         },
-        apply_overlay: function(el){
-            el.after('<div class="modal-overlay"></div>');
+        applyOverlay: function(){
+            return this.$tpl.after(this.$overlay);
         },
-        destroy_overlay: function(){
-            $('.modal-overlay').remove();
+        destroyOverlay: function(){
+            return $('.modal-overlay').remove();
         },
-        destroy_modal: function(){
-            $('#modal-window').remove();
-        },
-        destroy: function(){
-            this.hide_windows();
-            this.destroy_overlay();
-        }
-    }
-
-    /**
-     * helpers.log
-     * Returns a cross-browser safe message in the console.
-    **/
-    helpers.log = function(message, alertlog){
-        alertlog = (typeof alertlog === 'undefined') ? false : true;
-        if(typeof console === 'undefined' || typeof console.log === 'undefined'){
-            if(alertlog){
-                alert(message);
-            }
-        }
-        else {
-            console.log(message);
+        destroyAll: function(){
+            this.destroyModal();
+            this.destroyOverlay();
         }
     }
 
