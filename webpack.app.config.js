@@ -7,9 +7,8 @@
  *
 **/
 
-var path         = require('path');
-var webpack      = require('webpack');
-var autoprefixer = require('autoprefixer');
+var path    = require('path');
+var webpack = require('webpack');
 
 module.exports = {
     entry: './src/dist/js/app/index.js',
@@ -24,10 +23,5 @@ module.exports = {
     module: {
         loaders: []
     },
-    plugins: [],
-    postcss: [
-        autoprefixer({
-            browsers: ['last 2 versions']
-        })
-    ]
+    plugins: []
 };

@@ -4,6 +4,7 @@
 1. [About](#about)
 1. [Requirements](#requirements)
 1. [Install](#install)
+1. [Commands](#commands)
 1. [Styleguide & Examples](#styleguide-examples)
 1. [Scripts](#scripts)
     1. [Assets](#scripts--assets)
@@ -27,9 +28,11 @@
 
 <a name="about"></a>
 ## About
-This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises NPM as a build tool. It's also set up to work with Travis CI which will run any defined spec tests by default.
+This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises NPM and Gulp as build tools. It's also set up to work with Travis CI which will run any defined spec tests by default.
 
-JavaScript is compiled with WebPack and the CSS pre-processed with SASS.
+JavaScript is bundled with WebPack via NPM scripts.
+
+CSS is compiled with SASS via Gulp (Compiling directly with NPM is to slow).
 
 Testing is done with Jasmine for unit tests and Nightwatch for functional/integration tests.
 
@@ -64,6 +67,63 @@ __All additional instructions below assume you have followed the installation pr
 
 > __Pro Tip:__ You can make the install script executable by running `chmod u+x install.sh`. This will allow you to run the script like this: `./install.sh`.
 
+<a name="commands"></a>
+## Commands
+The framework uses NPM for most tasks although CSS is compiled via Gulp because SASS in NPM is slow. You can however still call the CSS gulp task from NPM.
+
+All commands begin with the standard NPM scripts syntax: `npm run <scriptname>`. The current scripts are:
+
+`assets`
+Does a one time build of both CSS and JavaScript files unminified.
+
+`css:build`
+Does a one time build of the CSS unminified.
+
+`css:watch`
+Watches just CSS files and builds unminified.
+
+`js:common`
+Does a one time build of the common JavaScript files defined in `./src/dist/js/common/index.js` unminified. These are your common vendor libraries (jQuery, Underscore etc) and are kept separate so they are not built with the main app build file everytime.
+
+`js:app`
+Does a one time build of the application JavaScript files defined in `./src/dist/js/app` unminified.
+
+`js:all`
+Does a one time build of the application JavaScript and the common JavaScript unminified
+
+`js:watch`
+Watches just JavaScript files and builds unminified.
+
+`minify`
+Minifies the CSS, JavaScript and Image files.
+
+`minify:css`
+Minifies just the CSS build file.
+
+`minify:images`
+Minifies the image assets.
+
+`minify:js`
+Minifies just the JavaScript build file.
+
+`test:integration`
+Runs integration tests.
+
+`sprite`
+Runs the sprite builder which adds all files in `./src/dist/images/icons/png` into standard and retina sprites.
+
+`version:patch`
+Increases the version number by patch in `package.json` and `bower.json`.
+
+`version:minor`
+Increases the version number by minor in `package.json` and `bower.json`.
+
+`version:major`
+Increases the version number by major in `package.json` and `bower.json`.
+
+`watch`
+Watches for changes in both CSS and JS application files and builds where necessary unminified.
+
 <a name="styleguide-examples"></a>
 ## Styleguide & Examples
 After installation there is a CSS styleguide located in `dist/.help/guides/styleguide.html` which outlines some of the elements in the Framework. You can also review the vertical rhythm `dist/.help/guides/rhythm.html`.
@@ -76,10 +136,6 @@ There are various singular scripts in the framework that are outlined below. The
 
 <a name="scripts--assets"></a>
 ### Assets
-_Documentation coming soon_
-
-<a name="scripts--autoprefixer"></a>
-### Autoprefixer
 _Documentation coming soon_
 
 <a name="scripts--css"></a>
@@ -104,10 +160,6 @@ _Documentation coming soon_
 
 <a name="scripts--watch"></a>
 ### Watch
-_Documentation coming soon_
-
-<a name="testing"></a>
-## Testing
 _Documentation coming soon_
 
 <a name="working-with-scss"></a>
