@@ -96,13 +96,16 @@
             });
         },
         createModal: function(){
+            // Get 10% of document height.
+            var docHeight = ($(window).height() / 100) * 10;
             // Add classes.
             this.$tpl.addClass(this.s.type).find('.modal-content').show().addClass(this.getModalClasses());
             // Add inline styles.
             this.$tpl.css({
-                'width'   : this.s.width,
-                'maxWidth': this.s.max_width,
-                'minWidth': this.s.min_width
+                'width'     : this.s.width,
+                'maxWidth'  : this.s.max_width,
+                'minWidth'  : this.s.min_width,
+                'maxHeight' : ($(window).height() - docHeight)
             }).find('.modal-content').css({
                 'background-color': this.s.backgroundColor,
             });
@@ -126,7 +129,13 @@
             var _this = this;
 
             setTimeout(function(){
-                return _this.$tpl.addClass('active modal-show');
+                _this.$tpl.addClass('active modal-show');
+                setTimeout(function(){
+                    _this.$tpl.css({
+                        'overflow'  : 'hidden',
+                        'overflow-y': 'scroll'
+                    });
+                }, 200);
             }, 50);
         },
         destroyModal: function(){
