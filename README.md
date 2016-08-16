@@ -73,8 +73,7 @@ The framework uses NPM for most tasks although CSS is compiled via Gulp because 
 
 All commands begin with the standard NPM scripts syntax: `npm run <scriptname>`. The current scripts are:
 
-`assets`
-
+`assets`  
 Does a one time build of both CSS and JavaScript files unminified.
 
 `css:build`
