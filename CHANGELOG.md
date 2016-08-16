@@ -3,6 +3,7 @@
 __3.2.0__:
 * Updated SocIcon.
 * Readded Gulp for CSS compilation as NPM directly is too slow.
+* Added WordPress specific styles to their own vendor stylesheet.
 
 __3.1.0__:
 * Added the new `scale` mixin to allow responsive scaling of any property easily.

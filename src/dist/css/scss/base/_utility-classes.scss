@@ -227,39 +227,6 @@ body, html {
 /* ----------------------------------------------------------------------- */
 
 
-/* -- WordPress Classes -- */
-[class*="wp-image-"] {
-    display: block;
-}
-.alignleft {
-    @include nudge(margin, 0 1 1 0);
-	float: left;
-    // Responsive
-    @include respond-to($mobile){
-        margin-right: 0;
-        float: none;
-    }
-}
-.alignright {
-    @include nudge(margin, 0 0 1 1);
-	float: right;
-    // Responsive
-    @include respond-to($mobile){
-        margin-left: 0;
-        float: none;
-    }
-}
-.size-medium {
-    // Responsive
-    @include respond-to($mobile){
-        width: 100%;
-    }
-}
-
-
-/* ----------------------------------------------------------------------- */
-
-
 /* -- Lists -- */
 .u-inside {
 	margin-left: $base_ul_indent;
