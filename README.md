@@ -76,52 +76,52 @@ All commands begin with the standard NPM scripts syntax: `npm run <scriptname>`.
 `assets`  
 Does a one time build of both CSS and JavaScript files unminified.
 
-`css:build`
+`css:build`  
 Does a one time build of the CSS unminified.
 
-`css:watch`
+`css:watch`  
 Watches just CSS files and builds unminified.
 
-`js:common`
+`js:common`  
 Does a one time build of the common JavaScript files defined in `./src/dist/js/common/index.js` unminified. These are your common vendor libraries (jQuery, Underscore etc) and are kept separate so they are not built with the main app build file everytime.
 
-`js:app`
+`js:app`  
 Does a one time build of the application JavaScript files defined in `./src/dist/js/app` unminified.
 
-`js:all`
+`js:all`  
 Does a one time build of the application JavaScript and the common JavaScript unminified
 
-`js:watch`
+`js:watch`  
 Watches just JavaScript files and builds unminified.
 
-`minify`
+`minify`  
 Minifies the CSS, JavaScript and Image files.
 
-`minify:css`
+`minify:css`  
 Minifies just the CSS build file.
 
-`minify:images`
+`minify:images`  
 Minifies the image assets.
 
-`minify:js`
+`minify:js`  
 Minifies just the JavaScript build file.
 
-`test:integration`
+`test:integration`  
 Runs integration tests.
 
-`sprite`
+`sprite`  
 Runs the sprite builder which adds all files in `./src/dist/images/icons/png` into standard and retina sprites.
 
-`version:patch`
+`version:patch`  
 Increases the version number by patch in `package.json` and `bower.json`.
 
-`version:minor`
+`version:minor`  
 Increases the version number by minor in `package.json` and `bower.json`.
 
-`version:major`
+`version:major`  
 Increases the version number by major in `package.json` and `bower.json`.
 
-`watch`
+`watch`  
 Watches for changes in both CSS and JS application files and builds where necessary unminified.
 
 <a name="styleguide-examples"></a>
