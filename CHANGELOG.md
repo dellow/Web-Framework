@@ -5,6 +5,7 @@ __3.2.0__:
 * Readded Gulp for CSS compilation as NPM directly is too slow.
 * Added WordPress specific styles to their own vendor stylesheet.
 * Removed all references to `sect-`. These should be set as components as prefixed with `comp-` where applicable.
+* Replaced Handlebars with Underscore as it also does templates and is more useful. Removed Function Bind.
 
 __3.1.0__:
 * Added the new `scale` mixin to allow responsive scaling of any property easily.
