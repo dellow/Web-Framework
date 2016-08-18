@@ -33,7 +33,7 @@
     },
     "js": {
       "dirApp": "src/dist/js/app/",
-      "dest": "src/dist/js/build",
+      "dest": "src/dist/js/build"
     }
   },
   "scripts": {

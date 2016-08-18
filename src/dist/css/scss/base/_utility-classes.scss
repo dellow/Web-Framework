@@ -265,25 +265,25 @@ body, html {
 
 /* -- Weights & Cases -- */
 .u-text-regular {
-	font-weight: $regular;
+	font-weight: $regular !important;
 }
 .u-text-semibold {
-	font-weight: $semibold;
+	font-weight: $semibold !important;
 }
 .u-text-bold {
-	font-weight: $bold;
+	font-weight: $bold !important;
 }
 .u-text-italic {
-	font-style: italic;
+	font-style: italic !important;
 }
 .u-text-uppercase {
-	text-transform: uppercase;
+	text-transform: uppercase !important;
 }
 .u-text-lowercase {
-	text-transform: lowercase;
+	text-transform: lowercase !important;
 }
 .u-text-capitalize {
-	text-transform: capitalize;
+	text-transform: capitalize !important;
 }
 
 
