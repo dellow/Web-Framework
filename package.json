@@ -21,9 +21,8 @@
   "dependencies": {
     "autotrack": "*",
     "browsernizr": "*",
-    "function-bind": "*",
-    "handlebars": "*",
-    "jquery": "*"
+    "jquery": "*",
+    "underscore": "*"
   },
   "config": {
     "css": {
