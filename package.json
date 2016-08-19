@@ -25,14 +25,17 @@
     "underscore": "*"
   },
   "config": {
+    "dist": "./src/dist",
     "css": {
-      "dirSCSS": "src/dist/css/scss/",
-      "dest": "src/dist/css/build.css",
-      "src": "src/dist/css/scss/build.scss"
+      "dirSCSS": "./src/dist/css/scss/",
+      "destDir": "./src/dist/css/",
+      "dest": "./src/dist/css/build.css",
+      "src": "./src/dist/css/scss/build.scss"
     },
     "js": {
-      "dirApp": "src/dist/js/app/",
-      "dest": "src/dist/js/build"
+      "dirApp": "./src/dist/js/app/",
+      "dirCommon": "./src/dist/js/common/",
+      "dest": "./src/dist/js/build"
     }
   },
   "scripts": {
@@ -45,7 +48,7 @@
     "js:watch": "watch 'npm run js:app' $npm_package_config_js_dirApp",
     "minify": "npm run minify:css && npm run minify:images && npm run minify:js",
     "minify:css": "minify --output $npm_package_config_css_dest $npm_package_config_css_dest",
-    "minify:images": "imagemin src/dist/images/**/**/* -o src/dist/images",
+    "minify:images": "imagemin $npm_package_config_dist/images/**/**/* -o $npm_package_config_dist/images",
     "minify:js": "minify --output $npm_package_config_js_dest $npm_package_config_js_dest",
     "test:integration": "nightwatch",
     "sprite": "sprity create src/dist/images/icons/ src/dist/images/icons/png/*.png -c ../images/icons/ -s ../../css/scss/site/_sprites.scss -p sass -n sprite --prefix css-sprite --orientation horizontal --background '#FFFFFF' --margin '2' -d 1:72 -d 2:192",

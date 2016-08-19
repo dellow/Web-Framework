@@ -9,11 +9,12 @@
 
 var path    = require('path');
 var webpack = require('webpack');
+var package = require('../package.json');
 
 module.exports = {
-    entry: '../src/dist/js/app/index.js',
+    entry: package.config.js.dirApp + 'index.js',
     output: {
-        path: path.join(__dirname, '../src/dist/js/build'),
+        path: package.config.js.dest,
         filename: 'app.js'
     },
     resolve: {
