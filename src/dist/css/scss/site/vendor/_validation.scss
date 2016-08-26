@@ -47,7 +47,7 @@ form {
 		}
 
 		// Fields
-		.field {
+		.obj-form-field {
 			// Placeholders.
 			&.js-validation-field-has-errors {
 				::-webkit-input-placeholder {
@@ -70,12 +70,13 @@ form {
 			&.js-validation-field--placeholder {
 				input, .input, select, textarea, .field-container {
 					height: auto;
-					@include nudge(padding-top, 1.15);
+					@include nudge(padding-bottom, 1.15);
 				}
 				.js-validation-field--placeholder--span {
 					position: absolute;
 					top: 35px; @include nudge(left, 0.4);
 					z-index: $zindex-1;
+					color: color(black);
 					@include rem(font-size, 12px);
 				}
 			}

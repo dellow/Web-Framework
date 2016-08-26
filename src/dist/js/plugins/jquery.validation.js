@@ -411,11 +411,11 @@
                 // Check element exists in the DOM.
                 if(el.length && el.is(':input') && el.attr('type') !== 'hidden'){
                     // Apply error class to field.
-                    el.addClass(_self.settings.errorClass).parent('.field').addClass('js-validation-field-has-errors');
+                    el.addClass(_self.settings.errorClass).parent('.obj-form-field').addClass('js-validation-field-has-errors');
                     // Field specific actions.
                     if(el.attr('type') === 'checkbox' || el.attr('type') === 'radio'){
                         // Add error element to field.
-                        el.closest('.field').find('label, .label').first().append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
+                        el.closest('.obj-form-field').find('label, .label').first().append($(_self.settings.errorBoxElement).addClass(_self.settings.errorBoxClass).html(message));
                         // Apply to nearest label if checkbox or radio.
                         el.closest('label').addClass(_self.settings.errorClass);
                     }
@@ -426,7 +426,7 @@
                             // Check value length.
                             if(el.val().length > 0){
                                 // Add error class to placeholder.
-                                el.parent('.field').addClass('js-validation-field--placeholder');
+                                el.parent('.obj-form-field').addClass('js-validation-field--placeholder');
                                 // Add a span to the field.
                                 el.before('<span class="js-validation-field--placeholder--span">' + error + '</span>');
                             }

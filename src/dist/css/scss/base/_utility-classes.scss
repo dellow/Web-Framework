@@ -8,6 +8,7 @@
 /* -- Body / HTML Classes -- */
 body, html {
 	&.u-noscroll {
+		width: 100%;
 	    -webkit-overflow-scrolling: touch;
 	    overflow: hidden;
 	    position: fixed;

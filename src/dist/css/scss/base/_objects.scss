@@ -8,6 +8,7 @@
 .obj-form-field {
 	@extend %flex;
 	@include nudge(margin-bottom, 0.5);
+	position: relative;
 	&__note {
 		@include nudge(margin-left, 0.25);
 		color: color(grey);

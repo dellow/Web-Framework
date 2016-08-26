@@ -7,6 +7,7 @@ __3.2.0__:
 * Removed all references to `sect-`. These should be set as components as prefixed with `comp-` where applicable.
 * Replaced Handlebars with Underscore as it also does templates and is more useful. Removed Function Bind.
 * All Gulp and Webpack directory paths from `package.json`.
+* Various CSS and JS fixes to validation.
 
 __3.1.0__:
 * Added the new `scale` mixin to allow responsive scaling of any property easily.
