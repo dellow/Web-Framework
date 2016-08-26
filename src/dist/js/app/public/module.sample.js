@@ -40,7 +40,7 @@
                 // // Globally cache this element.
                 // this.$self = $(e.currentTarget);
                 // // Data attribute.
-                // var data_attr = self.data('sample') || false;
+                // var dataAttr = this.$self.data('sample') || false;
 
                 alert('Target clicked.');
             }
@@ -49,7 +49,7 @@
 
     /**
      * method
-     * A description of this method.
+     * A description.
      *
      * @since 1.0.0
      * @version 1.0.0

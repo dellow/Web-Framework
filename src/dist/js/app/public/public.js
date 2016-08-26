@@ -89,9 +89,8 @@
 	**/
     var getModules = function(){
 		// Require :: Modules
-		this.modules.Plugins      = require('./module.plugins');
-		this.modules.MobileMenu   = require('./module.mobile-menu-side');
-		this.modules.ModuleSample = require('./module.sample');
+		this.modules.Plugins = require('./module.plugins');
+		this.modules.MobileMenu = require('./module.mobile-menu-side');
 	}
 
 	// Export
