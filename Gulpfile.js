@@ -75,7 +75,8 @@ gulp.task('css:git', function(){
 
 	return gulp.src(package.config.css.destDir)
     	.pipe(git.add())
-    	.pipe(git.commit('CSS updates'));
+    	.pipe(git.commit('CSS updates'))
+		.on('error', helpers.handleErrors);
 });
 
 
