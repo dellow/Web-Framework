@@ -8,6 +8,7 @@
 **/
 
 var gulp = require('gulp'),
+	livereload = require('gulp-livereload'),
 	package = require('./package.json');
 
 
@@ -24,6 +25,8 @@ var gulp = require('gulp'),
 
 // Main.
 gulp.task('watch', function(){
+	livereload.listen();
+
 	gulp.watch(package.config.css.watch, ['css']);
 });
 
@@ -59,7 +62,8 @@ gulp.task('css:task', function(){
             browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
             cascade: false
         }))
-		.pipe(gulp.dest(package.config.css.destDir));
+		.pipe(gulp.dest(package.config.css.destDir))
+    	.pipe(livereload());
 });
 
 // Git.
