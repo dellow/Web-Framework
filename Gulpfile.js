@@ -9,6 +9,7 @@
 
 var gulp = require('gulp'),
 	livereload = require('gulp-livereload'),
+	helpers = require('./Gulpfile.helpers'),
 	package = require('./package.json');
 
 
@@ -56,8 +57,10 @@ gulp.task('css:task', function(){
 	return gulp.src(package.config.css.src)
         .pipe(sass({
 	        outputStyle: 'expanded',
-        	errLogToConsole: true
+        	errLogToConsole: true,
+			onError: helpers.handleErrors
 	    }))
+		.on('error', helpers.handleErrors)
         .pipe(autoprefixer({
             browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
             cascade: false
