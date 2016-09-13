@@ -7,8 +7,29 @@
  *
 **/
 
-var gulp = require('gulp');
-var package = require('./package.json');
+var gulp = require('gulp'),
+	package = require('./package.json');
+
+
+// ********************************************************************************************* //
+
+
+/**
+ *
+ * Watch
+ *
+ * Watches for file changes.
+ *
+**/
+
+// Main.
+gulp.task('watch', function(){
+	gulp.watch(package.config.css.watch, ['css']);
+});
+
+
+// ********************************************************************************************* //
+
 
 /**
  *
@@ -20,9 +41,14 @@ var package = require('./package.json');
  * @uses autoprefixer
  *
 **/
-gulp.task('css', function(){
-	var sass         = require('gulp-sass');
-	var autoprefixer = require('gulp-autoprefixer');
+
+// Main.
+gulp.task('css', ['css:task', 'css:git']);
+
+// Task.
+gulp.task('css:task', function(){
+	var sass = require('gulp-sass'),
+		autoprefixer = require('gulp-autoprefixer');
 
 	return gulp.src(package.config.css.src)
         .pipe(sass({
@@ -35,3 +61,16 @@ gulp.task('css', function(){
         }))
 		.pipe(gulp.dest(package.config.css.destDir));
 });
+
+// Git.
+gulp.task('css:git', function(){
+	var git = require('gulp-git');
+
+	return gulp.src(package.config.css.destDir)
+    	.pipe(git.add())
+    	.pipe(git.commit('CSS updates'));
+});
+
+
+// ********************************************************************************************* //
+
