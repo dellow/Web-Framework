@@ -11,6 +11,7 @@ __3.2.0__:
 * Added `Gulp Git` for automated Git commits after CSS (and eventually JS) tasks.
 * Added `livereload`.
 * Added `Gulp Notify`.
+* Added better grid columns.
 
 __3.1.0__:
 * Added the new `scale` mixin to allow responsive scaling of any property easily.
