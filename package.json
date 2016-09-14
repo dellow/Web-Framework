@@ -10,7 +10,6 @@
     "gulp-livereload": "^3.8.1",
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.3.2",
-    "gulp-watch": "^4.3.9",
     "imagemin-cli": "^3.0.0",
     "minifier": "^0.7.1",
     "nightwatch": "^0.9.4",
@@ -18,7 +17,6 @@
     "sprity-cli": "^1.0.1",
     "sprity-lwip": "^1.0.6",
     "sprity-sass": "^1.0.4",
-    "watch": "^0.18.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {
@@ -30,7 +28,7 @@
   "config": {
     "dist": "./src/dist",
     "css": {
-      "watch": "./src/dist/css/scss/**/*.scss",
+      "watch": "src/dist/css/scss/**/*.scss",
       "dirSCSS": "./src/dist/css/scss/",
       "destDir": "./src/dist/css/",
       "dest": "./src/dist/css/build.css",

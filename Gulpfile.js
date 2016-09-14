@@ -23,7 +23,7 @@ var gulp = require('gulp'),
  *
  * Watches for file changes.
  *
- * @uses gulp-watch
+ * @uses gulp.watch
  * @uses livereload
  *
 **/
@@ -32,9 +32,8 @@ var gulp = require('gulp'),
 gulp.task('watch', function(){
 	// Start livereload.
 	livereload.listen();
-
 	// Task :: CSS.
-	gulp.watch(package.config.css.watch, ['css']);
+	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css']);
 });
 
 
