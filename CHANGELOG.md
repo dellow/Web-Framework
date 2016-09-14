@@ -9,7 +9,8 @@ __3.2.0__:
 * All Gulp and Webpack directory paths from `package.json`.
 * Various CSS and JS fixes to validation.
 * Added `Gulp Git` for automated Git commits after CSS (and eventually JS) tasks.
-* Added livereload.
+* Added `livereload`.
+* Added `Gulp Notify`.
 
 __3.1.0__:
 * Added the new `scale` mixin to allow responsive scaling of any property easily.

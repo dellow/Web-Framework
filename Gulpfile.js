@@ -9,6 +9,7 @@
 
 var gulp = require('gulp'),
 	livereload = require('gulp-livereload'),
+	notify = require('gulp-notify'),
 	helpers = require('./Gulpfile.helpers'),
 	package = require('./package.json');
 
@@ -22,12 +23,17 @@ var gulp = require('gulp'),
  *
  * Watches for file changes.
  *
+ * @uses gulp-watch
+ * @uses livereload
+ *
 **/
 
 // Main.
 gulp.task('watch', function(){
+	// Start livereload.
 	livereload.listen();
 
+	// Task :: CSS.
 	gulp.watch(package.config.css.watch, ['css']);
 });
 
@@ -41,13 +47,17 @@ gulp.task('watch', function(){
  *
  * Compiles the SCSS files into a single build.css.
  *
- * @uses sass
- * @uses autoprefixer
+ * @uses gulp-autoprefixer
+ * @uses gulp-git
+ * @uses gulp-sass
+ * @uses notify
  *
 **/
 
 // Main.
-gulp.task('css', ['css:task', 'css:git']);
+gulp.task('css', ['css:task', 'css:git'], function(){
+	return gulp.src('/').pipe(notify('CSS build file updated'));
+});
 
 // Task.
 gulp.task('css:task', function(){
@@ -57,8 +67,7 @@ gulp.task('css:task', function(){
 	return gulp.src(package.config.css.src)
         .pipe(sass({
 	        outputStyle: 'expanded',
-        	errLogToConsole: true,
-			onError: helpers.handleErrors
+        	errLogToConsole: true
 	    }))
 		.on('error', helpers.handleErrors)
         .pipe(autoprefixer({
@@ -75,7 +84,7 @@ gulp.task('css:git', function(){
 
 	return gulp.src(package.config.css.destDir)
     	.pipe(git.add())
-    	.pipe(git.commit('CSS updates'))
+    	.pipe(git.commit('Gulp: CSS Updated'))
 		.on('error', helpers.handleErrors);
 });
 
