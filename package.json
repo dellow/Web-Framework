@@ -45,7 +45,7 @@
     "css:build": "gulp css",
     "js:common": "webpack --progress --color -p --config ./webpack/common.config.js",
     "js:app": "NODE_ENV=development webpack --progress --color --config ./webpack/app.config.js",
-    "js:all": "npm run build:common && npm run build:dev",
+    "js:all": "npm run js:common && npm run js:app",
     "minify": "npm run minify:css && npm run minify:images && npm run minify:js",
     "minify:css": "minify --output $npm_package_config_css_dest $npm_package_config_css_dest",
     "minify:images": "imagemin $npm_package_config_dist/images/**/**/* -o $npm_package_config_dist/images",
