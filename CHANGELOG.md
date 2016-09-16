@@ -2,7 +2,7 @@
 
 __3.2.0__:
 * Updated SocIcon.
-* Readded Gulp for CSS compilation as NPM directly is too slow.
+* Readded Gulp for CSS and JS compilation as NPM directly is too slow.
 * Added WordPress specific styles to their own vendor stylesheet.
 * Removed all references to `sect-`. These should be set as components as prefixed with `comp-` where applicable.
 * Replaced Handlebars with Underscore as it also does templates and is more useful. Removed Function Bind.
@@ -20,7 +20,7 @@ __3.1.0__:
 * The index now loads `common.js` and `app.js` as two separate files rather that one bundled one.
 
 __3.0.0__:
-* Completely removed Gulp and now used `npm run` to process tasks.
+* Completely removed Gulp and now used `npm run` to process tasks. <-- [This was readded in 3.2.0]
 * Much improved CSS slabs. Can now use a slab mixin to create a low maintenance responsive padded area.
 * Formatting of SCSS files.
 * Lots of fixes and improvements.
