@@ -10,6 +10,7 @@
     "gulp-livereload": "^3.8.1",
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.3.2",
+    "gulp-sass-glob-import": "^0.1.0",
     "imagemin-cli": "^3.0.0",
     "minifier": "^0.7.1",
     "nightwatch": "^0.9.4",
@@ -17,7 +18,8 @@
     "sprity-cli": "^1.0.1",
     "sprity-lwip": "^1.0.6",
     "sprity-sass": "^1.0.4",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-stream": "^3.2.0"
   },
   "dependencies": {
     "autotrack": "*",
@@ -35,6 +37,8 @@
       "src": "./src/dist/css/scss/build.scss"
     },
     "js": {
+      "watch": "src/dist/js/app/**/*.js",
+      "destDir": "./src/dist/js/",
       "dirApp": "./src/dist/js/app/",
       "dirCommon": "./src/dist/js/common/",
       "dest": "./src/dist/js/build"
@@ -45,7 +49,7 @@
     "css:build": "gulp css",
     "js:common": "webpack --progress --color -p --config ./webpack/common.config.js",
     "js:app": "NODE_ENV=development webpack --progress --color --config ./webpack/app.config.js",
-    "js:all": "npm run js:common && npm run js:app",
+    "js:all": "npm run js:common && npm run js:dev",
     "minify": "npm run minify:css && npm run minify:images && npm run minify:js",
     "minify:css": "minify --output $npm_package_config_css_dest $npm_package_config_css_dest",
     "minify:images": "imagemin $npm_package_config_dist/images/**/**/* -o $npm_package_config_dist/images",

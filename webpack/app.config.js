@@ -7,13 +7,14 @@
  *
 **/
 
-var webpack = require('webpack');
-var package = require('../package.json');
+var webpack = require('webpack'),
+    path = require('path'),
+    package = require('../package.json');
 
 module.exports = {
-    entry: package.config.js.dirApp + 'index.js',
+    entry: path.join(__dirname, '../' + package.config.js.dirApp + 'index.js'),
     output: {
-        path: package.config.js.dest,
+        path: path.join(__dirname, '../' + package.config.js.dest),
         filename: 'app.js'
     },
     resolve: {

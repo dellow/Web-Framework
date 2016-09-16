@@ -23,7 +23,7 @@ var gulp = require('gulp'),
  *
  * Watches for file changes.
  *
- * @uses gulp.watch
+ * @uses gulp-watch
  * @uses livereload
  *
 **/
@@ -34,6 +34,8 @@ gulp.task('watch', function(){
 	livereload.listen();
 	// Task :: CSS.
 	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css']);
+	// Task :: JS.
+	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js']);
 });
 
 
@@ -83,10 +85,50 @@ gulp.task('css:git', function(){
 
 	return gulp.src(package.config.css.destDir)
     	.pipe(git.add())
-    	.pipe(git.commit('Gulp: CSS Updated'))
+		.on('error', helpers.handleErrors)
+    	.pipe(git.commit('Gulp: CSS build file updated'))
 		.on('error', helpers.handleErrors);
 });
 
 
 // ********************************************************************************************* //
 
+
+/**
+ *
+ * JS
+ *
+ * Uses Webpack to bundle JavaScript.
+ *
+ * @uses webpack-stream
+ * @uses gulp-git
+ * @uses notify
+ *
+**/
+
+// Main.
+gulp.task('js', ['js:task', 'js:git'], function(){
+	return gulp.src('/').pipe(notify('JavaScript build file updated'));
+});
+
+// Task.
+gulp.task('js:task', function(){
+	var webpackStream = require('webpack-stream'),
+		config = require('./webpack/app.config.js');
+
+	return gulp.src(package.config.js.dirApp + 'index.js')
+  		.pipe(webpackStream(config))
+    	.pipe(gulp.dest(package.config.js.dest))
+    	.pipe(livereload());
+});
+
+// Git.
+gulp.task('js:git', function(){
+	var git = require('gulp-git');
+
+	return gulp.src(package.config.js.destDir)
+    	.pipe(git.add())
+		.on('error', helpers.handleErrors)
+    	.pipe(git.commit('Gulp: JavaScript build file updated'))
+		.on('error', helpers.handleErrors);
+});
