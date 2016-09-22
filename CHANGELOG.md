@@ -14,6 +14,7 @@ __3.2.0__:
 * Added better grid columns.
 * Added Webpack to Gulp task.
 * Grids that are not modified to 100% width lose the top margin.
+* Added current window size to `Breakpoint` methods.
 
 __3.1.0__:
 * Added the new `scale` mixin to allow responsive scaling of any property easily.
