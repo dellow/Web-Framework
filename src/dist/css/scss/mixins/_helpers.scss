@@ -68,7 +68,15 @@
 **/
 @mixin modify-grid($gutter_width, $col, $all: false){
 	$grid_selector     : '';
+	$margin_top        : '';
 	$flex_grid_selector: '';
+
+	@if($col == 100%){
+		$margin_top: 0;
+	}
+	@else{
+		$margin_top: -$gutter_width;
+	}
 
 	@if($all == false){
 		$grid_selector: '> .grid, &.grid';
@@ -78,11 +86,11 @@
 	}
 	#{$grid_selector} {
 		width: 100% + $gutter_width;
-		margin-top: -$gutter_width;
+		margin-top: $margin_top;
 		left: -$gutter_width;
 		> [class*="col-"] {
 			width: $col - $gutter_width;
-			margin: $gutter_width 0 0 $gutter_width;
+			margin: $margin_top 0 0 $gutter_width;
 		}
 	}
 
@@ -94,12 +102,12 @@
 	}
 	#{$flex_grid_selector} {
 		width: 100% + $gutter_width;
-		margin-top: -$gutter_width;
+		margin-top: $margin_top;
 		left: -$gutter_width;
 		> [class*="col-"] {
 			max-width: $col - $gutter_width;
 			flex-basis: $col - $gutter_width;
-			margin: $gutter_width 0 0 $gutter_width;
+			margin: $margin_top 0 0 $gutter_width;
 		}
 	}
 }
