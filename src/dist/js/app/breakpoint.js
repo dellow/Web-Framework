@@ -22,6 +22,8 @@
         this.current = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/["']/g, "");
         // Set the menu.
         this.menu = window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/["']/g, "");
+        // Set the size.
+        this.size = window.innerWidth;
     };
 
     /**
@@ -34,7 +36,7 @@
         // Get current breakpoint.
         Breakpoint.refreshValue();
         // Log it.
-        Helpers.log('The current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu);
+        Helpers.log('The current size is: ' + Breakpoint.size + ', the current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu);
     });
 
     /**
@@ -46,7 +48,7 @@
     // Get current breakpoint.
     Breakpoint.refreshValue();
     // Log it.
-    Helpers.log('The current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu);
+	Helpers.log('The current size is: ' + Breakpoint.size + ', the current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu);
 
     // Export
     module.exports = Breakpoint;
