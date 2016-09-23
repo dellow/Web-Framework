@@ -9,38 +9,8 @@
 #
 # Set the start time.
 START_SECONDS="$(date +%s)"
-
-
-
-# ------------------------------------------------------------------------
-# Clean redundant directories and files
-# ------------------------------------------------------------------------
-#
-# Dir - .git
-rm -rf .git/
-# Dir - .sass-cache
-rm -rf .sass-cache/
-# File - .gitkeep
-find . -name ".gitkeep" -print0 | xargs -0 rm -rf
-
-## Report.
-echo -e "------------------------------------------------"
-echo -e "$(tput setaf 2)Removed redundant directories and files...$(tput sgr0)"
-echo -e "------------------------------------------------"
-
-
-
-# ------------------------------------------------------------------------
-# Initialize a new Git instance.
-# ------------------------------------------------------------------------
-#
-# Command.
-git init
-
-## Report.
-echo -e "------------------------------------------------"
-echo -e "$(tput setaf 2)Initialized new Git instance...$(tput sgr0)"
-echo -e "------------------------------------------------"
+# Set placeholder.
+LOCALDEV_URL=false
 
 
 
@@ -105,6 +75,24 @@ fi
 
 
 # ------------------------------------------------------------------------
+# Get local development URL.
+# ------------------------------------------------------------------------
+#
+read -p "$(tput setaf 5)What is the local development URL for this project. Leave blank if none. $(tput sgr0)" choice
+if [[ ! -z "$choice" ]]; then
+	# Command.
+	LOCALDEV_URL=$choice
+
+	## Report.
+	echo -e "------------------------------------------------"
+	echo -e "$(tput setaf 2)Local development URL saved...$(tput sgr0)"
+	echo -e "------------------------------------------------"
+fi
+printf "\n"
+
+
+
+# ------------------------------------------------------------------------
 # Get Git origin.
 # ------------------------------------------------------------------------
 #
@@ -137,6 +125,38 @@ if [[ $choice = "y" ]]; then
 	echo -e "------------------------------------------------"
 fi
 printf "\n"
+
+
+
+# ------------------------------------------------------------------------
+# Clean redundant directories and files
+# ------------------------------------------------------------------------
+#
+# Dir - .git
+rm -rf .git/
+# Dir - .sass-cache
+rm -rf .sass-cache/
+# File - .gitkeep
+find . -name ".gitkeep" -print0 | xargs -0 rm -rf
+
+## Report.
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Removed redundant directories and files...$(tput sgr0)"
+echo -e "------------------------------------------------"
+
+
+
+# ------------------------------------------------------------------------
+# Initialize a new Git instance.
+# ------------------------------------------------------------------------
+#
+# Command.
+git init
+
+## Report.
+echo -e "------------------------------------------------"
+echo -e "$(tput setaf 2)Initialized new Git instance...$(tput sgr0)"
+echo -e "------------------------------------------------"
 
 
 
@@ -189,6 +209,22 @@ if [ "$INITIAL_COMMIT" = true ] ; then
 	## Report.
 	echo -e "------------------------------------------------"
 	echo -e "$(tput setaf 2)Done initial Git commit...$(tput sgr0)"
+	echo -e "------------------------------------------------"
+fi
+printf "\n"
+
+
+
+# ------------------------------------------------------------------------
+# Set local dev URL.
+# ------------------------------------------------------------------------
+#
+if [ "$LOCALDEV_URL" != false ] ; then
+	sed -i '' "s|{{dev_url}}|$LOCALDEV_URL|g" ./package.json
+
+	## Report.
+	echo -e "------------------------------------------------"
+	echo -e "$(tput setaf 2)Updated local dev URL in package.json...$(tput sgr0)"
 	echo -e "------------------------------------------------"
 fi
 printf "\n"

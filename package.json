@@ -4,6 +4,7 @@
   "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web applications using SASS, Webpack, Gulp and NPM.",
   "license": "MIT",
   "devDependencies": {
+    "browser-sync": "^2.16.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-git": "^1.11.3",
@@ -28,7 +29,9 @@
     "underscore": "*"
   },
   "config": {
-    "dist": "./src/dist",
+    "url": "{{dev_url}}",
+    "src": "./src/",
+    "dist": "./src/dist/",
     "css": {
       "watch": "src/dist/css/scss/**/*.scss",
       "dirSCSS": "./src/dist/css/scss/",
@@ -41,7 +44,7 @@
       "destDir": "./src/dist/js/",
       "dirApp": "./src/dist/js/app/",
       "dirCommon": "./src/dist/js/common/",
-      "dest": "./src/dist/js/build"
+      "dest": "./src/dist/js/build/"
     }
   },
   "scripts": {

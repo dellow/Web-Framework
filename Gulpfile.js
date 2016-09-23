@@ -8,7 +8,6 @@
 **/
 
 var gulp = require('gulp'),
-	livereload = require('gulp-livereload'),
 	notify = require('gulp-notify'),
 	helpers = require('./Gulpfile.helpers'),
 	package = require('./package.json');
@@ -36,6 +35,37 @@ gulp.task('watch', function(){
 	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css']);
 	// Task :: JS.
 	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js']);
+});
+
+
+// ********************************************************************************************* //
+
+
+/**
+*
+* Sync
+*
+* Watches for file changes.
+*
+* @uses browser-sync
+*
+**/
+
+// Main.
+gulp.task('sync', function(){
+	var browserSync = require('browser-sync').create();
+
+	// Start BrowserSync.
+	browserSync.init({
+		open   : 'external',
+		browser: ['google chrome'],
+		xip    : true,
+		proxy  : package.config.url
+	});
+	// Task :: CSS.
+	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css']).on('change', browserSync.reload);
+	// Task :: JS.
+	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js']).on('change', browserSync.reload);
 });
 
 
