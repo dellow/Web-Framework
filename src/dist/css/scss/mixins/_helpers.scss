@@ -75,7 +75,7 @@
 		$margin_top: 0;
 	}
 	@else{
-		$margin_top: -$gutter_width;
+		$margin_top: $gutter_width;
 	}
 
 	@if($all == false){
@@ -86,11 +86,17 @@
 	}
 	#{$grid_selector} {
 		width: 100% + $gutter_width;
-		margin-top: $margin_top;
+		margin-top: -$margin_top;
 		left: -$gutter_width;
 		> [class*="col-"] {
 			width: $col - $gutter_width;
 			margin: $margin_top 0 0 $gutter_width;
+        	@if($col == 100%){
+        		margin-bottom: $gutter_width;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+        	}
 		}
 	}
 
@@ -102,12 +108,18 @@
 	}
 	#{$flex_grid_selector} {
 		width: 100% + $gutter_width;
-		margin-top: $margin_top;
+		margin-top: -$margin_top;
 		left: -$gutter_width;
 		> [class*="col-"] {
 			max-width: $col - $gutter_width;
 			flex-basis: $col - $gutter_width;
 			margin: $margin_top 0 0 $gutter_width;
+        	@if($col == 100%){
+        		margin-bottom: $gutter_width;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+        	}
 		}
 	}
 }
