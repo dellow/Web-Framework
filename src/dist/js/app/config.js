@@ -7,4 +7,4 @@
  *
 **/
 
-window.config.ga_active  = (Helpers.isEmpty(window.ga)) ? false : true;
+window.config.ga_active = (global.Helpers.isEmpty(window.ga))

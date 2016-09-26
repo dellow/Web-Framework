@@ -8,14 +8,13 @@
 **/
 
 // Get error handling.
-require('./errors');
+require('./errors')
 // Require helpers globally.
-global.Helpers = require('./helpers');
+global.Helpers = require('./helpers')
 // Require breakpoint globally.
-global.Breakpoint = require('./breakpoint');
+global.Breakpoint = require('./breakpoint')
 // Get config.
-require('./config');
-
+require('./config')
 
 /**
  * Private
@@ -24,11 +23,11 @@ require('./config');
  * @since 1.0.0
  * @version 1.0.0
 **/
-global.Private = require('./private/private');
+global.Private = require('./private/private')
 // Init Private.
-Private.init();
+global.Private.init()
 // Log it.
-Helpers.log(Private);
+global.Helpers.log(global.Private)
 
 /**
  * Public
@@ -37,8 +36,8 @@ Helpers.log(Private);
  * @since 1.0.0
  * @version 1.0.0
 **/
-global.Public = require('./public/public');
+global.Public = require('./public/public')
 // Init Public.
-Public.init();
+global.Public.init()
 // Log it.
-Helpers.log(Public);
+global.Helpers.log(global.Public)
