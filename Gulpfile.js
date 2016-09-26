@@ -137,8 +137,20 @@ gulp.task('css:git', function(){
 **/
 
 // Main.
-gulp.task('js', ['js:task', 'js:git'], function(){
+gulp.task('js', ['js:standard', 'js:task', 'js:git'], function(){
 	return gulp.src('/').pipe(notify('JavaScript build file updated'));
+});
+
+// Standard.
+gulp.task('js:standard', function(){
+	var standard = require('gulp-standard');
+
+	return gulp.src(package.config.js.watch)
+	    .pipe(standard())
+	    .pipe(standard.reporter('default', {
+			breakOnError: true,
+			quiet: true
+		}));
 });
 
 // Task.

@@ -12,6 +12,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.3.2",
     "gulp-sass-glob-import": "^0.1.0",
+    "gulp-standard": "^8.0.2",
     "imagemin-cli": "^3.0.0",
     "minifier": "^0.7.1",
     "nightwatch": "^0.9.4",
