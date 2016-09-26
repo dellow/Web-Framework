@@ -65,14 +65,14 @@
 			&:hover {
 				background: color($key, dark);
 			}
-            &.btn--outline {
-                border-color: color($key);
-                background: none;
-                &:hover {
-    				color: color($key, dark);
-    				background: color($key);
-                }
-            }
+      &.btn--outline {
+        border-color: color($key);
+        background: none;
+        &:hover {
+    			color: color($key, dark);
+    			background: color($key);
+        }
+      }
 		}
 	}
 }
