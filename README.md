@@ -1,5 +1,7 @@
 # Web Framework Readme
 
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 ## Contents
 1. [About](#about)
 1. [Requirements](#requirements)
@@ -37,7 +39,6 @@ CSS is compiled with SASS via Gulp (Compiling directly with NPM is to slow).
 Testing is done with Jasmine for unit tests and Nightwatch for functional/integration tests.
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 <a name="requirements"></a>
 ## Requirements
