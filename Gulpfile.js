@@ -64,9 +64,11 @@ gulp.task('sync', function(){
 		proxy  : package.config.url
 	});
 	// Task :: CSS.
-	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css']).on('change', browserSync.reload);
+	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css']);
+	gulp.watch(package.config.css.dest, {cwd:'./'}, ['css']).on('change', browserSync.reload);
 	// Task :: JS.
-	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js']).on('change', browserSync.reload);
+	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js']);
+	gulp.watch(package.config.js.dest + '*.js', {cwd:'./'}, ['js']).on('change', browserSync.reload);
 });
 
 
