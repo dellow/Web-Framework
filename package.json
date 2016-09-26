@@ -20,6 +20,7 @@
     "sprity-cli": "^1.0.1",
     "sprity-lwip": "^1.0.6",
     "sprity-sass": "^1.0.4",
+    "standard": "^8.1.0",
     "webpack": "^1.13.1",
     "webpack-stream": "^3.2.0"
   },
