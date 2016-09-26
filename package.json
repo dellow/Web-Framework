@@ -1,6 +1,6 @@
 {
   "name": "web-framework",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web applications using SASS, Webpack, Gulp and NPM.",
   "license": "MIT",
   "devDependencies": {
@@ -52,7 +52,7 @@
     }
   },
   "scripts": {
-    "assets": "npm run css:build && npm run js:build",
+    "assets": "npm run css:build && npm run js:app",
     "css:build": "gulp css",
     "js:common": "webpack --progress --color -p --config ./webpack/common.config.js",
     "js:app": "NODE_ENV=development webpack --progress --color --config ./webpack/app.config.js",
