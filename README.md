@@ -74,7 +74,7 @@ __All additional instructions below assume you have followed the installation pr
 
 <a name="commands"></a>
 ## Commands
-The framework uses NPM for most tasks although CSS is compiled via Gulp because SASS in NPM is slow. You can however still call the CSS gulp task from NPM.
+The framework uses NPM for most tasks although CSS and JavaScript is compiled via Gulp because SASS in NPM is slow. You can however still call the gulp tasks from NPM.
 
 All commands begin with the standard NPM scripts syntax: `npm run <scriptname>`. The current scripts are:
 
@@ -169,7 +169,7 @@ _Documentation coming soon_
 
 <a name="working-with-scss"></a>
 ## Working with SCSS
-Any new SCSS partials should be added in the `site` directory. `base` and `mixins` should be left as is so they can be overwritten and updated. Use the `site/_vars` partial to override any of the default variables set in `config/_vars` and set your own mixins in the `site` directory.
+Any new SCSS partials should be added in the `site` directory. `base` and `mixins` should be left as is so they can be overwritten and updated. Use the `scss/_vars_site.scss` partial to override any of the default variables set in `scss/_vars_base.scss` and set your own mixins in the `site` directory.
 
 <a name="working-with-scss--mixins"></a>
 ### SCSS Mixins
