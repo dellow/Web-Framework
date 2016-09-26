@@ -1,5 +1,6 @@
 # Web Framework Readme
 
+[![Build Status](https://travis-ci.org/sdellow/web-framework.svg?branch=dev)](https://travis-ci.org/sdellow/web-framework)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ## Contents
