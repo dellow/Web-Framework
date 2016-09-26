@@ -92,6 +92,7 @@
     // Require :: Modules
     this.modules.Plugins = require('./module.plugins')
     this.modules.MobileMenu = require('./module.mobile-menu-side')
+    this.modules.Sample = require('./module.sample')
   }
 
   // Export
