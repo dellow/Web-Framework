@@ -202,7 +202,7 @@
 	  * @since 1.0.0
 	  * @version 1.0.0
 	  **/
-	  global.Helpers.isEmpty = function (value) {
+	  Helpers.isEmpty = function (value) {
 	    return (value === undefined || value === null || value === '' || value.length === 0)
 	  }
 

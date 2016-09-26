@@ -16,7 +16,8 @@ __3.2.0__:
 * Grids that are not modified to 100% width lose the top margin.
 * Added current window size to `Breakpoint` methods.
 * Added `browserSync` task especially for `xip.io`.
-* Added `StandardJS` for JavaScript style guiding. Will need to change JS output.
+* Added `StandardJS` for JavaScript style guiding.
+* All JavaScript change to comply with [Standard JS](http://standardjs.com/) rules.
 
 __3.1.0__:
 * Added the new `scale` mixin to allow responsive scaling of any property easily.

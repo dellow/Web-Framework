@@ -7,10 +7,11 @@
  *
 **/
 
-var gulp = require('gulp'),
-	notify = require('gulp-notify'),
-	helpers = require('./Gulpfile.helpers'),
-	package = require('./package.json');
+var gulp = require('gulp');
+var notify = require('gulp-notify');
+var livereload = require('gulp-livereload');
+var helpers = require('./Gulpfile.helpers');
+var package = require('./package.json');
 
 
 // ********************************************************************************************* //
@@ -92,21 +93,21 @@ gulp.task('css', ['css:task', 'css:git'], function(){
 
 // Task.
 gulp.task('css:task', function(){
-	var sass = require('gulp-sass'),
-		autoprefixer = require('gulp-autoprefixer');
+	var sass = require('gulp-sass');
+	var autoprefixer = require('gulp-autoprefixer');
 
 	return gulp.src(package.config.css.src)
-        .pipe(sass({
-	        outputStyle: 'expanded',
-        	errLogToConsole: true
-	    }))
-		.on('error', helpers.handleErrors)
-        .pipe(autoprefixer({
-            browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
-            cascade: false
-        }))
-		.pipe(gulp.dest(package.config.css.destDir))
-    	.pipe(livereload());
+    .pipe(sass({
+      outputStyle: 'expanded',
+    	errLogToConsole: true
+    }))
+  	.on('error', helpers.handleErrors)
+    .pipe(autoprefixer({
+      browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
+      cascade: false
+    }))
+  	.pipe(gulp.dest(package.config.css.destDir))
+  	.pipe(livereload());
 });
 
 // Git.
@@ -114,9 +115,9 @@ gulp.task('css:git', function(){
 	var git = require('gulp-git');
 
 	return gulp.src(package.config.css.destDir)
-    	.pipe(git.add())
+    .pipe(git.add())
 		.on('error', helpers.handleErrors)
-    	.pipe(git.commit('Gulp: CSS build file updated'))
+    .pipe(git.commit('Gulp: CSS build file updated'))
 		.on('error', helpers.handleErrors);
 });
 
@@ -146,22 +147,22 @@ gulp.task('js:standard', function(){
 	var standard = require('gulp-standard');
 
 	return gulp.src(package.config.js.watch)
-	    .pipe(standard())
-	    .pipe(standard.reporter('default', {
-			breakOnError: true,
-			quiet: true
-		}));
+    .pipe(standard())
+    .pipe(standard.reporter('default', {
+  		breakOnError: true,
+  		quiet: true
+  	}));
 });
 
 // Task.
 gulp.task('js:task', function(){
-	var webpackStream = require('webpack-stream'),
-		config = require('./webpack/app.config.js');
+	var webpackStream = require('webpack-stream');
+	var config = require('./webpack/app.config.js');
 
 	return gulp.src(package.config.js.dirApp + 'index.js')
-  		.pipe(webpackStream(config))
-    	.pipe(gulp.dest(package.config.js.dest))
-    	.pipe(livereload());
+		.pipe(webpackStream(config))
+  	.pipe(gulp.dest(package.config.js.dest))
+  	.pipe(livereload());
 });
 
 // Git.
@@ -169,8 +170,8 @@ gulp.task('js:git', function(){
 	var git = require('gulp-git');
 
 	return gulp.src(package.config.js.destDir)
-    	.pipe(git.add())
+    .pipe(git.add())
 		.on('error', helpers.handleErrors)
-    	.pipe(git.commit('Gulp: JavaScript build file updated'))
+    .pipe(git.commit('Gulp: JavaScript build file updated'))
 		.on('error', helpers.handleErrors);
 });

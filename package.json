@@ -29,6 +29,9 @@
     "jquery": "*",
     "underscore": "*"
   },
+  "standard": {
+    "globals": [ "$" ]
+  },
   "config": {
     "url": "{{dev_url}}",
     "src": "./src/",
