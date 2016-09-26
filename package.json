@@ -31,7 +31,10 @@
     "underscore": "*"
   },
   "standard": {
-    "globals": [ "$" ]
+    "globals": ["$"],
+    "ignore": [
+      "Gulpfile.js"
+    ]
   },
   "config": {
     "url": "{{dev_url}}",
