@@ -45,27 +45,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
 	@include nudge(margin, 0.5 0 1);
-	font-size: 200%; // 32px @ 16px Base Size
+	font-size: 300%;
 }
 h2 {
-	@include nudge(margin, 0.5 0);
-	font-size: 150%; // 24px @ 16px Base Size
+	@include nudge(margin, 0.5 0 1);
+	font-size: 250%;
 }
 h3 {
-	@include nudge(margin, 0.5 0);
-	font-size: 117%; // 18.72px @ 16px Base Size
+	@include nudge(margin, 0.5 0 1);
+	font-size: 200%;
 }
 h4 {
 	@include nudge(margin, 0.5 0);
-	font-size: 100%; // 16px @ 16px Base Size
+	font-size: 150%;
 }
 h5 {
 	@include nudge(margin, 0.5 0);
-	font-size: 83%; // 13.28px @ 16px Base Size
+	font-size: 125%;
 }
 h6 {
 	@include nudge(margin, 0.5 0);
-	font-size: 67%; // 10.72px @ 16px Base Size
+	font-size: 100%;
 }
 
 
