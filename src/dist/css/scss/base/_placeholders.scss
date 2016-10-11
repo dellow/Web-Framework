@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Base > Placeholders
-   Some default placeholders for the framework.
+  Base > Placeholders
+  Some default placeholders for the framework.
 ========================================================================== */
 
 
 /* -- Clearing -- */
 %cf {
-	zoom: 1;
-	&:before, &:after {
-		content: "";
-		display: table;
-	}
-	&:after {
-		clear: both;
-	}
+  zoom: 1;
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
 
 
@@ -22,21 +22,21 @@
 
 /* -- Enable Flexbox -- */
 %flex {
-	display: flex;
-	display: flexbox; // IE10 Compatibility.
-	flex-direction: row;
-	flex-wrap: wrap;
+  display: flex;
+  display: flexbox; // IE10 Compatibility.
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .oldie {
-	%flex {
-		@extend %cf;
-		> div {
-			float: left;
-			+ div {
-				float: right;
-			}
-		}
-	}
+  %flex {
+    @extend %cf;
+    > div {
+      float: left;
+      + div {
+        float: right;
+      }
+    }
+  }
 }
 
 
@@ -45,7 +45,7 @@
 
 /* -- Preserve-3D method to prevent blurring -- */
 %preserve-3d {
-	transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 
@@ -54,13 +54,13 @@
 
 /* -- Vertically align elements with display: flex; -- */
 %flex-vertical-align, %fva {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 %flex-vertical-align-all, %fva-all {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -69,7 +69,7 @@
 
 /* -- Vertically align elements with transform: -- */
 %transform-vertical-align, %tva {
-	position: absolute;
-	top: 50%; left: 50%;
-	transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
 }

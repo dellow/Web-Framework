@@ -1,34 +1,34 @@
 /* ==========================================================================
-   Base > Typeset
-   App fonts and type settings.
+  Base > Typeset
+  App fonts and type settings.
 ========================================================================== */
 
 
 /* -- HTML -- */
 html {
-	font-size: 100%;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+  font-size: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* -- Body -- */
 body {
-	font-size: $base_font_size;
-    line-height: 1.6;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-moz-font-feature-settings: "liga" on;
-    font-family: $base_font;
-	word-wrap: break-word;
-	color: color(copy, body);
-	// Responsive
-	@include respond-to($tablet){
-		font-size: ($base_font_size - 1);
-	}
-	@include respond-to($mobile){
-		font-size: ($base_font_size - 2);
-	}
+  font-size: $base_font_size;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
+  font-family: $base_font;
+  word-wrap: break-word;
+  color: color(copy, body);
+  // Responsive
+  @include respond-to($tablet){
+    font-size: ($base_font_size - 1);
+  }
+  @include respond-to($mobile){
+    font-size: ($base_font_size - 2);
+  }
 }
 
 
@@ -37,35 +37,35 @@ body {
 
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
-	font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	color: color(copy, header);
-	&:first-child {
-		margin-top: 0;
-	}
+  font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  color: color(copy, header);
+  &:first-child {
+    margin-top: 0;
+  }
 }
 h1 {
-	@include nudge(margin, 0.5 0 1);
-	font-size: 300%;
+  @include nudge(margin, 0.5 0 1);
+  font-size: 300%;
 }
 h2 {
-	@include nudge(margin, 0.5 0 1);
-	font-size: 250%;
+  @include nudge(margin, 0.5 0 1);
+  font-size: 250%;
 }
 h3 {
-	@include nudge(margin, 0.5 0 1);
-	font-size: 200%;
+  @include nudge(margin, 0.5 0 1);
+  font-size: 200%;
 }
 h4 {
-	@include nudge(margin, 0.5 0);
-	font-size: 150%;
+  @include nudge(margin, 0.5 0);
+  font-size: 150%;
 }
 h5 {
-	@include nudge(margin, 0.5 0);
-	font-size: 125%;
+  @include nudge(margin, 0.5 0);
+  font-size: 125%;
 }
 h6 {
-	@include nudge(margin, 0.5 0);
-	font-size: 100%;
+  @include nudge(margin, 0.5 0);
+  font-size: 100%;
 }
 
 
@@ -74,7 +74,7 @@ h6 {
 
 /* -- General Type & Rhythm -- */
 p, li, dd {
-	font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 }
 
 
@@ -83,16 +83,16 @@ p, li, dd {
 
 /* -- Links, Buttons & Hover Styles -- */
 a, button {
-	color: color(copy, link);
-	text-decoration: none;
-	transition: color $animation ease, background $animation ease;
-	// Pseudo
-	&:hover {
-		color: color(copy, hover);
-	}
-	&:active {
-		color: color(copy, active);
-	}
+  color: color(copy, link);
+  text-decoration: none;
+  transition: color $animation ease, background $animation ease;
+  // Pseudo
+  &:hover {
+    color: color(copy, hover);
+  }
+  &:active {
+    color: color(copy, active);
+  }
 }
 
 
@@ -101,11 +101,11 @@ a, button {
 
 /* -- Standard Margins -- */
 blockquote, dl, ol, p, pre, ul {
-	@include nudge(margin-bottom, 1);
-	// Pseudo
-	&:last-child {
-		margin-bottom: 0;
-	}
+  @include nudge(margin-bottom, 1);
+  // Pseudo
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 
@@ -114,37 +114,37 @@ blockquote, dl, ol, p, pre, ul {
 
 /* -- Content Areas -- */
 .page__content {
-	// Margins
-	img, figure {
-		@include nudge(margin-bottom, 1);
-		img { // No margin on inner images.
-			margin: 0;
-		}
-		// Pseudo
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-	// Lists.
-	ul, ol {
-		margin-left: 1.2em;
-		li {
-			@include nudge(margin-bottom, 0.1);
-		}
-		ul, ol {
-			margin-left: 1.2em;
-			list-style-type: circle;
-		}
-	}
-	ul {
-		list-style-type: disc;
-	}
-	dl {
-		dd {
-			@include nudge(margin-bottom, 0.1);
-			@include nudge(text-indent, 1);
-		}
-	}
+  // Margins
+  img, figure {
+    @include nudge(margin-bottom, 1);
+    img { // No margin on inner images.
+      margin: 0;
+    }
+    // Pseudo
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  // Lists.
+  ul, ol {
+    margin-left: 1.2em;
+    li {
+      @include nudge(margin-bottom, 0.1);
+    }
+    ul, ol {
+      margin-left: 1.2em;
+      list-style-type: circle;
+    }
+  }
+  ul {
+    list-style-type: disc;
+  }
+  dl {
+    dd {
+      @include nudge(margin-bottom, 0.1);
+      @include nudge(text-indent, 1);
+    }
+  }
 }
 
 
@@ -153,8 +153,8 @@ blockquote, dl, ol, p, pre, ul {
 
 /* -- Hatnotes -- */
 .page__hatnote {
-	@include nudge(padding-left, 1);
-	font-style: italic;
+  @include nudge(padding-left, 1);
+  font-style: italic;
 }
 
 
@@ -163,10 +163,10 @@ blockquote, dl, ol, p, pre, ul {
 
 /* -- Citation -- */
 cite {
-	// Descendants
-	.cite__profession {
-		font-weight: $bold;
-	}
+  // Descendants
+  .cite__profession {
+    font-weight: $bold;
+  }
 }
 
 
@@ -175,32 +175,32 @@ cite {
 
 /* -- Source Formatting -- */
 p {
-	code {
-		color: color(green);
-	}
+  code {
+    color: color(green);
+  }
 }
 code {
-	font-weight: $regular;
-	font-family: $monospaced;
-	white-space: pre-wrap;
-	word-wrap: break-word;
-	tab-size: 4;
+  font-weight: $regular;
+  font-family: $monospaced;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  tab-size: 4;
 }
 pre {
-	@include nudge(padding, 0.5 0.75);
-	border: 1px solid color(grey);
-	position: relative;
-	border-radius: $base_border_radius;
-	background: color(grey, light);
+  @include nudge(padding, 0.5 0.75);
+  border: 1px solid color(grey);
+  position: relative;
+  border-radius: $base_border_radius;
+  background: color(grey, light);
 }
 kbd {
-	@include nudge(padding, 0.25 0.5);
-	margin: 0 0.25em;
-	display: inline-block;
-	border: 1px solid color(grey);
-	border-radius: $base_border_radius;
-	color: color(grey, medium);
-	background: color(grey, light);
+  @include nudge(padding, 0.25 0.5);
+  margin: 0 0.25em;
+  display: inline-block;
+  border: 1px solid color(grey);
+  border-radius: $base_border_radius;
+  color: color(grey, medium);
+  background: color(grey, light);
 }
 
 
@@ -208,9 +208,9 @@ kbd {
 
 
 @each $key, $value in $colors {
-	.text {
-		&--color-#{"" + $key} {
-			color: color($key);
-		}
-	}
+  .text {
+    &--color-#{"" + $key} {
+      color: color($key);
+    }
+  }
 }

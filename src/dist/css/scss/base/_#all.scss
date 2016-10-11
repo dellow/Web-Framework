@@ -1,25 +1,25 @@
 /* ==========================================================================
-   Base > All
-   Imports all the partials.
+  Base > All
+  Imports all the partials.
 ========================================================================== */
 @import // Config
-		'config/reset',
-		// Core
-		'placeholders',
-		'utility-classes',
-		'misc',
-		'core',
-		'objects',
-		'typeset',
-		// Components
-		'components/alerts',
-		'components/buttons',
-		'components/menus',
-		'components/slabs',
-		'components/tables',
-		'components/forms',
-		// Grids
-		'grids/global',
-		// Misc
-		'fixes',
-		'print';
+	'config/reset',
+	// Core
+	'placeholders',
+	'utility-classes',
+	'misc',
+	'core',
+	'objects',
+	'typeset',
+	// Components
+	'components/alerts',
+	'components/buttons',
+	'components/menus',
+	'components/slabs',
+	'components/tables',
+	'components/forms',
+	// Grids
+	'grids/global',
+	// Misc
+	'fixes',
+	'print';

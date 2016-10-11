@@ -1,17 +1,17 @@
 /* ==========================================================================
-   Mixins > Helpers
-   Functions and mixins that aid development or other mixins.
+  Mixins > Helpers
+  Functions and mixins that aid development or other mixins.
 ========================================================================== */
 
 
 /**
- * color
- * Gets color and tone from map.
- *
- * .foo {@include color(red, base);}
+* color
+* Gets color and tone from map.
+*
+* .foo {@include color(red, base);}
 **/
 @function color($color, $tone: 'base'){
-    @return map-get(map-get($colors, $color), $tone);
+  @return map-get(map-get($colors, $color), $tone);
 }
 
 
@@ -19,15 +19,15 @@
 
 
 /**
- * strip-unit
- * Simply strips the unit from any string.
+* strip-unit
+* Simply strips the unit from any string.
 **/
 @function strip-unit($number){
-    @if type-of($number) == 'number' and not unitless($number){
-        @return $number / ($number * 0 + 1);
-    }
+  @if type-of($number) == 'number' and not unitless($number){
+    @return $number / ($number * 0 + 1);
+  }
 
-    @return $number;
+  @return $number;
 }
 
 
@@ -35,25 +35,25 @@
 
 
 /**
- * px-to-rem
- * Takes a single value or a list of values and replaces px units with rem
- * Zero values will remain 0.
- * Non-px values will not be modified.
- * You can return an em value by passing the $unit var as 'em'
+* px-to-rem
+* Takes a single value or a list of values and replaces px units with rem
+* Zero values will remain 0.
+* Non-px values will not be modified.
+* You can return an em value by passing the $unit var as 'em'
 **/
 @function px-to-rem($px, $unit: rem){
-    $return: ();
+  $return: ();
 
-    @each $var in $px {
-        @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
-            $return: append($return, #{$var/16px+$unit}, space);
-        }
-        @else {
-            $return: append($return, $var, space);
-        }
+  @each $var in $px {
+    @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
+      $return: append($return, #{$var/16px+$unit}, space);
     }
+    @else {
+      $return: append($return, $var, space);
+    }
+  }
 
-    @return $return;
+  @return $return;
 }
 
 
@@ -61,65 +61,65 @@
 
 
 /**
- * modify-grid
- * Temporarily modifies the grid system
- *
- * .foo {@include modify-grid(6%, $col-1-2);}
+* modify-grid
+* Temporarily modifies the grid system
+*
+* .foo {@include modify-grid(6%, $col-1-2);}
 **/
 @mixin modify-grid($gutter_width, $col, $all: false){
-	$grid_selector     : '';
-	$margin_top        : '';
-	$flex_grid_selector: '';
+  $grid_selector     : '';
+  $margin_top        : '';
+  $flex_grid_selector: '';
 
-	@if($col == 100%){
-		$margin_top: 0;
-	}
-	@else{
-		$margin_top: $gutter_width;
-	}
+  @if($col == 100%){
+    $margin_top: 0;
+  }
+  @else{
+    $margin_top: $gutter_width;
+  }
 
-	@if($all == false){
-		$grid_selector: '> .grid, &.grid';
-	}
-	@else{
-		$grid_selector: '.grid, &.grid';
-	}
-	#{$grid_selector} {
-		width: 100% + $gutter_width;
-		margin-top: -$margin_top;
-		left: -$gutter_width;
-		> [class*="col-"] {
-			width: $col - $gutter_width;
-			margin: $margin_top 0 0 $gutter_width;
-        	@if($col == 100%){
-        		margin-bottom: $gutter_width;
-                &:last-child {
-                    margin-bottom: 0;
-                }
-        	}
-		}
-	}
+  @if($all == false){
+    $grid_selector: '> .grid, &.grid';
+  }
+  @else{
+    $grid_selector: '.grid, &.grid';
+  }
+  #{$grid_selector} {
+    width: 100% + $gutter_width;
+    margin-top: -$margin_top;
+    left: -$gutter_width;
+    > [class*="col-"] {
+      width: $col - $gutter_width;
+      margin: $margin_top 0 0 $gutter_width;
+      @if($col == 100%){
+        margin-bottom: $gutter_width;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 
-	@if($all == false){
-		$flex_grid_selector: '> .flex-grid, &.flex-grid';
-	}
-	@else{
-		$flex_grid_selector: '.flex-grid, &.flex-grid';
-	}
-	#{$flex_grid_selector} {
-		width: 100% + $gutter_width;
-		margin-top: -$margin_top;
-		left: -$gutter_width;
-		> [class*="col-"] {
-			max-width: $col - $gutter_width;
-			flex-basis: $col - $gutter_width;
-			margin: $margin_top 0 0 $gutter_width;
-        	@if($col == 100%){
-        		margin-bottom: $gutter_width;
-                &:last-child {
-                    margin-bottom: 0;
-                }
-        	}
-		}
-	}
+  @if($all == false){
+    $flex_grid_selector: '> .flex-grid, &.flex-grid';
+  }
+  @else{
+    $flex_grid_selector: '.flex-grid, &.flex-grid';
+  }
+  #{$flex_grid_selector} {
+    width: 100% + $gutter_width;
+    margin-top: -$margin_top;
+    left: -$gutter_width;
+    > [class*="col-"] {
+      max-width: $col - $gutter_width;
+      flex-basis: $col - $gutter_width;
+      margin: $margin_top 0 0 $gutter_width;
+      @if($col == 100%){
+        margin-bottom: $gutter_width;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }

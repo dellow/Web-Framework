@@ -1,33 +1,33 @@
 /* ==========================================================================
-   Base > Core
-   Important classes that are imperative to the framework
+  Base > Core
+  Important classes that are imperative to the framework
 ========================================================================== */
 
 
 /* -- Body -- */
 body {
-	&:before, &:after {
-		display: none;
-	}
-	&:after {
-		content: "" + strip-unit($mobile_menu); // Output the mobile menu size.
-	}
-	// Responsive
-	@include respond-to-range(mobile){
-		&:before {
-			content: "mobile";
-		}
-	}
-	@include respond-to-range(tablet){
-		&:before {
-			content: "tablet";
-		}
-	}
-	@include respond-to-range(desktop){
-		&:before {
-			content: "desktop";
-		}
-	}
+  &:before, &:after {
+    display: none;
+  }
+  &:after {
+    content: "" + strip-unit($mobile_menu); // Output the mobile menu size.
+  }
+  // Responsive
+  @include respond-to-range(mobile){
+    &:before {
+      content: "mobile";
+    }
+  }
+  @include respond-to-range(tablet){
+    &:before {
+      content: "tablet";
+    }
+  }
+  @include respond-to-range(desktop){
+    &:before {
+      content: "desktop";
+    }
+  }
 }
 
 
@@ -36,21 +36,21 @@ body {
 
 /* -- Container -- */
 .container {
-	width: 90%;
-	max-width: $container;
-	min-width: $device;
-	margin: 0 auto;
-	position: relative;
-	// Abstractions
-	&--small {
-		max-width: $tablet;
-	}
-	&--medium {
-		max-width: 960px;
-	}
-	&--wide {
-		max-width: $desktop--wide;
-	}
+  width: 90%;
+  max-width: $container;
+  min-width: $device;
+  margin: 0 auto;
+  position: relative;
+  // Abstractions
+  &--small {
+    max-width: $tablet;
+  }
+  &--medium {
+    max-width: 960px;
+  }
+  &--wide {
+    max-width: $desktop--wide;
+  }
 }
 
 
@@ -59,8 +59,8 @@ body {
 
 /* -- Page Wrapper -- */
 .page__wrapper {
-	position: relative;
-	left: 0; // Default position for animating.
-	z-index: 1;
-	transition: left $animation ease;
+  position: relative;
+  left: 0; // Default position for animating.
+  z-index: 1;
+  transition: left $animation ease;
 }

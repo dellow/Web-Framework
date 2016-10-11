@@ -1,56 +1,56 @@
 /* ==========================================================================
-   Base > Components > Buttons
-   Styles for buttons. These are not form buttons but clickable
-   anchors such as Call to Actions.
+  Base > Components > Buttons
+  Styles for buttons. These are not form buttons but clickable
+  anchors such as Call to Actions.
 ========================================================================== */
 
 
 .btn {
-	@include nudge(padding, 0.5 0.75);
-    border: 2px solid transparent;
-	display: inline-block;
-	vertical-align: top;
-	color: color(white);
-	text-align: center;
-	line-height: 1;
-	transition: background $animation ease, box-shadow $animation ease, color $animation ease;
-	// Abstractions
-	&--standard {
-		background: color(blue);
-		&--disabled:hover {
-			background: color(blue);
-		}
-		&:hover {
-			background: darken(color(blue), 10%);
-		}
-	}
-	&--positive {
-		background: color(green);
-		&--disabled:hover {
-			background: color(green);
-		}
-		&:hover {
-			background: darken(color(green), 10%);
-		}
-	}
-	&--negative {
-		background: color(red);
-		&--disabled:hover {
-			background: color(red);
-		}
-		&:hover {
-			background: darken(color(red), 10%);
-		}
-	}
-	&--disabled {
-		opacity: 0.5;
-		cursor: default;
-		pointer-events: none;
-	}
-	// Pseudo
-	&:hover, &:active {
-		color: color(white);
-	}
+  @include nudge(padding, 0.5 0.75);
+  border: 2px solid transparent;
+  display: inline-block;
+  vertical-align: top;
+  color: color(white);
+  text-align: center;
+  line-height: 1;
+  transition: background $animation ease, box-shadow $animation ease, color $animation ease;
+  // Abstractions
+  &--standard {
+    background: color(blue);
+    &--disabled:hover {
+      background: color(blue);
+    }
+    &:hover {
+      background: darken(color(blue), 10%);
+    }
+  }
+  &--positive {
+    background: color(green);
+    &--disabled:hover {
+      background: color(green);
+    }
+    &:hover {
+      background: darken(color(green), 10%);
+    }
+  }
+  &--negative {
+    background: color(red);
+    &--disabled:hover {
+      background: color(red);
+    }
+    &:hover {
+      background: darken(color(red), 10%);
+    }
+  }
+  &--disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }
+  // Pseudo
+  &:hover, &:active {
+    color: color(white);
+  }
 }
 
 
@@ -58,21 +58,21 @@
 
 
 @each $key, $value in $colors {
-	.btn {
-		&--color-#{"" + $key} {
-			background: color($key);
-			// Pseudo
-			&:hover {
-				background: color($key, dark);
-			}
+  .btn {
+    &--color-#{"" + $key} {
+      background: color($key);
+      // Pseudo
+      &:hover {
+        background: color($key, dark);
+      }
       &.btn--outline {
         border-color: color($key);
         background: none;
         &:hover {
-    			color: color($key, dark);
-    			background: color($key);
+          color: color($key, dark);
+          background: color($key);
         }
       }
-		}
-	}
+    }
+  }
 }

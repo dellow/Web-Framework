@@ -1,24 +1,24 @@
 /* ==========================================================================
-   Site > Vars
-   You can overwrite any of the config vars from here.
+  Site > Vars
+  You can overwrite any of the config vars from here.
 ========================================================================== */
 
 
 /* -- Colors -- */
 // Map
 $site_colors: (
-	color: (
-		base : #FF0000,
-		light: lighten(#FF0000, 10%),
-		dark : darken(#FF0000, 10%)
-	),
-	copy: (
-		header: #231f20,
-		body  : #5f5659,
-		link  : #C4122F,
-		hover : darken(#C4122F, 10%),
-		active: darken(#C4122F, 20%)
-	)
+color: (
+base : #FF0000,
+light: lighten(#FF0000, 10%),
+dark : darken(#FF0000, 10%)
+),
+copy: (
+header: #231f20,
+body  : #5f5659,
+link  : #C4122F,
+hover : darken(#C4122F, 10%),
+active: darken(#C4122F, 20%)
+)
 );
 // Merge (again)
 $colors: map-merge($framework_colors, $site_colors);

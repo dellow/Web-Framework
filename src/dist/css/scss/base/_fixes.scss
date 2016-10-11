@@ -1,21 +1,21 @@
 /* ==========================================================================
-   Base > Fixes
-   This file is for legacy browser fixes and hacks. Everything should
-   be documented and explained for later review.
+  Base > Fixes
+  This file is for legacy browser fixes and hacks. Everything should
+  be documented and explained for later review.
 ========================================================================== */
 
 
 /* -- All old IE fixes -- */
 .oldie {
-	/* -- Container -- */
-	.container {
-		width: $desktop;
-	}
+  /* -- Container -- */
+  .container {
+    width: $desktop;
+  }
 
-	/* -- Grid -- */
-	.grid {
-		.col + .col {
-			padding-right: 0;
-		}
-	}
+  /* -- Grid -- */
+  .grid {
+    .col + .col {
+      padding-right: 0;
+    }
+  }
 }

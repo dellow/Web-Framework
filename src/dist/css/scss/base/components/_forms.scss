@@ -1,61 +1,61 @@
 /* ==========================================================================
-   Base > Components > Forms
-   Styling for elements within a form tag.
+  Base > Components > Forms
+  Styling for elements within a form tag.
 ========================================================================== */
 
 
 form {
 
-	input:not([type="radio"]):not([type="checkbox"]), select, textarea {
-		height: $base_field_height;
-		@include nudge(padding, 0.25);
-		border: 1px solid color(grey);
-		display: inline-block;
-		vertical-align: top;
-		background: color(white);
-		transition: border-color $animation ease;
-		&[disabled]:hover, &[disabled]:focus {
-			border-color: color(grey);
-		}
-		&[disabled] {
-			background: lighten(color(grey), 10%);
-		}
-		&:hover {
-			border-color: darken(color(grey), 12.5%);
-		}
-		&:focus {
-			border-color: darken(color(grey), 25%);
-		}
-	}
+  input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+    height: $base_field_height;
+    @include nudge(padding, 0.25);
+    border: 1px solid color(grey);
+    display: inline-block;
+    vertical-align: top;
+    background: color(white);
+    transition: border-color $animation ease;
+    &[disabled]:hover, &[disabled]:focus {
+      border-color: color(grey);
+    }
+    &[disabled] {
+      background: lighten(color(grey), 10%);
+    }
+    &:hover {
+      border-color: darken(color(grey), 12.5%);
+    }
+    &:focus {
+      border-color: darken(color(grey), 25%);
+    }
+  }
 
-	select {
-		+ select {
-			@include nudge(margin-left, 0.5);
-		}
-	}
+  select {
+    + select {
+      @include nudge(margin-left, 0.5);
+    }
+  }
 
-	textarea {
-		min-height: 150px;
-	}
+  textarea {
+    min-height: 150px;
+  }
 
-	button {
-		height: $base_field_height;
-		display: inline-block;
-		vertical-align: top;
-		line-height: $base_field_height;
-	}
+	button[type="submit"] {
+    height: $base_field_height;
+    display: inline-block;
+    vertical-align: top;
+    line-height: $base_field_height;
+  }
 
-	label {
-		display: inline-block;
-		vertical-align: top;
-		abbr {
-			color: color(red);
-		}
-	}
+  label {
+    display: inline-block;
+    vertical-align: top;
+    abbr {
+      color: color(red);
+    }
+  }
 
-	fieldset {
-		@include nudge(margin-bottom, 1);
-	}
+  fieldset {
+    @include nudge(margin-bottom, 1);
+  }
 
 }
 
@@ -65,19 +65,19 @@ form {
 
 /* -- Placeholder -- */
 form {
-	::-webkit-input-placeholder {
-		color: color(grey);
-	}
-	::-moz-placeholder {
-		color: color(grey);
-	}
-	:-moz-placeholder {
-		color: color(grey);
-	}
-	:-ms-input-placeholder {
-		color: color(grey);
-	}
-	::placeholder {
-		color: color(grey);
-	}
+  ::-webkit-input-placeholder {
+    color: color(grey);
+  }
+  ::-moz-placeholder {
+    color: color(grey);
+  }
+  :-moz-placeholder {
+    color: color(grey);
+  }
+  :-ms-input-placeholder {
+    color: color(grey);
+  }
+  ::placeholder {
+    color: color(grey);
+  }
 }

@@ -1,27 +1,27 @@
 /* ==========================================================================
-   Base > Components > Slabs
-   Slabs create sections styled with a background colour. They differ
-   from the `.bg` class by being naturally padded to provide content space.
+  Base > Components > Slabs
+  Slabs create sections styled with a background colour. They differ
+  from the `.bg` class by being naturally padded to provide content space.
 ========================================================================== */
 
 
 .slab {
-	@include nudge(padding, 1 0);
-	// Create slabs 1 - 10.
-	@for $i from 1 through 10 {
-		&--x#{$i} {
-			@include nudge(padding, $i 0);
-		}
-	}
-    &--ntp {
-        padding-top: 0;
+  @include nudge(padding, 1 0);
+  // Create slabs 1 - 10.
+  @for $i from 1 through 10 {
+    &--x#{$i} {
+      @include nudge(padding, $i 0);
     }
-    &--nbp {
-        padding-bottom: 0;
-    }
-	&--last {
-		@include nudge(padding-bottom, 3);
-	}
+  }
+  &--ntp {
+    padding-top: 0;
+  }
+  &--nbp {
+    padding-bottom: 0;
+  }
+  &--last {
+    @include nudge(padding-bottom, 3);
+  }
 }
 
 
@@ -30,14 +30,14 @@
 
 /* -- Slab colors -- */
 @each $key, $value in $colors {
-	.bg, .slab {
-		&--color-#{"" + $key} {
-			color: inherit;
-			background: color($key);
-			// Abstractions
-			&--opp {
-				background: color($key, dark);
-			}
-		}
-	}
+  .bg, .slab {
+    &--color-#{"" + $key} {
+      color: inherit;
+      background: color($key);
+      // Abstractions
+      &--opp {
+        background: color($key, dark);
+      }
+    }
+  }
 }

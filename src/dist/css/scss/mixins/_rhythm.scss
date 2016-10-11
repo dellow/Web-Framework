@@ -1,24 +1,24 @@
 /* ==========================================================================
-   Mixins > Typography
-   Font size and typesetting mixins.
+  Mixins > Typography
+  Font size and typesetting mixins.
 ========================================================================== */
 
 
 /**
- * rem
- * Output a selector with px fallback and rem values, so that modern browsers will use the rem values.
- * Both multiple selectors and multiple sizes in multiple units can be provided.
- *
- * @uses px-to-rem()
- *
- * .foo {@include rem(font-size, 20px);}
- * .foo {@include rem(font-size height, 20px);}
+* rem
+* Output a selector with px fallback and rem values, so that modern browsers will use the rem values.
+* Both multiple selectors and multiple sizes in multiple units can be provided.
+*
+* @uses px-to-rem()
+*
+* .foo {@include rem(font-size, 20px);}
+* .foo {@include rem(font-size height, 20px);}
 **/
 @mixin rem($selectors, $size){
-    @each $selector in $selectors {
-        #{$selector}: $size;
-        #{$selector}: px-to-rem($size);
-    }
+  @each $selector in $selectors {
+    #{$selector}: $size;
+    #{$selector}: px-to-rem($size);
+  }
 }
 
 
@@ -26,21 +26,21 @@
 
 
 /**
- * vw
- * Output a selector with px fallback and vw values, so that modern browsers will use the vw values.
- *
- * .foo {@include vw(font-size, 20px, 1280);}
+* vw
+* Output a selector with px fallback and vw values, so that modern browsers will use the vw values.
+*
+* .foo {@include vw(font-size, 20px, 1280);}
 **/
 @mixin vw($selector, $size, $screen){
-    $num: strip-unit($screen);
-    $vw-context: ($num*.01) * 1px;
+  $num: strip-unit($screen);
+  $vw-context: ($num*.01) * 1px;
 
-    @include rem(#{$selector}, $size);
-    #{$selector}: ($size/$vw-context) * 1vw;
-    // Responsive
-    @include respond-to($screen / 1.25){
-        font-size: $size;
-    }
+  @include rem(#{$selector}, $size);
+  #{$selector}: ($size/$vw-context) * 1vw;
+  // Responsive
+  @include respond-to($screen / 1.25){
+    font-size: $size;
+  }
 }
 
 
@@ -48,38 +48,38 @@
 
 
 /**
- * nudge
- * Primarily for use with Margin and Padding. Outputs an even spacing based on the Magic Number
- * in REM units with a PX fallback for legacy browsers.
- * Any value supplied will be multipled by the Magic Number. If the value is supplied with a
- * PX value it will be left as is.
- *
- * @uses px-to-rem()
- * @uses $mn
- *
- * .foo {@include nudge(margin, 1 1.5 2 1);}
+* nudge
+* Primarily for use with Margin and Padding. Outputs an even spacing based on the Magic Number
+* in REM units with a PX fallback for legacy browsers.
+* Any value supplied will be multipled by the Magic Number. If the value is supplied with a
+* PX value it will be left as is.
+*
+* @uses px-to-rem()
+* @uses $mn
+*
+* .foo {@include nudge(margin, 1 1.5 2 1);}
 **/
 @mixin nudge($selector, $sizes){
-    $rem_sizes: ();
-    $px_sizes: ();
+  $rem_sizes: ();
+  $px_sizes: ();
 
-    @each $size in $sizes {
-        @if $size == "auto" {
-            $rem_sizes: append($rem_sizes, auto);
-            $px_sizes : append($px_sizes, auto);
-        }
-        @else if unit($size) != "" {
-            $rem_sizes: append($rem_sizes, $size);
-            $px_sizes : append($px_sizes, $size);
-        }
-        @else {
-            $rem_sizes: append($rem_sizes, px-to-rem($size * $mn));
-            $px_sizes : append($px_sizes, $size * $mn);
-        }
+  @each $size in $sizes {
+    @if $size == "auto" {
+      $rem_sizes: append($rem_sizes, auto);
+      $px_sizes : append($px_sizes, auto);
     }
+    @else if unit($size) != "" {
+      $rem_sizes: append($rem_sizes, $size);
+      $px_sizes : append($px_sizes, $size);
+    }
+    @else {
+      $rem_sizes: append($rem_sizes, px-to-rem($size * $mn));
+      $px_sizes : append($px_sizes, $size * $mn);
+    }
+  }
 
-    #{$selector}: $px_sizes;
-    #{$selector}: $rem_sizes;
+  #{$selector}: $px_sizes;
+  #{$selector}: $rem_sizes;
 }
 
 
@@ -87,63 +87,63 @@
 
 
 /**
- * slab
- * Set's a consistent slab size.
- *
- * .foo {@include slab(2);}
+* slab
+* Set's a consistent slab size.
+*
+* .foo {@include slab(2);}
 **/
 @mixin slab($size, $modifier: false, $responsive: true){
-    @if($responsive){
-    	// Desktop.
-    	@include respond-to-range(desktop){
-    		@if($modifier == 'ntp'){
-    			@include nudge(padding-bottom, $size);
-    		}
-    		@else if($modifier == 'nbp'){
-    			@include nudge(padding-top, $size);
-    		}
-    		@else {
-    			@include nudge(padding-top, $size);
-    			@include nudge(padding-bottom, $size);
-    		}
-    	}
-    	// Tablet.
-    	@include respond-to-range(tablet){
-    		@if($modifier == 'ntp'){
-    			@include nudge(padding-bottom, ($size / 2));
-    		}
-    		@else if($modifier == 'nbp'){
-    			@include nudge(padding-top, ($size / 2));
-    		}
-    		@else {
-    			@include nudge(padding-top, ($size / 2));
-    			@include nudge(padding-bottom, ($size / 2));
-    		}
-    	}
-    	// Mobile.
-    	@include respond-to-range(mobile){
-    		@if($modifier == 'ntp'){
-    			@include nudge(padding-bottom, ($size / 2));
-    		}
-    		@else if($modifier == 'nbp'){
-    			@include nudge(padding-top, ($size / 2));
-    		}
-    		@else {
-    			@include nudge(padding-top, ($size / 2));
-    			@include nudge(padding-bottom, ($size / 2));
-    		}
-    	}
+  @if($responsive){
+    // Desktop.
+    @include respond-to-range(desktop){
+      @if($modifier == 'ntp'){
+        @include nudge(padding-bottom, $size);
+      }
+      @else if($modifier == 'nbp'){
+        @include nudge(padding-top, $size);
+      }
+      @else {
+        @include nudge(padding-top, $size);
+        @include nudge(padding-bottom, $size);
+      }
+    }
+    // Tablet.
+    @include respond-to-range(tablet){
+      @if($modifier == 'ntp'){
+        @include nudge(padding-bottom, ($size / 2));
+      }
+      @else if($modifier == 'nbp'){
+        @include nudge(padding-top, ($size / 2));
+      }
+      @else {
+        @include nudge(padding-top, ($size / 2));
+        @include nudge(padding-bottom, ($size / 2));
+      }
+    }
+    // Mobile.
+    @include respond-to-range(mobile){
+      @if($modifier == 'ntp'){
+        @include nudge(padding-bottom, ($size / 2));
+      }
+      @else if($modifier == 'nbp'){
+        @include nudge(padding-top, ($size / 2));
+      }
+      @else {
+        @include nudge(padding-top, ($size / 2));
+        @include nudge(padding-bottom, ($size / 2));
+      }
+    }
+  }
+  @else {
+    @if($modifier == 'ntp'){
+      @include nudge(padding-bottom, $size);
+    }
+    @else if($modifier == 'nbp'){
+      @include nudge(padding-top, $size);
     }
     @else {
-		@if($modifier == 'ntp'){
-			@include nudge(padding-bottom, $size);
-		}
-		@else if($modifier == 'nbp'){
-			@include nudge(padding-top, $size);
-		}
-		@else {
-			@include nudge(padding-top, $size);
-			@include nudge(padding-bottom, $size);
-		}
+      @include nudge(padding-top, $size);
+      @include nudge(padding-bottom, $size);
     }
+  }
 }

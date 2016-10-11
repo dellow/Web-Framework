@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Site > Fonts
-   Local @font-face styles.
+  Site > Fonts
+  Local @font-face styles.
 ========================================================================== */
 
 
 @font-face {
-	font-family: "socicon";
-	font-weight: normal;
-	font-style: normal;
-	src:url("fonts/socicon.eot"); // IE9 Compatibility Modes
-	src:local("☺"), // Smileyface local
-		url("fonts/socicon.eot?#iefix") format("embedded-opentype"), // IE6 - IE8
-		url("fonts/socicon.woff") format("woff"), // Modern Browsers
-		url("fonts/socicon.ttf") format("truetype"), // Safari Android, iOS
-		url("fonts/socicon.svg") format("svg"); // Legacy iOS
+  font-family: "socicon";
+  font-weight: normal;
+  font-style: normal;
+  src:url("fonts/socicon.eot"); // IE9 Compatibility Modes
+  src:local("☺"), // Smileyface local
+  url("fonts/socicon.eot?#iefix") format("embedded-opentype"), // IE6 - IE8
+  url("fonts/socicon.woff") format("woff"), // Modern Browsers
+  url("fonts/socicon.ttf") format("truetype"), // Safari Android, iOS
+  url("fonts/socicon.svg") format("svg"); // Legacy iOS
 }
 
 

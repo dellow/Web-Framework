@@ -1,22 +1,22 @@
 /* ==========================================================================
-   Mixins > Responsive
-   Responsive mixins.
+  Mixins > Responsive
+  Responsive mixins.
 ========================================================================== */
 
 
 /**
- * scale
- * Scale any property.
- *
- * .foo {@include scale(font-size, 20px, 960px 18px, 860px 16px);}
+* scale
+* Scale any property.
+*
+* .foo {@include scale(font-size, 20px, 960px 18px, 860px 16px);}
 **/
 @mixin scale($selector, $default, $breakpoints...){
-	#{$selector}: $default;
-    @each $breakpoint in $breakpoints {
-		@include respond-to(nth($breakpoint, 1)){
-			#{$selector}: nth($breakpoint, 2);
-		}
-	}
+  #{$selector}: $default;
+  @each $breakpoint in $breakpoints {
+    @include respond-to(nth($breakpoint, 1)){
+      #{$selector}: nth($breakpoint, 2);
+    }
+  }
 }
 
 
@@ -24,24 +24,24 @@
 
 
 /**
- * respond-to
- * Responsive breakpoints.
- *
- * @include respond-to(768px){.foo {display: block;}}
+* respond-to
+* Responsive breakpoints.
+*
+* @include respond-to(768px){.foo {display: block;}}
 **/
 @mixin respond-to($breakpoint1, $breakpoint2: null, $mobileFirst: false){
-	@if($breakpoint2 != null){
-		@media only screen and (min-width: $breakpoint1 + 1) and (max-width: $breakpoint2){
-			@content
-		};
-	}
-	@else{
-		// If $mobileFirst is set to true use min-width.
-		$operator: if($mobileFirst, 'min-width', 'max-width');
-		@media only screen and ($operator: $breakpoint1){
-			@content
-		};
-	}
+  @if($breakpoint2 != null){
+    @media only screen and (min-width: $breakpoint1 + 1) and (max-width: $breakpoint2){
+      @content
+    };
+  }
+  @else{
+    // If $mobileFirst is set to true use min-width.
+    $operator: if($mobileFirst, 'min-width', 'max-width');
+    @media only screen and ($operator: $breakpoint1){
+      @content
+    };
+  }
 }
 
 
@@ -49,25 +49,25 @@
 
 
 /**
- * respond-to-range
- * Responsive breakpoints.
- *
- * @include respond-to-range(mobile){.foo {display: block;}}
+* respond-to-range
+* Responsive breakpoints.
+*
+* @include respond-to-range(mobile){.foo {display: block;}}
 **/
 @mixin respond-to-range($range){
-	@if($range == mobile){
-		@media only screen and (min-width: 0) and (max-width: ($tablet - 1)){
-			@content
-		};
-	}
-	@else if($range == tablet){
-		@media only screen and (min-width: ($tablet)) and (max-width: ($desktop)){
-			@content
-		};
-	}
-	@else if($range == desktop){
-		@media only screen and (min-width: ($desktop + 1)){
-			@content
-		};
-	}
+  @if($range == mobile){
+    @media only screen and (min-width: 0) and (max-width: ($tablet - 1)){
+      @content
+    };
+  }
+  @else if($range == tablet){
+    @media only screen and (min-width: ($tablet)) and (max-width: ($desktop)){
+      @content
+    };
+  }
+  @else if($range == desktop){
+    @media only screen and (min-width: ($desktop + 1)){
+      @content
+    };
+  }
 }

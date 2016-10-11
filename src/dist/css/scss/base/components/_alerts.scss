@@ -1,30 +1,30 @@
 /* ==========================================================================
-   Base > Components > Alerts
-   Styles for various success and error alerts
+  Base > Components > Alerts
+  Styles for various success and error alerts
 ========================================================================== */
 
 
 /* -- All -- */
 .alert {
-	// Abstractions
-	&.box {
-		@include nudge(padding, 0.5 0.5 0.5 14px);
-		@include nudge(margin-bottom, 1);
-		border: 1px solid; border-left: 7px solid;
-		position: relative;
-		border-radius: $base_border_radius;
-		// Descendants
-		a {
-			color: inherit;
-			text-decoration: none;
-			border-bottom: 1px dotted;
-			// Pseudo
-			&:hover {
-				color: inherit;
-				border-bottom-style: solid;
-			}
-		}
-	}
+  // Abstractions
+  &.box {
+    @include nudge(padding, 0.5 0.5 0.5 14px);
+    @include nudge(margin-bottom, 1);
+    border: 1px solid; border-left: 7px solid;
+    position: relative;
+    border-radius: $base_border_radius;
+    // Descendants
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted;
+      // Pseudo
+      &:hover {
+        color: inherit;
+        border-bottom-style: solid;
+      }
+    }
+  }
 }
 
 
@@ -33,15 +33,15 @@
 
 /* -- Alerts as a list -- */
 ul.alert { // Qualified Selector
-	// Abstractions
-	&.box {
-		padding-left: 14px;
-		margin-left: 0;
-		li {
-			margin: 0;
-			list-style: none;
-		}
-	}
+  // Abstractions
+  &.box {
+    padding-left: 14px;
+    margin-left: 0;
+    li {
+      margin: 0;
+      list-style: none;
+    }
+  }
 }
 
 
@@ -50,48 +50,48 @@ ul.alert { // Qualified Selector
 
 /* -- Error (Red) -- */
 .alert {
-	// Abstractions
-	&.error {
-		color: $color_error;
-	}
-	&.box.error {
-		border-color: lighten($color_error, 25%);
-		background: lighten($color_error, 40%);
-	}
+  // Abstractions
+  &.error {
+    color: $color_error;
+  }
+  &.box.error {
+    border-color: lighten($color_error, 25%);
+    background: lighten($color_error, 40%);
+  }
 }
 
 /* -- Status (Blue) -- */
 .alert {
-	// Abstractions
-	&.status {
-		color: $color_status;
-	}
-	&.box.status {
-		border-color: lighten($color_status, 25%);
-		background: lighten($color_status, 40%);
-	}
+  // Abstractions
+  &.status {
+    color: $color_status;
+  }
+  &.box.status {
+    border-color: lighten($color_status, 25%);
+    background: lighten($color_status, 40%);
+  }
 }
 
 /* -- Success (Green) -- */
 .alert {
-	// Abstractions
-	&.success {
-		color: $color_success;
-	}
-	&.box.success {
-		border-color: lighten($color_success, 25%);
-		background: lighten($color_success, 40%);
-	}
+  // Abstractions
+  &.success {
+    color: $color_success;
+  }
+  &.box.success {
+    border-color: lighten($color_success, 25%);
+    background: lighten($color_success, 40%);
+  }
 }
 
 /* -- Warning (Yellow) -- */
 .alert {
-	// Abstractions
-	&.warning {
-		color: $color_warning;
-	}
-	&.box.warning {
-		border-color: lighten($color_warning, 25%);
-		background: lighten($color_warning, 40%);
-	}
+  // Abstractions
+  &.warning {
+    color: $color_warning;
+  }
+  &.box.warning {
+    border-color: lighten($color_warning, 25%);
+    background: lighten($color_warning, 40%);
+  }
 }

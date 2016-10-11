@@ -1,22 +1,22 @@
 /* ==========================================================================
-   Mixins > Misc
-   Functions and mixins for various Framework operations.
+  Mixins > Misc
+  Functions and mixins for various Framework operations.
 ========================================================================== */
 
 
 /**
- * retina
- * Retina image replacement.
- *
- * .foo {@include retina('../images/logo', 'png', 100px, 25px);}
+* retina
+* Retina image replacement.
+*
+* .foo {@include retina('../images/logo', 'png', 100px, 25px);}
 **/
 @mixin retina($image, $type, $width, $height){
-    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
-        width: $width;
-        height: $height;
-		background: url($image + '-2x.' + $type);
-		background-size: $width $height;
-	}
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+    width: $width;
+    height: $height;
+    background: url($image + '-2x.' + $type);
+    background-size: $width $height;
+  }
 }
 
 
@@ -24,48 +24,48 @@
 
 
 /**
- * arrow
- * CSS Arrow.
- *
- * .foo {@include arrow(15px, #f9f7f3, 10px, null, 5px, left);}
+* arrow
+* CSS Arrow.
+*
+* .foo {@include arrow(15px, #f9f7f3, 10px, null, 5px, left);}
 **/
 @mixin arrow($size, $color, $top, $left, $margin, $position, $type: 'after'){
-	&:#{$type} {
-		width: 0;
-		height: 0;
-		position: relative;
-		display: inline-block;
-		top: $top;
-		@if($left != null){
-			left: $left;
-		}
-		border: solid transparent;
-		content: " ";
-		pointer-events: none;
-		@if($position == left){
-			@if($margin != null){
-				margin-right: $margin;
-			}
-			border-right-color: $color;
-		}
-		@else if($position == right){
-			@if($margin != null){
-				margin-left: $margin;
-			}
-			border-left-color: $color;
-		}
-		@else if($position == top){
-			@if($margin != null){
-				margin-bottom: $margin;
-			}
-			border-bottom-color: $color;
-		}
-		@else if($position == bottom){
-			@if($margin != null){
-				margin-top: $margin;
-			}
-			border-top-color: $color;
-		}
-		border-width: $size;
-	}
+  &:#{$type} {
+    width: 0;
+    height: 0;
+    position: relative;
+    display: inline-block;
+    top: $top;
+    @if($left != null){
+      left: $left;
+    }
+    border: solid transparent;
+    content: " ";
+    pointer-events: none;
+    @if($position == left){
+      @if($margin != null){
+        margin-right: $margin;
+      }
+      border-right-color: $color;
+    }
+    @else if($position == right){
+      @if($margin != null){
+        margin-left: $margin;
+      }
+      border-left-color: $color;
+    }
+    @else if($position == top){
+      @if($margin != null){
+        margin-bottom: $margin;
+      }
+      border-bottom-color: $color;
+    }
+    @else if($position == bottom){
+      @if($margin != null){
+        margin-top: $margin;
+      }
+      border-top-color: $color;
+    }
+    border-width: $size;
+  }
 }
