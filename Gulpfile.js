@@ -7,11 +7,11 @@
  *
 **/
 
-var gulp = require('gulp');
-var notify = require('gulp-notify');
-var livereload = require('gulp-livereload');
-var helpers = require('./Gulpfile.helpers');
-var package = require('./package.json');
+var gulp = require('gulp')
+var notify = require('gulp-notify')
+var livereload = require('gulp-livereload')
+var helpers = require('./Gulpfile.helpers')
+var package = require('./package.json')
 
 
 // ********************************************************************************************* //
@@ -29,14 +29,14 @@ var package = require('./package.json');
 **/
 
 // Main.
-gulp.task('watch', function(){
+gulp.task('watch', function () {
 	// Start livereload.
-	livereload.listen();
+	livereload.listen()
 	// Task :: CSS.
-	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css']);
+	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css'])
 	// Task :: JS.
-	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js']);
-});
+	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js'])
+})
 
 
 // ********************************************************************************************* //
@@ -53,8 +53,8 @@ gulp.task('watch', function(){
 **/
 
 // Main.
-gulp.task('sync', function(){
-	var browserSync = require('browser-sync').create();
+gulp.task('sync', function () {
+	var browserSync = require('browser-sync').create()
 
 	// Start BrowserSync.
 	browserSync.init({
@@ -62,14 +62,14 @@ gulp.task('sync', function(){
 		browser: ['google chrome'],
 		xip    : true,
 		proxy  : package.config.url
-	});
+	})
 	// Task :: CSS.
-	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css']);
-	gulp.watch(package.config.css.dest, {cwd:'./'}, ['css']).on('change', browserSync.reload);
+	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css'])
+	gulp.watch(package.config.css.dest, {cwd:'./'}, ['css']).on('change', browserSync.reload)
 	// Task :: JS.
-	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js']);
-	gulp.watch(package.config.js.dest + '*.js', {cwd:'./'}, ['js']).on('change', browserSync.reload);
-});
+	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js'])
+	gulp.watch(package.config.js.dest + '*.js', {cwd:'./'}, ['js']).on('change', browserSync.reload)
+})
 
 
 // ********************************************************************************************* //
@@ -89,14 +89,14 @@ gulp.task('sync', function(){
 **/
 
 // Main.
-gulp.task('css', ['css:task', 'css:git'], function(){
-	return gulp.src('/').pipe(notify('CSS build file updated'));
-});
+gulp.task('css', ['css:task', 'css:git'], function () {
+	return gulp.src('/').pipe(notify('CSS build file updated'))
+})
 
 // Task.
-gulp.task('css:task', function(){
-	var sass = require('gulp-sass');
-	var autoprefixer = require('gulp-autoprefixer');
+gulp.task('css:task', function () {
+	var sass = require('gulp-sass')
+	var autoprefixer = require('gulp-autoprefixer')
 
 	return gulp.src(package.config.css.src)
     .pipe(sass({
@@ -109,19 +109,19 @@ gulp.task('css:task', function(){
       cascade: false
     }))
   	.pipe(gulp.dest(package.config.css.destDir))
-  	.pipe(livereload());
-});
+  	.pipe(livereload())
+})
 
 // Git.
-gulp.task('css:git', function(){
-	var git = require('gulp-git');
+gulp.task('css:git', function () {
+	var git = require('gulp-git')
 
 	return gulp.src(package.config.css.destDir)
     .pipe(git.add())
 		.on('error', helpers.handleErrors)
     .pipe(git.commit('Gulp: CSS build file updated'))
-		.on('error', helpers.handleErrors);
-});
+		.on('error', helpers.handleErrors)
+})
 
 
 // ********************************************************************************************* //
@@ -140,40 +140,50 @@ gulp.task('css:git', function(){
 **/
 
 // Main.
-gulp.task('js', ['js:standard', 'js:task', 'js:git'], function(){
-	return gulp.src('/').pipe(notify('JavaScript build file updated'));
-});
+gulp.task('js', ['js:standard', 'js:task', 'js:git'], function () {
+	return gulp.src('/').pipe(notify('JavaScript build file updated'))
+})
 
 // Standard.
-gulp.task('js:standard', function(){
-	var standard = require('gulp-standard');
+gulp.task('js:standard', function () {
+	var standard = require('gulp-standard')
 
 	return gulp.src(package.config.js.watch)
     .pipe(standard())
     .pipe(standard.reporter('default', {
   		breakOnError: true,
   		quiet: true
-  	}));
-});
+  	}))
+})
 
 // Task.
-gulp.task('js:task', function(){
-	var webpackStream = require('webpack-stream');
-	var config = require('./webpack/app.config.js');
+gulp.task('js:task', function () {
+	var webpackStream = require('webpack-stream')
+	var config = require('./webpack/app.config.js')
 
 	return gulp.src(package.config.js.dirApp + 'index.js')
 		.pipe(webpackStream(config))
   	.pipe(gulp.dest(package.config.js.dest))
-  	.pipe(livereload());
-});
+  	.pipe(livereload())
+})
 
 // Git.
-gulp.task('js:git', function(){
-	var git = require('gulp-git');
+gulp.task('js:git', function () {
+	var git = require('gulp-git')
 
 	return gulp.src(package.config.js.destDir)
     .pipe(git.add())
 		.on('error', helpers.handleErrors)
     .pipe(git.commit('Gulp: JavaScript build file updated'))
-		.on('error', helpers.handleErrors);
-});
+		.on('error', helpers.handleErrors)
+})
+
+// Task.
+gulp.task('js:common', function () {
+	var webpackStream = require('webpack-stream')
+	var config = require('./webpack/common.config.js')
+
+	return gulp.src(package.config.js.dirCommon + 'index.js')
+		.pipe(webpackStream(config))
+  	.pipe(gulp.dest(package.config.js.dest))
+})

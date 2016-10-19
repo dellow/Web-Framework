@@ -34,9 +34,9 @@
     // Extend the events system.
     global.Public.events.extend({
       events: {
-        'click .js--moduleName--trigger': 'method'
+        'click .js--moduleName--trigger': 'eventMethod'
       },
-      method: function (e) {
+      eventMethod: function (e) {
         // // Globally cache this element.
         // this.$self = $(e.currentTarget)
         // // Data attribute.
@@ -48,13 +48,14 @@
   }
 
   /**
-   * method
+   * moduleMethod
    * A description.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Module.prototype.method = function () {
+  Module.prototype.moduleMethod = function () {
+    return false
   }
 
   // Export

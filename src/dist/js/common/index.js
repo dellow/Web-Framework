@@ -1,36 +1,46 @@
 /* ======================================================== */
 /* Modernizr (via Browsernizr) (check browsernizr/test/** for tests)
 /* ======================================================== */
-// require('browsernizr/test/css/transitions');
-global.Modernizr = require('browsernizr');
-
+// require('browsernizr/test/css/transitions')
+global.Modernizr = require('browsernizr')
 
 /* ======================================================== */
 /* jQuery
 /* ======================================================== */
-global.jQuery = $ = require('jquery');
-
+global.jQuery = $ = require('jquery')
 
 /* ======================================================== */
 /* Underscore
 /* ======================================================== */
-// global._ = require('underscore');
-
+global._ = require('underscore')
 
 /* ======================================================== */
 /* Handlebars
 /* ======================================================== */
-// global.Handlebars = require('handlebars');
-
+// global.Handlebars = require('handlebars')
 
 /* ======================================================== */
 /* React
 /* ======================================================== */
-// global.React = require('react');
-// global.ReactDOM = require('react-dom');
+// global.React = require('react')
+// global.ReactDOM = require('react-dom')
 
+/* ======================================================== */
+/* Helpers
+/* ======================================================== */
+global.Helpers = require('../app/helpers')
+
+/* ======================================================== */
+/* Breakpoint Info
+/* ======================================================== */
+global.Breakpoint = require('../app/breakpoint')
+
+/* ======================================================== */
+/* Config
+/* ======================================================== */
+require('../app/config')
 
 /* ======================================================== */
 /* Google Analytics Autotrack
 /* ======================================================== */
-require('autotrack');
+require('autotrack')

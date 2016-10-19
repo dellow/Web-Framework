@@ -7,22 +7,22 @@
  *
 **/
 
-var webpack = require('webpack'),
-    path = require('path'),
-    package = require('../package.json');
+var webpack = require('webpack')
+var path = require('path')
+var package = require('../package.json')
 
 module.exports = {
-    entry: path.join(__dirname, '../' + package.config.js.dirApp + 'index.js'),
-    output: {
-        path: path.join(__dirname, '../' + package.config.js.dest),
-        filename: 'app.js'
-    },
-    resolve: {
-        modulesDirectories: ['node_modules'],
-        extensions: ['', '.js']
-    },
-    module: {
-        loaders: []
-    },
-    plugins: []
-};
+  entry: path.join(__dirname, '../' + package.config.js.dirApp + 'index.js'),
+  output: {
+    path: path.join(__dirname, '../' + package.config.js.dest),
+    filename: 'app.js'
+  },
+  resolve: {
+    modulesDirectories: ['node_modules'],
+    extensions: ['', '.js']
+  },
+  module: {
+    loaders: []
+  },
+  plugins: []
+}
