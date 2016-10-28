@@ -7,11 +7,12 @@
  *
 **/
 
-var package = require('./package.json')
+var package = require('../package.json')
+var webpackConfig = require('../webpack/app.config')
 
 module.exports = function (config) {
   config.set({
-    basePath : './',
+    basePath : '../',
     port     : 9876,
     colors   : true,
     logLevel : config.LOG_DISABLE,
@@ -19,6 +20,7 @@ module.exports = function (config) {
     autoWatch: false,
     singleRun: true,
     plugins: [
+      'karma-coverage',
       'karma-webpack',
       'karma-jasmine',
       'karma-jasmine-jquery',
@@ -30,18 +32,26 @@ module.exports = function (config) {
       'jasmine'
     ],
     files: [
-      package.config.js.tests
+      package.config.js.dirApp,
+      package.config.js.dirTests + '**/*.js'
     ],
     preprocessors: {
-      [package.config.js.tests]: ['webpack']
+      [package.config.js.dirApp]: ['coverage'],
+      [package.config.js.dirTests + '**/*.js']: ['webpack']
+    },
+    coverageReporter: {
+      type: 'text',
+      dir: ''
     },
     webpack: {
+      module: webpackConfig.module
     },
     webpackMiddleware: {
       stats: 'errors-only'
     },
     reporters: [
-      'spec'
+      'spec',
+      'coverage'
     ],
     browsers: [
       'PhantomJS'

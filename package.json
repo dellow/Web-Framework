@@ -15,6 +15,7 @@
     "gulp-standard": "^8.0.2",
     "imagemin-cli": "^3.0.0",
     "jasmine-core": "^2.5.2",
+    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.0.2",
     "karma-jasmine-jquery": "^0.1.1",
     "karma-phantomjs-launcher": "^1.0.2",
@@ -48,18 +49,16 @@
     "src": "./src/",
     "dist": "./src/dist/",
     "css": {
-      "watch": "src/dist/css/scss/**/*.scss",
+      "dirDest": "./src/dist/css/",
       "dirSCSS": "./src/dist/css/scss/",
-      "destDir": "./src/dist/css/",
       "dest": "./src/dist/css/build.css",
       "src": "./src/dist/css/scss/build.scss"
     },
     "js": {
-      "watch": "src/dist/js/app/**/*.js",
-      "destDir": "./src/dist/js/",
       "dirApp": "./src/dist/js/app/",
-      "tests": "/src/dist/js/app/**/*.test.js",
       "dirCommon": "./src/dist/js/common/",
+      "dirDest": "./src/dist/js/",
+      "dirTests": "./src/dist/js/tests/",
       "dest": "./src/dist/js/build/"
     }
   },
@@ -69,7 +68,7 @@
     "minify:images": "imagemin $npm_package_config_dist/images/**/**/* -o $npm_package_config_dist/images",
     "minify:js": "minify --output $npm_package_config_js_dest $npm_package_config_js_dest",
     "test:integration": "nightwatch",
-    "test:unit": "karma start",
+    "test:unit": "karma start karma/karma.conf.js",
     "test": "npm run test:integration && npm run test:unit",
     "sprite": "sprity create $npm_package_config_dist/images/icons/ $npm_package_config_dist/images/icons/png/*.png -c ../images/icons/ -s ../../css/scss/site/_sprites.scss -p sass -n sprite --prefix css-sprite --orientation horizontal --background '#FFFFFF' --margin '2' -d 1:72 -d 2:192"
   },

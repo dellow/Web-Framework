@@ -33,9 +33,9 @@ gulp.task('watch', function () {
 	// Start livereload.
 	livereload.listen()
 	// Task :: CSS.
-	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css'])
+	gulp.watch(package.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
 	// Task :: JS.
-	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js'])
+	gulp.watch(package.config.js.dirApp + '**/*.js', {cwd:'./'}, ['js'])
 })
 
 
@@ -64,10 +64,10 @@ gulp.task('sync', function () {
 		proxy  : package.config.url
 	})
 	// Task :: CSS.
-	gulp.watch(package.config.css.watch, {cwd:'./'}, ['css'])
+	gulp.watch(package.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
 	gulp.watch(package.config.css.dest, {cwd:'./'}, ['css']).on('change', browserSync.reload)
 	// Task :: JS.
-	gulp.watch(package.config.js.watch, {cwd:'./'}, ['js'])
+	gulp.watch(package.config.js.dirApp + '**/*.js', {cwd:'./'}, ['js'])
 	gulp.watch(package.config.js.dest + '*.js', {cwd:'./'}, ['js']).on('change', browserSync.reload)
 })
 
@@ -89,7 +89,7 @@ gulp.task('sync', function () {
 **/
 
 // Main.
-gulp.task('css', ['css:task', 'css:git'], function () {
+gulp.task('css', ['css:task'], function () {
 	return gulp.src('/').pipe(notify('CSS build file updated'))
 })
 
@@ -108,7 +108,7 @@ gulp.task('css:task', function () {
       browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
       cascade: false
     }))
-  	.pipe(gulp.dest(package.config.css.destDir))
+  	.pipe(gulp.dest(package.config.css.dirDest))
   	.pipe(livereload())
 })
 
@@ -116,7 +116,7 @@ gulp.task('css:task', function () {
 gulp.task('css:git', function () {
 	var git = require('gulp-git')
 
-	return gulp.src(package.config.css.destDir)
+	return gulp.src(package.config.css.dirDest)
     .pipe(git.add())
 		.on('error', helpers.handleErrors)
     .pipe(git.commit('Gulp: CSS build file updated'))
@@ -140,7 +140,7 @@ gulp.task('css:git', function () {
 **/
 
 // Main.
-gulp.task('js', ['js:standard', 'js:task', 'js:git'], function () {
+gulp.task('js', ['js:standard', 'js:task'], function () {
 	return gulp.src('/').pipe(notify('JavaScript build file updated'))
 })
 
@@ -148,7 +148,7 @@ gulp.task('js', ['js:standard', 'js:task', 'js:git'], function () {
 gulp.task('js:standard', function () {
 	var standard = require('gulp-standard')
 
-	return gulp.src(package.config.js.watch)
+	return gulp.src(package.config.js.dirApp + '**/*.js')
     .pipe(standard())
     .pipe(standard.reporter('default', {
   		breakOnError: true,
@@ -171,7 +171,7 @@ gulp.task('js:task', function () {
 gulp.task('js:git', function () {
 	var git = require('gulp-git')
 
-	return gulp.src(package.config.js.destDir)
+	return gulp.src(package.config.js.dirDest)
     .pipe(git.add())
 		.on('error', helpers.handleErrors)
     .pipe(git.commit('Gulp: JavaScript build file updated'))
