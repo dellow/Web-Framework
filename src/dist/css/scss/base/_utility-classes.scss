@@ -1,18 +1,18 @@
 /* ==========================================================================
-  Base > Utility Classes
-  A library of classes to achieve various things. Most are prefixed
-  with a 'u-'. These should be used sparingly.
+   Base > Utility Classes
+   A library of classes to achieve various things. Most are prefixed
+   with a 'u-'. These should be used sparingly.
 ========================================================================== */
 
 
 /* -- Body / HTML Classes -- */
 body, html {
-  &.u-noscroll {
-    width: 100%;
+	&.u-noscroll {
+		width: 100%;
     -webkit-overflow-scrolling: touch;
     overflow: hidden;
     position: fixed;
-  }
+	}
 }
 
 
@@ -21,10 +21,10 @@ body, html {
 
 /* -- Messages -- */
 .msg-success {
-  color: rgba(138, 216, 54, 0.6);
+	color: rgba(138, 216, 54, 0.6);
 }
 .msg-error {
-  color: rgba(255, 0, 0, 0.6);
+	color: rgba(255, 0, 0, 0.6);
 }
 
 
@@ -33,10 +33,10 @@ body, html {
 
 /* -- Clearing -- */
 .cf {
-  @extend %cf;
+	@extend %cf;
 }
 .clear {
-  clear: both;
+	clear: both;
 }
 
 
@@ -45,25 +45,25 @@ body, html {
 
 /* -- Resetting (This is a last resort) -- */
 .u-no-width {
-  width: auto !important;
+	width: auto !important;
 }
 .u-no-height {
-  height: auto !important;
+	height: auto !important;
 }
 .u-no-margin {
-  margin: 0 !important;
+	margin: 0 !important;
 }
 .u-no-padding {
-  padding: 0 !important;
+	padding: 0 !important;
 }
 .u-no-border {
-  border: 0 !important;
+	border: 0 !important;
 }
 .u-no-bullet {
-  list-style: none !important;
+	list-style: none !important;
 }
 .u-no-float {
-  float: none !important;
+	float: none !important;
 }
 
 
@@ -72,40 +72,40 @@ body, html {
 
 /* -- Nudge -- */
 .u-nudge-top {
-  @include nudge(margin-top, 1);
-  &--x2 {
-    @include nudge(margin-top, 2);
-  }
-  &--x3 {
-    @include nudge(margin-top, 3);
-  }
+	@include nudge(margin-top, 1);
+	&--x2 {
+		@include nudge(margin-top, 2);
+	}
+	&--x3 {
+		@include nudge(margin-top, 3);
+	}
 }
 .u-nudge-right {
-  @include nudge(margin-right, 1);
-  &--x2 {
-    @include nudge(margin-right, 2);
-  }
-  &--x3 {
-    @include nudge(margin-right, 3);
-  }
+	@include nudge(margin-right, 1);
+	&--x2 {
+		@include nudge(margin-right, 2);
+	}
+	&--x3 {
+		@include nudge(margin-right, 3);
+	}
 }
 .u-nudge-bottom {
-  @include nudge(margin-bottom, 1);
-  &--x2 {
-    @include nudge(margin-bottom, 2);
-  }
-  &--x3 {
-    @include nudge(margin-bottom, 3);
-  }
+	@include nudge(margin-bottom, 1);
+	&--x2 {
+		@include nudge(margin-bottom, 2);
+	}
+	&--x3 {
+		@include nudge(margin-bottom, 3);
+	}
 }
 .u-nudge-left {
-  @include nudge(margin-left, 1);
-  &--x2 {
-    @include nudge(margin-left, 2);
-  }
-  &--x3 {
-    @include nudge(margin-left, 3);
-  }
+	@include nudge(margin-left, 1);
+	&--x2 {
+		@include nudge(margin-left, 2);
+	}
+	&--x3 {
+		@include nudge(margin-left, 3);
+	}
 }
 
 
@@ -114,40 +114,40 @@ body, html {
 
 /* -- Pad -- */
 .u-pad-top {
-  @include nudge(padding-top, 1);
-  &--x2 {
-    @include nudge(margin-top, 2);
-  }
-  &--x3 {
-    @include nudge(margin-top, 3);
-  }
+	@include nudge(padding-top, 1);
+	&--x2 {
+		@include nudge(margin-top, 2);
+	}
+	&--x3 {
+		@include nudge(margin-top, 3);
+	}
 }
 .u-pad-right {
-  @include nudge(padding-right, 1);
-  &--x2 {
-    @include nudge(margin-right, 2);
-  }
-  &--x3 {
-    @include nudge(margin-right, 3);
-  }
+	@include nudge(padding-right, 1);
+	&--x2 {
+		@include nudge(margin-right, 2);
+	}
+	&--x3 {
+		@include nudge(margin-right, 3);
+	}
 }
 .u-pad-bottom {
-  @include nudge(padding-bottom, 1);
-  &--x2 {
-    @include nudge(margin-bottom, 2);
-  }
-  &--x3 {
-    @include nudge(margin-bottom, 3);
-  }
+	@include nudge(padding-bottom, 1);
+	&--x2 {
+		@include nudge(margin-bottom, 2);
+	}
+	&--x3 {
+		@include nudge(margin-bottom, 3);
+	}
 }
 .u-pad-left {
-  @include nudge(padding-left, 1);
-  &--x2 {
-    @include nudge(margin-left, 2);
-  }
-  &--x3 {
-    @include nudge(margin-left, 3);
-  }
+	@include nudge(padding-left, 1);
+	&--x2 {
+		@include nudge(margin-left, 2);
+	}
+	&--x3 {
+		@include nudge(margin-left, 3);
+	}
 }
 
 
@@ -156,10 +156,10 @@ body, html {
 
 /* -- Hide Elements -- */
 .u-hidden {
-  display: none !important;
+	display: none !important;
 }
 .u-show {
-  display: block !important;
+	display: block !important;
 }
 
 
@@ -168,7 +168,7 @@ body, html {
 
 /* -- Vertical Alignment -- */
 .u-vert {
-  vertical-align: middle;
+	vertical-align: middle;
 }
 
 
@@ -177,27 +177,45 @@ body, html {
 
 /* -- Overflow -- */
 .u-overflow-auto {
-  overflow: auto;
-  position: relative;
-  z-index: 1;
+	overflow: auto;
+	position: relative;
+	z-index: 1;
 }
 .u-overflow-hidden {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Structure -- */
+/* -- Width -- */
+.u-full-width {
+	width: 100%;
+}
+.u-half-width {
+	width: 50%;
+}
+.u-third-width {
+	width: 33.33%;
+}
+.u-quarter-width {
+	width: 25%;
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Box Model -- */
 .u-inline {
-  display: inline;
+	display: inline;
 }
 .u-inline-block {
-  display: inline-block;
+	display: inline-block;
 }
 .u-block {
-  display: block;
+	display: block;
 }
 
 
@@ -206,22 +224,22 @@ body, html {
 
 /* -- Positioning -- */
 .u-fl {
-  float: left;
+	float: left;
 }
 .u-fr {
-  float: right;
+	float: right;
 }
 .u-static {
-  position: static;
+	position: static;
 }
 .u-relative {
-  position: relative;
+	position: relative;
 }
 .u-fixed {
-  position: fixed;
+	position: fixed;
 }
 .u-absolute {
-  position: absolute;
+	position: absolute;
 }
 
 
@@ -230,13 +248,13 @@ body, html {
 
 /* -- Lists -- */
 .u-inside {
-  margin-left: $base_ul_indent;
-  ul, ol {
-    margin-left: $base_ul_indent;
-  }
+	margin-left: $base_ul_indent;
+	ul, ol {
+		margin-left: $base_ul_indent;
+	}
 }
 .u-no-bullet {
-  list-style: none;
+	list-style: none;
 }
 
 
@@ -245,19 +263,19 @@ body, html {
 
 /* -- Text -- */
 .u-text-small {
-  font-size: 75%;
+	font-size: 85%;
 }
 .u-text-big {
-  font-size: 150%;
+	font-size: 150%;
 }
 .u-text-left {
-  text-align: left;
+	text-align: left;
 }
 .u-text-right {
-  text-align: right;
+	text-align: right;
 }
 .u-text-center {
-  text-align: center;
+	text-align: center;
 }
 
 
@@ -266,25 +284,25 @@ body, html {
 
 /* -- Weights & Cases -- */
 .u-text-regular {
-  font-weight: $regular !important;
+	font-weight: $regular !important;
 }
 .u-text-semibold {
-  font-weight: $semibold !important;
+	font-weight: $semibold !important;
 }
 .u-text-bold {
-  font-weight: $bold !important;
+	font-weight: $bold !important;
 }
 .u-text-italic {
-  font-style: italic !important;
+	font-style: italic !important;
 }
 .u-text-uppercase {
-  text-transform: uppercase !important;
+	text-transform: uppercase !important;
 }
 .u-text-lowercase {
-  text-transform: lowercase !important;
+	text-transform: lowercase !important;
 }
 .u-text-capitalize {
-  text-transform: capitalize !important;
+	text-transform: capitalize !important;
 }
 
 
@@ -293,10 +311,10 @@ body, html {
 
 /* -- Fonts -- */
 .u-text-serif {
-  font-family: serif;
+	font-family: serif;
 }
 .u-text-sans-serif {
-  font-family: sans-serif;
+	font-family: sans-serif;
 }
 
 
@@ -305,18 +323,18 @@ body, html {
 
 /* -- Responsive -- */
 .u-hide-tablet {
-  display: none;
-  // Responsive.
-  @include respond-to($tablet + 1, null, true){
-    display: block;
-  }
+	display: none;
+	// Responsive.
+	@include respond-to($tablet + 1, null, true){
+		display: block;
+	}
 }
 .u-hide-mobile {
-  display: none;
-  // Responsive.
-  @include respond-to($mobile + 1, null, true){
-    display: block;
-  }
+	display: none;
+	// Responsive.
+	@include respond-to($mobile + 1, null, true){
+		display: block;
+	}
 }
 
 
@@ -325,8 +343,8 @@ body, html {
 
 /* -- Colours -- */
 @each $key, $value in $colors {
-  $class: "" + $key;
-  .u-text-color-#{$class} {
-    color: color($key);
-  }
+	$class: "" + $key;
+	.u-text-color-#{$class} {
+		color: color($key);
+	}
 }

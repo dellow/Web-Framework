@@ -5,17 +5,20 @@
 ========================================================================== */
 
 
-/* -- All old IE fixes -- */
-.oldie {
-  /* -- Container -- */
-  .container {
-    width: $desktop;
-  }
+/**
+ * Targets all legacy versions of Internet Explorer via conditional statements in header.
+ * Target: IE6, IE7, IE8 & IE9
+**/
+html.oldie {
+	/* -- Container -- */
+	.container {
+		width: $desktop;
+	}
 
-  /* -- Grid -- */
-  .grid {
-    .col + .col {
-      padding-right: 0;
-    }
-  }
+	/* -- Grid -- */
+	.grid {
+		.col + .col {
+			padding-right: 0;
+		}
+	}
 }
