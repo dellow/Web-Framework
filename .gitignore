@@ -5,6 +5,7 @@
 # ---------------------------------------------------------------------------------
 .sass-cache/
 .vagrant/
+karma/
 nightwatch/
 bower_components/
 node_modules/

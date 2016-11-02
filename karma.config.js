@@ -40,8 +40,12 @@ module.exports = function (config) {
       [package.config.js.dirTests + 'unit/**/*.js']: ['webpack']
     },
     coverageReporter: {
-      type: 'text',
-      dir: ''
+      dir: 'karma/coverage',
+      reporters: [
+        { type: 'text', dir: '' },
+        { type: 'lcov', subdir: 'report-lcov' },
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
+      ]
     },
     webpack: {
       module: webpackConfig.module

@@ -17,15 +17,13 @@ before_install:
 
 install:
   - npm install --loglevel=silent karma-cli -g
-  - npm install --loglevel=silent istanbul -g
-  - npm install --loglevel=silent coveralls
   - npm install --loglevel=silent
 
 script:
   - npm run test:unit
 
 after_success:
-  - istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  - gulp coveralls
 
 branches:
   only:
