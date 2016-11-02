@@ -40,7 +40,7 @@
         // // Globally cache this element.
         _this.$self = $(e.currentTarget)
         // // Data attribute.
-        var dataAttr = this.$self.data('sample') || false
+        // var dataAttr = this.$self.data('sample') || false
 
         window.alert('Target clicked.')
       }
