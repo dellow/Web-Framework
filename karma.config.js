@@ -33,11 +33,11 @@ module.exports = function (config) {
     ],
     files: [
       package.config.js.dirApp,
-      package.config.js.dirTests + '**/*.js'
+      package.config.js.dirTests + 'unit/**/*.js'
     ],
     preprocessors: {
       [package.config.js.dirApp]: ['coverage'],
-      [package.config.js.dirTests + '**/*.js']: ['webpack']
+      [package.config.js.dirTests + 'unit/**/*.js']: ['webpack']
     },
     coverageReporter: {
       type: 'text',
