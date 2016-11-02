@@ -17,7 +17,7 @@ before_install:
 
 install:
   - npm install --loglevel=silent karma-cli -g
-  - npm install --loglevel=silent istanbul
+  - npm install --loglevel=silent istanbul -g
   - npm install --loglevel=silent coveralls
   - npm install --loglevel=silent
 
