@@ -31,6 +31,11 @@ before_script:
 
 after_script:
   - 'npm run test:unit'
-  
+
 after_success:
   - istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+
+branches:
+  only:
+  - master
+  - staging
