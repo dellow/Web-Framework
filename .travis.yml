@@ -10,6 +10,3 @@ before_script:
   - npm install --loglevel=silent
 after_script:
   - 'npm run test:unit'
-branches:
-  only:
-  - master
