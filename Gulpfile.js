@@ -112,17 +112,6 @@ gulp.task('css:task', function () {
   	.pipe(livereload())
 })
 
-// Git.
-gulp.task('css:git', function () {
-	var git = require('gulp-git')
-
-	return gulp.src(package.config.css.dirDest)
-    .pipe(git.add())
-		.on('error', helpers.handleErrors)
-    .pipe(git.commit('Gulp: CSS build file updated'))
-		.on('error', helpers.handleErrors)
-})
-
 
 // ********************************************************************************************* //
 
@@ -159,31 +148,10 @@ gulp.task('js:standard', function () {
 // Task.
 gulp.task('js:task', function () {
 	var webpackStream = require('webpack-stream')
-	var config = require('./webpack/app.config.js')
+	var config = require('./webpack.config.js')
 
 	return gulp.src(package.config.js.dirApp + 'index.js')
 		.pipe(webpackStream(config))
   	.pipe(gulp.dest(package.config.js.dest))
   	.pipe(livereload())
-})
-
-// Git.
-gulp.task('js:git', function () {
-	var git = require('gulp-git')
-
-	return gulp.src(package.config.js.dirDest)
-    .pipe(git.add())
-		.on('error', helpers.handleErrors)
-    .pipe(git.commit('Gulp: JavaScript build file updated'))
-		.on('error', helpers.handleErrors)
-})
-
-// Task.
-gulp.task('js:common', function () {
-	var webpackStream = require('webpack-stream')
-	var config = require('./webpack/common.config.js')
-
-	return gulp.src(package.config.js.dirCommon + 'index.js')
-		.pipe(webpackStream(config))
-  	.pipe(gulp.dest(package.config.js.dest))
 })

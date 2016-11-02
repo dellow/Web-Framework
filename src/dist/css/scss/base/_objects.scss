@@ -155,3 +155,50 @@ Various CSS objects used throughout an application.
     top: 0; left: 0;
   }
 }
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.obj-mobile-menu-btn {
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  &.active {
+    span {
+      background-color: transparent;
+      &:before, &:after {
+        top: 0;
+        background: color(copy, link);
+      }
+      &:before {
+        transform: rotate(45deg);
+      }
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  span {
+    &, &:before, &:after {
+      width: 30px;
+      height: 4px;
+      border-radius: 1px;
+      display: block;
+      position: absolute;
+      content: '';
+      cursor: pointer;
+      background: color(black);
+      transition: all $animation ease-in-out;
+    }
+    &:before {
+      top: -8px;
+    }
+    &:after {
+      bottom: -8px;
+    }
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */

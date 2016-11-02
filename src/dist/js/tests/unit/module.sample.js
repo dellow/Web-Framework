@@ -17,13 +17,13 @@ require('../app')
 /* Module
 /* ======================================================== */
 // Get module.
-var Module = require('../app/public/module.sample')
+var Module = require('../../app/public/module.sample')
 
 /* ======================================================== */
 /* Tests
 /* ======================================================== */
 // Suite.
-describe('Sample module', function () {
+describe('Module: Sample', function () {
   // Spec.
   it('moduleMethod should return false', function () {
     expect(Module.moduleMethod()).toBeFalsy()

@@ -208,14 +208,17 @@ body, html {
 
 
 /* -- Box Model -- */
-.u-inline {
+.u-display-inline {
 	display: inline;
 }
-.u-inline-block {
+.u-display-inline-block {
 	display: inline-block;
 }
-.u-block {
+.u-display-block {
 	display: block;
+}
+.u-display-flex {
+	@extend %flex;
 }
 
 

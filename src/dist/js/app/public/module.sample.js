@@ -29,7 +29,7 @@
    * @version 1.0.0
   **/
   Module.prototype.events = function () {
-    // var _this = this
+    var _this = this
 
     // Extend the events system.
     global.Public.events.extend({
@@ -38,9 +38,9 @@
       },
       eventMethod: function (e) {
         // // Globally cache this element.
-        // this.$self = $(e.currentTarget)
+        _this.$self = $(e.currentTarget)
         // // Data attribute.
-        // var dataAttr = this.$self.data('sample') || false
+        var dataAttr = this.$self.data('sample') || false
 
         window.alert('Target clicked.')
       }

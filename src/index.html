@@ -22,7 +22,7 @@
 <!--                                                                    MOBILE META -->
 <!-- ============================================================================== -->
 <!-- Viewport -->
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <!-- Android -->
 <meta name="mobile-web-app-capable" content="yes">
 <!-- iOS -->
@@ -38,42 +38,10 @@
 <!-- ============================================================================== -->
 <!-- Favicon -->
 <link rel="shortcut icon" href="dist/images/icons/app/favicon.png">
-<!-- Android -->
-<link rel="shortcut icon" sizes="196x196" href="dist/images/icons/app/favicon-196x196.png">
-<!-- Apple Touch Icons -->
-<link rel="apple-touch-icon-precomposed" sizes="180x180" href="dist/images/icons/app/favicon-180x180.png">
-<link rel="apple-touch-icon" sizes="152x152" href="dist/images/icons/app/favicon-152x152.png">
-<link rel="apple-touch-icon" sizes="144x144" href="dist/images/icons/app/favicon-144x144.png">
-<link rel="apple-touch-icon" sizes="120x120" href="dist/images/icons/app/favicon-120x120.png">
-<link rel="apple-touch-icon" sizes="114x114" href="dist/images/icons/app/favicon-114x114.png">
-<link rel="apple-touch-icon" sizes="76x76" href="dist/images/icons/app/favicon-76x76.png">
-<link rel="apple-touch-icon" sizes="72x72" href="dist/images/icons/app/favicon-72x72.png">
-<link rel="apple-touch-icon" sizes="57x57" href="dist/images/icons/app/favicon-57x57.png">
-<!-- Win8 Tile Icon -->
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="dist/images/icons/app/favicon-144x144-ie10.png">
-<meta name="msapplication-square70x70logo" content="dist/images/icons/app/favicon-128x128-ie11.png">
-<meta name="msapplication-square150x150logo" content="dist/images/icons/app/favicon-270x270-ie11.png">
-<meta name="msapplication-wide310x150logo" content="dist/images/icons/app/favicon-558x270-ie11.png">
-<meta name="msapplication-square310x310logo" content="dist/images/icons/app/favicon-558x558-ie11.png">
-<!-- Start Up Icons -->
-<link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-1242×2148.png" media="(device-width: 414px)">
-<link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-750×1294.png" media="(device-width: 375px)">
-<link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-1536x2008.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
-<link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-1496x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
-<link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-768x1004.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)">
-<link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-748x1024.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)">
-<link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
-<link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
-<link rel="apple-touch-startup-image" href="dist/images/icons/app/startup-image-320x460.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)">
 <!-- ============================================================================== -->
 <!--                                                                     JAVASCRIPT -->
 <!-- ============================================================================== -->
-<script>
-window.config = {
-	base_url: ""
-}
-</script>
+<script>window.config={base_url: ''}</script>
 <!-- ============================================================================== -->
 <!--                                                                      ANALYTICS -->
 <!-- ============================================================================== -->
@@ -81,22 +49,52 @@ window.config = {
 <script src="//www.google-analytics.com/analytics.js" async></script>
 <script>
 // Google Autotrack - https://github.com/googleanalytics/autotrack
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date
 // GA Account ID.
-ga('create', 'UA-XXXXXXXX-1', 'auto');
+ga('create', 'UA-XXXXXXXX-1', 'auto')
 // Require: Display features.
-ga('require', 'displayfeatures');
+ga('require', 'displayfeatures')
 // GA Page View.
 ga('send', 'pageview', {
   'dimension1': (typeof(WURFL) !== 'undefined') ? WURFL.complete_device_name : null,
   'dimension2': (typeof(WURFL) !== 'undefined') ? WURFL.form_factor : null,
   'dimension3': (typeof(WURFL) !== 'undefined') ? WURFL.is_mobile : null
-});
+})
 </script>
 </head>
 <body>
-	<!-- Start DOM elements here. -->
-<script src="dist/js/build/common.js"></script>
-<script src="dist/js/build/app.js"></script>
+  <!-- Page Wrapper -->
+	<div class="page__wrapper js--mobileMenu--content">
+		<!-- Header :: Mobile -->
+		<div class="page-mobile-header js--mobileMenu--header" aria-hidden="true">
+    </div>
+		<!-- Header :: Desktop -->
+		<header class="page-header" role="banner">
+      <nav class="navigation" role="navigation" aria-label="primary">
+        <!-- Desktop navigation -->
+        <ul class="nav-primary nav-primary--desktop" role="menu">
+        </ul>
+      </nav>
+    </header>
+		<!-- Main -->
+		<main class="page-main" role="main">
+    </main>
+  	<!-- Footer -->
+  	<footer class="page-footer" role="contentinfo">
+    </footer>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="page-mobile-menu js--mobileMenu--menu" aria-hidden="true">
+    <div class="page-mobile-menu__header">
+      <div class="page-mobile-menu__header__close">
+        <button class="js--mobileMenu--triggerClose" aria-label="close">X</button>
+      </div>
+    </div>
+    <div class="page-mobile-menu__body">
+    </div>
+  </div>
+	<!-- JavaScript Assets -->
+  <script src="dist/js/build/common.js"></script>
+  <script src="dist/js/build/app.js"></script>
 </body>
 </html>

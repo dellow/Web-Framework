@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Base > Global
+   Styles that are across the board and not specific to
+   any single partial.
+========================================================================== */
+
+
+.page-mobile-menu {
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow-y: scroll;
+  opacity: 0;
+  position: fixed;
+  top: 0; left: -100%;
+  z-index: 1;
+  box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+  background: color(white);
+  transition: left $animation ease, box-shadow $animation ease, opacity $animation ease;
+  &__header {
+    @extend %flex;
+    @include nudge(padding, 0 0.75);
+    border-bottom: 1px solid rgba(color(black), 0.05);
+    &__close {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      button {
+        @include scale(font-size, 30px);
+        font-weight: $bold;
+        line-height: 1;
+        color: color(black);
+      }
+    }
+  }
+  &__body {
+    @include nudge(padding, 0.5);
+  }
+}

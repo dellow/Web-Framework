@@ -7,12 +7,12 @@
  *
 **/
 
-var package = require('../package.json')
-var webpackConfig = require('../webpack/app.config')
+var package = require('./package.json')
+var webpackConfig = require('./webpack.config')
 
 module.exports = function (config) {
   config.set({
-    basePath : '../',
+    basePath : './',
     port     : 9876,
     colors   : true,
     logLevel : config.LOG_DISABLE,

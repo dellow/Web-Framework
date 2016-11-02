@@ -1,5 +1,16 @@
 # Web Framework Changelog
 
+__3.3.0__:
+* Complete overhaul to unit and integration testing.
+* Rebuilt how the mobile menu works.
+* Improved Travis integration.
+* Added Karma and Jasmine.
+* Improved Webpack bundling.
+* Many CSS improvements and fixes.
+* Changed CSS `display` utilitle classes to `u-display-<prop>`.
+* Added new CSS `u-display-flex` utility class.
+* Added starter HTML in the `index.html` file.
+
 __3.2.0__:
 * Updated SocIcon.
 * Readded Gulp for CSS and JS compilation as NPM directly is too slow.

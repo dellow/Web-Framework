@@ -91,7 +91,7 @@
   var getModules = function () {
     // Require :: Modules
     this.modules.Plugins = require('./module.plugins')
-    this.modules.MobileMenu = require('./module.mobile-menu-side')
+    this.modules.MobileMenu = require('./module.mobile.menu')
   }
 
   // Export

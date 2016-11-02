@@ -56,90 +56,90 @@ $thin      : 100 !default;
 /* -- Colors -- */
 // Base
 $base_colors: (
-black: (
-base: #000000,
-light: lighten(#000000, 50%),
-dark : darken(#000000, 50%)
-),
-white: (
-base: #FFFFFF,
-light: lighten(#FFFFFF, 50%),
-dark : darken(#FFFFFF, 50%)
-),
-grey: (
-base  : #DDDDDD,
-light : #EDEDED,
-medium: #666666,
-dark  : #333333
-),
-blue: (
-base : #3498DB,
-light: lighten(#3498DB, 10%),
-dark : darken(#3498DB, 10%)
-),
-green: (
-base : #2ECC71,
-light: lighten(#2ECC71, 10%),
-dark : darken(#2ECC71, 10%)
-),
-orange: (
-base : #E67E22,
-light: lighten(#E67E22, 10%),
-dark : darken(#E67E22, 10%)
-),
-red: (
-base : #C4122f,
-light: lighten(#C4122f, 10%),
-dark : darken(#C4122f, 10%)
-),
-yellow: (
-base : #F1C40F,
-light: lighten(#F1C40F, 10%),
-dark : darken(#F1C40F, 10%)
-),
-copy: (
-header: #231f20,
-body  : #5f5659,
-link  : #C4122F,
-hover : darken(#C4122F, 10%),
-active: darken(#C4122F, 20%)
-)
+  black: (
+    base: #000000,
+    light: lighten(#000000, 50%),
+    dark : darken(#000000, 50%)
+  ),
+  white: (
+    base: #FFFFFF,
+    light: lighten(#FFFFFF, 50%),
+    dark : darken(#FFFFFF, 50%)
+  ),
+  grey: (
+    base  : #DDDDDD,
+    light : #EDEDED,
+    medium: #666666,
+    dark  : #333333
+  ),
+  blue: (
+    base : #3498DB,
+    light: lighten(#3498DB, 10%),
+    dark : darken(#3498DB, 10%)
+  ),
+  green: (
+    base : #2ECC71,
+    light: lighten(#2ECC71, 10%),
+    dark : darken(#2ECC71, 10%)
+  ),
+  orange: (
+    base : #E67E22,
+    light: lighten(#E67E22, 10%),
+    dark : darken(#E67E22, 10%)
+  ),
+  red: (
+    base : #C4122f,
+    light: lighten(#C4122f, 10%),
+    dark : darken(#C4122f, 10%)
+  ),
+  yellow: (
+    base : #F1C40F,
+    light: lighten(#F1C40F, 10%),
+    dark : darken(#F1C40F, 10%)
+  ),
+  copy: (
+    header: #231f20,
+    body  : #5f5659,
+    link  : #C4122F,
+    hover : darken(#C4122F, 10%),
+    active: darken(#C4122F, 20%)
+  )
 ) !default;
 
 // Social
 $social_colors: (
-social: (
-facebook  : #3b5998,
-flickr    : #ff0084,
-foursquare: #0072b1,
-google    : #dd4b39,
-instagram : #517fa4,
-linkedin  : #007bb6,
-pinterest : #cb2027,
-quora     : #a82400,
-snapchat  : #fffc00,
-tumblr    : #32506d,
-twitter   : #00aced,
-vimeo     : #aad450,
-vine      : #00bf8f,
-youtube   : #bb0000
-)
+  social: (
+    facebook  : #3b5998,
+    flickr    : #ff0084,
+    foursquare: #0072b1,
+    google    : #dd4b39,
+    instagram : #517fa4,
+    linkedin  : #007bb6,
+    pinterest : #cb2027,
+    quora     : #a82400,
+    snapchat  : #fffc00,
+    tumblr    : #32506d,
+    twitter   : #00aced,
+    vimeo     : #aad450,
+    vine      : #00bf8f,
+    youtube   : #bb0000
+  )
 ) !default;
 
 // Site
-$site_colors          : () !default;
+$site_colors: () !default;
 
 // Merge
-$framework_colors     : map-merge($base_colors, $social_colors) !default;
-$colors               : map-merge($framework_colors, $site_colors) !default;
+$framework_colors: map-merge($base_colors, $social_colors) !default;
+$colors: map-merge($framework_colors, $site_colors) !default;
 
 // Useful
-$color_odd_base       : #EDEDED !default;
-$color_even_base      : #F4F4F4 !default;
-$color_error          : #b94a48 !default;
-$color_status         : #3a87ad !default;
-$color_success        : #468847 !default;
-$color_warning        : #c09853 !default;
+$color_odd_base  : #EDEDED !default;
+$color_even_base : #F4F4F4 !default;
+$color_error     : #b94a48 !default;
+$color_status    : #3a87ad !default;
+$color_success   : #468847 !default;
+$color_warning   : #c09853 !default;
 
 
 /* ----------------------------------------------------------------------- */
