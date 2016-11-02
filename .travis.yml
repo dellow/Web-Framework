@@ -1,4 +1,9 @@
 language: node_js
+cache:
+  directories:
+    - $HOME/.npm
+os:
+  - linux
 node_js:
   - "4.4.2"
 before_install:
@@ -7,6 +12,10 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 before_script:
   - npm install --loglevel=silent karma-cli -g
+  - npm install --loglevel=silent istanbul
+  - npm install --loglevel=silent coveralls
   - npm install --loglevel=silent
 after_script:
   - 'npm run test:unit'
+after_success:
+  - istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
