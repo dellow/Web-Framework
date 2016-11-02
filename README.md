@@ -158,7 +158,9 @@ _Documentation coming soon_
 
 <a name="scripts--sprite"></a>
 ### Sprite
-_Documentation coming soon_
+The framework comes with a Sprite task but you will need to manually install the dependencies with this command: `npm install --save-dev sprity sprity-cli sprity-lwip sprity-sass`. This is not included in the `package.json` because `sprity` uses the `lwip` engine which notoriously fails to install on some systems, including Travis CI.
+
+Once the dependencies have been installed you can safely run `npm run sprite` which will create a retina and normal sprite with all the images in `dist/images/icons/png`.
 
 <a name="scripts--test"></a>
 ### Test
