@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.3.3__:
+* Readded `gulp-coveralls` for reporting.
+
 __3.3.2__:
 * Bug fixes.
 
