@@ -17,6 +17,7 @@ before_install:
 
 install:
   - npm install --loglevel=silent karma-cli -g
+  - npm install --loglevel=silent gulp-coveralls -g
   - npm install --loglevel=silent
 
 script:
