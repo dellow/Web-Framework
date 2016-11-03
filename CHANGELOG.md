@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.3.2__:
+* Bug fixes.
+
 __3.3.1__:
 * Fixed coverage reporting.
 
