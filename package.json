@@ -64,6 +64,7 @@
     }
   },
   "scripts": {
+    "istanbul": "istanbul cover jasmine-node --captureExceptions spec/ && cat ./karma/coverage/report-lcov/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "minify": "npm run minify:css && npm run minify:images && npm run minify:js",
     "minify:css": "minify --output $npm_package_config_css_dest $npm_package_config_css_dest",
     "minify:images": "imagemin $npm_package_config_dist/images/**/**/* -o $npm_package_config_dist/images",
