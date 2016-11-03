@@ -13,8 +13,8 @@ var package = require('./package.json')
 
 module.exports = {
   entry: {
-    app: path.join(__dirname, './' + package.config.js.dirApp + 'index.js'),
-    common: path.join(__dirname, './' + package.config.js.dirCommon + 'index.js')
+    app: [path.join(__dirname, './' + package.config.js.dirApp + 'index.js')], // Using Array here fixes: "Error: a dependency to an entry point is not allowed" error.
+    common: [path.join(__dirname, './' + package.config.js.dirCommon + 'index.js')] // Using Array here fixes: "Error: a dependency to an entry point is not allowed" error.
   },
   output: {
     path: path.join(__dirname, './' + package.config.js.dest),

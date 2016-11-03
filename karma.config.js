@@ -1,14 +1,11 @@
 /**
  *
- * karma.conf.js
+ * Karma
  *
  * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
-
-var package = require('./package.json')
-var webpackConfig = require('./webpack.config')
 
 module.exports = function (config) {
   config.set({
@@ -32,12 +29,10 @@ module.exports = function (config) {
       'jasmine'
     ],
     files: [
-      package.config.js.dirApp,
-      package.config.js.dirTests + 'unit/**/*.js'
+      'webpack.tests.js'
     ],
     preprocessors: {
-      [package.config.js.dirApp]: ['coverage'],
-      [package.config.js.dirTests + 'unit/**/*.js']: ['webpack']
+      'webpack.tests.js': ['webpack']
     },
     coverageReporter: {
       dir: 'karma/coverage',
@@ -48,7 +43,19 @@ module.exports = function (config) {
       ]
     },
     webpack: {
-      module: webpackConfig.module
+      devtool: 'inline-source-map',
+      module: {
+        loaders: [
+        ],
+        postLoaders: [{
+          test: /\.js$/,
+          include: [
+            require('path').resolve(__dirname, 'src/dist/js/app/')
+          ],
+          exclude: /(test|node_modules|bower_components)\//,
+          loader: 'istanbul-instrumenter'
+        }]
+      }
     },
     webpackMiddleware: {
       stats: 'errors-only'
