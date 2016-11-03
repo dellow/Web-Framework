@@ -37,8 +37,12 @@ module.exports = function (config) {
       'webpack.tests.js': ['webpack']
     },
     coverageReporter: {
-      type: 'text',
-      dir: ''
+      dir: 'karma/coverage',
+      reporters: [
+        { type: 'text', dir: '' },
+        { type: 'lcov', subdir: 'report-lcov' },
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
+      ]
     },
     webpack: {
       module: {

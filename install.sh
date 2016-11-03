@@ -136,6 +136,10 @@ printf "\n"
 rm -rf .git/
 # Dir - .sass-cache
 rm -rf .sass-cache/
+# File - .travis.yml
+rm .travis.yml
+# File - .coveralls.yml
+rm .coveralls.yml
 # File - .gitkeep
 find . -name ".gitkeep" -print0 | xargs -0 rm -rf
 
