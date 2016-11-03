@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Web Framework/src/dist/js/app/public/module.plugins.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../../index.html">all files</a> / <a href="index.html">Web Framework/src/dist/js/app/public/</a> module.plugins.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">24.07% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>13/54</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">12.5% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">24.07% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/54</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ *
+ * Module
+ *
+ * Copyright 2016, Author Name
+ * Some information on the license.
+ *
+**/
+&nbsp;
+;(function (Module, window) {
+  'use strict'
+&nbsp;
+  /**
+   * Module
+   * Constructor for this module.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module = function () {
+    // var _this = this
+&nbsp;
+    // Require :: NPM
+    // require('fancybox')($)
+    // Require :: Plugins
+    // require('../../plugins/jquery.equal-heights')
+    // require('../../plugins/jquery.googlemap')
+    // require('../../plugins/jquery.modals')
+    // require('../../plugins/jquery.validation')
+    // Require :: Vendor
+    // require('../../plugins/vendor/jquery.slider')
+    // require('../../plugins/vendor/jquery.tooltipster')
+&nbsp;
+    // Document ready.
+    $(function () <span class="fstat-no" title="function not covered" >{</span>
+        // Call methods here.
+    })
+    // Window ready (images loaded).
+    $(window).on('load', function () <span class="fstat-no" title="function not covered" >{</span>
+        // Call methods here.
+    })
+  }
+&nbsp;
+  /**
+   * equalElementHeights
+   * Equal height elements.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module.prototype.equalElementHeights = function () <span class="fstat-no" title="function not covered" >{</span>
+    // DOM check.
+<span class="cstat-no" title="statement not covered" >    if ($('.js-eh').length) {</span>
+      // Init plugin.
+<span class="cstat-no" title="statement not covered" >      $('.js-eh').equalHeights()</span>
+    }
+  }
+&nbsp;
+  /**
+   * googleMaps
+   * Map events.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module.prototype.googleMaps = function () <span class="fstat-no" title="function not covered" >{</span>
+    // DOM check.
+<span class="cstat-no" title="statement not covered" >    if ($('.js-google-map').length) {</span>
+      // Init plugin.
+<span class="cstat-no" title="statement not covered" >      $('.js-google-map').googlemap({</span>
+        locations: [
+          'United Kingdom'
+        ]
+      })
+    }
+  }
+&nbsp;
+  /**
+   * lightboxes
+   * Lightbox events.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module.prototype.lightboxes = function () <span class="fstat-no" title="function not covered" >{</span>
+    // DOM check.
+<span class="cstat-no" title="statement not covered" >    if ($('.js-lightbox').length) {</span>
+      // Init plugin.
+<span class="cstat-no" title="statement not covered" >      $('.js-lightbox').fancybox({</span>
+        autoWidth: true,
+        autoHeight: true,
+        autoScale: true,
+        transitionIn: 'fade'
+      })
+    }
+  }
+&nbsp;
+  /**
+   * modals
+   * Modal events.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module.prototype.modals = function () <span class="fstat-no" title="function not covered" >{</span>
+    // DOM check.
+<span class="cstat-no" title="statement not covered" >    if ($('.js-modal').length) {</span>
+      // Init plugin.
+<span class="cstat-no" title="statement not covered" >      $('.js-modal').modal()</span>
+      // Init plugin on load (or function call).
+<span class="cstat-no" title="statement not covered" >      $(window).modal({</span>
+        type: 'modal-slide-left',
+        content: 'Some content here.'
+      })
+      // Destroy created modal.
+<span class="cstat-no" title="statement not covered" >      $(window).destroyModal()</span>
+    }
+  }
+&nbsp;
+  /**
+   * revealDomElement
+   * Reveals a DOM element.
+   *
+   * Usage: &lt;button class="js-reveal" data-reveal-target=".target" data-reveal-alt="Alternative Text" data-reveal-status="hidden"&gt;Click Me&lt;/button&gt;
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module.prototype.revealDomElement = function () <span class="fstat-no" title="function not covered" >{</span>
+    // Button click.
+<span class="cstat-no" title="statement not covered" >    $(document).on('click', '.js-reveal', function (e) <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >      e.preventDefault()</span>
+&nbsp;
+      var _self = <span class="cstat-no" title="statement not covered" >$(this)</span>
+      var target = <span class="cstat-no" title="statement not covered" >_self.data('reveal-target')</span>
+      var modify1 = <span class="cstat-no" title="statement not covered" >_self.text()</span>
+      var modify2 = <span class="cstat-no" title="statement not covered" >_self.data('reveal-alt')</span>
+      var status = <span class="cstat-no" title="statement not covered" >_self.data('reveal-status')</span>
+&nbsp;
+      // Check we have a target &amp; status.
+<span class="cstat-no" title="statement not covered" >      if (target &amp;&amp; status) {</span>
+<span class="cstat-no" title="statement not covered" >        if (status === 'visible') {</span>
+          // Check for modifier.
+<span class="cstat-no" title="statement not covered" >          if (modify2) {</span>
+            // Change text.
+<span class="cstat-no" title="statement not covered" >            _self.text(modify2)</span>
+            // Update modifier.
+<span class="cstat-no" title="statement not covered" >            _self.data('reveal-alt', modify1)</span>
+          }
+          // Hide element.
+<span class="cstat-no" title="statement not covered" >          $(target).addClass('u-hidden').removeClass('u-show')</span>
+          // Update all elements status.
+<span class="cstat-no" title="statement not covered" >          $('[data-reveal-target="' + target + '"]').data('reveal-status', 'hidden')</span>
+        } else {
+          // Check for modifier.
+<span class="cstat-no" title="statement not covered" >          if (modify2) {</span>
+            // Change text.
+<span class="cstat-no" title="statement not covered" >            _self.text(modify2)</span>
+            // Update modifier.
+<span class="cstat-no" title="statement not covered" >            _self.data('reveal-alt', modify1)</span>
+          }
+          // Show element.
+<span class="cstat-no" title="statement not covered" >          $(target).addClass('u-show').removeClass('u-hidden')</span>
+          // Update all elements status.
+<span class="cstat-no" title="statement not covered" >          $('[data-reveal-target="' + target + '"]').data('reveal-status', 'visible')</span>
+        }
+      }
+    })
+  }
+&nbsp;
+  /**
+   * sliders
+   * Slider events.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module.prototype.sliders = function () <span class="fstat-no" title="function not covered" >{</span>
+    // DOM check.
+<span class="cstat-no" title="statement not covered" >    if ($('.js-slider').length) {</span>
+      // Init plugin.
+<span class="cstat-no" title="statement not covered" >      $('.js-slider').bxSlider({</span>
+        auto: true,
+        controls: true,
+        pager: false,
+        autoReload: true,
+        infiniteLoop: true,
+        moveSlides: 1,
+        breaks: [
+          {screen: 0, slides: 1, pager: false},
+          {screen: 460, slides: 2},
+          {screen: 768, slides: 3}
+        ]
+      })
+    }
+  }
+&nbsp;
+  /**
+   * tooltips
+   * Tooltip events.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module.prototype.tooltips = function () <span class="fstat-no" title="function not covered" >{</span>
+    // DOM check.
+<span class="cstat-no" title="statement not covered" >    if ($('.js-tooltip').length) {</span>
+      // Init plugin.
+<span class="cstat-no" title="statement not covered" >      $('.js-tooltip').tooltipster({</span>
+        delay: 100,
+        animation: 'fade',
+        trigger: 'hover'
+      })
+      // Prevent click. This is for tooltips used in forms where
+      // we might use an anchor instead of a button. We do this
+      // so the button doesn't submit the form and trigger the
+      // validation script.
+<span class="cstat-no" title="statement not covered" >      $('.js-tooltip').on('click', function (e) <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >        e.preventDefault()</span>
+      })
+    }
+  }
+&nbsp;
+  /**
+   * validation
+   * Form validation events.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module.prototype.validation = function () <span class="fstat-no" title="function not covered" >{</span>
+    // Check captcha.
+<span class="cstat-no" title="statement not covered" >    if ($('#c_a_p_t_c_h_a').length) {</span>
+      // Set the captcha field value and check the box.
+<span class="cstat-no" title="statement not covered" >      $('#c_a_p_t_c_h_a').prop('checked', true).val('c_a_p_t_c_h_a')</span>
+    }
+&nbsp;
+    // DOM check.
+<span class="cstat-no" title="statement not covered" >    if ($('.js-validate').length) {</span>
+      // Init plugin.
+<span class="cstat-no" title="statement not covered" >      $('.js-validate').validation({</span>
+        serverValidation: false,
+        appendErrorToPlaceholder: true,
+        successCallback: function () <span class="fstat-no" title="function not covered" >{</span>
+          // Check for Google Analytics.
+<span class="cstat-no" title="statement not covered" >          if (window.config.ga_active) {</span>
+            // Set a virtual page for GA.
+<span class="cstat-no" title="statement not covered" >            window.ga('send', 'pageview', '/contact-success.virtual')</span>
+          }
+        }
+      })
+    }
+  }
+&nbsp;
+  // Export
+  module.exports = new Module()
+}(function () <span class="fstat-no" title="function not covered" >{},</span> window))
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 03 2016 10:07:33 GMT+0000 (GMT)
+</div>
+</div>
+<script src="../../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../../sorter.js"></script>
+</body>
+</html>
