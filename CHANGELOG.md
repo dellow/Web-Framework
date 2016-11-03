@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.3.4__:
+* Fixed Travis file.
+
 __3.3.3__:
 * Readded `gulp-coveralls` for reporting.
 
