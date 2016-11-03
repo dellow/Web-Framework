@@ -8,6 +8,7 @@
 **/
 
 var gulp = require('gulp')
+var path = require('path')
 var notify = require('gulp-notify')
 var livereload = require('gulp-livereload')
 var helpers = require('./Gulpfile.helpers')
@@ -174,5 +175,5 @@ gulp.task('js:task', function () {
 gulp.task('coveralls', function () {
 	var coveralls = require('gulp-coveralls')
 
-  return gulp.src('karma/coverage/**/lcov.info').pipe(coveralls())
+  return gulp.src(path.join(__dirname, 'karma/coverage/**/lcov.info')).pipe(coveralls())
 })
