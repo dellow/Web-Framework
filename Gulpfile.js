@@ -155,24 +155,3 @@ gulp.task('js:task', function () {
   	.pipe(gulp.dest(package.config.js.dest))
   	.pipe(livereload())
 })
-
-
-// ********************************************************************************************* //
-
-
-/**
- *
- * Coveralls
- *
- * Sends coverage information to Coveralls.
- *
- * @uses coveralls
- *
-**/
-
-// Task.
-gulp.task('coveralls', function () {
-	var coveralls = require('gulp-coveralls')
-
-  return gulp.src('karma/coverage/**/lcov.info').pipe(coveralls())
-})

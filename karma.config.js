@@ -1,11 +1,14 @@
 /**
  *
- * Karma
+ * karma.conf.js
  *
  * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
+
+var package = require('./package.json')
+var webpackConfig = require('./webpack.config')
 
 module.exports = function (config) {
   config.set({
@@ -29,33 +32,19 @@ module.exports = function (config) {
       'jasmine'
     ],
     files: [
-      'webpack.tests.js'
+      package.config.js.dirApp,
+      package.config.js.dirTests + 'unit/**/*.js'
     ],
     preprocessors: {
-      'webpack.tests.js': ['webpack']
+      [package.config.js.dirApp]: ['coverage'],
+      [package.config.js.dirTests + 'unit/**/*.js']: ['webpack']
     },
     coverageReporter: {
-      dir: 'karma/coverage',
-      reporters: [
-        { type: 'text', dir: '' },
-        { type: 'lcov', subdir: 'report-lcov' },
-        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
-      ]
+      type: 'text',
+      dir: ''
     },
     webpack: {
-      devtool: 'inline-source-map',
-      module: {
-        loaders: [
-        ],
-        postLoaders: [{
-          test: /\.js$/,
-          include: [
-            require('path').resolve(__dirname, 'src/dist/js/app/')
-          ],
-          exclude: /(test|node_modules|bower_components)\//,
-          loader: 'istanbul-instrumenter'
-        }]
-      }
+      module: webpackConfig.module
     },
     webpackMiddleware: {
       stats: 'errors-only'
