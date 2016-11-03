@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.3.5__:
+* Added missing `.coveralls.yml` file.
+
 __3.3.4__:
 * Fixed Travis file.
 
