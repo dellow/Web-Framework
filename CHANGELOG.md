@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.3.1__:
+* Fixed coverage reporting.
+
 __3.3.0__:
 * Complete overhaul to unit and integration testing.
 * Rebuilt how the mobile menu works.
