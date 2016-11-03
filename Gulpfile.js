@@ -163,17 +163,20 @@ gulp.task('js:task', function () {
 
 /**
  *
- * Coveralls
+ * Tests > Unit
  *
- * Sends coverage information to Coveralls.
+ * Run Unit tests and sends coverage information to Coveralls.
  *
  * @uses coveralls
  *
 **/
 
 // Task.
-gulp.task('coveralls', function () {
+gulp.task('test:unit', function () {
+  var Server = require('karma').Server
 	var coveralls = require('gulp-coveralls')
+
+  new Server({configFile: path.join(__dirname, '/karma.config.js'), singleRun: true}).start()
 
   return gulp.src(path.join(__dirname, 'karma/coverage/**/lcov.info')).pipe(coveralls())
 })

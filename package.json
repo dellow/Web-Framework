@@ -70,7 +70,7 @@
     "minify:js": "minify --output $npm_package_config_js_dest $npm_package_config_js_dest",
     "test:integration": "nightwatch",
     "test:unit": "karma start karma.config.js",
-    "test": "npm run test:unit && npm run test:integration",
+    "test": "gulp test:unit",
     "sprite": "sprity create $npm_package_config_dist/images/icons/ $npm_package_config_dist/images/icons/png/*.png -c ../images/icons/ -s ../../css/scss/site/_sprites.scss -p sass -n sprite --prefix css-sprite --orientation horizontal --background '#FFFFFF' --margin '2' -d 1:72 -d 2:192"
   },
   "private": true
