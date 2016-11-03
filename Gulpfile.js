@@ -175,7 +175,7 @@ gulp.task('js:task', function () {
 
 // Task.
 gulp.task('test:unit', ['test:unit:karma', 'test:unit:coveralls'], function () {
-	return gulp.src('/').pipe(notify('Unit tests run'))
+	return gulp.src('/')
 })
 
 // Task.
