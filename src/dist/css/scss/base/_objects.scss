@@ -56,16 +56,11 @@ Various CSS objects used throughout an application.
   }
   label {
     input[type="checkbox"], input[type="radio"] {
-      @include nudge(margin, 0 0.25 0 0.75);
+      @include nudge(margin, 0 0.25 0 0);
     }
     + .obj-form-field__note {
       @include nudge(margin-left, 0.75);
       line-height: 2.4;
-    }
-    &:first-child {
-      input[type="checkbox"], input[type="radio"] {
-        margin-left: 0;
-      }
     }
   }
   &:last-child {

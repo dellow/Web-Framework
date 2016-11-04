@@ -115,7 +115,7 @@ blockquote, dl, ol, p, pre, ul {
 /* -- Content Areas -- */
 .page__content {
   // Margins
-  img, figure {
+	img, figure, .obj-embed-container {
     @include nudge(margin-bottom, 1);
     img { // No margin on inner images.
       margin: 0;

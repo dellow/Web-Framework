@@ -8,7 +8,7 @@
 **/
 
 // Set module.
-var TestModule = Public.modules.MobileMenu
+var TestModule = global.Public.modules.MobileMenu
 
 // Suite.
 describe('Module: Mobile Menu', function () {

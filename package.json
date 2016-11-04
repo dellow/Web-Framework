@@ -50,17 +50,17 @@
     "src": "./src/",
     "dist": "./src/dist/",
     "css": {
-      "dirDest": "./src/dist/css/",
-      "dirSCSS": "./src/dist/css/scss/",
-      "dest": "./src/dist/css/build.css",
-      "src": "./src/dist/css/scss/build.scss"
+      "dirDest": "src/dist/css/",
+      "dirSCSS": "src/dist/css/scss/",
+      "dest": "src/dist/css/build.css",
+      "src": "src/dist/css/scss/build.scss"
     },
     "js": {
-      "dirApp": "./src/dist/js/app/",
-      "dirCommon": "./src/dist/js/common/",
-      "dirDest": "./src/dist/js/",
-      "dirTests": "./src/dist/js/tests/",
-      "dest": "./src/dist/js/build/"
+      "dirApp": "src/dist/js/app/",
+      "dirCommon": "src/dist/js/common/",
+      "dirDest": "src/dist/js/",
+      "dirTests": "src/dist/js/tests/",
+      "dest": "src/dist/js/build/"
     }
   },
   "scripts": {
