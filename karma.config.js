@@ -31,9 +31,13 @@ module.exports = function (config) {
       'jasmine'
     ],
     files: [
+      package.config.js.dirCommon + 'index.js',
+      package.config.js.dirApp + 'index.js',
       'webpack.tests.js'
     ],
     preprocessors: {
+      [package.config.js.dirCommon + 'index.js']: ['webpack'],
+      [package.config.js.dirApp + 'index.js']: ['webpack'],
       'webpack.tests.js': ['webpack']
     },
     coverageReporter: {

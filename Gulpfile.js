@@ -174,7 +174,7 @@ gulp.task('js:task', function () {
 **/
 
 // Task.
-gulp.task('test:unit', ['test:unit:karma', 'test:unit:coveralls'], function () {
+gulp.task('test:unit', ['test:unit:karma'], function () {
 	return gulp.src('/')
 })
 

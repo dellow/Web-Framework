@@ -1,5 +1,9 @@
 # Web Framework Changelog
 
+__3.3.6__:
+* Tests now properly use Karma to get dependencies.
+* Use Gulp to run tests.
+
 __3.3.5__:
 * Added missing `.coveralls.yml` file.
 
@@ -7,7 +11,7 @@ __3.3.4__:
 * Fixed Travis file.
 
 __3.3.3__:
-* Readded `gulp-coveralls` for reporting.
+* Re-added `gulp-coveralls` for reporting.
 
 __3.3.2__:
 * Bug fixes.

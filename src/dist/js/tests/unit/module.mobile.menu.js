@@ -7,75 +7,63 @@
 *
 **/
 
-/* ======================================================== */
-/* Dependencies
-/* ======================================================== */
-require('../../common')
-require('../../app')
+// Set module.
+var TestModule = Public.modules.MobileMenu
 
-/* ======================================================== */
-/* Module
-/* ======================================================== */
-// Get module.
-var Module = require('../../app/public/module.mobile.menu')
-
-/* ======================================================== */
-/* Tests
-/* ======================================================== */
 // Suite.
 describe('Module: Mobile Menu', function () {
   // Suite.
   describe('Should have', function () {
     // Spec.
     it('settings object', function () {
-      expect(typeof Module.settings).toBe('object')
+      expect(typeof TestModule.settings).toBe('object')
     })
     // Spec.
     it('init method', function () {
-      expect(typeof Module.init).toBe('function')
+      expect(typeof TestModule.init).toBe('function')
     })
     // Spec.
     it('setHeaderHeight method', function () {
-      expect(typeof Module.setHeaderHeight).toBe('function')
+      expect(typeof TestModule.setHeaderHeight).toBe('function')
     })
     // Spec.
     it('calculateHeight method', function () {
-      expect(typeof Module.calculateHeight).toBe('function')
+      expect(typeof TestModule.calculateHeight).toBe('function')
     })
     // Spec.
     it('style method', function () {
-      expect(typeof Module.style).toBe('function')
+      expect(typeof TestModule.style).toBe('function')
     })
   })
   // Suite.
   describe('init() method', function () {
     // Spec.
     it('should call setHeaderHeight() without parameters', function () {
-      spyOn(Module, 'setHeaderHeight')
-      Module.init()
-      expect(Module.setHeaderHeight).toHaveBeenCalledWith()
+      spyOn(TestModule, 'setHeaderHeight')
+      TestModule.init()
+      expect(TestModule.setHeaderHeight).toHaveBeenCalledWith()
     })
     // Spec.
     it('should call style() with a DOM element and CSS object', function () {
-      spyOn(Module, 'style')
-      Module.init()
-      expect(Module.style).toHaveBeenCalledWith($('.js--mobileMenu--menu'), {'left': '-100%', 'opacity': '0'})
+      spyOn(TestModule, 'style')
+      TestModule.init()
+      expect(TestModule.style).toHaveBeenCalledWith($('.js--mobileMenu--menu'), {'left': '-100%', 'opacity': '0'})
     })
   })
   // Suite.
   describe('setHeaderHeight() method', function () {
     // Spec.
     it('should call calculateHeight() with a DOM element', function () {
-      spyOn(Module, 'calculateHeight')
-      Module.setHeaderHeight()
-      expect(Module.calculateHeight).toHaveBeenCalledWith($('.js--mobileMenu--header'))
+      spyOn(TestModule, 'calculateHeight')
+      TestModule.setHeaderHeight()
+      expect(TestModule.calculateHeight).toHaveBeenCalledWith($('.js--mobileMenu--header'))
     })
   })
   // Suite.
   describe('calculateHeight() method', function () {
     // Spec.
     it('should return number', function () {
-      expect(Module.calculateHeight($('<div style="height: 100px;"></div>'))).toEqual(jasmine.any(Number))
+      expect(TestModule.calculateHeight($('<div style="height: 100px;"></div>'))).toEqual(jasmine.any(Number))
     })
   })
 })

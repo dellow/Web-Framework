@@ -1,0 +1,19 @@
+/**
+*
+* Module > Test
+*
+* Copyright 2016, Author Name
+* Some information on the license.
+*
+**/
+
+// Set module.
+var TestModule = Public.modules.SampleModule
+
+// Suite.
+describe('Module: Sample', function () {
+  // Spec.
+  it('moduleMethod should return false', function () {
+    expect(TestModule.moduleMethod()).toBeFalsy()
+  })
+})
