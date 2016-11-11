@@ -20,8 +20,6 @@
 
 .modal-content {
 	@include nudge(padding, 1);
-	color: color(white);
-	background: color(blue);
 }
 
 .modal-overlay {
@@ -33,7 +31,6 @@
 	left: 0;
 	z-index: 1000;
 	opacity: 0;
-	background: rgba(0, 0, 0, 0.75);
 	transition: all $animation ease;
 }
 

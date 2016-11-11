@@ -33,11 +33,11 @@
   .bg, .slab {
     &--color-#{"" + $key} {
       color: inherit;
-      background: color($key);
-      // Abstractions
-      &--opp {
-        background: color($key, dark);
-      }
+			background-color: color($key);
+			// Abstractions
+			&--opp {
+				background-color: color($key, dark);
+			}
     }
   }
 }

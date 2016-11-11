@@ -45,27 +45,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
   @include nudge(margin, 0.5 0 1);
-  font-size: 300%;
+  @include scale(font-size, 300%);
+  @include scale(line-height, 125%);
 }
 h2 {
   @include nudge(margin, 0.5 0 1);
-  font-size: 250%;
+  @include scale(font-size, 250%);
+  @include scale(line-height, 125%);
 }
 h3 {
   @include nudge(margin, 0.5 0 1);
-  font-size: 200%;
+  @include scale(font-size, 200%);
+  @include scale(line-height, 125%);
 }
 h4 {
   @include nudge(margin, 0.5 0);
-  font-size: 150%;
+  @include scale(font-size, 150%);
+  @include scale(line-height, 125%);
 }
 h5 {
   @include nudge(margin, 0.5 0);
-  font-size: 125%;
+  @include scale(font-size, 125%);
+  @include scale(line-height, 125%);
 }
 h6 {
   @include nudge(margin, 0.5 0);
-  font-size: 100%;
+  @include scale(font-size, 125%);
+  @include scale(line-height, 100%);
 }
 
 

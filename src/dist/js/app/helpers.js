@@ -158,16 +158,16 @@
   * @since 1.0.0
   * @version 1.0.0
   */
-  Helpers.ajax = function (url, request, type, dataType, preloaderElement) {
+  Helpers.ajax = function (url, type, dataType, data) {
     // Default data.
     var defaultParams = {
       ajaxrequest: true
     }
-    var requestParams = (!global.Helpers.isEmpty(request)) ? request : {}
+    var requestParams = (!global.Helpers.isEmpty(data)) ? data : {}
     // Get params (if any).
-    var optionalParams = global.Helpers.parseURLParams(url)
+    var urlParams = global.Helpers.parseURLParams(url)
     // Merge params to get data.
-    var data = $.extend({}, defaultParams, optionalParams, requestParams)
+    var data = $.extend({}, defaultParams, urlParams, requestParams)
     // Request.
     return $.ajax({
       url: (url.indexOf('?') !== -1) ? url.split('?')[0] : url,
@@ -177,12 +177,6 @@
       beforeSend: function (jqXHR, settings) {
         // Log full URL.
         global.Helpers.log(settings.url + '?' + settings.data)
-        // Add preloader.
-        global.Helpers.preloader((global.Helpers.isEmpty(preloaderElement)) ? $('body') : preloaderElement)
-      },
-      complete: function (jqXHR) {
-        // Destroy preloader.
-        global.Helpers.preloader((global.Helpers.isEmpty(preloaderElement)) ? $('body') : preloaderElement, true)
       }
     })
   }
