@@ -15,8 +15,6 @@
 		max-width: $col_1 - $gutter;
 		flex-basis: $col_1 - $gutter;
     @include nudge(margin, 1 0 0 $gutter);
-		display: flex;
-		flex-direction: column;
 		// Abstractions
 		&.left {
 			text-align: left;
