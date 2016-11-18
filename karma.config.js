@@ -7,7 +7,7 @@
  *
 **/
 
-var package = require('./package.json')
+var packageConfig = require('./package.json')
 
 module.exports = function (config) {
   config.set({
@@ -31,13 +31,13 @@ module.exports = function (config) {
       'jasmine'
     ],
     files: [
-      package.config.js.dirCommon + 'index.js',
-      package.config.js.dirApp + 'index.js',
+      packageConfig.config.js.dirCommon + 'index.js',
+      packageConfig.config.js.dirApp + 'index.js',
       'webpack.tests.js'
     ],
     preprocessors: {
-      [package.config.js.dirCommon + 'index.js']: ['webpack'],
-      [package.config.js.dirApp + 'index.js']: ['webpack'],
+      [packageConfig.config.js.dirCommon + 'index.js']: ['webpack'],
+      [packageConfig.config.js.dirApp + 'index.js']: ['webpack'],
       'webpack.tests.js': ['webpack']
     },
     coverageReporter: {
@@ -65,7 +65,7 @@ module.exports = function (config) {
         postLoaders: [{
           test: /\.js$/,
           exclude: /(test|node_modules|bower_components)\//,
-          include: [require('path').resolve(__dirname, package.config.js.dirApp)],
+          include: [require('path').resolve(__dirname, packageConfig.config.js.dirApp)],
           loader: 'istanbul-instrumenter'
         }]
       }
