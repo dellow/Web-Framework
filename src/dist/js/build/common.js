@@ -48,17 +48,17 @@
 	/* Modernizr (via Browsernizr) (check browsernizr/test/** for tests)
 	/* ======================================================== */
 	// require('browsernizr/test/css/transitions')
-	global.Modernizr = __webpack_require__(5)
+	global.Modernizr = __webpack_require__(8)
 
 	/* ======================================================== */
 	/* jQuery
 	/* ======================================================== */
-	global.jQuery = $ = __webpack_require__(15)
+	global.jQuery = $ = __webpack_require__(18)
 
 	/* ======================================================== */
 	/* Underscore
 	/* ======================================================== */
-	global._ = __webpack_require__(16)
+	global._ = __webpack_require__(19)
 
 	/* ======================================================== */
 	/* Handlebars
@@ -74,22 +74,22 @@
 	/* ======================================================== */
 	/* Helpers
 	/* ======================================================== */
-	global.Helpers = __webpack_require__(17)
+	global.Helpers = __webpack_require__(20)
 
 	/* ======================================================== */
 	/* Breakpoint Info
 	/* ======================================================== */
-	global.Breakpoint = __webpack_require__(18)
+	global.Breakpoint = __webpack_require__(21)
 
 	/* ======================================================== */
 	/* Config
 	/* ======================================================== */
-	__webpack_require__(19)
+	__webpack_require__(22)
 
 	/* ======================================================== */
 	/* Google Analytics Autotrack
 	/* ======================================================== */
-	__webpack_require__(20)
+	__webpack_require__(23)
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
@@ -98,14 +98,17 @@
 /* 2 */,
 /* 3 */,
 /* 4 */,
-/* 5 */
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Modernizr = __webpack_require__(6),
-	    ModernizrProto = __webpack_require__(7),
-	    classes = __webpack_require__(9),
-	    testRunner = __webpack_require__(10),
-	    setClasses = __webpack_require__(12);
+	var Modernizr = __webpack_require__(9),
+	    ModernizrProto = __webpack_require__(10),
+	    classes = __webpack_require__(12),
+	    testRunner = __webpack_require__(13),
+	    setClasses = __webpack_require__(15);
 
 	// Run each test
 	testRunner();
@@ -125,10 +128,10 @@
 
 
 /***/ },
-/* 6 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ModernizrProto = __webpack_require__(7);
+	var ModernizrProto = __webpack_require__(10);
 	  // Fake some of Object.create so we can force non test results to be non "own" properties.
 	  var Modernizr = function() {};
 	  Modernizr.prototype = ModernizrProto;
@@ -142,10 +145,10 @@
 
 
 /***/ },
-/* 7 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var tests = __webpack_require__(8);
+	var tests = __webpack_require__(11);
 	  /**
 	   *
 	   * ModernizrProto is the constructor for Modernizr
@@ -198,7 +201,7 @@
 
 
 /***/ },
-/* 8 */
+/* 11 */
 /***/ function(module, exports) {
 
 	
@@ -208,7 +211,7 @@
 
 
 /***/ },
-/* 9 */
+/* 12 */
 /***/ function(module, exports) {
 
 	
@@ -218,13 +221,13 @@
 
 
 /***/ },
-/* 10 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var tests = __webpack_require__(8);
-	var Modernizr = __webpack_require__(6);
-	var classes = __webpack_require__(9);
-	var is = __webpack_require__(11);
+	var tests = __webpack_require__(11);
+	var Modernizr = __webpack_require__(9);
+	var classes = __webpack_require__(12);
+	var is = __webpack_require__(14);
 	  /**
 	   * Run through all tests and detect their support in the current UA.
 	   *
@@ -299,7 +302,7 @@
 
 
 /***/ },
-/* 11 */
+/* 14 */
 /***/ function(module, exports) {
 
 	
@@ -321,12 +324,12 @@
 
 
 /***/ },
-/* 12 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Modernizr = __webpack_require__(6);
-	var docElement = __webpack_require__(13);
-	var isSVG = __webpack_require__(14);
+	var Modernizr = __webpack_require__(9);
+	var docElement = __webpack_require__(16);
+	var isSVG = __webpack_require__(17);
 	  /**
 	   * setClasses takes an array of class names and adds them to the root element
 	   *
@@ -365,7 +368,7 @@
 
 
 /***/ },
-/* 13 */
+/* 16 */
 /***/ function(module, exports) {
 
 	
@@ -382,10 +385,10 @@
 
 
 /***/ },
-/* 14 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var docElement = __webpack_require__(13);
+	var docElement = __webpack_require__(16);
 	  /**
 	   * A convenience helper to check if the document we are running in is an SVG document
 	   *
@@ -399,7 +402,7 @@
 
 
 /***/ },
-/* 15 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10625,7 +10628,7 @@
 
 
 /***/ },
-/* 16 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -12179,7 +12182,7 @@
 
 
 /***/ },
-/* 17 */
+/* 20 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -12253,7 +12256,7 @@
 	    // Clone element.
 	    var clone = el.clone()
 	    // Add to DOM in place and measure height.
-	    var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto'}).prependTo(el.parent()).outerHeight()
+	    var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto', 'visibility': 'hidden'}).prependTo(el.parent()).outerHeight()
 	    // Destroy the clone.
 	    clone.remove()
 
@@ -12342,16 +12345,16 @@
 	  * @since 1.0.0
 	  * @version 1.0.0
 	  */
-	  Helpers.ajax = function (url, request, type, dataType, preloaderElement) {
+	  Helpers.ajax = function (url, type, dataType, data) {
 	    // Default data.
 	    var defaultParams = {
 	      ajaxrequest: true
 	    }
-	    var requestParams = (!global.Helpers.isEmpty(request)) ? request : {}
+	    var requestParams = (!global.Helpers.isEmpty(data)) ? data : {}
 	    // Get params (if any).
-	    var optionalParams = global.Helpers.parseURLParams(url)
+	    var urlParams = global.Helpers.parseURLParams(url)
 	    // Merge params to get data.
-	    var data = $.extend({}, defaultParams, optionalParams, requestParams)
+	    var data = $.extend({}, defaultParams, urlParams, requestParams)
 	    // Request.
 	    return $.ajax({
 	      url: (url.indexOf('?') !== -1) ? url.split('?')[0] : url,
@@ -12360,13 +12363,7 @@
 	      data: data,
 	      beforeSend: function (jqXHR, settings) {
 	        // Log full URL.
-	        global.Helpers.log(settings.url + '?' + settings.data)
-	        // Add preloader.
-	        global.Helpers.preloader((global.Helpers.isEmpty(preloaderElement)) ? $('body') : preloaderElement)
-	      },
-	      complete: function (jqXHR) {
-	        // Destroy preloader.
-	        global.Helpers.preloader((global.Helpers.isEmpty(preloaderElement)) ? $('body') : preloaderElement, true)
+	        global.Helpers.log((settings.data) ? settings.url + '?' + settings.data : settings.url)
 	      }
 	    })
 	  }
@@ -12414,7 +12411,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 18 */
+/* 21 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -12476,7 +12473,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 19 */
+/* 22 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -12496,7 +12493,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 20 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12517,22 +12514,22 @@
 
 
 	// Imports all sub-plugins.
-	__webpack_require__(21);
-	__webpack_require__(29);
-	__webpack_require__(34);
-	__webpack_require__(35);
+	__webpack_require__(24);
+	__webpack_require__(32);
+	__webpack_require__(37);
 	__webpack_require__(38);
-	__webpack_require__(39);
-	__webpack_require__(40);
 	__webpack_require__(41);
 	__webpack_require__(42);
+	__webpack_require__(43);
+	__webpack_require__(44);
+	__webpack_require__(45);
 
 	// Imports the deprecated autotrack plugin for backwards compatibility.
-	__webpack_require__(43);
+	__webpack_require__(46);
 
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12552,11 +12549,11 @@
 	 */
 
 
-	var assign = __webpack_require__(22);
-	var parseUrl = __webpack_require__(23);
-	var constants = __webpack_require__(24);
-	var provide = __webpack_require__(25);
-	var usage = __webpack_require__(28);
+	var assign = __webpack_require__(25);
+	var parseUrl = __webpack_require__(26);
+	var constants = __webpack_require__(27);
+	var provide = __webpack_require__(28);
+	var usage = __webpack_require__(31);
 
 
 	/**
@@ -12659,7 +12656,7 @@
 
 
 /***/ },
-/* 22 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12748,7 +12745,7 @@
 
 
 /***/ },
-/* 23 */
+/* 26 */
 /***/ function(module, exports) {
 
 	var HTTP_PORT = '80';
@@ -12822,7 +12819,7 @@
 
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports) {
 
 	/**
@@ -12854,7 +12851,7 @@
 
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12874,8 +12871,8 @@
 	 */
 
 
-	var constants = __webpack_require__(24);
-	var utilities = __webpack_require__(26);
+	var constants = __webpack_require__(27);
+	var utilities = __webpack_require__(29);
 
 
 	// Adds the dev ID to the list of dev IDs if any plugin is used.
@@ -12904,7 +12901,7 @@
 
 
 /***/ },
-/* 26 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12924,8 +12921,8 @@
 	 */
 
 
-	var assign = __webpack_require__(22);
-	var getAttributes = __webpack_require__(27);
+	var assign = __webpack_require__(25);
+	var getAttributes = __webpack_require__(30);
 
 
 	var utilities = {
@@ -13090,7 +13087,7 @@
 
 
 /***/ },
-/* 27 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/**
@@ -13118,7 +13115,7 @@
 
 
 /***/ },
-/* 28 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13138,7 +13135,7 @@
 	 */
 
 
-	var constants = __webpack_require__(24);
+	var constants = __webpack_require__(27);
 
 
 	var plugins = {
@@ -13242,7 +13239,7 @@
 
 
 /***/ },
-/* 29 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13262,12 +13259,12 @@
 	 */
 
 
-	var assign = __webpack_require__(22);
-	var delegate = __webpack_require__(30);
-	var provide = __webpack_require__(25);
-	var usage = __webpack_require__(28);
-	var createFieldsObj = __webpack_require__(26).createFieldsObj;
-	var getAttributeFields = __webpack_require__(26).getAttributeFields;
+	var assign = __webpack_require__(25);
+	var delegate = __webpack_require__(33);
+	var provide = __webpack_require__(28);
+	var usage = __webpack_require__(31);
+	var createFieldsObj = __webpack_require__(29).createFieldsObj;
+	var getAttributeFields = __webpack_require__(29).getAttributeFields;
 
 
 	/**
@@ -13342,11 +13339,11 @@
 
 
 /***/ },
-/* 30 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(31);
-	var matches = __webpack_require__(32);
+	var closest = __webpack_require__(34);
+	var matches = __webpack_require__(35);
 
 	/**
 	 * Delegates the handling of events for an element matching a selector to an
@@ -13399,11 +13396,11 @@
 
 
 /***/ },
-/* 31 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var matches = __webpack_require__(32);
-	var parents = __webpack_require__(33);
+	var matches = __webpack_require__(35);
+	var parents = __webpack_require__(36);
 
 	/**
 	 * Gets the closest parent element that matches the passed selector.
@@ -13426,7 +13423,7 @@
 
 
 /***/ },
-/* 32 */
+/* 35 */
 /***/ function(module, exports) {
 
 	var proto = window.Element.prototype;
@@ -13484,7 +13481,7 @@
 
 
 /***/ },
-/* 33 */
+/* 36 */
 /***/ function(module, exports) {
 
 	/**
@@ -13503,7 +13500,7 @@
 
 
 /***/ },
-/* 34 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13523,12 +13520,12 @@
 	 */
 
 
-	var assign = __webpack_require__(22);
-	var provide = __webpack_require__(25);
-	var usage = __webpack_require__(28);
-	var createFieldsObj = __webpack_require__(26).createFieldsObj;
-	var domReady = __webpack_require__(26).domReady;
-	var getAttributeFields = __webpack_require__(26).getAttributeFields;
+	var assign = __webpack_require__(25);
+	var provide = __webpack_require__(28);
+	var usage = __webpack_require__(31);
+	var createFieldsObj = __webpack_require__(29).createFieldsObj;
+	var domReady = __webpack_require__(29).domReady;
+	var getAttributeFields = __webpack_require__(29).getAttributeFields;
 
 
 	/**
@@ -13830,7 +13827,7 @@
 
 
 /***/ },
-/* 35 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13850,14 +13847,14 @@
 	 */
 
 
-	var assign = __webpack_require__(22);
-	var debounce = __webpack_require__(36);
-	var constants = __webpack_require__(24);
-	var provide = __webpack_require__(25);
-	var usage = __webpack_require__(28);
-	var createFieldsObj = __webpack_require__(26).createFieldsObj;
-	var isObject = __webpack_require__(26).isObject;
-	var toArray = __webpack_require__(26).toArray;
+	var assign = __webpack_require__(25);
+	var debounce = __webpack_require__(39);
+	var constants = __webpack_require__(27);
+	var provide = __webpack_require__(28);
+	var usage = __webpack_require__(31);
+	var createFieldsObj = __webpack_require__(29).createFieldsObj;
+	var isObject = __webpack_require__(29).isObject;
+	var toArray = __webpack_require__(29).toArray;
 
 
 	/**
@@ -14018,7 +14015,7 @@
 
 
 /***/ },
-/* 36 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -14026,7 +14023,7 @@
 	 * Module dependencies.
 	 */
 
-	var now = __webpack_require__(37);
+	var now = __webpack_require__(40);
 
 	/**
 	 * Returns a function, that, as long as it continues to be invoked, will not
@@ -14077,7 +14074,7 @@
 
 
 /***/ },
-/* 37 */
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = Date.now || now
@@ -14088,7 +14085,7 @@
 
 
 /***/ },
-/* 38 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14108,14 +14105,14 @@
 	 */
 
 
-	var assign = __webpack_require__(22);
-	var delegate = __webpack_require__(30);
-	var parseUrl = __webpack_require__(23);
-	var provide = __webpack_require__(25);
-	var usage = __webpack_require__(28);
-	var createFieldsObj = __webpack_require__(26).createFieldsObj;
-	var getAttributeFields = __webpack_require__(26).getAttributeFields;
-	var withTimeout = __webpack_require__(26).withTimeout;
+	var assign = __webpack_require__(25);
+	var delegate = __webpack_require__(33);
+	var parseUrl = __webpack_require__(26);
+	var provide = __webpack_require__(28);
+	var usage = __webpack_require__(31);
+	var createFieldsObj = __webpack_require__(29).createFieldsObj;
+	var getAttributeFields = __webpack_require__(29).getAttributeFields;
+	var withTimeout = __webpack_require__(29).withTimeout;
 
 
 	/**
@@ -14214,7 +14211,7 @@
 
 
 /***/ },
-/* 39 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14234,13 +14231,13 @@
 	 */
 
 
-	var assign = __webpack_require__(22);
-	var delegate = __webpack_require__(30);
-	var parseUrl = __webpack_require__(23);
-	var provide = __webpack_require__(25);
-	var usage = __webpack_require__(28);
-	var createFieldsObj = __webpack_require__(26).createFieldsObj;
-	var getAttributeFields = __webpack_require__(26).getAttributeFields;
+	var assign = __webpack_require__(25);
+	var delegate = __webpack_require__(33);
+	var parseUrl = __webpack_require__(26);
+	var provide = __webpack_require__(28);
+	var usage = __webpack_require__(31);
+	var createFieldsObj = __webpack_require__(29).createFieldsObj;
+	var getAttributeFields = __webpack_require__(29).getAttributeFields;
 
 
 	/**
@@ -14343,7 +14340,7 @@
 
 
 /***/ },
-/* 40 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14363,11 +14360,11 @@
 	 */
 
 
-	var assign = __webpack_require__(22);
-	var provide = __webpack_require__(25);
-	var usage = __webpack_require__(28);
-	var createFieldsObj = __webpack_require__(26).createFieldsObj;
-	var isObject = __webpack_require__(26).isObject;
+	var assign = __webpack_require__(25);
+	var provide = __webpack_require__(28);
+	var usage = __webpack_require__(31);
+	var createFieldsObj = __webpack_require__(29).createFieldsObj;
+	var isObject = __webpack_require__(29).isObject;
 
 
 	var DEFAULT_SESSION_TIMEOUT = 30; // 30 minutes.
@@ -14556,7 +14553,7 @@
 
 
 /***/ },
-/* 41 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14579,10 +14576,10 @@
 	/* global FB, twttr */
 
 
-	var assign = __webpack_require__(22);
-	var provide = __webpack_require__(25);
-	var usage = __webpack_require__(28);
-	var createFieldsObj = __webpack_require__(26).createFieldsObj;
+	var assign = __webpack_require__(25);
+	var provide = __webpack_require__(28);
+	var usage = __webpack_require__(31);
+	var createFieldsObj = __webpack_require__(29).createFieldsObj;
 
 
 	/**
@@ -14781,7 +14778,7 @@
 
 
 /***/ },
-/* 42 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14801,11 +14798,11 @@
 	 */
 
 
-	var assign = __webpack_require__(22);
-	var provide = __webpack_require__(25);
-	var usage = __webpack_require__(28);
-	var createFieldsObj = __webpack_require__(26).createFieldsObj;
-	var isObject = __webpack_require__(26).isObject;
+	var assign = __webpack_require__(25);
+	var provide = __webpack_require__(28);
+	var usage = __webpack_require__(31);
+	var createFieldsObj = __webpack_require__(29).createFieldsObj;
+	var isObject = __webpack_require__(29).isObject;
 
 
 	/**
@@ -14944,7 +14941,7 @@
 
 
 /***/ },
-/* 43 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14968,7 +14965,7 @@
 
 
 	// Imports dependencies.
-	var provide = __webpack_require__(25);
+	var provide = __webpack_require__(28);
 
 
 	/**

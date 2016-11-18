@@ -10,6 +10,8 @@
 ;(function (Public, window) {
   'use strict'
 
+  var eventsList = []
+
   /**
    * Public
    * Constructor for Public.
@@ -21,14 +23,24 @@
   }
 
   /**
-   * modules
-   * Public modules.
+   * init
+   * Module init method.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Public.prototype.modules = {
+  Public.prototype.init = function () {
+    getModules.call(this)
   }
+
+  /**
+   * eventsList
+   * Get events as an array list.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Public.prototype.eventsList = eventsList
 
   /**
    * events
@@ -56,6 +68,9 @@
       var event = name.substr(0, name.indexOf(' '))
       // Cache selector.
       var selector = name.substr(name.indexOf(' ') + 1)
+      // Add to array.
+      eventsList.push(event + ' : ' + selector)
+      eventsList.sort()
       // Add event.
       $(document).on(event, selector, function (e) {
         // Append $el to event object
@@ -71,14 +86,55 @@
   }
 
   /**
-   * init
-   * Module init method.
+   * plugins
+   * Module plugins method.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Public.prototype.init = function () {
-    getModules.call(this)
+  Public.prototype.plugins = {
+    equalElementHeights: function (el) {
+      // DOM check.
+      if (!el.length) return
+
+      // Get plugin.
+      require('../../plugins/jquery.equal-heights')
+      // Init plugin.
+      el.equalHeights()
+    },
+    sliders: function (el, options) {
+      // DOM check.
+      if (!el.length) return
+
+      // Get plugin.
+      require('../../plugins/vendor/jquery.slider')
+      // Init plugin.
+      el.bxSlider(options)
+    },
+    validation: function (el, options) {
+      // DOM check.
+      if (!el.length) return
+
+      // Check captcha.
+      if ($('#c_a_p_t_c_h_a', el).length) {
+        // Set the captcha field value and check the box.
+        $('#c_a_p_t_c_h_a', el).prop('checked', true).val('c_a_p_t_c_h_a')
+      }
+      // Get plugin.
+      require('../../plugins/jquery.validation')
+      // Init plugin.
+      el.validation(options)
+    }
+  }
+
+  /**
+   * modules
+   * Public modules.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Public.prototype.modules = {
   }
 
   /**
@@ -89,9 +145,8 @@
    * @version 1.0.0
   **/
   var getModules = function () {
-    // Require :: Modules
-    this.modules.Plugins = require('./module.plugins')
     this.modules.MobileMenu = require('./module.mobile.menu')
+    this.modules.DynamicDOM = require('./module.dynamic.dom')
   }
 
   // Export

@@ -69,7 +69,7 @@
     // Clone element.
     var clone = el.clone()
     // Add to DOM in place and measure height.
-    var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto'}).prependTo(el.parent()).outerHeight()
+    var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto', 'visibility': 'hidden'}).prependTo(el.parent()).outerHeight()
     // Destroy the clone.
     clone.remove()
 
@@ -176,7 +176,7 @@
       data: data,
       beforeSend: function (jqXHR, settings) {
         // Log full URL.
-        global.Helpers.log(settings.url + '?' + settings.data)
+        global.Helpers.log((settings.data) ? settings.url + '?' + settings.data : settings.url)
       }
     })
   }

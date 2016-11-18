@@ -1,0 +1,4 @@
+{
+    "ignore": "/(bower_components)|(node_modules)/",
+    "presets": ["es2015", "react"]
+}

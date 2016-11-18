@@ -49,7 +49,19 @@ module.exports = function (config) {
       ]
     },
     webpack: {
+      resolve: {
+        modulesDirectories: ['node_modules'],
+        extensions: ['', '.js']
+      },
       module: {
+        loaders: [{
+          test: /\.jsx$/,
+          exclude: /(node_modules|bower_components)/,
+          loader: 'babel',
+          query: {
+            presets: ['react', 'es2015']
+          }
+        }],
         postLoaders: [{
           test: /\.js$/,
           exclude: /(test|node_modules|bower_components)\//,

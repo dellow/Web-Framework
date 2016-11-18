@@ -28,17 +28,17 @@ global._ = require('underscore')
 /* ======================================================== */
 /* Helpers
 /* ======================================================== */
-global.Helpers = require('../app/helpers')
+global.Helpers = require('./helpers')
 
 /* ======================================================== */
 /* Breakpoint Info
 /* ======================================================== */
-global.Breakpoint = require('../app/breakpoint')
+global.Breakpoint = require('./breakpoint')
 
 /* ======================================================== */
 /* Config
 /* ======================================================== */
-require('../app/config')
+require('./config')
 
 /* ======================================================== */
 /* Google Analytics Autotrack

@@ -21,27 +21,6 @@
   }
 
   /**
-   * modules
-   * Private modules.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  Private.prototype.modules = {
-  }
-
-  /**
-   * init
-   * Module init method.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  Private.prototype.init = function () {
-    this.getChildModules()
-  }
-
-  /**
    * init
    * Module init method.
    *
@@ -50,6 +29,16 @@
   **/
   Private.prototype.init = function () {
     getModules.call(this)
+  }
+
+  /**
+   * modules
+   * Public modules.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Private.prototype.modules = {
   }
 
   /**

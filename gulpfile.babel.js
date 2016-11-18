@@ -1,18 +1,24 @@
 /**
  *
- * Gulpfile.js
+ * Gulpfile
  *
  * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
 
-var gulp = require('gulp')
-var path = require('path')
-var notify = require('gulp-notify')
-var livereload = require('gulp-livereload')
-var helpers = require('./Gulpfile.helpers')
-var package = require('./package.json')
+import gulp from 'gulp'
+import path from 'path'
+import notify from 'gulp-notify'
+import livereload from 'gulp-livereload'
+import sass from 'gulp-sass'
+import autoprefixer from 'gulp-autoprefixer'
+import standard from 'gulp-standard'
+import webpackStream from 'webpack-stream'
+import webpackConfig from './webpack.config.js'
+import coveralls from 'gulp-coveralls'
+import helpers from './gulpfile.helpers'
+import packageConfig from './package.json'
 
 
 // ********************************************************************************************* //
@@ -30,13 +36,13 @@ var package = require('./package.json')
 **/
 
 // Main.
-gulp.task('watch', function () {
+gulp.task('watch', () => {
 	// Start livereload.
 	livereload.listen()
 	// Task :: CSS.
-	gulp.watch(package.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
+	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
 	// Task :: JS.
-	gulp.watch(package.config.js.dirApp + '**/*.js', {cwd:'./'}, ['js'])
+	gulp.watch(packageConfig.config.js.dirApp + '**/*.js', {cwd:'./'}, ['js'])
 })
 
 
@@ -54,7 +60,7 @@ gulp.task('watch', function () {
 **/
 
 // Main.
-gulp.task('sync', function () {
+gulp.task('sync', () => {
 	var browserSync = require('browser-sync').create()
 
 	// Start BrowserSync.
@@ -62,14 +68,14 @@ gulp.task('sync', function () {
 		open   : 'external',
 		browser: ['google chrome'],
 		xip    : true,
-		proxy  : package.config.url
+		proxy  : packageConfig.config.url
 	})
 	// Task :: CSS.
-	gulp.watch(package.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
-	gulp.watch(package.config.css.dest, {cwd:'./'}, ['css']).on('change', browserSync.reload)
+	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
+	gulp.watch(packageConfig.config.css.dest, {cwd:'./'}, ['css']).on('change', browserSync.reload)
 	// Task :: JS.
-	gulp.watch(package.config.js.dirApp + '**/*.js', {cwd:'./'}, ['js'])
-	gulp.watch(package.config.js.dest + '*.js', {cwd:'./'}, ['js']).on('change', browserSync.reload)
+	gulp.watch(packageConfig.config.js.dirApp + '**/*.js', {cwd:'./'}, ['js'])
+	gulp.watch(packageConfig.config.js.dest + '*.js', {cwd:'./'}, ['js']).on('change', browserSync.reload)
 })
 
 
@@ -90,16 +96,13 @@ gulp.task('sync', function () {
 **/
 
 // Main.
-gulp.task('css', ['css:task'], function () {
+gulp.task('css', ['css:task'], () => {
 	return gulp.src('/').pipe(notify('CSS build file updated'))
 })
 
 // Task.
-gulp.task('css:task', function () {
-	var sass = require('gulp-sass')
-	var autoprefixer = require('gulp-autoprefixer')
-
-	return gulp.src(package.config.css.src)
+gulp.task('css:task', () => {
+	return gulp.src(packageConfig.config.css.src)
     .pipe(sass({
       outputStyle: 'expanded',
     	errLogToConsole: true
@@ -109,7 +112,7 @@ gulp.task('css:task', function () {
       browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
       cascade: false
     }))
-  	.pipe(gulp.dest(package.config.css.dirDest))
+  	.pipe(gulp.dest(packageConfig.config.css.dirDest))
   	.pipe(livereload())
 })
 
@@ -130,15 +133,13 @@ gulp.task('css:task', function () {
 **/
 
 // Main.
-gulp.task('js', ['js:standard', 'js:task'], function () {
+gulp.task('js', ['js:standard', 'js:task'], () => {
 	return gulp.src('/').pipe(notify('JavaScript build file updated'))
 })
 
 // Standard.
-gulp.task('js:standard', function () {
-	var standard = require('gulp-standard')
-
-	return gulp.src(package.config.js.dirApp + '**/*.js')
+gulp.task('js:standard', () => {
+	return gulp.src(packageConfig.config.js.dirApp + '**/*.js')
     .pipe(standard())
     .pipe(standard.reporter('default', {
   		breakOnError: true,
@@ -147,13 +148,10 @@ gulp.task('js:standard', function () {
 })
 
 // Task.
-gulp.task('js:task', function () {
-	var webpackStream = require('webpack-stream')
-	var config = require('./webpack.config.js')
-
-	return gulp.src(package.config.js.dirApp + 'index.js')
-		.pipe(webpackStream(config))
-  	.pipe(gulp.dest(package.config.js.dest))
+gulp.task('js:task', () => {
+	return gulp.src(packageConfig.config.js.dirApp + 'index.js')
+		.pipe(webpackStream(webpackConfig))
+  	.pipe(gulp.dest(packageConfig.config.js.dest))
   	.pipe(livereload())
 })
 
@@ -174,7 +172,7 @@ gulp.task('js:task', function () {
 **/
 
 // Task.
-gulp.task('test:unit', ['test:unit:karma'], function () {
+gulp.task('test:unit', ['test:unit:karma'], () => {
 	return gulp.src('/')
 })
 
@@ -186,8 +184,6 @@ gulp.task('test:unit:karma', function (done) {
 })
 
 // Task.
-gulp.task('test:unit:coveralls', function () {
-	var coveralls = require('gulp-coveralls')
-
+gulp.task('test:unit:coveralls', () => {
   return gulp.src(path.join(__dirname, 'karma/coverage/**/lcov.info')).pipe(coveralls())
 })

@@ -30,6 +30,7 @@
    * @access public
   **/
   Module.prototype.settings = {
+    failSilently: false
   }
 
   /**
@@ -45,28 +46,41 @@
     // Extend the events system.
     global.Public.events.extend({
       events: {
-        'click .js--moduleName--trigger': 'eventMethod'
+        'change .js--dynamic-dom': 'updateDOM'
       },
-      eventMethod: function (e) {
-        // Globally cache this element.
-        var $self = $(e.currentTarget)
-        // // Data attribute.
-        var dataAttr = $self.data('sample') || false
+      updateDOM: function (e) {
+        e[0].preventDefault()
 
-        return _this.moduleMethod($self, dataAttr)
+        // Get value.
+        var value = $(e[0].currentTarget).val()
+        // Get DOM target.
+        var target = $(e[0].currentTarget).data('dynamic-dom') || false
+
+        return (target && $(target).length) ? _this.updateTarget(value, $(target)) : _this.reportNoTarget()
       }
     })
   }
 
   /**
-   * moduleMethod
-   * A description.
+   * updateTarget
+   * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Module.prototype.moduleMethod = function ($self, data) {
-    window.alert('Target clicked.')
+  Module.prototype.updateTarget = function (value, $target) {
+    return $target.html(value)
+  }
+
+  /**
+   * reportNoTarget
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Module.prototype.reportNoTarget = function () {
+    return (!this.settings.failSilently) ? window.Helpers.throw('No DOM target specified.') : null
   }
 
   // Export
