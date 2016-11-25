@@ -167,6 +167,15 @@ body, html {
 .u-hidden {
 	display: none !important;
 }
+.u-hidden--all {
+  width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+}
 .u-show {
 	display: block !important;
 }
