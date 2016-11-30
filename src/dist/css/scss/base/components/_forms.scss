@@ -17,6 +17,7 @@ form {
 			border-color: color(grey);
 		}
 		&[disabled] {
+      color: darken(color(grey), 15%);
 			background: lighten(color(grey), 10%);
 		}
 		&:hover {

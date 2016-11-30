@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/sdellow/web-framework.svg?branch=master)](https://travis-ci.org/sdellow/web-framework)
 [![Coverage Status](https://coveralls.io/repos/github/sdellow/web-framework/badge.svg?branch=master)](https://coveralls.io/github/sdellow/web-framework?branch=master)
+[![Dependency Status](https://david-dm.org/sdellow/web-framework.svg)](https://david-dm.org/sdellow/web-framework)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ## Contents
