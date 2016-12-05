@@ -31,40 +31,40 @@ body {
 /* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
   font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-  color: color(copy, header);
   &:first-child {
     margin-top: 0;
   }
 }
 h1 {
-  @include nudge(margin, 0.5 0 1);
-  font-size: 300%;
-  line-height: 125%;
+	@include nudge(margin, 0.5 0 1);
+	font-size: 175%;
+  line-height: 100%;
 }
 h2 {
-  @include nudge(margin, 0.5 0 1);
-  font-size: 250%;
-  line-height: 125%;
+	@include nudge(margin, 0.5 0);
+	font-size: 150%;
+  line-height: 100%;
 }
 h3 {
-  @include nudge(margin, 0.5 0 1);
-  font-size: 200%;
-  line-height: 125%;
+	@include nudge(margin, 0.5 0);
+	font-size: 135%;
+  line-height: 100%;
 }
 h4 {
-  @include nudge(margin, 0.5 0);
-  font-size: 150%;
-  line-height: 125%;
+	@include nudge(margin, 0.5 0);
+	font-size: 120%;
+  line-height: 100%;
 }
 h5 {
-  @include nudge(margin, 0.5 0);
-  font-size: 125%;
-  line-height: 125%;
+	@include nudge(margin, 0.5 0);
+	font-size: 110%;
+  line-height: 100%;
 }
 h6 {
-  @include nudge(margin, 0.5 0);
-  font-size: 125%;
-  line-height: 100%;
+	@include nudge(margin, 0.5 0);
+	font-size: 100%;
+  line-height: 115%;
+  font-weight: normal;
 }
 
 
