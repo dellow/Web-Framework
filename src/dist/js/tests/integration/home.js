@@ -9,8 +9,7 @@
  *
 **/
 
-var path = require('path')
-var package = require(path.join(__dirname, './package.json'))
+var package = require(process.cwd() + '/package.json')
 
 var page = '/'
 

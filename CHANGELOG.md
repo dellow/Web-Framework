@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.4.0__:
+* Many fixes and improvements.
+
 __3.3.6__:
 * Tests now properly use Karma to get dependencies.
 * Use Gulp to run tests.

@@ -11,15 +11,15 @@
 1. [Install](#install)
 1. [Commands](#commands)
 1. [Styleguide & Examples](#styleguide-examples)
-1. [Scripts](#scripts)
-    1. [Assets](#scripts--assets)
-    1. [Autoprefixer](#scripts--autoprefixer)
-    1. [CSS](#scripts--css)
-    1. [JS](#scripts--js)
-    1. [Minify](#scripts--minify)
-    1. [Sprite](#scripts--sprite)
-    1. [Test](#scripts--test)
-    1. [Watch](#scripts--watch)
+1. [Tasks](#tasks)
+    1. [Autoprefixer](#tasks--autoprefixer)
+    1. [CSS](#tasks--css)
+    1. [JS](#tasks--js)
+    1. [Minify](#tasks--minify)
+    1. [Sprite](#tasks--sprite)
+    1. [Test](#tasks--test)
+    1. [Watch](#tasks--watch)
+    1. [Sync](#tasks--sync)
 1. [Testing](#testing)
 1. [Working with SCSS](#working-with-scss)
     1. [Mixins](#working-with-scss--mixinss)
@@ -45,9 +45,10 @@ Testing is done with Jasmine for unit tests and Nightwatch for functional/integr
 
 <a name="requirements"></a>
 ## Requirements
-The only system requirement is Node & NPM. All other dependencies of this Framework will be downloaded and installed when the install process is run.
+The only system requirement is Node & NPM. Additionally if you want to run integration tests using Nightwatch you will need to install Selenium Standalone globally: `npm install selenium-standalone@latest -g`. All other dependencies of this Framework will be downloaded and installed when the install process is run.
 
 - [NodeJS](http://nodejs.org/)
+- [Selenium Standalone](https://www.npmjs.com/package/selenium-standalone)
 
 > __Please note:__ This should be installed before using this Framework.
 
@@ -138,37 +139,41 @@ After installation there is a CSS styleguide located in `dist/.help/guides/style
 These serve as ongoing platforms to test any changes you might make to the Framework.
 
 <a name="scripts"></a>
-## Scripts
-There are various singular scripts in the framework that are outlined below. There are also some scripts that run multiple sub scripts to make development easier, these are:
+## Tasks
+The framework uses Gulp as the task runner. The various tasks are outlined below:
 
-<a name="scripts--assets"></a>
-### Assets
-_Documentation coming soon_
-
-<a name="scripts--css"></a>
+<a name="tasks--css"></a>
 ### CSS
 _Documentation coming soon_
 
-<a name="scripts--js"></a>
+<a name="tasks--js"></a>
 ### JS
 _Documentation coming soon_
 
-<a name="scripts--minify"></a>
+<a name="tasks--minify"></a>
 ### Minify
 _Documentation coming soon_
 
-<a name="scripts--sprite"></a>
+<a name="tasks--sprite"></a>
 ### Sprite
 The framework comes with a Sprite task but you will need to manually install the dependencies with this command: `npm install --save-dev sprity sprity-cli sprity-lwip sprity-sass`. This is not included in the `package.json` because `sprity` uses the `lwip` engine which notoriously fails to install on some systems, including Travis CI.
 
 Once the dependencies have been installed you can safely run `npm run sprite` which will create a retina and normal sprite with all the images in `dist/images/icons/png`.
 
-<a name="scripts--test"></a>
+<a name="tasks--test"></a>
 ### Test
 _Documentation coming soon_
 
-<a name="scripts--watch"></a>
+<a name="tasks--watch"></a>
 ### Watch
+_Documentation coming soon_
+
+<a name="tasks--sync"></a>
+### Sync
+_Documentation coming soon_
+
+<a name="testing"></a>
+## Testing
 _Documentation coming soon_
 
 <a name="working-with-scss"></a>

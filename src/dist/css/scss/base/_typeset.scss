@@ -85,7 +85,6 @@ a, button {
   color: color(copy, link);
   text-decoration: none;
   transition: color $animation ease, background $animation ease;
-  // Pseudo
   &:hover {
     color: color(copy, hover);
   }
@@ -101,7 +100,6 @@ a, button {
 /* -- Standard Margins -- */
 blockquote, dl, ol, p, pre, ul {
   @include nudge(margin-bottom, 1);
-  // Pseudo
   &:last-child {
     margin-bottom: 0;
   }
@@ -113,13 +111,13 @@ blockquote, dl, ol, p, pre, ul {
 
 /* -- Content Areas -- */
 .page__content {
+  line-height: 175%;
   // Margins
-	img, figure, .obj-embed-container {
+  blockquote, dl, ol, p, pre, ul, img, figure, table, .obj-embed-container {
     @include nudge(margin-bottom, 1);
     img { // No margin on inner images.
       margin: 0;
     }
-    // Pseudo
     &:last-child {
       margin-bottom: 0;
     }
@@ -144,6 +142,25 @@ blockquote, dl, ol, p, pre, ul {
       @include nudge(text-indent, 1);
     }
   }
+  // Headings.
+  h1 {
+  	@include nudge(margin, 0 0 1);
+  }
+  h2 {
+  	@include nudge(margin, 1.5 0 0.5);
+  }
+  h3 {
+  	@include nudge(margin, 1.5 0 0.5);
+  }
+  h4 {
+  	@include nudge(margin, 1.5 0 0.5);
+  }
+  h5 {
+  	@include nudge(margin, 1.5 0 0.5);
+  }
+  h6 {
+  	@include nudge(margin, 1.5 0 0.5);
+  }
 }
 
 
@@ -162,7 +179,6 @@ blockquote, dl, ol, p, pre, ul {
 
 /* -- Citation -- */
 cite {
-  // Descendants
   .cite__profession {
     font-weight: $bold;
   }

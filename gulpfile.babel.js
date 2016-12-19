@@ -12,6 +12,10 @@ import path from 'path'
 import notify from 'gulp-notify'
 import livereload from 'gulp-livereload'
 import sass from 'gulp-sass'
+import cleanCSS from 'gulp-clean-css'
+import uglify from 'gulp-uglify'
+import gitRev from 'git-rev'
+import nightwatch from 'gulp-nightwatch'
 import autoprefixer from 'gulp-autoprefixer'
 import standard from 'gulp-standard'
 import webpackStream from 'webpack-stream'
@@ -68,6 +72,7 @@ gulp.task('sync', () => {
 		open   : 'external',
 		browser: ['google chrome'],
 		xip    : true,
+    port   : 3010,
 		proxy  : packageConfig.config.url
 	})
 	// Task :: CSS.
@@ -97,7 +102,7 @@ gulp.task('sync', () => {
 
 // Main.
 gulp.task('css', ['css:task'], () => {
-	return gulp.src('/').pipe(notify('CSS build file updated'))
+	return gulp.src('').pipe(notify('CSS build file updated'))
 })
 
 // Task.
@@ -134,7 +139,7 @@ gulp.task('css:task', () => {
 
 // Main.
 gulp.task('js', ['js:standard', 'js:task'], () => {
-	return gulp.src('/').pipe(notify('JavaScript build file updated'))
+	return gulp.src('').pipe(notify('JavaScript build file updated'))
 })
 
 // Standard.
@@ -149,10 +154,96 @@ gulp.task('js:standard', () => {
 
 // Task.
 gulp.task('js:task', () => {
-	return gulp.src(packageConfig.config.js.dirApp + 'index.js')
-		.pipe(webpackStream(webpackConfig))
-  	.pipe(gulp.dest(packageConfig.config.js.dest))
-  	.pipe(livereload())
+  // Get branch name.
+  gitRev.branch((branch) => {
+    // Set environment.
+    process.env.NODE_ENV = (branch === 'production') ? 'production' : 'development'
+    // Get WebPack config.
+    var config = require('./webpack.config.js')
+
+  	return gulp.src(packageConfig.config.js.dirApp + 'index.js')
+  		.pipe(webpackStream(webpackConfig))
+    	.pipe(gulp.dest(packageConfig.config.js.dest))
+    	.pipe(livereload())
+  })
+})
+
+
+// ********************************************************************************************* //
+
+
+/**
+ *
+ * Minify
+ *
+ * Minfy CSS and JavaScript.
+ *
+ * @uses gulp-clean-css
+ * @uses gulp-uglify
+ * @uses git-rev
+ * @uses notify
+ *
+**/
+
+// Main.
+gulp.task('minify', ['css', 'minify:css', 'js', 'minify:js'], () => {
+  return
+})
+
+// CSS.
+gulp.task('minify:css', () => {
+  var cleanCSS = require('gulp-clean-css')
+  var git = require('git-rev')
+
+  // Get branch name.
+  return git.branch((branch) => {
+    // Check branch name.
+    if (branch === 'production') {
+      // Set environment.
+      process.env.NODE_ENV = 'production'
+      // Double check environment.
+      if (process.env.NODE_ENV == 'production') {
+        return gulp.src(packageConfig.config.css.dest)
+          .pipe(cleanCSS({compatibility: 'ie8', debug: true}, (details) => {
+            console.log('CSS Original Size: ' + (details.stats.originalSize/1000).toFixed(2) + ' KB')
+            console.log('CSS Minified Size: ' + (details.stats.minifiedSize/1000).toFixed(2) + ' KB')
+            console.log('Saving: ' + ((details.stats.originalSize/1000) - (details.stats.minifiedSize/1000)).toFixed(2) + ' KB' )
+          }))
+          .pipe(gulp.dest(packageConfig.config.css.dirDest))
+          .pipe(notify('CSS minified.'))
+      } else {
+        return gulp.src('').pipe(notify('Failed to set Node environment to production'))
+      }
+    } else {
+      return gulp.src('').pipe(notify('Couldn\'t minify, branch is not production.'))
+    }
+  })
+})
+
+// JavaScript.
+gulp.task('minify:js', () => {
+  var uglify = require('gulp-uglify')
+  var git = require('git-rev')
+
+  // Get branch name.
+  return git.branch((branch) => {
+    // Check branch name.
+    if (branch === 'production') {
+      // Set environment.
+      process.env.NODE_ENV = 'production'
+      // Double check environment.
+      if (process.env.NODE_ENV == 'production') {
+        return gulp.src(packageConfig.config.js.dest + '*.js')
+          .pipe(uglify())
+          .pipe(gulp.dest(packageConfig.config.js.dest))
+          .pipe(notify('JavaScript minified.'))
+      } else {
+        return gulp.src('').pipe(notify('Failed to set Node environment to production'))
+      }
+    } else {
+    	return gulp.src('').pipe(notify('Couldn\'t minify, branch is not production.'))
+    }
+  })
 })
 
 
@@ -172,12 +263,22 @@ gulp.task('js:task', () => {
 **/
 
 // Task.
-gulp.task('test:unit', ['test:unit:karma'], () => {
-	return gulp.src('/')
+gulp.task('test', ['test:unit', 'test:integration'], () => {
+	return gulp.src('')
 })
 
 // Task.
-gulp.task('test:unit:karma', function (done) {
+gulp.task('test:unit', ['test:unit:karma'], () => {
+	return gulp.src('')
+})
+
+// Task.
+gulp.task('test:integration', ['test:integration:nightwatch'], () => {
+	return gulp.src('')
+})
+
+// Task.
+gulp.task('test:unit:karma', (done) => {
   var Server = require('karma').Server
 
   new Server({configFile: path.join(__dirname, '/karma.config.js'), singleRun: true}, done).start()
@@ -186,4 +287,12 @@ gulp.task('test:unit:karma', function (done) {
 // Task.
 gulp.task('test:unit:coveralls', () => {
   return gulp.src(path.join(__dirname, 'karma/coverage/**/lcov.info')).pipe(coveralls())
+})
+
+// Task.
+gulp.task('test:integration:nightwatch', () => {
+  return gulp.src('')
+    .pipe(nightwatch({
+      configFile: './nightwatch.json'
+    }))
 })

@@ -5,22 +5,10 @@
   "custom_assertions_path" : "",
   "page_objects_path" : "",
   "globals_path" : "",
-
-  "selenium" : {
-    "start_process" : true,
-    "start_session" : true,
-    "server_path" : "/selenium/selenium-server-standalone-2.48.2.jar",
-    "log_path" : "",
-    "host" : "127.0.0.1",
-    "port" : 5555,
-    "cli_args" : {
-    }
-  },
-
   "test_settings" : {
     "default" : {
-      "launch_url" : "http://localhost",
-      "selenium_port"  : 5555,
+      "launch_url" : "http://127.0.0.1",
+      "selenium_port"  : 4444,
       "selenium_host"  : "localhost",
       "silent": true,
       "screenshots" : {

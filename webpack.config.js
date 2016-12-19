@@ -22,7 +22,7 @@ module.exports = {
   },
   resolve: {
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [
@@ -36,5 +36,11 @@ module.exports = {
       }
     ]
   },
-  plugins: []
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    })
+  ]
 }

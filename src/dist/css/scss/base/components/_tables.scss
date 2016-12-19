@@ -30,20 +30,18 @@ table {
   &.table { // Qualified Selector
     width: 100%;
     border: 1px solid color(grey);
+    border-top: 0;
     border-radius: $base_border_radius;
     border-collapse: separate;
     border-spacing: 0;
-    thead {
-      th {
-        border-top: 0;
-      }
+    th {
+      font-weight: $bold;
     }
     td, th {
-      padding: 5px;
+      padding: 5px 10px;
       border-left: 1px solid #f2f2f2;
       border-top: 1px solid #d9d9d9;
-      text-align: center;
-      vertical-align: middle;
+      vertical-align: top;
       // Pseudo
       &:first-child {
         border-left: 0;
