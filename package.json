@@ -16,6 +16,7 @@
     "gulp-coveralls": "^0.1.4",
     "gulp-git": "^1.11.3",
     "gulp-livereload": "^3.8.1",
+    "gulp-nightwatch": "^0.3.2",
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.3.2",
     "gulp-standard": "^8.0.2",
