@@ -9,7 +9,6 @@
 1. [About](#about)
 1. [Requirements](#requirements)
 1. [Install](#install)
-1. [Commands](#commands)
 1. [Styleguide & Examples](#styleguide-examples)
 1. [Tasks](#tasks)
     1. [Autoprefixer](#tasks--autoprefixer)
@@ -22,7 +21,7 @@
     1. [Sync](#tasks--sync)
 1. [Testing](#testing)
 1. [Working with SCSS](#working-with-scss)
-    1. [Mixins](#working-with-scss--mixinss)
+    1. [Mixins](#working-with-scss--mixins)
     1. [BEM](#working-with-scss--bem)
     1. [Responsive](#working-with-scss--responsive)
     1. [Reserved Classes](#working-with-scss--reserved-classes)
@@ -33,13 +32,11 @@
 
 <a name="about"></a>
 ## About
-This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises NPM and Gulp as build tools. It's also set up to work with Travis CI which will run any defined spec tests by default.
+This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises Gulp as a task runner. It's also set up to work with Travis CI which will run any defined spec tests by default.
 
-JavaScript is bundled with WebPack via NPM scripts.
+JavaScript is bundled with WebPack and tested with Jasmine for unit tests and Nightwatch for functional/integration tests.
 
-CSS is compiled with SASS via Gulp (Compiling directly with NPM is to slow).
-
-Testing is done with Jasmine for unit tests and Nightwatch for functional/integration tests.
+CSS is compiled with SASS.
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
@@ -74,63 +71,6 @@ Once complete simply run `bash install.sh` from your command line. This will do 
 __All additional instructions below assume you have followed the installation process.__
 
 > __Pro Tip:__ You can make the install script executable by running `chmod u+x install.sh`. This will allow you to run the script like this: `./install.sh`.
-
-<a name="commands"></a>
-## Commands
-The framework uses NPM for most tasks although CSS and JavaScript is compiled via Gulp because SASS in NPM is slow. You can however still call the gulp tasks from NPM.
-
-All commands begin with the standard NPM scripts syntax: `npm run <scriptname>`. The current scripts are:
-
-`assets`
-Does a one time build of both CSS and JavaScript files unminified.
-
-`css:build`
-Does a one time build of the CSS unminified.
-
-`css:watch`
-Watches just CSS files and builds unminified.
-
-`js:common`
-Does a one time build of the common JavaScript files defined in `./src/dist/js/common/index.js` unminified. These are your common vendor libraries (jQuery, Underscore etc) and are kept separate so they are not built with the main app build file everytime.
-
-`js:app`
-Does a one time build of the application JavaScript files defined in `./src/dist/js/app` unminified.
-
-`js:all`
-Does a one time build of the application JavaScript and the common JavaScript unminified
-
-`js:watch`
-Watches just JavaScript files and builds unminified.
-
-`minify`
-Minifies the CSS, JavaScript and Image files.
-
-`minify:css`
-Minifies just the CSS build file.
-
-`minify:images`
-Minifies the image assets.
-
-`minify:js`
-Minifies just the JavaScript build file.
-
-`test:integration`
-Runs integration tests.
-
-`sprite`
-Runs the sprite builder which adds all files in `./src/dist/images/icons/png` into standard and retina sprites.
-
-`version:patch`
-Increases the version number by patch in `package.json` and `bower.json`.
-
-`version:minor`
-Increases the version number by minor in `package.json` and `bower.json`.
-
-`version:major`
-Increases the version number by major in `package.json` and `bower.json`.
-
-`watch`
-Watches for changes in both CSS and JS application files and builds where necessary unminified.
 
 <a name="styleguide-examples"></a>
 ## Styleguide & Examples
@@ -388,8 +328,8 @@ For easy screen size checking. Will return true if the current screen size less 
 
 ***
 
-##### mhi `Helpers.mhi($('.my-hidden-element'))`
-Measures the height of hidden elements and returns the value. By default jQuery will return 0 if you try to measure an element set to `display: none`. __mhi__ clones the element and inserts it off screen to measure it before destroying it.
+##### mhe `Helpers.mhe($('.my-hidden-element'))`
+Measures the height of hidden elements and returns the value. By default jQuery will return 0 if you try to measure an element set to `display: none`. __mhe__ clones the element and inserts it off screen to measure it before destroying it.
 
 ***
 
@@ -403,22 +343,17 @@ A simple debouncing method to help prevent constant firing of an event. Useful f
 
 ***
 
-##### preloader `Helpers.preloader($('.parent-element'))`
-Inserts a pre-defined preloader in the given element. Can also destroy a created preloader by calling `Helpers.preloader($('.parent-element'), true);`.
-
-***
-
 ##### ajax `Helpers.ajax('http://api/.com/endpoint/')`
-A wrapper for making jQuery Ajax Promises. Will automatically add a preloader on request of data and remove it when completed.
+A wrapper for making jQuery Ajax Promises.
 
 ***
 
-##### parse_url_params `Helpers.parse_url_params('http://api/.com/endpoint/?param1=true&param2=true')`
+##### parseURLParams `Helpers.parseURLParams('http://api/.com/endpoint/?param1=true&param2=true')`
 Parses a URL for parameters and returns them in JavaScript object.
 
 ***
 
-##### decode_entities `Helpers.decode_entities('<p>This is a string with paragraphs</p>')`
+##### decodeEntities `Helpers.decodeEntities('<p>This is a string with paragraphs</p>')`
 Will simply parse HTML tags from a JavaScript string.
 
 <a name="changelog"></a>

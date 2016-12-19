@@ -61,19 +61,19 @@
   }
 
   /**
-  * mhi
+  * mhe
   * Measures a hidden element.
   *
   * @since 1.0.0
   * @version 1.0.0
   **/
-  Helpers.mhi = function (el) {
+  Helpers.mhe = function (el) {
     // Clone element.
     var clone = el.clone()
     // Add to DOM in place and measure height.
-    var height = clone.addClass('mhi-clone-remove').css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto', 'visibility': 'hidden'}).prependTo(el.parent()).outerHeight()
+    var height = clone.addClass('mhe-clone-remove').css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto', 'visibility': 'hidden'}).prependTo(el.parent()).outerHeight()
     // Destroy the clone.
-    $('.mhi-clone-remove').remove()
+    $('.mhe-clone-remove').remove()
 
     return height
   }
@@ -124,30 +124,6 @@
       if (callNow) {
         func.apply(_this, args)
       }
-    }
-  }
-
-  /**
-  * preloader
-  * Generates a preloader.
-  *
-  * @since 1.0.0
-  * @version 1.0.0
-  **/
-  Helpers.preloader = function (el, destroy) {
-    destroy = (typeof destroy === 'undefined')
-    el = (typeof el === 'undefined') ? $('body') : el
-    var loader = $('<div class="spinner-wrapper"><svg class="spinner" width="35px" height="35px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div>')
-
-    if (!destroy) {
-      if (!$('.spinner-wrapper', el).length) {
-        el.css({'position': 'relative'}).prepend(loader)
-      }
-    } else {
-      $('.spinner-wrapper', el).fadeOut(500, function () {
-        el.css({'position': ''})
-        $(this).remove()
-      })
     }
   }
 
