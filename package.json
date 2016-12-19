@@ -51,8 +51,8 @@
       "$"
     ],
     "ignore": [
-      "Gulpfile.js",
-      "Gulpfile.helpers.js"
+      "gulpfile.babel.js",
+      "gulpfile.helpers.js"
     ]
   },
   "config": {
