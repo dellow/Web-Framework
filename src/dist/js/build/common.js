@@ -12183,7 +12183,7 @@
 
 /***/ },
 /* 20 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 *
@@ -12205,21 +12205,23 @@
 	  * @version 1.0.0
 	  **/
 	  Helpers.log = function (message, type, alertlog) {
-	    alertlog = (typeof alertlog === 'undefined')
-	    if (typeof console === 'undefined' || typeof console.log === 'undefined') {
-	      if (alertlog) {
-	        window.alert(message)
-	      }
-	    } else {
-	      var color = (type === 'positive') ? '#097809' : (type === 'negative') ? '#c5211d' : (typeof type !== 'undefined') ? type : '#240ad0'
-	      console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;')
-	      if (message instanceof Array || message instanceof Object) {
-	        console.log(message)
+	    if ((undefined) !== 'production') {
+	      alertlog = (typeof alertlog === 'undefined')
+	      if (typeof console === 'undefined' || typeof console.log === 'undefined') {
+	        if (alertlog) {
+	          window.alert(message)
+	        }
 	      } else {
-	        console.log('%c' + message, 'color: ' + color)
+	        var color = (type === 'positive') ? '#097809' : (type === 'negative') ? '#c5211d' : (typeof type !== 'undefined') ? type : '#240ad0'
+	        console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;')
+	        if (message instanceof Array || message instanceof Object) {
+	          console.log(message)
+	        } else {
+	          console.log('%c' + message, 'color: ' + color)
+	        }
+	        console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;')
+	        console.log('')
 	      }
-	      console.log('%c-- DEBUG ---------------------------------------------------------', 'color:' + color + ';font-weight:bold;')
-	      console.log('')
 	    }
 	  }
 
@@ -12256,9 +12258,9 @@
 	    // Clone element.
 	    var clone = el.clone()
 	    // Add to DOM in place and measure height.
-	    var height = clone.css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto', 'visibility': 'hidden'}).prependTo(el.parent()).outerHeight()
+	    var height = clone.addClass('mhi-clone-remove').css({'position': 'absolute', 'top': '-100%', 'display': 'block', 'max-height': 'none', 'height': 'auto', 'visibility': 'hidden'}).prependTo(el.parent()).outerHeight()
 	    // Destroy the clone.
-	    clone.remove()
+	    $('.mhi-clone-remove').remove()
 
 	    return height
 	  }
@@ -12345,25 +12347,17 @@
 	  * @since 1.0.0
 	  * @version 1.0.0
 	  */
-	  Helpers.ajax = function (url, type, dataType, data) {
-	    // Default data.
-	    var defaultParams = {
-	      ajaxrequest: true
-	    }
-	    var requestParams = (!global.Helpers.isEmpty(data)) ? data : {}
-	    // Get params (if any).
-	    var urlParams = global.Helpers.parseURLParams(url)
-	    // Merge params to get data.
-	    var data = $.extend({}, defaultParams, urlParams, requestParams)
-	    // Request.
+	  Helpers.ajax = function (url, data, type, dataType) {
+	    var _this = this
+
 	    return $.ajax({
-	      url: (url.indexOf('?') !== -1) ? url.split('?')[0] : url,
-	      type: (!global.Helpers.isEmpty(type)) ? type : 'POST',
-	      dataType: (!global.Helpers.isEmpty(dataType)) ? dataType : 'JSON',
-	      data: data,
+	      url: url,
+	      type: (!_this.isEmpty(type)) ? type : 'GET',
+	      dataType: (!_this.isEmpty(dataType)) ? dataType : 'JSON',
+	      data: $.extend({}, {ajaxrequest: true}, window.Helpers.parseURLParams(url), (data || {})),
 	      beforeSend: function (jqXHR, settings) {
 	        // Log full URL.
-	        global.Helpers.log((settings.data) ? settings.url + '?' + settings.data : settings.url)
+	        window.Helpers.log((settings.data) ? settings.url + '?' + settings.data : settings.url)
 	      }
 	    })
 	  }

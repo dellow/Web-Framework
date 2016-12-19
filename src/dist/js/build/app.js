@@ -2896,6 +2896,8 @@
 	    this.setHeaderHeight()
 	    // Toggle the mobile menu visiblity.
 	    this.style($('.js--mobileMenu--menu'), (action === 'show' ? {'left': -(100 - this.settings.menuSize) + '%', 'opacity': '1'} : {'left': '-100%', 'opacity': '0'}))
+	    // Toggle body class.
+	    if (action === 'show') { $('body').addClass('u-noscroll') } else { $('body').removeClass('u-noscroll') }
 	    // Toggle the content position.
 	    if (this.settings.moveContent) {
 	      this.style($('.js--mobileMenu--content'), (action === 'show' ? {'left': this.settings.menuSize + '%'} : {'left': ''}))
