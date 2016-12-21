@@ -7,6 +7,7 @@
  *
 **/
 
+
 import gulp from 'gulp'
 import path from 'path'
 import notify from 'gulp-notify'
@@ -94,7 +95,6 @@ gulp.task('sync', () => {
  * Compiles the SCSS files into a single build.css.
  *
  * @uses gulp-autoprefixer
- * @uses gulp-git
  * @uses gulp-sass
  * @uses notify
  *
@@ -132,7 +132,6 @@ gulp.task('css:task', () => {
  * Uses Webpack to bundle JavaScript.
  *
  * @uses webpack-stream
- * @uses gulp-git
  * @uses notify
  *
 **/
@@ -158,8 +157,6 @@ gulp.task('js:task', () => {
   gitRev.branch((branch) => {
     // Set environment.
     process.env.NODE_ENV = (branch === 'production') ? 'production' : 'development'
-    // Get WebPack config.
-    var config = require('./webpack.config.js')
 
   	return gulp.src(packageConfig.config.js.dirApp + 'index.js')
   		.pipe(webpackStream(webpackConfig))
@@ -192,11 +189,8 @@ gulp.task('minify', ['css', 'minify:css', 'js', 'minify:js'], () => {
 
 // CSS.
 gulp.task('minify:css', () => {
-  var cleanCSS = require('gulp-clean-css')
-  var git = require('git-rev')
-
   // Get branch name.
-  return git.branch((branch) => {
+  return gitRev.branch((branch) => {
     // Check branch name.
     if (branch === 'production') {
       // Set environment.
@@ -222,11 +216,8 @@ gulp.task('minify:css', () => {
 
 // JavaScript.
 gulp.task('minify:js', () => {
-  var uglify = require('gulp-uglify')
-  var git = require('git-rev')
-
   // Get branch name.
-  return git.branch((branch) => {
+  return gitRev.branch((branch) => {
     // Check branch name.
     if (branch === 'production') {
       // Set environment.
@@ -281,7 +272,7 @@ gulp.task('test:integration', ['test:integration:nightwatch'], () => {
 gulp.task('test:unit:karma', (done) => {
   var Server = require('karma').Server
 
-  new Server({configFile: path.join(__dirname, '/karma.config.js'), singleRun: true}, done).start()
+  new Server({configFile: path.join(__dirname, '/karma.config.babel.js'), singleRun: true}, done).start()
 })
 
 // Task.
@@ -293,6 +284,6 @@ gulp.task('test:unit:coveralls', () => {
 gulp.task('test:integration:nightwatch', () => {
   return gulp.src('')
     .pipe(nightwatch({
-      configFile: './nightwatch.json'
+      configFile: path.join(__dirname, './nightwatch.json')
     }))
 })

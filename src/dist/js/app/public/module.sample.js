@@ -49,7 +49,7 @@
       },
       eventMethod: function (e) {
         // Globally cache this element.
-        var $self = $(e.currentTarget)
+        var $self = $(e[0].currentTarget)
         // // Data attribute.
         var dataAttr = $self.data('sample') || false
 
@@ -60,12 +60,12 @@
 
   /**
    * moduleMethod
-   * A description.
+   * METHOD_DESCRIPTION
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Module.prototype.moduleMethod = function ($self, data) {
+  Module.prototype.moduleMethod = function ($el, data) {
     window.alert('Target clicked.')
   }
 

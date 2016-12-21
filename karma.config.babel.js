@@ -7,7 +7,7 @@
  *
 **/
 
-var packageConfig = require('./package.json')
+import packageConfig from './package.json'
 
 module.exports = function (config) {
   config.set({
