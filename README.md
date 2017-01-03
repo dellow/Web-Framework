@@ -11,7 +11,7 @@
 1. [Install](#install)
 1. [Styleguide & Examples](#styleguide-examples)
 1. [Tasks](#tasks)
-    1. [Autoprefixer](#tasks--autoprefixer)
+    1. [Assets](#tasks--assets)
     1. [CSS](#tasks--css)
     1. [JS](#tasks--js)
     1. [Minify](#tasks--minify)
@@ -81,6 +81,10 @@ These serve as ongoing platforms to test any changes you might make to the Frame
 <a name="scripts"></a>
 ## Tasks
 The framework uses Gulp as the task runner. The various tasks are outlined below:
+
+<a name="tasks--assets"></a>
+### Assets
+_Documentation coming soon_
 
 <a name="tasks--css"></a>
 ### CSS
