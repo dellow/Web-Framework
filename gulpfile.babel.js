@@ -296,3 +296,20 @@ gulp.task('test:integration:nightwatch', () => {
       configFile: './nightwatch.json'
     }))
 })
+
+
+// ********************************************************************************************* //
+
+
+/**
+ *
+ * Assets
+ *
+ * Builds all assets and runs tests.
+ *
+**/
+
+// Task.
+gulp.task('assets', ['js', 'css', 'test:unit'], () => {
+	return gulp.src('')
+})
