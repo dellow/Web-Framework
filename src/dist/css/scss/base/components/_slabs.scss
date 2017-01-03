@@ -31,13 +31,15 @@
 /* -- Slab colors -- */
 @each $key, $value in $colors {
   .bg, .slab {
-    &--color-#{"" + $key} {
-      color: inherit;
-			background-color: color($key);
-			// Abstractions
-			&--opp {
-				background-color: color($key, dark);
-			}
+    @if (color($key)) {
+      &--color-#{"" + $key} {
+        color: inherit;
+  			background-color: color($key);
+  			// Abstractions
+  			&--opp {
+  				background-color: color($key, dark);
+  			}
+      }
     }
   }
 }

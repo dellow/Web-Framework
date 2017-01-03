@@ -15,12 +15,12 @@ html {
 body {
   font-size: $base_font_size;
   line-height: 1.6;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
   font-family: $base_font;
   word-wrap: break-word;
+  letter-spacing: 0.02em;
   color: color(copy, body);
 }
 
@@ -224,8 +224,10 @@ kbd {
 
 @each $key, $value in $colors {
   .text {
-    &--color-#{"" + $key} {
-      color: color($key);
+    @if (color($key)) {
+      &--color-#{"" + $key} {
+        color: color($key);
+      }
     }
   }
 }

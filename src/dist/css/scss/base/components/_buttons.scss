@@ -59,18 +59,20 @@
 
 @each $key, $value in $colors {
   .btn {
-    &--color-#{"" + $key} {
-      background: color($key);
-      // Pseudo
-      &:hover {
-        background: color($key, dark);
-      }
-      &.btn--outline {
-        border-color: color($key);
-        background: none;
+    @if (color($key)) {
+      &--color-#{"" + $key} {
+        background: color($key);
+        // Pseudo
         &:hover {
-          color: color($key, dark);
-          background: color($key);
+          background: color($key, dark);
+        }
+        &.btn--outline {
+          border-color: color($key);
+          background: none;
+          &:hover {
+            color: color($key, dark);
+            background: color($key);
+          }
         }
       }
     }

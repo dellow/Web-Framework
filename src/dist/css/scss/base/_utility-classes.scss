@@ -374,7 +374,9 @@ body, html {
 /* -- Colours -- */
 @each $key, $value in $colors {
 	$class: "" + $key;
-	.u-text-color-#{$class} {
-		color: color($key);
+  @if (color($key)) {
+  	.u-text-color-#{$class} {
+  		color: color($key);
+  	}
 	}
 }
