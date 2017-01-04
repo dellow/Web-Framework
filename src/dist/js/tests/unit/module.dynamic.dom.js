@@ -13,7 +13,7 @@ var TestModule = global.Public.modules.DynamicDOM
 // Suite.
 describe('Module: Dynamic DOM', function () {
   // Suite.
-  describe('Should have', function () {
+  describe('should have', function () {
     // Spec.
     it('settings object', function () {
       expect(typeof TestModule.settings).toBe('object')

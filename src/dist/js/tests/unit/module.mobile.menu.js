@@ -13,7 +13,7 @@ var TestModule = global.Public.modules.MobileMenu
 // Suite.
 describe('Module: Mobile Menu', function () {
   // Suite.
-  describe('Should have', function () {
+  describe('should have', function () {
     // Spec.
     it('settings object', function () {
       expect(typeof TestModule.settings).toBe('object')

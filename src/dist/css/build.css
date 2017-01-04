@@ -191,7 +191,7 @@ sub {
 
 input, select, textarea, button {
   font-size: inherit;
-  font-family: Arial, Verdana, sans-serif;
+  font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
 }
 
 label, button, a.button, details, input[type="button"], input[type="submit"] {
@@ -1228,12 +1228,12 @@ html {
 body {
   font-size: 16px;
   line-height: 1.6;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
-  font-family: Arial, Verdana, sans-serif;
+  font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
   word-wrap: break-word;
+  letter-spacing: 0.02em;
   color: #5f5659;
 }
 
@@ -1776,14 +1776,6 @@ ul.alert.box li {
   background: #F1C40F;
 }
 
-.btn--color-copy.btn--outline {
-  background: none;
-}
-
-.btn--color-social.btn--outline {
-  background: none;
-}
-
 .btn--color-color {
   background: #FF0000;
 }
@@ -2027,14 +2019,6 @@ ul.alert.box li {
 
 .bg--color-yellow--opp, .slab--color-yellow--opp {
   background-color: #c29d0b;
-}
-
-.bg--color-copy, .slab--color-copy {
-  color: inherit;
-}
-
-.bg--color-social, .slab--color-social {
-  color: inherit;
 }
 
 .bg--color-color, .slab--color-color {

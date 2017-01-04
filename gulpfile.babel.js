@@ -157,7 +157,7 @@ gulp.task('js:task', () => {
   // Get branch name.
   gitRev.branch((branch) => {
     // Set environment.
-    process.env.NODE_ENV = (branch === 'production') ? 'production' : 'development'
+    process.env.NODE_ENV = (branch === 'production' || branch === 'master') ? 'production' : 'development'
     // Get WebPack config.
     var config = require('./webpack.config.js')
 
@@ -198,7 +198,7 @@ gulp.task('minify:css', () => {
   // Get branch name.
   return git.branch((branch) => {
     // Check branch name.
-    if (branch === 'production') {
+    if (branch === 'production' || branch === 'master') {
       // Set environment.
       process.env.NODE_ENV = 'production'
       // Double check environment.
@@ -215,7 +215,7 @@ gulp.task('minify:css', () => {
         return gulp.src('').pipe(notify('Failed to set Node environment to production'))
       }
     } else {
-      return gulp.src('').pipe(notify('Couldn\'t minify, branch is not production.'))
+      return gulp.src('').pipe(notify('Couldn\'t minify, branch is not master or production.'))
     }
   })
 })
@@ -228,7 +228,7 @@ gulp.task('minify:js', () => {
   // Get branch name.
   return git.branch((branch) => {
     // Check branch name.
-    if (branch === 'production') {
+    if (branch === 'production' || branch === 'master') {
       // Set environment.
       process.env.NODE_ENV = 'production'
       // Double check environment.
@@ -241,7 +241,7 @@ gulp.task('minify:js', () => {
         return gulp.src('').pipe(notify('Failed to set Node environment to production'))
       }
     } else {
-    	return gulp.src('').pipe(notify('Couldn\'t minify, branch is not production.'))
+    	return gulp.src('').pipe(notify('Couldn\'t minify, branch is not master or production.'))
     }
   })
 })
@@ -310,6 +310,6 @@ gulp.task('test:integration:nightwatch', () => {
 **/
 
 // Task.
-gulp.task('assets', ['js', 'css', 'test:unit'], () => {
+gulp.task('assets', ['test:unit', 'minify'], () => {
 	return gulp.src('')
 })
