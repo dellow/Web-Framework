@@ -7,7 +7,8 @@ global.Modernizr = require('browsernizr')
 /* ======================================================== */
 /* jQuery
 /* ======================================================== */
-global.jQuery = $ = require('jquery')
+global.jQuery = require('jquery')
+global.$ = require('jquery')
 
 /* ======================================================== */
 /* Underscore
