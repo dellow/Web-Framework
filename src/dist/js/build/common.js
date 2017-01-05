@@ -12374,36 +12374,6 @@
 	    return pseudo.value
 	  }
 
-	  /**
-	  * stub
-	  * A simple stubbing function.
-	  *
-	  * @since 1.0.0
-	  * @version 1.0.0
-	  **/
-	  Helpers.stub = function () {
-	    return {
-	      of: function (name, callback, returnValue) {
-	        this[name] = function () {
-	          var args = Array.prototype.slice.call(arguments)
-	          this[name].calls.push(args)
-	          var ret = null
-	          if (callback) {
-	            ret = callback.apply(this, args)
-	          }
-	          if (returnValue) {
-	            return returnValue
-	          }
-
-	          return ret
-	        }
-	        this[name].calls = []
-
-	        return this
-	      }
-	    };
-	  }
-
 	  // Export
 	  module.exports = Helpers
 	}({}, window))

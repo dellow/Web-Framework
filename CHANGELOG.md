@@ -1,5 +1,13 @@
 # Web Framework Changelog
 
+__3.5.0__:
+* Many fixes and improvements.
+* Now uses Babel for all JS files not just JSX.
+* Added 'assets' Gulp task that runs Unit tests and compiles and minifies CSS and JS.
+* Added `.u-nudge-<direction>-gutter` utility classes for simple margins of gutter size.
+* Fixed percentage top margin on flex grids.
+* Improved how mobile menu works.
+
 __3.4.0__:
 * Many fixes and improvements.
 

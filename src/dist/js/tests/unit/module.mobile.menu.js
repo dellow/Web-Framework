@@ -19,8 +19,20 @@ describe('Module: Mobile Menu', function () {
       expect(typeof TestModule.settings).toBe('object')
     })
     // Spec.
+    it('dom object', function () {
+      expect(typeof TestModule.dom).toBe('object')
+    })
+    // Spec.
     it('init method', function () {
       expect(typeof TestModule.init).toBe('function')
+    })
+    // Spec.
+    it('showMenu method', function () {
+      expect(typeof TestModule.showMenu).toBe('function')
+    })
+    // Spec.
+    it('hideMenu method', function () {
+      expect(typeof TestModule.hideMenu).toBe('function')
     })
     // Spec.
     it('setHeaderHeight method', function () {
@@ -43,10 +55,22 @@ describe('Module: Mobile Menu', function () {
       TestModule.init()
       expect(TestModule.setHeaderHeight).toHaveBeenCalledWith()
     })
+  })
+  // Suite.
+  describe('showMenu() method', function () {
     // Spec.
     it('should call style() with a DOM element and CSS object', function () {
       spyOn(TestModule, 'style')
-      TestModule.init()
+      TestModule.showMenu()
+      expect(TestModule.style).toHaveBeenCalledWith($('.js--mobileMenu--menu'), {'left': '-20%', 'opacity': '1'})
+    })
+  })
+  // Suite.
+  describe('hideMenu() method', function () {
+    // Spec.
+    it('should call style() with a DOM element and CSS object', function () {
+      spyOn(TestModule, 'style')
+      TestModule.hideMenu()
       expect(TestModule.style).toHaveBeenCalledWith($('.js--mobileMenu--menu'), {'left': '-100%', 'opacity': '0'})
     })
   })

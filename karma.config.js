@@ -51,11 +51,11 @@ module.exports = function (config) {
     webpack: {
       resolve: {
         modulesDirectories: ['node_modules'],
-        extensions: ['', '.js']
+        extensions: ['', '.js'] // We do not want to test .jsx files with Karma/Jasmine.
       },
       module: {
         loaders: [{
-          test: /\.jsx$/,
+          test: /\.jsx?/,
           exclude: /(node_modules|bower_components)/,
           loader: 'babel',
           query: {

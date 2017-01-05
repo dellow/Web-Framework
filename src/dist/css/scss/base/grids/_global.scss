@@ -8,13 +8,19 @@
 .flex-grid {
 	@extend %flex;
 	width: 100% + $gutter;
+	margin-top: -$gutter; // Will need to apply 'overflow: auto' to the parent item for this to work.
 	position: relative;
 	left: -$gutter;
 	// All columns
 	[class*="col-"] {
 		max-width: $col_1 - $gutter;
 		flex-basis: $col_1 - $gutter;
-    @include nudge(margin, 1 0 0 $gutter);
+    margin: 0 0 0 $gutter;
+    &:before {
+      @include nudge(margin-top, ($gutter * 3));
+      content: '';
+      display: block;
+    }
 		// Abstractions
 		&.left {
 			text-align: left;
@@ -60,7 +66,7 @@
 	left: -$gutter;
 	[class*="col-"] {
 		width: $col_1 - $gutter;
-    @include nudge(margin, 1 0 0 $gutter);
+    @include nudge(margin, $gutter 0 0 $gutter);
 		float: left;
 		// Abstractions
 		&.left {

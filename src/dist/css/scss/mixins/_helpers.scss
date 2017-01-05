@@ -113,11 +113,21 @@
     > [class*="col-"] {
       max-width: $col - $gutter_width;
       flex-basis: $col - $gutter_width;
-      margin: $margin_top 0 0 $gutter_width;
+      margin: 0 0 0 $gutter_width;
+      &:before {
+        @include nudge(margin-top, ($gutter * 3));
+        content: '';
+        display: block;
+      }
       @if($col == 100%){
         margin-bottom: $gutter_width;
         &:last-child {
           margin-bottom: 0;
+        }
+        &:first-child {
+          &:before {
+            margin-top: 0;
+          }
         }
       }
     }
