@@ -43,7 +43,7 @@
 .grid {
   @extend %cf;
 	width: 100% + $gutter;
-	margin-top: -$gutter; // Will need to apply 'overflow: auto' to the parent item for this to work.
+	margin-top: -$gutter;
 	position: relative;
 	left: -$gutter;
 	[class*="col-"] {
@@ -80,3 +80,6 @@
 		}
 	}
 }
+
+
+/* ----------------------------------------------------------------------- */
