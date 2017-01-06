@@ -9,6 +9,7 @@ form {
 	input:not([type="radio"]):not([type="checkbox"]), select, textarea {
 		@include nudge(padding, 0.25);
 		border: 1px solid color(grey);
+    border-radius: 0;
 		display: inline-block;
 		vertical-align: top;
 		background: color(white);

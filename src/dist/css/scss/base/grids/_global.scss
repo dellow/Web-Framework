@@ -8,29 +8,13 @@
 .flex-grid {
 	@extend %flex;
 	width: 100% + $gutter;
-	margin-top: -$gutter; // Will need to apply 'overflow: auto' to the parent item for this to work.
+  margin-top: -$gutter;
 	position: relative;
 	left: -$gutter;
 	// All columns
 	[class*="col-"] {
-		max-width: $col_1 - $gutter;
-		flex-basis: $col_1 - $gutter;
-    margin: 0 0 0 $gutter;
-    &:before {
-      @include nudge(margin-top, ($gutter * 3));
-      content: '';
-      display: block;
-    }
-		// Abstractions
-		&.left {
-			text-align: left;
-		}
-		&.right {
-			text-align: right;
-		}
-		&.center {
-			text-align: center;
-		}
+		width: $col_1;
+    padding: $gutter 0 0 $gutter;
 	}
 	// Abstractions
 	&--no-gutter {
@@ -38,17 +22,15 @@
 		margin-top: 0;
 		left: 0;
 		[class*="col-"] {
-			margin: 0;
+			padding: 0;
 		}
 	}
 	@each $key, $value in $col_array {
 		.#{$key} {
-			max-width: $value - $gutter;
-			flex-basis: $value - $gutter;
+			width: $value;
 		}
 		&--no-gutter .#{$key} {
-			max-width: $value;
-			flex-basis: $value;
+			width: $value;
 		}
 	}
 }
@@ -65,36 +47,17 @@
 	position: relative;
 	left: -$gutter;
 	[class*="col-"] {
-		width: $col_1 - $gutter;
-    @include nudge(margin, $gutter 0 0 $gutter);
+		width: $col_1;
+    padding: $gutter 0 0 $gutter;
 		float: left;
-		// Abstractions
-		&.left {
-			text-align: left;
-		}
-		&.right {
-			text-align: right;
-		}
-		&.center {
-			text-align: center;
-		}
-		&.fl {
-			float: left;
-		}
-		&.fr {
-			float: right;
-		}
-		// Pseudo
-		&:last-child {
-			margin-bottom: 0;
-		}
 	}
 	// Abstractions
 	&--no-gutter {
 		width: $col_1;
+		margin-top: 0;
 		left: 0;
 		[class*="col-"] {
-			margin-left: 0;
+			padding: 0;
 		}
 	}
 	&--bricked {
@@ -110,7 +73,7 @@
 	// Columns.
 	@each $key, $value in $col_array {
 		.#{$key} {
-			width: $value - $gutter;
+			width: $value
 		}
 		&--no-gutter .#{$key} {
 			width: $value;

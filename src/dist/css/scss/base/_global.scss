@@ -37,3 +37,26 @@
     @include nudge(padding, 0.5);
   }
 }
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.page-mobile-header {
+  @include respond-to($mobile_menu + 1, null, true){
+    display: none; // Hide by default.
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.page-header {
+  @include respond-to($mobile_menu){
+    display: none;
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */

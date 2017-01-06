@@ -100,16 +100,16 @@
       // Get plugin.
       require('../../plugins/jquery.equal-heights')
       // Init plugin.
-      el.equalHeights()
+      return el.equalHeights()
     },
     sliders: function (el, options) {
       // DOM check.
       if (!el.length) return
 
       // Get plugin.
-      require('../../plugins/vendor/jquery.slider')
+      require('script!slick-carousel')
       // Init plugin.
-      el.bxSlider(options)
+      return el.slick(options)
     },
     validation: function (el, options) {
       // DOM check.
@@ -123,7 +123,7 @@
       // Get plugin.
       require('../../plugins/jquery.validation')
       // Init plugin.
-      el.validation(options)
+      return el.validation(options)
     }
   }
 

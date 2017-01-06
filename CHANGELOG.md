@@ -7,6 +7,9 @@ __3.5.0__:
 * Added `.u-nudge-<direction>-gutter` utility classes for simple margins of gutter size.
 * Fixed percentage top margin on flex grids.
 * Improved how mobile menu works.
+* Replaced BX Slider with Slick Slider.
+* Grids now use padding instead of margin.
+* Improved default markup.
 
 __3.4.0__:
 * Many fixes and improvements.
