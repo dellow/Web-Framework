@@ -10,4 +10,4 @@
 // Set config.
 window.config = window.config || {}
 
-window.config.ga_active = (global.Helpers.isEmpty(window.ga))
+window.config.ga_active = (window.Helpers.isEmpty(window.ga))

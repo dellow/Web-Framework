@@ -7,21 +7,15 @@
 /* -- Primary Navigation -- */
 .nav-primary {
   &--desktop {
-    // Descendants
     li {
       display: inline-block;
       position: relative;
-      // Abstractions
-      &.current_page_item > a, &.current_page_parent > a {
-        font-weight: bold;
-      }
       &:hover {
         > [class*="sub-menu"] {
           display: block;
         }
       }
     }
-    // Descendants
     .sub-menu {
       position: absolute;
       left: 0; top: 100%;
@@ -34,7 +28,6 @@
         left: 100%;
       }
     }
-    // Responsive
     @include respond-to($mobile_menu){
       display: none;
     }
@@ -58,12 +51,10 @@
         z-index: $zindex-1;
         overflow-y: scroll;
         background: color(white);
-        // Descendants
         &__close {
           position: absolute;
           @include nudge(top, 1); @include nudge(left, 1);
         }
-        // Abstractions
         &.active-sub-menu {
           width: 100%;
           left: 0;

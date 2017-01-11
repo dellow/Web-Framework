@@ -1,50 +1,53 @@
 /**
  *
- * Module
+ * Class
  *
  * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
 
-;(function (Module, window) {
-  'use strict'
+class DynamicDOM {
 
   /**
-   * Module
-   * Constructor for this module.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  Module = function () {
-    this.events()
-  }
-
-  /**
-   * settings
-   * Settings for this module.
+   * constructor
+   * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  Module.prototype.settings = {
-    failSilently: false
+  constructor() {
+    this._settings = {
+      failSilently: false
+    }
+  }
+
+  /**
+   * init
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  init() {
+    this.events()
   }
 
   /**
    * events
-   * Events for this module.
+   * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
+   * @access public
   **/
-  Module.prototype.events = function () {
+  events() {
     var _this = this
 
     // Extend the events system.
-    global.Public.events.extend({
+    window.Events.extend({
       events: {
         'change .js--dynamic-dom': 'updateDOM'
       },
@@ -67,8 +70,9 @@
    *
    * @since 1.0.0
    * @version 1.0.0
+   * @access public
   **/
-  Module.prototype.updateTarget = function (value, $target) {
+  updateTarget(value, $target) {
     return $target.html(value)
   }
 
@@ -78,11 +82,14 @@
    *
    * @since 1.0.0
    * @version 1.0.0
+   * @access public
   **/
-  Module.prototype.reportNoTarget = function () {
-    return (!this.settings.failSilently) ? window.Helpers.throw('No DOM target specified.') : null
+  reportNoTarget() {
+    return (!this._settings.failSilently) ? window.Helpers.throw('No DOM target specified.') : null
   }
+}
 
-  // Export
-  module.exports = new Module()
-}(function () {}, window))
+const DynamicDOMClass = new DynamicDOM()
+
+// Export
+export default DynamicDOMClass

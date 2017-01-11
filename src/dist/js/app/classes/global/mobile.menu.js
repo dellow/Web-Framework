@@ -1,80 +1,36 @@
 /**
  *
- * Module
+ * Class
  *
  * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
 
-;(function (Module, window) {
-  'use strict'
+class MobileMenu {
 
   /**
-   * Module
-   * Constructor for this module.
+   * constructor
+   * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
+   * @access public
   **/
-  Module = function () {
+  constructor() {
     // Set flag.
     this.menuOpen = false
 
-    this.events()
-  }
+    this._settings = {
+      menuSize: '80',
+      moveContent: false
+    }
 
-  /**
-   * settings
-   * Settings for this module.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-   * @access public
-  **/
-  Module.prototype.settings = {
-    menuSize: '80',
-    moveContent: false
-  }
-
-  /**
-   * dom
-   * Cached DOM elements for this module.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-   * @access public
-  **/
-  Module.prototype.dom = {
-    menu: $('.js--mobileMenu--menu'),
-    open: $('.js--mobileMenu--triggerOpen'),
-    content: $('.js--mobileMenu--content')
-  }
-
-  /**
-   * events
-   * Events for this module.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-   * @access public
-  **/
-  Module.prototype.events = function () {
-    var _this = this
-
-    // Extend the events system.
-    global.Public.events.extend({
-      events: {
-        'click .js--mobileMenu--triggerOpen': 'toggleMenu',
-        'click .js--mobileMenu--triggerClose': 'hideMenu'
-      },
-      toggleMenu: function (e) {
-        return _this.init((!_this.menuOpen) ? 'show' : 'hide')
-      },
-      hideMenu: function (e) {
-        return _this.init('hide')
-      }
-    })
+    this.dom = {
+      menu: $('.js--mobileMenu--menu'),
+      open: $('.js--mobileMenu--triggerOpen'),
+      content: $('.js--mobileMenu--content')
+    }
   }
 
   /**
@@ -85,7 +41,45 @@
    * @version 1.0.0
    * @access public
   **/
-  Module.prototype.init = function (action) {
+  init() {
+    this.events()
+  }
+
+  /**
+   * events
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  events() {
+    var _this = this
+
+    // Extend the events system.
+    window.Events.extend({
+      events: {
+        'click .js--mobileMenu--triggerOpen': 'toggleMenu',
+        'click .js--mobileMenu--triggerClose': 'hideMenu'
+      },
+      toggleMenu: function (e) {
+        return _this.startMenu((!_this.menuOpen) ? 'show' : 'hide')
+      },
+      hideMenu: function (e) {
+        return _this.startMenu('hide')
+      }
+    })
+  }
+
+  /**
+   * startMenu
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  startMenu(action) {
     // Set the mobile menu header height to
     // match the page mobile header height.
     this.setHeaderHeight()
@@ -101,16 +95,16 @@
    * @version 1.0.0
    * @access public
   **/
-  Module.prototype.showMenu = function () {
+  showMenu() {
     // Toggle the mobile menu visiblity.
-    this.style(this.dom.menu, {'left': -(100 - this.settings.menuSize) + '%', 'opacity': '1'})
+    this.style(this.dom.menu, {'left': -(100 - this._settings.menuSize) + '%', 'opacity': '1'})
     // Add no-scroll class.
     $('body').addClass('u-noscroll')
     // Add active class to button.
     this.dom.open.addClass('active')
     // Toggle the content position.
-    if (this.settings.moveContent) {
-      this.style(this.dom.content, {'left': this.settings.menuSize + '%'})
+    if (this._settings.moveContent) {
+      this.style(this.dom.content, {'left': this._settings.menuSize + '%'})
     }
     // Reset flag.
     this.menuOpen = true
@@ -124,7 +118,7 @@
    * @version 1.0.0
    * @access public
   **/
-  Module.prototype.hideMenu = function () {
+  hideMenu() {
     // Toggle the mobile menu visiblity.
     this.style(this.dom.menu, {'left': '-100%', 'opacity': '0'})
     // Remove no-scroll class.
@@ -132,7 +126,7 @@
     // Add active class to button.
     this.dom.open.removeClass('active')
     // Toggle the content position.
-    if (this.settings.moveContent) {
+    if (this._settings.moveContent) {
       this.style(this.dom.content, {'left': ''})
     }
     // Reset flag.
@@ -147,7 +141,7 @@
    * @version 1.0.0
    * @access public
   **/
-  Module.prototype.setHeaderHeight = function () {
+  setHeaderHeight() {
     return $('.page-mobile-menu__header').height(this.calculateHeight($('.js--mobileMenu--header')))
   }
 
@@ -159,7 +153,7 @@
    * @version 1.0.0
    * @access public
   **/
-  Module.prototype.calculateHeight = function (el) {
+  calculateHeight(el) {
     return el.outerHeight()
   }
 
@@ -171,10 +165,12 @@
    * @version 1.0.0
    * @access public
   **/
-  Module.prototype.style = function (el, css) {
+  style(el, css) {
     return el.css(css)
   }
+}
 
-  // Export
-  module.exports = new Module()
-}(function () {}, window))
+const MobileMenuClass = new MobileMenu()
+
+// Export
+export default MobileMenuClass

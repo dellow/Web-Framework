@@ -2,39 +2,44 @@
 /* Modernizr (via Browsernizr) (check browsernizr/test/** for tests)
 /* ======================================================== */
 // require('browsernizr/test/css/transitions')
-global.Modernizr = require('browsernizr')
+window.Modernizr = require('browsernizr')
 
 /* ======================================================== */
 /* jQuery
 /* ======================================================== */
-global.jQuery = require('jquery')
-global.$ = require('jquery')
+window.jQuery = require('jquery')
+window.$ = require('jquery')
 
 /* ======================================================== */
 /* Underscore
 /* ======================================================== */
-global._ = require('underscore')
+window._ = require('underscore')
 
 /* ======================================================== */
 /* Handlebars
 /* ======================================================== */
-// global.Handlebars = require('handlebars')
+// window.Handlebars = require('handlebars')
 
 /* ======================================================== */
 /* React
 /* ======================================================== */
-// global.React = require('react')
-// global.ReactDOM = require('react-dom')
+// window.React = require('react')
+// window.ReactDOM = require('react-dom')
+
+/* ======================================================== */
+/* Events
+/* ======================================================== */
+window.Events = require('./events')
 
 /* ======================================================== */
 /* Helpers
 /* ======================================================== */
-global.Helpers = require('./helpers')
+window.Helpers = require('./helpers')
 
 /* ======================================================== */
 /* Breakpoint Info
 /* ======================================================== */
-global.Breakpoint = require('./breakpoint')
+window.Breakpoint = require('./breakpoint')
 
 /* ======================================================== */
 /* Config

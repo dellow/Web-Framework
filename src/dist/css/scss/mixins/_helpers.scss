@@ -64,9 +64,9 @@
 * modify-grid
 * Temporarily modifies the grid system
 *
-* .foo {@include modify-grid(6%, $col-1-2);}
+* .foo {@include modify-grid(2, $col-1-2);}
 **/
-@mixin modify-grid($gutter_width, $col, $all: false){
+@mixin modify-grid($gutterValue, $col, $all: false){
   $grid_selector     : '';
   $flex_grid_selector: '';
 
@@ -77,12 +77,13 @@
     $grid_selector: '.grid, &.grid';
   }
   #{$grid_selector} {
-    width: 100% + $gutter_width;
-    margin-top: -$gutter_width;
-    left: -$gutter_width;
+    $value: px-to-rem($gutterValue * $mn);
+    width: calc(100% + #{$value});
+    @include nudge(margin-top, -$gutterValue);
+    @include nudge(left, -$gutterValue);
     > [class*="col-"] {
       width: $col;
-      padding: $gutter 0 0 $gutter;
+      @include nudge(padding, $gutterValue 0 0 $gutterValue);
     }
   }
 
@@ -93,12 +94,13 @@
     $flex_grid_selector: '.flex-grid, &.flex-grid';
   }
   #{$flex_grid_selector} {
-    width: 100% + $gutter_width;
-    margin-top: -$gutter_width;
-    left: -$gutter_width;
+    $value: px-to-rem($gutterValue * $mn);
+    width: calc(100% + #{$value});
+    @include nudge(margin-top, -$gutterValue);
+    @include nudge(left, -$gutterValue);
     > [class*="col-"] {
       width: $col;
-      padding: $gutter 0 0 $gutter;
+      @include nudge(padding, $gutterValue 0 0 $gutterValue);
     }
   }
 }

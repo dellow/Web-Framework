@@ -36,7 +36,7 @@
     // Get current breakpoint.
     Breakpoint.refreshValue()
     // Log it.
-    global.Helpers.log('The current size is: ' + Breakpoint.size + ', the current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu)
+    window.Helpers.log('The current size is: ' + Breakpoint.size + ', the current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu)
   })
 
   /**
@@ -48,7 +48,7 @@
   // Get current breakpoint.
   Breakpoint.refreshValue()
   // Log it.
-  global.Helpers.log('The current size is: ' + Breakpoint.size + ', the current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu)
+  window.Helpers.log('The current size is: ' + Breakpoint.size + ', the current breakpoint is: ' + Breakpoint.current + ' and the mobile menu size is: ' + Breakpoint.menu)
 
   // Export
   module.exports = Breakpoint

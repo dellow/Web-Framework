@@ -8,7 +8,6 @@
 **/
 
 ;(function (Helpers, window) {
-  'use strict'
 
   /**
   * log
@@ -98,7 +97,7 @@
   *
   * $(window).on('resize', Module.test)
   *
-  * Module.test = global.Helpers.debounce(function () {
+  * Module.test = window.Helpers.debounce(function () {
   *     console.log('This has been debounced')
   * }, 250)
   *
@@ -163,7 +162,7 @@
     if (url.indexOf('?') !== -1) {
       // Split URL at ?
       var urlParsed = url.split('?')[1]
-      var urlParams = (!global.Helpers.isEmpty(urlParsed)) ? urlParsed : false
+      var urlParams = (!window.Helpers.isEmpty(urlParsed)) ? urlParsed : false
 
       return (urlParams) ? JSON.parse('{"' + decodeURI(urlParams).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}') : false
     } else {

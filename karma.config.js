@@ -63,7 +63,7 @@ module.exports = function (config) {
           }
         }],
         postLoaders: [{
-          test: /\.js$/,
+          test: /\.jsx?/,
           exclude: /(test|node_modules|bower_components)\//,
           include: [require('path').resolve(__dirname, packageConfig.config.js.dirApp)],
           loader: 'istanbul-instrumenter'

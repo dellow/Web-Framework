@@ -370,6 +370,7 @@ svg:not(:root) {
 /* -- Vertically align elements with display: flex; -- */
 /* ----------------------------------------------------------------------- */
 /* -- Vertically align elements with transform: -- */
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Base > Utility Classes
    A library of classes to achieve various things. Most are prefixed
@@ -492,19 +493,19 @@ body.u-noscroll, html.u-noscroll {
 }
 
 .u-nudge-top-gutter {
-  margin-top: 1%;
+  margin-top: 0.5;
 }
 
 .u-nudge-right-gutter {
-  margin-right: 1%;
+  margin-right: 0.5;
 }
 
 .u-nudge-bottom-gutter {
-  margin-bottom: 1%;
+  margin-bottom: 0.5;
 }
 
 .u-nudge-left-gutter {
-  margin-left: 1%;
+  margin-left: 0.5;
 }
 
 /* ----------------------------------------------------------------------- */
@@ -822,6 +823,7 @@ body.u-noscroll, html.u-noscroll {
   color: #FF0000;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
   Base > Misc
   Miscellaneous elements.
@@ -902,6 +904,7 @@ hr.hr__styled-seperator {
   border-top: 1px solid #E8EAED;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Base > Global
    Styles that are across the board and not specific to
@@ -1032,6 +1035,7 @@ body:after {
   transition: left 300ms ease;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
 Base > Components > Objects
 Various CSS objects used throughout an application.
@@ -1516,6 +1520,7 @@ kbd {
   color: #FF0000;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
   Base > Components > Alerts
   Styles for various success and error alerts
@@ -1596,6 +1601,7 @@ ul.alert.box li {
   background: #f7f1e8;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
   Base > Components > Buttons
   Styles for buttons. These are not form buttons but clickable
@@ -1825,6 +1831,7 @@ ul.alert.box li {
   background: #FF0000;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
   Base > Components > Menus
   Styles for navigational menus.
@@ -2061,6 +2068,7 @@ ul.alert.box li {
   background-color: #cc0000;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
   Base > Components > Tables
   Description goes here.
@@ -2123,6 +2131,7 @@ table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight
   background: #EDEDED;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Base > Components > Forms
    Styling for elements within a form tag.
@@ -2211,21 +2220,26 @@ form ::placeholder {
   color: #DDDDDD;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Base > Grids > Global
    Global grid layouts.
 ========================================================================== */
 /* -- Flex -- */
 .flex-grid {
-  width: 101%;
-  margin-top: -1%;
+  width: -webkit-calc(100% + 0.75rem);
+  width: calc(100% + 0.75rem);
+  margin-top: -12px;
+  margin-top: -0.75rem;
   position: relative;
-  left: -1%;
+  left: -12px;
+  left: -0.75rem;
 }
 
 .flex-grid [class*="col-"] {
   width: 100%;
-  padding: 1% 0 0 1%;
+  padding: 12px 0px 0px 12px;
+  padding: 0.75rem 0px 0px 0.75rem;
 }
 
 .flex-grid--no-gutter {
@@ -3201,15 +3215,19 @@ form ::placeholder {
 /* ----------------------------------------------------------------------- */
 /* -- System -- */
 .grid {
-  width: 101%;
-  margin-top: -1%;
+  width: -webkit-calc(100% + 0.75rem);
+  width: calc(100% + 0.75rem);
+  margin-top: -12px;
+  margin-top: -0.75rem;
   position: relative;
-  left: -1%;
+  left: -12px;
+  left: -0.75rem;
 }
 
 .grid [class*="col-"] {
   width: 100%;
-  padding: 1% 0 0 1%;
+  padding: 12px 0px 0px 12px;
+  padding: 0.75rem 0px 0px 0.75rem;
   float: left;
 }
 
@@ -4217,6 +4235,7 @@ html.oldie .grid .col + .col {
   padding-right: 0;
 }
 
+/* ----------------------------------------------------------------------- */
 /* ==========================================================================
   Base > Print
   Print styling

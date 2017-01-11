@@ -4,12 +4,12 @@ __3.5.0__:
 * Many fixes and improvements.
 * Now uses Babel for all JS files not just JSX.
 * Added 'assets' Gulp task that runs Unit tests and compiles and minifies CSS and JS.
-* Added `.u-nudge-<direction>-gutter` utility classes for simple margins of gutter size.
 * Fixed percentage top margin on flex grids.
 * Improved how mobile menu works.
 * Replaced BX Slider with Slick Slider.
-* Grids now use padding instead of margin.
+* Grids now use padding instead of margin and the magic number instead of percentages for gutters.
 * Improved default markup.
+* Changed JavaScript directory structure. Using ES6 classes.
 
 __3.4.0__:
 * Many fixes and improvements.

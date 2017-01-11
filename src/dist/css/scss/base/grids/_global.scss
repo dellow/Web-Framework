@@ -7,14 +7,15 @@
 /* -- Flex -- */
 .flex-grid {
 	@extend %flex;
-	width: 100% + $gutter;
-  margin-top: -$gutter;
+  $value: px-to-rem($gutter * $mn);
+  width: calc(100% + #{$value});
+  @include nudge(margin-top, -$gutter);
 	position: relative;
-	left: -$gutter;
+  @include nudge(left, -$gutter);
 	// All columns
 	[class*="col-"] {
 		width: $col_1;
-    padding: $gutter 0 0 $gutter;
+    @include nudge(padding, $gutter 0 0 $gutter);
 	}
 	// Abstractions
 	&--no-gutter {
@@ -42,13 +43,14 @@
 /* -- System -- */
 .grid {
   @extend %cf;
-	width: 100% + $gutter;
-	margin-top: -$gutter;
+  $value: px-to-rem($gutter * $mn);
+  width: calc(100% + #{$value});
+  @include nudge(margin-top, -$gutter);
 	position: relative;
-	left: -$gutter;
+  @include nudge(left, -$gutter);
 	[class*="col-"] {
 		width: $col_1;
-    padding: $gutter 0 0 $gutter;
+    @include nudge(padding, $gutter 0 0 $gutter);
 		float: left;
 	}
 	// Abstractions
@@ -80,6 +82,3 @@
 		}
 	}
 }
-
-
-/* ----------------------------------------------------------------------- */
