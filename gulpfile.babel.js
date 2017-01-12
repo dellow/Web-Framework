@@ -2,7 +2,7 @@
  *
  * Gulpfile
  *
- * Copyright 2016, Author Name
+ * Copyright 2017, Author Name
  * Some information on the license.
  *
 **/
@@ -281,7 +281,7 @@ gulp.task('test:integration', ['test:integration:nightwatch'], () => {
 gulp.task('test:unit:karma', (done) => {
   var Server = require('karma').Server
 
-  new Server({configFile: path.join(__dirname, '/karma.config.js'), singleRun: true}, done).start()
+  new Server({configFile: path.join(__dirname, '/karma.config.babel.js'), singleRun: true}, done).start()
 })
 
 // Task.

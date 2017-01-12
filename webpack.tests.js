@@ -2,9 +2,10 @@
  *
  * Wepback > Tests
  *
- * Copyright 2016, Author Name
+ * Copyright 2017, Author Name
  * Some information on the license.
  *
 **/
 
-var context = require.context('./src/dist/js/tests/unit/', true, /__tests__\/*(.+).js/); context.keys().forEach(context)
+var context = require.context('./src/dist/js/', true, /__tests__\/*(.+).js/)
+context.keys().forEach(context)

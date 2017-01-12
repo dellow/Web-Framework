@@ -7,7 +7,7 @@
  *
 **/
 
-var packageConfig = require('./package.json')
+import packageConfig from './package.json'
 
 module.exports = function (config) {
   config.set({
@@ -33,12 +33,12 @@ module.exports = function (config) {
     files: [
       packageConfig.config.js.dirCommon + 'index.js',
       packageConfig.config.js.dirApp + 'index.js',
-      'webpack.tests.js'
+      'webpack.tests.js' // Used to get tests.
     ],
     preprocessors: {
-      [packageConfig.config.js.dirCommon + 'index.js']: ['webpack'],
-      [packageConfig.config.js.dirApp + 'index.js']: ['webpack'],
-      'webpack.tests.js': ['webpack']
+      [packageConfig.config.js.dirCommon + '*.js']: ['webpack', 'coverage'],
+      [packageConfig.config.js.dirApp + '*.js']: ['webpack', 'coverage'],
+      'webpack.tests.js': ['webpack'] // Uses 'require' so need Webpack preprocessing first.
     },
     coverageReporter: {
       dir: 'karma/coverage',

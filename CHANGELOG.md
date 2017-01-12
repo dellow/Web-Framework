@@ -10,6 +10,7 @@ __3.5.0__:
 * Grids now use padding instead of margin and the magic number instead of percentages for gutters.
 * Improved default markup.
 * Changed JavaScript directory structure. Using ES6 classes.
+* Reformatted jQuery Validation plugin to follow Standard JS.
 
 __3.4.0__:
 * Many fixes and improvements.

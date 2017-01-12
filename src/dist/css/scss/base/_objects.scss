@@ -26,7 +26,8 @@ Various CSS objects used throughout an application.
     background: color(grey);
   }
   > div {
-    width: 48%;
+    $value: (px-to-rem($gutter * $mn)) / 4;
+    width: calc(50% - #{$value});
     margin-bottom: 0;
     &:last-child {
       margin-left: auto;
