@@ -11,12 +11,14 @@
 1. [Install](#install)
 1. [Styleguide & Examples](#styleguide-examples)
 1. [Tasks](#tasks)
-    1. [Assets](#tasks--assets)
     1. [CSS](#tasks--css)
     1. [JS](#tasks--js)
+    1. [Images](#tasks--images)
     1. [Minify](#tasks--minify)
     1. [Sprite](#tasks--sprite)
-    1. [Test](#tasks--test)
+    1. [Test (Unit)](#tasks--test-unit)
+    1. [Test (Integration)](#tasks--test-integration)
+    1. [Release](#tasks--release)
     1. [Watch](#tasks--watch)
     1. [Sync](#tasks--sync)
 1. [Testing](#testing)
@@ -82,38 +84,66 @@ These serve as ongoing platforms to test any changes you might make to the Frame
 ## Tasks
 The framework uses Gulp as the task runner. The various tasks are outlined below:
 
-<a name="tasks--assets"></a>
-### Assets
-_Documentation coming soon_
-
 <a name="tasks--css"></a>
 ### CSS
+_Command:_ `gulp css`
+
 _Documentation coming soon_
 
 <a name="tasks--js"></a>
 ### JS
+_Command:_ `gulp js`
+
+_Documentation coming soon_
+
+<a name="tasks--images"></a>
+### Images
+_Command:_ `gulp images`
+
 _Documentation coming soon_
 
 <a name="tasks--minify"></a>
 ### Minify
+_Command:_ `gulp minify`
+
 _Documentation coming soon_
 
 <a name="tasks--sprite"></a>
 ### Sprite
+_Command:_ `npm run sprite`
+
 The framework comes with a Sprite task but you will need to manually install the dependencies with this command: `npm install --save-dev sprity sprity-cli sprity-lwip sprity-sass`. This is not included in the `package.json` because `sprity` uses the `lwip` engine which notoriously fails to install on some systems, including Travis CI.
 
 Once the dependencies have been installed you can safely run `npm run sprite` which will create a retina and normal sprite with all the images in `dist/images/icons/png`.
 
-<a name="tasks--test"></a>
-### Test
+<a name="tasks--test-unit"></a>
+### Test (Unit)
+_Command:_ `gulp test:unit`
+
+_Documentation coming soon_
+
+<a name="tasks--test-integration"></a>
+### Test (Integration)
+_Command:_ `gulp test:integration`
+
+_Documentation coming soon_
+
+<a name="tasks--release"></a>
+### Release
+_Command:_ `gulp release`
+
 _Documentation coming soon_
 
 <a name="tasks--watch"></a>
 ### Watch
+_Command:_ `gulp watch`
+
 _Documentation coming soon_
 
 <a name="tasks--sync"></a>
 ### Sync
+_Command:_ `gulp sync`
+
 _Documentation coming soon_
 
 <a name="testing"></a>

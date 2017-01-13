@@ -1,6 +1,6 @@
 /**
  *
- * Gulp Helpers
+ * Gulpfile Helpers
  *
  * Copyright 2017, Author Name
  * Some information on the license.

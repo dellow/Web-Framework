@@ -9,7 +9,7 @@
 body, html {
 	&.u-noscroll {
 		width: 100%;
-    -webkit-overflow-scrolling: touch;
+		height: 100%;
     overflow: hidden;
     position: fixed;
 	}

@@ -7,14 +7,18 @@
  *
 **/
 
+
 import gulp from 'gulp'
 import path from 'path'
 import notify from 'gulp-notify'
+import runSequence from 'run-sequence'
+import gulpif from 'gulp-if'
 import livereload from 'gulp-livereload'
 import sass from 'gulp-sass'
 import cleanCSS from 'gulp-clean-css'
 import uglify from 'gulp-uglify'
 import gitRev from 'git-rev'
+import imagemin from 'gulp-imagemin'
 import nightwatch from 'gulp-nightwatch'
 import autoprefixer from 'gulp-autoprefixer'
 import standard from 'gulp-standard'
@@ -47,6 +51,8 @@ gulp.task('watch', () => {
 	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
 	// Task :: JS.
 	gulp.watch(packageConfig.config.js.dirApp + '**/*.js', {cwd:'./'}, ['js'])
+	// Task :: Images.
+	gulp.watch(packageConfig.config.dist + 'images/raw/**/*.+(jpg|jpeg|png|gif)', {cwd:'./'}, ['images'])
 })
 
 
@@ -94,7 +100,6 @@ gulp.task('sync', () => {
  * Compiles the SCSS files into a single build.css.
  *
  * @uses gulp-autoprefixer
- * @uses gulp-git
  * @uses gulp-sass
  * @uses notify
  *
@@ -132,7 +137,7 @@ gulp.task('css:task', () => {
  * Uses Webpack to bundle JavaScript.
  *
  * @uses webpack-stream
- * @uses gulp-git
+ * @uses git-rev
  * @uses notify
  *
 **/
@@ -174,6 +179,29 @@ gulp.task('js:task', () => {
 
 /**
  *
+ * Images
+ *
+ * Optimises images.
+ *
+ * @uses gulp-imagemin
+ * @uses notify
+ *
+**/
+
+// Main.
+gulp.task('images', () => {
+	return gulp.src(packageConfig.config.dist + 'images/raw/**/*', {base: packageConfig.config.dist + 'images/raw/'})
+    .pipe(imagemin())
+    .pipe(gulp.dest(packageConfig.config.dist + 'images/optimised'))
+    .pipe(notify('Images optimised'))
+})
+
+
+// ********************************************************************************************* //
+
+
+/**
+ *
  * Minify
  *
  * Minfy CSS and JavaScript.
@@ -181,22 +209,20 @@ gulp.task('js:task', () => {
  * @uses gulp-clean-css
  * @uses gulp-uglify
  * @uses git-rev
+ * @uses runSequence
  * @uses notify
  *
 **/
 
 // Main.
-gulp.task('minify', ['css', 'minify:css', 'js', 'minify:js'], () => {
-  return
+gulp.task('minify', () => {
+  runSequence('minify:css', 'minify:js')
 })
 
 // CSS.
 gulp.task('minify:css', () => {
-  var cleanCSS = require('gulp-clean-css')
-  var git = require('git-rev')
-
   // Get branch name.
-  return git.branch((branch) => {
+  return gitRev.branch((branch) => {
     // Check branch name.
     if (branch === 'production' || branch === 'master') {
       // Set environment.
@@ -222,11 +248,8 @@ gulp.task('minify:css', () => {
 
 // JavaScript.
 gulp.task('minify:js', () => {
-  var uglify = require('gulp-uglify')
-  var git = require('git-rev')
-
   // Get branch name.
-  return git.branch((branch) => {
+  return gitRev.branch((branch) => {
     // Check branch name.
     if (branch === 'production' || branch === 'master') {
       // Set environment.
@@ -258,6 +281,7 @@ gulp.task('minify:js', () => {
  *
  * @uses gulp-coveralls
  * @uses karma
+ * @uses nightwatch
  * @uses notify
  *
 **/
@@ -293,7 +317,7 @@ gulp.task('test:unit:coveralls', () => {
 gulp.task('test:integration:nightwatch', () => {
   return gulp.src('')
     .pipe(nightwatch({
-      configFile: './nightwatch.json'
+      configFile: path.join(__dirname, './nightwatch.json')
     }))
 })
 
@@ -303,13 +327,15 @@ gulp.task('test:integration:nightwatch', () => {
 
 /**
  *
- * Assets
+ * Release
  *
  * Builds all assets and runs tests.
+ *
+ * @uses runSequence
  *
 **/
 
 // Task.
-gulp.task('assets', ['test:unit', 'minify'], () => {
-	return gulp.src('')
+gulp.task('release', (done) => {
+  runSequence('test', 'css', 'js', 'minify')
 })

@@ -14,7 +14,8 @@
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean-css": "^2.1.3",
     "gulp-coveralls": "^0.1.4",
-    "gulp-git": "^1.11.3",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.1.1",
     "gulp-livereload": "^3.8.1",
     "gulp-nightwatch": "^0.3.2",
     "gulp-notify": "^2.2.0",
@@ -33,7 +34,10 @@
     "karma-webpack": "^1.8.0",
     "minifier": "^0.7.1",
     "nightwatch": "^0.9.4",
+    "phantomjs-prebuilt": "^2.1.14",
+    "run-sequence": "^1.2.2",
     "script-loader": "^0.7.0",
+    "selenium-server-standalone-jar": "^3.0.1",
     "standard": "^8.1.0",
     "webpack": "^1.13.1",
     "webpack-stream": "^3.2.0"
@@ -54,8 +58,11 @@
       "$"
     ],
     "ignore": [
-      "Gulpfile.js",
-      "Gulpfile.helpers.js"
+      "gulpfile.babel.js",
+      "gulpfile.helpers.js",
+      "karma.config.js",
+      "webpack.config.js",
+      "webpack.tests.js"
     ]
   },
   "config": {

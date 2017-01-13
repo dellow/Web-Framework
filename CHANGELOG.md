@@ -3,7 +3,7 @@
 __3.5.0__:
 * Many fixes and improvements.
 * Now uses Babel for all JS files not just JSX.
-* Added 'assets' Gulp task that runs Unit tests and compiles and minifies CSS and JS.
+* Added `release` Gulp task that runs Unit tests and compiles and minifies CSS and JS.
 * Fixed percentage top margin on flex grids.
 * Improved how mobile menu works.
 * Replaced BX Slider with Slick Slider.
@@ -11,6 +11,7 @@ __3.5.0__:
 * Improved default markup.
 * Changed JavaScript directory structure. Using ES6 classes.
 * Reformatted jQuery Validation plugin to follow Standard JS.
+* Added `images` Gulp task that optimises images on the fly. Watch will also look for images. Image structure has changed to accomodate this.
 
 __3.4.0__:
 * Many fixes and improvements.
