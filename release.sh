@@ -3,6 +3,7 @@
 # release.sh
 #
 
+
 # ---------------------------------------------------------------------------
 # Check Git Tree.
 # ---------------------------------------------------------------------------
@@ -12,11 +13,24 @@ if [[ -n $(git status -s) ]]; then
   exit 0
 fi
 
+
 # ---------------------------------------------------------------------------
 # Get Version.
 # ---------------------------------------------------------------------------
 #
 read -p "$(tput setaf 5)Create version number... $(tput sgr0)" release_ver
+
+
+# ------------------------------------------------------------------------
+# Set version number check.
+# ------------------------------------------------------------------------
+#
+read -p "$(tput setaf 5)Have you updated the changelog with a $release_ver entry and updated the package.json file with the version number? y/n $(tput sgr0)" choice
+if [[ $choice = "n" ]]; then
+  echo -e "$(tput setaf 1)Please update the changelog and/or package.json file and try again.$(tput sgr0)"
+  exit 0
+fi
+printf "\n"
 
 
 # ---------------------------------------------------------------------------
