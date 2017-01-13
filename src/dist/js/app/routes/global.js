@@ -20,6 +20,7 @@ import MobileMenu from '../classes/global/mobile.menu'
    * @version 1.0.0
   **/
   Module = function () {
+    this.plugins()
     this.init()
   }
 
@@ -32,6 +33,32 @@ import MobileMenu from '../classes/global/mobile.menu'
    * @access public
   **/
   Module.prototype._settings = {
+  }
+
+  /**
+   * plugins
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  Module.prototype.plugins = function () {
+    // Init slider.
+    window.App.plugins.validation($('.js--validate-form'), {
+      serverValidation: false,
+      appendErrorToPlaceholder: true,
+      msgSep: '',
+      successCallback: function(){
+        // Check for Google Analytics.
+        if(window.config.ga_active){
+          // Log it.
+          Helpers.log('Setting virtual page view: /form-success.virtual')
+          // Set a virtual page for GA.
+          ga('send', 'pageview', '/form-success.virtual')
+        }
+      }
+    })
   }
 
   /**
