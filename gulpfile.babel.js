@@ -216,7 +216,7 @@ gulp.task('images', () => {
 
 // Main.
 gulp.task('minify', () => {
-  runSequence('minify:css', 'minify:js')
+  runSequence('minify:css', 'minify:js', 'images')
 })
 
 // CSS.

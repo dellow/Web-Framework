@@ -1,12 +1,12 @@
 /**
  *
- * LightBox
- * jquery.modals.js
+ * Modal
+ * jquery.modal.js
  *
- * Copyright 2014, Stewart Dellow
+ * Copyright 2017, Stewart Dellow
  * Some information on the license.
  *
- * $('.js-modal').modal()
+ * $('.js--modal').modal()
  *
  * setting: Type. Description.
  *
