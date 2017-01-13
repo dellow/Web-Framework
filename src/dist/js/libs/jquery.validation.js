@@ -3,7 +3,7 @@
  * Form Validation
  * jquery.validation.js
  *
- * Copyright 2014, Stewart Dellow
+ * Copyright 2017, Stewart Dellow
  * Some information on the license.
  *
  * $('.form').validation();
@@ -16,12 +16,12 @@
  *
  * Callback:
  * You can supply a callback function which is called on success in the options like so:
- *      $('.js-validate').validation({
- *          ...
- *          successCallback: function (parameters) {
- *              console.log(parameters);
- *          }
- *      });
+ *    $('.js-validate').validation({
+ *      ...
+ *      successCallback: function (parameters) {
+ *        console.log(parameters);
+ *      }
+ *    });
  * If you are using server validation, the `parameters` argument will supply the results of the validation.
  *
  *
@@ -236,6 +236,9 @@
       })
     },
     applyPreloader: function (el) {
+      // Guard :: Check element exists.
+      if (!el.length) return
+
       // Content.
       var content = JSON.stringify(el.html())
       // Loader.
@@ -255,6 +258,9 @@
       }).show()
     },
     destroyPreloader: function (el) {
+      // Guard :: Check element exists.
+      if (!el.length) return
+
       // Content.
       var content = JSON.parse(el.data('loader-content'))
       // Remove preloader
@@ -312,6 +318,9 @@
       }
     },
     saveToLocalStorage: function (el) {
+      // Guard :: Check element exists.
+      if (!el.length) return
+
       if (this.settings.localStorage && typeof(Storage) !== 'undefined') {
         // Vars
         var inputName = el.attr('name')
@@ -336,6 +345,9 @@
     setupEmailField: function (el) {
       var _this = this
 
+      // Guard :: Check element exists.
+      if (!el.length) return
+
       el.after($('<div class="js-validation-suggestion">' + this.settings.defaultSuggestText + ' <a href="#" class="js-validation-alternative-email"><span class="js-validation-address">address</span>@<span class="js-validation-domain">domain.com</span></a>?</div>'))
 
       el.on('blur', function () {
@@ -343,6 +355,9 @@
       })
     },
     setupURLField: function (el) {
+      // Guard :: Check element exists.
+      if (!el.length) return
+
       el.on('blur', function () {
         var value = el.val()
         if (value !== '' && !value.match(/^http([s]?):\/\/.*/)) {
@@ -573,11 +588,11 @@
       if (type == 'server') {
         this.$elem.fadeOut(this.settings.fadeOutAnimationSpeed, function () {
           // Validation Complete.
-          this.validateSuccess()
+          _this.validateSuccess()
           // Fade in success element.
-          this.$elem.parent().find(this.successElement).fadeIn((this.settings.fadeOutAnimationSpeed / 2))
+          _this.$elem.parent().find(_this.successElement).fadeIn((_this.settings.fadeOutAnimationSpeed / 2))
           // Callback
-          this.settings.successCallback.call(this, callbackParameters)
+          _this.settings.successCallback.call(this, callbackParameters)
         })
       } else if (!this.settings.disableAjax && type == 'js') {
         // Ajax request.
