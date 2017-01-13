@@ -45,13 +45,15 @@ START_SECONDS="$(date +%s)"
 # Run.
 # ------------------------------------------------------------------------
 #
-gulp assets
+gulp css
+gulp js
 git commit -am "Final dev compile"
 
 git checkout master
 git merge dev
 
-gulp assets
+gulp css
+gulp js
 git commit -am "Final master compile"
 
 echo -e "Creating version $release_ver of Framework"
