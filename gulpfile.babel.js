@@ -23,7 +23,6 @@ import nightwatch from 'gulp-nightwatch'
 import autoprefixer from 'gulp-autoprefixer'
 import standard from 'gulp-standard'
 import webpackStream from 'webpack-stream'
-import webpackConfig from './webpack.config.js'
 import coveralls from 'gulp-coveralls'
 import helpers from './gulpfile.helpers'
 import packageConfig from './package.json'
@@ -163,8 +162,8 @@ gulp.task('js:task', () => {
   gitRev.branch((branch) => {
     // Set environment.
     process.env.NODE_ENV = (branch === 'production' || branch === 'master') ? 'production' : 'development'
-    // Get WebPack config.
-    var config = require('./webpack.config.js')
+		// Get webpack config.
+		var webpackConfig = require('./webpack.config.js') // Must be defined here. Do not hoist.
 
   	return gulp.src(packageConfig.config.js.dirApp + 'index.js')
   		.pipe(webpackStream(webpackConfig))
@@ -337,5 +336,5 @@ gulp.task('test:integration:nightwatch', () => {
 
 // Task.
 gulp.task('release', (done) => {
-  runSequence('test', 'css', 'js', 'minify')
+  runSequence('test', 'css', 'images', 'js', 'minify')
 })

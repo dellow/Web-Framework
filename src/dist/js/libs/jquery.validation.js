@@ -1,6 +1,6 @@
 /**
  *
- * Form Validation
+ * jQuery Form Validation
  * jquery.validation.js
  *
  * Copyright 2017, Stewart Dellow
@@ -26,6 +26,7 @@
  *
  *
  * domains                 : Array. Adds to default array of top level domains for the email checker to spell check against.
+ * serverData              : Object. Data to send with the XHR request (if using server validation).
  * localStorage            : Boolean. Whether to use localStorage to save the field values if the page gets refreshed.
  * serverValidation        : Boolean. Whether to use server validation or not.
  * disableAjax             : Boolean. Disables AJAX. serverValidation must be false.
@@ -34,6 +35,7 @@
  * disableButtons          : Boolean. Disable the form buttons while processing.
  * scrollToError           : Boolean. If enabled animates a scroll to the first field with an error.
  * fadeOutAnimationSpeed   : Integer. Speed to fade out the form on success.
+ * serverURL               : String. A valid URL for the server validation.
  * serverID                : String. Post var to send to server side to identify AJAX response.
  * emailRegEx              : String. RegEx to check email addresses against.
  * passRegEx               : String. RegEx to check passwords against.
@@ -88,7 +90,9 @@
   $.fn.validation.defaults = {
     domains: [],
     localStorage: true,
-    serverValidation: true,
+    serverValidation: false,
+    serverURL: false,
+    serverData: {},
     disableAjax: false,
     onlyVisibleFields: false,
     appendErrorToPlaceholder: false,
@@ -99,16 +103,16 @@
     emailRegEx: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
     passRegEx: /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
     urlRegEx: /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
-    errorBoxClass: 'js-validation-error',
-    errorClass: 'js-validation-field-error',
+    errorBoxClass: 'js--validation-error',
+    errorClass: 'js--validation-field-error',
     msgSep: ' -',
     defaultErrorMsg: 'Please enter a value',
     defaultSuccessMsg: 'The form has been successfully submitted.',
     defaultSuggestText: 'Did you mean',
     errorBoxElement: '<span/>',
     preloaderTemplate: '<div class="loader" title="1"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path fill="#FFFFFF" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg></div>',
-    validateElement: $('.js-validation-validate'),
-    successElement: $('.js-validation-form-success'),
+    validateElement: $('.js--validation-validate'),
+    successElement: $('.js--validation-form-success'),
     customValidationMethod: null,
     successCallback: function (parameters){ }
   }
@@ -121,8 +125,6 @@
     init: function () {
       // Global settings.
       this.settings = $.extend({}, $.fn.validation.defaults, this.options)
-      // Action for the form.
-      this.formAction = (this.$elem.data('action')) ? this.$elem.data('action') : this.$elem.attr('action')
       // Cache fields.
       this.fields = $('input, select, textarea', this.$elem)
       // Cache the reset button element.
@@ -130,7 +132,7 @@
       // Cache the submit button element.
       this.button = $('button[type="submit"], input[type="submit"]', this.$elem)
       // Success element.
-      this.successElement = (this.settings.successElement.length) ? this.settings.successElement : this.$elem.before($('<div class="js-validation-form-success">' + this.settings.defaultSuccessMsg + '</div>'))
+      this.successElement = (this.settings.successElement.length) ? this.settings.successElement : this.$elem.before($('<div class="js--validation-form-success">' + this.settings.defaultSuccessMsg + '</div>'))
       // Empty array for elements. Set once the form is submitted.
       this.$elementArray = []
       // Do jQuery events.
@@ -227,12 +229,16 @@
       // Create an array for messages that have no fields.
       this.leftovers = []
     },
-    ajaxRequest: function (url, request) {
+    ajaxRequest: function (url, data) {
       return $.ajax({
         type: 'POST',
         url: url,
-        data: request,
-        dataType: 'JSON'
+        data: $.extend({}, {ajaxrequest: true}, helpers.parseURLParams(data), (this.settings.serverData || {})),
+        dataType: 'JSON',
+        beforeSend: function (jqXHR, settings) {
+          // Log full URL.
+          helpers.log((settings.data) ? settings.url + '?' + settings.data : settings.url)
+        }
       })
     },
     applyPreloader: function (el) {
@@ -348,7 +354,7 @@
       // Guard :: Check element exists.
       if (!el.length) return
 
-      el.after($('<div class="js-validation-suggestion">' + this.settings.defaultSuggestText + ' <a href="#" class="js-validation-alternative-email"><span class="js-validation-address">address</span>@<span class="js-validation-domain">domain.com</span></a>?</div>'))
+      el.after($('<div class="js--validation-suggestion">' + this.settings.defaultSuggestText + ' <a href="#" class="js--validation-alternative-email"><span class="js--validation-address">address</span>@<span class="js--validation-domain">domain.com</span></a>?</div>'))
 
       el.on('blur', function () {
         suggester.init(_this, el, _this.settings.domains)
@@ -369,18 +375,18 @@
       // Set form.
       form = (typeof form !== 'undefined') ? form : this
       // Remove error class from form.
-      form.$elem.removeClass('js-validation-form-has-errors')
+      form.$elem.removeClass('js--validation-form-has-errors')
       // Remove generic form messages.
-      $('.js-validation-form-messages').empty()
+      $('.js--validation-form-messages').empty()
       // Remove error class from fields.
-      $('.js-validation-field-has-errors', form.$elem).removeClass('js-validation-field-has-errors')
+      $('.js--validation-field-has-errors', form.$elem).removeClass('js--validation-field-has-errors')
       // Remove error class from fieldsets.
-      $('.js-validation-fieldset-has-errors', form.$elem).removeClass('js-validation-fieldset-has-errors')
+      $('.js--validation-fieldset-has-errors', form.$elem).removeClass('js--validation-fieldset-has-errors')
       // Remove error class from inputs with placeholder error..
-      $('.js-validation-field--placeholder', form.$elem).removeClass('js-validation-field--placeholder')
-      $('.js-validation-field--placeholder--span', form.$elem).remove()
+      $('.js--validation-field--placeholder', form.$elem).removeClass('js--validation-field--placeholder')
+      $('.js--validation-field--placeholder--span', form.$elem).remove()
       // Hide email suggester.
-      $('.js-validation-suggestion', form.$elem).hide()
+      $('.js--validation-suggestion', form.$elem).hide()
       // Remove current classes.
       $('.' + form.settings.errorClass, form.$elem).removeClass(form.settings.errorClass)
       $('.' + form.settings.errorBoxClass, form.$elem).remove()
@@ -397,7 +403,7 @@
       // Un-disable stuff.
       this.disableButton(false)
       // Add error class to form.
-      this.$elem.addClass('js-validation-form-has-errors')
+      this.$elem.addClass('js--validation-form-has-errors')
       // Add new ones.
       $.each(arr, function (index) {
         if ($(this) == undefined){return }
@@ -407,12 +413,12 @@
         // Get error message.
         var error = (a[0].msg !== '') ? a[0].msg : _this.settings.defaultErrorMsg
         // Separator.
-        var message = (_this.settings.msgSep) ? (error) ? _this.settings.msgSep + ' <span class="js-validation-msg">' + error + '</span>' : '' : '<span class="js-validation-msg">' + error + '</span>'
+        var message = (_this.settings.msgSep) ? (error) ? _this.settings.msgSep + ' <span class="js--validation-msg">' + error + '</span>' : '' : '<span class="js--validation-msg">' + error + '</span>'
 
         // Check element exists in the DOM.
         if (el.length && el.is(':input') && el.attr('type') !== 'hidden') {
           // Apply error class to field.
-          el.addClass(_this.settings.errorClass).parent('.obj-form-field').addClass('js-validation-field-has-errors')
+          el.addClass(_this.settings.errorClass).parent('.obj-form-field').addClass('js--validation-field-has-errors')
           // Field specific actions.
           if (el.attr('type') === 'checkbox' || el.attr('type') === 'radio') {
             // Add error element to field.
@@ -426,9 +432,9 @@
               // Check value length.
               if (el.val().length > 0) {
                 // Add error class to placeholder.
-                el.parent('.obj-form-field').addClass('js-validation-field--placeholder')
+                el.parent('.obj-form-field').addClass('js--validation-field--placeholder')
                 // Add a span to the field.
-                el.before('<span class="js-validation-field--placeholder--span">' + error + '</span>')
+                el.before('<span class="js--validation-field--placeholder--span">' + error + '</span>')
               } else {
                 // Add error to placeholder.
                 el.attr('placeholder', error)
@@ -439,7 +445,7 @@
             }
           }
           // Set errors on fieldset.
-          el.closest('fieldset').addClass('js-validation-fieldset-has-errors')
+          el.closest('fieldset').addClass('js--validation-fieldset-has-errors')
           // Scroll to first error field.
           if (index == 0 && _this.settings.scrollToError) {
             // Determine fieldset.
@@ -515,71 +521,52 @@
       })
 
       // Array of elements for the callback.
-      var parameters = null
+      var formEntries = null
 
-      // Outcome.
-      if (_this.errorArray.length === 0) {
-        this.success('js', parameters)
-      } else {
-        this.validationFailure()
-      }
+      return (_this.errorArray.length === 0 && !fatalerror) ?  _this.success('js', formEntries) : _this.validationFailure()
     },
     serverValidateFields: function () {
       var _this = this
 
       // Check for a form action.
-      if (_this.formAction !== '') {
+      if (_this.settings.serverURL) {
         // Set flag.
         var fatalerror = false
         // Ajax request.
-        var ajax_promise = _this.ajaxRequest(_this.formAction, _this.$elem.serialize() + '&' + _this.settings.serverID + '=true')
-
+        var ajaxPromise = _this.ajaxRequest(_this.settings.serverURL, _this.$elem.serialize())
         // Process promise.
-        ajax_promise.done(function (xhr) {
+        ajaxPromise.done(function (res) {
           // If error.
-          if (xhr.type == 'error') {
-            if (typeof xhr.field !== 'undefined') {
-              var obj = {
-                input: (xhr.field.indexOf('.') === 0) ? $(xhr.field) : $('[name="' + xhr.field + '"]', _this.$elem),
-                msg  : (typeof xhr.response !== 'undefined') ? xhr.response : xhr.responses[i]
-              }
-              _this.errorArray.push(obj)
-            } else {
+          if (res.type == 'error') {
+            if (typeof res.response == 'object') {
               // Loops through the response and adds them to the errorArray.
-              for(var i = 0, ii = xhr.fields.length; i < ii; i++){
+              for(var i = 0, ii = res.response.length; i < ii; i++){
                 var obj = {
-                  input: (xhr.field.indexOf('.') === 0) ? $(xhr.field) : $('[name="' + xhr.fields[i] + '"]', _this.$elem),
-                  msg  : (typeof xhr.response !== 'undefined') ? xhr.response : xhr.responses[i]
+                  input: (res.response[i].field.indexOf('.') === 0) ? $(res.response[i].field) : $('[name="' + res.response[i].field + '"]', _this.$elem),
+                  msg  : res.response[i].msg
                 }
                 _this.errorArray.push(obj)
               }
             }
           }
-
           // Array of elements for the callback.
-          var parameters = _this.$elem.serializeArray()
+          var formEntries = _this.$elem.serializeArray()
 
-          // Outcome.
-          if (_this.errorArray.length === 0 && !fatalerror) {
-            _this.success('server', parameters)
-          } else {
-            _this.validationFailure()
-          }
-        }).fail(function (xhr, ajaxOptions, thrownError) {
+          return (_this.errorArray.length === 0 && !fatalerror) ?  _this.success('server', formEntries, res) : _this.validationFailure()
+        }).fail(function (res, ajaxOptions, thrownError) {
           // Log it.
-          helpers.log(xhr)
           helpers.log(thrownError)
           // Set error.
           fatalerror = true
         })
       } else {
         // Error message.
-        helpers.log("You must have an action defined on your form in order to use server validation.")
+        helpers.log("You must supply a valid URL with the serverURL option in order to use server validation.")
 
-        return false
+        return this.validationFailure()
       }
     },
-    success: function (type, callbackParameters) {
+    success: function (type, callbackParameters, formResponse) {
       var _this = this
 
       // Clear localStorage.
@@ -592,14 +579,14 @@
           // Fade in success element.
           _this.$elem.parent().find(_this.successElement).fadeIn((_this.settings.fadeOutAnimationSpeed / 2))
           // Callback
-          _this.settings.successCallback.call(this, callbackParameters)
+          _this.settings.successCallback.call(this, callbackParameters, formResponse)
         })
       } else if (!this.settings.disableAjax && type == 'js') {
         // Ajax request.
-        var ajax_promise = this.ajaxRequest(this.formAction, this.$elem.serialize() + '&' + this.settings.serverID + '=true')
+        var ajaxPromise = this.ajaxRequest(this.settings.serverURL, this.$elem.serialize() + '&' + this.settings.serverID + '=true')
 
         // Process promise.
-        ajax_promise.always(function (response) {
+        ajaxPromise.always(function (response) {
           _this.$elem.fadeOut(_this.settings.fadeOutAnimationSpeed, function () {
             // Validation Complete.
             _this.validateSuccess()
@@ -668,12 +655,14 @@
   }
 
   /**
-  * suggester.init
-  * NULLED.
+   *
+   * init
+   * NULLED.
+   *
   **/
-  suggester.init = function (form, el, plugin_domains) {
+  suggester.init = function (form, el, pluginDomains) {
     // Default domains
-    var default_domains = [
+    var defaultDomains = [
       'aol.com',
       'bellsouth.net',
       'btinternet.com',
@@ -708,25 +697,27 @@
       'yahoo.fr'
     ]
     // Extend the domains array with those from the plugin settings.
-    this.domains = $.extend(true, default_domains, plugin_domains)
+    this.domains = $.extend(true, defaultDomains, pluginDomains)
 
     var emailVal = el.val()
-    var matchVal = suggester.get_match(emailVal)
+    var matchVal = suggester.getMatch(emailVal)
 
-    this.suggestion = el.next('.js-validation-suggestion')
-    this.reveal_suggestion(form, el, matchVal)
+    this.suggestion = el.next('.js--validation-suggestion')
+    this.reveal(form, el, matchVal)
   }
 
   /**
-  * suggester.get_match
-  * NULLED.
+   *
+   * getMatch
+   * NULLED.
+   *
   **/
-  suggester.get_match = function (query) {
+  suggester.getMatch = function (query) {
     var limit = 99
     var query = query.split('@')
 
     for(var i = 0, ii = this.domains.length; i < ii; i++){
-      var distance = suggester.levenshtein_distance(this.domains[i], query[1])
+      var distance = suggester.levenshteinDistance(this.domains[i], query[1])
       if (distance < limit) {
         limit = distance
         var domain = this.domains[i]
@@ -743,10 +734,12 @@
   }
 
   /**
-  * suggester.levenshtein_distance
-  * NULLED.
+   *
+   * levenshteinDistance
+   * NULLED.
+   *
   **/
-  suggester.levenshtein_distance = function (a, b) {
+  suggester.levenshteinDistance = function (a, b) {
     var c = 0
     var d = 0
     var e = 0
@@ -787,20 +780,22 @@
   }
 
   /**
-  * suggester.reveal_suggestion
-  * NULLED.
+   *
+   * reveal
+   * NULLED.
+   *
   **/
-  suggester.reveal_suggestion = function (form, el, result) {
+  suggester.reveal = function (form, el, result) {
     if (result) {
       Plugin.prototype.resetErrors(form)
       // Set email address.
-      $('.js-validation-address', this.suggestion).text(result.address)
+      $('.js--validation-address', this.suggestion).text(result.address)
       // Set email domain.
-      $('.js-validation-domain', this.suggestion).text(result.domain)
+      $('.js--validation-domain', this.suggestion).text(result.domain)
       // Reveal suggestion.
       this.suggestion.stop(true, false).slideDown(350)
       // Click event.
-      $('.js-validation-alternative-email').on('click', function (e) {
+      $('.js--validation-alternative-email').on('click', function (e) {
         e.preventDefault()
 
         // Apply suggestion.
@@ -812,8 +807,10 @@
   }
 
   /**
-  * helpers.removeDuplicates
-  * Remove duplicates from an array.
+   *
+   * removeDuplicates
+   * Remove duplicates from an array.
+   *
   **/
   helpers.removeDuplicates = function (array) {
     var result = []
@@ -827,8 +824,10 @@
   }
 
   /**
-  * helpers.log
-  * Returns a cross-browser safe message in the console.
+   *
+   * log
+   * Returns a cross-browser safe message in the console.
+   *
   **/
   helpers.log = function (message, alertlog) {
     alertlog = (typeof alertlog === 'undefined') ? false : true
@@ -838,8 +837,21 @@
       }
     }
     else {
-      console.log(message)
+      console.log('%c-- jQuery Form Validation ---------------------------------------------------------', 'color:#c5211d;font-weight:bold;')
+      console.log('%c' + message, 'color:#c5211d;')
+      console.log('%c-- jQuery Form Validation ---------------------------------------------------------', 'color:#c5211d;font-weight:bold;')
+      console.log('')
     }
+  }
+
+  /**
+   *
+   * parseURLParams
+   * Converts the URL parameters into an object.
+   *
+  **/
+  helpers.parseURLParams = function (str) {
+    return JSON.parse('{"' + decodeURI(str).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
   }
 
 })(jQuery, window)

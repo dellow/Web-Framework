@@ -5,29 +5,29 @@
 
 
 [data-icon]:before {
-    font-family: "socicon" !important;
-    content: attr(data-icon);
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: "socicon" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 [class^="socicon-"]:before,
 [class*=" socicon-"]:before {
-    font-family: "socicon" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: "socicon" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .socicon-modelmayhem:before {
@@ -221,21 +221,27 @@
 }
 .socicon-snapchat:before {
   content: "\e03f";
+  color: color(social, snapchat);
 }
 .socicon-twitter:before {
   content: "\e040";
+  color: color(social, twitter);
 }
 .socicon-facebook:before {
   content: "\e041";
+  color: color(social, facebook);
 }
 .socicon-googleplus:before {
   content: "\e042";
+  color: color(social, google);
 }
 .socicon-pinterest:before {
   content: "\e043";
+  color: color(social, pinterest);
 }
 .socicon-foursquare:before {
   content: "\e044";
+  color: color(social, foursquare);
 }
 .socicon-yahoo:before {
   content: "\e045";
@@ -251,6 +257,7 @@
 }
 .socicon-linkedin:before {
   content: "\e049";
+  color: color(social, linkedin);
 }
 .socicon-viadeo:before {
   content: "\e04a";
@@ -278,6 +285,7 @@
 }
 .socicon-vimeo:before {
   content: "\e052";
+  color: color(social, vimeo);
 }
 .socicon-dailymotion:before {
   content: "\e053";
@@ -287,6 +295,7 @@
 }
 .socicon-flickr:before {
   content: "\e055";
+  color: color(social, flickr);
 }
 .socicon-500px:before {
   content: "\e056";
@@ -296,6 +305,7 @@
 }
 .socicon-tumblr:before {
   content: "\e059";
+  color: color(social, tumblr);
 }
 .socicon-twitch:before {
   content: "\e05a";
@@ -371,6 +381,7 @@
 }
 .socicon-quora:before {
   content: "\e073";
+  color: color(social, quora);
 }
 .socicon-draugiem:before {
   content: "\e074";
@@ -422,6 +433,7 @@
 }
 .socicon-instagram:before {
   content: "\e057";
+  color: color(social, instagram);
 }
 .socicon-battlenet:before {
   content: "\e083";
