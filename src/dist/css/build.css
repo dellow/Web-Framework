@@ -44,7 +44,7 @@
 * modify-grid
 * Temporarily modifies the grid system
 *
-* .foo {@include modify-grid(6%, $col-1-2);}
+* .foo {@include modify-grid(2, $col-1-2);}
 **/
 /* ==========================================================================
   Mixins > Misc
@@ -490,22 +490,6 @@ body.u-noscroll, html.u-noscroll {
 .u-nudge-left--x3 {
   margin-left: 72px;
   margin-left: 4.5rem;
-}
-
-.u-nudge-top-gutter {
-  margin-top: 0.5;
-}
-
-.u-nudge-right-gutter {
-  margin-right: 0.5;
-}
-
-.u-nudge-bottom-gutter {
-  margin-bottom: 0.5;
-}
-
-.u-nudge-left-gutter {
-  margin-left: 0.5;
 }
 
 /* ----------------------------------------------------------------------- */
@@ -1013,6 +997,10 @@ body:after {
   position: relative;
 }
 
+.container--vsmall {
+  max-width: 378.66667px;
+}
+
 .container--small {
   max-width: 768px;
 }
@@ -1069,7 +1057,8 @@ Various CSS objects used throughout an application.
 }
 
 .obj-form-field > div {
-  width: 48%;
+  width: -webkit-calc(50% - 0.75rem/4);
+  width: calc(50% - 0.75rem/4);
   margin-bottom: 0;
 }
 
@@ -1840,10 +1829,6 @@ ul.alert.box li {
 .nav-primary--desktop li {
   display: inline-block;
   position: relative;
-}
-
-.nav-primary--desktop li.current_page_item > a, .nav-primary--desktop li.current_page_parent > a {
-  font-weight: bold;
 }
 
 .nav-primary--desktop li:hover > [class*="sub-menu"] {

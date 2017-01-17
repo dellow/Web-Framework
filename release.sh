@@ -56,13 +56,14 @@ gulp css
 gulp js
 git commit -am "Final master compile"
 
-echo -e "Creating version $release_ver of Framework"
+echo -e "Creating version $release_ver of Framework."
 git tag $release_ver
+echo -e "Tagged a new version."
 git push origin --all
+echo -e "Pushed to repo."
 
 git checkout dev
 git merge master
-printf "\n"
 
 
 # ---------------------------------------------------------------------------
