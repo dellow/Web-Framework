@@ -11,8 +11,6 @@ import MobileMenu from '../classes/global/mobile.menu'
 import TurboLinks from 'turbolinks'
 
 ;(function (Module, window) {
-  'use strict'
-
   /**
    * Module
    * Constructor for this module.

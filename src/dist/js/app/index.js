@@ -10,7 +10,6 @@
 import Navigo from 'navigo'
 
 ;(function (App, window) {
-  'use strict'
 
   /**
    * App

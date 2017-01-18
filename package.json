@@ -60,7 +60,8 @@
       "$"
     ],
     "ignore": [
-      "**/__tests__/*.js"
+      "**/__tests__/*.js",
+      "*.jsx"
     ]
   },
   "config": {
