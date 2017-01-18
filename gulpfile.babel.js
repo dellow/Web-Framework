@@ -307,9 +307,21 @@ gulp.task('test:integration', ['test:integration:nightwatch'], () => {
 
 // Task.
 gulp.task('test:unit:karma', (done) => {
+  // Get karma server.
   var Server = require('karma').Server
 
-  new Server({configFile: path.join(__dirname, '/karma.config.babel.js'), singleRun: true}, done).start()
+  new Server({
+    configFile: path.join(__dirname, '/karma.config.babel.js'),
+    singleRun: true
+  }, (code) => {
+    if (code) {
+      gulp.src('').pipe(notify('Unit tests failed. Exiting now...'))
+      done('Unit tests failed. Exiting now...')
+    } else {
+      gulp.src('').pipe(notify('Unit tests passed.'))
+      done()
+    }
+  }).start()
 })
 
 // Task.
