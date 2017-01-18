@@ -17,7 +17,7 @@ class MobileMenu {
    * @version 1.0.0
    * @access public
   **/
-  constructor() {
+  constructor () {
     // Set flag.
     this.menuOpen = false
 
@@ -41,7 +41,7 @@ class MobileMenu {
    * @version 1.0.0
    * @access public
   **/
-  init() {
+  init () {
     this.events()
   }
 
@@ -53,7 +53,7 @@ class MobileMenu {
    * @version 1.0.0
    * @access public
   **/
-  events() {
+  events () {
     var _this = this
 
     // Extend the events system.
@@ -79,7 +79,7 @@ class MobileMenu {
    * @version 1.0.0
    * @access public
   **/
-  startMenu(action) {
+  startMenu (action) {
     // Set the mobile menu header height to
     // match the page mobile header height.
     this.setHeaderHeight()
@@ -95,7 +95,7 @@ class MobileMenu {
    * @version 1.0.0
    * @access public
   **/
-  showMenu() {
+  showMenu () {
     // Toggle the mobile menu visiblity.
     this.style(this.dom.menu, {'left': -(100 - this._settings.menuSize) + '%', 'opacity': '1'})
     // Add no-scroll class.
@@ -118,7 +118,7 @@ class MobileMenu {
    * @version 1.0.0
    * @access public
   **/
-  hideMenu() {
+  hideMenu () {
     // Toggle the mobile menu visiblity.
     this.style(this.dom.menu, {'left': '-100%', 'opacity': '0'})
     // Remove no-scroll class.
@@ -141,7 +141,7 @@ class MobileMenu {
    * @version 1.0.0
    * @access public
   **/
-  setHeaderHeight() {
+  setHeaderHeight () {
     return $('.page-mobile-menu__header').height(this.calculateHeight($('.js--mobileMenu--header')))
   }
 
@@ -153,7 +153,7 @@ class MobileMenu {
    * @version 1.0.0
    * @access public
   **/
-  calculateHeight(el) {
+  calculateHeight (el) {
     return el.outerHeight()
   }
 
@@ -165,7 +165,7 @@ class MobileMenu {
    * @version 1.0.0
    * @access public
   **/
-  style(el, css) {
+  style (el, css) {
     return el.css(css)
   }
 }

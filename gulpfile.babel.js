@@ -148,7 +148,12 @@ gulp.task('js', ['js:standard', 'js:task'], () => {
 
 // Standard.
 gulp.task('js:standard', () => {
-	return gulp.src(packageConfig.config.js.dirApp + '**/*.js')
+  // Get ignore array.
+  var jsFiles = packageConfig.standard.ignore.map((i) => { return '!' + i })
+  // Remove ignored files.
+  jsFiles.unshift(packageConfig.config.js.dirApp + '**/*.js')
+
+	return gulp.src(jsFiles)
     .pipe(standard())
     .pipe(standard.reporter('default', {
   		breakOnError: true,

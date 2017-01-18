@@ -17,7 +17,7 @@ class DynamicDOM {
    * @version 1.0.0
    * @access public
   **/
-  constructor() {
+  constructor () {
     this._settings = {
       failSilently: false
     }
@@ -31,7 +31,7 @@ class DynamicDOM {
    * @version 1.0.0
    * @access public
   **/
-  init() {
+  init () {
     this.events()
   }
 
@@ -43,7 +43,7 @@ class DynamicDOM {
    * @version 1.0.0
    * @access public
   **/
-  events() {
+  events () {
     var _this = this
 
     // Extend the events system.
@@ -72,7 +72,7 @@ class DynamicDOM {
    * @version 1.0.0
    * @access public
   **/
-  updateTarget(value, $target) {
+  updateTarget (value, $target) {
     return $target.html(value)
   }
 
@@ -84,7 +84,7 @@ class DynamicDOM {
    * @version 1.0.0
    * @access public
   **/
-  reportNoTarget() {
+  reportNoTarget () {
     return (!this._settings.failSilently) ? window.Helpers.throw('No DOM target specified.') : null
   }
 }

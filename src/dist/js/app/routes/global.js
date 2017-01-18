@@ -8,6 +8,7 @@
 **/
 
 import MobileMenu from '../classes/global/mobile.menu'
+import TurboLinks from 'turbolinks'
 
 ;(function (Module, window) {
   'use strict'
@@ -49,13 +50,13 @@ import MobileMenu from '../classes/global/mobile.menu'
       serverValidation: false,
       appendErrorToPlaceholder: true,
       msgSep: '',
-      successCallback: function(){
+      successCallback: function () {
         // Check for Google Analytics.
-        if(window.config.ga_active){
+        if (window.config.ga_active) {
           // Log it.
-          Helpers.log('Setting virtual page view: /form-success.virtual')
+          window.Helpers.log('Setting virtual page view: /form-success.virtual')
           // Set a virtual page for GA.
-          ga('send', 'pageview', '/form-success.virtual')
+          window.ga('send', 'pageview', '/form-success.virtual')
         }
       }
     })
@@ -70,6 +71,7 @@ import MobileMenu from '../classes/global/mobile.menu'
    * @access public
   **/
   Module.prototype.init = function () {
+    TurboLinks.start()
     MobileMenu.init()
   }
 

@@ -17,7 +17,7 @@
   * @version 1.0.0
   **/
   Helpers.log = function (message, type, alertlog) {
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' && !this.isPhantom()) {
       alertlog = (typeof alertlog === 'undefined')
       if (typeof console === 'undefined' || typeof console.log === 'undefined') {
         if (alertlog) {
@@ -35,6 +35,17 @@
         console.log('')
       }
     }
+  }
+
+  /**
+  * isPhantom
+  * Checks if user is PhantomJS.
+  *
+  * @since 1.0.0
+  * @version 1.0.0
+  **/
+  Helpers.isPhantom = function () {
+    return (/PhantomJS/.test(window.navigator.userAgent))
   }
 
   /**

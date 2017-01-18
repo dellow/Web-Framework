@@ -418,11 +418,11 @@
         // Check element exists in the DOM.
         if (el.length && el.is(':input') && el.attr('type') !== 'hidden') {
           // Apply error class to field.
-          el.addClass(_this.settings.errorClass).parent('.obj-form-field').addClass('js--validation-field-has-errors')
+          el.addClass(_this.settings.errorClass).parent().addClass('js-validation-field-has-errors')
           // Field specific actions.
           if (el.attr('type') === 'checkbox' || el.attr('type') === 'radio') {
             // Add error element to field.
-            el.closest('.obj-form-field').find('label, .label').first().append($(_this.settings.errorBoxElement).addClass(_this.settings.errorBoxClass).html(message))
+            el.parent().find('label, .label').first().append($(_this.settings.errorBoxElement).addClass(_this.settings.errorBoxClass).html(message))
             // Apply to nearest label if checkbox or radio.
             el.closest('label').addClass(_this.settings.errorClass)
           } else {
@@ -432,9 +432,9 @@
               // Check value length.
               if (el.val().length > 0) {
                 // Add error class to placeholder.
-                el.parent('.obj-form-field').addClass('js--validation-field--placeholder')
+                el.parent().addClass('js-validation-field--placeholder')
                 // Add a span to the field.
-                el.before('<span class="js--validation-field--placeholder--span">' + error + '</span>')
+                el.before('<span class="js-validation-field--placeholder--span">' + error + '</span>')
               } else {
                 // Add error to placeholder.
                 el.attr('placeholder', error)
@@ -520,10 +520,7 @@
         }
       })
 
-      // Array of elements for the callback.
-      var formEntries = null
-
-      return (_this.errorArray.length === 0 && !fatalerror) ?  _this.success('js', formEntries) : _this.validationFailure()
+      return (_this.errorArray.length === 0) ?  _this.success('js', null) : _this.validationFailure()
     },
     serverValidateFields: function () {
       var _this = this

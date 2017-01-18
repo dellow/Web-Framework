@@ -12,6 +12,7 @@ __3.5.0__:
 * Changed JavaScript directory structure. Using ES6 classes.
 * Reformatted jQuery Validation plugin to follow Standard JS.
 * Added `images` Gulp task that optimises images on the fly. Watch will also look for images. Image structure has changed to accommodate this.
+* Added Turbolinks.
 
 __3.4.0__:
 * Many fixes and improvements.

@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Site > Vendor > Validation
-   Validation styles.
+  Site > Vendor > Validation
+  Validation styles.
 ========================================================================== */
 
 
@@ -22,7 +22,6 @@ form {
 	&.js--validation-form-has-errors { // Qualified Selector
 		// Labels
 		label {
-			// Abstractions
 			&.js--validation-field-error {
 				color: $color_error !important;
 			}
@@ -46,50 +45,45 @@ form {
 			}
 		}
 
-		// Fields
-		.obj-form-field {
-			// Placeholders.
-			&.js--validation-field-has-errors {
-				::-webkit-input-placeholder {
-					color: $color_error !important;
-				}
-				::-moz-placeholder {
-					color: $color_error !important;
-				}
-				:-moz-placeholder {
-					color: $color_error !important;
-				}
-				:-ms-input-placeholder {
-					color: $color_error !important;
-				}
-				::placeholder {
-					color: $color_error !important;
-				}
+		// Placeholders.
+		.js--validation-field-has-errors {
+			::-webkit-input-placeholder {
+				color: $color_error !important;
 			}
-			// Abstractions
-			&.js--validation-field--placeholder {
-				input, .input, select, textarea, .field-container {
-					height: auto;
-					@include nudge(padding-bottom, 1.15);
-				}
-				.js--validation-field--placeholder--span {
-					position: absolute;
-					top: 35px; @include nudge(left, 0.4);
-					z-index: $zindex-1;
-					color: color(black);
-					@include rem(font-size, 12px);
-				}
+			::-moz-placeholder {
+				color: $color_error !important;
+			}
+			:-moz-placeholder {
+				color: $color_error !important;
+			}
+			:-ms-input-placeholder {
+				color: $color_error !important;
+			}
+			::placeholder {
+				color: $color_error !important;
+			}
+		}
+    
+		.js--validation-field--placeholder {
+			input, .input, select, textarea, .field-container {
+				height: auto;
+				@include nudge(padding-bottom, 1.15);
+			}
+			.js--validation-field--placeholder--span {
+				position: absolute;
+				top: 35px; @include nudge(left, 0.4);
+				z-index: $zindex-1;
+				color: color(black);
+				@include rem(font-size, 12px);
 			}
 		}
 
 		// Inputs
 		input, .input, select, textarea, .field-container {
-			// Abstractions
 			&.js--validation-field-error {
 				color: $color_error !important;;
 				border-color: lighten($color_error, 25%) !important;;
 				background-color: lighten($color_error, 40%) !important;;
-				// Pseudo
 				&:focus {
 					background-color: lighten($color_error, 35%) !important;;
 				}
@@ -98,7 +92,6 @@ form {
 				color: $color_status !important;;
 				border-color: lighten($color_status, 25%) !important;;
 				background-color: lighten($color_status, 40%) !important;;
-				// Pseudo
 				&:focus {
 					background-color: lighten($color_status, 35%) !important;;
 				}
@@ -107,7 +100,6 @@ form {
 				color: $color_success !important;;
 				border-color: lighten($color_success, 25%) !important;;
 				background-color: lighten($color_success, 40%) !important;;
-				// Pseudo
 				&:focus {
 					background-color: lighten($color_success, 35%) !important;;
 				}
@@ -116,28 +108,10 @@ form {
 				color: $color_warning !important;;
 				border-color: lighten($color_warning, 25%) !important;;
 				background-color: lighten($color_warning, 40%) !important;;
-				// Pseudo
 				&:focus {
 					background-color: lighten($color_warning, 35%) !important;;
 				}
 			}
-		}
-
-		// Placeholders
-		::-webkit-input-placeholder {
-			color: $color_error;
-		}
-		::-moz-placeholder {
-			color: $color_error;
-		}
-		:-moz-placeholder {
-			color: $color_error;
-		}
-		:-ms-input-placeholder {
-			color: $color_error;
-		}
-		::placeholder {
-			color: $color_error;
 		}
 	}
 
@@ -146,3 +120,6 @@ form {
 		border: 1px solid transparent;
 	}
 }
+
+
+/* ----------------------------------------------------------------------- */

@@ -352,6 +352,11 @@ You can also supply a `type` parameter to customise the output colour (`Helpers.
 
 ***
 
+##### isPhantom `Helpers.isPhantom()`
+Returns boolean depending on if PhantomJS is detected in the UserAgent. Mainly used to prevent `Helpers.log` from outputting during unit testing, but can be used for other purposes. Beaware, the UserAgent can easily be spoofed.
+
+***
+
 ##### throw `Helpers.throw('This is an error')`
 Throws a JavaScript error.
 
