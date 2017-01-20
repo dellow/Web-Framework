@@ -46,17 +46,45 @@
       var event = name.substr(0, name.indexOf(' '))
       // Cache selector.
       var selector = name.substr(name.indexOf(' ') + 1)
-      // Add event.
-      $(document).on(event, selector, function (e) {
-        // Add $el to event object
-        e.$el = $(this)
-        // Event
-        if (typeof _this.event === 'function') {
-          e = _this.event(e)
-        }
-        // Callback
-        _this[callback]([e])
-      })
+      // Check event type.
+      if (event === 'load') {
+        // Add event.
+        $(window).on(event, function (e) {
+          // Add $el to event object
+          e.$el = $(this)
+          // Event
+          if (typeof _this.event === 'function') {
+            e = _this.event(e)
+          }
+          // Callback
+          _this[callback]([e])
+        })
+      } else if (event === 'ready') {
+        // Add event.
+        $(function () {
+          // Add $el to event object
+          e.$el = $(this)
+          // Event
+          if (typeof _this.event === 'function') {
+            e = _this.event(e)
+          }
+          // Callback
+          _this[callback]([e])
+        })
+      }
+      } else {
+        // Add event.
+        $(document).on(event, selector, function (e) {
+          // Add $el to event object
+          e.$el = $(this)
+          // Event
+          if (typeof _this.event === 'function') {
+            e = _this.event(e)
+          }
+          // Callback
+          _this[callback]([e])
+        })
+      }
     }
   }
 
