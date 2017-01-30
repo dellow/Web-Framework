@@ -41,8 +41,11 @@ body {
   min-width: $device;
   margin: 0 auto;
   position: relative;
-  &--vsmall {
+  &--usmall {
     max-width: ($mobile / 1.5);
+  }
+  &--vsmall {
+    max-width: $mobile;
   }
   &--small {
     max-width: $tablet;
