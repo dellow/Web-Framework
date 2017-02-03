@@ -36,33 +36,33 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 h1 {
-	@include nudge(margin, 0.5 0 1);
-	font-size: 175%;
+  @include nudge(margin, 0.5 0 1);
+  font-size: 175%;
   line-height: 100%;
 }
 h2 {
-	@include nudge(margin, 0.5 0);
-	font-size: 150%;
+  @include nudge(margin, 0.5 0);
+  font-size: 150%;
   line-height: 100%;
 }
 h3 {
-	@include nudge(margin, 0.5 0);
-	font-size: 135%;
+  @include nudge(margin, 0.5 0);
+  font-size: 140%;
   line-height: 100%;
 }
 h4 {
-	@include nudge(margin, 0.5 0);
-	font-size: 120%;
+  @include nudge(margin, 0.5 0);
+  font-size: 130%;
   line-height: 100%;
 }
 h5 {
-	@include nudge(margin, 0.5 0);
-	font-size: 110%;
-  line-height: 100%;
+  @include nudge(margin, 0.5 0);
+  font-size: 120%;
+  line-height: 115%;
 }
 h6 {
-	@include nudge(margin, 0.5 0);
-	font-size: 100%;
+  @include nudge(margin, 0.5 0);
+  font-size: 110%;
   line-height: 115%;
   font-weight: normal;
 }

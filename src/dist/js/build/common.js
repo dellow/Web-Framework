@@ -50,18 +50,18 @@
 	/* Modernizr (via Browsernizr) (check browsernizr/test/** for tests)
 	/* ======================================================== */
 	// require('browsernizr/test/css/transitions')
-	window.Modernizr = __webpack_require__(9);
+	window.Modernizr = __webpack_require__(11);
 
 	/* ======================================================== */
 	/* jQuery
 	/* ======================================================== */
-	window.jQuery = __webpack_require__(19);
-	window.$ = __webpack_require__(19);
+	window.jQuery = __webpack_require__(21);
+	window.$ = __webpack_require__(21);
 
 	/* ======================================================== */
 	/* Underscore
 	/* ======================================================== */
-	window._ = __webpack_require__(20);
+	window._ = __webpack_require__(22);
 
 	/* ======================================================== */
 	/* Handlebars
@@ -77,27 +77,27 @@
 	/* ======================================================== */
 	/* Events
 	/* ======================================================== */
-	window.Events = __webpack_require__(21);
+	window.Events = __webpack_require__(23);
 
 	/* ======================================================== */
 	/* Helpers
 	/* ======================================================== */
-	window.Helpers = __webpack_require__(22);
+	window.Helpers = __webpack_require__(24);
 
 	/* ======================================================== */
 	/* Breakpoint Info
 	/* ======================================================== */
-	window.Breakpoint = __webpack_require__(23);
+	window.Breakpoint = __webpack_require__(26);
 
 	/* ======================================================== */
 	/* Config
 	/* ======================================================== */
-	__webpack_require__(24);
+	__webpack_require__(27);
 
 	/* ======================================================== */
 	/* Google Analytics Autotrack
 	/* ======================================================== */
-	__webpack_require__(25);
+	__webpack_require__(28);
 
 /***/ },
 /* 1 */,
@@ -108,14 +108,16 @@
 /* 6 */,
 /* 7 */,
 /* 8 */,
-/* 9 */
+/* 9 */,
+/* 10 */,
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Modernizr = __webpack_require__(10),
-	    ModernizrProto = __webpack_require__(11),
-	    classes = __webpack_require__(13),
-	    testRunner = __webpack_require__(14),
-	    setClasses = __webpack_require__(16);
+	var Modernizr = __webpack_require__(12),
+	    ModernizrProto = __webpack_require__(13),
+	    classes = __webpack_require__(15),
+	    testRunner = __webpack_require__(16),
+	    setClasses = __webpack_require__(18);
 
 	// Run each test
 	testRunner();
@@ -135,10 +137,10 @@
 
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ModernizrProto = __webpack_require__(11);
+	var ModernizrProto = __webpack_require__(13);
 	  // Fake some of Object.create so we can force non test results to be non "own" properties.
 	  var Modernizr = function() {};
 	  Modernizr.prototype = ModernizrProto;
@@ -152,10 +154,10 @@
 
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var tests = __webpack_require__(12);
+	var tests = __webpack_require__(14);
 	  /**
 	   *
 	   * ModernizrProto is the constructor for Modernizr
@@ -208,7 +210,7 @@
 
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports) {
 
 	
@@ -218,7 +220,7 @@
 
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports) {
 
 	
@@ -228,13 +230,13 @@
 
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var tests = __webpack_require__(12);
-	var Modernizr = __webpack_require__(10);
-	var classes = __webpack_require__(13);
-	var is = __webpack_require__(15);
+	var tests = __webpack_require__(14);
+	var Modernizr = __webpack_require__(12);
+	var classes = __webpack_require__(15);
+	var is = __webpack_require__(17);
 	  /**
 	   * Run through all tests and detect their support in the current UA.
 	   *
@@ -309,7 +311,7 @@
 
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports) {
 
 	
@@ -331,12 +333,12 @@
 
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Modernizr = __webpack_require__(10);
-	var docElement = __webpack_require__(17);
-	var isSVG = __webpack_require__(18);
+	var Modernizr = __webpack_require__(12);
+	var docElement = __webpack_require__(19);
+	var isSVG = __webpack_require__(20);
 	  /**
 	   * setClasses takes an array of class names and adds them to the root element
 	   *
@@ -375,7 +377,7 @@
 
 
 /***/ },
-/* 17 */
+/* 19 */
 /***/ function(module, exports) {
 
 	
@@ -392,10 +394,10 @@
 
 
 /***/ },
-/* 18 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var docElement = __webpack_require__(17);
+	var docElement = __webpack_require__(19);
 	  /**
 	   * A convenience helper to check if the document we are running in is an SVG document
 	   *
@@ -409,7 +411,7 @@
 
 
 /***/ },
-/* 19 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10635,7 +10637,7 @@
 
 
 /***/ },
-/* 20 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -12189,7 +12191,7 @@
 
 
 /***/ },
-/* 21 */
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12242,17 +12244,44 @@
 	      var event = name.substr(0, name.indexOf(' '));
 	      // Cache selector.
 	      var selector = name.substr(name.indexOf(' ') + 1);
-	      // Add event.
-	      $(document).on(event, selector, function (e) {
-	        // Add $el to event object
-	        e.$el = $(this);
-	        // Event
-	        if (typeof _this.event === 'function') {
-	          e = _this.event(e);
-	        }
-	        // Callback
-	        _this[callback]([e]);
-	      });
+	      // Check event type.
+	      if (event === 'load') {
+	        // Add event.
+	        $(window).on(event, function (e) {
+	          // Add $el to event object
+	          e.$el = $(this);
+	          // Event
+	          if (typeof _this.event === 'function') {
+	            e = _this.event(e);
+	          }
+	          // Callback
+	          _this[callback]([e]);
+	        });
+	      } else if (event === 'ready') {
+	        // Add event.
+	        $(function () {
+	          // Add $el to event object
+	          e.$el = $(this);
+	          // Event
+	          if (typeof _this.event === 'function') {
+	            e = _this.event(e);
+	          }
+	          // Callback
+	          _this[callback]([e]);
+	        });
+	      } else {
+	        // Add event.
+	        $(document).on(event, selector, function (e) {
+	          // Add $el to event object
+	          e.$el = $(this);
+	          // Event
+	          if (typeof _this.event === 'function') {
+	            e = _this.event(e);
+	          }
+	          // Callback
+	          _this[callback]([e]);
+	        });
+	      }
 	    }
 	  };
 
@@ -12261,10 +12290,10 @@
 	})(window.Events = window.Events || function () {}, window);
 
 /***/ },
-/* 22 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	/**
 	 *
@@ -12285,7 +12314,7 @@
 	  * @version 1.0.0
 	  **/
 	  Helpers.log = function (message, type, alertlog) {
-	    if (true) {
+	    if (process.env.NODE_ENV !== 'production' && !this.isPhantom()) {
 	      alertlog = typeof alertlog === 'undefined';
 	      if (typeof console === 'undefined' || typeof console.log === 'undefined') {
 	        if (alertlog) {
@@ -12303,6 +12332,18 @@
 	        console.log('');
 	      }
 	    }
+	  };
+
+	  /**
+	  * isPhantom
+	  * Checks if user is PhantomJS.
+	  *
+	  * @since 1.0.0
+	  * @version 1.0.0
+	  **/
+	  Helpers.isPhantom = function () {
+	    return (/PhantomJS/.test(window.navigator.userAgent)
+	    );
 	  };
 
 	  /**
@@ -12457,9 +12498,196 @@
 	  // Export
 	  module.exports = Helpers;
 	})({}, window);
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ },
-/* 23 */
+/* 25 */
+/***/ function(module, exports) {
+
+	// shim for using process in browser
+	var process = module.exports = {};
+
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
+	(function () {
+	    try {
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
+	    }
+	    try {
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
+	    }
+	} ())
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch(e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch(e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+
+
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+
+
+
+	}
+	var queue = [];
+	var draining = false;
+	var currentQueue;
+	var queueIndex = -1;
+
+	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
+	    draining = false;
+	    if (currentQueue.length) {
+	        queue = currentQueue.concat(queue);
+	    } else {
+	        queueIndex = -1;
+	    }
+	    if (queue.length) {
+	        drainQueue();
+	    }
+	}
+
+	function drainQueue() {
+	    if (draining) {
+	        return;
+	    }
+	    var timeout = runTimeout(cleanUpNextTick);
+	    draining = true;
+
+	    var len = queue.length;
+	    while(len) {
+	        currentQueue = queue;
+	        queue = [];
+	        while (++queueIndex < len) {
+	            if (currentQueue) {
+	                currentQueue[queueIndex].run();
+	            }
+	        }
+	        queueIndex = -1;
+	        len = queue.length;
+	    }
+	    currentQueue = null;
+	    draining = false;
+	    runClearTimeout(timeout);
+	}
+
+	process.nextTick = function (fun) {
+	    var args = new Array(arguments.length - 1);
+	    if (arguments.length > 1) {
+	        for (var i = 1; i < arguments.length; i++) {
+	            args[i - 1] = arguments[i];
+	        }
+	    }
+	    queue.push(new Item(fun, args));
+	    if (queue.length === 1 && !draining) {
+	        runTimeout(drainQueue);
+	    }
+	};
+
+	// v8 likes predictible objects
+	function Item(fun, array) {
+	    this.fun = fun;
+	    this.array = array;
+	}
+	Item.prototype.run = function () {
+	    this.fun.apply(null, this.array);
+	};
+	process.title = 'browser';
+	process.browser = true;
+	process.env = {};
+	process.argv = [];
+	process.version = ''; // empty string to avoid regexp issues
+	process.versions = {};
+
+	function noop() {}
+
+	process.on = noop;
+	process.addListener = noop;
+	process.once = noop;
+	process.off = noop;
+	process.removeListener = noop;
+	process.removeAllListeners = noop;
+	process.emit = noop;
+
+	process.binding = function (name) {
+	    throw new Error('process.binding is not supported');
+	};
+
+	process.cwd = function () { return '/' };
+	process.chdir = function (dir) {
+	    throw new Error('process.chdir is not supported');
+	};
+	process.umask = function() { return 0; };
+
+
+/***/ },
+/* 26 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12522,7 +12750,7 @@
 	})({}, window);
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12542,7 +12770,7 @@
 	window.config.ga_active = window.Helpers.isEmpty(window.ga);
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12563,22 +12791,22 @@
 
 
 	// Imports all sub-plugins.
-	__webpack_require__(26);
-	__webpack_require__(34);
-	__webpack_require__(39);
-	__webpack_require__(40);
+	__webpack_require__(29);
+	__webpack_require__(37);
+	__webpack_require__(42);
 	__webpack_require__(43);
-	__webpack_require__(44);
-	__webpack_require__(45);
 	__webpack_require__(46);
 	__webpack_require__(47);
+	__webpack_require__(48);
+	__webpack_require__(49);
+	__webpack_require__(50);
 
 	// Imports the deprecated autotrack plugin for backwards compatibility.
-	__webpack_require__(48);
+	__webpack_require__(51);
 
 
 /***/ },
-/* 26 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12598,11 +12826,11 @@
 	 */
 
 
-	var assign = __webpack_require__(27);
-	var parseUrl = __webpack_require__(28);
-	var constants = __webpack_require__(29);
-	var provide = __webpack_require__(30);
-	var usage = __webpack_require__(33);
+	var assign = __webpack_require__(30);
+	var parseUrl = __webpack_require__(31);
+	var constants = __webpack_require__(32);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
 
 
 	/**
@@ -12705,7 +12933,7 @@
 
 
 /***/ },
-/* 27 */
+/* 30 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12794,7 +13022,7 @@
 
 
 /***/ },
-/* 28 */
+/* 31 */
 /***/ function(module, exports) {
 
 	var HTTP_PORT = '80';
@@ -12868,7 +13096,7 @@
 
 
 /***/ },
-/* 29 */
+/* 32 */
 /***/ function(module, exports) {
 
 	/**
@@ -12900,7 +13128,7 @@
 
 
 /***/ },
-/* 30 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12920,8 +13148,8 @@
 	 */
 
 
-	var constants = __webpack_require__(29);
-	var utilities = __webpack_require__(31);
+	var constants = __webpack_require__(32);
+	var utilities = __webpack_require__(34);
 
 
 	// Adds the dev ID to the list of dev IDs if any plugin is used.
@@ -12950,7 +13178,7 @@
 
 
 /***/ },
-/* 31 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12970,8 +13198,8 @@
 	 */
 
 
-	var assign = __webpack_require__(27);
-	var getAttributes = __webpack_require__(32);
+	var assign = __webpack_require__(30);
+	var getAttributes = __webpack_require__(35);
 
 
 	var utilities = {
@@ -13136,7 +13364,7 @@
 
 
 /***/ },
-/* 32 */
+/* 35 */
 /***/ function(module, exports) {
 
 	/**
@@ -13164,7 +13392,7 @@
 
 
 /***/ },
-/* 33 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13184,7 +13412,7 @@
 	 */
 
 
-	var constants = __webpack_require__(29);
+	var constants = __webpack_require__(32);
 
 
 	var plugins = {
@@ -13288,7 +13516,7 @@
 
 
 /***/ },
-/* 34 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13308,12 +13536,12 @@
 	 */
 
 
-	var assign = __webpack_require__(27);
-	var delegate = __webpack_require__(35);
-	var provide = __webpack_require__(30);
-	var usage = __webpack_require__(33);
-	var createFieldsObj = __webpack_require__(31).createFieldsObj;
-	var getAttributeFields = __webpack_require__(31).getAttributeFields;
+	var assign = __webpack_require__(30);
+	var delegate = __webpack_require__(38);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var getAttributeFields = __webpack_require__(34).getAttributeFields;
 
 
 	/**
@@ -13388,11 +13616,11 @@
 
 
 /***/ },
-/* 35 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(36);
-	var matches = __webpack_require__(37);
+	var closest = __webpack_require__(39);
+	var matches = __webpack_require__(40);
 
 	/**
 	 * Delegates the handling of events for an element matching a selector to an
@@ -13445,11 +13673,11 @@
 
 
 /***/ },
-/* 36 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var matches = __webpack_require__(37);
-	var parents = __webpack_require__(38);
+	var matches = __webpack_require__(40);
+	var parents = __webpack_require__(41);
 
 	/**
 	 * Gets the closest parent element that matches the passed selector.
@@ -13472,7 +13700,7 @@
 
 
 /***/ },
-/* 37 */
+/* 40 */
 /***/ function(module, exports) {
 
 	var proto = window.Element.prototype;
@@ -13530,7 +13758,7 @@
 
 
 /***/ },
-/* 38 */
+/* 41 */
 /***/ function(module, exports) {
 
 	/**
@@ -13549,7 +13777,7 @@
 
 
 /***/ },
-/* 39 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13569,12 +13797,12 @@
 	 */
 
 
-	var assign = __webpack_require__(27);
-	var provide = __webpack_require__(30);
-	var usage = __webpack_require__(33);
-	var createFieldsObj = __webpack_require__(31).createFieldsObj;
-	var domReady = __webpack_require__(31).domReady;
-	var getAttributeFields = __webpack_require__(31).getAttributeFields;
+	var assign = __webpack_require__(30);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var domReady = __webpack_require__(34).domReady;
+	var getAttributeFields = __webpack_require__(34).getAttributeFields;
 
 
 	/**
@@ -13876,7 +14104,7 @@
 
 
 /***/ },
-/* 40 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13896,14 +14124,14 @@
 	 */
 
 
-	var assign = __webpack_require__(27);
-	var debounce = __webpack_require__(41);
-	var constants = __webpack_require__(29);
-	var provide = __webpack_require__(30);
-	var usage = __webpack_require__(33);
-	var createFieldsObj = __webpack_require__(31).createFieldsObj;
-	var isObject = __webpack_require__(31).isObject;
-	var toArray = __webpack_require__(31).toArray;
+	var assign = __webpack_require__(30);
+	var debounce = __webpack_require__(44);
+	var constants = __webpack_require__(32);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var isObject = __webpack_require__(34).isObject;
+	var toArray = __webpack_require__(34).toArray;
 
 
 	/**
@@ -14064,7 +14292,7 @@
 
 
 /***/ },
-/* 41 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -14072,7 +14300,7 @@
 	 * Module dependencies.
 	 */
 
-	var now = __webpack_require__(42);
+	var now = __webpack_require__(45);
 
 	/**
 	 * Returns a function, that, as long as it continues to be invoked, will not
@@ -14123,7 +14351,7 @@
 
 
 /***/ },
-/* 42 */
+/* 45 */
 /***/ function(module, exports) {
 
 	module.exports = Date.now || now
@@ -14134,7 +14362,7 @@
 
 
 /***/ },
-/* 43 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14154,14 +14382,14 @@
 	 */
 
 
-	var assign = __webpack_require__(27);
-	var delegate = __webpack_require__(35);
-	var parseUrl = __webpack_require__(28);
-	var provide = __webpack_require__(30);
-	var usage = __webpack_require__(33);
-	var createFieldsObj = __webpack_require__(31).createFieldsObj;
-	var getAttributeFields = __webpack_require__(31).getAttributeFields;
-	var withTimeout = __webpack_require__(31).withTimeout;
+	var assign = __webpack_require__(30);
+	var delegate = __webpack_require__(38);
+	var parseUrl = __webpack_require__(31);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var getAttributeFields = __webpack_require__(34).getAttributeFields;
+	var withTimeout = __webpack_require__(34).withTimeout;
 
 
 	/**
@@ -14260,7 +14488,7 @@
 
 
 /***/ },
-/* 44 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14280,13 +14508,13 @@
 	 */
 
 
-	var assign = __webpack_require__(27);
-	var delegate = __webpack_require__(35);
-	var parseUrl = __webpack_require__(28);
-	var provide = __webpack_require__(30);
-	var usage = __webpack_require__(33);
-	var createFieldsObj = __webpack_require__(31).createFieldsObj;
-	var getAttributeFields = __webpack_require__(31).getAttributeFields;
+	var assign = __webpack_require__(30);
+	var delegate = __webpack_require__(38);
+	var parseUrl = __webpack_require__(31);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var getAttributeFields = __webpack_require__(34).getAttributeFields;
 
 
 	/**
@@ -14389,7 +14617,7 @@
 
 
 /***/ },
-/* 45 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14409,11 +14637,11 @@
 	 */
 
 
-	var assign = __webpack_require__(27);
-	var provide = __webpack_require__(30);
-	var usage = __webpack_require__(33);
-	var createFieldsObj = __webpack_require__(31).createFieldsObj;
-	var isObject = __webpack_require__(31).isObject;
+	var assign = __webpack_require__(30);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var isObject = __webpack_require__(34).isObject;
 
 
 	var DEFAULT_SESSION_TIMEOUT = 30; // 30 minutes.
@@ -14602,7 +14830,7 @@
 
 
 /***/ },
-/* 46 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14625,10 +14853,10 @@
 	/* global FB, twttr */
 
 
-	var assign = __webpack_require__(27);
-	var provide = __webpack_require__(30);
-	var usage = __webpack_require__(33);
-	var createFieldsObj = __webpack_require__(31).createFieldsObj;
+	var assign = __webpack_require__(30);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
 
 
 	/**
@@ -14827,7 +15055,7 @@
 
 
 /***/ },
-/* 47 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14847,11 +15075,11 @@
 	 */
 
 
-	var assign = __webpack_require__(27);
-	var provide = __webpack_require__(30);
-	var usage = __webpack_require__(33);
-	var createFieldsObj = __webpack_require__(31).createFieldsObj;
-	var isObject = __webpack_require__(31).isObject;
+	var assign = __webpack_require__(30);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var isObject = __webpack_require__(34).isObject;
 
 
 	/**
@@ -14990,7 +15218,7 @@
 
 
 /***/ },
-/* 48 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15014,7 +15242,7 @@
 
 
 	// Imports dependencies.
-	var provide = __webpack_require__(30);
+	var provide = __webpack_require__(33);
 
 
 	/**

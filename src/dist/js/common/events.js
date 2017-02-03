@@ -71,7 +71,6 @@
           // Callback
           _this[callback]([e])
         })
-      }
       } else {
         // Add event.
         $(document).on(event, selector, function (e) {

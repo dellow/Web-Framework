@@ -13,6 +13,10 @@ __3.5.0__:
 * Reformatted jQuery Validation plugin to follow Standard JS.
 * Added `images` Gulp task that optimises images on the fly. Watch will also look for images. Image structure has changed to accommodate this.
 * Added Turbolinks.
+* Updated to Webpack 2.
+* Fixed issue with SocIcon fonts being referenced wrong.
+* Improved default heading sizes.
+* Fixed global access to `App` object.
 
 __3.4.0__:
 * Many fixes and improvements.

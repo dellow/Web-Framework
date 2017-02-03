@@ -43,7 +43,7 @@ import TurboLinks from 'turbolinks'
    * @access public
   **/
   Module.prototype.plugins = function () {
-    // Init slider.
+    // Init form validation.
     window.App.plugins.validation($('.js--validate-form'), {
       serverValidation: false,
       appendErrorToPlaceholder: true,

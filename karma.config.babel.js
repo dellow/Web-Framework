@@ -36,9 +36,12 @@ module.exports = function (config) {
       'webpack.tests.js' // Used to get tests.
     ],
     preprocessors: {
-      [packageConfig.config.js.dirCommon + '*.js']: ['webpack', 'coverage'],
-      [packageConfig.config.js.dirApp + '*.js']: ['webpack', 'coverage'],
-      'webpack.tests.js': ['webpack'] // Uses 'require' so need Webpack preprocessing first.
+      [packageConfig.config.js.dirCommon + 'index.js']: ['webpack'],
+      [packageConfig.config.js.dirApp + 'index.js']: ['webpack'],
+      'webpack.tests.js': ['webpack'], // Uses 'require' so need Webpack preprocessing first.
+
+      [packageConfig.config.js.dirCommon + '!(__tests__/)*.js']: ['coverage'],
+      [packageConfig.config.js.dirApp + '!(__tests__/)*.js']: ['coverage']
     },
     coverageReporter: {
       dir: 'karma/coverage',

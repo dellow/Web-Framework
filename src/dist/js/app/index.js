@@ -10,7 +10,6 @@
 import Navigo from 'navigo'
 
 ;(function (App, window) {
-
   /**
    * App
    * Constructor for App.
@@ -98,5 +97,8 @@ import Navigo from 'navigo'
   }
 
   // Export
-  module.exports = new App().init()
+  window.App = new App()
 }(window.App = window.App || function () {}, window))
+
+// Start.
+window.App.init()
