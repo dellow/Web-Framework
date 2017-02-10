@@ -17,6 +17,7 @@ __3.5.0__:
 * Fixed issue with SocIcon fonts being referenced wrong.
 * Improved default heading sizes.
 * Fixed global access to `App` object.
+* Can now use the modify grid mixin without specifying a column width.
 
 __3.4.0__:
 * Many fixes and improvements.

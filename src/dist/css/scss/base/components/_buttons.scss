@@ -68,9 +68,10 @@
         }
         &.btn--outline {
           border-color: color($key);
+          color: color($key);
           background: none;
           &:hover {
-            color: color($key, dark);
+            color: color(white);
             background: color($key);
           }
         }

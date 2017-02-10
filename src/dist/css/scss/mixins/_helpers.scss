@@ -66,7 +66,7 @@
 *
 * .foo {@include modify-grid(2, $col-1-2);}
 **/
-@mixin modify-grid($gutterValue, $col, $all: false){
+@mixin modify-grid($gutterValue, $col: false, $all: false){
   $grid_selector     : '';
   $flex_grid_selector: '';
 
@@ -82,7 +82,9 @@
     @include nudge(margin-top, -$gutterValue);
     @include nudge(left, -$gutterValue);
     > [class*="col-"] {
-      width: $col;
+      @if($col){
+        width: $col;
+      }
       @include nudge(padding, $gutterValue 0 0 $gutterValue);
     }
   }
@@ -99,7 +101,9 @@
     @include nudge(margin-top, -$gutterValue);
     @include nudge(left, -$gutterValue);
     > [class*="col-"] {
-      width: $col;
+      @if($col){
+        width: $col;
+      }
       @include nudge(padding, $gutterValue 0 0 $gutterValue);
     }
   }
