@@ -4,7 +4,6 @@
 ========================================================================== */
 
 
-/* -- Desktop Navigation -- */
 .nav-desktop {
   li {
     display: inline-block;
@@ -29,6 +28,41 @@
   }
   @include respond-to($mobile_menu){
     display: none;
+  }
+  .sub-menu {
+    display: none;
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.nav-mobile {
+  height: 100%;
+  position: relative;
+  li {
+    display: block;
+    position: static;
+    // Descendants
+    .sub-menu {
+      width: 0;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0; left: -105%; // 105% to cover the box-shadow.
+      z-index: $zindex-1;
+      overflow-y: scroll;
+      background: color(white);
+      &__close {
+        position: absolute;
+        @include nudge(top, 1); @include nudge(left, 1);
+      }
+      &.active-sub-menu {
+        width: 100%;
+        left: 0;
+      }
+    }
   }
   .sub-menu {
     display: none;
