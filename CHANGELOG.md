@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.6.0__:
+* Many fixes and improvements.
+
 __3.5.0__:
 * Many fixes and improvements.
 * Now uses Babel for all JS files not just JSX.
