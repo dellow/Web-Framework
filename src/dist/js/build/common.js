@@ -87,17 +87,17 @@
 	/* ======================================================== */
 	/* Breakpoint Info
 	/* ======================================================== */
-	window.Breakpoint = __webpack_require__(26);
+	window.Breakpoint = __webpack_require__(25);
 
 	/* ======================================================== */
 	/* Config
 	/* ======================================================== */
-	__webpack_require__(27);
+	__webpack_require__(26);
 
 	/* ======================================================== */
 	/* Google Analytics Autotrack
 	/* ======================================================== */
-	__webpack_require__(28);
+	__webpack_require__(27);
 
 /***/ },
 /* 1 */,
@@ -12293,7 +12293,7 @@
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	'use strict';
 
 	/**
 	 *
@@ -12314,7 +12314,7 @@
 	  * @version 1.0.0
 	  **/
 	  Helpers.log = function (message, type, alertlog) {
-	    if (process.env.NODE_ENV !== 'production' && !this.isPhantom()) {
+	    if (("development") !== 'production' && !this.isPhantom()) {
 	      alertlog = typeof alertlog === 'undefined';
 	      if (typeof console === 'undefined' || typeof console.log === 'undefined') {
 	        if (alertlog) {
@@ -12498,196 +12498,9 @@
 	  // Export
 	  module.exports = Helpers;
 	})({}, window);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ },
 /* 25 */
-/***/ function(module, exports) {
-
-	// shim for using process in browser
-	var process = module.exports = {};
-
-	// cached from whatever global is present so that test runners that stub it
-	// don't break things.  But we need to wrap it in a try catch in case it is
-	// wrapped in strict mode code which doesn't define any globals.  It's inside a
-	// function because try/catches deoptimize in certain engines.
-
-	var cachedSetTimeout;
-	var cachedClearTimeout;
-
-	function defaultSetTimout() {
-	    throw new Error('setTimeout has not been defined');
-	}
-	function defaultClearTimeout () {
-	    throw new Error('clearTimeout has not been defined');
-	}
-	(function () {
-	    try {
-	        if (typeof setTimeout === 'function') {
-	            cachedSetTimeout = setTimeout;
-	        } else {
-	            cachedSetTimeout = defaultSetTimout;
-	        }
-	    } catch (e) {
-	        cachedSetTimeout = defaultSetTimout;
-	    }
-	    try {
-	        if (typeof clearTimeout === 'function') {
-	            cachedClearTimeout = clearTimeout;
-	        } else {
-	            cachedClearTimeout = defaultClearTimeout;
-	        }
-	    } catch (e) {
-	        cachedClearTimeout = defaultClearTimeout;
-	    }
-	} ())
-	function runTimeout(fun) {
-	    if (cachedSetTimeout === setTimeout) {
-	        //normal enviroments in sane situations
-	        return setTimeout(fun, 0);
-	    }
-	    // if setTimeout wasn't available but was latter defined
-	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-	        cachedSetTimeout = setTimeout;
-	        return setTimeout(fun, 0);
-	    }
-	    try {
-	        // when when somebody has screwed with setTimeout but no I.E. maddness
-	        return cachedSetTimeout(fun, 0);
-	    } catch(e){
-	        try {
-	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-	            return cachedSetTimeout.call(null, fun, 0);
-	        } catch(e){
-	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-	            return cachedSetTimeout.call(this, fun, 0);
-	        }
-	    }
-
-
-	}
-	function runClearTimeout(marker) {
-	    if (cachedClearTimeout === clearTimeout) {
-	        //normal enviroments in sane situations
-	        return clearTimeout(marker);
-	    }
-	    // if clearTimeout wasn't available but was latter defined
-	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-	        cachedClearTimeout = clearTimeout;
-	        return clearTimeout(marker);
-	    }
-	    try {
-	        // when when somebody has screwed with setTimeout but no I.E. maddness
-	        return cachedClearTimeout(marker);
-	    } catch (e){
-	        try {
-	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-	            return cachedClearTimeout.call(null, marker);
-	        } catch (e){
-	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-	            return cachedClearTimeout.call(this, marker);
-	        }
-	    }
-
-
-
-	}
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-
-	function cleanUpNextTick() {
-	    if (!draining || !currentQueue) {
-	        return;
-	    }
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-
-	function drainQueue() {
-	    if (draining) {
-	        return;
-	    }
-	    var timeout = runTimeout(cleanUpNextTick);
-	    draining = true;
-
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
-	            }
-	        }
-	        queueIndex = -1;
-	        len = queue.length;
-	    }
-	    currentQueue = null;
-	    draining = false;
-	    runClearTimeout(timeout);
-	}
-
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
-	        }
-	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        runTimeout(drainQueue);
-	    }
-	};
-
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
-
-	function noop() {}
-
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
-
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
-
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
-
-
-/***/ },
-/* 26 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12750,7 +12563,7 @@
 	})({}, window);
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12768,6 +12581,42 @@
 	window.config = window.config || {};
 
 	window.config.ga_active = window.Helpers.isEmpty(window.ga);
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2016 Google Inc. All Rights Reserved.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 *     http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 */
+
+
+	// Imports all sub-plugins.
+	__webpack_require__(28);
+	__webpack_require__(36);
+	__webpack_require__(41);
+	__webpack_require__(42);
+	__webpack_require__(45);
+	__webpack_require__(46);
+	__webpack_require__(47);
+	__webpack_require__(48);
+	__webpack_require__(49);
+
+	// Imports the deprecated autotrack plugin for backwards compatibility.
+	__webpack_require__(50);
+
 
 /***/ },
 /* 28 */
@@ -12790,47 +12639,11 @@
 	 */
 
 
-	// Imports all sub-plugins.
-	__webpack_require__(29);
-	__webpack_require__(37);
-	__webpack_require__(42);
-	__webpack_require__(43);
-	__webpack_require__(46);
-	__webpack_require__(47);
-	__webpack_require__(48);
-	__webpack_require__(49);
-	__webpack_require__(50);
-
-	// Imports the deprecated autotrack plugin for backwards compatibility.
-	__webpack_require__(51);
-
-
-/***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2016 Google Inc. All Rights Reserved.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *     http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 */
-
-
-	var assign = __webpack_require__(30);
-	var parseUrl = __webpack_require__(31);
-	var constants = __webpack_require__(32);
-	var provide = __webpack_require__(33);
-	var usage = __webpack_require__(36);
+	var assign = __webpack_require__(29);
+	var parseUrl = __webpack_require__(30);
+	var constants = __webpack_require__(31);
+	var provide = __webpack_require__(32);
+	var usage = __webpack_require__(35);
 
 
 	/**
@@ -12933,7 +12746,7 @@
 
 
 /***/ },
-/* 30 */
+/* 29 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -13022,7 +12835,7 @@
 
 
 /***/ },
-/* 31 */
+/* 30 */
 /***/ function(module, exports) {
 
 	var HTTP_PORT = '80';
@@ -13096,7 +12909,7 @@
 
 
 /***/ },
-/* 32 */
+/* 31 */
 /***/ function(module, exports) {
 
 	/**
@@ -13128,7 +12941,7 @@
 
 
 /***/ },
-/* 33 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13148,8 +12961,8 @@
 	 */
 
 
-	var constants = __webpack_require__(32);
-	var utilities = __webpack_require__(34);
+	var constants = __webpack_require__(31);
+	var utilities = __webpack_require__(33);
 
 
 	// Adds the dev ID to the list of dev IDs if any plugin is used.
@@ -13178,7 +12991,7 @@
 
 
 /***/ },
-/* 34 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13198,8 +13011,8 @@
 	 */
 
 
-	var assign = __webpack_require__(30);
-	var getAttributes = __webpack_require__(35);
+	var assign = __webpack_require__(29);
+	var getAttributes = __webpack_require__(34);
 
 
 	var utilities = {
@@ -13364,7 +13177,7 @@
 
 
 /***/ },
-/* 35 */
+/* 34 */
 /***/ function(module, exports) {
 
 	/**
@@ -13392,7 +13205,7 @@
 
 
 /***/ },
-/* 36 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13412,7 +13225,7 @@
 	 */
 
 
-	var constants = __webpack_require__(32);
+	var constants = __webpack_require__(31);
 
 
 	var plugins = {
@@ -13516,7 +13329,7 @@
 
 
 /***/ },
-/* 37 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13536,12 +13349,12 @@
 	 */
 
 
-	var assign = __webpack_require__(30);
-	var delegate = __webpack_require__(38);
-	var provide = __webpack_require__(33);
-	var usage = __webpack_require__(36);
-	var createFieldsObj = __webpack_require__(34).createFieldsObj;
-	var getAttributeFields = __webpack_require__(34).getAttributeFields;
+	var assign = __webpack_require__(29);
+	var delegate = __webpack_require__(37);
+	var provide = __webpack_require__(32);
+	var usage = __webpack_require__(35);
+	var createFieldsObj = __webpack_require__(33).createFieldsObj;
+	var getAttributeFields = __webpack_require__(33).getAttributeFields;
 
 
 	/**
@@ -13616,11 +13429,11 @@
 
 
 /***/ },
-/* 38 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(39);
-	var matches = __webpack_require__(40);
+	var closest = __webpack_require__(38);
+	var matches = __webpack_require__(39);
 
 	/**
 	 * Delegates the handling of events for an element matching a selector to an
@@ -13673,11 +13486,11 @@
 
 
 /***/ },
-/* 39 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var matches = __webpack_require__(40);
-	var parents = __webpack_require__(41);
+	var matches = __webpack_require__(39);
+	var parents = __webpack_require__(40);
 
 	/**
 	 * Gets the closest parent element that matches the passed selector.
@@ -13700,7 +13513,7 @@
 
 
 /***/ },
-/* 40 */
+/* 39 */
 /***/ function(module, exports) {
 
 	var proto = window.Element.prototype;
@@ -13758,7 +13571,7 @@
 
 
 /***/ },
-/* 41 */
+/* 40 */
 /***/ function(module, exports) {
 
 	/**
@@ -13777,7 +13590,7 @@
 
 
 /***/ },
-/* 42 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13797,12 +13610,12 @@
 	 */
 
 
-	var assign = __webpack_require__(30);
-	var provide = __webpack_require__(33);
-	var usage = __webpack_require__(36);
-	var createFieldsObj = __webpack_require__(34).createFieldsObj;
-	var domReady = __webpack_require__(34).domReady;
-	var getAttributeFields = __webpack_require__(34).getAttributeFields;
+	var assign = __webpack_require__(29);
+	var provide = __webpack_require__(32);
+	var usage = __webpack_require__(35);
+	var createFieldsObj = __webpack_require__(33).createFieldsObj;
+	var domReady = __webpack_require__(33).domReady;
+	var getAttributeFields = __webpack_require__(33).getAttributeFields;
 
 
 	/**
@@ -14104,7 +13917,7 @@
 
 
 /***/ },
-/* 43 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14124,14 +13937,14 @@
 	 */
 
 
-	var assign = __webpack_require__(30);
-	var debounce = __webpack_require__(44);
-	var constants = __webpack_require__(32);
-	var provide = __webpack_require__(33);
-	var usage = __webpack_require__(36);
-	var createFieldsObj = __webpack_require__(34).createFieldsObj;
-	var isObject = __webpack_require__(34).isObject;
-	var toArray = __webpack_require__(34).toArray;
+	var assign = __webpack_require__(29);
+	var debounce = __webpack_require__(43);
+	var constants = __webpack_require__(31);
+	var provide = __webpack_require__(32);
+	var usage = __webpack_require__(35);
+	var createFieldsObj = __webpack_require__(33).createFieldsObj;
+	var isObject = __webpack_require__(33).isObject;
+	var toArray = __webpack_require__(33).toArray;
 
 
 	/**
@@ -14292,7 +14105,7 @@
 
 
 /***/ },
-/* 44 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -14300,7 +14113,7 @@
 	 * Module dependencies.
 	 */
 
-	var now = __webpack_require__(45);
+	var now = __webpack_require__(44);
 
 	/**
 	 * Returns a function, that, as long as it continues to be invoked, will not
@@ -14351,7 +14164,7 @@
 
 
 /***/ },
-/* 45 */
+/* 44 */
 /***/ function(module, exports) {
 
 	module.exports = Date.now || now
@@ -14362,7 +14175,7 @@
 
 
 /***/ },
-/* 46 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14382,14 +14195,14 @@
 	 */
 
 
-	var assign = __webpack_require__(30);
-	var delegate = __webpack_require__(38);
-	var parseUrl = __webpack_require__(31);
-	var provide = __webpack_require__(33);
-	var usage = __webpack_require__(36);
-	var createFieldsObj = __webpack_require__(34).createFieldsObj;
-	var getAttributeFields = __webpack_require__(34).getAttributeFields;
-	var withTimeout = __webpack_require__(34).withTimeout;
+	var assign = __webpack_require__(29);
+	var delegate = __webpack_require__(37);
+	var parseUrl = __webpack_require__(30);
+	var provide = __webpack_require__(32);
+	var usage = __webpack_require__(35);
+	var createFieldsObj = __webpack_require__(33).createFieldsObj;
+	var getAttributeFields = __webpack_require__(33).getAttributeFields;
+	var withTimeout = __webpack_require__(33).withTimeout;
 
 
 	/**
@@ -14488,7 +14301,7 @@
 
 
 /***/ },
-/* 47 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14508,13 +14321,13 @@
 	 */
 
 
-	var assign = __webpack_require__(30);
-	var delegate = __webpack_require__(38);
-	var parseUrl = __webpack_require__(31);
-	var provide = __webpack_require__(33);
-	var usage = __webpack_require__(36);
-	var createFieldsObj = __webpack_require__(34).createFieldsObj;
-	var getAttributeFields = __webpack_require__(34).getAttributeFields;
+	var assign = __webpack_require__(29);
+	var delegate = __webpack_require__(37);
+	var parseUrl = __webpack_require__(30);
+	var provide = __webpack_require__(32);
+	var usage = __webpack_require__(35);
+	var createFieldsObj = __webpack_require__(33).createFieldsObj;
+	var getAttributeFields = __webpack_require__(33).getAttributeFields;
 
 
 	/**
@@ -14617,7 +14430,7 @@
 
 
 /***/ },
-/* 48 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14637,11 +14450,11 @@
 	 */
 
 
-	var assign = __webpack_require__(30);
-	var provide = __webpack_require__(33);
-	var usage = __webpack_require__(36);
-	var createFieldsObj = __webpack_require__(34).createFieldsObj;
-	var isObject = __webpack_require__(34).isObject;
+	var assign = __webpack_require__(29);
+	var provide = __webpack_require__(32);
+	var usage = __webpack_require__(35);
+	var createFieldsObj = __webpack_require__(33).createFieldsObj;
+	var isObject = __webpack_require__(33).isObject;
 
 
 	var DEFAULT_SESSION_TIMEOUT = 30; // 30 minutes.
@@ -14830,7 +14643,7 @@
 
 
 /***/ },
-/* 49 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14853,10 +14666,10 @@
 	/* global FB, twttr */
 
 
-	var assign = __webpack_require__(30);
-	var provide = __webpack_require__(33);
-	var usage = __webpack_require__(36);
-	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var assign = __webpack_require__(29);
+	var provide = __webpack_require__(32);
+	var usage = __webpack_require__(35);
+	var createFieldsObj = __webpack_require__(33).createFieldsObj;
 
 
 	/**
@@ -15055,7 +14868,7 @@
 
 
 /***/ },
-/* 50 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15075,11 +14888,11 @@
 	 */
 
 
-	var assign = __webpack_require__(30);
-	var provide = __webpack_require__(33);
-	var usage = __webpack_require__(36);
-	var createFieldsObj = __webpack_require__(34).createFieldsObj;
-	var isObject = __webpack_require__(34).isObject;
+	var assign = __webpack_require__(29);
+	var provide = __webpack_require__(32);
+	var usage = __webpack_require__(35);
+	var createFieldsObj = __webpack_require__(33).createFieldsObj;
+	var isObject = __webpack_require__(33).isObject;
 
 
 	/**
@@ -15218,7 +15031,7 @@
 
 
 /***/ },
-/* 51 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15242,7 +15055,7 @@
 
 
 	// Imports dependencies.
-	var provide = __webpack_require__(33);
+	var provide = __webpack_require__(32);
 
 
 	/**

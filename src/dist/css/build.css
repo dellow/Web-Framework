@@ -8,13 +8,13 @@
   font-weight: normal;
   font-style: normal;
   src: url("fonts/socicon/socicon.eot");
-  src: local("☺"), url("fonts/socicon.eot?#iefix") format("embedded-opentype"), url("fonts/socicon.woff") format("woff"), url("fonts/socicon.ttf") format("truetype"), url("fonts/socicon.svg") format("svg");
+  src: local("☺"), url("fonts/socicon/socicon.eot?#iefix") format("embedded-opentype"), url("fonts/socicon/socicon.woff") format("woff"), url("fonts/socicon/socicon.ttf") format("truetype"), url("fonts/socicon/socicon.svg") format("svg");
 }
 
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
-   Mixins > All
-   Imports all the partials.
+  Mixins > All
+  Imports all the partials.
 ========================================================================== */
 /* ==========================================================================
   Mixins > Helpers
@@ -372,9 +372,9 @@ svg:not(:root) {
 /* -- Vertically align elements with transform: -- */
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
-   Base > Utility Classes
-   A library of classes to achieve various things. Most are prefixed
-   with a 'u-'. These should be used sparingly.
+  Base > Utility Classes
+  A library of classes to achieve various things. Most are prefixed
+  with a 'u-'. These should be used sparingly.
 ========================================================================== */
 /* -- Body / HTML Classes -- */
 body.u-noscroll, html.u-noscroll {
@@ -703,8 +703,8 @@ body.u-noscroll, html.u-noscroll {
 
 /* ----------------------------------------------------------------------- */
 /* -- Weights & Cases -- */
-.u-text-regular {
-  font-weight: 16px !important;
+.u-text-normal {
+  font-weight: 400 !important;
 }
 
 .u-text-semibold {
@@ -890,9 +890,9 @@ hr.hr__styled-seperator {
 
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
-   Base > Global
-   Styles that are across the board and not specific to
-   any single partial.
+  Base > Global
+  Styles that are across the board and not specific to
+  any single partial.
 ========================================================================== */
 .page-mobile-menu {
   width: 100%;
@@ -997,8 +997,12 @@ body:after {
   position: relative;
 }
 
-.container--vsmall {
+.container--usmall {
   max-width: 378.66667px;
+}
+
+.container--vsmall {
+  max-width: 568px;
 }
 
 .container--small {
@@ -1025,8 +1029,8 @@ body:after {
 
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
-Base > Components > Objects
-Various CSS objects used throughout an application.
+  Base > Components > Objects
+  Various CSS objects used throughout an application.
 ========================================================================== */
 /* -- Form Fields -- */
 .obj-form-field {
@@ -1241,17 +1245,15 @@ Various CSS objects used throughout an application.
   Base > Typeset
   App fonts and type settings.
 ========================================================================== */
-/* -- HTML -- */
 html {
   font-size: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
-/* -- Body -- */
 body {
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.37;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
@@ -1262,7 +1264,6 @@ body {
 }
 
 /* ----------------------------------------------------------------------- */
-/* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
   font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 }
@@ -1274,54 +1275,267 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 h1 {
   margin: 12px 0px 24px;
   margin: 0.75rem 0px 1.5rem;
-  font-size: 175%;
-  line-height: 100%;
+  font-size: 48px;
+  line-height: 1.05;
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    line-height: 1.125;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h1 {
+    line-height: 1.25;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h1 {
+    line-height: 1.25;
+  }
 }
 
 h2 {
   margin: 12px 0px;
   margin: 0.75rem 0px;
-  font-size: 150%;
-  line-height: 100%;
+  font-size: 36px;
+  line-height: 1.05;
+}
+
+@media only screen and (max-width: 768px) {
+  h2 {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h2 {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h2 {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h2 {
+    line-height: 1.125;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h2 {
+    line-height: 1.15;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h2 {
+    line-height: 1.25;
+  }
 }
 
 h3 {
   margin: 12px 0px;
   margin: 0.75rem 0px;
-  font-size: 135%;
-  line-height: 100%;
+  font-size: 28px;
+  line-height: 1.05;
+}
+
+@media only screen and (max-width: 768px) {
+  h3 {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h3 {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h3 {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h3 {
+    line-height: 1.125;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h3 {
+    line-height: 1.13;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h3 {
+    line-height: 1.13;
+  }
 }
 
 h4 {
   margin: 12px 0px;
   margin: 0.75rem 0px;
-  font-size: 120%;
-  line-height: 100%;
+  font-size: 18px;
+  line-height: 1.22;
+}
+
+@media only screen and (max-width: 768px) {
+  h4 {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h4 {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h4 {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h4 {
+    line-height: 1.22;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h4 {
+    line-height: 1.22;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h4 {
+    line-height: 1.11;
+  }
 }
 
 h5 {
   margin: 12px 0px;
   margin: 0.75rem 0px;
-  font-size: 110%;
-  line-height: 100%;
+  font-size: 16px;
+  line-height: 1.37;
+}
+
+@media only screen and (max-width: 768px) {
+  h5 {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h5 {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h5 {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h5 {
+    line-height: 1.37;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h5 {
+    line-height: 1.37;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h5 {
+    line-height: 1.37;
+  }
 }
 
 h6 {
   margin: 12px 0px;
   margin: 0.75rem 0px;
-  font-size: 100%;
-  line-height: 115%;
-  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.15;
+}
+
+@media only screen and (max-width: 768px) {
+  h6 {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h6 {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h6 {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h6 {
+    line-height: 1.15;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  h6 {
+    line-height: 1.15;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  h6 {
+    line-height: 1.15;
+  }
 }
 
 /* ----------------------------------------------------------------------- */
-/* -- General Type & Rhythm -- */
 p, li, dd {
   font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 }
 
 /* ----------------------------------------------------------------------- */
-/* -- Links, Buttons & Hover Styles -- */
 a, button {
   color: #C4122F;
   text-decoration: none;
@@ -1338,7 +1552,6 @@ a:active, button:active {
 }
 
 /* ----------------------------------------------------------------------- */
-/* -- Standard Margins -- */
 blockquote, dl, ol, p, pre, ul {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
@@ -1349,11 +1562,6 @@ blockquote:last-child, dl:last-child, ol:last-child, p:last-child, pre:last-chil
 }
 
 /* ----------------------------------------------------------------------- */
-/* -- Content Areas -- */
-.page__content {
-  line-height: 175%;
-}
-
 .page__content blockquote, .page__content dl, .page__content ol, .page__content p, .page__content pre, .page__content ul, .page__content img, .page__content figure, .page__content table, .page__content .obj-embed-container {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
@@ -1392,38 +1600,7 @@ blockquote:last-child, dl:last-child, ol:last-child, p:last-child, pre:last-chil
   text-indent: 1.5rem;
 }
 
-.page__content h1 {
-  margin: 0px 0px 24px;
-  margin: 0px 0px 1.5rem;
-}
-
-.page__content h2 {
-  margin: 36px 0px 12px;
-  margin: 2.25rem 0px 0.75rem;
-}
-
-.page__content h3 {
-  margin: 36px 0px 12px;
-  margin: 2.25rem 0px 0.75rem;
-}
-
-.page__content h4 {
-  margin: 36px 0px 12px;
-  margin: 2.25rem 0px 0.75rem;
-}
-
-.page__content h5 {
-  margin: 36px 0px 12px;
-  margin: 2.25rem 0px 0.75rem;
-}
-
-.page__content h6 {
-  margin: 36px 0px 12px;
-  margin: 2.25rem 0px 0.75rem;
-}
-
 /* ----------------------------------------------------------------------- */
-/* -- Hatnotes -- */
 .page__hatnote {
   padding-left: 24px;
   padding-left: 1.5rem;
@@ -1431,13 +1608,11 @@ blockquote:last-child, dl:last-child, ol:last-child, p:last-child, pre:last-chil
 }
 
 /* ----------------------------------------------------------------------- */
-/* -- Citation -- */
 cite .cite__profession {
   font-weight: 700;
 }
 
 /* ----------------------------------------------------------------------- */
-/* -- Source Formatting -- */
 p code {
   color: #2ECC71;
 }
@@ -1668,11 +1843,12 @@ ul.alert.box li {
 
 .btn--color-black.btn--outline {
   border-color: #000000;
+  color: #000000;
   background: none;
 }
 
 .btn--color-black.btn--outline:hover {
-  color: black;
+  color: #FFFFFF;
   background: #000000;
 }
 
@@ -1686,11 +1862,12 @@ ul.alert.box li {
 
 .btn--color-white.btn--outline {
   border-color: #FFFFFF;
+  color: #FFFFFF;
   background: none;
 }
 
 .btn--color-white.btn--outline:hover {
-  color: gray;
+  color: #FFFFFF;
   background: #FFFFFF;
 }
 
@@ -1704,11 +1881,12 @@ ul.alert.box li {
 
 .btn--color-grey.btn--outline {
   border-color: #DDDDDD;
+  color: #DDDDDD;
   background: none;
 }
 
 .btn--color-grey.btn--outline:hover {
-  color: #333333;
+  color: #FFFFFF;
   background: #DDDDDD;
 }
 
@@ -1722,11 +1900,12 @@ ul.alert.box li {
 
 .btn--color-blue.btn--outline {
   border-color: #3498DB;
+  color: #3498DB;
   background: none;
 }
 
 .btn--color-blue.btn--outline:hover {
-  color: #217dbb;
+  color: #FFFFFF;
   background: #3498DB;
 }
 
@@ -1740,11 +1919,12 @@ ul.alert.box li {
 
 .btn--color-green.btn--outline {
   border-color: #2ECC71;
+  color: #2ECC71;
   background: none;
 }
 
 .btn--color-green.btn--outline:hover {
-  color: #25a25a;
+  color: #FFFFFF;
   background: #2ECC71;
 }
 
@@ -1758,11 +1938,12 @@ ul.alert.box li {
 
 .btn--color-orange.btn--outline {
   border-color: #E67E22;
+  color: #E67E22;
   background: none;
 }
 
 .btn--color-orange.btn--outline:hover {
-  color: #bf6516;
+  color: #FFFFFF;
   background: #E67E22;
 }
 
@@ -1776,11 +1957,12 @@ ul.alert.box li {
 
 .btn--color-red.btn--outline {
   border-color: #C4122f;
+  color: #C4122f;
   background: none;
 }
 
 .btn--color-red.btn--outline:hover {
-  color: #950e24;
+  color: #FFFFFF;
   background: #C4122f;
 }
 
@@ -1794,11 +1976,12 @@ ul.alert.box li {
 
 .btn--color-yellow.btn--outline {
   border-color: #F1C40F;
+  color: #F1C40F;
   background: none;
 }
 
 .btn--color-yellow.btn--outline:hover {
-  color: #c29d0b;
+  color: #FFFFFF;
   background: #F1C40F;
 }
 
@@ -1812,11 +1995,12 @@ ul.alert.box li {
 
 .btn--color-color.btn--outline {
   border-color: #FF0000;
+  color: #FF0000;
   background: none;
 }
 
 .btn--color-color.btn--outline:hover {
-  color: #cc0000;
+  color: #FFFFFF;
   background: #FF0000;
 }
 
@@ -1825,75 +2009,40 @@ ul.alert.box li {
   Base > Components > Menus
   Styles for navigational menus.
 ========================================================================== */
-/* -- Primary Navigation -- */
-.nav-primary--desktop li {
+/* -- Desktop Navigation -- */
+.nav-desktop li {
   display: inline-block;
   position: relative;
 }
 
-.nav-primary--desktop li:hover > [class*="sub-menu"] {
+.nav-desktop li:hover > [class*="sub-menu"] {
   display: block;
 }
 
-.nav-primary--desktop .sub-menu {
+.nav-desktop .sub-menu {
   position: absolute;
   left: 0;
   top: 100%;
   z-index: 100;
 }
 
-.nav-primary--desktop .sub-menu li {
+.nav-desktop .sub-menu li {
   display: block;
   white-space: nowrap;
 }
 
-.nav-primary--desktop .sub-menu .sub-menu {
+.nav-desktop .sub-menu .sub-menu {
   left: 100%;
 }
 
 @media only screen and (max-width: 768px) {
-  .nav-primary--desktop {
+  .nav-desktop {
     display: none;
   }
 }
 
-.nav-primary .sub-menu {
+.nav-desktop .sub-menu {
   display: none;
-}
-
-.nav-primary--mobile {
-  height: 100%;
-  position: relative;
-}
-
-.nav-primary--mobile li {
-  display: block;
-  position: static;
-}
-
-.nav-primary--mobile li .sub-menu {
-  width: 0;
-  height: 100%;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: -105%;
-  z-index: 100;
-  overflow-y: scroll;
-  background: #FFFFFF;
-}
-
-.nav-primary--mobile li .sub-menu__close {
-  position: absolute;
-  top: 24px;
-  top: 1.5rem;
-  left: 24px;
-  left: 1.5rem;
-}
-
-.nav-primary--mobile li .sub-menu.active-sub-menu {
-  width: 100%;
-  left: 0;
 }
 
 /* ----------------------------------------------------------------------- */
@@ -2118,8 +2267,8 @@ table.table-highlight-vertical tbody tr th:nth-child(odd), table.table-highlight
 
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
-   Base > Components > Forms
-   Styling for elements within a form tag.
+  Base > Components > Forms
+  Styling for elements within a form tag.
 ========================================================================== */
 form input:not([type="radio"]):not([type="checkbox"]), form select, form textarea {
   padding: 6px;
@@ -2207,8 +2356,8 @@ form ::placeholder {
 
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
-   Base > Grids > Global
-   Global grid layouts.
+  Base > Grids > Global
+  Global grid layouts.
 ========================================================================== */
 /* -- Flex -- */
 .flex-grid {
@@ -4334,15 +4483,6 @@ html.oldie .grid .col + .col {
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
-   Site > Components > Slabs
-   Slabs create sections styled with a background colour. They differ
-   from the `.bg` class by being naturally padded to provide content space.
-========================================================================== */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ==========================================================================
    Site > Components > Forms
    Styling for elements within a form tag.
 ========================================================================== */
@@ -4353,14 +4493,6 @@ html.oldie .grid .col + .col {
 /* ==========================================================================
    Site > Components > Menus
    Styles for navigational menus.
-========================================================================== */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ==========================================================================
-   Site > Grids > Global
-   Global grid layouts.
 ========================================================================== */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
