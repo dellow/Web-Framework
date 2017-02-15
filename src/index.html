@@ -56,7 +56,15 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date
 // GA Account ID.
 ga('create', 'UA-XXXXXXXX-1', 'auto')
 // Require: Display features.
-ga('require', 'displayfeatures')
+ga('require', 'cleanUrlTracker')
+ga('require', 'eventTracker')
+ga('require', 'impressionTracker')
+ga('require', 'mediaQueryTracker')
+ga('require', 'outboundFormTracker')
+ga('require', 'outboundLinkTracker')
+ga('require', 'pageVisibilityTracker')
+ga('require', 'socialWidgetTracker')
+ga('require', 'urlChangeTracker')
 // GA Page View.
 ga('send', 'pageview', {
   'dimension1': (typeof(WURFL) !== 'undefined') ? WURFL.complete_device_name : null,
@@ -79,7 +87,7 @@ ga('send', 'pageview', {
       <div class="container">
         <nav class="navigation" role="navigation" aria-label="primary">
           <!-- Desktop navigation -->
-          <ul class="nav-primary nav-primary--desktop" role="menu">
+          <ul class="nav-desktop" role="menu">
             <li role="menuitem">
               <a href="HREF_HERE" title="Menu">Menu</a>
             </li>

@@ -4,17 +4,15 @@
 ========================================================================== */
 
 
-/* -- HTML -- */
 html {
   font-size: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
-/* -- Body -- */
 body {
   font-size: $base_font_size;
-  line-height: 1.6;
+  line-height: 1.37;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
@@ -28,7 +26,6 @@ body {
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Heading Formatting -- */
 h1, h2, h3, h4, h5, h6 {
   font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   &:first-child {
@@ -37,41 +34,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
   @include nudge(margin, 0.5 0 1);
-  font-size: 175%;
-  line-height: 100%;
+  @include scale(font-size, 48px, $tablet 40px, $mobile 32px, $device 32px);
+  @include scale(line-height, 1.05, $tablet 1.125, $mobile 1.25, $device 1.25);
 }
 h2 {
   @include nudge(margin, 0.5 0);
-  font-size: 150%;
-  line-height: 100%;
+  @include scale(font-size, 36px, $tablet 32px, $mobile 26px, $device 26px);
+  @include scale(line-height, 1.05, $tablet 1.125, $mobile 1.15, $device 1.25);
 }
 h3 {
   @include nudge(margin, 0.5 0);
-  font-size: 140%;
-  line-height: 100%;
+  @include scale(font-size, 28px, $tablet 24px, $mobile 22px, $device 22px);
+  @include scale(line-height, 1.05, $tablet 1.125, $mobile 1.13, $device 1.13);
 }
 h4 {
   @include nudge(margin, 0.5 0);
-  font-size: 130%;
-  line-height: 100%;
+  @include scale(font-size, 18px, $tablet 18px, $mobile 18px, $device 18px);
+  @include scale(line-height, 1.22, $tablet 1.22, $mobile 1.22, $device 1.11);
 }
 h5 {
   @include nudge(margin, 0.5 0);
-  font-size: 120%;
-  line-height: 115%;
+  @include scale(font-size, 16px, $tablet 16px, $mobile 16px, $device 16px);
+  @include scale(line-height, 1.37, $tablet 1.37, $mobile 1.37, $device 1.37);
 }
 h6 {
   @include nudge(margin, 0.5 0);
-  font-size: 110%;
-  line-height: 115%;
-  font-weight: normal;
+  @include scale(font-size, 14px, $tablet 14px, $mobile 14px, $device 14px);
+  @include scale(line-height, 1.15, $tablet 1.15, $mobile 1.15, $device 1.15);
 }
 
 
 /* ----------------------------------------------------------------------- */
 
 
-/* -- General Type & Rhythm -- */
 p, li, dd {
   font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 }
@@ -80,7 +75,6 @@ p, li, dd {
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Links, Buttons & Hover Styles -- */
 a, button {
   color: color(copy, link);
   text-decoration: none;
@@ -97,7 +91,6 @@ a, button {
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Standard Margins -- */
 blockquote, dl, ol, p, pre, ul {
   @include nudge(margin-bottom, 1);
   &:last-child {
@@ -109,10 +102,7 @@ blockquote, dl, ol, p, pre, ul {
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Content Areas -- */
 .page__content {
-  line-height: 175%;
-  // Margins
   blockquote, dl, ol, p, pre, ul, img, figure, table, .obj-embed-container {
     @include nudge(margin-bottom, 1);
     img { // No margin on inner images.
@@ -122,7 +112,6 @@ blockquote, dl, ol, p, pre, ul {
       margin-bottom: 0;
     }
   }
-  // Lists.
   ul, ol {
     margin-left: 1.2em;
     li {
@@ -142,32 +131,12 @@ blockquote, dl, ol, p, pre, ul {
       @include nudge(text-indent, 1);
     }
   }
-  // Headings.
-  h1 {
-  	@include nudge(margin, 0 0 1);
-  }
-  h2 {
-  	@include nudge(margin, 1.5 0 0.5);
-  }
-  h3 {
-  	@include nudge(margin, 1.5 0 0.5);
-  }
-  h4 {
-  	@include nudge(margin, 1.5 0 0.5);
-  }
-  h5 {
-  	@include nudge(margin, 1.5 0 0.5);
-  }
-  h6 {
-  	@include nudge(margin, 1.5 0 0.5);
-  }
 }
 
 
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Hatnotes -- */
 .page__hatnote {
   @include nudge(padding-left, 1);
   font-style: italic;
@@ -177,7 +146,6 @@ blockquote, dl, ol, p, pre, ul {
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Citation -- */
 cite {
   .cite__profession {
     font-weight: $bold;
@@ -188,7 +156,6 @@ cite {
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Source Formatting -- */
 p {
   code {
     color: color(green);
