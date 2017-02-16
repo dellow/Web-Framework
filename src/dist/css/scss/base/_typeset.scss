@@ -26,38 +26,38 @@ body {
 /* ----------------------------------------------------------------------- */
 
 
-h1, h2, h3, h4, h5, h6 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   &:first-child {
     margin-top: 0;
   }
 }
-h1 {
+h1, .h1 {
   @include nudge(margin, 0.5 0 1);
   @include scale(font-size, 48px, $tablet 40px, $mobile 32px, $device 32px);
   @include scale(line-height, 1.05, $tablet 1.125, $mobile 1.25, $device 1.25);
 }
-h2 {
+h2, .h2 {
   @include nudge(margin, 0.5 0);
   @include scale(font-size, 36px, $tablet 32px, $mobile 26px, $device 26px);
   @include scale(line-height, 1.05, $tablet 1.125, $mobile 1.15, $device 1.25);
 }
-h3 {
+h3, .h3 {
   @include nudge(margin, 0.5 0);
   @include scale(font-size, 28px, $tablet 24px, $mobile 22px, $device 22px);
   @include scale(line-height, 1.05, $tablet 1.125, $mobile 1.13, $device 1.13);
 }
-h4 {
+h4, .h4 {
   @include nudge(margin, 0.5 0);
   @include scale(font-size, 18px, $tablet 18px, $mobile 18px, $device 18px);
   @include scale(line-height, 1.22, $tablet 1.22, $mobile 1.22, $device 1.11);
 }
-h5 {
+h5, .h5 {
   @include nudge(margin, 0.5 0);
   @include scale(font-size, 16px, $tablet 16px, $mobile 16px, $device 16px);
   @include scale(line-height, 1.37, $tablet 1.37, $mobile 1.37, $device 1.37);
 }
-h6 {
+h6, .h6 {
   @include nudge(margin, 0.5 0);
   @include scale(font-size, 14px, $tablet 14px, $mobile 14px, $device 14px);
   @include scale(line-height, 1.15, $tablet 1.15, $mobile 1.15, $device 1.15);

@@ -1,0 +1,4 @@
+src/dist/css/build.css merge=ours
+src/dist/css/build.css.map merge=ours
+src/dist/js/build/app.js merge=ours
+src/dist/js/build/common.js merge=ours

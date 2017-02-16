@@ -184,9 +184,12 @@ body, html {
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Vertical Alignment -- */
+/* -- Misc -- */
 .u-vert {
 	vertical-align: middle;
+}
+.u-fit {
+	max-width: 100%;
 }
 
 
