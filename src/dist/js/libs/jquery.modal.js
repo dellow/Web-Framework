@@ -69,6 +69,8 @@
   **/
   Plugin.prototype = {
     init: function () {
+      // Flag to see if modal is active.
+      this.modalActive = false
       // Extend & cache settings.
       this.s = $.extend({}, $.fn.modal.defaults, this.options)
       // Set the initial modal template.
@@ -81,18 +83,33 @@
       this.createModal()
       // Create overlay.
       this.createOverlay()
-      // Start event listeners.
-      this.listeners()
 
       return this
     },
-    listeners: function () {
+    registerEventListeners: function () {
       var _this = this
 
+      // Event :: Click close button.
       $(document).on('click', '.js-modal-close', function (e) {
         e.preventDefault()
         // Destroy modal.
         _this.destroyAll()
+      })
+      // Event :: Click anywhere outside modal.
+      $(document).on('click', function (e) {
+        if ($(e.target).closest('.modal').length === 0 && _this.modalActive) {
+          e.preventDefault()
+          // Destroy modal.
+          _this.destroyAll()
+        }
+      })
+      // Event :: Esc button.
+      $(document).on('keyup', function(e) {
+        if (e.keyCode == 27) {
+          e.preventDefault()
+          // Destroy modal.
+          _this.destroyAll()
+        }
       })
     },
     createModal: function () {
@@ -135,6 +152,9 @@
             'overflow': 'hidden',
             'overflow-y': 'scroll'
           })
+          _this.modalActive = true
+          // Register event listeners.
+          _this.registerEventListeners()
         }, 200)
       }, 50)
     },
@@ -152,6 +172,7 @@
       return $('.modal-overlay').remove()
     },
     destroyAll: function () {
+      this.modalActive = false
       this.destroyModal()
       this.destroyOverlay()
     }
