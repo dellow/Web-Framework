@@ -26,11 +26,10 @@
     background: color(grey);
   }
   > div {
-    $value: (px-to-rem($gutter * $mn)) / 4;
-    width: calc(50% - #{$value});
-    margin-bottom: 0;
-    &:last-child {
-      margin-left: auto;
+    @include nudge(margin-left, 0.5);
+    flex: 1;
+    &:first-of-type {
+      margin-left: 0;
     }
   }
   input:not([type="radio"]):not([type="checkbox"]), select, textarea {
