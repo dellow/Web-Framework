@@ -20,29 +20,6 @@
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Enable Flexbox -- */
-%flex {
-  display: flex;
-  display: flexbox; // IE10 Compatibility.
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.oldie {
-  %flex {
-    @extend %cf;
-    > div {
-      float: left;
-      + div {
-        float: right;
-      }
-    }
-  }
-}
-
-
-/* ----------------------------------------------------------------------- */
-
-
 /* -- Preserve-3D method to prevent blurring -- */
 %preserve-3d {
   transform-style: preserve-3d;

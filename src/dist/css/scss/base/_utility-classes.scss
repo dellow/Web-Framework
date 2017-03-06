@@ -239,7 +239,7 @@ body, html {
 	display: block;
 }
 .u-display-flex {
-	@extend %flex;
+	display: flex;
 }
 
 
@@ -359,14 +359,14 @@ body, html {
 	display: none;
 	// Responsive.
 	@include respond-to($tablet + 1, null, true){
-		display: block;
+		display: initial;
 	}
 }
 .u-hide-mobile {
 	display: none;
 	// Responsive.
 	@include respond-to($mobile + 1, null, true){
-		display: block;
+		display: initial;
 	}
 }
 

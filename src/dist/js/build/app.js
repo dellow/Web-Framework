@@ -1623,6 +1623,18 @@
 	  Module.prototype._settings = {};
 
 	  /**
+	   * _dom
+	   * DOM elements for this module.
+	   *
+	   * @since 1.0.0
+	   * @version 1.0.0
+	   * @access public
+	  **/
+	  Module.prototype._dom = {
+	    form: $('.js--validate-form')
+	  };
+
+	  /**
 	   * plugins
 	   * NULLED.
 	   *
@@ -1631,8 +1643,8 @@
 	   * @access public
 	  **/
 	  Module.prototype.plugins = function () {
-	    // Init form validation.
-	    window.App.plugins.validation($('.js--validate-form'), {
+	    // Init plugin.
+	    window.App.plugins.validation(this._dom.form, {
 	      serverValidation: false,
 	      appendErrorToPlaceholder: true,
 	      msgSep: '',

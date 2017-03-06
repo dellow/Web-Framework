@@ -52,7 +52,7 @@
    * Default options.
   **/
   $.fn.modal.defaults = {
-    template: '<div class="modal"><div class="modal-content"><div></div>',
+    template: '<div class="modal-window"><div class="modal-window__content"></div></div>',
     type: 'modal-slide-left',
     content: '',
     overlayColor: 'rgba(0, 0, 0, 0.75)',
@@ -69,8 +69,6 @@
   **/
   Plugin.prototype = {
     init: function () {
-      // Flag to see if modal is active.
-      this.modalActive = false
       // Extend & cache settings.
       this.s = $.extend({}, $.fn.modal.defaults, this.options)
       // Set the initial modal template.
@@ -83,51 +81,36 @@
       this.createModal()
       // Create overlay.
       this.createOverlay()
+      // Start event listeners.
+      this.listeners()
 
       return this
     },
-    registerEventListeners: function () {
+    listeners: function () {
       var _this = this
 
-      // Event :: Click close button.
-      $(document).on('click', '.js-modal-close', function (e) {
+      $(document).on('click', '.js--modal-close', function (e) {
         e.preventDefault()
         // Destroy modal.
         _this.destroyAll()
-      })
-      // Event :: Click anywhere outside modal.
-      $(document).on('click', function (e) {
-        if ($(e.target).closest('.modal').length === 0 && _this.modalActive) {
-          e.preventDefault()
-          // Destroy modal.
-          _this.destroyAll()
-        }
-      })
-      // Event :: Esc button.
-      $(document).on('keyup', function(e) {
-        if (e.keyCode == 27) {
-          e.preventDefault()
-          // Destroy modal.
-          _this.destroyAll()
-        }
       })
     },
     createModal: function () {
       // Get 10% of document height.
       var docHeight = ($(window).height() / 100) * 10
       // Add classes.
-      this.$tpl.addClass(this.s.type).find('.modal-content').show().addClass(this.getModalClasses())
+      this.$tpl.addClass(this.s.type).find('.modal-window__content').show().addClass(this.getModalClasses())
       // Add inline styles.
       this.$tpl.css({
         'width': this.s.width,
         'maxWidth': this.s.maxWidth,
         'minWidth': this.s.minWidth,
-        'maxHeight': ($(window).height() - docHeight)
-      }).find('.modal-content').css({
+      }).find('.modal-window__content').css({
+        'maxHeight': ($(window).height() - docHeight),
         'background-color': this.s.backgroundColor
       })
       // Apply content.
-      $('.modal-content', this.$tpl).prepend(this.getModalContent())
+      $('.modal-window__content', this.$tpl).prepend(this.getModalContent())
       // Apply modal to DOM.
       this.applyModal()
       // Show modal.
@@ -146,15 +129,12 @@
       var _this = this
 
       setTimeout(function () {
-        _this.$tpl.addClass('active modal-show')
+        _this.$tpl.addClass('active')
         setTimeout(function () {
-          _this.$tpl.css({
+          $('.modal-window__content', this.$tpl).css({
             'overflow': 'hidden',
             'overflow-y': 'scroll'
           })
-          _this.modalActive = true
-          // Register event listeners.
-          _this.registerEventListeners()
         }, 200)
       }, 50)
     },
@@ -172,7 +152,6 @@
       return $('.modal-overlay').remove()
     },
     destroyAll: function () {
-      this.modalActive = false
       this.destroyModal()
       this.destroyOverlay()
     }

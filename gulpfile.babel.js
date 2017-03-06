@@ -13,7 +13,6 @@ import path from 'path'
 import notify from 'gulp-notify'
 import runSequence from 'run-sequence'
 import gulpif from 'gulp-if'
-import livereload from 'gulp-livereload'
 import sass from 'gulp-sass'
 import cleanCSS from 'gulp-clean-css'
 import uglify from 'gulp-uglify'
@@ -38,14 +37,11 @@ import packageConfig from './package.json'
  * Watches for file changes.
  *
  * @uses gulp-watch
- * @uses livereload
  *
 **/
 
 // Main.
 gulp.task('watch', () => {
-	// Start livereload.
-	livereload.listen()
 	// Task :: CSS.
 	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
 	// Task :: JS.
@@ -122,7 +118,6 @@ gulp.task('css:task', () => {
       cascade: false
     }))
   	.pipe(gulp.dest(packageConfig.config.css.dirDest))
-  	.pipe(livereload())
 })
 
 
@@ -173,7 +168,6 @@ gulp.task('js:task', () => {
   	return gulp.src(packageConfig.config.js.dirApp + 'index.js')
   		.pipe(webpackStream(webpackConfig))
     	.pipe(gulp.dest(packageConfig.config.js.dest))
-    	.pipe(livereload())
   })
 })
 

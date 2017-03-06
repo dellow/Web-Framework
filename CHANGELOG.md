@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.7.0__:
+* Many fixes and improvements.
+
 __3.6.0__:
 * Many fixes and improvements.
 
