@@ -358,14 +358,14 @@ body, html {
 .u-hide-tablet {
 	display: none;
 	// Responsive.
-	@include respond-to($tablet + 1, null, true){
+	@include respond-to($tablet_p + 1, null, true){
 		display: initial;
 	}
 }
 .u-hide-mobile {
 	display: none;
 	// Responsive.
-	@include respond-to($mobile + 1, null, true){
+	@include respond-to($mobile_p + 1, null, true){
 		display: initial;
 	}
 }

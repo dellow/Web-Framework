@@ -38,17 +38,17 @@ body {
 .container {
   width: 90%;
   max-width: $container;
-  min-width: $device;
+  min-width: $device_p;
   margin: 0 auto;
   position: relative;
   &--usmall {
-    max-width: ($mobile / 1.5);
+    max-width: ($mobile_p / 1.5);
   }
   &--vsmall {
-    max-width: $mobile;
+    max-width: $mobile_p;
   }
   &--small {
-    max-width: $tablet;
+    max-width: $tablet_p;
   }
   &--medium {
     max-width: 960px;

@@ -18,7 +18,7 @@
   background: color(white);
   transition: left $animation ease, box-shadow $animation ease, opacity $animation ease;
   &__header {
-    @extend %flex;
+    display: flex;
     @include nudge(padding, 0 0.75);
     border-bottom: 1px solid rgba(color(black), 0.05);
     &__close {

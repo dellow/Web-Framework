@@ -141,11 +141,12 @@
 /* ----------------------------------------------------------------------- */
 /* -- Colors -- */
 /* ----------------------------------------------------------------------- */
+/* -- Device & Container Widths (http://mydevice.io/devices/) -- */
+/* ----------------------------------------------------------------------- */
 /* -- Z-Index Scale -- */
 /* ----------------------------------------------------------------------- */
 /* -- Percentage Column Widths -- */
 /* ----------------------------------------------------------------------- */
-/* -- Device sizes :: viewportsizes.com | screensiz.es | dpi.lv -- */
 /* ==========================================================================
   Site > Vars
   You can overwrite any of the config vars from here.
@@ -328,40 +329,17 @@ svg:not(:root) {
   Some default placeholders for the framework.
 ========================================================================== */
 /* -- Clearing -- */
-.oldie .u-display-flex, .oldie .page-mobile-menu__header, .oldie .obj-form-field, .oldie .obj-form-field__body, .oldie .obj-flex-media, .oldie .flex-grid, .cf, div.table, .grid {
+.cf, div.table, .grid {
   zoom: 1;
 }
 
-.oldie .u-display-flex:before, .oldie .page-mobile-menu__header:before, .oldie .obj-form-field:before, .oldie .obj-form-field__body:before, .oldie .obj-flex-media:before, .oldie .flex-grid:before, .cf:before, div.table:before, .grid:before, .oldie .u-display-flex:after, .oldie .page-mobile-menu__header:after, .oldie .obj-form-field:after, .oldie .obj-form-field__body:after, .oldie .obj-flex-media:after, .oldie .flex-grid:after, .cf:after, div.table:after, .grid:after {
+.cf:before, div.table:before, .grid:before, .cf:after, div.table:after, .grid:after {
   content: "";
   display: table;
 }
 
-.oldie .u-display-flex:after, .oldie .page-mobile-menu__header:after, .oldie .obj-form-field:after, .oldie .obj-form-field__body:after, .oldie .obj-flex-media:after, .oldie .flex-grid:after, .cf:after, div.table:after, .grid:after {
+.cf:after, div.table:after, .grid:after {
   clear: both;
-}
-
-/* ----------------------------------------------------------------------- */
-/* -- Enable Flexbox -- */
-.u-display-flex, .page-mobile-menu__header, .obj-form-field, .obj-form-field__body, .obj-flex-media, .flex-grid {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  display: flexbox;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.oldie .u-display-flex > div, .oldie .page-mobile-menu__header > div, .oldie .obj-form-field > div, .oldie .obj-form-field__body > div, .oldie .obj-flex-media > div, .oldie .flex-grid > div {
-  float: left;
-}
-
-.oldie .u-display-flex > div + div, .oldie .page-mobile-menu__header > div + div, .oldie .obj-form-field > div + div, .oldie .obj-form-field__body > div + div, .oldie .obj-flex-media > div + div, .oldie .flex-grid > div + div {
-  float: right;
 }
 
 /* ----------------------------------------------------------------------- */
@@ -643,6 +621,12 @@ body.u-noscroll, html.u-noscroll {
   display: block;
 }
 
+.u-display-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 /* ----------------------------------------------------------------------- */
 /* -- Positioning -- */
 .u-fl {
@@ -759,7 +743,7 @@ body.u-noscroll, html.u-noscroll {
 
 @media only screen and (min-width: 769px) {
   .u-hide-tablet {
-    display: block;
+    display: initial;
   }
 }
 
@@ -767,9 +751,9 @@ body.u-noscroll, html.u-noscroll {
   display: none;
 }
 
-@media only screen and (min-width: 569px) {
+@media only screen and (min-width: 376px) {
   .u-hide-mobile {
-    display: block;
+    display: initial;
   }
 }
 
@@ -918,6 +902,9 @@ hr.hr__styled-seperator {
 }
 
 .page-mobile-menu__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   padding: 0px 18px;
   padding: 0px 1.125rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -979,13 +966,13 @@ body:after {
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
   body:before {
     content: "tablet";
   }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1281px) {
   body:before {
     content: "desktop";
   }
@@ -996,17 +983,17 @@ body:after {
 .container {
   width: 90%;
   max-width: 1180px;
-  min-width: 250px;
+  min-width: 320px;
   margin: 0 auto;
   position: relative;
 }
 
 .container--usmall {
-  max-width: 378.66667px;
+  max-width: 250px;
 }
 
 .container--vsmall {
-  max-width: 568px;
+  max-width: 375px;
 }
 
 .container--small {
@@ -1018,7 +1005,7 @@ body:after {
 }
 
 .container--wide {
-  max-width: 1400px;
+  max-width: 1440px;
 }
 
 /* ----------------------------------------------------------------------- */
@@ -1038,6 +1025,9 @@ body:after {
 ========================================================================== */
 /* -- Form Fields -- */
 .obj-form-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
   position: relative;
@@ -1055,6 +1045,9 @@ body:after {
 }
 
 .obj-form-field__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
 }
 
@@ -1130,7 +1123,7 @@ body:after {
 
 /* ----------------------------------------------------------------------- */
 /* -- Alternative Text -- */
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1280px) {
   .obj-alt-text--desktop span {
     display: none !important;
   }
@@ -1148,7 +1141,7 @@ body:after {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   .obj-alt-text--mobile span {
     display: none !important;
   }
@@ -1157,7 +1150,7 @@ body:after {
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   .obj-alt-text--device span {
     display: none !important;
   }
@@ -1168,6 +1161,12 @@ body:after {
 
 /* ----------------------------------------------------------------------- */
 /* -- Media Object -- */
+.obj-flex-media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .obj-flex-media__image {
   max-width: 40%;
   margin-right: 4%;
@@ -1292,13 +1291,13 @@ h1, .h1 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h1, .h1 {
     font-size: 32px;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h1, .h1 {
     font-size: 32px;
   }
@@ -1310,13 +1309,13 @@ h1, .h1 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h1, .h1 {
     line-height: 1.25;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h1, .h1 {
     line-height: 1.25;
   }
@@ -1335,13 +1334,13 @@ h2, .h2 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h2, .h2 {
     font-size: 26px;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h2, .h2 {
     font-size: 26px;
   }
@@ -1353,13 +1352,13 @@ h2, .h2 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h2, .h2 {
     line-height: 1.15;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h2, .h2 {
     line-height: 1.25;
   }
@@ -1378,13 +1377,13 @@ h3, .h3 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h3, .h3 {
     font-size: 22px;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h3, .h3 {
     font-size: 22px;
   }
@@ -1396,13 +1395,13 @@ h3, .h3 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h3, .h3 {
     line-height: 1.13;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h3, .h3 {
     line-height: 1.13;
   }
@@ -1421,13 +1420,13 @@ h4, .h4 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h4, .h4 {
     font-size: 18px;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h4, .h4 {
     font-size: 18px;
   }
@@ -1439,13 +1438,13 @@ h4, .h4 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h4, .h4 {
     line-height: 1.22;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h4, .h4 {
     line-height: 1.11;
   }
@@ -1464,13 +1463,13 @@ h5, .h5 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h5, .h5 {
     font-size: 16px;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h5, .h5 {
     font-size: 16px;
   }
@@ -1482,13 +1481,13 @@ h5, .h5 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h5, .h5 {
     line-height: 1.37;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h5, .h5 {
     line-height: 1.37;
   }
@@ -1507,13 +1506,13 @@ h6, .h6 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h6, .h6 {
     font-size: 14px;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h6, .h6 {
     font-size: 14px;
   }
@@ -1525,13 +1524,13 @@ h6, .h6 {
   }
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 375px) {
   h6, .h6 {
     line-height: 1.15;
   }
 }
 
-@media only screen and (max-width: 250px) {
+@media only screen and (max-width: 320px) {
   h6, .h6 {
     line-height: 1.15;
   }
@@ -2168,7 +2167,6 @@ ul.alert.box li {
 /* ----------------------------------------------------------------------- */
 /* -- Slab colors -- */
 .bg--color-black, .slab--color-black {
-  color: inherit;
   background-color: #000000;
 }
 
@@ -2177,7 +2175,6 @@ ul.alert.box li {
 }
 
 .bg--color-white, .slab--color-white {
-  color: inherit;
   background-color: #FFFFFF;
 }
 
@@ -2186,7 +2183,6 @@ ul.alert.box li {
 }
 
 .bg--color-grey, .slab--color-grey {
-  color: inherit;
   background-color: #DDDDDD;
 }
 
@@ -2195,7 +2191,6 @@ ul.alert.box li {
 }
 
 .bg--color-blue, .slab--color-blue {
-  color: inherit;
   background-color: #3498DB;
 }
 
@@ -2204,7 +2199,6 @@ ul.alert.box li {
 }
 
 .bg--color-green, .slab--color-green {
-  color: inherit;
   background-color: #2ECC71;
 }
 
@@ -2213,7 +2207,6 @@ ul.alert.box li {
 }
 
 .bg--color-orange, .slab--color-orange {
-  color: inherit;
   background-color: #E67E22;
 }
 
@@ -2222,7 +2215,6 @@ ul.alert.box li {
 }
 
 .bg--color-red, .slab--color-red {
-  color: inherit;
   background-color: #C4122f;
 }
 
@@ -2231,7 +2223,6 @@ ul.alert.box li {
 }
 
 .bg--color-yellow, .slab--color-yellow {
-  color: inherit;
   background-color: #F1C40F;
 }
 
@@ -2240,7 +2231,6 @@ ul.alert.box li {
 }
 
 .bg--color-color, .slab--color-color {
-  color: inherit;
   background-color: #FF0000;
 }
 
@@ -2407,6 +2397,9 @@ form ::placeholder {
 ========================================================================== */
 /* -- Flex -- */
 .flex-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: -webkit-calc(100% + 0.75rem);
   width: calc(100% + 0.75rem);
   margin-top: -12px;
@@ -4408,7 +4401,7 @@ html.oldie {
 }
 
 html.oldie .container {
-  width: 1024px;
+  width: 1280px;
 }
 
 html.oldie .grid .col + .col {

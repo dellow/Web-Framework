@@ -6,7 +6,7 @@
 
 /* -- Form Fields -- */
 .obj-form-field {
-  @extend %flex;
+  display: flex;
   @include nudge(margin-bottom, 0.5);
   position: relative;
   &__note {
@@ -18,7 +18,7 @@
     width: 100%; // Seems unneccessary but gives us flexibility.
   }
   &__body {
-    @extend %flex;
+    display: flex;
     width: 100%; // Seems unneccessary but gives us flexibility.
   }
   &__button {
@@ -85,7 +85,7 @@
     }
   }
   &--tablet {
-    @include respond-to($tablet){
+    @include respond-to($tablet_p){
       span {
         display: none !important;
       }
@@ -95,7 +95,7 @@
     }
   }
   &--mobile {
-    @include respond-to($mobile){
+    @include respond-to($mobile_p){
       span {
         display: none !important;
       }
@@ -105,7 +105,7 @@
     }
   }
   &--device {
-    @include respond-to($device){
+    @include respond-to($device_p){
       span {
         display: none !important;
       }
@@ -122,7 +122,7 @@
 
 /* -- Media Object -- */
 .obj-flex-media {
-  @extend %flex;
+  display: flex;
   &__image {
     max-width: 40%;
     margin-right: 4%;

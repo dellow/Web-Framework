@@ -6,7 +6,7 @@
 
 /* -- Flex -- */
 .flex-grid {
-	@extend %flex;
+	display: flex;
   $value: px-to-rem($gutter * $mn);
   width: calc(100% + #{$value});
   @include nudge(margin-top, -$gutter);
