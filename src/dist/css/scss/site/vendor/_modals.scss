@@ -40,6 +40,12 @@
 	}
 	&__content {
 		@include nudge(padding, 2);
+		@include respond-to($tablet){
+			width: 100% !important;
+			height: 100% !important;
+			max-width: 100% !important;
+			max-height: 100% !important;
+		}
 	}
 	&.active {
 		visibility: visible;

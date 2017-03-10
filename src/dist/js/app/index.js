@@ -48,6 +48,12 @@ import Navigo from 'navigo'
       // Init plugin.
       return el.equalHeights()
     },
+    modal: function (options) {
+      // Get plugin.
+      require('../libs/jquery.modal')
+      // Init plugin.
+      $(window).modal(options)
+    },
     sliders: function (el, options) {
       // DOM check.
       if (!el.length) return
