@@ -14,23 +14,28 @@ if [[ -n $(git status -s) ]]; then
 fi
 
 
-# ---------------------------------------------------------------------------
-# Get Version.
-# ---------------------------------------------------------------------------
-#
-read -p "$(tput setaf 5)Create version number... $(tput sgr0)" release_ver
-
-
 # ------------------------------------------------------------------------
 # Set version number check.
 # ------------------------------------------------------------------------
 #
-read -p "$(tput setaf 5)Have you updated the changelog with a $release_ver entry and updated the package.json file with the version number? y/n $(tput sgr0)" choice
+read -p "$(tput setaf 5)Is the version number in package.json and changelog.md correct? y/n $(tput sgr0)" choice
 if [[ $choice = "n" ]]; then
-  echo -e "$(tput setaf 1)Please update the changelog and/or package.json file and try again.$(tput sgr0)"
+  echo -e "$(tput setaf 1)Please update the package.json and/or changelog.md file and try again.$(tput sgr0)"
   exit 0
 fi
 printf "\n"
+
+
+# ------------------------------------------------------------------------
+# Get version number from package.json.
+# ------------------------------------------------------------------------
+#
+PACKAGE_VERSION=$(cat package.json \
+| grep version \
+| head -1 \
+| awk -F: '{ print $2 }' \
+| sed 's/[",]//g' \
+| tr -d '[[:space:]]')
 
 
 # ---------------------------------------------------------------------------
@@ -56,8 +61,8 @@ gulp css
 gulp js
 git commit -am "Final master compile"
 
-echo -e "Creating version $release_ver of Framework."
-git tag $release_ver
+echo -e "Creating version $PACKAGE_VERSION of Framework."
+git tag $PACKAGE_VERSION
 echo -e "Tagged a new version."
 git push origin --all
 echo -e "Pushed to repo."

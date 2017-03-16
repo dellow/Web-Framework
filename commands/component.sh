@@ -15,7 +15,13 @@ else
   COMPONENTNAME=$1
   COMPONENTNAME_LOWER="$(tr [A-Z] [a-z] <<< "$COMPONENTNAME")"
   COMPONENTNAME_UPPER="$(tr [a-z] [A-Z] <<< "$COMPONENTNAME")"
-  FILE=./src/dist/css/scss/site/components/_$COMPONENTNAME_LOWER.scss
+  DISTPATH=$(cat package.json \
+  | grep dirSCSS \
+  | head -1 \
+  | awk -F: '{ print $2 }' \
+  | sed 's/[",]//g' \
+  | tr -d '[[:space:]]')
+  FILE="$DISTPATH"site/components/_$COMPONENTNAME_LOWER.scss
 fi
 
 # ---------------------------------------------------------------------------
