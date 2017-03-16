@@ -6,11 +6,11 @@
 
 /* -- Flex -- */
 .flex-grid {
+  $value: px-to-rem($gutter * $mn);
   width: calc(100% + #{$value});
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-  $value: px-to-rem($gutter * $mn);
   @include nudge(margin-top, -$gutter);
 	position: relative;
   @include nudge(left, -$gutter);

@@ -55,7 +55,7 @@
     "store": "^2.0.1",
     "turbolinks": "^5.0.0",
     "underscore": "*",
-    "verbal-expressions": "*"
+    "verbal-expressions": "^0.3.0"
   },
   "standard": {
     "globals": [

@@ -1028,6 +1028,8 @@ body:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
   position: relative;
@@ -2015,65 +2017,65 @@ ul.alert.box li {
   Base > Components > Menus
   Styles for navigational menus.
 ========================================================================== */
-.nav-desktop li {
+.menu-desktop li {
   display: inline-block;
   position: relative;
 }
 
-.nav-desktop li:hover > [class*="sub-menu"] {
+.menu-desktop li:hover > [class*="sub-menu"] {
   display: block;
 }
 
-.nav-desktop .sub-menu {
+.menu-desktop .sub-menu {
   position: absolute;
   left: 0;
   top: 100%;
   z-index: 100;
 }
 
-.nav-desktop .sub-menu li {
+.menu-desktop .sub-menu li {
   display: block;
   white-space: nowrap;
 }
 
-.nav-desktop .sub-menu .sub-menu {
+.menu-desktop .sub-menu .sub-menu {
   left: 100%;
 }
 
 @media only screen and (max-width: 768px) {
-  .nav-desktop {
+  .menu-desktop {
     display: none;
   }
 }
 
-.nav-desktop .sub-menu {
+.menu-desktop .sub-menu {
   display: none;
 }
 
 /* ----------------------------------------------------------------------- */
-.nav-mobile {
+.menu-mobile {
   height: 100%;
   position: relative;
 }
 
-.nav-mobile li {
+.menu-mobile li {
   display: block;
   position: static;
 }
 
-.nav-mobile li .sub-menu {
+.menu-mobile li .sub-menu {
   width: 0;
   height: 100%;
   display: block;
   position: absolute;
   top: 0;
-  left: -105%;
+  left: -100%;
   z-index: 100;
   overflow-y: scroll;
   background: #FFFFFF;
 }
 
-.nav-mobile li .sub-menu__close {
+.menu-mobile li .sub-menu__close {
   position: absolute;
   top: 24px;
   top: 1.5rem;
@@ -2081,12 +2083,12 @@ ul.alert.box li {
   left: 1.5rem;
 }
 
-.nav-mobile li .sub-menu.active-sub-menu {
+.menu-mobile li .sub-menu.active-sub-menu {
   width: 100%;
   left: 0;
 }
 
-.nav-mobile .sub-menu {
+.menu-mobile .sub-menu {
   display: none;
 }
 
@@ -2397,11 +2399,17 @@ form ::placeholder {
 ========================================================================== */
 /* -- Flex -- */
 .flex-grid {
+  width: -webkit-calc(100% + 0.75rem);
+  width: calc(100% + 0.75rem);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: -webkit-calc(100% + 0.75rem);
-  width: calc(100% + 0.75rem);
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   margin-top: -12px;
   margin-top: -0.75rem;
   position: relative;
@@ -4469,10 +4477,6 @@ html.oldie .grid .col + .col {
    Site > All
    Imports all the partials.
 ========================================================================== */
-.css-sprite {
-  background-image: url("../images/icons/sprite@2x.png");
-}
-
 /* ==========================================================================
    Site > Icons
    Iconography to be used throughout the sites. Will pull variables
@@ -4484,25 +4488,16 @@ html.oldie .grid .col + .col {
    App fonts and type settings.
 ========================================================================== */
 /* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Site > Global
    Styles that are across the board and not specific to
    any single partial.
 ========================================================================== */
 /* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Site > Objects
    Styling for small reusable components.
 ========================================================================== */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Site > Componenets > Global
@@ -4510,32 +4505,20 @@ html.oldie .grid .col + .col {
 ========================================================================== */
 /* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Site > Components > Buttons
-   Styles for buttons. These are not form buttons but clickable
-   anchors such as Call to Actions.
+   Styles for buttons and CTAs.
 ========================================================================== */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Site > Components > Forms
    Styling for elements within a form tag.
 ========================================================================== */
 /* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Site > Components > Menus
    Styles for navigational menus.
 ========================================================================== */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------- */
 /* ==========================================================================
    Site > Templates > TPL
