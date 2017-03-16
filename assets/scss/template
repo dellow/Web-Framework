@@ -1,0 +1,99 @@
+/* ==========================================================================
+  Site > Components > Template
+  Auto generated component file.
+========================================================================== */
+
+
+/**
+ * Common Styles.
+**/
+.comp-template {
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Desktop Styles.
+**/
+@include respond-to($desktop + 1, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Tablet Landscape Styles.
+**/
+@include respond-to($tablet_l + 1, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Tablet Portrait Styles.
+**/
+@include respond-to($tablet_p + 1, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Mobile Landscape Styles.
+**/
+@include respond-to($mobile_l + 1, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Mobile Portrait Styles.
+**/
+@include respond-to($mobile_p + 1, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+
+/**
+ * Device Landscape Styles.
+**/
+@include respond-to($device_l + 1, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Device Portrait Styles.
+**/
+@include respond-to($device_p + 1, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */

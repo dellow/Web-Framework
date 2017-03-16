@@ -15,7 +15,6 @@
     1. [JS](#tasks--js)
     1. [Images](#tasks--images)
     1. [Minify](#tasks--minify)
-    1. [Sprite](#tasks--sprite)
     1. [Test (Unit)](#tasks--test-unit)
     1. [Test (Integration)](#tasks--test-integration)
     1. [Release](#tasks--release)
@@ -55,14 +54,11 @@ The only system requirement is Node & NPM. Additionally if you want to run integ
 ## Install
 _Please make sure your system meets the requirements above._
 
-#### Bower
-You can get Web Framework with bower simply by running `bower install web-framework`.
-
 #### Git
 You can get Web Framework by cloning this repository simply by running `git clone git@github.com:sdellow/web-framework.git`.
 
 #### Init
-Once complete simply run `bash install.sh` from your command line. This will do the following:
+Once complete simply run `bash commands/install.sh` from your command line. This will do the following:
 
 - Remove the Git wrapper and replace with a fresh Git initialisation.
 - Remove any un-necessary files/directories.
@@ -72,7 +68,7 @@ Once complete simply run `bash install.sh` from your command line. This will do 
 
 __All additional instructions below assume you have followed the installation process.__
 
-> __Pro Tip:__ You can make the install script executable by running `chmod u+x install.sh`. This will allow you to run the script like this: `./install.sh`.
+> __Pro Tip:__ You can make the install script executable by running `chmod u+x commands/install.sh`. This will allow you to run the script like this: `./commands/install.sh`.
 
 <a name="styleguide-examples"></a>
 ## Styleguide & Examples
@@ -107,14 +103,6 @@ _Documentation coming soon_
 _Command:_ `gulp minify`
 
 _Documentation coming soon_
-
-<a name="tasks--sprite"></a>
-### Sprite
-_Command:_ `npm run sprite`
-
-The framework comes with a Sprite task but you will need to manually install the dependencies with this command: `npm install --save-dev sprity sprity-cli sprity-lwip sprity-sass`. This is not included in the `package.json` because `sprity` uses the `lwip` engine which notoriously fails to install on some systems, including Travis CI.
-
-Once the dependencies have been installed you can safely run `npm run sprite` which will create a retina and normal sprite with all the images in `dist/images/icons/png`.
 
 <a name="tasks--test-unit"></a>
 ### Test (Unit)
@@ -261,7 +249,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .btn (Buttons class namespace)
     .grid (Grid namespace)
     .js-* (JavaScript bind namespace)
-    .nav-* (Navigation menu namespace)
+    .menu-* (Menu namespace)
     .page__* (Global Page class namespace)
     .sect-* (Section block namespace)
     .text-* (Text coloring)

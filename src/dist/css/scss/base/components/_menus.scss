@@ -4,7 +4,7 @@
 ========================================================================== */
 
 
-.nav-desktop {
+.menu-desktop {
   li {
     display: inline-block;
     position: relative;
@@ -38,19 +38,18 @@
 /* ----------------------------------------------------------------------- */
 
 
-.nav-mobile {
+.menu-mobile {
   height: 100%;
   position: relative;
   li {
     display: block;
     position: static;
-    // Descendants
     .sub-menu {
       width: 0;
       height: 100%;
       display: block;
       position: absolute;
-      top: 0; left: -105%; // 105% to cover the box-shadow.
+      top: 0; left: -100%;
       z-index: $zindex-1;
       overflow-y: scroll;
       background: color(white);

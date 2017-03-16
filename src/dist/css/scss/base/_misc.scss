@@ -5,7 +5,6 @@
 
 
 /* -- Images -- */
-// Thumbnails.
 .page__thumb {
   max-width: 20%;
   display: block;
@@ -14,7 +13,6 @@
     width: 100%;
     border: 4px solid #DFDFDF;
   }
-  // Abstractions
   &--aligncenter, &--alignnone {
     margin: $mn auto;
     display: block;
@@ -27,9 +25,7 @@
     @include nudge(margin-left, 1);
     float: right;
   }
-  // Descendants
   img {
-    // Abstractions
     &.page__thumb--alignleft, &.page__thumb--alignright, &.page__thumb--aligncenter, &.page__thumb--alignnone {
       width: 100%;
       border: 2px solid #efefef;
@@ -73,7 +69,6 @@ hr {
   @include nudge(margin, 2 0);
   border: 1px solid;
   border-color: #EFEFEF; border-color: rgba(0, 0, 0, 0.085);
-  // Abstractions
   &.hr__styled-seperator { // Qualified Selector
     @include nudge(margin, 2 0);
     border-bottom: 1px solid white;

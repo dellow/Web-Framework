@@ -4,7 +4,7 @@
 @import 'fonts';
 
 // 2. Mixins
-@import 'mixins/#all';
+@import 'mixins/#bootstrap';
 
 // 3. Base vars
 @import 'vars_base';
@@ -13,7 +13,7 @@
 @import 'vars_site';
 
 // 5. Base
-@import 'base/#all';
+@import 'base/#bootstrap';
 
 // 6. Site
-@import 'site/#all';
+@import 'site/#bootstrap';

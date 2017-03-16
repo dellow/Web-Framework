@@ -6,20 +6,18 @@
 
 /* -- Flex -- */
 .flex-grid {
+  width: calc(100% + #{$value});
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
   $value: px-to-rem($gutter * $mn);
-  width: calc(100% + #{$value});
   @include nudge(margin-top, -$gutter);
 	position: relative;
   @include nudge(left, -$gutter);
-	// All columns
 	[class*="col-"] {
 		width: $col_1;
     @include nudge(padding, $gutter 0 0 $gutter);
 	}
-	// Abstractions
 	&--no-gutter {
 		width: $col_1;
 		margin-top: 0;
@@ -55,7 +53,6 @@
     @include nudge(padding, $gutter 0 0 $gutter);
 		float: left;
 	}
-	// Abstractions
 	&--no-gutter {
 		width: $col_1;
 		margin-top: 0;
@@ -74,7 +71,6 @@
 			letter-spacing: normal;
 		}
 	}
-	// Columns.
 	@each $key, $value in $col_array {
 		.#{$key} {
 			width: $value

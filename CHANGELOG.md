@@ -1,5 +1,12 @@
 # Web Framework Changelog
 
+__3.8.0__:
+* Add bash script to create CSS components.
+* Added new CSS components structure.
+* Fixes and improvements.
+* Moved bash scripts to `./commands`.
+* Improved modals.
+
 __3.7.0__:
 * Many fixes and improvements.
 
