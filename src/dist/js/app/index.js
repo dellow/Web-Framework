@@ -90,14 +90,14 @@ import Navigo from 'navigo'
     // Init Routing.
     var Router = new Navigo(null, false)
     // Get global route controller.
-    require('./routes/global')
+    require('./routes/global').init()
     // Router.
     Router.on({
       '/page': function () {
         // Log it.
         window.Helpers.log('Route Loaded: page')
         // Get route controller.
-        // require('./routes/page')
+        // require('./routes/page').init()
       }
     }).resolve()
   }
