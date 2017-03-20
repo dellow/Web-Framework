@@ -19,8 +19,6 @@ import TurboLinks from 'turbolinks'
    * @version 1.0.0
   **/
   Module = function () {
-    this.plugins()
-    this.init()
   }
 
   /**
@@ -47,14 +45,28 @@ import TurboLinks from 'turbolinks'
   }
 
   /**
-   * plugins
+   * init
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  Module.prototype.plugins = function () {
+  Module.prototype.init = function () {
+    TurboLinks.start()
+    MobileMenu.init()
+    this.formValidation()
+  }
+
+  /**
+   * formValidation
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  Module.prototype.formValidation = function () {
     // Init plugin.
     window.App.plugins.validation(this._dom.form, {
       serverValidation: false,
@@ -70,19 +82,6 @@ import TurboLinks from 'turbolinks'
         }
       }
     })
-  }
-
-  /**
-   * init
-   * NULLED.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-   * @access public
-  **/
-  Module.prototype.init = function () {
-    TurboLinks.start()
-    MobileMenu.init()
   }
 
   // Export
