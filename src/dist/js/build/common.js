@@ -46,22 +46,31 @@
 
 	'use strict';
 
+	/**
+	 *
+	 * Common Entry Point
+	 *
+	 * Copyright 2017, Author Name
+	 * Some information on the license.
+	 *
+	**/
+
 	/* ======================================================== */
 	/* Modernizr (via Browsernizr) (check browsernizr/test/** for tests)
 	/* ======================================================== */
 	// require('browsernizr/test/css/transitions')
-	window.Modernizr = __webpack_require__(11);
+	window.Modernizr = __webpack_require__(12);
 
 	/* ======================================================== */
 	/* jQuery
 	/* ======================================================== */
-	window.jQuery = __webpack_require__(21);
-	window.$ = __webpack_require__(21);
+	window.jQuery = __webpack_require__(22);
+	window.$ = __webpack_require__(22);
 
 	/* ======================================================== */
 	/* Underscore
 	/* ======================================================== */
-	window._ = __webpack_require__(22);
+	window._ = __webpack_require__(23);
 
 	/* ======================================================== */
 	/* Handlebars
@@ -77,27 +86,27 @@
 	/* ======================================================== */
 	/* Events
 	/* ======================================================== */
-	window.Events = __webpack_require__(23);
+	window.Events = __webpack_require__(24);
 
 	/* ======================================================== */
 	/* Helpers
 	/* ======================================================== */
-	window.Helpers = __webpack_require__(24);
+	window.Helpers = __webpack_require__(25);
 
 	/* ======================================================== */
 	/* Breakpoint Info
 	/* ======================================================== */
-	window.Breakpoint = __webpack_require__(25);
+	window.Breakpoint = __webpack_require__(26);
 
 	/* ======================================================== */
 	/* Config
 	/* ======================================================== */
-	__webpack_require__(26);
+	__webpack_require__(27);
 
 	/* ======================================================== */
 	/* Google Analytics Autotrack
 	/* ======================================================== */
-	__webpack_require__(27);
+	__webpack_require__(28);
 
 /***/ },
 /* 1 */,
@@ -110,14 +119,15 @@
 /* 8 */,
 /* 9 */,
 /* 10 */,
-/* 11 */
+/* 11 */,
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Modernizr = __webpack_require__(12),
-	    ModernizrProto = __webpack_require__(13),
-	    classes = __webpack_require__(15),
-	    testRunner = __webpack_require__(16),
-	    setClasses = __webpack_require__(18);
+	var Modernizr = __webpack_require__(13),
+	    ModernizrProto = __webpack_require__(14),
+	    classes = __webpack_require__(16),
+	    testRunner = __webpack_require__(17),
+	    setClasses = __webpack_require__(19);
 
 	// Run each test
 	testRunner();
@@ -137,10 +147,10 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ModernizrProto = __webpack_require__(13);
+	var ModernizrProto = __webpack_require__(14);
 	  // Fake some of Object.create so we can force non test results to be non "own" properties.
 	  var Modernizr = function() {};
 	  Modernizr.prototype = ModernizrProto;
@@ -154,10 +164,10 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var tests = __webpack_require__(14);
+	var tests = __webpack_require__(15);
 	  /**
 	   *
 	   * ModernizrProto is the constructor for Modernizr
@@ -210,7 +220,7 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	
@@ -220,7 +230,7 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	
@@ -230,13 +240,13 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var tests = __webpack_require__(14);
-	var Modernizr = __webpack_require__(12);
-	var classes = __webpack_require__(15);
-	var is = __webpack_require__(17);
+	var tests = __webpack_require__(15);
+	var Modernizr = __webpack_require__(13);
+	var classes = __webpack_require__(16);
+	var is = __webpack_require__(18);
 	  /**
 	   * Run through all tests and detect their support in the current UA.
 	   *
@@ -311,7 +321,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	
@@ -333,12 +343,12 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Modernizr = __webpack_require__(12);
-	var docElement = __webpack_require__(19);
-	var isSVG = __webpack_require__(20);
+	var Modernizr = __webpack_require__(13);
+	var docElement = __webpack_require__(20);
+	var isSVG = __webpack_require__(21);
 	  /**
 	   * setClasses takes an array of class names and adds them to the root element
 	   *
@@ -377,7 +387,7 @@
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	
@@ -394,10 +404,10 @@
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var docElement = __webpack_require__(19);
+	var docElement = __webpack_require__(20);
 	  /**
 	   * A convenience helper to check if the document we are running in is an SVG document
 	   *
@@ -411,7 +421,7 @@
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10637,7 +10647,7 @@
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -12191,7 +12201,7 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12200,7 +12210,7 @@
 	 *
 	 * Events
 	 *
-	 * Copyright 2016, Author Name
+	 * Copyright 2017, Author Name
 	 * Some information on the license.
 	 *
 	**/
@@ -12290,7 +12300,7 @@
 	})(window.Events = window.Events || function () {}, window);
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12299,7 +12309,7 @@
 	 *
 	 * Helpers
 	 *
-	 * Copyright 2016, Author Name
+	 * Copyright 2017, Author Name
 	 * Some information on the license.
 	 *
 	**/
@@ -12500,7 +12510,7 @@
 	})({}, window);
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12509,7 +12519,7 @@
 	 *
 	 * Breakpoint
 	 *
-	 * Copyright 2016, Author Name
+	 * Copyright 2017, Author Name
 	 * Some information on the license.
 	 *
 	**/
@@ -12563,16 +12573,16 @@
 	})({}, window);
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 	/**
 	 *
-	 * Application or Website name
+	 * Config
 	 *
-	 * Copyright 2016, Author Name
+	 * Copyright 2017, Author Name
 	 * Some information on the license.
 	 *
 	**/
@@ -12580,43 +12590,7 @@
 	// Set config.
 	window.config = window.config || {};
 
-	window.config.ga_active = window.Helpers.isEmpty(window.ga);
-
-/***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2016 Google Inc. All Rights Reserved.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *     http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 */
-
-
-	// Imports all sub-plugins.
-	__webpack_require__(28);
-	__webpack_require__(36);
-	__webpack_require__(41);
-	__webpack_require__(42);
-	__webpack_require__(45);
-	__webpack_require__(46);
-	__webpack_require__(47);
-	__webpack_require__(48);
-	__webpack_require__(49);
-
-	// Imports the deprecated autotrack plugin for backwards compatibility.
-	__webpack_require__(50);
-
+	window.config.ga_active = window.ga && window.ga.create;
 
 /***/ },
 /* 28 */
@@ -12639,11 +12613,47 @@
 	 */
 
 
-	var assign = __webpack_require__(29);
-	var parseUrl = __webpack_require__(30);
-	var constants = __webpack_require__(31);
-	var provide = __webpack_require__(32);
-	var usage = __webpack_require__(35);
+	// Imports all sub-plugins.
+	__webpack_require__(29);
+	__webpack_require__(37);
+	__webpack_require__(42);
+	__webpack_require__(43);
+	__webpack_require__(46);
+	__webpack_require__(47);
+	__webpack_require__(48);
+	__webpack_require__(49);
+	__webpack_require__(50);
+
+	// Imports the deprecated autotrack plugin for backwards compatibility.
+	__webpack_require__(51);
+
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2016 Google Inc. All Rights Reserved.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 *     http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 */
+
+
+	var assign = __webpack_require__(30);
+	var parseUrl = __webpack_require__(31);
+	var constants = __webpack_require__(32);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
 
 
 	/**
@@ -12746,7 +12756,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12835,7 +12845,7 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	var HTTP_PORT = '80';
@@ -12909,7 +12919,7 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	/**
@@ -12941,7 +12951,7 @@
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12961,8 +12971,8 @@
 	 */
 
 
-	var constants = __webpack_require__(31);
-	var utilities = __webpack_require__(33);
+	var constants = __webpack_require__(32);
+	var utilities = __webpack_require__(34);
 
 
 	// Adds the dev ID to the list of dev IDs if any plugin is used.
@@ -12991,7 +13001,7 @@
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13011,8 +13021,8 @@
 	 */
 
 
-	var assign = __webpack_require__(29);
-	var getAttributes = __webpack_require__(34);
+	var assign = __webpack_require__(30);
+	var getAttributes = __webpack_require__(35);
 
 
 	var utilities = {
@@ -13177,7 +13187,7 @@
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	/**
@@ -13205,7 +13215,7 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13225,7 +13235,7 @@
 	 */
 
 
-	var constants = __webpack_require__(31);
+	var constants = __webpack_require__(32);
 
 
 	var plugins = {
@@ -13329,7 +13339,7 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13349,12 +13359,12 @@
 	 */
 
 
-	var assign = __webpack_require__(29);
-	var delegate = __webpack_require__(37);
-	var provide = __webpack_require__(32);
-	var usage = __webpack_require__(35);
-	var createFieldsObj = __webpack_require__(33).createFieldsObj;
-	var getAttributeFields = __webpack_require__(33).getAttributeFields;
+	var assign = __webpack_require__(30);
+	var delegate = __webpack_require__(38);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var getAttributeFields = __webpack_require__(34).getAttributeFields;
 
 
 	/**
@@ -13429,11 +13439,11 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(38);
-	var matches = __webpack_require__(39);
+	var closest = __webpack_require__(39);
+	var matches = __webpack_require__(40);
 
 	/**
 	 * Delegates the handling of events for an element matching a selector to an
@@ -13486,11 +13496,11 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var matches = __webpack_require__(39);
-	var parents = __webpack_require__(40);
+	var matches = __webpack_require__(40);
+	var parents = __webpack_require__(41);
 
 	/**
 	 * Gets the closest parent element that matches the passed selector.
@@ -13513,7 +13523,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	var proto = window.Element.prototype;
@@ -13571,7 +13581,7 @@
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	/**
@@ -13590,7 +13600,7 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13610,12 +13620,12 @@
 	 */
 
 
-	var assign = __webpack_require__(29);
-	var provide = __webpack_require__(32);
-	var usage = __webpack_require__(35);
-	var createFieldsObj = __webpack_require__(33).createFieldsObj;
-	var domReady = __webpack_require__(33).domReady;
-	var getAttributeFields = __webpack_require__(33).getAttributeFields;
+	var assign = __webpack_require__(30);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var domReady = __webpack_require__(34).domReady;
+	var getAttributeFields = __webpack_require__(34).getAttributeFields;
 
 
 	/**
@@ -13917,7 +13927,7 @@
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -13937,14 +13947,14 @@
 	 */
 
 
-	var assign = __webpack_require__(29);
-	var debounce = __webpack_require__(43);
-	var constants = __webpack_require__(31);
-	var provide = __webpack_require__(32);
-	var usage = __webpack_require__(35);
-	var createFieldsObj = __webpack_require__(33).createFieldsObj;
-	var isObject = __webpack_require__(33).isObject;
-	var toArray = __webpack_require__(33).toArray;
+	var assign = __webpack_require__(30);
+	var debounce = __webpack_require__(44);
+	var constants = __webpack_require__(32);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var isObject = __webpack_require__(34).isObject;
+	var toArray = __webpack_require__(34).toArray;
 
 
 	/**
@@ -14105,7 +14115,7 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -14113,7 +14123,7 @@
 	 * Module dependencies.
 	 */
 
-	var now = __webpack_require__(44);
+	var now = __webpack_require__(45);
 
 	/**
 	 * Returns a function, that, as long as it continues to be invoked, will not
@@ -14164,7 +14174,7 @@
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	module.exports = Date.now || now
@@ -14175,7 +14185,7 @@
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14195,14 +14205,14 @@
 	 */
 
 
-	var assign = __webpack_require__(29);
-	var delegate = __webpack_require__(37);
-	var parseUrl = __webpack_require__(30);
-	var provide = __webpack_require__(32);
-	var usage = __webpack_require__(35);
-	var createFieldsObj = __webpack_require__(33).createFieldsObj;
-	var getAttributeFields = __webpack_require__(33).getAttributeFields;
-	var withTimeout = __webpack_require__(33).withTimeout;
+	var assign = __webpack_require__(30);
+	var delegate = __webpack_require__(38);
+	var parseUrl = __webpack_require__(31);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var getAttributeFields = __webpack_require__(34).getAttributeFields;
+	var withTimeout = __webpack_require__(34).withTimeout;
 
 
 	/**
@@ -14301,7 +14311,7 @@
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14321,13 +14331,13 @@
 	 */
 
 
-	var assign = __webpack_require__(29);
-	var delegate = __webpack_require__(37);
-	var parseUrl = __webpack_require__(30);
-	var provide = __webpack_require__(32);
-	var usage = __webpack_require__(35);
-	var createFieldsObj = __webpack_require__(33).createFieldsObj;
-	var getAttributeFields = __webpack_require__(33).getAttributeFields;
+	var assign = __webpack_require__(30);
+	var delegate = __webpack_require__(38);
+	var parseUrl = __webpack_require__(31);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var getAttributeFields = __webpack_require__(34).getAttributeFields;
 
 
 	/**
@@ -14430,7 +14440,7 @@
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14450,11 +14460,11 @@
 	 */
 
 
-	var assign = __webpack_require__(29);
-	var provide = __webpack_require__(32);
-	var usage = __webpack_require__(35);
-	var createFieldsObj = __webpack_require__(33).createFieldsObj;
-	var isObject = __webpack_require__(33).isObject;
+	var assign = __webpack_require__(30);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var isObject = __webpack_require__(34).isObject;
 
 
 	var DEFAULT_SESSION_TIMEOUT = 30; // 30 minutes.
@@ -14643,7 +14653,7 @@
 
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14666,10 +14676,10 @@
 	/* global FB, twttr */
 
 
-	var assign = __webpack_require__(29);
-	var provide = __webpack_require__(32);
-	var usage = __webpack_require__(35);
-	var createFieldsObj = __webpack_require__(33).createFieldsObj;
+	var assign = __webpack_require__(30);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
 
 
 	/**
@@ -14868,7 +14878,7 @@
 
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14888,11 +14898,11 @@
 	 */
 
 
-	var assign = __webpack_require__(29);
-	var provide = __webpack_require__(32);
-	var usage = __webpack_require__(35);
-	var createFieldsObj = __webpack_require__(33).createFieldsObj;
-	var isObject = __webpack_require__(33).isObject;
+	var assign = __webpack_require__(30);
+	var provide = __webpack_require__(33);
+	var usage = __webpack_require__(36);
+	var createFieldsObj = __webpack_require__(34).createFieldsObj;
+	var isObject = __webpack_require__(34).isObject;
 
 
 	/**
@@ -15031,7 +15041,7 @@
 
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15055,7 +15065,7 @@
 
 
 	// Imports dependencies.
-	var provide = __webpack_require__(32);
+	var provide = __webpack_require__(33);
 
 
 	/**
