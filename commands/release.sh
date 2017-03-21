@@ -15,18 +15,6 @@ fi
 
 
 # ------------------------------------------------------------------------
-# Set version number check.
-# ------------------------------------------------------------------------
-#
-read -p "$(tput setaf 5)Is the version number in package.json and changelog.md correct? y/n $(tput sgr0)" choice
-if [[ $choice = "n" ]]; then
-  echo -e "$(tput setaf 1)Please update the package.json and/or changelog.md file and try again.$(tput sgr0)"
-  exit 0
-fi
-printf "\n"
-
-
-# ------------------------------------------------------------------------
 # Get version number from package.json.
 # ------------------------------------------------------------------------
 #
@@ -36,6 +24,18 @@ PACKAGE_VERSION=$(cat package.json \
 | awk -F: '{ print $2 }' \
 | sed 's/[",]//g' \
 | tr -d '[[:space:]]')
+
+
+# ------------------------------------------------------------------------
+# Set version number check.
+# ------------------------------------------------------------------------
+#
+read -p "$(tput setaf 5)Is the version number $PACKAGE_VERSION correct and also updated in changelog.md? y/n $(tput sgr0)" choice
+if [[ $choice = "n" ]]; then
+  echo -e "$(tput setaf 1)Please update the package.json and/or changelog.md file and try again.$(tput sgr0)"
+  exit 0
+fi
+printf "\n"
 
 
 # ---------------------------------------------------------------------------
