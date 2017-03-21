@@ -1,8 +1,8 @@
 /**
  *
- * Application or Website name
+ * Config
  *
- * Copyright 2016, Author Name
+ * Copyright 2017, Author Name
  * Some information on the license.
  *
 **/
@@ -10,4 +10,4 @@
 // Set config.
 window.config = window.config || {}
 
-window.config.ga_active = (window.Helpers.isEmpty(window.ga))
+window.config.ga_active = (window.ga && window.ga.create)

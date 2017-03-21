@@ -1,3 +1,12 @@
+/**
+ *
+ * Common Entry Point
+ *
+ * Copyright 2017, Author Name
+ * Some information on the license.
+ *
+**/
+
 /* ======================================================== */
 /* Modernizr (via Browsernizr) (check browsernizr/test/** for tests)
 /* ======================================================== */

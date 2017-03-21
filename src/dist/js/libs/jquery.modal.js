@@ -60,6 +60,8 @@
     width: '50%',
     maxWidth: '650px',
     minWidth: '350px',
+    minHeight: '0',
+    shadow: 'none',
     appendTarget: $('body'),
     closeCallback: false
   }
@@ -140,6 +142,8 @@
         'minWidth': this.s.minWidth,
       }).find('.modal-window__content').css({
         'maxHeight': ($(window).height() - docHeight),
+        'box-shadow': this.s.shadow,
+        'minHeight': this.s.minHeight,
         'background-color': this.s.backgroundColor
       })
       // Apply content.

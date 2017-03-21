@@ -1,8 +1,8 @@
 /**
  *
- * App
+ * App Entry Point
  *
- * Copyright 2016, Author Name
+ * Copyright 2017, Author Name
  * Some information on the license.
  *
 **/

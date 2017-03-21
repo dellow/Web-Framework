@@ -6,6 +6,8 @@ __3.8.0__:
 * Fixes and improvements.
 * Moved bash scripts to `./commands`.
 * Improved modals.
+* Updated dates and file notes.
+* Now calls `init` method when loading a route.
 
 __3.7.0__:
 * Many fixes and improvements.

@@ -30,7 +30,7 @@
 	visibility: hidden;
 	backface-visibility: hidden;
 	transform: translateX(-50%) translateY(-50%);
-	@include respond-to($tablet){
+	@include respond-to($tablet_p){
 		width: 100% !important;
 		height: 100% !important;
 		min-width: 0 !important;
@@ -40,7 +40,7 @@
 	}
 	&__content {
 		@include nudge(padding, 2);
-		@include respond-to($tablet){
+		@include respond-to($tablet_p){
 			width: 100% !important;
 			height: 100% !important;
 			max-width: 100% !important;
