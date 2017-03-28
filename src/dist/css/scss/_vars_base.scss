@@ -146,8 +146,8 @@ $color_warning   : #c09853 !default;
 
 /* -- Device & Container Widths (http://mydevice.io/devices/) -- */
 $container    : 1180px !default;
-$device_p     : 320px !default; // Portrait
-$device_l     : 480px !default; // Landscape
+$device_p     : 210px !default; // Portrait
+$device_l     : 280px !default; // Landscape
 $mobile_p     : 375px !default; // Portrait
 $mobile_l     : 667px !default; // Landscape
 $tablet_p     : 768px !default; // Portrait
