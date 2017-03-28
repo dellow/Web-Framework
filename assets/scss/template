@@ -15,57 +15,9 @@
 
 
 /**
- * Desktop Styles.
+ * Device Portrait Styles.
 **/
-@media only screen and ('min-width': $desktop), ('max-width': $desktop){
-  .comp-template {
-  }
-}
-
-
-/* ----------------------------------------------------------------------- */
-
-
-/**
- * Tablet Landscape Styles.
-**/
-@include respond-to($tablet_l, null, true){
-  .comp-template {
-  }
-}
-
-
-/* ----------------------------------------------------------------------- */
-
-
-/**
- * Tablet Portrait Styles.
-**/
-@include respond-to($tablet_p, null, true){
-  .comp-template {
-  }
-}
-
-
-/* ----------------------------------------------------------------------- */
-
-
-/**
- * Mobile Landscape Styles.
-**/
-@include respond-to($mobile_l, null, true){
-  .comp-template {
-  }
-}
-
-
-/* ----------------------------------------------------------------------- */
-
-
-/**
- * Mobile Portrait Styles.
-**/
-@include respond-to($mobile_p, null, true){
+@include respond-to($device_p, null, true){
   .comp-template {
   }
 }
@@ -88,9 +40,57 @@
 
 
 /**
- * Device Portrait Styles.
+ * Mobile Portrait Styles.
 **/
-@include respond-to($device_p, null, true){
+@include respond-to($mobile_p, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Mobile Landscape Styles.
+**/
+@include respond-to($mobile_l, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Tablet Portrait Styles.
+**/
+@include respond-to($tablet_p, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Tablet Landscape Styles.
+**/
+@include respond-to($tablet_l, null, true){
+  .comp-template {
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
+ * Desktop Styles.
+**/
+@include respond-to($desktop, null, true){
   .comp-template {
   }
 }
