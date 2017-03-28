@@ -17,7 +17,7 @@
 /**
  * Device Portrait Styles.
 **/
-@include respond-to($device_p, null, true){
+@include respond-to($device_p, $device_l, true){
   .comp-template {
   }
 }
@@ -30,7 +30,7 @@
 /**
  * Device Landscape Styles.
 **/
-@include respond-to($device_l, null, true){
+@include respond-to($device_l, $mobile_p, true){
   .comp-template {
   }
 }
@@ -42,7 +42,7 @@
 /**
  * Mobile Portrait Styles.
 **/
-@include respond-to($mobile_p, null, true){
+@include respond-to($mobile_p, $mobile_l, true){
   .comp-template {
   }
 }
@@ -54,7 +54,7 @@
 /**
  * Mobile Landscape Styles.
 **/
-@include respond-to($mobile_l, null, true){
+@include respond-to($mobile_l, $tablet_p, true){
   .comp-template {
   }
 }
@@ -66,7 +66,7 @@
 /**
  * Tablet Portrait Styles.
 **/
-@include respond-to($tablet_p, null, true){
+@include respond-to($tablet_p, $tablet_l, true){
   .comp-template {
   }
 }
@@ -78,7 +78,7 @@
 /**
  * Tablet Landscape Styles.
 **/
-@include respond-to($tablet_l, null, true){
+@include respond-to($tablet_l, $desktop, true){
   .comp-template {
   }
 }
