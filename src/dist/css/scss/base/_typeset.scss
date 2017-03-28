@@ -194,7 +194,7 @@ kbd {
   .text {
     @if (color($key)) {
       &--color-#{"" + $key} {
-        color: color($key);
+        color: color($key) !important;
       }
     }
   }

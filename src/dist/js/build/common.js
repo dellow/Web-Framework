@@ -12324,7 +12324,7 @@
 	  * @version 1.0.0
 	  **/
 	  Helpers.log = function (message, type, alertlog) {
-	    if (false) {
+	    if (("development") !== 'production' && !this.isPhantom()) {
 	      alertlog = typeof alertlog === 'undefined';
 	      if (typeof console === 'undefined' || typeof console.log === 'undefined') {
 	        if (alertlog) {

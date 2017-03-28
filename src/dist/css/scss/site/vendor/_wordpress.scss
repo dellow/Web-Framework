@@ -8,7 +8,7 @@
   display: block;
 }
 .alignleft {
-  @include nudge(margin, 0 1 1 0);
+  margin: 0 1.5rem 1.5rem 0 !important;
   float: left;
   // Responsive
   @include respond-to($mobile){
@@ -17,13 +17,16 @@
   }
 }
 .alignright {
-  @include nudge(margin, 0 0 1 1);
+  margin: 0 0 1.5rem 1.5rem !important;
   float: right;
   // Responsive
   @include respond-to($mobile){
     margin-left: 0;
     float: none;
   }
+}
+.aligncenter {
+  margin: 0 auto !important;
 }
 .size-small {
   // Responsive
@@ -49,20 +52,20 @@
 
 
 .gallery {
-	margin-left: -0.5em;
-	margin-right: -0.5em;
+  margin-left: -0.5em;
+  margin-right: -0.5em;
   &:after {
-  	display: table;
-  	content: "";
-  	clear: both;
+    display: table;
+    content: "";
+    clear: both;
   }
 }
 .gallery-item {
-	margin: 0;
-	float: left;
-	padding: 0.5em;
+  margin: 0;
+  float: left;
+  padding: 0.5em;
   img {
-  	width: 100%;
+    width: 100%;
   }
 }
 .gallery-columns-1 .gallery-item {
@@ -101,5 +104,5 @@
 .gallery-columns-7 .gallery-item:nth-child(7n+1),
 .gallery-columns-8 .gallery-item:nth-child(8n+1),
 .gallery-columns-9 .gallery-item:nth-child(9n+1) {
-	clear: left;
+  clear: left;
 }

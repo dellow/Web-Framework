@@ -42,13 +42,13 @@ body {
   margin: 0 auto;
   position: relative;
   &--usmall {
-    max-width: ($mobile_p / 1.5);
+    max-width: 320px;
   }
   &--vsmall {
-    max-width: $mobile_p;
+    max-width: 568px;
   }
   &--small {
-    max-width: $tablet_p;
+    max-width: 768px;
   }
   &--medium {
     max-width: 960px;

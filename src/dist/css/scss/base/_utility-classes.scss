@@ -21,10 +21,10 @@ body, html {
 
 /* -- Messages -- */
 .msg-success {
-	color: rgba(138, 216, 54, 0.6);
+	color: rgba(138, 216, 54, 0.6) !important;
 }
 .msg-error {
-	color: rgba(255, 0, 0, 0.6);
+	color: rgba(255, 0, 0, 0.6) !important;
 }
 
 
@@ -186,10 +186,10 @@ body, html {
 
 /* -- Misc -- */
 .u-vert {
-	vertical-align: middle;
+	vertical-align: middle !important;
 }
 .u-fit {
-	max-width: 100%;
+	max-width: 100% !important;
 }
 
 
@@ -198,12 +198,12 @@ body, html {
 
 /* -- Overflow -- */
 .u-overflow-auto {
-	overflow: auto;
-	position: relative;
-	z-index: 1;
+	overflow: auto !important;
+	position: relative !important;
+	z-index: 1 !important;
 }
 .u-overflow-hidden {
-	overflow: hidden;
+	overflow: hidden !important;
 }
 
 
@@ -212,16 +212,16 @@ body, html {
 
 /* -- Width -- */
 .u-full-width {
-	width: 100%;
+	width: 100% !important;
 }
 .u-half-width {
-	width: 50%;
+	width: 50% !important;
 }
 .u-third-width {
-	width: 33.33%;
+	width: 33.33% !important;
 }
 .u-quarter-width {
-	width: 25%;
+	width: 25% !important;
 }
 
 
@@ -230,16 +230,22 @@ body, html {
 
 /* -- Box Model -- */
 .u-display-inline {
-	display: inline;
+	display: inline !important;
 }
 .u-display-inline-block {
-	display: inline-block;
+	display: inline-block !important;
 }
 .u-display-block {
-	display: block;
+	display: block !important;
 }
 .u-display-flex {
-	display: flex;
+	display: flex !important;
+	&__fit {
+		flex: 1 !important;
+	}
+	&__center {
+		align-self: center !important;
+	}
 }
 
 
@@ -248,22 +254,22 @@ body, html {
 
 /* -- Positioning -- */
 .u-fl {
-	float: left;
+	float: left !important;
 }
 .u-fr {
-	float: right;
+	float: right !important;
 }
 .u-static {
-	position: static;
+	position: static !important;
 }
 .u-relative {
-	position: relative;
+	position: relative !important;
 }
 .u-fixed {
-	position: fixed;
+	position: fixed !important;
 }
 .u-absolute {
-	position: absolute;
+	position: absolute !important;
 }
 
 
@@ -272,13 +278,13 @@ body, html {
 
 /* -- Lists -- */
 .u-inside {
-	margin-left: $base_ul_indent;
+	margin-left: $base_ul_indent !important;
 	ul, ol {
-		margin-left: $base_ul_indent;
+		margin-left: $base_ul_indent !important;
 	}
 }
 .u-no-bullet {
-	list-style: none;
+	list-style: none !important;
 }
 
 
@@ -286,20 +292,14 @@ body, html {
 
 
 /* -- Text -- */
-.u-text-small {
-	font-size: 85%;
-}
-.u-text-big {
-	font-size: 150%;
-}
 .u-text-left {
-	text-align: left;
+	text-align: left !important;
 }
 .u-text-right {
-	text-align: right;
+	text-align: right !important;
 }
 .u-text-center {
-	text-align: center;
+	text-align: center !important;
 }
 
 
@@ -333,21 +333,75 @@ body, html {
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Fonts -- */
-.u-text-serif {
-	font-family: serif;
-}
-.u-text-sans-serif {
-	font-family: sans-serif;
+/* -- Decoration -- */
+.u-text-underline {
+	border-bottom: 2px solid !important;
 }
 
 
 /* ----------------------------------------------------------------------- */
 
 
-/* -- Decoration -- */
-.u-text-underline {
-	border-bottom: 3px solid;
+/* -- Font Faces -- */
+.u-font-serif {
+	font-family: serif !important;
+}
+.u-font-sans-serif {
+	font-family: sans-serif !important;
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/* -- Font Sizes -- */
+.u-font-10 {
+	font-size: 10px !important;
+}
+.u-font-12 {
+	font-size: 12px !important;
+}
+.u-font-14 {
+	font-size: 14px !important;
+}
+.u-font-16 {
+	font-size: 16px !important;
+}
+.u-font-18 {
+	font-size: 18px !important;
+}
+.u-font-20 {
+	font-size: 20px !important;
+}
+.u-font-22 {
+	font-size: 22px !important;
+}
+.u-font-24 {
+	font-size: 24px !important;
+}
+.u-font-26 {
+	font-size: 26px !important;
+}
+.u-font-28 {
+	font-size: 28px !important;
+}
+.u-font-30 {
+	font-size: 30px !important;
+}
+.u-font-32 {
+	font-size: 32px !important;
+}
+.u-font-34 {
+	font-size: 34px !important;
+}
+.u-font-38 {
+	font-size: 38px !important;
+}
+.u-font-38 {
+	font-size: 38px !important;
+}
+.u-font-40 {
+	font-size: 40px !important;
 }
 
 
@@ -356,17 +410,15 @@ body, html {
 
 /* -- Responsive -- */
 .u-hide-tablet {
-	display: none;
-	// Responsive.
+	display: none !important;
 	@include respond-to($tablet_p + 1, null, true){
-		display: initial;
+		display: initial !important;
 	}
 }
 .u-hide-mobile {
-	display: none;
-	// Responsive.
+	display: none !important;
 	@include respond-to($mobile_p + 1, null, true){
-		display: initial;
+		display: initial !important;
 	}
 }
 
@@ -379,7 +431,7 @@ body, html {
 	$class: "" + $key;
   @if (color($key)) {
   	.u-text-color-#{$class} {
-  		color: color($key);
+  		color: color($key) !important;
   	}
 	}
 }

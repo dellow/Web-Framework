@@ -2,9 +2,8 @@
   Base > All
   Imports all the partials.
 ========================================================================== */
-@import // Config
-	'config/reset',
-	// Core
+@import // Core
+	'reset',
 	'placeholders',
 	'utility-classes',
 	'misc',

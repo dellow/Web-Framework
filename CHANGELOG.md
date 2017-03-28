@@ -1,6 +1,7 @@
 # Web Framework Changelog
 
-__3.8.0__:
+__3.7.0__:
+* Added `.aligncenter` WordPress class.
 * Add bash script to create CSS components.
 * Added new CSS components structure.
 * Fixes and improvements.
@@ -8,9 +9,12 @@ __3.8.0__:
 * Improved modals.
 * Updated dates and file notes.
 * Now calls `init` method when loading a route.
-
-__3.7.0__:
-* Many fixes and improvements.
+* Added yargs to set Nightwatch environment.
+* Improved integration tests.
+* Added `html` task for building HTML templates (not part of process yet).
+* Added `u-font-*` for font sizing on the fly.
+* Added `!important` to all utility classes.
+* Added CSS & JavaScript minification by default if on the `master` or `production` branch.
 
 __3.6.0__:
 * Many fixes and improvements.

@@ -7,6 +7,8 @@
  *
 **/
 
+// Yargs.
+var argv = require('yargs').argv
 
 import gulp from 'gulp'
 import path from 'path'
@@ -42,6 +44,8 @@ import packageConfig from './package.json'
 
 // Main.
 gulp.task('watch', () => {
+  // Task :: HTML.
+  // gulp.watch(packageConfig.config.src + '**/*.html', {cwd:'./'}, ['html'])
 	// Task :: CSS.
 	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
 	// Task :: JS.
@@ -89,6 +93,30 @@ gulp.task('sync', () => {
 
 
 /**
+*
+* HTML
+*
+* Compiles HTML templates.
+*
+* @uses gulp-file-include
+*
+**/
+
+// Main.
+gulp.task('html', () => {
+  return gulp.src(packageConfig.config.src + '**/*.html')
+    .pipe(include({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('./view/'))
+})
+
+
+// ********************************************************************************************* //
+
+
+/**
  *
  * CSS
  *
@@ -96,7 +124,9 @@ gulp.task('sync', () => {
  *
  * @uses gulp-autoprefixer
  * @uses gulp-sass
- * @uses notify
+ * @uses gulp-notify
+ * @uses gulp-clean-css
+ * @uses gulp-if
  *
 **/
 
@@ -107,17 +137,30 @@ gulp.task('css', ['css:task'], () => {
 
 // Task.
 gulp.task('css:task', () => {
-	return gulp.src(packageConfig.config.css.src)
-    .pipe(sass({
-      outputStyle: 'expanded',
-    	errLogToConsole: true
-    }))
-  	.on('error', helpers.handleErrors)
-    .pipe(autoprefixer({
-      browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
-      cascade: false
-    }))
-  	.pipe(gulp.dest(packageConfig.config.css.dirDest))
+  // Get branch name.
+  gitRev.branch((branch) => {
+    // Set production flag.
+    var isProduction = (branch === 'production' || branch === 'master')
+    // Set environment.
+    process.env.NODE_ENV = (branch === 'production') ? 'production' : 'development'
+
+  	return gulp.src(packageConfig.config.css.src)
+      .pipe(sass({
+        outputStyle: 'expanded',
+        errLogToConsole: true
+      }))
+      .on('error', helpers.handleErrors)
+      .pipe(autoprefixer({
+        browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
+        cascade: false
+      }))
+      .pipe(gulpif(isProduction, cleanCSS({compatibility: 'ie8', debug: true}, (details) => {
+        console.log('CSS Original Size: ' + (details.stats.originalSize/1000).toFixed(2) + ' KB')
+        console.log('CSS Minified Size: ' + (details.stats.minifiedSize/1000).toFixed(2) + ' KB')
+        console.log('Saving: ' + ((details.stats.originalSize/1000) - (details.stats.minifiedSize/1000)).toFixed(2) + ' KB' )
+      })))
+      .pipe(gulp.dest(packageConfig.config.css.dirDest))
+  })
 })
 
 
@@ -132,7 +175,9 @@ gulp.task('css:task', () => {
  *
  * @uses webpack-stream
  * @uses git-rev
- * @uses notify
+ * @uses gulp-notify
+ * @uses gulp-uglify
+ * @uses gulp-if
  *
 **/
 
@@ -160,6 +205,8 @@ gulp.task('js:standard', () => {
 gulp.task('js:task', () => {
   // Get branch name.
   gitRev.branch((branch) => {
+    // Set production flag.
+    var isProduction = (branch === 'production' || branch === 'master')
     // Set environment.
     process.env.NODE_ENV = (branch === 'production' || branch === 'master') ? 'production' : 'development'
 		// Get webpack config.
@@ -167,6 +214,7 @@ gulp.task('js:task', () => {
 
   	return gulp.src(packageConfig.config.js.dirApp + 'index.js')
   		.pipe(webpackStream(webpackConfig))
+      .pipe(gulpif(isProduction, uglify()))
     	.pipe(gulp.dest(packageConfig.config.js.dest))
   })
 })
@@ -182,7 +230,7 @@ gulp.task('js:task', () => {
  * Optimises images.
  *
  * @uses gulp-imagemin
- * @uses notify
+ * @uses gulp-notify
  *
 **/
 
@@ -208,7 +256,7 @@ gulp.task('images', () => {
  * @uses gulp-uglify
  * @uses git-rev
  * @uses runSequence
- * @uses notify
+ * @uses gulp-notify
  *
 **/
 
@@ -279,40 +327,31 @@ gulp.task('minify:js', () => {
  *
  * @uses gulp-coveralls
  * @uses karma
- * @uses nightwatch
- * @uses notify
+ * @uses gulp-nightwatch
+ * @uses gulp-notify
  *
 **/
 
 // Task.
 gulp.task('test', ['test:unit', 'test:integration'], () => {
-	return gulp.src('')
+  return gulp.src('')
 })
 
 // Task.
 gulp.task('test:unit', ['test:unit:karma'], () => {
-	return gulp.src('')
-})
-
-// Task.
-gulp.task('test:integration', ['test:integration:nightwatch'], () => {
-	return gulp.src('')
+  return gulp.src('')
 })
 
 // Task.
 gulp.task('test:unit:karma', (done) => {
-  // Get karma server.
   var Server = require('karma').Server
 
-  new Server({
-    configFile: path.join(__dirname, '/karma.config.babel.js'),
-    singleRun: true
-  }, (code) => {
-    if (code) {
-      gulp.src('').pipe(notify('Unit tests failed. Exiting now...'))
-      done('Unit tests failed. Exiting now...')
+  new Server({configFile: path.join(__dirname, '/karma.config.babel.js'), singleRun: true}, (code) => {
+    if (code == 1){
+      return gulp.src('').pipe(notify('Unit tests failed. Exiting'))
+      done('Unit Test Failures')
     } else {
-      gulp.src('').pipe(notify('Unit tests passed.'))
+      return gulp.src('').pipe(notify('Unit tests passed'))
       done()
     }
   }).start()
@@ -324,11 +363,20 @@ gulp.task('test:unit:coveralls', () => {
 })
 
 // Task.
-gulp.task('test:integration:nightwatch', () => {
+gulp.task('test:integration', () => {
+  // Nightwatch environment.
+  let nightwatchEnvironment = (argv.env) ? argv.env : 'local'
+  // Log it.
+  console.log('Running integration tests in ' + nightwatchEnvironment + ' mode.')
+
   return gulp.src('')
     .pipe(nightwatch({
-      configFile: path.join(__dirname, './nightwatch.json')
+      configFile: path.join(__dirname, './nightwatch.json'),
+      cliArgs: {
+        env: nightwatchEnvironment
+      }
     }))
+    .pipe(notify('Integration tests passed'))
 })
 
 
