@@ -412,13 +412,13 @@ body, html {
 .u-hide-tablet {
 	display: none !important;
 	@include respond-to($tablet_p + 1, null, true){
-		display: initial !important;
+		display: inherit !important;
 	}
 }
 .u-hide-mobile {
 	display: none !important;
 	@include respond-to($mobile_p + 1, null, true){
-		display: initial !important;
+		display: inherit !important;
 	}
 }
 
