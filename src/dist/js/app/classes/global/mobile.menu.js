@@ -23,7 +23,7 @@ class MobileMenu {
 
     this._settings = {
       menuSize: '80',
-      moveContent: false
+      moveContent: true
     }
 
     this.dom = {
@@ -97,14 +97,14 @@ class MobileMenu {
   **/
   showMenu () {
     // Toggle the mobile menu visiblity.
-    this.style(this.dom.menu, {'left': -(100 - this._settings.menuSize) + '%', 'opacity': '1'})
+    this.style(this.dom.menu, {'width': (this._settings.menuSize), 'opacity': '1'})
     // Add no-scroll class.
     $('body').addClass('u-noscroll')
     // Add active class to button.
     this.dom.open.addClass('active')
     // Toggle the content position.
     if (this._settings.moveContent) {
-      this.style(this.dom.content, {'left': this._settings.menuSize + '%'})
+      this.style(this.dom.content, {'left': this._settings.menuSize})
     }
     // Reset flag.
     this.menuOpen = true
@@ -120,7 +120,7 @@ class MobileMenu {
   **/
   hideMenu () {
     // Toggle the mobile menu visiblity.
-    this.style(this.dom.menu, {'left': '-100%', 'opacity': '0'})
+    this.style(this.dom.menu, {'width': '0', 'opacity': '0'})
     // Remove no-scroll class.
     $('body').removeClass('u-noscroll')
     // Add active class to button.

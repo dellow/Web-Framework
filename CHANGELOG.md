@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.8.0__:
+* Added improved Edge targeting in `_fixes.scss`.
+
 __3.7.0__:
 * Added `.aligncenter` WordPress class.
 * Add bash script to create CSS components.

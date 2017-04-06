@@ -88,6 +88,7 @@
     }
   },
   "scripts": {
+    "server:php": "php -S localhost:8000 -t ./src/",
     "test:unit": "gulp test:unit",
     "test:integration": "gulp test:integration"
   },

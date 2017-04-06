@@ -62,8 +62,8 @@ html.oldie {
 
 
 /**
- * Targets Edge via '-ms-accelerator' media query.
+ * Targets Edge via '-ms-ime-align:auto' supports query.
  * Target: Edge
 **/
-@media screen and (-ms-accelerator: true){
+@supports (-ms-ime-align:auto) {
 }
