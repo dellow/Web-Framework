@@ -2,6 +2,9 @@
 
 __3.8.0__:
 * Added improved Edge targeting in `_fixes.scss`.
+* Moved TurboLinks to entry file and added page load event.
+* Add `.jsx` files to Gulp Watch.
+* Fixed incorrect breakpoint variables in `_wordpress.scss`.
 
 __3.7.0__:
 * Added `.aligncenter` WordPress class.

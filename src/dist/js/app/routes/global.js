@@ -8,7 +8,6 @@
 **/
 
 import MobileMenu from '../classes/global/mobile.menu'
-import TurboLinks from 'turbolinks'
 
 ;(function (Module, window) {
   /**
@@ -53,7 +52,6 @@ import TurboLinks from 'turbolinks'
    * @access public
   **/
   Module.prototype.init = function () {
-    TurboLinks.start()
     MobileMenu.init()
     this.formValidation()
   }

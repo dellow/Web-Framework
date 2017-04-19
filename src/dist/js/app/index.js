@@ -8,6 +8,7 @@
 **/
 
 import Navigo from 'navigo'
+import TurboLinks from 'turbolinks'
 
 ;(function (App, window) {
   /**
@@ -28,7 +29,12 @@ import Navigo from 'navigo'
    * @version 1.0.0
   **/
   App.prototype.init = function () {
+    // Start routes.
     this.routes()
+    // Start TurboLinks.
+    TurboLinks.start()
+    // Reset routes when TurboLinks loads.
+    document.addEventListener('turbolinks:load', this.routes.bind(this))
   }
 
   /**

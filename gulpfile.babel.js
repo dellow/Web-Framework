@@ -49,7 +49,7 @@ gulp.task('watch', () => {
 	// Task :: CSS.
 	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
 	// Task :: JS.
-	gulp.watch(packageConfig.config.js.dirApp + '**/*.js', {cwd:'./'}, ['js'])
+	gulp.watch([packageConfig.config.js.dirApp + '**/*.js', packageConfig.config.js.dirApp + '**/*.js'], {cwd:'./'}, ['js'])
 	// Task :: Images.
 	gulp.watch(packageConfig.config.dist + 'images/raw/**/*.+(jpg|jpeg|png|gif)', {cwd:'./'}, ['images'])
 })
