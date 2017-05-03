@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "autotrack": "^1.1.0",
+    "axios": "^0.16.1",
     "browsernizr": "*",
     "jquery": "*",
     "navigo": "^4.0.0",
@@ -70,7 +71,6 @@
   },
   "config": {
     "url": "{{dev_url}}",
-    "templates": "./templates/",
     "src": "./src/",
     "dist": "./src/dist/",
     "css": {

@@ -29,8 +29,6 @@ import TurboLinks from 'turbolinks'
    * @version 1.0.0
   **/
   App.prototype.init = function () {
-    // Start routes.
-    this.routes()
     // Start TurboLinks.
     TurboLinks.start()
     // Reset routes when TurboLinks loads.
@@ -58,7 +56,7 @@ import TurboLinks from 'turbolinks'
       // Get plugin.
       require('../libs/jquery.modal')
       // Init plugin.
-      $(window).modal(options)
+      return $(window).modal(options)
     },
     sliders: function (el, options) {
       // DOM check.
@@ -99,12 +97,12 @@ import TurboLinks from 'turbolinks'
     require('./routes/global').init()
     // Router.
     Router.on({
-      '/page': function () {
-        // Log it.
-        window.Helpers.log('Route Loaded: page')
-        // Get route controller.
-        // require('./routes/page').init()
-      }
+      // '/page': () => {
+      //   // Log it.
+      //   window.Helpers.log('Route Loaded: page', '#E19F12'
+      //   // Get route controller.
+      //   require('./routes/page').init()
+      // }
     }).resolve()
   }
 

@@ -5,6 +5,10 @@ __3.8.0__:
 * Moved TurboLinks to entry file and added page load event.
 * Add `.jsx` files to Gulp Watch.
 * Fixed incorrect breakpoint variables in `_wordpress.scss`.
+* Added `axios` package.
+* Added clean up part of install script.
+* Improved `preload` header calls.
+* Added missing `1-8` CSS column.
 
 __3.7.0__:
 * Added `.aligncenter` WordPress class.
