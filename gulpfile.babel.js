@@ -48,10 +48,12 @@ gulp.task('watch', () => {
   // gulp.watch(packageConfig.config.src + '**/*.html', {cwd:'./'}, ['html'])
 	// Task :: CSS.
 	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
+  // Task :: Images.
+  gulp.watch(packageConfig.config.dist + 'images/raw/**/*.+(jpg|jpeg|png|gif)', {cwd:'./'}, ['images'])
 	// Task :: JS.
-	gulp.watch([packageConfig.config.js.dirApp + '**/*.js', packageConfig.config.js.dirApp + '**/*.js'], {cwd:'./'}, ['js'])
-	// Task :: Images.
-	gulp.watch(packageConfig.config.dist + 'images/raw/**/*.+(jpg|jpeg|png|gif)', {cwd:'./'}, ['images'])
+	gulp.watch([
+    packageConfig.config.js.dirApp + '**/*.js', packageConfig.config.js.dirApp + '**/*.jsx'
+  ], {cwd:'./'}, ['js'])
 })
 
 
@@ -84,7 +86,9 @@ gulp.task('sync', () => {
 	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
 	gulp.watch(packageConfig.config.css.dest, {cwd:'./'}, ['css']).on('change', browserSync.reload)
 	// Task :: JS.
-	gulp.watch(packageConfig.config.js.dirApp + '**/*.js', {cwd:'./'}, ['js'])
+  gulp.watch([
+    packageConfig.config.js.dirApp + '**/*.js', packageConfig.config.js.dirApp + '**/*.jsx'
+  ], {cwd:'./'}, ['js'])
 	gulp.watch(packageConfig.config.js.dest + '*.js', {cwd:'./'}, ['js']).on('change', browserSync.reload)
 })
 

@@ -97,12 +97,16 @@ import TurboLinks from 'turbolinks'
     require('./routes/global').init()
     // Router.
     Router.on({
-      // '/page': () => {
-      //   // Log it.
-      //   window.Helpers.log('Route Loaded: page', '#E19F12'
-      //   // Get route controller.
-      //   require('./routes/page').init()
-      // }
+      '/page': () => {
+        // Log it.
+        window.Helpers.log('Route Loaded: page', '#E19F12'
+        // Get route controller.
+        let c = require('./routes/page')
+        // Check for an init method.
+        if (typeof c.init === 'function') c.init()
+        // Check for an events method.
+        if (typeof c.events === 'function') c.events()
+      }
     }).resolve()
   }
 

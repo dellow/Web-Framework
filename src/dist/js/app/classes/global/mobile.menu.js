@@ -20,16 +20,17 @@ class MobileMenu {
   constructor () {
     // Set flag.
     this.menuOpen = false
-
+    // Settings for this module.
     this._settings = {
       menuSize: '80',
       moveContent: true
     }
-
-    this.dom = {
-      menu: $('.js--mobileMenu--menu'),
-      open: $('.js--mobileMenu--triggerOpen'),
-      content: $('.js--mobileMenu--content')
+    // DOM elements for this module.
+    this._dom = {
+      menu: $('[data-js-target="mobile-menu"]'),
+      open: $('[data-js-event="menu-open"]'),
+      content: $('[data-js-target="mobile-menu-content"]'),
+      header: $('[data-js-target="mobile-menu-header"]')
     }
   }
 
@@ -59,8 +60,8 @@ class MobileMenu {
     // Extend the events system.
     window.Events.extend({
       events: {
-        'click .js--mobileMenu--triggerOpen': 'toggleMenu',
-        'click .js--mobileMenu--triggerClose': 'hideMenu'
+        'click [data-js-event="menu-open"]': 'toggleMenu',
+        'click [data-js-event="menu-close"]': 'hideMenu'
       },
       toggleMenu: function (e) {
         return _this.startMenu((!_this.menuOpen) ? 'show' : 'hide')
@@ -97,14 +98,14 @@ class MobileMenu {
   **/
   showMenu () {
     // Toggle the mobile menu visiblity.
-    this.style(this.dom.menu, {'width': (this._settings.menuSize), 'opacity': '1'})
+    this.style(this._dom.menu, {'width': (this._settings.menuSize), 'opacity': '1'})
     // Add no-scroll class.
     $('body').addClass('u-noscroll')
     // Add active class to button.
-    this.dom.open.addClass('active')
+    this._dom.open.addClass('active')
     // Toggle the content position.
     if (this._settings.moveContent) {
-      this.style(this.dom.content, {'left': this._settings.menuSize})
+      this.style(this._dom.content, {'left': this._settings.menuSize})
     }
     // Reset flag.
     this.menuOpen = true
@@ -120,14 +121,14 @@ class MobileMenu {
   **/
   hideMenu () {
     // Toggle the mobile menu visiblity.
-    this.style(this.dom.menu, {'width': '0', 'opacity': '0'})
+    this.style(this._dom.menu, {'width': '0', 'opacity': '0'})
     // Remove no-scroll class.
     $('body').removeClass('u-noscroll')
     // Add active class to button.
-    this.dom.open.removeClass('active')
+    this._dom.open.removeClass('active')
     // Toggle the content position.
     if (this._settings.moveContent) {
-      this.style(this.dom.content, {'left': ''})
+      this.style(this._dom.content, {'left': ''})
     }
     // Reset flag.
     this.menuOpen = false
@@ -142,7 +143,7 @@ class MobileMenu {
    * @access public
   **/
   setHeaderHeight () {
-    return $('.page-mobile-menu__header').height(this.calculateHeight($('.js--mobileMenu--header')))
+    return $('.page-mobile-menu__header').height(this.calculateHeight(this._dom.header))
   }
 
   /**
@@ -168,6 +169,7 @@ class MobileMenu {
   style (el, css) {
     return el.css(css)
   }
+
 }
 
 const MobileMenuClass = new MobileMenu()

@@ -44,4 +44,6 @@ else
   ## Add to bootstrap.
   sed -i '' 's/Components.*$/&\
     '"$COMPPATH"'/' ./src/dist/css/scss/site/_#bootstrap.scss
+  ## Open in Sublime Text current window.
+  /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -a $FILE
 fi

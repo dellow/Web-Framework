@@ -18,6 +18,7 @@ class DynamicDOM {
    * @access public
   **/
   constructor () {
+    // Settings for this module.
     this._settings = {
       failSilently: false
     }
@@ -49,7 +50,7 @@ class DynamicDOM {
     // Extend the events system.
     window.Events.extend({
       events: {
-        'change .js--dynamic-dom': 'updateDOM'
+        'change [data-js-target="dynamic-dom"]': 'updateDOM'
       },
       updateDOM: function (e) {
         e[0].preventDefault()
@@ -87,6 +88,7 @@ class DynamicDOM {
   reportNoTarget () {
     return (!this._settings.failSilently) ? window.Helpers.throw('No DOM target specified.') : null
   }
+
 }
 
 const DynamicDOMClass = new DynamicDOM()

@@ -9,6 +9,9 @@ __3.8.0__:
 * Added clean up part of install script.
 * Improved `preload` header calls.
 * Added missing `1-8` CSS column.
+* Component builder now opens file in Sublime Text.
+* The SASS `color` function now returns a lime green colour if the requested color can not be found.
+* Fixes and improvements. 
 
 __3.7.0__:
 * Added `.aligncenter` WordPress class.

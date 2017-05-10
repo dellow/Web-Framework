@@ -34,32 +34,26 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 h1, .h1 {
-  @include nudge(margin, 0.5 0 1);
   @include scale(font-size, 48px, $tablet_p 40px, $mobile_p 32px, $device_p 32px);
   @include scale(line-height, 1.05, $tablet_p 1.125, $mobile_p 1.25, $device_p 1.25);
 }
 h2, .h2 {
-  @include nudge(margin, 0.5 0);
   @include scale(font-size, 36px, $tablet_p 32px, $mobile_p 26px, $device_p 26px);
   @include scale(line-height, 1.05, $tablet_p 1.125, $mobile_p 1.15, $device_p 1.25);
 }
 h3, .h3 {
-  @include nudge(margin, 0.5 0);
   @include scale(font-size, 28px, $tablet_p 24px, $mobile_p 22px, $device_p 22px);
   @include scale(line-height, 1.05, $tablet_p 1.125, $mobile_p 1.13, $device_p 1.13);
 }
 h4, .h4 {
-  @include nudge(margin, 0.5 0);
   @include scale(font-size, 18px, $tablet_p 18px, $mobile_p 18px, $device_p 18px);
   @include scale(line-height, 1.22, $tablet_p 1.22, $mobile_p 1.22, $device_p 1.11);
 }
 h5, .h5 {
-  @include nudge(margin, 0.5 0);
   @include scale(font-size, 16px, $tablet_p 16px, $mobile_p 16px, $device_p 16px);
   @include scale(line-height, 1.37, $tablet_p 1.37, $mobile_p 1.37, $device_p 1.37);
 }
 h6, .h6 {
-  @include nudge(margin, 0.5 0);
   @include scale(font-size, 14px, $tablet_p 14px, $mobile_p 14px, $device_p 14px);
   @include scale(line-height, 1.15, $tablet_p 1.15, $mobile_p 1.15, $device_p 1.15);
 }
@@ -104,6 +98,24 @@ blockquote, dl, ol, p, pre, ul {
 
 
 .page__content {
+  h1, .h1 {
+    @include nudge(margin, 0.5 0 1);
+  }
+  h2, .h2 {
+    @include nudge(margin, 0.5 0);
+  }
+  h3, .h3 {
+    @include nudge(margin, 0.5 0);
+  }
+  h4, .h4 {
+    @include nudge(margin, 0.5 0);
+  }
+  h5, .h5 {
+    @include nudge(margin, 0.5 0);
+  }
+  h6, .h6 {
+    @include nudge(margin, 0.5 0);
+  }
   blockquote, dl, ol, p, pre, ul, img, figure, table, .obj-embed-container {
     @include nudge(margin-bottom, 1);
     img { // No margin on inner images.
@@ -130,6 +142,19 @@ blockquote, dl, ol, p, pre, ul {
     dd {
       @include nudge(margin-bottom, 0.1);
       @include nudge(text-indent, 1);
+    }
+  }
+  blockquote {
+    @include nudge(padding, 0 3);
+    p {
+      font-style: italic;
+      font-family: $serif;
+      &:before {
+        content: open-quote;
+      }
+      &:after {
+        content: close-quote;
+      }
     }
   }
 }

@@ -46,7 +46,7 @@ describe('Class/Global/MobileMenu', function () {
     it('should call style() with a DOM element and CSS object', function () {
       spyOn(MobileMenu, 'style')
       MobileMenu.startMenu()
-      expect(MobileMenu.style).toHaveBeenCalledWith($('.js--mobileMenu--menu'), {'left': '-100%', 'opacity': '0'})
+      expect(MobileMenu.style).toHaveBeenCalledWith($('[data-js-target="mobile-menu"]'), {'left': '-100%', 'opacity': '0'})
     })
   })
   // Suite.
@@ -55,7 +55,7 @@ describe('Class/Global/MobileMenu', function () {
     it('should call calculateHeight() with a DOM element', function () {
       spyOn(MobileMenu, 'calculateHeight')
       MobileMenu.setHeaderHeight()
-      expect(MobileMenu.calculateHeight).toHaveBeenCalledWith($('.js--mobileMenu--header'))
+      expect(MobileMenu.calculateHeight).toHaveBeenCalledWith($('[data-js-target="mobile-menu-header"]'))
     })
   })
   // Suite.

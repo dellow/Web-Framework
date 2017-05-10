@@ -17,7 +17,7 @@
   // Abstractions
   &--standard {
     background: color(blue);
-    &--disabled:hover {
+    &--disabled:hover, &[disabled]:hover {
       background: color(blue);
     }
     &:hover {
@@ -26,7 +26,7 @@
   }
   &--positive {
     background: color(green);
-    &--disabled:hover {
+    &--disabled:hover, &[disabled]:hover {
       background: color(green);
     }
     &:hover {
@@ -35,14 +35,14 @@
   }
   &--negative {
     background: color(red);
-    &--disabled:hover {
+    &--disabled:hover, &[disabled]:hover {
       background: color(red);
     }
     &:hover {
       background: darken(color(red), 10%);
     }
   }
-  &--disabled {
+  &--disabled, &[disabled] {
     opacity: 0.5;
     cursor: default;
     pointer-events: none;

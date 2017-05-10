@@ -11,7 +11,12 @@
 * .foo {@include color(red, base);}
 **/
 @function color($color, $tone: 'base'){
-  @return map-get(map-get($colors, $color), $tone);
+  @if map-has-key($colors, $color) {
+    @return map-get(map-get($colors, $color), $tone);
+  }
+  @else {
+    @return '#6cff00';
+  }
 }
 
 
