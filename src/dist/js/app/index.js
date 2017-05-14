@@ -99,7 +99,7 @@ import TurboLinks from 'turbolinks'
     Router.on({
       '/page': () => {
         // Log it.
-        window.Helpers.log('Route Loaded: page', '#E19F12'
+        window.Helpers.log('Route Loaded: page', '#E19F12')
         // Get route controller.
         let c = require('./routes/page')
         // Check for an init method.
