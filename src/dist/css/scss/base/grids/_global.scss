@@ -26,6 +26,9 @@
 			padding: 0;
 		}
 	}
+	&--center {
+		justify-content: center;
+	}
 	@each $key, $value in $col_array {
 		.#{$key} {
 			width: $value;
