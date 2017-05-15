@@ -218,6 +218,7 @@ gulp.task('js:task', () => {
 
   	return gulp.src(packageConfig.config.js.dirApp + 'index.js')
   		.pipe(webpackStream(webpackConfig))
+      .on('error', helpers.handleErrors)
       .pipe(gulpif(isProduction, uglify()))
     	.pipe(gulp.dest(packageConfig.config.js.dest))
   })

@@ -12,6 +12,7 @@ __3.8.0__:
 * Component builder now opens file in Sublime Text.
 * The SASS `color` function now returns a lime green colour if the requested color can not be found.
 * Fixes and improvements. 
+* Webpack now doesn't break the Gulp pipe on error.
 
 __3.7.0__:
 * Added `.aligncenter` WordPress class.
