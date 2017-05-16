@@ -47,7 +47,7 @@
       // Cache selector.
       var selector = name.substr(name.indexOf(' ') + 1)
       // Check event type.
-      if (event === 'load') {
+      if (event === 'load' || event === 'scroll' || event === 'resize') {
         // Add event.
         $(window).on(event, function (e) {
           // Add $el to event object
