@@ -253,79 +253,6 @@ gulp.task('images', () => {
 
 /**
  *
- * Minify
- *
- * Minfy CSS and JavaScript.
- *
- * @uses gulp-clean-css
- * @uses gulp-uglify
- * @uses git-rev
- * @uses runSequence
- * @uses gulp-notify
- *
-**/
-
-// Main.
-gulp.task('minify', () => {
-  runSequence('minify:css', 'minify:js', 'images')
-})
-
-// CSS.
-gulp.task('minify:css', () => {
-  // Get branch name.
-  return gitRev.branch((branch) => {
-    // Check branch name.
-    if (branch === 'production' || branch === 'master') {
-      // Set environment.
-      process.env.NODE_ENV = 'production'
-      // Double check environment.
-      if (process.env.NODE_ENV == 'production') {
-        return gulp.src(packageConfig.config.css.dest)
-          .pipe(cleanCSS({compatibility: 'ie8', debug: true}, (details) => {
-            console.log('CSS Original Size: ' + (details.stats.originalSize/1000).toFixed(2) + ' KB')
-            console.log('CSS Minified Size: ' + (details.stats.minifiedSize/1000).toFixed(2) + ' KB')
-            console.log('Saving: ' + ((details.stats.originalSize/1000) - (details.stats.minifiedSize/1000)).toFixed(2) + ' KB' )
-          }))
-          .pipe(gulp.dest(packageConfig.config.css.dirDest))
-          .pipe(notify('CSS minified.'))
-      } else {
-        return gulp.src('').pipe(notify('Failed to set Node environment to production'))
-      }
-    } else {
-      return gulp.src('').pipe(notify('Couldn\'t minify, branch is not master or production.'))
-    }
-  })
-})
-
-// JavaScript.
-gulp.task('minify:js', () => {
-  // Get branch name.
-  return gitRev.branch((branch) => {
-    // Check branch name.
-    if (branch === 'production' || branch === 'master') {
-      // Set environment.
-      process.env.NODE_ENV = 'production'
-      // Double check environment.
-      if (process.env.NODE_ENV == 'production') {
-        return gulp.src(packageConfig.config.js.dest + '*.js')
-          .pipe(uglify())
-          .pipe(gulp.dest(packageConfig.config.js.dest))
-          .pipe(notify('JavaScript minified.'))
-      } else {
-        return gulp.src('').pipe(notify('Failed to set Node environment to production'))
-      }
-    } else {
-    	return gulp.src('').pipe(notify('Couldn\'t minify, branch is not master or production.'))
-    }
-  })
-})
-
-
-// ********************************************************************************************* //
-
-
-/**
- *
  * Test > Unit
  *
  * Run unit tests and sends coverage information to coveralls.io.
@@ -400,5 +327,5 @@ gulp.task('test:integration', () => {
 
 // Task.
 gulp.task('release', (done) => {
-  runSequence('test', 'css', 'images', 'js', 'minify')
+  runSequence('test', 'css', 'images', 'js')
 })

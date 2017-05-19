@@ -156,6 +156,9 @@ blockquote, dl, ol, p, pre, ul {
         content: close-quote;
       }
     }
+    cite {
+      font-weight: $bold;
+    }
   }
 }
 
@@ -166,16 +169,6 @@ blockquote, dl, ol, p, pre, ul {
 .page__hatnote {
   @include nudge(padding-left, 1);
   font-style: italic;
-}
-
-
-/* ----------------------------------------------------------------------- */
-
-
-cite {
-  .cite__profession {
-    font-weight: $bold;
-  }
 }
 
 
