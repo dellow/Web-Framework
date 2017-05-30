@@ -217,7 +217,7 @@ gulp.task('js:task', () => {
 		var webpackConfig = require('./webpack.config.js') // Must be defined here. Do not hoist.
 
   	return gulp.src(packageConfig.config.js.dirApp + 'index.js')
-  		.pipe(webpackStream(webpackConfig))
+      .pipe(webpackStream(webpackConfig, require('webpack')))
       .on('error', helpers.handleErrors)
       .pipe(gulpif(isProduction, uglify()))
     	.pipe(gulp.dest(packageConfig.config.js.dest))
