@@ -19,18 +19,20 @@ class MobileMenu {
   **/
   constructor () {
     // Set flag.
-    this.menuOpen = false
+    this.mainMenuOpen = false
+    this.subMenuOpen = false
     // Settings for this module.
     this._settings = {
-      menuSize: '80',
-      moveContent: true
+      menuSize: '100',
+      moveContent: false
     }
-    // DOM elements for this module.
+    // Dom elements for this module.
     this._dom = {
       menu: $('[data-js-target="mobile-menu"]'),
       open: $('[data-js-event="menu-open"]'),
       content: $('[data-js-target="mobile-menu-content"]'),
-      header: $('[data-js-target="mobile-menu-header"]')
+      bodyMenu: $('.page-mobile-menu__body__menuwrapper__main'),
+      bodySubMenu: $('.page-mobile-menu__body__menuwrapper__sub')
     }
   }
 
@@ -61,67 +63,85 @@ class MobileMenu {
     window.Events.extend({
       events: {
         'click [data-js-event="menu-open"]': 'toggleMenu',
-        'click [data-js-event="menu-close"]': 'hideMenu'
+        'click [data-js-event="menu-close"]': 'hideMainMenu',
+        'click [data-js-target="mobile-menu"] .has_sub_menu': 'toggleSubMenu'
       },
       toggleMenu: function (e) {
-        return _this.startMenu((!_this.menuOpen) ? 'show' : 'hide')
+        return (_this.subMenuOpen) ? _this.startMenuChild('hide') : _this.startMenuParent((!_this.mainMenuOpen) ? 'show' : 'hide')
       },
-      hideMenu: function (e) {
-        return _this.startMenu('hide')
+      hideMainMenu: function (e) {
+        return (_this.subMenuOpen) ? _this.startMenuChild('hide') : _this.startMenuParent('hide')
+      },
+      toggleSubMenu: function (e) {
+        e[0].preventDefault()
+
+        return _this.startMenuChild('show', $(e[0].currentTarget))
       }
     })
   }
 
   /**
-   * startMenu
+   * startMenuParent
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  startMenu (action) {
+  startMenuParent (action) {
     // Set the mobile menu header height to
     // match the page mobile header height.
     this.setHeaderHeight()
 
-    return (action === 'show') ? this.showMenu() : this.hideMenu()
+    return (action === 'show') ? this.showMainMenu() : this.hideMainMenu()
   }
 
   /**
-   * showMenu
+   * startMenuChild
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  showMenu () {
-    // Toggle the mobile menu visiblity.
-    this.style(this._dom.menu, {'width': (this._settings.menuSize), 'opacity': '1'})
+  startMenuChild (action, el) {
+    return (action === 'show') ? this.showSubMenu(el) : this.hideSubMenu()
+  }
+
+  /**
+   * showMainMenu
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  showMainMenu () {
+    // Toggle the mobile menu visibility.
+    this.style(this._dom.menu, {'left': -(100 - this._settings.menuSize) + '%', 'opacity': '1'})
     // Add no-scroll class.
     $('body').addClass('u-noscroll')
     // Add active class to button.
     this._dom.open.addClass('active')
     // Toggle the content position.
     if (this._settings.moveContent) {
-      this.style(this._dom.content, {'left': this._settings.menuSize})
+      this.style(this._dom.content, {'left': this._settings.menuSize + '%'})
     }
-    // Reset flag.
-    this.menuOpen = true
+    // Set flag.
+    this.mainMenuOpen = true
   }
 
   /**
-   * hideMenu
+   * hideMainMenu
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  hideMenu () {
-    // Toggle the mobile menu visiblity.
-    this.style(this._dom.menu, {'width': '0', 'opacity': '0'})
+  hideMainMenu () {
+    // Toggle the mobile menu visibility.
+    this.style(this._dom.menu, {'left': '-100%', 'opacity': '0'})
     // Remove no-scroll class.
     $('body').removeClass('u-noscroll')
     // Add active class to button.
@@ -131,7 +151,54 @@ class MobileMenu {
       this.style(this._dom.content, {'left': ''})
     }
     // Reset flag.
-    this.menuOpen = false
+    this.mainMenuOpen = false
+  }
+
+  /**
+   * showSubMenu
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  showSubMenu (el) {
+    // Cache sub menu.
+    let subMenu = $('.sub-menu', el)
+    // Check sub menu exists.
+    if (subMenu.length) {
+      // Add active class to button.
+      this._dom.open.removeClass('active').addClass('half')
+      // Inject sub menu into the DOM.
+      this.injectSubMenu(subMenu)
+      // Toggle the main menu visibility.
+      this.style(this._dom.bodyMenu, {'left': '100%'})
+      // Toggle the sub menu visibility.
+      this.style(this._dom.bodySubMenu, {'left': '0'})
+      // Set flag.
+      this.subMenuOpen = true
+    }
+  }
+
+  /**
+   * hideSubMenu
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  hideSubMenu () {
+    // Add active class to button.
+    this._dom.open.addClass('active').removeClass('half')
+    // Clear sub menu holder.
+    this.clearSubMenuHolder()
+    // Toggle the main menu visibility.
+    this.style(this._dom.bodyMenu, {'left': '0'})
+    // Toggle the sub menu visibility.
+    this.style(this._dom.bodySubMenu, {'left': '-100%'})
+    // Reset flag.
+    this.subMenuOpen = false
   }
 
   /**
@@ -143,7 +210,7 @@ class MobileMenu {
    * @access public
   **/
   setHeaderHeight () {
-    return $('.page-mobile-menu__header').height(this.calculateHeight(this._dom.header))
+    return $('.page-mobile-menu').css({'top': this.calculateHeight($('.js--mobileMenu--header'))})
   }
 
   /**
@@ -168,6 +235,34 @@ class MobileMenu {
   **/
   style (el, css) {
     return el.css(css)
+  }
+
+  /**
+   * injectSubMenu
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  injectSubMenu (el) {
+    // Clone menu.
+    let menuClone = el.clone()
+    // Append sub menu.
+    this._dom.bodySubMenu.empty().append(menuClone)
+  }
+
+  /**
+   * clearSubMenuHolder
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  clearSubMenuHolder () {
+    // Append sub menu.
+    this._dom.bodySubMenu.empty()
   }
 
 }

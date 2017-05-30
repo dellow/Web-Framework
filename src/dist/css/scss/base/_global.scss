@@ -6,17 +6,15 @@
 
 
 .page-mobile-menu {
-  width: 0;
+  width: 100%;
   height: 100%;
   float: left;
   overflow-y: scroll;
   opacity: 0;
   position: fixed;
-  top: 0; left: 0;
+  top: 0; left: -100%;
   z-index: 1;
-  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
-  background: color(white);
-  transition: width $animation ease, box-shadow $animation ease, opacity $animation ease;
+  transition: left $animation ease, opacity $animation ease;
   &__header {
     display: flex;
     @include nudge(padding, 0 0.75);
@@ -34,7 +32,34 @@
     }
   }
   &__body {
+    height: 100%;
     @include nudge(padding, 0.5);
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: color(white);
+    &__menuwrapper {
+      position: relative;
+      &__main {
+        width: 100%;
+        position: absolute;
+        @include nudge(top, 0.75); left: 0;
+        transition: left $animation ease;
+        @media only screen and (max-height: 530px) {
+          @include nudge(top, 0.5);
+        }
+      }
+      &__sub {
+        width: 100%;
+        @include nudge(padding-bottom, 1.5);
+        position: absolute;
+        @include nudge(top, 0.75); left: -100%;
+        transition: left $animation ease;
+        @media only screen and (max-height: 530px) {
+          @include nudge(top, 0.5);
+        }
+      }
+    }
   }
 }
 
