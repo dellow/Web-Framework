@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__3.9.0__:
+* Fixed Gulp Watch for images.
+
 __3.8.0__:
 * Added improved Edge targeting in `_fixes.scss`.
 * Moved TurboLinks to entry file and added page load event.
