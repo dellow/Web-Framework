@@ -105,7 +105,7 @@
       })
       // Event :: Click anywhere outside modal.
       $(document).on('click', function (e) {
-        if ($(e.target).closest('.modal').length === 0 && _this.modalActive) {
+        if ($(e.target).closest('.modal-window').length === 0 && _this.modalActive) {
           e.preventDefault()
           // Destroy modal.
           _this.destroyAll()
