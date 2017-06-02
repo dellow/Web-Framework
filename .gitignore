@@ -19,6 +19,7 @@ node_modules/
 # details should be ignored to prevent unauthorised access.
 # ---------------------------------------------------------------------------------
 commands/release.sh
+package-lock.json
 **/.htaccess
 **/robots.txt
 **/*.log
