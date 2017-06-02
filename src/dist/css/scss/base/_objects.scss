@@ -157,6 +157,23 @@
   width: 30px;
   height: 25px;
   cursor: pointer;
+  &.half {
+    span {
+      background-color: transparent;
+      &:before, &:after {
+        width: 20px;
+        background: color(copy, link);
+      }
+      &:before {
+        top: 7px;
+        transform: rotate(45deg);
+      }
+      &:after {
+        top: -7px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
   &.active {
     span {
       background-color: transparent;

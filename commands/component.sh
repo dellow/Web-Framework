@@ -43,7 +43,9 @@ else
   sed -i '' -e "s/template/$COMPONENTNAME_LOWER/g" $FILE
   ## Add to bootstrap.
   sed -i '' 's/Components.*$/&\
-    '"$COMPPATH"'/' ./src/dist/css/scss/site/_#bootstrap.scss
+    '"$COMPPATH"'/' "$DISTPATH"site/_#bootstrap.scss
   ## Open in Sublime Text current window.
-  /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -a $FILE
+  # /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -a $FILE
+  ## Open in Atom current window.
+  atom -a $FILE
 fi

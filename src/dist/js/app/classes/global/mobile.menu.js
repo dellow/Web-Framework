@@ -1,8 +1,8 @@
 /**
  *
- * Class
+ * Module
  *
- * Copyright 2017, Author Name
+ * Copyright 2016, Author Name
  * Some information on the license.
  *
 **/
@@ -21,15 +21,16 @@ class MobileMenu {
     // Set flag.
     this.mainMenuOpen = false
     this.subMenuOpen = false
-    // Settings for this module.
+
     this._settings = {
       menuSize: '100',
       moveContent: false
     }
-    // Dom elements for this module.
+
     this._dom = {
       menu: $('[data-js-target="mobile-menu"]'),
       open: $('[data-js-event="menu-open"]'),
+      header: $('[data-js-target="mobile-menu-header"]'),
       content: $('[data-js-target="mobile-menu-content"]'),
       bodyMenu: $('.page-mobile-menu__body__menuwrapper__main'),
       bodySubMenu: $('.page-mobile-menu__body__menuwrapper__sub')
@@ -210,7 +211,7 @@ class MobileMenu {
    * @access public
   **/
   setHeaderHeight () {
-    return $('.page-mobile-menu').css({'top': this.calculateHeight($('.js--mobileMenu--header'))})
+    return $('.page-mobile-menu').css({'top': this.calculateHeight(this._dom.header)})
   }
 
   /**
@@ -222,7 +223,7 @@ class MobileMenu {
    * @access public
   **/
   calculateHeight (el) {
-    return el.outerHeight()
+    return el.outerHeight() - 1
   }
 
   /**
@@ -264,7 +265,6 @@ class MobileMenu {
     // Append sub menu.
     this._dom.bodySubMenu.empty()
   }
-
 }
 
 const MobileMenuClass = new MobileMenu()

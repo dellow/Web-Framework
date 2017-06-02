@@ -11,8 +11,12 @@ __3.8.0__:
 * Added missing `1-8` CSS column.
 * Component builder now opens file in Sublime Text.
 * The SASS `color` function now returns a lime green colour if the requested color can not be found.
-* Fixes and improvements. 
+* Fixes and improvements.
 * Webpack now doesn't break the Gulp pipe on error.
+* Added atom to component creator.
+* Added `.atom-build.yml` file for Atom Build plugin.
+* Updated dependencies.
+* Improved mobile menu.
 
 __3.7.0__:
 * Added `.aligncenter` WordPress class.

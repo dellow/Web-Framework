@@ -22,7 +22,10 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      // 'handlebars': 'handlebars/dist/handlebars.min.js'
+    }
   },
   module: {
     loaders: [
