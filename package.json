@@ -1,6 +1,6 @@
 {
   "name": "web-framework",
-  "version": "3.7.0",
+  "version": "3.8.0",
   "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web applications using Gulp, SASS and Webpack.",
   "license": "MIT",
   "devDependencies": {
