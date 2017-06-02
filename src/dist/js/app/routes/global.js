@@ -40,7 +40,7 @@ import MobileMenu from '../classes/global/mobile.menu'
    * @access public
   **/
   Module.prototype._dom = {
-    form: $('.js--validate-form')
+    form: $('[data-js-event="signupForm"]')
   }
 
   /**

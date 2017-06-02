@@ -63,7 +63,7 @@ import TurboLinks from 'turbolinks'
       if (!el.length) return
 
       // Get plugin.
-      require('script!slick-carousel')
+      require('script-loader!slick-carousel')
       // Init plugin.
       return el.slick(options)
     },
