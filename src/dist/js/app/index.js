@@ -8,7 +8,6 @@
 **/
 
 import Navigo from 'navigo'
-import TurboLinks from 'turbolinks'
 
 ;(function (App, window) {
   /**
@@ -22,6 +21,18 @@ import TurboLinks from 'turbolinks'
   }
 
   /**
+   * _settings
+   * Settings for this module.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  App.prototype._settings = {
+    usePjax: true
+  }
+
+  /**
    * init
    * Module init method.
    *
@@ -29,10 +40,14 @@ import TurboLinks from 'turbolinks'
    * @version 1.0.0
   **/
   App.prototype.init = function () {
-    // Start TurboLinks.
-    TurboLinks.start()
-    // Reset routes when TurboLinks loads.
-    document.addEventListener('turbolinks:load', this.routes.bind(this))
+    if (this._settings.usePjax) {
+      // Get plugin.
+      require('jquery-pjax')
+      // Start Pjax.
+      $(document).pjax('a', '.page-main')
+    }
+    // Run routes.
+    this.routes()
   }
 
   /**
@@ -92,11 +107,11 @@ import TurboLinks from 'turbolinks'
   **/
   App.prototype.routes = function () {
     // Init Routing.
-    var Router = new Navigo(null, false)
+    window.Router = new Navigo(null, false)
     // Get global route controller.
     require('./routes/global').init()
     // Router.
-    Router.on({
+    window.Router.on({
       // '/page': () => {
       //   // Log it.
       //   window.Helpers.log('Route Loaded: page', '#E19F12')

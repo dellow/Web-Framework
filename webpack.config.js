@@ -7,17 +7,18 @@
  *
 **/
 
-var webpack = require('webpack')
-var path = require('path')
+import webpack from 'webpack'
+import path from 'path'
+
 var packageConfig = require('./package.json')
 
 module.exports = {
   entry: {
-    app: path.join(__dirname, './' + packageConfig.config.js.dirApp + 'index.js'),
-    common: path.join(__dirname, './' + packageConfig.config.js.dirCommon + 'index.js')
+    app: path.resolve(__dirname, './' + packageConfig.config.js.dirApp + 'index.js'),
+    common: path.resolve(__dirname, './' + packageConfig.config.js.dirCommon + 'index.js')
   },
   output: {
-    path: path.join(__dirname, './' + packageConfig.config.js.dest),
+    path: path.resolve(__dirname, './' + packageConfig.config.js.dest),
     filename: '[name].js'
   },
   resolve: {
@@ -28,14 +29,11 @@ module.exports = {
     }
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
-        }
+        loader: 'babel-loader'
       }
     ]
   },

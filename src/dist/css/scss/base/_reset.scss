@@ -81,6 +81,9 @@ input[type="search"]::-webkit-search-decoration {
 html, body, div, p, address, blockquote, ol, ul, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, pre, hr, menu, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
+form {
+  width: 100%;
+}
 video {
   cursor: pointer;
 }

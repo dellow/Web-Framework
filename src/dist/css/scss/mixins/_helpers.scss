@@ -15,7 +15,7 @@
     @return map-get(map-get($colors, $color), $tone);
   }
   @else {
-    @return '#6cff00';
+    @return #6cff00;
   }
 }
 

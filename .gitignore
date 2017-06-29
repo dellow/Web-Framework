@@ -5,6 +5,7 @@
 # ---------------------------------------------------------------------------------
 .sass-cache/
 .vagrant/
+# .editorconfig
 karma/
 nightwatch/
 bower_components/

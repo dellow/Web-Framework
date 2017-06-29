@@ -44,12 +44,10 @@ import packageConfig from './package.json'
 
 // Main.
 gulp.task('watch', () => {
-  // Task :: HTML.
-  // gulp.watch(packageConfig.config.src + '**/*.html', {cwd:'./'}, ['html'])
 	// Task :: CSS.
 	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
   // Task :: Images.
-  gulp.watch(packageConfig.config.dist + 'images/raw/**/*.{jpg,jpeg,png,gif}', {cwd:'./'}, ['images'])
+  gulp.watch(packageConfig.config.img.dirRaw + '**/*.{jpg,jpeg,png,gif}', {cwd:'./'}, ['images'])
 	// Task :: JS.
 	gulp.watch([
     packageConfig.config.js.dirApp + '**/*.js',
@@ -85,36 +83,13 @@ gulp.task('sync', () => {
 	})
 	// Task :: CSS.
 	gulp.watch(packageConfig.config.css.dirSCSS + '**/*.scss', {cwd:'./'}, ['css'])
-	gulp.watch(packageConfig.config.css.dest, {cwd:'./'}, ['css']).on('change', browserSync.reload)
+	gulp.watch(packageConfig.config.css.fileBuild, {cwd:'./'}, ['css']).on('change', browserSync.reload)
 	// Task :: JS.
   gulp.watch([
-    packageConfig.config.js.dirApp + '**/*.js', packageConfig.config.js.dirApp + '**/*.jsx'
+    packageConfig.config.js.dirApp + '**/*.js',
+    packageConfig.config.js.dirApp + '**/*.jsx'
   ], {cwd:'./'}, ['js'])
-	gulp.watch(packageConfig.config.js.dest + '*.js', {cwd:'./'}, ['js']).on('change', browserSync.reload)
-})
-
-
-// ********************************************************************************************* //
-
-
-/**
-*
-* HTML
-*
-* Compiles HTML templates.
-*
-* @uses gulp-file-include
-*
-**/
-
-// Main.
-gulp.task('html', () => {
-  return gulp.src(packageConfig.config.src + '**/*.html')
-    .pipe(include({
-      prefix: '@@',
-      basepath: '@file'
-    }))
-    .pipe(gulp.dest('./view/'))
+	gulp.watch(packageConfig.config.js.dirDest + '*.js', {cwd:'./'}, ['js']).on('change', browserSync.reload)
 })
 
 
@@ -149,7 +124,7 @@ gulp.task('css:task', () => {
     // Set environment.
     process.env.NODE_ENV = (branch === 'production') ? 'production' : 'development'
 
-  	return gulp.src(packageConfig.config.css.src)
+  	return gulp.src(packageConfig.config.css.fileSrc)
       .pipe(sass({
         outputStyle: 'expanded',
         errLogToConsole: true
@@ -164,7 +139,7 @@ gulp.task('css:task', () => {
         console.log('CSS Minified Size: ' + (details.stats.minifiedSize/1000).toFixed(2) + ' KB')
         console.log('Saving: ' + ((details.stats.originalSize/1000) - (details.stats.minifiedSize/1000)).toFixed(2) + ' KB' )
       })))
-      .pipe(gulp.dest(packageConfig.config.css.dirDest))
+      .pipe(gulp.dest(packageConfig.config.css.dirBuild))
   })
 })
 
@@ -221,7 +196,7 @@ gulp.task('js:task', () => {
       .pipe(webpackStream(webpackConfig, require('webpack')))
       .on('error', helpers.handleErrors)
       .pipe(gulpif(isProduction, uglify()))
-    	.pipe(gulp.dest(packageConfig.config.js.dest))
+    	.pipe(gulp.dest(packageConfig.config.js.dirDest))
   })
 })
 
@@ -242,9 +217,9 @@ gulp.task('js:task', () => {
 
 // Main.
 gulp.task('images', () => {
-	return gulp.src(packageConfig.config.dist + 'images/raw/**/*', {base: packageConfig.config.dist + 'images/raw/'})
+	return gulp.src(packageConfig.config.img.dirRaw + '**/*', {base: packageConfig.config.img.dirRaw + ''})
     .pipe(imagemin())
-    .pipe(gulp.dest(packageConfig.config.dist + 'images/optimised'))
+    .pipe(gulp.dest(packageConfig.config.img.dirOptimised))
     .pipe(notify('Images optimised'))
 })
 

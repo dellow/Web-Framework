@@ -3,6 +3,9 @@
 __3.9.0__:
 * Fixed Gulp Watch for images.
 * Fixed issue with Modal closing when clicked on.
+* Swapped Turbolink for Pjax.
+* Improved form buttons, containers and added some new sub elements.
+* Various fixes and improvements.
 
 __3.8.0__:
 * Added improved Edge targeting in `_fixes.scss`.

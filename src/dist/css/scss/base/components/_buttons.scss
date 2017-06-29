@@ -14,7 +14,15 @@
   text-align: center;
   line-height: 1;
   transition: background $animation ease, box-shadow $animation ease, color $animation ease;
-  // Abstractions
+  &--common {
+    background: color(copy, btns);
+    &--disabled:hover, &[disabled]:hover {
+      background: color(copy, btns);
+    }
+    &:hover {
+      background: darken(color(copy, btns), 10%);
+    }
+  }
   &--standard {
     background: color(blue);
     &--disabled:hover, &[disabled]:hover {
