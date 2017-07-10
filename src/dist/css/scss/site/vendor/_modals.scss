@@ -40,6 +40,9 @@
 	}
 	&__content {
 		@include nudge(padding, 2);
+		position: relative;
+		z-index: $zindex-1;
+	        -webkit-overflow-scrolling: touch;
 		@include respond-to($tablet_p){
 			width: 100% !important;
 			height: 100% !important;
