@@ -2,7 +2,8 @@
   Base > All
   Imports all the partials.
 ========================================================================== */
-@import // Core
+@import
+	// Core
 	'reset',
 	'placeholders',
 	'utility-classes',
@@ -15,11 +16,10 @@
 	'components/alerts',
 	'components/buttons',
 	'components/menus',
+	'components/grids',
 	'components/slabs',
 	'components/tables',
 	'components/forms',
-	// Grids
-	'grids/global',
 	// Misc
 	'fixes',
 	'print';
