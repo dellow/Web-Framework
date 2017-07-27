@@ -34,28 +34,112 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 h1, .h1 {
-  @include scale(font-size, 48px, $tablet_p 40px, $mobile_p 32px, $device_p 32px);
-  @include scale(line-height, 1.05, $tablet_p 1.125, $mobile_p 1.25, $device_p 1.25);
+  $fs: 48px;
+  $lh: 1.125;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h2, .h2 {
-  @include scale(font-size, 36px, $tablet_p 32px, $mobile_p 26px, $device_p 26px);
-  @include scale(line-height, 1.05, $tablet_p 1.125, $mobile_p 1.15, $device_p 1.25);
+  $fs: 36px;
+  $lh: 1.125;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h3, .h3 {
-  @include scale(font-size, 28px, $tablet_p 24px, $mobile_p 22px, $device_p 22px);
-  @include scale(line-height, 1.05, $tablet_p 1.125, $mobile_p 1.13, $device_p 1.13);
+  $fs: 28px;
+  $lh: 1.125;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h4, .h4 {
-  @include scale(font-size, 18px, $tablet_p 18px, $mobile_p 18px, $device_p 18px);
-  @include scale(line-height, 1.22, $tablet_p 1.22, $mobile_p 1.22, $device_p 1.11);
+  $fs: 20px;
+  $lh: 1.37;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h5, .h5 {
-  @include scale(font-size, 16px, $tablet_p 16px, $mobile_p 16px, $device_p 16px);
-  @include scale(line-height, 1.37, $tablet_p 1.37, $mobile_p 1.37, $device_p 1.37);
+  $fs: 18px;
+  $lh: 1.37;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h6, .h6 {
-  @include scale(font-size, 14px, $tablet_p 14px, $mobile_p 14px, $device_p 14px);
-  @include scale(line-height, 1.15, $tablet_p 1.15, $mobile_p 1.15, $device_p 1.15);
+  $fs: 16px;
+  $lh: 1.125;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 
 
