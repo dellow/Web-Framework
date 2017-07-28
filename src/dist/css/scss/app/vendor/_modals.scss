@@ -21,11 +21,11 @@
 
 .modal-window {
 	width: 50%;
+	height: auto;
 	max-width: 630px;
 	min-width: 320px;
 	position: fixed;
 	top: 50%; left: 50%;
-	height: auto;
 	z-index: 2000;
 	visibility: hidden;
 	backface-visibility: hidden;

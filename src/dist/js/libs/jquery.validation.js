@@ -103,16 +103,16 @@
     emailRegEx: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
     passRegEx: /^.*(?=.{8,})(?=.*[0-9])[a-zA-Z0-9]+$/,
     urlRegEx: /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/,
-    errorBoxClass: 'js--validation-error',
-    errorClass: 'js--validation-field-error',
+    errorBoxClass: 'validation-error',
+    errorClass: 'validation-field-error',
     msgSep: ' -',
     defaultErrorMsg: 'Please enter a value',
     defaultSuccessMsg: 'The form has been successfully submitted.',
     defaultSuggestText: 'Did you mean',
     errorBoxElement: '<span/>',
     preloaderTemplate: '<div class="loader" title="1"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path fill="#FFFFFF" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg></div>',
-    validateElement: $('.js--validation-validate'),
-    successElement: $('.js--validation-form-success'),
+    validateElement: $('.validation-validate'),
+    successElement: $('.validation-form-success'),
     customValidationMethod: null,
     successCallback: function (parameters){ }
   }
@@ -132,7 +132,7 @@
       // Cache the submit button element.
       this.button = $('button[type="submit"], input[type="submit"]', this.$elem)
       // Success element.
-      this.successElement = (this.settings.successElement.length) ? this.settings.successElement : this.$elem.before($('<div class="js--validation-form-success">' + this.settings.defaultSuccessMsg + '</div>'))
+      this.successElement = (this.settings.successElement.length) ? this.settings.successElement : this.$elem.before($('<div class="validation-form-success">' + this.settings.defaultSuccessMsg + '</div>'))
       // Empty array for elements. Set once the form is submitted.
       this.$elementArray = []
       // Do jQuery events.
@@ -354,7 +354,7 @@
       // Guard :: Check element exists.
       if (!el.length) return
 
-      el.after($('<div class="js--validation-suggestion">' + this.settings.defaultSuggestText + ' <a href="#" class="js--validation-alternative-email"><span class="js--validation-address">address</span>@<span class="js--validation-domain">domain.com</span></a>?</div>'))
+      el.after($('<div class="validation-suggestion">' + this.settings.defaultSuggestText + ' <a href="#" class="validation-alternative-email"><span class="validation-address">address</span>@<span class="validation-domain">domain.com</span></a>?</div>'))
 
       el.on('blur', function () {
         suggester.init(_this, el, _this.settings.domains)
@@ -375,18 +375,18 @@
       // Set form.
       form = (typeof form !== 'undefined') ? form : this
       // Remove error class from form.
-      form.$elem.removeClass('js--validation-form-has-errors')
+      form.$elem.removeClass('validation-form-has-errors')
       // Remove generic form messages.
-      $('.js--validation-form-messages').empty()
+      $('.validation-form-messages').empty()
       // Remove error class from fields.
-      $('.js--validation-field-has-errors', form.$elem).removeClass('js--validation-field-has-errors')
+      $('.validation-field-has-errors', form.$elem).removeClass('validation-field-has-errors')
       // Remove error class from fieldsets.
-      $('.js--validation-fieldset-has-errors', form.$elem).removeClass('js--validation-fieldset-has-errors')
+      $('.validation-fieldset-has-errors', form.$elem).removeClass('validation-fieldset-has-errors')
       // Remove error class from inputs with placeholder error..
-      $('.js--validation-field--placeholder', form.$elem).removeClass('js--validation-field--placeholder')
-      $('.js--validation-field--placeholder--span', form.$elem).remove()
+      $('.validation-field--placeholder', form.$elem).removeClass('validation-field--placeholder')
+      $('.validation-field--placeholder--span', form.$elem).remove()
       // Hide email suggester.
-      $('.js--validation-suggestion', form.$elem).hide()
+      $('.validation-suggestion', form.$elem).hide()
       // Remove current classes.
       $('.' + form.settings.errorClass, form.$elem).removeClass(form.settings.errorClass)
       $('.' + form.settings.errorBoxClass, form.$elem).remove()
@@ -403,7 +403,7 @@
       // Un-disable stuff.
       this.disableButton(false)
       // Add error class to form.
-      this.$elem.addClass('js--validation-form-has-errors')
+      this.$elem.addClass('validation-form-has-errors')
       // Add new ones.
       $.each(arr, function (index) {
         if ($(this) == undefined){return }
@@ -413,12 +413,12 @@
         // Get error message.
         var error = (a[0].msg !== '') ? a[0].msg : _this.settings.defaultErrorMsg
         // Separator.
-        var message = (_this.settings.msgSep) ? (error) ? _this.settings.msgSep + ' <span class="js--validation-msg">' + error + '</span>' : '' : '<span class="js--validation-msg">' + error + '</span>'
+        var message = (_this.settings.msgSep) ? (error) ? _this.settings.msgSep + ' <span class="validation-msg">' + error + '</span>' : '' : '<span class="validation-msg">' + error + '</span>'
 
         // Check element exists in the DOM.
         if (el.length && el.is(':input') && el.attr('type') !== 'hidden') {
           // Apply error class to field.
-          el.addClass(_this.settings.errorClass).parent().addClass('js--validation-field-has-errors')
+          el.addClass(_this.settings.errorClass).parent().addClass('validation-field-has-errors')
           // Field specific actions.
           if (el.attr('type') === 'checkbox' || el.attr('type') === 'radio') {
             // Add error element to field.
@@ -432,9 +432,9 @@
               // Check value length.
               if (el.val().length > 0) {
                 // Add error class to placeholder.
-                el.parent().addClass('js--validation-field--placeholder')
+                el.parent().addClass('validation-field--placeholder')
                 // Add a span to the field.
-                el.before('<span class="js--validation-field--placeholder--span">' + error + '</span>')
+                el.before('<span class="validation-field--placeholder--span">' + error + '</span>')
               } else {
                 // Add error to placeholder.
                 el.attr('placeholder', error)
@@ -445,7 +445,7 @@
             }
           }
           // Set errors on fieldset.
-          el.closest('fieldset').addClass('js--validation-fieldset-has-errors')
+          el.closest('fieldset').addClass('validation-fieldset-has-errors')
           // Scroll to first error field.
           if (index == 0 && _this.settings.scrollToError) {
             // Determine fieldset.
@@ -699,7 +699,7 @@
     var emailVal = el.val()
     var matchVal = suggester.getMatch(emailVal)
 
-    this.suggestion = el.next('.js--validation-suggestion')
+    this.suggestion = el.next('.validation-suggestion')
     this.reveal(form, el, matchVal)
   }
 
@@ -786,13 +786,13 @@
     if (result) {
       Plugin.prototype.resetErrors(form)
       // Set email address.
-      $('.js--validation-address', this.suggestion).text(result.address)
+      $('.validation-address', this.suggestion).text(result.address)
       // Set email domain.
-      $('.js--validation-domain', this.suggestion).text(result.domain)
+      $('.validation-domain', this.suggestion).text(result.domain)
       // Reveal suggestion.
       this.suggestion.stop(true, false).slideDown(350)
       // Click event.
-      $('.js--validation-alternative-email').on('click', function (e) {
+      $('.validation-alternative-email').on('click', function (e) {
         e.preventDefault()
 
         // Apply suggestion.

@@ -16,6 +16,7 @@
   &__container {
     position: relative;
     &--flex {
+      width: 100%;
       display: flex;
     	button.btn {
     		height: $base_field_height;

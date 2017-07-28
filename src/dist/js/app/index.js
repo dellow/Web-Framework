@@ -10,6 +10,7 @@
 import Navigo from 'navigo'
 
 ;(function (App, window) {
+  
   /**
    * App
    * Constructor for App.
@@ -45,6 +46,8 @@ import Navigo from 'navigo'
       require('jquery-pjax')
       // Start Pjax.
       $(document).pjax('a', '.page-main')
+      // Run routes on update.
+      $('.page-main').on('pjax:end', this.routes.bind(this))
     }
     // Run routes.
     this.routes()

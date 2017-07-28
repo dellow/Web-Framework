@@ -254,6 +254,7 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
     .sect-* (Section block namespace)
     .text-* (Text coloring)
     .u-* (Utility classes namespace)
+    .validation (Form validation)
 
 #### WordPress Specific
     .alignleft (WordPress TinyMCE)

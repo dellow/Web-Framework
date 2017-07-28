@@ -4,13 +4,13 @@
 ========================================================================== */
 
 
-.js--validation-suggestion {
+.validation-suggestion {
 	display: none;
 }
-.js--validation-alternative-email {
+.validation-alternative-email {
 	cursor: pointer;
 }
-.js--validation-form-success {
+.validation-form-success {
 	display: none;
 }
 
@@ -19,26 +19,26 @@
 
 
 form {
-	&.js--validation-form-has-errors { // Qualified Selector
+	&.validation-form-has-errors { // Qualified Selector
 		// Labels
 		label {
-			&.js--validation-field-error {
+			&.validation-field-error {
 				color: $color_error !important;
 			}
-			&.js--validation-field-status {
+			&.validation-field-status {
 				color: $color_status !important;
 			}
-			&.js--validation-field-success {
+			&.validation-field-success {
 				color: $color_success !important;
 			}
-			&.js--validation-field-warning {
+			&.validation-field-warning {
 				color: $color_warning !important;
 			}
 		}
 
 		// Fieldsets
 		fieldset {
-			&.js--validation-fieldset-has-errors {
+			&.validation-fieldset-has-errors {
 				@include nudge(padding, 1);
 				border-color: lighten($color_error, 30%) !important;
 				background-color: lighten($color_error, 45%) !important;
@@ -46,30 +46,30 @@ form {
 		}
 
 		// Placeholders.
-		.js--validation-field-has-errors {
-			::-webkit-input-placeholder {
+		.validation-field-has-errors {
+			&::-webkit-input-placeholder, ::-webkit-input-placeholder {
 				color: $color_error !important;
 			}
-			::-moz-placeholder {
+			&::-moz-placeholder, ::-moz-placeholder {
 				color: $color_error !important;
 			}
-			:-moz-placeholder {
+			&:-moz-placeholder, :-moz-placeholder {
 				color: $color_error !important;
 			}
-			:-ms-input-placeholder {
+			&:-ms-input-placeholder, :-ms-input-placeholder {
 				color: $color_error !important;
 			}
-			::placeholder {
+			&::placeholder, ::placeholder {
 				color: $color_error !important;
 			}
 		}
-    
-		.js--validation-field--placeholder {
+
+		.validation-field--placeholder {
 			input, .input, select, textarea, .field-container {
 				height: auto;
 				@include nudge(padding-bottom, 1.15);
 			}
-			.js--validation-field--placeholder--span {
+			.validation-field--placeholder--span {
 				position: absolute;
 				top: 35px; @include nudge(left, 0.4);
 				z-index: $zindex-1;
@@ -80,7 +80,7 @@ form {
 
 		// Inputs
 		input, .input, select, textarea, .field-container {
-			&.js--validation-field-error {
+			&.validation-field-error {
 				color: $color_error !important;;
 				border-color: lighten($color_error, 25%) !important;;
 				background-color: lighten($color_error, 40%) !important;;
@@ -88,7 +88,7 @@ form {
 					background-color: lighten($color_error, 35%) !important;;
 				}
 			}
-			&.js--validation-field-status {
+			&.validation-field-status {
 				color: $color_status !important;;
 				border-color: lighten($color_status, 25%) !important;;
 				background-color: lighten($color_status, 40%) !important;;
@@ -96,7 +96,7 @@ form {
 					background-color: lighten($color_status, 35%) !important;;
 				}
 			}
-			&.js--validation-field-success {
+			&.validation-field-success {
 				color: $color_success !important;;
 				border-color: lighten($color_success, 25%) !important;;
 				background-color: lighten($color_success, 40%) !important;;
@@ -104,7 +104,7 @@ form {
 					background-color: lighten($color_success, 35%) !important;;
 				}
 			}
-			&.js--validation-field-warning {
+			&.validation-field-warning {
 				color: $color_warning !important;;
 				border-color: lighten($color_warning, 25%) !important;;
 				background-color: lighten($color_warning, 40%) !important;;

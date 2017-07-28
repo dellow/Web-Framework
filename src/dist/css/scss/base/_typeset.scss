@@ -12,7 +12,7 @@ html {
 
 body {
   font-size: $base_font_size;
-  line-height: 1.37;
+  line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
@@ -34,28 +34,112 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 h1, .h1 {
-  @include scale(font-size, 48px, $tablet_p 40px, $mobile_p 32px, $device_p 32px);
-  @include scale(line-height, 1.05, $tablet_p 1.125, $mobile_p 1.25, $device_p 1.25);
+  $fs: 48px;
+  $lh: 1.125;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h2, .h2 {
-  @include scale(font-size, 36px, $tablet_p 32px, $mobile_p 26px, $device_p 26px);
-  @include scale(line-height, 1.05, $tablet_p 1.125, $mobile_p 1.15, $device_p 1.25);
+  $fs: 36px;
+  $lh: 1.125;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h3, .h3 {
-  @include scale(font-size, 28px, $tablet_p 24px, $mobile_p 22px, $device_p 22px);
-  @include scale(line-height, 1.05, $tablet_p 1.125, $mobile_p 1.13, $device_p 1.13);
+  $fs: 28px;
+  $lh: 1.125;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h4, .h4 {
-  @include scale(font-size, 18px, $tablet_p 18px, $mobile_p 18px, $device_p 18px);
-  @include scale(line-height, 1.22, $tablet_p 1.22, $mobile_p 1.22, $device_p 1.11);
+  $fs: 20px;
+  $lh: 1.37;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h5, .h5 {
-  @include scale(font-size, 16px, $tablet_p 16px, $mobile_p 16px, $device_p 16px);
-  @include scale(line-height, 1.37, $tablet_p 1.37, $mobile_p 1.37, $device_p 1.37);
+  $fs: 18px;
+  $lh: 1.37;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 h6, .h6 {
-  @include scale(font-size, 14px, $tablet_p 14px, $mobile_p 14px, $device_p 14px);
-  @include scale(line-height, 1.15, $tablet_p 1.15, $mobile_p 1.15, $device_p 1.15);
+  $fs: 16px;
+  $lh: 1.125;
+  @include scale(font-size, $fs,
+    $tablet_l (($fs / 100) * 90),
+    $tablet_p (($fs / 100) * 85),
+    $mobile_l (($fs / 100) * 80),
+    $mobile_p (($fs / 100) * 75),
+    $device_p (($fs / 100) * 70)
+  );
+  @include scale(line-height, $lh,
+    $tablet_l (($lh / 100) * 105),
+    $tablet_p (($lh / 100) * 105),
+    $mobile_l (($lh / 100) * 110),
+    $mobile_p (($lh / 100) * 110),
+    $device_p (($lh / 100) * 110)
+  );
 }
 
 
@@ -98,26 +182,27 @@ blockquote, dl, ol, p, pre, ul {
 
 
 .page__content {
+  $marginBottom: 1;
   h1, .h1 {
-    @include nudge(margin, 0.5 0 1);
+    @include nudge(margin, 0.5 0 $marginBottom);
   }
   h2, .h2 {
-    @include nudge(margin, 0.5 0);
+    @include nudge(margin, 0.5 0 $marginBottom);
   }
   h3, .h3 {
-    @include nudge(margin, 0.5 0);
+    @include nudge(margin, 0.5 0 $marginBottom);
   }
   h4, .h4 {
-    @include nudge(margin, 0.5 0);
+    @include nudge(margin, 0.5 0 $marginBottom);
   }
   h5, .h5 {
-    @include nudge(margin, 0.5 0);
+    @include nudge(margin, 0.5 0 $marginBottom);
   }
   h6, .h6 {
-    @include nudge(margin, 0.5 0);
+    @include nudge(margin, 0.5 0 $marginBottom);
   }
   blockquote, dl, ol, p, pre, ul, img, figure, table, .obj-embed-container {
-    @include nudge(margin-bottom, 1);
+    @include nudge(margin-bottom, $marginBottom);
     img { // No margin on inner images.
       margin: 0;
     }
@@ -128,7 +213,7 @@ blockquote, dl, ol, p, pre, ul {
   ul, ol {
     margin-left: 1.2em;
     li {
-      @include nudge(margin-bottom, 0.1);
+      @include nudge(margin-bottom, ($marginBottom / 100 * 2));
     }
     ul, ol {
       margin-left: 1.2em;
@@ -140,12 +225,12 @@ blockquote, dl, ol, p, pre, ul {
   }
   dl {
     dd {
-      @include nudge(margin-bottom, 0.1);
+      @include nudge(margin-bottom, ($marginBottom / 100 * 2));
       @include nudge(text-indent, 1);
     }
   }
   blockquote {
-    @include nudge(padding, 0 3);
+    @include nudge(padding, 0 ($marginBottom * 3));
     p {
       font-style: italic;
       font-family: $serif;

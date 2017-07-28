@@ -1,5 +1,5 @@
 /* ==========================================================================
-  Base > Grids > Global
+  Base > Components > Global
   Global grid layouts.
 ========================================================================== */
 
@@ -26,6 +26,9 @@
 			padding: 0;
 		}
 	}
+  &--center {
+    justify-content: center;
+  }
 	&--center {
 		justify-content: center;
 	}

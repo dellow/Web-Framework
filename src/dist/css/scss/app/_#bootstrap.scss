@@ -2,7 +2,8 @@
    Site > All
    Imports all the partials.
 ========================================================================== */
-@import // Core
+@import
+		// Core
 		'icons',
 		'typeset',
 		'global',
@@ -26,5 +27,5 @@
 // @import 'vendor/slick';
 // @import 'vendor/socicon';
 // @import 'vendor/tooltipster';
-// @import 'vendor/validation';
+@import 'vendor/validation';
 // @import 'vendor/wordpress';

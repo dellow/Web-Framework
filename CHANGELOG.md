@@ -6,6 +6,8 @@ __3.9.0__:
 * Swapped Turbolink for Pjax.
 * Improved form buttons, containers and added some new sub elements.
 * Various fixes and improvements.
+* Moved Grids to Components in Base.
+* Made form validation classes not just JavaScript specific. Now a namespace.
 
 __3.8.0__:
 * Added improved Edge targeting in `_fixes.scss`.

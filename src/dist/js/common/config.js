@@ -12,10 +12,20 @@
 | config
 |--------------------------------------------------------------------------
 |
-| Set config var.
+| Set config namespace.
 |
 */
 window.config = window.config || {}
+
+/*
+|--------------------------------------------------------------------------
+| config
+|--------------------------------------------------------------------------
+|
+| Set config/keys namespace.
+|
+*/
+window.config.keys = window.config.keys || {}
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +35,4 @@ window.config = window.config || {}
 | Checks if Google Analytics is active on the page.
 |
 */
-window.config.ga_active = (window.ga && window.ga.create)
+window.config.ga_active = (window.ga)

@@ -18,7 +18,7 @@ module.exports = {
     common: path.resolve(__dirname, './' + packageConfig.config.js.dirCommon + 'index.js')
   },
   output: {
-    path: path.resolve(__dirname, './' + packageConfig.config.js.dest),
+    path: path.resolve(__dirname, './' + packageConfig.config.js.dirBuild),
     filename: '[name].js'
   },
   resolve: {
@@ -38,6 +38,8 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)

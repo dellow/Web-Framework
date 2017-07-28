@@ -196,7 +196,7 @@ gulp.task('js:task', () => {
       .pipe(webpackStream(webpackConfig, require('webpack')))
       .on('error', helpers.handleErrors)
       .pipe(gulpif(isProduction, uglify()))
-    	.pipe(gulp.dest(packageConfig.config.js.dirDest))
+    	.pipe(gulp.dest(packageConfig.config.js.dirBuild))
   })
 })
 

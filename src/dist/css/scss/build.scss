@@ -9,11 +9,11 @@
 // 3. Base vars
 @import 'vars_base';
 
-// 4. Site vars
-@import 'vars_site';
+// 4. App vars
+@import 'vars_app';
 
 // 5. Base
 @import 'base/#bootstrap';
 
-// 6. Site
-@import 'site/#bootstrap';
+// 6. App
+@import 'app/#bootstrap';

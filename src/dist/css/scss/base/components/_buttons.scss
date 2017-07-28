@@ -6,7 +6,6 @@
 
 
 .btn {
-  @include nudge(padding, 0.5 0.75);
   border: 2px solid transparent;
   display: inline-block;
   vertical-align: top;
@@ -14,6 +13,9 @@
   text-align: center;
   line-height: 1;
   transition: background $animation ease, box-shadow $animation ease, color $animation ease;
+  &--rounded {
+    border-radius: $base_border_radius;
+  }
   &--common {
     background: color(copy, btns);
     &--disabled:hover, &[disabled]:hover {
@@ -58,6 +60,25 @@
   // Pseudo
   &:hover, &:active {
     color: color(white);
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.btn {
+  &--small {
+    @include nudge(padding, 0.25 0.75);
+  }
+  &--medium {
+    @include nudge(padding, 0.5 0.75);
+  }
+  &--large {
+    @include nudge(padding, 0.75 1.5);
+  }
+  &--extralarge {
+    @include nudge(padding, 1 1.5);
   }
 }
 
