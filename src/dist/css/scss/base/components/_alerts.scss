@@ -9,7 +9,6 @@
   // Abstractions
   &.box {
     @include nudge(padding, 0.5 0.5 0.5 14px);
-    @include nudge(margin-bottom, 1);
     border: 1px solid; border-left: 7px solid;
     position: relative;
     border-radius: $base_border_radius;
@@ -52,11 +51,11 @@ ul.alert { // Qualified Selector
 .alert {
   // Abstractions
   &.error {
-    color: $color_error;
+    color: color(alerts, error);
   }
   &.box.error {
-    border-color: lighten($color_error, 25%);
-    background: lighten($color_error, 40%);
+    border-color: lighten(color(alerts, error), 25%);
+    background: lighten(color(alerts, error), 40%);
   }
 }
 
@@ -64,11 +63,11 @@ ul.alert { // Qualified Selector
 .alert {
   // Abstractions
   &.status {
-    color: $color_status;
+    color: color(alerts, status);
   }
   &.box.status {
-    border-color: lighten($color_status, 25%);
-    background: lighten($color_status, 40%);
+    border-color: lighten(color(alerts, status), 25%);
+    background: lighten(color(alerts, status), 40%);
   }
 }
 
@@ -76,11 +75,11 @@ ul.alert { // Qualified Selector
 .alert {
   // Abstractions
   &.success {
-    color: $color_success;
+    color: color(alerts, success);
   }
   &.box.success {
-    border-color: lighten($color_success, 25%);
-    background: lighten($color_success, 40%);
+    border-color: lighten(color(alerts, success), 25%);
+    background: lighten(color(alerts, success), 40%);
   }
 }
 
@@ -88,11 +87,11 @@ ul.alert { // Qualified Selector
 .alert {
   // Abstractions
   &.warning {
-    color: $color_warning;
+    color: color(alerts, warning);
   }
   &.box.warning {
-    border-color: lighten($color_warning, 25%);
-    background: lighten($color_warning, 40%);
+    border-color: lighten(color(alerts, warning), 25%);
+    background: lighten(color(alerts, warning), 40%);
   }
 }
 

@@ -23,16 +23,16 @@ form {
 		// Labels
 		label {
 			&.validation-field-error {
-				color: $color_error !important;
+				color: color(alerts, error) !important;
 			}
 			&.validation-field-status {
-				color: $color_status !important;
+				color: color(alerts, status) !important;
 			}
 			&.validation-field-success {
-				color: $color_success !important;
+				color: color(alerts, success) !important;
 			}
 			&.validation-field-warning {
-				color: $color_warning !important;
+				color: color(alerts, warning) !important;
 			}
 		}
 
@@ -40,27 +40,27 @@ form {
 		fieldset {
 			&.validation-fieldset-has-errors {
 				@include nudge(padding, 1);
-				border-color: lighten($color_error, 30%) !important;
-				background-color: lighten($color_error, 45%) !important;
+				border-color: lighten(color(alerts, error), 30%) !important;
+				background-color: lighten(color(alerts, error), 45%) !important;
 			}
 		}
 
 		// Placeholders.
 		.validation-field-has-errors {
 			&::-webkit-input-placeholder, ::-webkit-input-placeholder {
-				color: $color_error !important;
+				color: color(alerts, error) !important;
 			}
 			&::-moz-placeholder, ::-moz-placeholder {
-				color: $color_error !important;
+				color: color(alerts, error) !important;
 			}
 			&:-moz-placeholder, :-moz-placeholder {
-				color: $color_error !important;
+				color: color(alerts, error) !important;
 			}
 			&:-ms-input-placeholder, :-ms-input-placeholder {
-				color: $color_error !important;
+				color: color(alerts, error) !important;
 			}
 			&::placeholder, ::placeholder {
-				color: $color_error !important;
+				color: color(alerts, error) !important;
 			}
 		}
 
@@ -81,35 +81,35 @@ form {
 		// Inputs
 		input, .input, select, textarea, .field-container {
 			&.validation-field-error {
-				color: $color_error !important;;
-				border-color: lighten($color_error, 25%) !important;;
-				background-color: lighten($color_error, 40%) !important;;
+				color: color(alerts, error) !important;
+				border-color: lighten(color(alerts, error), 25%) !important;
+				background-color: lighten(color(alerts, error), 40%) !important;
 				&:focus {
-					background-color: lighten($color_error, 35%) !important;;
+					background-color: lighten(color(alerts, error), 35%) !important;
 				}
 			}
 			&.validation-field-status {
-				color: $color_status !important;;
-				border-color: lighten($color_status, 25%) !important;;
-				background-color: lighten($color_status, 40%) !important;;
+				color: color(alerts, status) !important;
+				border-color: lighten(color(alerts, status), 25%) !important;
+				background-color: lighten(color(alerts, status), 40%) !important;
 				&:focus {
-					background-color: lighten($color_status, 35%) !important;;
+					background-color: lighten(color(alerts, status), 35%) !important;
 				}
 			}
 			&.validation-field-success {
-				color: $color_success !important;;
-				border-color: lighten($color_success, 25%) !important;;
-				background-color: lighten($color_success, 40%) !important;;
+				color: color(alerts, success) !important;
+				border-color: lighten(color(alerts, success), 25%) !important;
+				background-color: lighten(color(alerts, success), 40%) !important;
 				&:focus {
-					background-color: lighten($color_success, 35%) !important;;
+					background-color: lighten(color(alerts, success), 35%) !important;
 				}
 			}
 			&.validation-field-warning {
-				color: $color_warning !important;;
-				border-color: lighten($color_warning, 25%) !important;;
-				background-color: lighten($color_warning, 40%) !important;;
+				color: color(alerts, warning) !important;
+				border-color: lighten(color(alerts, warning), 25%) !important;
+				background-color: lighten(color(alerts, warning), 40%) !important;
 				&:focus {
-					background-color: lighten($color_warning, 35%) !important;;
+					background-color: lighten(color(alerts, warning), 35%) !important;
 				}
 			}
 		}

@@ -848,7 +848,7 @@
    *
   **/
   helpers.parseURLParams = function (str) {
-    return JSON.parse('{"' + decodeURI(str).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
+    return JSON.parse('{"' + decodeURI(str).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"').replace(/[\r]?[\n]/g, '\\n') + '"}')
   }
 
 })(jQuery, window)

@@ -45,12 +45,15 @@ body {
     max-width: 320px;
   }
   &--vsmall {
-    max-width: 568px;
+    max-width: 440px;
   }
   &--small {
-    max-width: 768px;
+    max-width: 568px;
   }
   &--medium {
+    max-width: 768px;
+  }
+  &--large {
     max-width: 960px;
   }
   &--wide {

@@ -201,6 +201,11 @@ blockquote, dl, ol, p, pre, ul {
   h6, .h6 {
     @include nudge(margin, 0.5 0 $marginBottom);
   }
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
   blockquote, dl, ol, p, pre, ul, img, figure, table, .obj-embed-container {
     @include nudge(margin-bottom, $marginBottom);
     img { // No margin on inner images.
@@ -298,6 +303,16 @@ kbd {
     @if (color($key)) {
       &--color-#{"" + $key} {
         color: color($key) !important;
+      }
+    }
+    @else {
+      $subColors: $value;
+      @each $subKey, $subValue in $subColors {
+        @if (color($subKey, $subValue)) {
+          &--color--#{"" + $key}-#{"" + $subKey} {
+            color: color($key, $subKey) !important;
+          }
+        }
       }
     }
   }

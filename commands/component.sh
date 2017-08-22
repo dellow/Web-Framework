@@ -21,7 +21,7 @@ else
   | awk -F: '{ print $2 }' \
   | sed 's/[",]//g' \
   | tr -d '[[:space:]]')
-  FILE="$DISTPATH"site/components/_$COMPONENTNAME_LOWER.scss
+  FILE="$DISTPATH"app/components/_$COMPONENTNAME_LOWER.scss
 fi
 
 # ---------------------------------------------------------------------------
@@ -43,7 +43,7 @@ else
   sed -i '' -e "s/template/$COMPONENTNAME_LOWER/g" $FILE
   ## Add to bootstrap.
   sed -i '' 's/Components.*$/&\
-    '"$COMPPATH"'/' "$DISTPATH"site/_#bootstrap.scss
+    '"$COMPPATH"'/' "$DISTPATH"app/_#bootstrap.scss
   ## Open in Sublime Text current window.
   # /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -a $FILE
   ## Open in Atom current window.

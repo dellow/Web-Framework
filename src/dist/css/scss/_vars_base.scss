@@ -102,6 +102,12 @@ $base_colors: (
     link  : #C4122F,
     hover : darken(#C4122F, 10%),
     active: darken(#C4122F, 20%)
+  ),
+  alerts: (
+    error: #b94a48,
+    status: #3a87ad,
+    success: #468847,
+    warning: #c09853
   )
 ) !default;
 
@@ -135,10 +141,6 @@ $colors: map-merge($framework_colors, $site_colors) !default;
 // Useful
 $color_odd_base  : #EDEDED !default;
 $color_even_base : #F4F4F4 !default;
-$color_error     : #b94a48 !default;
-$color_status    : #3a87ad !default;
-$color_success   : #468847 !default;
-$color_warning   : #c09853 !default;
 
 
 /* ----------------------------------------------------------------------- */

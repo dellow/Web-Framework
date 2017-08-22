@@ -6,53 +6,38 @@
 
 /* -- Form Fields -- */
 .obj-form-field {
-  display: flex;
-  flex-wrap: wrap;
   @include nudge(margin-bottom, 0.5);
   position: relative;
   p {
     @include nudge(margin-bottom, 0.5);
   }
   &__container {
-    position: relative;
-    &--flex {
-      width: 100%;
-      display: flex;
-    	button.btn {
-    		height: $base_field_height;
-    		padding-top: 0;
-    		padding-bottom: 0;
-    	}
+    display: flex;
+    * {
+      @include nudge(margin-left, 0.5);
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
-  &__title {
-    width: 100%; // Seems unneccessary but gives us flexibility.
-  }
-  &__body {
-    display: flex;
-    width: 100%; // Seems unneccessary but gives us flexibility.
-  }
-  &__button {
-    @include nudge(padding, 0.5 0.75);
-    background: color(grey);
+  &__error {
+    width: 100%;
+    @include nudge(margin-top, 0.25);
+    @include scale(font-size, 14px);
+    color: color(alerts, error);
   }
   input:not([type="radio"]):not([type="checkbox"]), select, textarea {
-    width: 100%;
-    flex: 1;
     &.full {
       width: 100%;
     }
     &.half {
       width: (100% / 2) - 1;
-      flex: none;
     }
     &.small {
       width: (100% / 3);
-      flex: none;
     }
     &.v-small {
       width: (100% / 6);
-      flex: none;
     }
   }
   label {
