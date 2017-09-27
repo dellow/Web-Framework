@@ -8,7 +8,6 @@
 **/
 
 class MobileMenu {
-
   /**
    * constructor
    * NULLED.
@@ -58,7 +57,7 @@ class MobileMenu {
    * @access public
   **/
   events () {
-    var _this = this
+    const _this = this
 
     // Extend the events system.
     window.Events.extend({

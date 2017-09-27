@@ -38,7 +38,7 @@
 
 <div class="container">
 
-	<section>
+	<section class="page__content">
 		<h2>Typeset</h2>
 		<div class="pattern resizable">
 			<details class="pattern__details">
@@ -310,7 +310,7 @@
 
 <div class="container">
 
-	<section>
+	<section class="page__content">
 		<h2>Schema</h2>
 		<div class="pattern resizable">
 			<details class="pattern__details">
@@ -352,7 +352,7 @@
 
 <div class="container">
 
-	<section>
+	<section class="page__content">
 		<h2>Images</h2>
 		<div class="pattern resizable">
 			<details class="pattern__details">
@@ -377,7 +377,7 @@
 
 <div class="container">
 
-	<section>
+	<section class="page__content">
 		<h2>Background Colors &amp; Slabs</h2>
 		<p>These background colors are derived from the <code>$colors</code> array in the SASS <code>_vars.scss</code> partial. Any colour added to the array will compile to a class off <code>.color-*</code>. For example adding a "purple" colour will compile a class of<code>.color-purple</code>. This can be used to apply the colour as a background, to do so simply include a class of <code>.bg</code> along with the colour class to apply that background colour.</p>
 		<h3>Background Colors</h3>
@@ -424,7 +424,7 @@
 
 <div class="container">
 
-	<section>
+	<section class="page__content">
 		<h2>Buttons &amp; CTA's</h2>
 		<p>All CTA's should have an initial <code>.btn</code> class. There are predefined Call to Action buttons in the <code>_buttons.scss</code> partial to abstract the default <code>.btn</code> class. These are defined as <code>.standard</code>, <code>.positive</code> and <code>.negative</code>. Alternatively you can create a CTA from any of the colors in the colour swatch array simply by using the colour name instead. For example <code>.btn .color-orange</code> will create a button with the orange background colour from the swatch.</p>
 		<div class="pattern resizable">
@@ -508,7 +508,7 @@
 
 <div class="container">
 
-	<section>
+	<section class="page__content">
 		<h2>Lists</h2>
 		<div class="pattern resizable">
 			<details class="pattern__details">
@@ -617,7 +617,7 @@
 
 <div class="container">
 
-	<section>
+	<section class="page__content">
 		<h2>Alerts</h2>
 		<div class="pattern resizable">
 			<details class="pattern__details">
@@ -682,7 +682,7 @@
 
 <div class="container">
 
-	<section>
+	<section class="page__content">
 		<h2>Grids</h2>
 		<p>Grids are fully responsive and you can use any combination consecutively without splitting into rows. To initiate a grid just requires a wrapping element with the a class of <code>.grid</code>. Direct descendants of the Grid element should be classed by the required column width. For example a descendant with <code>.col-1-2</code> will create a half length column. You can add any type of column width to complete the grid in any format you wish.</p>
 		<div class="pattern resizable">
@@ -870,7 +870,7 @@
 		<div class="pattern resizable">
 			<details class="pattern__details">
 				<summary><span class="pattern__title">Float Responsive Grid</span></summary>
-<pre class="language-markup"><code>&lt;div class="grid">
+<pre class="language-markup"><code>&lt;div class="float-grid">
 	&lt;div class="col-1">
 		&lt;div>
 			.col-1
@@ -954,7 +954,7 @@
 &lt;/div></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<div class="grid">
+				<div class="float-grid">
 					<div class="col-1">
 						<div>
 							<code>.col-1</code>
@@ -1156,7 +1156,7 @@
 &lt;/div></code></pre>
 			</details>
 			<div class="pattern__view allow-margin">
-				<div class="grid">
+				<div class="float-grid">
 					<div class="col-1-2">
 						<a href="#" title="Click to view the placeholder">
 							<figure>
@@ -1279,97 +1279,7 @@
 
 <div class="container">
 
-	<section>
-		<h2>Flexbox</h2>
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Equal Heights</span></summary>
-<pre class="language-css"><code>.flexbox-example {
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.flexbox-example li {
-	width: 24%;
-	padding: 10px;
-	margin: 0.5%;
-	list-style: none;
-}</code></pre>
-<pre class="language-markup"><code>&lt;ul class="flexbox-example">
-	&lt;li>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quas cum iusto.
-	&lt;/li>
-	&lt;li>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum officiis placeat non velit.
-	&lt;/li>
-	&lt;li>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	&lt;/li>
-	&lt;li>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad.
-	&lt;/li>
-	&lt;li>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum.
-	&lt;/li>
-	&lt;li>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	&lt;/li>
-	&lt;li>
-		Lorem ipsum dolor sit amet.
-	&lt;/li>
-	&lt;li>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum officiis placeat non velit.
-	&lt;/li>
-	&lt;li>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	&lt;/li>
-	&lt;li>Adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur.
-	&lt;/li>
-&lt;/ul>
-</code></pre>
-			</details>
-			<div class="pattern__view">
-				<ul class="flexbox-example">
-					<li>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quas cum iusto.
-					</li>
-					<li>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum officiis placeat non velit.
-					</li>
-					<li>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					</li>
-					<li>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad.
-					</li>
-					<li>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum.
-					</li>
-					<li>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					</li>
-					<li>
-						Lorem ipsum dolor sit amet.
-					</li>
-					<li>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur omnis mollitia soluta dolorum officiis placeat non velit.
-					</li>
-					<li>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					</li>
-					<li>Adipisicing elit. Perferendis consectetur sapiente ad. Laboriosam tenetur.
-					</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-</div>
-
-<hr class="hr__styled-seperator">
-
-<div class="container">
-
-	<section>
+	<section class="page__content">
 		<h2>Tables</h2>
 		<div class="pattern resizable">
 			<details class="pattern__details">
@@ -1577,327 +1487,8 @@
 	</section>
 </div>
 
-<hr class="hr__styled-seperator">
-
-<div class="container">
-
-	<section>
-		<h2>Accordions</h2>
-		<p>Styles are disabled in SCSS by default. Enable the partials for this module and try again.</p>
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Standard Accordion</span></summary>
-<pre class="language-markup"><code>&lt;div class="accordion" role="tablist" multiselectable="true">
-	&lt;div class="accordion__title" role="tablist">
-		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #1&lt;/button>
-	&lt;/div>
-	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
-		Accordion Content
-	&lt;/div>
-	&lt;div class="accordion__title" role="tablist">
-		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #2&lt;/button>
-	&lt;/div>
-	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
-		Accordion Content
-	&lt;/div>
-	&lt;div class="accordion__title" role="tablist">
-		&lt;button aria-selected="true" aria-expanded="false">&lt;span class="more">&lt;/span> Accordion Title #3&lt;/button>
-	&lt;/div>
-	&lt;div class="accordion__content" role="tabpanel" aria-hidden="true">
-		Accordion Content
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view">
-				<div class="accordion" role="tablist" multiselectable="true">
-					<div class="accordion__title" role="tablist">
-						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #1</button>
-					</div>
-					<div class="accordion__content" role="tabpanel" aria-hidden="true">
-						Accordion Content
-					</div>
-					<div class="accordion__title" role="tablist">
-						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #2</button>
-					</div>
-					<div class="accordion__content" role="tabpanel" aria-hidden="true">
-						Accordion Content
-					</div>
-					<div class="accordion__title" role="tablist">
-						<button aria-selected="true" aria-expanded="false"><span class="more"></span> Accordion Title #3</button>
-					</div>
-					<div class="accordion__content" role="tabpanel" aria-hidden="true">
-						Accordion Content
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
-
-<hr class="hr__styled-seperator">
-
-<div class="container">
-
-	<section>
-		<h2>Tabs</h2>
-		<p>Styles are disabled in SCSS by default. Enable the partials for this module and try again.</p>
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Natural Tabs</span></summary>
-<pre class="language-markup"><code>&lt;div class="tabs">
-	&lt;ul class="tabs__nav" role="tablist">
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
-		&lt;/li>
-	&lt;/ul>
-	&lt;div class="tabs__system">
-		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-			&lt;p>Tab 1 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-			&lt;p>Tab 2 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-			&lt;p>Tab 3 content goes here.&lt;/p>
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view">
-				<div class="tabs">
-					<ul class="tabs__nav" role="tablist">
-						<li role="presentation">
-							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
-						</li>
-					</ul>
-					<div class="tabs__system">
-						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-							<p>Tab 1 content goes here.</p>
-						</div>
-						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-							<p>Tab 2 content goes here.</p>
-						</div>
-						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-							<p>Tab 3 content goes here.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Full Width Tabs</span></summary>
-<pre class="language-markup"><code>&lt;div class="tabs tabs-full-width">
-	&lt;ul class="tabs__nav" role="tablist">
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2&lt;/button>
-		&lt;/li>
-		&lt;li role="presentation">
-			&lt;button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3&lt;/button>
-		&lt;/li>
-	&lt;/ul>
-	&lt;div class="tabs__system">
-		&lt;div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-			&lt;p>Tab 1 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-			&lt;p>Tab 2 content goes here.&lt;/p>
-		&lt;/div>
-		&lt;div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-			&lt;p>Tab 3 content goes here.&lt;/p>
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view">
-				<div class="tabs tabs-full-width">
-					<ul class="tabs__nav" role="tablist">
-						<li role="presentation">
-							<button data-tab-target="tab_id_1" role="tab" aria-controls="tab_id_1" aria-selected="false">Tab #1</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_2" role="tab" aria-controls="tab_id_2" aria-selected="false">Tab #2</button>
-						</li>
-						<li role="presentation">
-							<button data-tab-target="tab_id_3" role="tab" aria-controls="tab_id_3" aria-selected="false">Tab #3</button>
-						</li>
-					</ul>
-					<div class="tabs__system">
-						<div id="tab_id_1" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_1" aria-hidden="true">
-							<p>Tab 1 content goes here.</p>
-						</div>
-						<div id="tab_id_2" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_2" aria-hidden="true">
-							<p>Tab 2 content goes here.</p>
-						</div>
-						<div id="tab_id_3" class="tabs__tab" role="tabpanel" aria-labelledby="tab_id_3" aria-hidden="true">
-							<p>Tab 3 content goes here.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
-
-<hr class="hr__styled-seperator">
-
-<div class="container">
-
-	<section>
-		<h2>Sliders / Carousels</h2>
-		<p>Styles are disabled in SCSS by default. Enable the partials for this module and try again.</p>
-		<p>Sliders are provided by the excellent <a href="http://bxslider.com" target="_blank">BX Slider</a>. These are basic examples and not predefined in the Framework. View the <a href="http://bxslider.com/options" target="_blank">BX Slider Options</a> to learn more about the extensive API.</p>
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Full Width Slider</span></summary>
-<pre class="language-markup"><code>&lt;div class="slider-container">
-	&lt;div class="slider">
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/1238/480" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/1238/480" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/1238/480" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/1238/480" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/1238/480" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/1238/480" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/1238/480" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/1238/480" alt="Placeholder">
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<div class="slider-container">
-					<div class="slider">
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/1238/480" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/1238/480" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/1238/480" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/1238/480" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/1238/480" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/1238/480" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/1238/480" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/1238/480" alt="Placeholder">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="pattern resizable">
-			<details class="pattern__details">
-				<summary><span class="pattern__title">Multiple Slider</span></summary>
-<pre class="language-markup"><code>&lt;div class="slider-container">
-	&lt;div class="slider-multiple">
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/400/230" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/400/230" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/400/230" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/400/230" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/400/230" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/400/230" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/400/230" alt="Placeholder">
-		&lt;/div>
-		&lt;div class="slider__slide">
-			&lt;img src="http://fillmurray.com/400/230" alt="Placeholder">
-		&lt;/div>
-	&lt;/div>
-&lt;/div></code></pre>
-			</details>
-			<div class="pattern__view allow-margin">
-				<div class="slider-container">
-					<div class="slider-multiple">
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/400/230" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/400/230" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/400/230" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/400/230" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/400/230" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/400/230" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/400/230" alt="Placeholder">
-						</div>
-						<div class="slider__slide">
-							<img src="http://fillmurray.com/400/230" alt="Placeholder">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<script src="../js/plugins/jquery.extensions.js"></script>
-<script src="../js/plugins/vendor/jquery.slider.js"></script>
-<script src="../js/plugins/jquery.accordion.js"></script>
-<script src="../js/plugins/jquery.tabs.js"></script>
 <script src="dist/prism/prism.js"></script>
 <script>
 	/**
@@ -1909,33 +1500,6 @@
 		$('.resizable').resizable({
 			grid: 50
 		});
-		// Accordion
-	    if($('.accordion').length){
-	        $('.accordion').accordion({
-	            // No options
-	        });
-	    }
-		// BX Slider
-	    if($('.slider').length){
-	        $('.slider').bxSlider({
-	            // No options
-	        });
-	    }
-	    if($('.slider-multiple').length){
-	        $('.slider-multiple').bxSlider({
-				slideWidth : 247,
-				slideMargin: 10,
-				moveSlides : 1,
-				minSlides  : 5,
-				maxSlides  : 5
-	        });
-	    }
-		// Tabs
-	    if($('.tabs').length){
-	        $('.tabs').tabs({
-	            // No options
-	        });
-	    }
 	});
 </script>
 </body>

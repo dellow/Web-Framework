@@ -25,7 +25,9 @@ module.exports = {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx'],
     alias: {
-      // 'handlebars': 'handlebars/dist/handlebars.min.js'
+      // 'handlebars': 'handlebars/dist/handlebars.min.js',
+      classes: path.resolve(__dirname, packageConfig.config.js.dirApp + 'classes/'),
+      routes: path.resolve(__dirname, packageConfig.config.js.dirApp + 'routes/')
     }
   },
   module: {
@@ -38,7 +40,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.DefinePlugin({
       'process.env': {

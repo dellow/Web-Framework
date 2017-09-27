@@ -8,6 +8,9 @@ __3.9.0__:
 * Various fixes and improvements.
 * Moved Grids to Components in Base.
 * Made form validation classes not just JavaScript specific. Now a namespace.
+* Added `percentage` SASS helper function.
+* Added `classes` and `routes` WebPack aliases.
+* Removed redundant stuff from styleguide.
 
 __3.8.0__:
 * Added improved Edge targeting in `_fixes.scss`.

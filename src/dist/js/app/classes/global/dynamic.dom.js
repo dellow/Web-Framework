@@ -8,7 +8,6 @@
 **/
 
 class DynamicDOM {
-
   /**
    * constructor
    * NULLED.
@@ -45,7 +44,7 @@ class DynamicDOM {
    * @access public
   **/
   events () {
-    var _this = this
+    const _this = this
 
     // Extend the events system.
     window.Events.extend({
@@ -88,7 +87,6 @@ class DynamicDOM {
   reportNoTarget () {
     return (!this._settings.failSilently) ? window.Helpers.throw('No DOM target specified.') : null
   }
-
 }
 
 const DynamicDOMClass = new DynamicDOM()

@@ -103,25 +103,10 @@ body.styleguide .pattern .pattern__view:not(.allow-margin) > * {
 }
 
 /* Grids */
-.styleguide .flex-grid [class*="col-"],
-.styleguide .grid [class*="col-"] {
+.styleguide .flex-grid [class*="col-"] > div,
+.styleguide .float-grid [class*="col-"] > div {
 	padding: 10px;
 	background: #efefef;
-}
-
-/* Flexbox */
-.flexbox-example {
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.flexbox-example li {
-	width: 24%;
-	padding: 10px;
-	margin: 0.5%;
-	list-style: none;
-	color: white;
-	background: #004b6a;
 }
 
 /* Colour Swatches */

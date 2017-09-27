@@ -24,6 +24,23 @@
 
 
 /**
+* percentage
+* Takes a given value in PX and returns a percentage of it.
+*
+* .foo {@include percentage(500px, 50%);}
+* .foo {@include percentage(500, 50);}
+**/
+@function percentage($value, $percentage){
+  $newValue: (strip-unit($value) / 100) * strip-unit($percentage);
+  
+  @return #{$newValue + px};
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/**
 * strip-unit
 * Simply strips the unit from any string.
 **/

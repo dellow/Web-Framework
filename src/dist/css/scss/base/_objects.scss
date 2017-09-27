@@ -58,6 +58,75 @@
 /* ----------------------------------------------------------------------- */
 
 
+/* -- Window Modal -- */
+.obj-modal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: $zindex-10;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: opacity $animation ease;
+  @include respond-to($mobile_l){
+    display: block;
+    background: color(white)
+  }
+  &.active {
+    opacity: 1;
+  }
+  &__window {
+  	min-width: 400px;
+    margin-top: -20%;
+    border-radius: $base_border_radius;
+    box-shadow: 0 0 3px rgba(color(black), 0.4);
+    text-align: center;
+  	backface-visibility: hidden;
+    background: color(white);
+    &__header {
+      @include nudge(padding, 0.5);
+      border-bottom: 1px solid #EEEEEE;
+      @include scale(font-size, 20px);
+      font-weight: $semibold;
+      @include respond-to($mobile_l){
+        border: 0;
+      }
+    }
+    &__main {
+      @include nudge(padding, 1);
+    }
+    &__footer {
+      @include nudge(padding, 0.5);
+      border-top: 1px solid #EEEEEE;
+      @include respond-to($mobile_l){
+        border: 0;
+      }
+      button {
+        @include scale(font-size, 14px);
+      }
+    }
+    @include respond-to($mobile_l){
+      width: 100% !important;
+      height: 100% !important;
+      min-width: 0 !important;
+      max-height: none !important;
+      margin-top: 0;
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
 /* -- Alternative Text -- */
 .obj-alt-text {
   &--desktop {
