@@ -4,12 +4,12 @@
 // ==========================================================================
 
 
-//
+// ---
 // color
 // Gets color and tone from map.
 //
 // .foo {@include color(red, base);}
-//
+// ---
 @function color($color, $tone: 'base'){
   @if map-has-key($colors, $color) {
     @return map-get(map-get($colors, $color), $tone);
