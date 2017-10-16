@@ -1,7 +1,7 @@
-/* ==========================================================================
-   Site > All
-   Imports all the partials.
-========================================================================== */
+// ==========================================================================
+// Site > All
+// Imports all the partials.
+// ==========================================================================
 @import
 		// Core
 		'icons',
@@ -15,6 +15,9 @@
 		'components/menus',
 		// Templates
 		'templates/tpl',
+		// Misc
+		'misc/validation',
+		'misc/wordpress',
 		// Fixes & Hacks
 		'fixes';
 
@@ -26,5 +29,3 @@
 // @import 'vendor/slick';
 // @import 'vendor/socicon';
 // @import 'vendor/tooltipster';
-@import 'vendor/validation';
-// @import 'vendor/wordpress';

@@ -1,69 +1,68 @@
-/* ==========================================================================
-   Site > Fixes
-   This file is for legacy browser fixes and hacks. Everything should
-   be documented and explained for later review.
-========================================================================== */
+// ==========================================================================
+// Site > Fixes
+// This file is for legacy browser fixes and hacks. Everything should be documented and explained for later review.
+// ==========================================================================
 
 
-/**
- * Targets browsers with JavaScript disabled.
- * Target: No JavaScript
-**/
+// ---
+// Targets browsers with JavaScript disabled.
+// Target: No JavaScript
+// ---
 html.no-js {
 }
 
 
-/**
- * Targets just IE6 via conditional statements in header.
- * Target: IE6
-**/
+// ---
+// Targets just IE6 via conditional statements in header.
+// Target: IE6
+// ---
 html.ie6 {
 }
 
 
-/**
- * Targets just IE7 via conditional statements in header.
- * Target: IE7
-**/
+// ---
+// Targets just IE7 via conditional statements in header.
+// Target: IE7
+// ---
 html.ie7 {
 }
 
 
-/**
- * Targets just IE8 via conditional statements in header.
- * Target: IE8
-**/
+// ---
+// Targets just IE8 via conditional statements in header.
+// Target: IE8
+// ---
 html.ie8 {
 }
 
 
-/**
- * Targets just IE9 via conditional statements in header.
- * Target: IE9
-**/
+// ---
+// Targets just IE9 via conditional statements in header.
+// Target: IE9
+// ---
 html.ie9 {
 }
 
 
-/**
- * Targets all legacy versions of Internet Explorer via conditional statements in header.
- * Target: IE6, IE7, IE8 & IE9
-**/
+// ---
+// Targets all legacy versions of Internet Explorer via conditional statements in header.
+// Target: IE6, IE7, IE8 & IE9
+// ---
 html.oldie {
 }
 
 
-/**
- * Targets IE10 & IE11 via '-ms-high-contrast' media query.
- * Target: IE10, IE11
-**/
+// ---
+// Targets IE10 & IE11 via '-ms-high-contrast' media query.
+// Target: IE10, IE11
+// ---
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
 }
 
 
-/**
- * Targets Edge via '-ms-ime-align:auto' supports query.
- * Target: Edge
-**/
+// ---
+// Targets Edge via '-ms-ime-align:auto' supports query.
+// Target: Edge
+// ---
 @supports (-ms-ime-align:auto) {
 }

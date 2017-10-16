@@ -1,7 +1,7 @@
-/* ==========================================================================
-  Base > Components > Forms
-  Styling for elements within a form tag.
-========================================================================== */
+// ==========================================================================
+// Base > Components > Forms
+// Styling for elements within a form tag.
+// ==========================================================================
 
 
 form {
@@ -27,6 +27,22 @@ form {
 		&:focus {
 			border-color: darken(color(grey), 25%);
 		}
+		// Placeholders.
+		&::-webkit-input-placeholder {
+			color: color(grey);
+		}
+		&::-moz-placeholder {
+			color: color(grey);
+		}
+		&:-moz-placeholder {
+			color: color(grey);
+		}
+		&:-ms-input-placeholder {
+			color: color(grey);
+		}
+		&::placeholder {
+			color: color(grey);
+		}
 	}
 
   input:not([type="radio"]):not([type="checkbox"]), select {
@@ -36,6 +52,31 @@ form {
 	select {
 		+ select {
 			@include nudge(margin-left, 0.5);
+		}
+	}
+
+	.select {
+		position: relative;
+		display: inline-block;
+		vertical-align: bottom;
+		select {
+			width: 100%;
+			@include nudge(padding, 8px 2em 8px 0.25);
+			appearance: none;
+		}
+		&:before {
+			width: 2em;
+	    position: absolute;
+	    top: 10px; right: 0;
+	    content: '\25bc';
+	    pointer-events: none;
+	    color: #767676;
+	    line-height: 1;
+	    text-align: center;
+	    transform: scale(0.84, 0.42);
+		}
+		+ .select {
+			@include nudge(margin-left, 0.15);
 		}
 	}
 
@@ -61,27 +102,4 @@ form {
 }
 
 
-/* ----------------------------------------------------------------------- */
-
-
-/* -- Placeholder -- */
-form {
-	::-webkit-input-placeholder {
-		color: color(grey);
-	}
-	::-moz-placeholder {
-		color: color(grey);
-	}
-	:-moz-placeholder {
-		color: color(grey);
-	}
-	:-ms-input-placeholder {
-		color: color(grey);
-	}
-	::placeholder {
-		color: color(grey);
-	}
-}
-
-
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //

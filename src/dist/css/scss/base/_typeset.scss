@@ -1,7 +1,7 @@
-/* ==========================================================================
-  Base > Typeset
-  App fonts and type settings.
-========================================================================== */
+// ==========================================================================
+// Base > Typeset
+// App fonts and type settings.
+// ==========================================================================
 
 
 html {
@@ -23,7 +23,7 @@ body {
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -34,116 +34,104 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 h1, .h1 {
-  $fs: 48px;
-  $lh: 1.125;
-  @include scale(font-size, $fs,
-    $tablet_l (($fs / 100) * 90),
-    $tablet_p (($fs / 100) * 85),
-    $mobile_l (($fs / 100) * 80),
-    $mobile_p (($fs / 100) * 75),
-    $device_p (($fs / 100) * 70)
+  @include scale(font-size, $h1,
+    $tablet_l (($h1 / 100) * 90),
+    $tablet_p (($h1 / 100) * 85),
+    $mobile_l (($h1 / 100) * 80),
+    $mobile_p (($h1 / 100) * 75),
+    $device_p (($h1 / 100) * 70)
   );
-  @include scale(line-height, $lh,
-    $tablet_l (($lh / 100) * 105),
-    $tablet_p (($lh / 100) * 105),
-    $mobile_l (($lh / 100) * 110),
-    $mobile_p (($lh / 100) * 110),
-    $device_p (($lh / 100) * 110)
+  @include scale(line-height, $h1_lh,
+    $tablet_l (($h1_lh / 100) * 105),
+    $tablet_p (($h1_lh / 100) * 105),
+    $mobile_l (($h1_lh / 100) * 110),
+    $mobile_p (($h1_lh / 100) * 110),
+    $device_p (($h1_lh / 100) * 110)
   );
 }
 h2, .h2 {
-  $fs: 36px;
-  $lh: 1.125;
-  @include scale(font-size, $fs,
-    $tablet_l (($fs / 100) * 90),
-    $tablet_p (($fs / 100) * 85),
-    $mobile_l (($fs / 100) * 80),
-    $mobile_p (($fs / 100) * 75),
-    $device_p (($fs / 100) * 70)
+  @include scale(font-size, $h2,
+    $tablet_l (($h2 / 100) * 90),
+    $tablet_p (($h2 / 100) * 85),
+    $mobile_l (($h2 / 100) * 80),
+    $mobile_p (($h2 / 100) * 75),
+    $device_p (($h2 / 100) * 70)
   );
-  @include scale(line-height, $lh,
-    $tablet_l (($lh / 100) * 105),
-    $tablet_p (($lh / 100) * 105),
-    $mobile_l (($lh / 100) * 110),
-    $mobile_p (($lh / 100) * 110),
-    $device_p (($lh / 100) * 110)
+  @include scale(line-height, $h2_lh,
+    $tablet_l (($h2_lh / 100) * 105),
+    $tablet_p (($h2_lh / 100) * 105),
+    $mobile_l (($h2_lh / 100) * 110),
+    $mobile_p (($h2_lh / 100) * 110),
+    $device_p (($h2_lh / 100) * 110)
   );
 }
 h3, .h3 {
-  $fs: 28px;
-  $lh: 1.125;
-  @include scale(font-size, $fs,
-    $tablet_l (($fs / 100) * 90),
-    $tablet_p (($fs / 100) * 85),
-    $mobile_l (($fs / 100) * 80),
-    $mobile_p (($fs / 100) * 75),
-    $device_p (($fs / 100) * 70)
+  @include scale(font-size, $h3,
+    $tablet_l (($h3 / 100) * 90),
+    $tablet_p (($h3 / 100) * 85),
+    $mobile_l (($h3 / 100) * 80),
+    $mobile_p (($h3 / 100) * 75),
+    $device_p (($h3 / 100) * 70)
   );
-  @include scale(line-height, $lh,
-    $tablet_l (($lh / 100) * 105),
-    $tablet_p (($lh / 100) * 105),
-    $mobile_l (($lh / 100) * 110),
-    $mobile_p (($lh / 100) * 110),
-    $device_p (($lh / 100) * 110)
+  @include scale(line-height, $h3_lh,
+    $tablet_l (($h3_lh / 100) * 105),
+    $tablet_p (($h3_lh / 100) * 105),
+    $mobile_l (($h3_lh / 100) * 110),
+    $mobile_p (($h3_lh / 100) * 110),
+    $device_p (($h3_lh / 100) * 110)
   );
 }
 h4, .h4 {
-  $fs: 20px;
-  $lh: 1.37;
-  @include scale(font-size, $fs,
-    $tablet_l (($fs / 100) * 90),
-    $tablet_p (($fs / 100) * 85),
-    $mobile_l (($fs / 100) * 80),
-    $mobile_p (($fs / 100) * 75),
-    $device_p (($fs / 100) * 70)
+  @include scale(font-size, $h4,
+    $tablet_l (($h4 / 100) * 90),
+    $tablet_p (($h4 / 100) * 85),
+    $mobile_l (($h4 / 100) * 80),
+    $mobile_p (($h4 / 100) * 75),
+    $device_p (($h4 / 100) * 70)
   );
-  @include scale(line-height, $lh,
-    $tablet_l (($lh / 100) * 105),
-    $tablet_p (($lh / 100) * 105),
-    $mobile_l (($lh / 100) * 110),
-    $mobile_p (($lh / 100) * 110),
-    $device_p (($lh / 100) * 110)
+  @include scale(line-height, $h4_lh,
+    $tablet_l (($h4_lh / 100) * 105),
+    $tablet_p (($h4_lh / 100) * 105),
+    $mobile_l (($h4_lh / 100) * 110),
+    $mobile_p (($h4_lh / 100) * 110),
+    $device_p (($h4_lh / 100) * 110)
   );
 }
 h5, .h5 {
-  $fs: 18px;
-  $lh: 1.37;
-  @include scale(font-size, $fs,
-    $tablet_l (($fs / 100) * 90),
-    $tablet_p (($fs / 100) * 85),
-    $mobile_l (($fs / 100) * 80),
-    $mobile_p (($fs / 100) * 75),
-    $device_p (($fs / 100) * 70)
+  @include scale(font-size, $h5,
+    $tablet_l (($h5 / 100) * 90),
+    $tablet_p (($h5 / 100) * 85),
+    $mobile_l (($h5 / 100) * 80),
+    $mobile_p (($h5 / 100) * 75),
+    $device_p (($h5 / 100) * 70)
   );
-  @include scale(line-height, $lh,
-    $tablet_l (($lh / 100) * 105),
-    $tablet_p (($lh / 100) * 105),
-    $mobile_l (($lh / 100) * 110),
-    $mobile_p (($lh / 100) * 110),
-    $device_p (($lh / 100) * 110)
+  @include scale(line-height, $h5_lh,
+    $tablet_l (($h5_lh / 100) * 105),
+    $tablet_p (($h5_lh / 100) * 105),
+    $mobile_l (($h5_lh / 100) * 110),
+    $mobile_p (($h5_lh / 100) * 110),
+    $device_p (($h5_lh / 100) * 110)
   );
 }
 h6, .h6 {
-  $fs: 16px;
-  $lh: 1.125;
-  @include scale(font-size, $fs,
-    $tablet_l (($fs / 100) * 90),
-    $tablet_p (($fs / 100) * 85),
-    $mobile_l (($fs / 100) * 80),
-    $mobile_p (($fs / 100) * 75),
-    $device_p (($fs / 100) * 70)
+  @include scale(font-size, $h6,
+    $tablet_l (($h6 / 100) * 90),
+    $tablet_p (($h6 / 100) * 85),
+    $mobile_l (($h6 / 100) * 80),
+    $mobile_p (($h6 / 100) * 75),
+    $device_p (($h6 / 100) * 70)
   );
-  @include scale(line-height, $lh,
-    $tablet_l (($lh / 100) * 105),
-    $tablet_p (($lh / 100) * 105),
-    $mobile_l (($lh / 100) * 110),
-    $mobile_p (($lh / 100) * 110),
-    $device_p (($lh / 100) * 110)
+  @include scale(line-height, $h6_lh,
+    $tablet_l (($h6_lh / 100) * 105),
+    $tablet_p (($h6_lh / 100) * 105),
+    $mobile_l (($h6_lh / 100) * 110),
+    $mobile_p (($h6_lh / 100) * 110),
+    $device_p (($h6_lh / 100) * 110)
   );
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
 p, li, dd {
@@ -151,7 +139,7 @@ p, li, dd {
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
 a, button {
@@ -167,7 +155,7 @@ a, button {
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
 blockquote, dl, ol, p, pre, ul {
@@ -178,7 +166,7 @@ blockquote, dl, ol, p, pre, ul {
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
 .page__content {
@@ -253,7 +241,7 @@ blockquote, dl, ol, p, pre, ul {
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
 .page__hatnote {
@@ -262,7 +250,7 @@ blockquote, dl, ol, p, pre, ul {
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
 p {
@@ -295,7 +283,7 @@ kbd {
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
 @each $key, $value in $colors {
@@ -319,4 +307,4 @@ kbd {
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //

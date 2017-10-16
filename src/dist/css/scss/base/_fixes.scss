@@ -1,21 +1,20 @@
-/* ==========================================================================
-  Base > Fixes
-  This file is for legacy browser fixes and hacks. Everything should
-  be documented and explained for later review.
-========================================================================== */
+// ==========================================================================
+// Base > Fixes
+// This file is for legacy browser fixes and hacks. Everything should be documented and explained for later review.
+// ==========================================================================
 
 
-/**
- * Targets all legacy versions of Internet Explorer via conditional statements in header.
- * Target: IE6, IE7, IE8 & IE9
-**/
+// ---
+// Targets all legacy versions of Internet Explorer via conditional statements in header.
+// Target: IE6, IE7, IE8 & IE9
+// ---
 html.oldie {
-	/* -- Container -- */
+	// -- Container -- //
 	.container {
 		width: $desktop;
 	}
 
-	/* -- Grid -- */
+	// -- Grid -- //
 	.grid {
 		.col + .col {
 			padding-right: 0;
@@ -24,4 +23,4 @@ html.oldie {
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //

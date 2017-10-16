@@ -1,36 +1,49 @@
-/* ==========================================================================
-  Base > Vars
-  The variables for use throughout the framework. These can
-  be overwritten from the site/vars partial.
-========================================================================== */
+// ==========================================================================
+// Base > Vars
+// The variables for use throughout the framework. These can be overwritten from the site/vars partial.
+// ==========================================================================
 
 
-/* -- Config -- */
+// -- Config -- //
 $mn          : 24px !default;
 $gutter      : 0.5 !default;
 $animation   : 300ms !default;
 $mobile_menu : 768px !default;
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
-/* -- Base -- */
+// -- Base -- //
 $base_font_size     : 16px !default;
 $base_field_height  : 40px !default;
 $base_border_radius : 3px !default;
 $base_ul_indent     : 1.2em !default;
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
-/* -- Typography -- */
+// -- Typography -- //
 // Faces
 $monospaced: 'source-code-pro', monospace !default;
 $serif     : Georgia !default;
 $sans_serif: "Helvetica Neue" !default;
 $base_font : "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+
+// Headings
+$h1      : 48px !default;
+$h1_lh   : 1.125 !default;
+$h2      : 36px !default;
+$h2_lh   : 1.125 !default;
+$h3      : 28px !default;
+$h3_lh   : 1.125 !default;
+$h4      : 20px !default;
+$h4_lh   : 1.37 !default;
+$h5      : 18px !default;
+$h5_lh   : 1.37 !default;
+$h6      : 16px !default;
+$h6_lh   : 1.125 !default;
 
 // Sizes
 $xlarge  : 30px !default;
@@ -50,10 +63,10 @@ $light     : 200 !default;
 $thin      : 100 !default;
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
-/* -- Colors -- */
+// -- Colors -- //
 // Base
 $base_colors: (
   black: (
@@ -143,10 +156,10 @@ $color_odd_base  : #EDEDED !default;
 $color_even_base : #F4F4F4 !default;
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
-/* -- Device & Container Widths (http://mydevice.io/devices/) -- */
+// -- Device & Container Widths (http://mydevice.io/devices/) -- //
 $container    : 1180px !default;
 $device_p     : 210px !default; // Portrait
 $device_l     : 280px !default; // Landscape
@@ -158,10 +171,10 @@ $desktop      : 1280px !default;
 $desktop--wide: 1440px !default;
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
-/* -- Z-Index Scale -- */
+// -- Z-Index Scale -- //
 $zindex-1 : 100 !default;
 $zindex-2 : 200 !default;
 $zindex-3 : 300 !default;
@@ -174,10 +187,10 @@ $zindex-9 : 900 !default;
 $zindex-10: 1000 !default;
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
-/* -- Percentage Column Widths -- */
+// -- Percentage Column Widths -- //
 $col_1   : 100% !default;
 $col_1-2 : 50% !default;
 $col_1-3 : 33.33% !default;
@@ -335,4 +348,4 @@ col-15-16: ($col_1-16 * 15)
 ) !default;
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //

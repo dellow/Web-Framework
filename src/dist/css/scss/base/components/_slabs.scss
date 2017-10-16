@@ -1,8 +1,7 @@
-/* ==========================================================================
-  Base > Components > Slabs
-  Slabs create sections styled with a background colour. They differ
-  from the `.bg` class by being naturally padded to provide content space.
-========================================================================== */
+// ==========================================================================
+// Base > Components > Slabs
+// Slabs create sections styled with a background colour. They differ from the `.bg` class by being naturally padded to provide content space.
+// ==========================================================================
 
 
 .slab {
@@ -25,10 +24,10 @@
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
 
 
-/* -- Slab colors -- */
+// -- Slab colors -- //
 @each $key, $value in $colors {
   .bg, .slab {
     @if (color($key)) {
@@ -43,4 +42,4 @@
 }
 
 
-/* ----------------------------------------------------------------------- */
+// ----------------------------------------------------------------------- //
