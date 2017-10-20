@@ -8,6 +8,7 @@
 **/
 
 class DynamicDOM {
+
   /**
    * constructor
    * NULLED.
@@ -17,7 +18,6 @@ class DynamicDOM {
    * @access public
   **/
   constructor () {
-    // Settings for this module.
     this._settings = {
       failSilently: false
     }
@@ -49,15 +49,15 @@ class DynamicDOM {
     // Extend the events system.
     window.Events.extend({
       events: {
-        'change [data-js-target="dynamic-dom"]': 'updateDOM'
+        'change [data-js-event="dynamicDom"]': 'dynamicDom'
       },
-      updateDOM: function (e) {
+      dynamicDom: function (e) {
         e[0].preventDefault()
 
         // Get value.
-        var value = $(e[0].currentTarget).val()
+        let value = $(e[0].currentTarget).val()
         // Get DOM target.
-        var target = $(e[0].currentTarget).data('dynamic-dom') || false
+        let target = $(e[0].currentTarget).data('dynamic-dom') || false
 
         return (target && $(target).length) ? _this.updateTarget(value, $(target)) : _this.reportNoTarget()
       }

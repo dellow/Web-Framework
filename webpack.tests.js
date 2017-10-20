@@ -7,5 +7,5 @@
  *
 **/
 
-var context = require.context('./src/dist/js/', true, /__tests__\/*(.+).js/)
+var context = require.context('./src/dist/js/app/', true, /__tests__\/*(.+).js/)
 context.keys().forEach(context)

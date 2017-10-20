@@ -10,16 +10,6 @@
 1. [Requirements](#requirements)
 1. [Install](#install)
 1. [Styleguide & Examples](#styleguide-examples)
-1. [Tasks](#tasks)
-    1. [CSS](#tasks--css)
-    1. [JS](#tasks--js)
-    1. [Images](#tasks--images)
-    1. [Minify](#tasks--minify)
-    1. [Test (Unit)](#tasks--test-unit)
-    1. [Test (Integration)](#tasks--test-integration)
-    1. [Release](#tasks--release)
-    1. [Watch](#tasks--watch)
-    1. [Sync](#tasks--sync)
 1. [Testing](#testing)
 1. [Working with SCSS](#working-with-scss)
     1. [Mixins](#working-with-scss--mixins)
@@ -27,17 +17,12 @@
     1. [Responsive](#working-with-scss--responsive)
     1. [Reserved Classes](#working-with-scss--reserved-classes)
 1. [Working with JavaScript](#working-with-javascript)
-    1. [Requiring New Files](#working-with-javascript--requiring-new-files)
     1. [Helpers](#working-with-javascript--helpers)
 1. [Changelog](#changelog)
 
 <a name="about"></a>
 ## About
-This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises Gulp as a task runner. It's also set up to work with Travis CI which will run any defined spec tests by default.
-
-JavaScript is bundled with WebPack and tested with Jasmine for unit tests and Nightwatch for functional/integration tests.
-
-CSS is compiled with SASS.
+This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises Webpack as a build tool. It's also set up to work with Travis CI which will run any defined spec tests by default.
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
@@ -75,64 +60,6 @@ __All additional instructions below assume you have followed the installation pr
 After installation there is a CSS styleguide located in `dist/.help/guides/styleguide.html` which outlines some of the elements in the Framework. You can also review the vertical rhythm `dist/.help/guides/rhythm.html`.
 
 These serve as ongoing platforms to test any changes you might make to the Framework.
-
-<a name="scripts"></a>
-## Tasks
-The framework uses Gulp as the task runner. The various tasks are outlined below:
-
-<a name="tasks--css"></a>
-### CSS
-_Command:_ `gulp css`
-
-_Documentation coming soon_
-
-<a name="tasks--js"></a>
-### JS
-_Command:_ `gulp js`
-
-_Documentation coming soon_
-
-<a name="tasks--images"></a>
-### Images
-_Command:_ `gulp images`
-
-_Documentation coming soon_
-
-<a name="tasks--minify"></a>
-### Minify
-_Command:_ `gulp minify`
-
-_Documentation coming soon_
-
-<a name="tasks--test-unit"></a>
-### Test (Unit)
-_Command:_ `gulp test:unit`
-
-_Documentation coming soon_
-
-<a name="tasks--test-integration"></a>
-### Test (Integration)
-_Command:_ `gulp test:integration`
-
-_Documentation coming soon_
-
-<a name="tasks--release"></a>
-### Release
-_Command:_ `gulp release`
-
-_Documentation coming soon_
-
-<a name="tasks--watch"></a>
-### Watch
-_Command:_ `gulp watch`
-
-_Documentation coming soon_
-
-<a name="tasks--sync"></a>
-### Sync
-_Command:_ `gulp sync`
-
-_Documentation coming soon_
 
 <a name="testing"></a>
 ## Testing
@@ -312,23 +239,11 @@ The Framework does use some generic or 'loose' classes throughout. A lot of thes
 
 <a name="working-with-javascript"></a>
 ## Working with JavaScript
-The JavaScript is split into directories, some of these are for libraries / frameworks / plugins that will not be on the final server. Some are for the actual modules.
-
-All application JavaScript modules (think: Routing, Framework Logic etc) should be added in `dist/js/app/private` directory - these files will be compiled into the global `build.js` file.
-
-All public JavaScript modules (think: Event Listeners, Plugin binds etc) should be added in `dist/js/app/public` directory - these files will be compiled into the global `build.js` file.
-
-The only JavaScript file that will hit the server should be at `src/dist/js/build/build.js`.
-
-<a name="working-with-javascript--requiring-new-files"></a>
-### Requiring New Files
-All initial files are loaded from `dist/js/app/index.js` but thanks to Webpack you can require a file from anywhere with the familiar Node requirement syntax. There is no requirement to provide the `.js` extension:
-
-    require('./javascript-file');
+_Documentation coming soon_
 
 <a name="working-with-javascript--helpers"></a>
 ### Helpers
-The `dist/js/app/helpers/js` file contains various global helper functions to aid with development. These can be called in any JS file within the `app` directory simple by calling `Helpers.<method_name>`. The methods are described below:
+The `dist/js/common/helpers/js` file contains various global helper functions to aid with development. These can be called in any JS file within the `app` directory simple by calling `window.Helpers.<method_name>`. The methods are described below:
 
 ##### log `Helpers.log('My console message');`
 Super powered, cross-browser supported `console.log`. Will check the browser supports console logging (will use `alert` otherwise, unless overrided). All console messages will be prefixed with "DEBUG" and encapsulated into sections to easier separate messages. A simple call would result in:

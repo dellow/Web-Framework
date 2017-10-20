@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__4.0.0__:
+* Removed Gulp completely. Now uses Webpack for JS and CSS compilation.
+
 __3.9.0__:
 * Fixed Gulp Watch for images.
 * Fixed issue with Modal closing when clicked on.

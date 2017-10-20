@@ -22,9 +22,6 @@ install:
 script:
   - npm run test
 
-after_success:
-  - gulp unit:test:coveralls
-
 branches:
   only:
     - master

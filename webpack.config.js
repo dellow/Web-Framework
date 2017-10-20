@@ -7,39 +7,57 @@
  *
 **/
 
-import webpack from 'webpack'
-import path from 'path'
+const fs = require('fs')
+const path = require('path')
+const webpack = require('webpack')
 
-var packageConfig = require('./package.json')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const WebpackCleanPlugin = require('webpack-clean')
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, './' + packageConfig.config.js.dirApp + 'index.js'),
-    common: path.resolve(__dirname, './' + packageConfig.config.js.dirCommon + 'index.js')
+    'js/app': path.resolve(__dirname, './src/dist/js/app/entry.js'),
+    'js/common': path.resolve(__dirname, './src/dist/js/common/entry.js'),
+    'css/app': path.resolve(__dirname, './src/dist/css/scss/entry.scss')
   },
   output: {
-    path: path.resolve(__dirname, './' + packageConfig.config.js.dirBuild),
+    path: path.resolve(__dirname, './src/build'),
     filename: '[name].js'
   },
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx'],
     alias: {
-      // 'handlebars': 'handlebars/dist/handlebars.min.js',
-      classes: path.resolve(__dirname, packageConfig.config.js.dirApp + 'classes/'),
-      routes: path.resolve(__dirname, packageConfig.config.js.dirApp + 'routes/')
+      classes: path.resolve(__dirname, './src/dist/js/app/classes'),
+      routes: path.resolve(__dirname, './src/dist/js/app/routes')
     }
   },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.jsx?/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
       }
     ]
   },
   plugins: [
+    new WebpackBuildNotifierPlugin({
+      title: 'Webpack',
+      suppressSuccess: false
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].css',
+      allChunks: true
+    }),
+    new WebpackCleanPlugin([
+      './src/build/css/app.js' // Remove errand .js files in the build.
+    ]),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.DefinePlugin({
       'process.env': {

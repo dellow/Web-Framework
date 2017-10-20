@@ -399,11 +399,11 @@ body, html {
 
 
 // -- Font Faces -- //
-.u-font-serif {
-	font-family: serif !important;
+.u-text-serif {
+	font-family: $serif !important;
 }
-.u-font-sans-serif {
-	font-family: sans-serif !important;
+.u-text-sans-serif {
+	font-family: $sans_serif !important;
 }
 
 
@@ -411,53 +411,67 @@ body, html {
 
 
 // -- Font Sizes -- //
-.u-font-10 {
+.u-text-10 {
 	font-size: 10px !important;
 }
-.u-font-12 {
+.u-text-12 {
 	font-size: 12px !important;
 }
-.u-font-14 {
+.u-text-14 {
 	font-size: 14px !important;
 }
-.u-font-16 {
+.u-text-16 {
 	font-size: 16px !important;
 }
-.u-font-18 {
+.u-text-18 {
 	font-size: 18px !important;
 }
-.u-font-20 {
+.u-text-20 {
 	font-size: 20px !important;
 }
-.u-font-22 {
+.u-text-22 {
 	font-size: 22px !important;
 }
-.u-font-24 {
+.u-text-24 {
 	font-size: 24px !important;
 }
-.u-font-26 {
+.u-text-26 {
 	font-size: 26px !important;
 }
-.u-font-28 {
+.u-text-28 {
 	font-size: 28px !important;
 }
-.u-font-30 {
+.u-text-30 {
 	font-size: 30px !important;
 }
-.u-font-32 {
+.u-text-32 {
 	font-size: 32px !important;
 }
-.u-font-34 {
+.u-text-34 {
 	font-size: 34px !important;
 }
-.u-font-38 {
+.u-text-38 {
 	font-size: 38px !important;
 }
-.u-font-38 {
+.u-text-38 {
 	font-size: 38px !important;
 }
-.u-font-40 {
+.u-text-40 {
 	font-size: 40px !important;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// -- Colours -- //
+@each $key, $value in $colors {
+	$class: "" + $key;
+  @if (color($key)) {
+  	.u-text-color-#{$class} {
+  		color: color($key) !important;
+  	}
+	}
 }
 
 
@@ -475,20 +489,6 @@ body, html {
 	display: none !important;
 	@include respond-to($mobile_p + 1, null, true){
 		display: inherit !important;
-	}
-}
-
-
-// ----------------------------------------------------------------------- //
-
-
-// -- Colours -- //
-@each $key, $value in $colors {
-	$class: "" + $key;
-  @if (color($key)) {
-  	.u-text-color-#{$class} {
-  		color: color($key) !important;
-  	}
 	}
 }
 
