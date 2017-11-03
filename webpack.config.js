@@ -10,6 +10,7 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WebpackCleanPlugin = require('webpack-clean')
@@ -34,7 +35,7 @@ module.exports = {
     }
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
         exclude: /(node_modules)/,
@@ -42,7 +43,22 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+        use: ExtractTextPlugin.extract([
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => {
+                return [autoprefixer]
+              }
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ])
       }
     ]
   },
@@ -56,7 +72,7 @@ module.exports = {
       allChunks: true
     }),
     new WebpackCleanPlugin([
-      './src/build/css/app.js' // Remove errand .js files in the build.
+      './src/build/css/app.js' // Remove errand .js files in the CSS build.
     ]),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.DefinePlugin({
