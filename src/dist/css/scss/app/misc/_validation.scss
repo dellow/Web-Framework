@@ -20,21 +20,6 @@
 
 form {
 	&.validation-form-has-errors { // Qualified Selector
-		// Labels
-		label {
-			&.validation-field-error {
-				color: color(alerts, error) !important;
-			}
-			&.validation-field-status {
-				color: color(alerts, status) !important;
-			}
-			&.validation-field-success {
-				color: color(alerts, success) !important;
-			}
-			&.validation-field-warning {
-				color: color(alerts, warning) !important;
-			}
-		}
 
 		// Fieldsets
 		.validation-fieldset-has-errors {
@@ -44,6 +29,10 @@ form {
 
 		// Placeholders.
 		.validation-field-has-errors {
+			// Labels
+			label {
+				color: color(alerts, error) !important;
+			}
 			&::-webkit-input-placeholder, ::-webkit-input-placeholder {
 				color: color(alerts, error) !important;
 			}

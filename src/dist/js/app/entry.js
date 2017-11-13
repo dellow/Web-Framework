@@ -10,6 +10,7 @@
 import Navigo from 'navigo'
 
 ;(function (App, window) {
+  
   /**
    * App
    * Constructor for App.
@@ -174,8 +175,10 @@ import Navigo from 'navigo'
   App.prototype.routes = function () {
     // Init Routing.
     window.Router = new Navigo(null, false)
-    // Get global route controller.
+    // Start global route controller init method.
     require('./routes/global').init()
+    // Start global route controller events method.
+    require('./routes/global').events()
     // Router.
     window.Router.on({
       // '/page': () => {
@@ -193,6 +196,7 @@ import Navigo from 'navigo'
 
   // Export
   window.App = new App()
+
 }(window.App = window.App || function () {}, window))
 
 // Start.

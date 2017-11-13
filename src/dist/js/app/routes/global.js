@@ -10,6 +10,7 @@
 import MobileMenu from '../classes/global/mobile.menu'
 
 ;(function (Module, window) {
+
   /**
    * Module
    * Constructor for this module.
@@ -40,7 +41,6 @@ import MobileMenu from '../classes/global/mobile.menu'
    * @access public
   **/
   Module.prototype._dom = {
-    form: $('[data-js-event="signupForm"]')
   }
 
   /**
@@ -53,35 +53,29 @@ import MobileMenu from '../classes/global/mobile.menu'
   **/
   Module.prototype.init = function () {
     MobileMenu.init()
-    this.formValidation()
   }
 
   /**
-   * formValidation
+   * events
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  Module.prototype.formValidation = function () {
-    // Init plugin.
-    window.App.plugins.validation(this._dom.form, {
-      serverValidation: false,
-      appendErrorToPlaceholder: true,
-      msgSep: '',
-      successCallback: function () {
-        // Check for Google Analytics.
-        if (window.config.ga_active) {
-          // Log it.
-          window.Helpers.log('Setting virtual page view: /form-success.virtual')
-          // Set a virtual page for GA.
-          window.ga('send', 'pageview', '/form-success.virtual')
-        }
+  Module.prototype.events = function () {
+    // Extend the events system.
+    window.Events.extend({
+      events: {
+        'click [data-js-event="eventMethod"]': 'eventMethod'
+      },
+      eventMethod: (e) => {
+        e[0].preventDefault()
       }
     })
   }
 
   // Export
   module.exports = new Module()
+  
 }(function () {}, window))

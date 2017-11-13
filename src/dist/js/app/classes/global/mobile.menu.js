@@ -8,6 +8,7 @@
 **/
 
 class MobileMenu {
+
   /**
    * constructor
    * NULLED.
@@ -264,6 +265,7 @@ class MobileMenu {
     // Append sub menu.
     this._dom.bodySubMenu.empty()
   }
+  
 }
 
 const MobileMenuClass = new MobileMenu()
