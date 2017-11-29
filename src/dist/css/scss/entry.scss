@@ -1,19 +1,17 @@
 @charset "UTF-8";
 
-// 1. Fonts
-@import 'fonts';
+// Set the framework theme.
+$theme: 'web'; // We can't actually use variables in @import declarations because SASS sucks like that so this is just for reference. Change all instances of 'web' to the theme you want to activate.
 
-// 2. Mixins
-@import 'mixins/#bootstrap';
-
-// 3. Base vars
-@import 'vars_base';
-
-// 4. App vars
-@import 'vars_app';
-
-// 5. Base
-@import 'base/#bootstrap';
-
-// 6. App
-@import 'app/#bootstrap';
+// Theme Fonts.
+@import 'themes/web/fonts';
+// System Mixins.
+@import 'system/mixins/#bootstrap';
+// Base vars.
+@import 'system/base/vars';
+// Theme vars.
+@import 'themes/web/vars';
+// Base styles.
+@import 'system/base/#bootstrap';
+// Theme styles.
+@import 'themes/web/#bootstrap';

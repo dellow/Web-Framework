@@ -48,13 +48,13 @@ body {
     max-width: 440px;
   }
   &--small {
-    max-width: 568px;
-  }
-  &--medium {
     max-width: 768px;
   }
-  &--large {
+  &--medium {
     max-width: 960px;
+  }
+  &--large {
+    max-width: 1024px;
   }
   &--wide {
     max-width: $desktop--wide;
@@ -67,10 +67,12 @@ body {
 
 // -- Page Wrapper -- //
 .page__wrapper {
-  position: relative;
-  left: 0; // Default position for animating.
-  z-index: 1;
-  transition: left $animation ease;
+  @include respond-to($mobile_menu){
+    position: relative;
+    left: 0; // Default position for animating.
+    z-index: 1;
+    transition: left $animation ease;
+  }
 }
 
 

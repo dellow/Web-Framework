@@ -557,7 +557,7 @@ module.exports = {
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ModernizrProto = __webpack_require__(8);
+var ModernizrProto = __webpack_require__(9);
   // Fake some of Object.create so we can force non test results to be non "own" properties.
   var Modernizr = function() {};
   Modernizr.prototype = ModernizrProto;
@@ -649,7 +649,7 @@ module.exports = function parseUrl(url) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var closest = __webpack_require__(38);
-var matches = __webpack_require__(13);
+var matches = __webpack_require__(14);
 
 /**
  * Delegates the handling of events for an element matching a selector to an
@@ -702,10 +702,11 @@ var matches = __webpack_require__(13);
 
 
 /***/ }),
-/* 8 */
+/* 8 */,
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var tests = __webpack_require__(9);
+var tests = __webpack_require__(10);
   /**
    *
    * ModernizrProto is the constructor for Modernizr
@@ -758,7 +759,7 @@ var tests = __webpack_require__(9);
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 
@@ -768,7 +769,7 @@ var tests = __webpack_require__(9);
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 
@@ -778,7 +779,7 @@ var tests = __webpack_require__(9);
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 
@@ -795,7 +796,7 @@ var tests = __webpack_require__(9);
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11055,7 +11056,7 @@ return jQuery;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 var proto = window.Element.prototype;
@@ -11113,7 +11114,6 @@ module.exports = function matches(element, test) {
 
 
 /***/ }),
-/* 14 */,
 /* 15 */,
 /* 16 */,
 /* 17 */,
@@ -11166,8 +11166,8 @@ window.Modernizr = __webpack_require__(25);
 | Loads jQuery and assigns to `jQuery` and `$` vars.
 |
 */
-window.jQuery = __webpack_require__(12);
-window.$ = __webpack_require__(12);
+window.jQuery = __webpack_require__(13);
+window.$ = __webpack_require__(13);
 
 /*
 |--------------------------------------------------------------------------
@@ -11302,8 +11302,8 @@ window.config.ga_active = window.ga;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Modernizr = __webpack_require__(5),
-    ModernizrProto = __webpack_require__(8),
-    classes = __webpack_require__(10),
+    ModernizrProto = __webpack_require__(9),
+    classes = __webpack_require__(11),
     testRunner = __webpack_require__(26),
     setClasses = __webpack_require__(28);
 
@@ -11328,9 +11328,9 @@ module.exports = Modernizr;
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var tests = __webpack_require__(9);
+var tests = __webpack_require__(10);
 var Modernizr = __webpack_require__(5);
-var classes = __webpack_require__(10);
+var classes = __webpack_require__(11);
 var is = __webpack_require__(27);
   /**
    * Run through all tests and detect their support in the current UA.
@@ -11431,7 +11431,7 @@ var is = __webpack_require__(27);
 /***/ (function(module, exports, __webpack_require__) {
 
 var Modernizr = __webpack_require__(5);
-var docElement = __webpack_require__(11);
+var docElement = __webpack_require__(12);
 var isSVG = __webpack_require__(29);
   /**
    * setClasses takes an array of class names and adds them to the root element
@@ -11478,7 +11478,7 @@ var isSVG = __webpack_require__(29);
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var docElement = __webpack_require__(11);
+var docElement = __webpack_require__(12);
   /**
    * A convenience helper to check if the document we are running in is an SVG document
    *
@@ -13715,7 +13715,7 @@ provide('eventTracker', EventTracker);
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var matches = __webpack_require__(13);
+var matches = __webpack_require__(14);
 var parents = __webpack_require__(39);
 
 /**
