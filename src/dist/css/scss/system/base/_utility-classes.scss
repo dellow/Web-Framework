@@ -481,13 +481,13 @@ body, html {
 // -- Responsive -- //
 .u-hide-tablet {
 	display: none !important;
-	@include respond-to($tablet_p + 1, null, true){
+	@include respond-to($tablet_l + 1, null, true){
 		display: inherit !important;
 	}
 }
 .u-hide-mobile {
 	display: none !important;
-	@include respond-to($mobile_p + 1, null, true){
+	@include respond-to($mobile_l + 1, null, true){
 		display: inherit !important;
 	}
 }
