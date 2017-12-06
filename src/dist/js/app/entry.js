@@ -10,7 +10,7 @@
 import Navigo from 'navigo'
 
 ;(function (App, window) {
-  
+
   /**
    * App
    * Constructor for App.
@@ -92,7 +92,7 @@ import Navigo from 'navigo'
         $('.obj-modal').remove()
       })
     },
-    sliders: function (el, options) {
+    sliders: (el, options) => {
       // DOM check.
       if (!el.length) return
 
@@ -101,7 +101,7 @@ import Navigo from 'navigo'
       // Init plugin.
       return el.slick(options)
     },
-    validation: function (el, options) {
+    validation: (el, options) => {
       // DOM check.
       if (!el.length) return
 
