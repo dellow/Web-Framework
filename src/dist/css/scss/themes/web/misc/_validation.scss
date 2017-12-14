@@ -19,84 +19,97 @@
 
 
 form {
-	&.validation-form-has-errors { // Qualified Selector
 
-		// Fieldsets
-		.validation-fieldset-has-errors {
-			border-color: lighten(color(alerts, error), 30%) !important;
-			background-color: lighten(color(alerts, error), 45%) !important;
+	// Error messages.
+	.validation-error-message {
+		font-weight: $bold;
+	}
+
+	// Fieldsets
+	.validation-fieldset-has-errors {
+		border-color: lighten(color(alerts, error), 30%) !important;
+		background-color: lighten(color(alerts, error), 45%) !important;
+	}
+
+	// Fields.
+	.validation-field-has-errors {
+		// Labels
+		label {
+			color: color(alerts, error) !important;
 		}
+		&::-webkit-input-placeholder, ::-webkit-input-placeholder {
+			color: color(alerts, error) !important;
+		}
+		&::-moz-placeholder, ::-moz-placeholder {
+			color: color(alerts, error) !important;
+		}
+		&:-moz-placeholder, :-moz-placeholder {
+			color: color(alerts, error) !important;
+		}
+		&:-ms-input-placeholder, :-ms-input-placeholder {
+			color: color(alerts, error) !important;
+		}
+		&::placeholder, ::placeholder {
+			color: color(alerts, error) !important;
+		}
+	}
 
-		// Placeholders.
-		.validation-field-has-errors {
-			// Labels
-			label {
-				color: color(alerts, error) !important;
-			}
-			&::-webkit-input-placeholder, ::-webkit-input-placeholder {
-				color: color(alerts, error) !important;
-			}
-			&::-moz-placeholder, ::-moz-placeholder {
-				color: color(alerts, error) !important;
-			}
-			&:-moz-placeholder, :-moz-placeholder {
-				color: color(alerts, error) !important;
-			}
-			&:-ms-input-placeholder, :-ms-input-placeholder {
-				color: color(alerts, error) !important;
-			}
-			&::placeholder, ::placeholder {
-				color: color(alerts, error) !important;
+	// Inputs
+	input, .input, select, textarea, .field-container {
+		&.validation-field-error {
+			color: color(alerts, error) !important;
+			border-color: lighten(color(alerts, error), 25%) !important;
+			background-color: lighten(color(alerts, error), 40%) !important;
+			&:focus {
+				background-color: lighten(color(alerts, error), 35%) !important;
 			}
 		}
-
-		.validation-field--placeholder {
-			input, .input, select, textarea, .field-container {
-				height: auto;
-				@include nudge(padding-bottom, 1.15);
-			}
-			.validation-field--placeholder--span {
-				position: absolute;
-				top: 35px; @include nudge(left, 0.4);
-				z-index: $zindex-1;
-				color: color(black);
-				@include rem(font-size, 12px);
+		&.validation-field-status {
+			color: color(alerts, status) !important;
+			border-color: lighten(color(alerts, status), 25%) !important;
+			background-color: lighten(color(alerts, status), 40%) !important;
+			&:focus {
+				background-color: lighten(color(alerts, status), 35%) !important;
 			}
 		}
+		&.validation-field-success {
+			color: color(alerts, success) !important;
+			border-color: lighten(color(alerts, success), 25%) !important;
+			background-color: lighten(color(alerts, success), 40%) !important;
+			&:focus {
+				background-color: lighten(color(alerts, success), 35%) !important;
+			}
+		}
+		&.validation-field-warning {
+			color: color(alerts, warning) !important;
+			border-color: lighten(color(alerts, warning), 25%) !important;
+			background-color: lighten(color(alerts, warning), 40%) !important;
+			&:focus {
+				background-color: lighten(color(alerts, warning), 35%) !important;
+			}
+		}
+	}
 
-		// Inputs
-		input, .input, select, textarea, .field-container {
-			&.validation-field-error {
-				color: color(alerts, error) !important;
-				border-color: lighten(color(alerts, error), 25%) !important;
-				background-color: lighten(color(alerts, error), 40%) !important;
-				&:focus {
-					background-color: lighten(color(alerts, error), 35%) !important;
-				}
+	// Custom selects.
+	.select {
+		&.validation-field-error {
+			&:before {
+				color: lighten(color(alerts, error), 15%) !important;
 			}
-			&.validation-field-status {
-				color: color(alerts, status) !important;
-				border-color: lighten(color(alerts, status), 25%) !important;
-				background-color: lighten(color(alerts, status), 40%) !important;
-				&:focus {
-					background-color: lighten(color(alerts, status), 35%) !important;
-				}
+		}
+		&.validation-field-status {
+			&:before {
+				color: lighten(color(alerts, status), 15%) !important;
 			}
-			&.validation-field-success {
-				color: color(alerts, success) !important;
-				border-color: lighten(color(alerts, success), 25%) !important;
-				background-color: lighten(color(alerts, success), 40%) !important;
-				&:focus {
-					background-color: lighten(color(alerts, success), 35%) !important;
-				}
+		}
+		&.validation-field-success {
+			&:before {
+				color: lighten(color(alerts, success), 15%) !important;
 			}
-			&.validation-field-warning {
-				color: color(alerts, warning) !important;
-				border-color: lighten(color(alerts, warning), 25%) !important;
-				background-color: lighten(color(alerts, warning), 40%) !important;
-				&:focus {
-					background-color: lighten(color(alerts, warning), 35%) !important;
-				}
+		}
+		&.validation-field-warning {
+			&:before {
+				color: lighten(color(alerts, warning), 15%) !important;
 			}
 		}
 	}

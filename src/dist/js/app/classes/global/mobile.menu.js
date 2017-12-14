@@ -58,8 +58,6 @@ class MobileMenu {
    * @access public
   **/
   events () {
-    const _this = this
-
     // Extend the events system.
     window.Events.extend({
       events: {
@@ -67,16 +65,16 @@ class MobileMenu {
         'click [data-js-event="menu-close"]': 'hideMainMenu',
         'click [data-js-target="mobile-menu"] .has_sub_menu': 'toggleSubMenu'
       },
-      toggleMenu: function (e) {
-        return (_this.subMenuOpen) ? _this.startMenuChild('hide') : _this.startMenuParent((!_this.mainMenuOpen) ? 'show' : 'hide')
+      toggleMenu: (e) => {
+        return (this.subMenuOpen) ? this.startMenuChild('hide') : this.startMenuParent((!this.mainMenuOpen) ? 'show' : 'hide')
       },
-      hideMainMenu: function (e) {
-        return (_this.subMenuOpen) ? _this.startMenuChild('hide') : _this.startMenuParent('hide')
+      hideMainMenu: (e) => {
+        return (this.subMenuOpen) ? this.startMenuChild('hide') : this.startMenuParent('hide')
       },
-      toggleSubMenu: function (e) {
+      toggleSubMenu: (e) => {
         e[0].preventDefault()
 
-        return _this.startMenuChild('show', $(e[0].currentTarget))
+        return this.startMenuChild('show', $(e[0].currentTarget))
       }
     })
   }
@@ -265,7 +263,7 @@ class MobileMenu {
     // Append sub menu.
     this._dom.bodySubMenu.empty()
   }
-  
+
 }
 
 const MobileMenuClass = new MobileMenu()

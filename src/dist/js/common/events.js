@@ -40,7 +40,7 @@
       return extension
     },
     register: function (name, callback) {
-      var _this = this
+      const _this = this
 
       // Cache event.
       var event = name.substr(0, name.indexOf(' '))

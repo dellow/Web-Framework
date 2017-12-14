@@ -16,12 +16,12 @@ else
   COMPONENTNAME_LOWER="$(tr [A-Z] [a-z] <<< "$COMPONENTNAME")"
   COMPONENTNAME_UPPER="$(tr [a-z] [A-Z] <<< "$COMPONENTNAME")"
   DISTPATH=$(cat package.json \
-  | grep dirSCSS \
+  | grep dirSCSSTheme \
   | head -1 \
   | awk -F: '{ print $2 }' \
   | sed 's/[",]//g' \
   | tr -d '[[:space:]]')
-  FILE="$DISTPATH"app/components/_$COMPONENTNAME_LOWER.scss
+  FILE="$DISTPATH"components/_$COMPONENTNAME_LOWER.scss
 fi
 
 # ---------------------------------------------------------------------------
@@ -43,7 +43,7 @@ else
   sed -i '' -e "s/template/$COMPONENTNAME_LOWER/g" $FILE
   ## Add to bootstrap.
   sed -i '' 's/Components.*$/&\
-    '"$COMPPATH"'/' "$DISTPATH"app/_#bootstrap.scss
+    '"$COMPPATH"'/' "$DISTPATH"_#bootstrap.scss
   ## Open in Sublime Text current window.
   # /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -a $FILE
   ## Open in Atom current window.

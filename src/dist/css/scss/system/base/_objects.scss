@@ -4,17 +4,30 @@
 // ==========================================================================
 
 
+// -- Form Fieldset -- //
+.obj-form-fieldset {
+  @include nudge(margin-bottom, 0.5);
+  &__title {
+    @include nudge(margin-bottom, 0.5);
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
 // -- Form Fields -- //
 .obj-form-field {
   @include nudge(margin-bottom, 0.5);
   position: relative;
-  p {
-    @include nudge(margin-bottom, 0.5);
-  }
   &__container {
     display: flex;
     * {
       @include nudge(margin-left, 0.5);
+      flex: 1;
       &:first-child {
         margin-left: 0;
       }
@@ -26,27 +39,15 @@
     @include scale(font-size, 14px);
     color: color(alerts, error);
   }
-  input:not([type="radio"]):not([type="checkbox"]), select, textarea {
-    &.full {
-      width: 100%;
-    }
-    &.half {
-      width: (100% / 2) - 1;
-    }
-    &.small {
-      width: (100% / 3);
-    }
-    &.v-small {
-      width: (100% / 6);
-    }
+  &__note {
+    line-height: 2.4;
+  }
+  p {
+    @include nudge(margin-bottom, 0.5);
   }
   label {
-    input[type="checkbox"], input[type="radio"] {
-      @include nudge(margin, 0 0.25 0 0);
-    }
     + .obj-form-field__note {
       @include nudge(margin-left, 0.75);
-      line-height: 2.4;
     }
   }
   &:last-child {

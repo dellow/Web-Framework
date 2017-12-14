@@ -40,6 +40,10 @@
     "underscore": "*",
     "verbal-expressions": "*"
   },
+  "config": {
+    "dirSCSS": "./src/dist/css/scss/",
+    "dirSCSSTheme": "./src/dist/css/scss/themes/web/"
+  },
   "scripts": {
     "server": "php -S localhost:8000 -t src/",
     "build": "webpack",

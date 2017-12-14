@@ -8,6 +8,7 @@
 **/
 
 import MobileMenu from '../classes/global/mobile.menu'
+import Validation from '../classes/global/validation'
 
 ;(function (Module, window) {
 
@@ -52,7 +53,10 @@ import MobileMenu from '../classes/global/mobile.menu'
    * @access public
   **/
   Module.prototype.init = function () {
+    // Init mobile menu.
     MobileMenu.init()
+    // Init validation.
+    Validation.init()
   }
 
   /**
@@ -77,5 +81,5 @@ import MobileMenu from '../classes/global/mobile.menu'
 
   // Export
   module.exports = new Module()
-  
+
 }(function () {}, window))

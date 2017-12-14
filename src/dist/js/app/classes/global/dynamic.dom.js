@@ -44,14 +44,12 @@ class DynamicDOM {
    * @access public
   **/
   events () {
-    const _this = this
-
     // Extend the events system.
     window.Events.extend({
       events: {
         'change [data-js-event="dynamicDom"]': 'dynamicDom'
       },
-      dynamicDom: function (e) {
+      dynamicDom: (e) => {
         e[0].preventDefault()
 
         // Get value.
@@ -59,7 +57,7 @@ class DynamicDOM {
         // Get DOM target.
         let target = $(e[0].currentTarget).data('dynamic-dom') || false
 
-        return (target && $(target).length) ? _this.updateTarget(value, $(target)) : _this.reportNoTarget()
+        return (target && $(target).length) ? this.updateTarget(value, $(target)) : this.reportNoTarget()
       }
     })
   }
@@ -87,7 +85,7 @@ class DynamicDOM {
   reportNoTarget () {
     return (!this._settings.failSilently) ? window.Helpers.throw('No DOM target specified.') : null
   }
-  
+
 }
 
 const DynamicDOMClass = new DynamicDOM()
