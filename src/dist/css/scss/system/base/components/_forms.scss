@@ -4,126 +4,122 @@
 // ==========================================================================
 
 
-form {
-
-	input:not([type="radio"]):not([type="checkbox"]), select, textarea {
-		width: 100%;
-		@include nudge(padding, 0.25);
-		border: 1px solid color(grey);
-    border-radius: $base_border_radius;
-		display: inline-block;
-		@include scale(font-size, 14px);
-		background: color(white);
-		transition: border-color $animation ease;
-		&[disabled] {
-      color: darken(color(grey), 15%);
-			background: #efeded;
-			&:hover, &:focus {
-				border-color: color(grey);
-			}
-		}
-		&:hover {
-			border-color: darken(color(grey), 12.5%);
-		}
-		&:focus {
-			border-color: darken(color(grey), 25%);
-		}
-		// Utilities.
-    &.u-full {
-      width: 100%;
-    }
-    &.u-half {
-      width: (100% / 2) - 1;
-    }
-    &.u-small {
-      width: (100% / 3);
-    }
-    &.u-v-small {
-      width: (100% / 6);
-    }
-		// Placeholders.
-		&::-webkit-input-placeholder {
-			color: color(grey, dark);
-		}
-		&::-moz-placeholder {
-			color: color(grey, dark);
-		}
-		&:-moz-placeholder {
-			color: color(grey, dark);
-		}
-		&:-ms-input-placeholder {
-			color: color(grey, dark);
-		}
-		&::placeholder {
-			color: color(grey, dark);
+input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+	width: 100%;
+	@include nudge(padding, 0.25);
+	border: 1px solid color(grey);
+  border-radius: $base_border_radius;
+	display: inline-block;
+	@include scale(font-size, 14px);
+	background: color(white);
+	transition: border-color $animation ease;
+	&[disabled] {
+    color: darken(color(grey), 15%);
+		background: #efeded;
+		&:hover, &:focus {
+			border-color: color(grey);
 		}
 	}
-
-  input:not([type="radio"]):not([type="checkbox"]), select {
-		height: $base_field_height;
+	&:hover {
+		border-color: darken(color(grey), 12.5%);
+	}
+	&:focus {
+		border-color: darken(color(grey), 25%);
+	}
+	// Utilities.
+  &.u-full {
+    width: 100%;
   }
+  &.u-half {
+    width: (100% / 2) - 1;
+  }
+  &.u-small {
+    width: (100% / 3);
+  }
+  &.u-v-small {
+    width: (100% / 6);
+  }
+	// Placeholders.
+	&::-webkit-input-placeholder {
+		color: color(grey, dark);
+	}
+	&::-moz-placeholder {
+		color: color(grey, dark);
+	}
+	&:-moz-placeholder {
+		color: color(grey, dark);
+	}
+	&:-ms-input-placeholder {
+		color: color(grey, dark);
+	}
+	&::placeholder {
+		color: color(grey, dark);
+	}
+}
 
+input:not([type="radio"]):not([type="checkbox"]), select {
+	height: $base_field_height;
+}
+
+select {
+	+ select {
+		@include nudge(margin-left, 0.5);
+	}
+}
+
+.select {
+	width: 100%;
+	position: relative;
+	display: inline-block;
+	vertical-align: bottom;
 	select {
-		+ select {
-			@include nudge(margin-left, 0.5);
-		}
+		@include nudge(padding, 8px 2em 8px 0.25);
+		appearance: none;
 	}
-
-	.select {
-		width: 100%;
-		position: relative;
-		display: inline-block;
-		vertical-align: bottom;
-		select {
-			@include nudge(padding, 8px 2em 8px 0.25);
-			appearance: none;
-		}
+	&:before {
+		width: 2em;
+		margin-top: -8px;
+    position: absolute;
+    top: 50%; right: 0;
+    content: '\25bc';
+    pointer-events: none;
+    color: color(grey);
+    line-height: 1;
+    text-align: center;
+    transform: scale(0.84, 0.42);
+		transition: color $animation ease;
+	}
+	+ .select {
+		@include nudge(margin-left, 0.15);
+	}
+	&:hover {
 		&:before {
-			width: 2em;
-			margin-top: -8px;
-	    position: absolute;
-	    top: 50%; right: 0;
-	    content: '\25bc';
-	    pointer-events: none;
-	    color: color(grey);
-	    line-height: 1;
-	    text-align: center;
-	    transform: scale(0.84, 0.42);
-			transition: color $animation ease;
-		}
-		+ .select {
-			@include nudge(margin-left, 0.15);
-		}
-		&:hover {
-			&:before {
-				color: darken(color(grey), 12.5%);
-			}
+			color: darken(color(grey), 12.5%);
 		}
 	}
+}
 
-	textarea {
-		min-height: 100px;
+textarea {
+	min-height: 100px;
+}
+
+label, .label {
+	display: inline-block;
+	font-weight: $bold;
+  line-height: 1.2;
+	abbr {
+		color: color(red);
 	}
+  input[type="checkbox"], input[type="radio"] {
+    @include nudge(margin, 0 0.25 0 0);
+  }
+}
 
-	label, .label {
-		display: inline-block;
-		font-weight: $bold;
-    line-height: 1.2;
-		abbr {
-			color: color(red);
-		}
-    input[type="checkbox"], input[type="radio"] {
-      @include nudge(margin, 0 0.25 0 0);
-    }
-	}
-
-	fieldset {
-		@include nudge(margin-bottom, 1);
-    &:last-child {
-      margin-bottom: 0;
-    }
-	}
-
+fieldset {
+	@include nudge(margin-bottom, 1);
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 

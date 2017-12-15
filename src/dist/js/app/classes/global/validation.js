@@ -5,7 +5,7 @@
  * Copyright 2017, Author Name
  * Some information on the license.
  *
-   window.validationRules = {
+   {
      nameOrId: {
        rule: 'required|string',
        messages: {
@@ -26,12 +26,12 @@ class Validation {
    * @version 1.0.0
    * @access public
   **/
-  init () {
-    // Guard :: Check for validation rules.
-    if (typeof window.validationRules === 'undefined' || window.validationRules === null) return
-
+  init (rules) {
     // Settings for this module.
     this._settings = {
+      defaultSuccess: 'Looks good.',
+      useAjax: false,
+      failIfFieldNotFound: true,
       highlightSuccessFields: true
     }
     // DOM elements for this module.
@@ -40,6 +40,12 @@ class Validation {
     // State for this module.
     this.state = {
     }
+
+    // Guard :: Check for rules object.
+    if (!this._settings.useAjax && (typeof rules === 'undefined' || rules === null)) return
+
+    // Globalise the rules.
+    this.rules = rules
     // Start events.
     this.events()
   }
@@ -65,10 +71,41 @@ class Validation {
         this.$form = $(e[0].currentTarget)
         // Create fields array.
         this.fieldsArray = []
-        // Clear current errors.
-        this.resetValidation()
+
+        if (this._settings.useAjax) {
+          return this.sendToServer()
+        }
 
         return this.checkValidationRules()
+      }
+    })
+  }
+
+  /**
+   * sendToServer
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  sendToServer () {
+    // Ajax request.
+    window.Axios.post(this.$form.attr('action') + '?isJson=1', this.$form.serialize()).then((res) => {
+      // Clear current errors.
+      this.resetValidation()
+      // Check status and error object.
+      if (res.status === 200 && !window.Helpers.isEmpty(res.data)) {
+        // Loop through the returned data.
+        for (let key in res.data) {
+          // Get element.
+          let $element = this._findDomElement(key)
+          // Check element.
+          if ($element) {
+            // Highlight errors.
+            this.highlightDomElementError($element, res.data[key])
+          }
+        }
       }
     })
   }
@@ -82,16 +119,25 @@ class Validation {
    * @access public
   **/
   checkValidationRules () {
+    // Clear current errors.
+    this.resetValidation()
     // Loop through the rules.
-    for (let fieldName in window.validationRules) {
+    for (let fieldName in this.rules) {
       // Cache the field.
-      let fieldValidationRule = window.validationRules[fieldName]
+      let fieldValidationRule = this.rules[fieldName]
       // Turn the rule into an array.
       let rulesArray = fieldValidationRule.rule.split('|')
       // Loop through the rules array and make sure there is a corresponding message incase it fails.
       for (let i = 0, ii = rulesArray.length; i < ii; i++) {
+        // Cache rule.
+        if (rulesArray[i].indexOf(':') !== -1) {
+          var subRules = rulesArray[i].split(':')
+          var ruleName = subRules[0]
+        } else {
+          var ruleName = rulesArray[i]
+        }
         // Check rule has a message and it's not empty.
-        if (!fieldValidationRule.messages.hasOwnProperty(rulesArray[i]) || window.Helpers.isEmpty(fieldValidationRule.messages[rulesArray[i]])) {
+        if (!fieldValidationRule.messages.hasOwnProperty(ruleName) || window.Helpers.isEmpty(fieldValidationRule.messages[ruleName])) {
           // Throw an error.
           throw new Error('All rules must have a corresponding message.')
         }
@@ -111,25 +157,11 @@ class Validation {
   **/
   checkFieldsExist () {
     // Loop through the rules.
-    for (let fieldName in window.validationRules) {
-      // Check field exists by ID in the form.
-      if ($('#' + fieldName, this.$form).length) {
-        // Cache the DOM element.
-        var $domElement = $('#' + fieldName, this.$form)
-      }
-      // Check field exists by name in the form.
-      else if ($('[name="' + fieldName + '"]', this.$form).length) {
-        // Cache the DOM element.
-        var $domElement = $('[name="' + fieldName + '"]', this.$form)
-      }
-      else {
-        // Throw an error.
-        throw new Error('Field: "' + fieldName + '" does not exist by `id` or `name` in the form.')
-      }
+    for (let fieldName in this.rules) {
       // Set field object.
-      window.validationRules[fieldName].dom = $domElement
+      this.rules[fieldName].dom = this._findDomElement(fieldName)
       // Add to array.
-      this.fieldsArray.push(window.validationRules[fieldName])
+      this.fieldsArray.push(this.rules[fieldName])
     }
 
     return this.runValidationRules()
@@ -164,8 +196,15 @@ class Validation {
       let validationValue = field.dom.val()
       // Loop through each rule and check the DOM element value against it.
       for (let i = 0, ii = rulesArray.length; i < ii; i++) {
+        // Cache rule.
+        if (rulesArray[i].indexOf(':') !== -1) {
+          var subRules = rulesArray[i].split(':')
+          var ruleName = subRules[0]
+        } else {
+          var ruleName = rulesArray[i]
+        }
         // Test rules array.
-        switch (rulesArray[i]) {
+        switch (ruleName) {
           case 'array' :
             validated = this._validateArray(validationValue)
             break
@@ -185,10 +224,10 @@ class Validation {
             validated = this._validateInteger(validationValue)
             break
           case 'max' :
-            validated = this._validateMax(validationValue)
+            validated = this._validateMax(validationValue, subRules[1])
             break
           case 'min' :
-            validated = this._validateMin(validationValue)
+            validated = this._validateMin(validationValue, subRules[1])
             break
           case 'notin' :
             validated = this._validateNotIn(validationValue)
@@ -213,14 +252,14 @@ class Validation {
             break
         }
         if (!validated) {
-          errors.push(field.messages[rulesArray[i]])
+          errors.push(field.messages[ruleName])
         }
       }
       // Check if any of the validation rules have failed.
       if (!window.Helpers.isEmpty(errors)) {
         this.highlightDomElementError(field.dom, errors[0])
       } else {
-        this.highlightDomElementSuccess(field.dom)
+        this.highlightDomElementSuccess(field.dom, (field.messages.hasOwnProperty('success')) ? field.messages.success : this._settings.defaultSuccess)
       }
     }
   }
@@ -236,17 +275,17 @@ class Validation {
   highlightDomElementError ($el, firstError) {
     // Add error to field.
     $el.addClass('validation-field-error')
-    // Set error location.
-    let $errorLocation = $el
+    // Set message location.
+    let $messageLocation = $el
     // Check if there is a parent class element.
     if ($el.parent().is('.input, .select, .textarea')) {
       // Add error to parent.
       $el.parent().addClass('validation-field-error')
-      // Set error location.
-      $errorLocation = $el.parent()
+      // Set message location.
+      $messageLocation = $el.parent()
     }
-    // Append an error to the dom.
-    $errorLocation.after('<div class="validation-error-message">' + firstError + '</div>')
+    // Append a message to the dom.
+    $messageLocation.after('<div class="validation-message error">' + firstError + '</div>')
   }
 
   /**
@@ -257,17 +296,23 @@ class Validation {
    * @version 1.0.0
    * @access public
   **/
-  highlightDomElementSuccess ($el) {
+  highlightDomElementSuccess ($el, successMessage) {
     // Guard :: Should we highlight success fields.
     if (!this._settings.highlightSuccessFields) return
 
     // Add success to field.
     $el.addClass('validation-field-success')
+    // Set message location.
+    let $messageLocation = $el
     // Check if there is a parent class element.
     if ($el.parent().is('.input, .select, .textarea')) {
       // Add success to parent.
       $el.parent().addClass('validation-field-success')
+      // Set message location.
+      $messageLocation = $el.parent()
     }
+    // Append a message to the dom.
+    $messageLocation.after('<div class="validation-message success">' + successMessage + '</div>')
   }
 
   /**
@@ -280,11 +325,9 @@ class Validation {
   **/
   resetValidation () {
     // Remove all validation messages.
-    $('.validation-error-message', this.$form).remove()
+    $('.validation-message', this.$form).remove()
     // Remove all validation classes.
-    $('input, .input, select, .select, textarea, .textarea', this.$form).each(() => {
-      $(this).removeClass('validation-field-error').removeClass('validation-field-success')
-    })
+    $('input, .input, select, .select, textarea, .textarea', this.$form).removeClass('validation-field-error validation-field-success')
   }
 
   /**
@@ -370,8 +413,8 @@ class Validation {
    * @version 1.0.0
    * @access public
   **/
-  _validateMax (value) {
-    return 1
+  _validateMax (value, threshold) {
+    return (value.length <= threshold)
   }
 
   /**
@@ -382,8 +425,8 @@ class Validation {
    * @version 1.0.0
    * @access public
   **/
-  _validateMin (value) {
-    return 1
+  _validateMin (value, threshold) {
+    return (value.length >= threshold)
   }
 
   /**
@@ -471,6 +514,35 @@ class Validation {
     let regEx = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/
 
     return (regEx.test(value))
+  }
+
+  /**
+   * _findDomElement
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  _findDomElement (fieldName) {
+    // Set DOM element.
+    let $domElement = null
+    // Check field exists by ID in the form.
+    if ($('#' + fieldName, this.$form).length) {
+      // Cache the DOM element.
+      $domElement = $('#' + fieldName, this.$form)
+    }
+    // Check field exists by name in the form.
+    else if ($('[name="' + fieldName + '"]', this.$form).length) {
+      // Cache the DOM element.
+      $domElement = $('[name="' + fieldName + '"]', this.$form)
+    }
+    else if (this._settings.failIfFieldNotFound) {
+      // Throw an error.
+      throw new Error('Field: "' + fieldName + '" does not exist by `id` or `name` in the form.')
+    }
+
+    return $domElement
   }
 
 }
