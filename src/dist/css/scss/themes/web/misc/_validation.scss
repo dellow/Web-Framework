@@ -22,13 +22,14 @@ form {
 
 	// Messages.
 	.validation-message {
-		width: 250px;
-		margin: 7px 0 0 10px;
+		@include scale(width, 275px);
+		margin: 8px 0 0 10px;
     display: flex;
     position: absolute;
     top: 0; left: 100%;
     font-size: 14px;
     line-height: 1.4;
+		background: color(white);
     &:before {
       font-family: 'Material Icons';
       font-weight: normal;

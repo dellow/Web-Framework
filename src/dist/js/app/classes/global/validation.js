@@ -30,8 +30,8 @@ class Validation {
     // Settings for this module.
     this._settings = {
       defaultSuccess: 'Looks good.',
-      useAjax: false,
-      failIfFieldNotFound: true,
+      validationType: 'server', // 'server' or 'client'
+      failIfFieldNotFound: false,
       highlightSuccessFields: true
     }
     // DOM elements for this module.
@@ -39,10 +39,11 @@ class Validation {
     }
     // State for this module.
     this.state = {
+      formSubmitted: false
     }
 
     // Guard :: Check for rules object.
-    if (!this._settings.useAjax && (typeof rules === 'undefined' || rules === null)) return
+    if (this._settings.validationType === 'client' && (typeof rules === 'undefined' || rules === null)) return
 
     // Globalise the rules.
     this.rules = rules
@@ -65,60 +66,71 @@ class Validation {
         'submit [data-js-event="validation"]': 'initValidation'
       },
       initValidation: (e) => {
-        e[0].preventDefault()
+        // Check if form has been submitted before.
+        if (!this.state.formSubmitted) {
+          e[0].preventDefault()
 
-        // Cache form.
-        this.$form = $(e[0].currentTarget)
-        // Create fields array.
-        this.fieldsArray = []
+          // Cache form.
+          this.$form = $(e[0].currentTarget)
+          // Create fields array.
+          this.fieldsArray = []
+          // Check settings for Ajax use.
+          if (this._settings.validationType === 'server') {
+            return this.startServerSideValidation()
+          }
 
-        if (this._settings.useAjax) {
-          return this.sendToServer()
+          return this.startClientSideValidation()
         }
-
-        return this.checkValidationRules()
       }
     })
   }
 
   /**
-   * sendToServer
+   * startServerSideValidation
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  sendToServer () {
+  startServerSideValidation () {
     // Ajax request.
     window.Axios.post(this.$form.attr('action') + '?isJson=1', this.$form.serialize()).then((res) => {
       // Clear current errors.
       this.resetValidation()
       // Check status and error object.
       if (res.status === 200 && !window.Helpers.isEmpty(res.data)) {
+        // Log it.
+        window.Helpers.log('Errors found in form')
+        console.log(res.data)
         // Loop through the returned data.
         for (let key in res.data) {
           // Get element.
           let $element = this._findDomElement(key)
           // Check element.
           if ($element) {
-            // Highlight errors.
+            // Highlight fields.
             this.highlightDomElementError($element, res.data[key])
           }
         }
+      } else {
+        // Update state.
+        this.state.formSubmitted = true
+        // Resubmit the form.
+        this.$form.submit()
       }
     })
   }
 
   /**
-   * checkValidationRules
+   * startClientSideValidation
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  checkValidationRules () {
+  startClientSideValidation () {
     // Clear current errors.
     this.resetValidation()
     // Loop through the rules.
@@ -257,9 +269,15 @@ class Validation {
       }
       // Check if any of the validation rules have failed.
       if (!window.Helpers.isEmpty(errors)) {
+        // Highlight fields.
         this.highlightDomElementError(field.dom, errors[0])
       } else {
+        // Highlight fields.
         this.highlightDomElementSuccess(field.dom, (field.messages.hasOwnProperty('success')) ? field.messages.success : this._settings.defaultSuccess)
+        // Update state.
+        this.state.formSubmitted = true
+        // Resubmit the form.
+        this.$form.submit()
       }
     }
   }

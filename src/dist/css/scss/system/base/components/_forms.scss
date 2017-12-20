@@ -41,19 +41,19 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
   }
 	// Placeholders.
 	&::-webkit-input-placeholder {
-		color: color(grey, dark);
+		color: color(grey, medium);
 	}
 	&::-moz-placeholder {
-		color: color(grey, dark);
+		color: color(grey, medium);
 	}
 	&:-moz-placeholder {
-		color: color(grey, dark);
+		color: color(grey, medium);
 	}
 	&:-ms-input-placeholder {
-		color: color(grey, dark);
+		color: color(grey, medium);
 	}
 	&::placeholder {
-		color: color(grey, dark);
+		color: color(grey, medium);
 	}
 }
 
