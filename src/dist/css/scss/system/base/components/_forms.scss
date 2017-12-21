@@ -107,6 +107,9 @@ label, .label {
 	display: inline-block;
 	font-weight: $bold;
   line-height: 1.2;
+	span {
+		font-weight: $normal;
+	}
 	abbr {
 		color: color(red);
 	}
