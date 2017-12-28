@@ -40,14 +40,30 @@
     color: color(alerts, error);
   }
   &__note {
-    line-height: 2.4;
+    @include scale(font-size, 13px);
+  }
+  &__button {
+    @include nudge(margin-top, 0.25);
+    @include scale(font-size, 13px);
+    a, button {
+      color: inherit;
+      font-weight: $bold;
+    }
   }
   p {
     @include nudge(margin-bottom, 0.5);
   }
-  label {
-    + .obj-form-field__note {
-      @include nudge(margin-left, 0.75);
+  ul {
+    &.cols {
+      li {
+        width: 50%;
+        float: left;
+      }
+    }
+    li {
+      margin-bottom: 3px;
+      list-style: none;
+      @include scale(font-size, 15px);
     }
   }
   &:last-child {

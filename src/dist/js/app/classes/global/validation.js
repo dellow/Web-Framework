@@ -5,15 +5,6 @@
  * Copyright 2017, Author Name
  * Some information on the license.
  *
-   {
-     nameOrId: {
-       rule: 'required|string',
-       messages: {
-         required: 'This field is required',
-         string: 'Must be a string'
-       }
-     }
-   }
 **/
 
 class Validation {
@@ -26,13 +17,23 @@ class Validation {
    * @version 1.0.0
    * @access public
   **/
-  init (rules) {
+  init (el, settings) {
     // Settings for this module.
     this._settings = {
       defaultSuccess: 'Looks good.',
       validationType: 'server', // 'server' or 'client'
       failIfFieldNotFound: false,
-      highlightSuccessFields: true
+      highlightSuccessFields: true,
+      failureURL: '',
+      rules: {
+        nameOrId: {
+          rule: 'required|string',
+          messages: {
+            required: 'This field is required',
+            string: 'Must be a string'
+          }
+        }
+      }
     }
     // DOM elements for this module.
     this._dom = {
@@ -41,14 +42,16 @@ class Validation {
     this.state = {
       formSubmitted: false
     }
+    // Merge settings.
+    this._settings = Object.assign(this._settings, settings)
 
     // Guard :: Check for rules object.
     if (this._settings.validationType === 'client' && (typeof rules === 'undefined' || rules === null)) return
 
     // Globalise the rules.
-    this.rules = rules
+    this.rules = this._settings.rules
     // Start events.
-    this.events()
+    this.events(el)
   }
 
   /**
@@ -59,11 +62,11 @@ class Validation {
    * @version 1.0.0
    * @access public
   **/
-  events () {
+  events (el) {
     // Extend the events system.
     window.Events.extend({
       events: {
-        'submit [data-js-event="validation"]': 'initValidation'
+        ['submit ' + el]: 'initValidation'
       },
       initValidation: (e) => {
         // Check if form has been submitted before.
@@ -95,29 +98,39 @@ class Validation {
   **/
   startServerSideValidation () {
     // Ajax request.
-    window.Axios.post(this.$form.attr('action') + '?isJson=1', this.$form.serialize()).then((res) => {
+    window.Axios.post(this.$form.attr('action'), this.$form.serialize()).then((res) => {
       // Clear current errors.
       this.resetValidation()
       // Check status and error object.
-      if (res.status === 200 && !window.Helpers.isEmpty(res.data)) {
+      if (res.status === 200 && res.data.status === 'error' && res.data.type === 'array' && !window.Helpers.isEmpty(res.data.payload)) {
         // Log it.
-        window.Helpers.log('Errors found in form')
-        console.log(res.data)
+        window.Helpers.log('Validation.js - Errors found in form')
         // Loop through the returned data.
-        for (let key in res.data) {
+        for (let key in res.data.payload) {
           // Get element.
           let $element = this._findDomElement(key)
           // Check element.
           if ($element) {
             // Highlight fields.
-            this.highlightDomElementError($element, res.data[key])
+            this.highlightDomElementError($element, res.data.payload[key])
           }
         }
+      } else if (res.status === 200 && res.data.status === 'error' && res.data.type === 'redirect') {
+        // Redirect.
+        window.location.replace(res.data.url)
       } else {
         // Update state.
         this.state.formSubmitted = true
         // Resubmit the form.
         this.$form.submit()
+      }
+    }).catch((err) => {
+      // Log it.
+      window.Helpers.log('Validation.js - Server error', 'negative')
+      console.log(err)
+      // Redirect to failure URL.
+      if (this._settings.failureURL !== '') {
+        window.location.replace(this._settings.failureURL)
       }
     })
   }
