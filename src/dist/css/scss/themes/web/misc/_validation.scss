@@ -23,11 +23,11 @@ form {
 	// Messages.
 	.validation-message {
 		@include scale(width, 275px);
-		margin: 8px 0 0 10px;
+		margin: 3px 0 0 10px;
     display: flex;
     position: absolute;
     top: 0; left: 100%;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.4;
 		background: color(white);
     &:before {
@@ -44,7 +44,7 @@ form {
       direction: ltr;
       font-feature-settings: 'liga';
       font-smoothing: antialiased;
-	    margin-right: 6px;
+	    margin: 4px 6px 0 0;
     	vertical-align: middle;
 	    font-weight: bold;
     }

@@ -2,7 +2,7 @@
  *
  * App Entry Point
  *
- * Copyright 2017, Author Name
+ * Copyright 2018, Author Name
  * Some information on the license.
  *
 **/
@@ -30,7 +30,7 @@ import Navigo from 'navigo'
    * @access public
   **/
   App.prototype._settings = {
-    usePjax: true
+    usePjax: false
   }
 
   /**
@@ -49,6 +49,8 @@ import Navigo from 'navigo'
       // Run routes on update.
       $('.page-main').on('pjax:end', this.routes.bind(this))
     }
+    // Run bootstrap.
+    this.bootstrap()
     // Run routes.
     this.routes()
   }
@@ -125,7 +127,7 @@ import Navigo from 'navigo'
    * @version 1.0.0
   **/
   App.prototype.preloaders = {
-    button: ($el, destroy) => {
+    button: ($el, destroy, noClick) => {
       // Guard :: Check element exists.
       if ($el.length) {
         if (!destroy) {
@@ -135,9 +137,7 @@ import Navigo from 'navigo'
             // Content.
             let content = JSON.stringify($el.html())
             // Loader.
-            let loader = $('<div><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg></div>').css({
-              'fill': '#FFFFFF'
-            }).hide()
+            let loader = $('<div><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg></div>').css({'fill': '#FFFFFF'}).hide()
             // Apply preloader.
             $el.css({
               'width': $el.outerWidth(),
@@ -153,16 +153,30 @@ import Navigo from 'navigo'
               'margin-top': -loader.outerHeight() / 2
             }).show()
             // Simulate button click.
-            $el.click()
+            if (!noClick) {
+              $el.click()
+            }
           }
         } else {
           // Renable the button.
-          $el.removeClass('btn--disabled')
+          $el.removeClass('btn--disabled active')
           // Remove preloader
           $el.removeClass('loading').html(JSON.parse($el.data('loader-content'))).removeAttr('data-loader-content').css({'width': '', 'height': '', 'position': ''})
         }
       }
     }
+  }
+
+  /**
+   * bootstrap
+   * Module bootstrap method.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  App.prototype.bootstrap = function () {
+    // Remove 'no-js' class from html.
+    $('html').removeClass('no-js').addClass('js')
   }
 
   /**

@@ -64,6 +64,9 @@ body, html {
 .u-no-float {
 	float: none !important;
 }
+.u-no-background {
+	background: none !important;
+}
 
 
 // ----------------------------------------------------------------------- //
@@ -218,6 +221,9 @@ body, html {
 
 // -- Hide Elements -- //
 .u-hidden {
+	display: none !important;
+}
+.u-hidden--js {
 	display: none !important;
 }
 .u-hidden--all {

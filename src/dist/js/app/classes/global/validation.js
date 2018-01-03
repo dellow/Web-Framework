@@ -2,7 +2,7 @@
  *
  * Class
  *
- * Copyright 2017, Author Name
+ * Copyright 2018, Author Name
  * Some information on the license.
  *
 **/
@@ -17,7 +17,7 @@ class Validation {
    * @version 1.0.0
    * @access public
   **/
-  init (el, settings) {
+  init ($el, settings) {
     // Settings for this module.
     this._settings = {
       defaultSuccess: 'Looks good.',
@@ -37,6 +37,7 @@ class Validation {
     }
     // DOM elements for this module.
     this._dom = {
+      form: $el
     }
     // State for this module.
     this.state = {
@@ -51,7 +52,7 @@ class Validation {
     // Globalise the rules.
     this.rules = this._settings.rules
     // Start events.
-    this.events(el)
+    this.events()
   }
 
   /**
@@ -62,11 +63,11 @@ class Validation {
    * @version 1.0.0
    * @access public
   **/
-  events (el) {
+  events () {
     // Extend the events system.
     window.Events.extend({
       events: {
-        ['submit ' + el]: 'initValidation'
+        ['submit ' + this._dom.form]: 'initValidation'
       },
       initValidation: (e) => {
         // Check if form has been submitted before.
@@ -75,6 +76,8 @@ class Validation {
 
           // Cache form.
           this.$form = $(e[0].currentTarget)
+          // Start preloader.
+          this.startPreloaders()
           // Create fields array.
           this.fieldsArray = []
           // Check settings for Ajax use.
@@ -89,6 +92,32 @@ class Validation {
   }
 
   /**
+   * startPreloaders
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  startPreloaders () {
+    // Button preloader.
+    window.App.preloaders.button($('button[type="submit"]', this._dom.form))
+  }
+
+  /**
+   * destroyPreloaders
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @access public
+  **/
+  destroyPreloaders () {
+    // Button preloader.
+    window.App.preloaders.button($('button[type="submit"]', this._dom.form), true)
+  }
+
+  /**
    * startServerSideValidation
    * NULLED.
    *
@@ -100,7 +129,7 @@ class Validation {
     // Ajax request.
     window.Axios.post(this.$form.attr('action'), this.$form.serialize()).then((res) => {
       // Clear current errors.
-      this.resetValidation()
+      this.reset()
       // Check status and error object.
       if (res.status === 200 && res.data.status === 'error' && res.data.type === 'array' && !window.Helpers.isEmpty(res.data.payload)) {
         // Log it.
@@ -145,7 +174,7 @@ class Validation {
   **/
   startClientSideValidation () {
     // Clear current errors.
-    this.resetValidation()
+    this.reset()
     // Loop through the rules.
     for (let fieldName in this.rules) {
       // Cache the field.
@@ -347,18 +376,20 @@ class Validation {
   }
 
   /**
-   * resetValidation
+   * reset
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  resetValidation () {
+  reset () {
     // Remove all validation messages.
     $('.validation-message', this.$form).remove()
     // Remove all validation classes.
     $('input, .input, select, .select, textarea, .textarea', this.$form).removeClass('validation-field-error validation-field-success')
+    // Remove preloaders.
+    this.destroyPreloaders()
   }
 
   /**

@@ -21,7 +21,7 @@
 
 // -- Form Fields -- //
 .obj-form-field {
-  @include nudge(margin-bottom, 0.5);
+  @include nudge(margin-bottom, 0.75);
   position: relative;
   &__container {
     display: flex;
@@ -41,6 +41,7 @@
   }
   &__note {
     @include scale(font-size, 13px);
+    color: darken(color(grey), 15%);
   }
   &__button {
     @include nudge(margin-top, 0.25);
@@ -69,6 +70,11 @@
   &:last-child {
     margin-bottom: 0;
   }
+  input:not([type="radio"]):not([type="checkbox"]), .input, select, .select, textarea, .textarea, .obj-form-field__container {
+    + .obj-form-field__note {
+      @include nudge(margin-top, 0.25);
+    }
+  }
 }
 
 
@@ -76,14 +82,15 @@
 
 
 .obj-email-suggestion {
-	width: 250px;
-	margin: 8px 0 0 10px;
+	width: 275px;
+	margin: 4px 0 0 10px;
   display: flex;
   position: absolute;
   top: 0; left: 100%;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.4;
   white-space: nowrap;
+  background: color(white);
   &:before {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -98,7 +105,7 @@
     direction: ltr;
     font-feature-settings: 'liga';
     font-smoothing: antialiased;
-    margin-right: 6px;
+    margin: 4px 6px 0 0;
   	vertical-align: middle;
     content: 'help';
   }

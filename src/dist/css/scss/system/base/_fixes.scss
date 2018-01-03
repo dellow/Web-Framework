@@ -5,10 +5,43 @@
 
 
 // ---
+// Targets browsers without JavaScript disabled.
+// Target: All
+// ---
+html.no-js {
+
+	.u-hidden--js {
+		display: block !important;
+	}
+
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Targets browsers without JavaScript enabled.
+// Target: All
+// ---
+html.js {
+
+	.u-hidden--js {
+		display: none !important;
+	}
+
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
 // Targets all legacy versions of Internet Explorer via conditional statements in header.
 // Target: IE6, IE7, IE8 & IE9
 // ---
 html.oldie {
+
 	// -- Container -- //
 	.container {
 		width: $desktop;
@@ -20,6 +53,7 @@ html.oldie {
 			padding-right: 0;
 		}
 	}
+
 }
 
 

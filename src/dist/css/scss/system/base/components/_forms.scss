@@ -89,9 +89,6 @@ select {
     transform: scale(0.84, 0.42);
 		transition: color $animation ease;
 	}
-	+ .select {
-		@include nudge(margin-left, 0.15);
-	}
 	&:hover {
 		&:before {
 			color: darken(color(grey), 12.5%);

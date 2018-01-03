@@ -3,7 +3,7 @@
  * jQuery Form Validation
  * jquery.validation.js
  *
- * Copyright 2017, Stewart Dellow
+ * Copyright 2018, Stewart Dellow
  * Some information on the license.
  *
  * $('.form').validation();
