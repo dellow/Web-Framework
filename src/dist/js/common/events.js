@@ -40,7 +40,7 @@
       return extension
     },
     register: function (name, callback) {
-      const _this = this
+      var _this = this
 
       // Cache event.
       var event = name.substr(0, name.indexOf(' '))
@@ -62,14 +62,12 @@
       } else if (event === 'ready') {
         // Add event.
         $(function () {
-          // Add $el to event object
-          e.$el = $(this)
           // Event
           if (typeof _this.event === 'function') {
             e = _this.event(e)
           }
           // Callback
-          _this[callback]([e])
+          _this[callback]()
         })
       } else {
         // Add event.

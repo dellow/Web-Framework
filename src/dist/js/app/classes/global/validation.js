@@ -48,7 +48,6 @@ class Validation {
 
     // Guard :: Check for rules object.
     if (this._settings.validationType === 'client' && (typeof rules === 'undefined' || rules === null)) return
-
     // Globalise the rules.
     this.rules = this._settings.rules
     // Start events.
@@ -128,12 +127,15 @@ class Validation {
   startServerSideValidation () {
     // Ajax request.
     window.Axios.post(this.$form.attr('action'), this.$form.serialize()).then((res) => {
+      console.log(res)
       // Clear current errors.
       this.reset()
       // Check status and error object.
       if (res.status === 200 && res.data.status === 'error' && res.data.type === 'array' && !window.Helpers.isEmpty(res.data.payload)) {
         // Log it.
         window.Helpers.log('Validation.js - Errors found in form')
+        // Remove preloaders.
+        this.destroyPreloaders()
         // Loop through the returned data.
         for (let key in res.data.payload) {
           // Get element.
@@ -144,10 +146,10 @@ class Validation {
             this.highlightDomElementError($element, res.data.payload[key])
           }
         }
-      } else if (res.status === 200 && res.data.status === 'error' && res.data.type === 'redirect') {
+      } else if (res.status === 200 && res.data.type === 'redirect') { // This might be error or success.
         // Redirect.
         window.location.replace(res.data.url)
-      } else {
+      } else { // Success.
         // Update state.
         this.state.formSubmitted = true
         // Resubmit the form.
@@ -175,6 +177,8 @@ class Validation {
   startClientSideValidation () {
     // Clear current errors.
     this.reset()
+    // Remove preloaders.
+    this.destroyPreloaders()
     // Loop through the rules.
     for (let fieldName in this.rules) {
       // Cache the field.
@@ -388,8 +392,6 @@ class Validation {
     $('.validation-message', this.$form).remove()
     // Remove all validation classes.
     $('input, .input, select, .select, textarea, .textarea', this.$form).removeClass('validation-field-error validation-field-success')
-    // Remove preloaders.
-    this.destroyPreloaders()
   }
 
   /**

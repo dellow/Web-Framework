@@ -83,7 +83,7 @@
 
 .obj-email-suggestion {
 	width: 275px;
-	margin: 4px 0 0 10px;
+	margin: 6px 0 0 10px;
   display: flex;
   position: absolute;
   top: 0; left: 100%;
@@ -105,7 +105,7 @@
     direction: ltr;
     font-feature-settings: 'liga';
     font-smoothing: antialiased;
-    margin: 4px 6px 0 0;
+    margin: 2px 6px 0 0;
   	vertical-align: middle;
     content: 'help';
   }
