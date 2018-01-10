@@ -4,61 +4,11 @@
 // ==========================================================================
 
 
-.page-mobile-menu {
-  width: 100%;
-  height: 100%;
-  float: left;
-  overflow-y: scroll;
-  opacity: 0;
-  position: fixed;
-  top: 0; left: -100%;
-  z-index: 1;
-  transition: left $animation ease, opacity $animation ease;
-  &__header {
-    display: flex;
-    @include nudge(padding, 0 0.75);
-    border-bottom: 1px solid rgba(color(black), 0.05);
-    &__close {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      button {
-        @include scale(font-size, 30px);
-        font-weight: $bold;
-        line-height: 1;
-        color: color(black);
-      }
-    }
-  }
-  &__body {
-    height: 100%;
-    @include nudge(padding, 0.5);
-    position: relative;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    background: color(white);
-    &__menuwrapper {
-      position: relative;
-      &__main {
-        width: 100%;
-        position: absolute;
-        @include nudge(top, 0.75); left: 0;
-        transition: left $animation ease;
-        @media only screen and (max-height: 530px) {
-          @include nudge(top, 0.5);
-        }
-      }
-      &__sub {
-        width: 100%;
-        @include nudge(padding-bottom, 1.5);
-        position: absolute;
-        @include nudge(top, 0.75); left: -100%;
-        transition: left $animation ease;
-        @media only screen and (max-height: 530px) {
-          @include nudge(top, 0.5);
-        }
-      }
-    }
+.page-mobile-header {
+  @include nudge(padding, 0.5);
+  border-bottom: 1px solid #f5f5f5;
+  @include respond-to($mobile_assets + 1, null, true){
+    display: none; // Hide by default.
   }
 }
 
@@ -66,8 +16,10 @@
 // ----------------------------------------------------------------------- //
 
 
-.page-mobile-header {
-  @include respond-to($mobile_menu + 1, null, true){
+.page-mobile-search {
+  @include nudge(padding, 0.5);
+  border-bottom: 1px solid #f5f5f5;
+  @include respond-to($mobile_assets + 1, null, true){
     display: none; // Hide by default.
   }
 }
@@ -77,7 +29,7 @@
 
 
 .page-header {
-  @include respond-to($mobile_menu){
+  @include respond-to($mobile_assets){
     display: none;
   }
 }

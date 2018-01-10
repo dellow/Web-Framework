@@ -7,8 +7,7 @@
  *
 **/
 
-import MobileMenu from '../classes/global/mobile.menu'
-import Validation from '../classes/global/validation'
+import Menus from '../classes/global/menus'
 import Email from '../classes/global/email'
 
 ;(function (Module, window) {
@@ -54,10 +53,8 @@ import Email from '../classes/global/email'
    * @access public
   **/
   Module.prototype.init = function () {
-    // Init Mobile menu.
-    MobileMenu.init()
-    // Init Validation.
-    Validation.init()
+    // Init Menus.
+    Menus.init()
     // Init Email.
     Email.init()
   }

@@ -59,6 +59,26 @@
           // Callback
           _this[callback]([e])
         })
+      } else if (event === 'document') {
+        // Add event.
+        $(document).on(selector, function (e) {
+          // Add $el to event object
+          e.$el = $(this)
+          // Event
+          if (typeof _this.event === 'function') {
+            e = _this.event(e)
+          }
+          // Callback
+          _this[callback]([e])
+        })
+      } else if (event === 'keycode') {
+        // Add event.
+        $(document).on('keyup', function (e) {
+          if (e.keyCode === parseInt(selector)) {
+            // Callback
+            _this[callback]([e])
+          }
+        })
       } else if (event === 'ready') {
         // Add event.
         $(function () {

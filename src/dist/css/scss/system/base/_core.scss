@@ -10,7 +10,7 @@ body {
     display: none;
   }
   &:after {
-    content: "" + strip-unit($mobile_menu); // Output the mobile menu size.
+    content: "" + strip-unit($mobile_assets); // Output the mobile menu size.
   }
   // Responsive
   @include respond-to-range(mobile){
@@ -65,13 +65,25 @@ body {
 // ----------------------------------------------------------------------- //
 
 
-// -- Page Wrapper -- //
-.page__wrapper {
-  @include respond-to($mobile_menu){
-    position: relative;
-    left: 0; // Default position for animating.
-    z-index: 1;
-    transition: left $animation ease;
+.side {
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.page {
+  &, &:before {
+    transition: all 500ms cubic-bezier(.645, .045, .355, 1);
+  }
+  &:before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: rgba(29, 29, 31, 0);
   }
 }
 

@@ -5,10 +5,11 @@
 
 
 // -- Config -- //
-$mn          : 24px !default;
-$gutter      : 0.5 !default;
-$animation   : 300ms !default;
-$mobile_menu : 768px !default;
+$mn              : 24px !default;
+$gutter          : 0.5 !default;
+$animation       : 300ms !default;
+$mobile_assets   : 468px !default;
+$side_panel_width: 320px !default;
 
 
 // ----------------------------------------------------------------------- //
@@ -26,10 +27,11 @@ $base_ul_indent     : 1.2em !default;
 
 // -- Typography -- //
 // Faces
-$monospaced: 'source-code-pro', monospace !default;
-$serif     : Georgia !default;
-$sans_serif: "Helvetica Neue" !default;
-$base_font : "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+$monospaced : 'source-code-pro', monospace !default;
+$serif      : Georgia !default;
+$circular   : 'Circular Std';
+$sans_serif : $circular;
+$base_font  : $circular, 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
 
 // Headings
 $h1      : 48px !default;

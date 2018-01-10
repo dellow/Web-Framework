@@ -1,0 +1,189 @@
+// ==========================================================================
+// Base > Components > Side Panel
+// Styles for side panel.
+// ==========================================================================
+
+
+body.js-panel-open {
+  .comp-side-panel {
+    height: 100%;
+    transform: translate3d(0, 0, 0);
+    &__scrollable {
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+  }
+  .page {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    transform: translate3d($side_panel_width, 0, 0);
+    &:before {
+      position: fixed;
+      left: 0; top: 0;
+      z-index: $zindex-1;
+      background: rgba(29, 29, 31, 0.6);
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.comp-side-panel {
+  $textColor: color(black);
+  $backgroundColor:color(white);
+  $backgroundColorAlt: darken($backgroundColor, 5%);
+  $backgroundColorDark: darken($backgroundColor, 12%);
+
+  width: $side_panel_width;
+  display: block;
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  z-index: $zindex-1;
+  @include scale(font-size, 15px);
+  transform: translate3d(-$side_panel_width, 0, 0);
+  transition: all 500ms cubic-bezier(.645, .045, .45, 1);
+  &, a {
+    color: $textColor;
+  }
+  .n {
+    background: $backgroundColor;
+  }
+  .a {
+    background: $backgroundColorAlt;
+  }
+  .d {
+    background: $backgroundColorDark;
+  }
+  // color: rgba(color(white), 0.65);
+  // &:hover {
+  //   color: rgba(color(white), 1);
+  // }
+  &__menu {
+    @include nudge(padding, 1 0.75);
+    &__header {
+      @include nudge(padding-bottom, 0.5);
+      @include nudge(margin-bottom, 0.5);
+      border-bottom: 1px solid rgba(color(white), 0.2);
+      font-weight: $bold;
+      text-transform: uppercase;
+    }
+  }
+  &__spacer {
+    @include nudge(padding, 0.35 0);
+  }
+  &__social {
+    @include nudge(padding, 0.25 0.75);
+    text-align: center;
+    .menu-social {
+      li {
+        margin: 0 5px;
+      }
+    }
+  }
+  &__user {
+    &__header {
+      @include nudge(padding, 1.25 0.75);
+      a {
+        border-bottom: 1px solid $textColor;
+        &:hover {
+          border-color: transparent;
+        }
+      }
+      span {
+        display: inline-block;
+        &:first-child {
+          @include scale(font-size, 16px);
+          font-weight: $bold;
+        }
+        &:last-child {
+          margin-left: 15px;
+        }
+      }
+    }
+    &__body {
+      @include scale(font-size, 14px);
+      ul {
+        li {
+          a {
+            @include nudge(padding, 0.5 0.75);
+            display: block;
+            .icon {
+              margin-right: 10px;
+              vertical-align: middle;
+              font-size: 18px;
+              opacity: 0.75;
+            }
+          }
+        }
+      }
+    }
+    &__tabs {
+      @include scale(font-size, 14px);
+      &__single {
+        &__header {
+          @include nudge(padding, 0.4 0.75);
+          border-bottom: 1px solid darken($backgroundColorAlt, 7.5%);
+          button {
+            width: 100%;
+            display: flex;
+            color: $textColor;
+            span {
+              display: flex;
+              align-items: center;
+              &:last-child {
+                margin-left: auto;
+              }
+            }
+            .icon {
+              &:after {
+                content: 'add';
+              }
+            }
+          }
+        }
+        &__body {
+          border-bottom: 1px solid darken($backgroundColorAlt, 7.5%);
+          display: none;
+          background: color(white);
+          ul {
+            li {
+              a {
+                @include nudge(padding, 0.4 0.75);
+                display: block;
+                color: #656161;
+              }
+            }
+          }
+        }
+        &.active {
+          .comp-side-panel__user__tabs__single {
+            &__header {
+              button {
+                .icon {
+                  &:after {
+                    content: 'remove';
+                  }
+                }
+              }
+            }
+            &__body {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__footer {
+    @include nudge(padding, 1);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //

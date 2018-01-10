@@ -1,24 +1,85 @@
-// ==========================================================================
-// Site > Fonts
-// Local @font-face styles.
-// ==========================================================================
+/* ==========================================================================
+  Site > Fonts
+  Local @font-face styles.
+========================================================================== */
 
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 
-// ----------------------------------------------------------------------- //
+/* ----------------------------------------------------------------------- */
 
 
-// @font-face {
-//   font-family: 'socicon';
-//   font-weight: normal;
-//   font-style: normal;
-//   src: url(fonts/socicon/socicon.woff) format('woff'),
-//        url(fonts/socicon/socicon.ttf) format('truetype'),
-//        url(fonts/socicon/socicon.eot),
-//        url(fonts/socicon/socicon.eot?#iefix) format('embedded-opentype');
-// }
+@font-face {
+  font-family: 'socicon';
+  font-weight: normal;
+  font-style: normal;
+  src: url(/build/fonts/socicon/socicon.woff) format('woff'),
+       url(/build/fonts/socicon/socicon.ttf) format('truetype'),
+       url(/build/fonts/socicon/socicon.eot),
+       url(/build/fonts/socicon/socicon.eot?#iefix) format('embedded-opentype');
+}
 
 
-// ----------------------------------------------------------------------- //
+/* ----------------------------------------------------------------------- */
+
+
+@font-face {
+  font-family: 'Circular Std';
+  font-weight: normal;
+  font-style: normal;
+  src: url(/build/fonts/app/CircularStd-Book.woff) format('woff'),
+       url(/build/fonts/app/CircularStd-Book.ttf) format('truetype'),
+       url(/build/fonts/app/CircularStd-Book.eot),
+       url(/build/fonts/app/CircularStd-Book.eot?#iefix) format('embedded-opentype');
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  font-weight: normal;
+  font-style: italic;
+  src: url(/build/fonts/app/CircularStd-BookItalic.woff) format('woff'),
+       url(/build/fonts/app/CircularStd-BookItalic.ttf) format('truetype'),
+       url(/build/fonts/app/CircularStd-BookItalic.eot),
+       url(/build/fonts/app/CircularStd-BookItalic.eot?#iefix) format('embedded-opentype');
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  font-weight: bold;
+  font-style: normal;
+  src: url(/build/fonts/app/CircularStd-Bold.woff) format('woff'),
+       url(/build/fonts/app/CircularStd-Bold.ttf) format('truetype'),
+       url(/build/fonts/app/CircularStd-Bold.eot),
+       url(/build/fonts/app/CircularStd-Bold.eot?#iefix) format('embedded-opentype');
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  font-weight: bold;
+  font-style: italic;
+  src: url(/build/fonts/app/CircularStd-BoldItalic.woff) format('woff'),
+       url(/build/fonts/app/CircularStd-BoldItalic.ttf) format('truetype'),
+       url(/build/fonts/app/CircularStd-BoldItalic.eot),
+       url(/build/fonts/app/CircularStd-BoldItalic.eot?#iefix) format('embedded-opentype');
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  font-weight: 900;
+  font-style: normal;
+  src: url(/build/fonts/app/CircularStd-Black.woff) format('woff'),
+       url(/build/fonts/app/CircularStd-Black.ttf) format('truetype'),
+       url(/build/fonts/app/CircularStd-Black.eot),
+       url(/build/fonts/app/CircularStd-Black.eot?#iefix) format('embedded-opentype');
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  font-weight: 900;
+  font-style: italic;
+  src: url(/build/fonts/app/CircularStd-BlackItalic.woff) format('woff'),
+       url(/build/fonts/app/CircularStd-BlackItalic.ttf) format('truetype'),
+       url(/build/fonts/app/CircularStd-BlackItalic.eot),
+       url(/build/fonts/app/CircularStd-BlackItalic.eot?#iefix) format('embedded-opentype');
+}

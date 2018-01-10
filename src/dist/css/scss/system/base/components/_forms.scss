@@ -189,7 +189,7 @@ label, .label {
   }
 }
 
-button {
+button[type="submit"] {
   border-radius: $base_border_radius;
 }
 

@@ -42,7 +42,20 @@
 <!-- ============================================================================== -->
 <!--                                                                     JAVASCRIPT -->
 <!-- ============================================================================== -->
-<script>window.config={baseURL: ''}</script>
+<script>
+window.config = {
+  baseURL: '',
+  menus: {
+    primaryTitle: 'Menu',
+    primary: [
+      { title: 'Home', href: '/', className: '', children: [], type: 'auto', exclude: [] },
+      { title: 'Menu #1', href: 'HREF_HERE', className: '', children: [], type: 'auto', exclude: [] },
+      { title: 'Menu #2', href: 'HREF_HERE', className: '', children: [], type: 'auto', exclude: [] },
+      { title: 'Menu #3', href: 'HREF_HERE', className: '', children: [], type: 'auto', exclude: [] },
+    ]
+  }
+}
+</script>
 <!-- ============================================================================== -->
 <!--                                                                      ANALYTICS -->
 <!-- ============================================================================== -->
@@ -72,12 +85,14 @@ ga('send', 'pageview', {
 </script>
 </head>
 <body>
-  <!-- Page Wrapper -->
-	<div class="page__wrapper" data-js-target="mobile-menu-content">
+  <!-- Side -->
+	<div class="side"></div><!-- end .side -->
+  <!-- Page -->
+	<div class="page">
 
 		<!-- Header :: Mobile -->
-		<div class="page-mobile-header" data-js-target="mobile-menu-header" aria-hidden="true">
-      <button class="obj-mobile-menu-btn" data-js-event="menu-open"><span></span></button>
+		<div class="page-mobile-header" aria-hidden="true">
+      <button class="obj-hamburger" data-js-event="sideMenu"><span></span></button>
     </div><!-- end .page-mobile-header -->
 
 		<!-- Header :: Desktop -->
@@ -85,18 +100,18 @@ ga('send', 'pageview', {
       <div class="container">
         <nav class="navigation" role="navigation" aria-label="primary">
           <!-- Desktop navigation -->
-          <ul class="menu-desktop" role="menu">
+          <ul class="menu-desktop" role="menu" data-menu="desktop">
             <li role="menuitem">
-              <a href="HREF_HERE" title="Menu">Menu</a>
+              <a href="/" title="Home">Home</a>
             </li>
             <li role="menuitem">
-              <a href="HREF_HERE" title="Menu">Menu</a>
+              <a href="HREF_HERE" title="Menu #1">Menu #1</a>
             </li>
             <li role="menuitem">
-              <a href="HREF_HERE" title="Menu">Menu</a>
+              <a href="HREF_HERE" title="Menu #2">Menu #2</a>
             </li>
             <li role="menuitem">
-              <a href="HREF_HERE" title="Menu">Menu</a>
+              <a href="HREF_HERE" title="Menu #3">Menu #3</a>
             </li>
           </ul>
         </nav>
@@ -181,39 +196,7 @@ ga('send', 'pageview', {
   	<footer class="page-footer" role="contentinfo">
     </footer><!-- end .page-footer -->
 
-  </div>
-
-  <!-- Mobile Menu -->
-  <div class="page-mobile-menu" data-js-target="mobile-menu" aria-hidden="true">
-    <div class="page-mobile-menu__header">
-      <div class="page-mobile-menu__header__close">
-        <button data-js-event="menu-close" aria-label="close">X</button>
-      </div>
-    </div>
-    <div class="page-mobile-menu__body">
-      <div class="page-mobile-menu__body__menuwrapper">
-        <div class="page-mobile-menu__body__menuwrapper__main">
-          <!-- Mobile navigation -->
-          <ul class="menu-mobile" role="menu">
-            <li role="menuitem">
-              <a href="HREF_HERE" title="Menu">Menu</a>
-            </li>
-            <li role="menuitem">
-              <a href="HREF_HERE" title="Menu">Menu</a>
-            </li>
-            <li role="menuitem">
-              <a href="HREF_HERE" title="Menu">Menu</a>
-            </li>
-            <li role="menuitem">
-              <a href="HREF_HERE" title="Menu">Menu</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="page-mobile-menu__body__menuwrapper__sub">
-      </div>
-    </div>
-  </div><!-- end .page-mobile-menu -->
+  </div><!-- end .page -->
 
 	<!-- JavaScript Assets -->
   <script src="build/js/common.js"></script>

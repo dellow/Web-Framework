@@ -267,53 +267,20 @@
 // ----------------------------------------------------------------------- //
 
 
-.obj-mobile-menu-btn {
+.obj-hamburger {
   width: 30px;
   height: 25px;
   cursor: pointer;
-  &.half {
-    span {
-      background-color: transparent;
-      &:before, &:after {
-        width: 20px;
-        background: color(copy, link);
-      }
-      &:before {
-        top: 7px;
-        transform: rotate(45deg);
-      }
-      &:after {
-        top: -7px;
-        transform: rotate(-45deg);
-      }
-    }
-  }
-  &.active {
-    span {
-      background-color: transparent;
-      &:before, &:after {
-        top: 0;
-        background: color(copy, link);
-      }
-      &:before {
-        transform: rotate(45deg);
-      }
-      &:after {
-        transform: rotate(-45deg);
-      }
-    }
-  }
   span {
     &, &:before, &:after {
       width: 30px;
       height: 4px;
-      border-radius: 1px;
+      border-radius: 3px;
       display: block;
       position: absolute;
       content: '';
       cursor: pointer;
       background: color(black);
-      transition: all $animation ease-in-out;
     }
     &:before {
       top: -8px;
