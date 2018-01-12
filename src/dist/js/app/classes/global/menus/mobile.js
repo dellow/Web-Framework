@@ -125,31 +125,31 @@ class MenusMobile {
           </div>
           <div class="comp-side-panel__user">
             <div class="comp-side-panel__user__header a">
-              <span>Welcome</span>
-              <span><a href="/register">Register</a></span>
+              ${(window.config.user) ? '<span>Hi ' + window.config.user.first_name + '</span>' : '<span>Welcome</span>' }
+              ${(window.config.user) ? '<span><a href="/logout">Logout</a></span>' : '<span><a href="/register">Register</a></span>' }
             </div>
             <div class="comp-side-panel__user__body n">
               <ul role="menu">
                 <li role="menuitem">
-                  <a href="HREF_HERE">
+                  <a href="/account">
                     <i class="icon material-icons">person</i>
                     <span>My Account</span>
                   </a>
                 </li>
                 <li role="menuitem">
-                  <a href="HREF_HERE">
+                  <a href="/cart">
                     <i class="icon material-icons">shopping_cart</i>
                     <span>My Orders</span>
                   </a>
                 </li>
                 <li role="menuitem">
-                  <a href="HREF_HERE">
+                  <a href="/wishlist">
                     <i class="icon material-icons">favorite_border</i>
-                    <span>My Wishlist</span>
+                    <span>My Favourites</span>
                   </a>
                 </li>
                 <li role="menuitem">
-                  <a href="HREF_HERE">
+                  <a href="/returns">
                     <i class="icon material-icons">undo</i>
                     <span>Returns Information</span>
                   </a>
@@ -166,10 +166,10 @@ class MenusMobile {
                 </div>
                 <div class="comp-side-panel__user__tabs__single__body">
                   <ul role="menu">
-                    <li role="menuitem"><a href="HREF_HERE">Help</a></li>
-                    <li role="menuitem"><a href="HREF_HERE">Track Order</a></li>
-                    <li role="menuitem"><a href="HREF_HERE">Delivery &amp; Returns</a></li>
-                    <li role="menuitem"><a href="HREF_HERE">ASOS Premier Delivery</a></li>
+                    <li role="menuitem"><a href="/returns">Returns</a></li>
+                    <li role="menuitem"><a href="/delivery-information">Delivery Information</a></li>
+                    <li role="menuitem"><a href="/faqs">Ordering FAQs</a></li>
+                    <li role="menuitem"><a href="/contact-us">Contact</a></li>
                   </ul>
                 </div>
               </div>
@@ -182,10 +182,9 @@ class MenusMobile {
                 </div>
                 <div class="comp-side-panel__user__tabs__single__body">
                   <ul role="menu">
-                    <li role="menuitem"><a href="HREF_HERE">Help</a></li>
-                    <li role="menuitem"><a href="HREF_HERE">Track Order</a></li>
-                    <li role="menuitem"><a href="HREF_HERE">Delivery &amp; Returns</a></li>
-                    <li role="menuitem"><a href="HREF_HERE">ASOS Premier Delivery</a></li>
+                    <li role="menuitem"><a href="/blog">Our Blog</a></li>
+                    <li role="menuitem"><a href="/about-us">Our Story</a></li>
+                    <li role="menuitem"><a href="/testimonials">Testimonials</a></li>
                   </ul>
                 </div>
               </div>
@@ -198,10 +197,10 @@ class MenusMobile {
                 </div>
                 <div class="comp-side-panel__user__tabs__single__body">
                   <ul role="menu">
-                    <li role="menuitem"><a href="HREF_HERE">Help</a></li>
-                    <li role="menuitem"><a href="HREF_HERE">Track Order</a></li>
-                    <li role="menuitem"><a href="HREF_HERE">Delivery &amp; Returns</a></li>
-                    <li role="menuitem"><a href="HREF_HERE">ASOS Premier Delivery</a></li>
+                    <li role="menuitem"><a href="/packaged-with-care">Packaged With Care</a></li>
+                    <li role="menuitem"><a href="/advice-for-collectors">Advice For Collectors</a></li>
+                    <li role="menuitem"><a href="/poster-restoration">Poster Restoration</a></li>
+                    <li role="menuitem"><a href="/auctions">AntikBar Auctions</a></li>
                   </ul>
                 </div>
               </div>
@@ -209,12 +208,12 @@ class MenusMobile {
           </div>
           <div class="comp-side-panel__footer d">
             <div class="comp-side-panel__footer__left">
-              &copy; 2018 Company Name
+              &copy; ` + (new Date()).getFullYear() + ` ` + window.config.name + `
             </div>
             <div class="comp-side-panel__footer__right">
-              <a href="HREF_HERE">Privacy Policy</a>
+              <a href="/privacy-policy">Privacy Policy</a>
               &nbsp; | &nbsp;
-              <a href="HREF_HERE">T&Cs</a>
+              <a href="/terms-conditions">T&Cs</a>
             </div>
           </div>
         </div>

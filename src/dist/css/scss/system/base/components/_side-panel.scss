@@ -24,7 +24,7 @@ body.js-panel-open {
     &:before {
       position: fixed;
       left: 0; top: 0;
-      z-index: $zindex-1;
+      z-index: $zindex-3;
       background: rgba(29, 29, 31, 0.6);
     }
   }
@@ -36,9 +36,10 @@ body.js-panel-open {
 
 .comp-side-panel {
   $textColor: color(black);
-  $backgroundColor:color(white);
-  $backgroundColorAlt: darken($backgroundColor, 5%);
-  $backgroundColorDark: darken($backgroundColor, 12%);
+  $backgroundColorNormal: color(white);
+  $backgroundColorAlt: #eeeeee;
+  $backgroundColorLight: #f8f8f8;
+  $backgroundColorDark: #dddddd;
 
   width: $side_panel_width;
   display: block;
@@ -47,23 +48,22 @@ body.js-panel-open {
   z-index: $zindex-1;
   @include scale(font-size, 15px);
   transform: translate3d(-$side_panel_width, 0, 0);
-  transition: all 500ms cubic-bezier(.645, .045, .45, 1);
+  transition: all $animation cubic-bezier(.645, .045, .45, 1);
   &, a {
     color: $textColor;
   }
   .n {
-    background: $backgroundColor;
+    background: $backgroundColorNormal;
   }
   .a {
     background: $backgroundColorAlt;
   }
+  .l {
+    background: $backgroundColorLight;
+  }
   .d {
     background: $backgroundColorDark;
   }
-  // color: rgba(color(white), 0.65);
-  // &:hover {
-  //   color: rgba(color(white), 1);
-  // }
   &__menu {
     @include nudge(padding, 1 0.75);
     &__header {
@@ -128,10 +128,11 @@ body.js-panel-open {
       &__single {
         &__header {
           @include nudge(padding, 0.4 0.75);
-          border-bottom: 1px solid darken($backgroundColorAlt, 7.5%);
+          border-bottom: 1px solid #dddddd;
           button {
             width: 100%;
             display: flex;
+            align-items: center;
             color: $textColor;
             span {
               display: flex;
@@ -141,6 +142,7 @@ body.js-panel-open {
               }
             }
             .icon {
+              font-size: 19px;
               &:after {
                 content: 'add';
               }
@@ -148,7 +150,7 @@ body.js-panel-open {
           }
         }
         &__body {
-          border-bottom: 1px solid darken($backgroundColorAlt, 7.5%);
+          border-bottom: 1px solid #dddddd;
           display: none;
           background: color(white);
           ul {
@@ -181,7 +183,23 @@ body.js-panel-open {
     }
   }
   &__footer {
-    @include nudge(padding, 1);
+    @include nudge(padding, 0.75);
+    display: flex;
+    @include scale(font-size, 12px);
+    &, a {
+      color: #666;
+    }
+    a {
+      &:hover {
+        color: darken(#666, 10%);
+      }
+    }
+    &__left {
+
+    }
+    &__right {
+      margin-left: auto;
+    }
   }
 }
 

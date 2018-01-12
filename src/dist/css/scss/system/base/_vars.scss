@@ -4,12 +4,37 @@
 // ==========================================================================
 
 
-// -- Config -- //
+// -- Device & Container Widths (http://mydevice.io/devices/) -- //
+$container    : 1180px !default;
+$device_p     : 210px !default; // Portrait.
+$device_l     : 280px !default; // Landscape.
+$mobile_p     : 414px !default; // Portrait. [Google Pixel 2]
+$mobile_l     : 736px !default; // Landscape. [Google Pixel 2]
+$tablet_p     : 768px !default; // Portrait. [iPad 1, iPad 2, iPad 3, iPad 4, iPad Mini, iPad Air, iPad Air2, iPad Pro 9.7]
+$tablet_l     : 1024px !default; // Landscape. [iPad 1, iPad 2, iPad 3, iPad 4, iPad Mini, iPad Air, iPad Air2, iPad Pro 9.7]
+$desktop      : 1280px !default;
+$desktop--wide: 1440px !default;
+
+
+// ----------------------------------------------------------------------- //
+
+
+// -- Defaults -- //
 $mn              : 24px !default;
 $gutter          : 0.5 !default;
 $animation       : 300ms !default;
-$mobile_assets   : 468px !default;
+$mobile_assets   : $mobile_l !default;
 $side_panel_width: 320px !default;
+
+
+// ----------------------------------------------------------------------- //
+
+
+// -- Logo -- //
+$logo_desktop_width: (440px / 2) !default;
+$logo_desktop_height: (200px / 2) !default;
+$logo_mobile_width: (440px / 2) !default;
+$logo_mobile_height: (200px / 2) !default;
 
 
 // ----------------------------------------------------------------------- //
@@ -156,21 +181,6 @@ $colors: map-merge($framework_colors, $site_colors) !default;
 // Useful
 $color_odd_base  : #EDEDED !default;
 $color_even_base : #F4F4F4 !default;
-
-
-// ----------------------------------------------------------------------- //
-
-
-// -- Device & Container Widths (http://mydevice.io/devices/) -- //
-$container    : 1180px !default;
-$device_p     : 210px !default; // Portrait
-$device_l     : 280px !default; // Landscape
-$mobile_p     : 375px !default; // Portrait
-$mobile_l     : 667px !default; // Landscape
-$tablet_p     : 768px !default; // Portrait
-$tablet_l     : 1024px !default; // Landscape
-$desktop      : 1280px !default;
-$desktop--wide: 1440px !default;
 
 
 // ----------------------------------------------------------------------- //

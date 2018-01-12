@@ -71,10 +71,23 @@ import Email from '../classes/global/email'
     // Extend the events system.
     window.Events.extend({
       events: {
-        'click [data-js-event="eventMethod"]': 'eventMethod'
+        'scroll null': 'scrollable',
+        'click [data-js-event="mobileSearch"]': 'toggleSearchBox'
       },
-      eventMethod: (e) => {
-        e[0].preventDefault()
+      scrollable: (e) => {
+        // Cache page header height.
+        let height = Math.round($('.page-mobile-wrapper').height())
+        // Cache scroll top.
+        let scrollTop = $(document).scrollTop()
+
+        if (scrollTop > height) {
+          return $('body').addClass('js-scrolled-past-header').css({'padding-top': height})
+        }
+
+        return $('body').removeClass('js-scrolled-past-header').css({'padding-top': ''})
+      },
+      toggleSearchBox: function (e) {
+        return $('[data-js-target="mobileSearch"]').toggleClass('active')
       }
     })
   }

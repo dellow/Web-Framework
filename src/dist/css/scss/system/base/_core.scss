@@ -77,7 +77,7 @@ body {
 
 .page {
   &, &:before {
-    transition: all 500ms cubic-bezier(.645, .045, .355, 1);
+    transition: all $animation cubic-bezier(.645, .045, .45, 1);
   }
   &:before {
     width: 100%;

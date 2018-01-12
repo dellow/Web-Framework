@@ -92,7 +92,7 @@
 //
 // .foo {@include slab(2);}
 // ---
-@mixin slab($size, $modifier: false, $responsive: true){
+@mixin slab($size, $modifier: false, $responsive: false){
   @if($responsive){
     // Desktop.
     @include respond-to-range(desktop){

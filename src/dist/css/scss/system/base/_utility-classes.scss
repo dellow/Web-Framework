@@ -486,15 +486,13 @@ body, html {
 
 // -- Responsive -- //
 .u-hide-tablet {
-	display: none !important;
-	@include respond-to($tablet_l + 1, null, true){
-		display: inherit !important;
+	@include respond-to($tablet_l){
+		display: none !important;
 	}
 }
 .u-hide-mobile {
-	display: none !important;
-	@include respond-to($mobile_l + 1, null, true){
-		display: inherit !important;
+	@include respond-to($mobile_l){
+		display: none !important;
 	}
 }
 
