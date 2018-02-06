@@ -80,6 +80,10 @@ window._ = require('underscore')
 */
 // window.Axios = require('axios')
 // window.Axios.defaults.baseURL = window.config.baseURL
+// window.Axios.defaults.headers.common = {
+//   'X-CSRF-TOKEN': window.config.csrfToken,
+//   'X-Requested-With': 'XMLHttpRequest'
+// }
 
 /*
 |--------------------------------------------------------------------------

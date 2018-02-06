@@ -30,6 +30,36 @@ body, html {
 // ----------------------------------------------------------------------- //
 
 
+// -- Overlays -- //
+.u-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0; left: 0;
+	z-index: $zindex-1;
+	background-color: rgba(color(black), 0.75);
+	&__body {
+		width: 100%;
+		height: 100%;
+		display: flex;
+    flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		color: color(white);
+    font-weight: bold;
+    text-transform: uppercase;
+		svg {
+			width: 55px;
+			height: 55px;
+			fill: color(white);
+		}
+	}
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
 // -- Clearing -- //
 .cf {
 	@extend %cf;
@@ -359,6 +389,11 @@ body, html {
 }
 .u-text-center {
 	text-align: center !important;
+}
+.u-disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
 }
 
 

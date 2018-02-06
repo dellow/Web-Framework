@@ -296,10 +296,8 @@ kbd {
     @else {
       $subColors: $value;
       @each $subKey, $subValue in $subColors {
-        @if (color($subKey, $subValue)) {
-          &--color--#{"" + $key}-#{"" + $subKey} {
-            color: color($key, $subKey) !important;
-          }
+        &--color--#{"" + $key}-#{"" + $subKey} {
+          color: color($key, $subKey) !important;
         }
       }
     }

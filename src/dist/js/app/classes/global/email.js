@@ -55,12 +55,14 @@ class Email {
    * @version 1.0.0
    * @access public
   **/
-  init () {
-    // Define settings for this class.
-    this._settings = {
+  init (settings) {
+    // Settings for this class.
+    let defaultSettings = {
       typingTimer: null,
       timerThreshold: 500
     }
+    // Merge settings.
+    this._settings = Object.assign(defaultSettings, settings)
 
     // Start events.
     this.events()

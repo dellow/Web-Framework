@@ -13,18 +13,18 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
 	@include scale(font-size, 14px);
 	background: color(white);
 	transition: border-color $animation ease;
-	&[disabled] {
-    color: darken(color(grey), 15%);
-		background: #efeded;
-		&:hover, &:focus {
-			border-color: color(grey);
-		}
-	}
 	&:hover {
 		border-color: darken(color(grey), 12.5%);
 	}
 	&:focus {
 		border-color: darken(color(grey), 25%);
+	}
+	&[disabled] {
+		&, &:hover, &:focus {
+			border-color: color(grey);
+			color: darken(color(grey), 15%);
+			background: lighten(color(grey), 10%);
+		}
 	}
 	// Utilities.
   &.u-full {
@@ -61,8 +61,8 @@ input:not([type="radio"]):not([type="checkbox"]), select {
 	height: $base_field_height;
 }
 
-select {
-	+ select {
+select, .select {
+	+ select, + .select {
 		@include nudge(margin-left, 0.5);
 	}
 }

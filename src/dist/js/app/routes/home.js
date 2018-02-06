@@ -7,9 +7,6 @@
  *
 **/
 
-import Menus from '../classes/global/menus'
-import Email from '../classes/global/email'
-
 ;(function (Module, window) {
 
   /**
@@ -31,10 +28,6 @@ import Email from '../classes/global/email'
    * @access public
   **/
   Module.prototype.init = function () {
-    // Init Menus.
-    Menus.init()
-    // Init Email.
-    Email.init()
   }
 
   /**
@@ -49,19 +42,10 @@ import Email from '../classes/global/email'
     // Extend the events system.
     window.Events.extend({
       events: {
-        'scroll null': 'scrollable',
-        'click [data-js-event="mobileSearch"]': 'toggleSearchBox'
+        'click [data-js-event="someMethod"]': 'someMethod'
       },
-      scrollable: (e) => {
-        // Cache page header height.
-        let height = Math.round($('.page-mobile-wrapper').height())
-        // Cache scroll top.
-        let scrollTop = $(document).scrollTop()
-
-        return $('body').removeClass('js-scrolled-past-header').css({'padding-top': ((scrollTop > height) ? height : '')})
-      },
-      toggleSearchBox: function (e) {
-        return $('[data-js-target="mobileSearch"]').toggleClass('active')
+      someMethod: (e) => {
+        e[0].preventDefault()
       }
     })
   }

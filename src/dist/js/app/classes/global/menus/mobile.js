@@ -111,7 +111,7 @@ class MenusMobile {
     // Get menu HTML.
     let menuHTML = this.buildMenuHTML(this.state.primaryMenu)
     // Get social menu.
-    let socialMenuHTML = $('[data-menu="social"]')[0].outerHTML
+    let socialMenuHTML = ($('[data-menu="social"]').length) ? $('[data-menu="social"]')[0].outerHTML : ''
 
     return `
       <aside class="comp-side-panel n" data-menu="mobile">
@@ -137,13 +137,13 @@ class MenusMobile {
                   </a>
                 </li>
                 <li role="menuitem">
-                  <a href="/cart">
+                  <a href="/account/orders">
                     <i class="icon material-icons">shopping_cart</i>
                     <span>My Orders</span>
                   </a>
                 </li>
                 <li role="menuitem">
-                  <a href="/wishlist">
+                  <a href="/account/wishlist">
                     <i class="icon material-icons">favorite_border</i>
                     <span>My Favourites</span>
                   </a>
@@ -168,7 +168,6 @@ class MenusMobile {
                   <ul role="menu">
                     <li role="menuitem"><a href="/returns">Returns</a></li>
                     <li role="menuitem"><a href="/delivery-information">Delivery Information</a></li>
-                    <li role="menuitem"><a href="/faqs">Ordering FAQs</a></li>
                     <li role="menuitem"><a href="/contact-us">Contact</a></li>
                   </ul>
                 </div>
@@ -184,7 +183,8 @@ class MenusMobile {
                   <ul role="menu">
                     <li role="menuitem"><a href="/blog">Our Blog</a></li>
                     <li role="menuitem"><a href="/about-us">Our Story</a></li>
-                    <li role="menuitem"><a href="/testimonials">Testimonials</a></li>
+                    <li role="menuitem"><a href="/link">Link #1</a></li>
+                    <li role="menuitem"><a href="/link">Link #2</a></li>
                   </ul>
                 </div>
               </div>
@@ -197,10 +197,10 @@ class MenusMobile {
                 </div>
                 <div class="comp-side-panel__user__tabs__single__body">
                   <ul role="menu">
-                    <li role="menuitem"><a href="/packaged-with-care">Packaged With Care</a></li>
-                    <li role="menuitem"><a href="/advice-for-collectors">Advice For Collectors</a></li>
-                    <li role="menuitem"><a href="/poster-restoration">Poster Restoration</a></li>
-                    <li role="menuitem"><a href="/auctions">AntikBar Auctions</a></li>
+                    <li role="menuitem"><a href="/link">Link #1</a></li>
+                    <li role="menuitem"><a href="/link">Link #2</a></li>
+                    <li role="menuitem"><a href="/link">Link #3</a></li>
+                    <li role="menuitem"><a href="/link">Link #4</a></li>
                   </ul>
                 </div>
               </div>

@@ -197,6 +197,17 @@
     return pseudo.value
   }
 
+  /**
+  * guid
+  * Creates a unique ID.
+  *
+  * @since 1.0.0
+  * @version 1.0.0
+  **/
+  Helpers.guid = function () {
+    return Math.random().toString(36).substr(2, 9)
+  }
+
   // Export
   module.exports = Helpers
 }({}, window))

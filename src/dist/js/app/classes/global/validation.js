@@ -18,8 +18,8 @@ class Validation {
    * @access public
   **/
   init ($el, settings) {
-    // Settings for this module.
-    this._settings = {
+    // Settings for this class.
+    let defaultSettings = {
       defaultSuccess: 'Looks good.',
       validationType: 'server', // 'server' or 'client'
       failIfFieldNotFound: false,
@@ -44,7 +44,7 @@ class Validation {
       formSubmitted: false
     }
     // Merge settings.
-    this._settings = Object.assign(this._settings, settings)
+    this._settings = Object.assign(defaultSettings, settings)
 
     // Guard :: Check for rules object.
     if (this._settings.validationType === 'client' && (typeof rules === 'undefined' || rules === null)) return

@@ -6,18 +6,15 @@
 
 // -- All -- //
 .alert {
-  // Abstractions
   &.box {
-    @include nudge(padding, 0.5 0.65);
+    @include nudge(padding, 0.75 0.65);
     border: 1px solid;
     position: relative;
-    border-radius: $base_border_radius;
-    // Descendants
+    background: color(white);
     a {
       color: inherit;
       text-decoration: none;
       border-bottom: 1px dotted;
-      // Pseudo
       &:hover {
         color: inherit;
         border-bottom-style: solid;
@@ -31,8 +28,7 @@
 
 
 // -- Alerts as a list -- //
-ul.alert { // Qualified Selector
-  // Abstractions
+ul.alert {
   &.box {
     padding-left: 14px;
     margin-left: 0;
@@ -49,49 +45,41 @@ ul.alert { // Qualified Selector
 
 // -- Error (Red) -- //
 .alert {
-  // Abstractions
   &.error {
     color: color(alerts, error);
   }
   &.box.error {
-    border-color: lighten(color(alerts, error), 25%);
-    background: lighten(color(alerts, error), 40%);
+    border-color: color(alerts, error);
   }
 }
 
 // -- Status (Blue) -- //
 .alert {
-  // Abstractions
   &.status {
     color: color(alerts, status);
   }
   &.box.status {
-    border-color: lighten(color(alerts, status), 25%);
-    background: lighten(color(alerts, status), 40%);
+    border-color: color(alerts, status);
   }
 }
 
 // -- Success (Green) -- //
 .alert {
-  // Abstractions
   &.success {
     color: color(alerts, success);
   }
   &.box.success {
-    border-color: lighten(color(alerts, success), 25%);
-    background: lighten(color(alerts, success), 40%);
+    border-color: color(alerts, success);
   }
 }
 
 // -- Warning (Yellow) -- //
 .alert {
-  // Abstractions
   &.warning {
     color: color(alerts, warning);
   }
   &.box.warning {
-    border-color: lighten(color(alerts, warning), 25%);
-    background: lighten(color(alerts, warning), 40%);
+    border-color: color(alerts, warning);
   }
 }
 

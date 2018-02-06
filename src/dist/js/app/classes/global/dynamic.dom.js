@@ -17,10 +17,13 @@ class DynamicDOM {
    * @version 1.0.0
    * @access public
   **/
-  constructor () {
-    this._settings = {
+  constructor (settings) {
+    // Settings for this class.
+    let defaultSettings = {
       failSilently: false
     }
+    // Merge settings.
+    this._settings = Object.assign(defaultSettings, settings)
   }
 
   /**

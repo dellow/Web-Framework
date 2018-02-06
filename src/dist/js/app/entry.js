@@ -19,6 +19,8 @@ import Navigo from 'navigo'
    * @version 1.0.0
   **/
   App = function () {
+    // Create object to store strings.
+    window.config.contentStrings = window.config.contentStrings || {}
   }
 
   /**
@@ -102,20 +104,6 @@ import Navigo from 'navigo'
       require('script-loader!slick-carousel')
       // Init plugin.
       return el.slick(options)
-    },
-    validation: (el, options) => {
-      // DOM check.
-      if (!el.length) return
-
-      // Check captcha.
-      if ($('#c_a_p_t_c_h_a', el).length) {
-        // Set the captcha field value and check the box.
-        $('#c_a_p_t_c_h_a', el).prop('checked', true).val('c_a_p_t_c_h_a')
-      }
-      // Get plugin.
-      require('../libs/jquery.validation')
-      // Init plugin.
-      return el.validation(options)
     }
   }
 
@@ -127,43 +115,91 @@ import Navigo from 'navigo'
    * @version 1.0.0
   **/
   App.prototype.preloaders = {
-    button: ($el, destroy, noClick) => {
-      // Guard :: Check element exists.
-      if ($el.length) {
-        if (!destroy) {
-          if (!$el.hasClass('active')) {
-            // Disable the button.
-            $el.addClass('active btn--disabled')
-            // Content.
-            let content = JSON.stringify($el.html())
-            // Loader.
-            let loader = $('<div><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg></div>').css({'fill': '#FFFFFF'}).hide()
-            // Apply preloader.
-            $el.css({
-              'width': $el.outerWidth(),
-              'height': $el.outerHeight(),
-              'position': 'relative'
-            }).html(loader).attr('data-loader-content', content).addClass('loading')
-            // Add CSS.
-            loader.css({
-              'position': 'absolute',
-              'top': '50%',
-              'left': '50%',
-              'margin-left': -loader.outerWidth() / 2,
-              'margin-top': -loader.outerHeight() / 2
-            }).show()
-            // Simulate button click.
-            if (!noClick) {
-              $el.click()
-            }
-          }
-        } else {
-          // Renable the button.
-          $el.removeClass('btn--disabled active')
-          // Remove preloader
-          $el.removeClass('loading').html(JSON.parse($el.data('loader-content'))).removeAttr('data-loader-content').css({'width': '', 'height': '', 'position': ''})
-        }
+    svgs: {
+      spinner: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg>'
+    },
+    overlay: function ($el, message, destroy) {
+      // Are we destroying?
+      if (destroy) {
+        // Guard :: Check element has 'u-preloading' class.
+        if (!$el.length || !$el.hasClass('u-preloading')) return
+
+        // Remove overlay.
+        $('.u-overlay', $el).remove()
+        // Remove class.
+        $el.removeClass('u-preloading')
       }
+
+      // Are we creating?
+      if (!destroy) {
+        // Guard :: Check element has 'u-preloading' class.
+        if (!$el.length || $el.hasClass('u-preloading')) return
+
+        // Set message.
+        message = (message) ? message : 'Loading...'
+        // Add styles.
+        $el.css({'position': 'relative'})
+        // Create preloader.
+        let $preloader = $(`
+          <div class="u-overlay">
+            <div class="u-overlay__body">
+              <div>` + this.svgs.spinner + `</div>
+              <div>` + message + `</div>
+            </div>
+          </div>
+        `)
+        // Apply overlay.
+        $el.prepend($preloader).addClass('u-preloading')
+      }
+    },
+    button: function ($el, destroy) {
+      $el.each((index, btn) => {
+        // Set button.
+        let $btn = $(btn)
+        // Are we destroying?
+        if (destroy) {
+          // Guard :: Check element has 'u-preloading' class.
+          if (!$btn.length || !$btn.hasClass('u-preloading')) return
+
+          // Get storage ID.
+          let uid = $btn.attr('data-content-id')
+          // Get content from storage.
+          let content = JSON.parse(window.config.contentStrings[uid])
+          // Renable the button.
+          $btn.removeClass('btn--disabled')
+          // Remove preloader and content ID.
+          $btn.html(content).removeAttr('data-content-id')
+          // Remove class.
+          $btn.removeClass('u-preloading')
+          // Reset styles.
+          $btn.css({'width': '', 'height': '', 'position': ''})
+        }
+
+        // Are we creating?
+        if (!destroy) {
+          // Guard :: Check element has 'u-preloading' class.
+          if (!$btn.length || $btn.hasClass('u-preloading')) return
+
+          // Get button content.
+          let content = JSON.stringify($btn.html())
+          // Create a storage ID.
+          let uid = window.Helpers.guid()
+          // Store content.
+          window.config.contentStrings[uid] = content
+          // Create preloader.
+          let $preloader = $(this.svgs.spinner).css({'fill': '#FFFFFF'}).hide()
+          // Disable the button.
+          $btn.addClass('btn--disabled')
+          // Add button styles.
+          $btn.css({'width': $btn.outerWidth(), 'height': $btn.outerHeight(), 'position': 'relative'})
+          // Add preloader and content ID.
+          $btn.html($preloader).attr('data-content-id', uid)
+          // Add class.
+          $btn.addClass('u-preloading')
+          // Add preloader styles.
+          $preloader.css({'position': 'absolute', 'top': '50%', 'left': '50%', 'margin-left': -$preloader.outerWidth() / 2, 'margin-top': -$preloader.outerHeight() / 2}).show()
+        }
+      })
     }
   }
 
@@ -188,23 +224,23 @@ import Navigo from 'navigo'
   **/
   App.prototype.routes = function () {
     // Init Routing.
-    window.Router = new Navigo(null, false)
+    window.Router = new Navigo(location.protocol + '//' + location.host, false)
     // Start global route controller init method.
     require('./routes/global').init()
     // Start global route controller events method.
     require('./routes/global').events()
     // Router.
     window.Router.on({
-      // '/page': () => {
-      //   // Log it.
-      //   window.Helpers.log('Route Loaded: page', '#E19F12')
-      //   // Get route controller.
-      //   let c = require('./routes/page')
-      //   // Check for an init method.
-      //   if (typeof c.init === 'function') c.init()
-      //   // Check for an events method.
-      //   if (typeof c.events === 'function') c.events()
-      // }
+      '/': () => {
+        // Log it.
+        window.Helpers.log('Route Loaded: home', '#E19F12')
+        // Get route controller.
+        let c = require('./routes/home')
+        // Check for an init method.
+        if (typeof c.init === 'function') c.init()
+        // Check for an events method.
+        if (typeof c.events === 'function') c.events()
+      }
     }).resolve()
   }
 

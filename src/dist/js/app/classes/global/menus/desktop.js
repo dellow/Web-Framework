@@ -17,13 +17,15 @@ class MenusDesktop {
    * @version 1.0.0
    * @access public
   **/
-  constructor () {
+  constructor (settings) {
     // Simple counter.
     this.counter = 0
     // Settings for the class.
-    this._settings = {
+    let defaultSettings = {
       bleedThreshold: 25
     }
+    // Merge settings.
+    this._settings = Object.assign(defaultSettings, settings)
     // Dom elements for the class.
     this._dom = {
       menu: $('[data-menu="desktop"]')
