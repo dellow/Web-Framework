@@ -114,7 +114,7 @@ class MenusMobile {
     let socialMenuHTML = ($('[data-menu="social"]').length) ? $('[data-menu="social"]')[0].outerHTML : ''
 
     return `
-      <aside class="comp-side-panel n" data-menu="mobile">
+      <aside class="comp-side-panel" data-menu="mobile">
         <div class="comp-side-panel__scrollable">
           <div class="comp-side-panel__menu n">
             ` + menuHTML + `

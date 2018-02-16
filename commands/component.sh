@@ -44,8 +44,8 @@ else
   ## Add to bootstrap.
   sed -i '' 's/Components.*$/&\
     '"$COMPPATH"'/' "$DISTPATH"_#bootstrap.scss
-  ## Open in Sublime Text current window.
-  # /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -a $FILE
+  ## Output.
+  echo -e "Created file: $FILE"
   ## Open in Atom current window.
   atom -a $FILE
 fi

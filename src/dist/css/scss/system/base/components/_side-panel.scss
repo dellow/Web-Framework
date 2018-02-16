@@ -47,6 +47,7 @@ body.js-panel-open {
   left: 0; top: 0; bottom: 0;
   z-index: $zindex-1;
   @include scale(font-size, 15px);
+  background: $backgroundColorDark;
   transform: translate3d(-$side_panel_width, 0, 0);
   transition: all $animation cubic-bezier(.645, .045, .45, 1);
   &, a {

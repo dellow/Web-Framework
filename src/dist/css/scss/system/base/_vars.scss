@@ -61,16 +61,22 @@ $base_font  : $circular, 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif !
 // Headings
 $h1      : 48px !default;
 $h1_lh   : 1.125 !default;
+$h1_mg   : 0.5 !default;
 $h2      : 36px !default;
 $h2_lh   : 1.125 !default;
+$h2_mg   : 0.5 !default;
 $h3      : 28px !default;
 $h3_lh   : 1.125 !default;
+$h3_mg   : 1 !default;
 $h4      : 20px !default;
 $h4_lh   : 1.37 !default;
+$h4_mg   : 1 !default;
 $h5      : 18px !default;
 $h5_lh   : 1.37 !default;
+$h5_mg   : 1 !default;
 $h6      : 16px !default;
 $h6_lh   : 1.125 !default;
+$h6_mg   : 1 !default;
 
 // Sizes
 $xlarge  : 30px !default;
@@ -139,6 +145,7 @@ $base_colors: (
   ),
   copy: (
     body  : #5f5659,
+    btns  : #C4122F,
     link  : #C4122F,
     hover : darken(#C4122F, 10%),
     active: darken(#C4122F, 20%)

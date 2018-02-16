@@ -80,6 +80,16 @@ body {
       }
     }
   }
+  &__left {
+    a, button {
+      justify-content: flex-start;
+    }
+  }
+  &__right {
+    a, button {
+      justify-content: flex-end;
+    }
+  }
   @include respond-to($mobile_assets + 1, null, true){
     display: none; // Hide by default.
   }
@@ -100,8 +110,12 @@ body {
   justify-content: center;
   background: #f5f5f5;
   transition: all 250ms cubic-bezier(.645, .045, .45, 1);
-  .sc-comp-header-search {
+  .comp-header-search {
     flex: 1;
+    button {
+      @include nudge(padding, 0 0.5);
+      flex: 0;
+    }
   }
   @include respond-to($mobile_assets + 1, null, true){
     display: none; // Hide by default.

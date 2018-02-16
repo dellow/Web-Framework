@@ -90,10 +90,59 @@ ga('send', 'pageview', {
   <!-- Page -->
 	<div class="page">
 
-		<!-- Header :: Mobile -->
-		<div class="page-mobile-header" aria-hidden="true">
-      <button class="obj-hamburger" data-js-event="sideMenu"><span></span></button>
-    </div><!-- end .page-mobile-header -->
+    <!-- Mobile :: Wrapper -->
+    <div class="page-mobile-wrapper">
+      <!-- Header :: Mobile -->
+      <div class="page-mobile-header" aria-hidden="true">
+        <!-- Mobile Header :: Left -->
+        <div class="page-mobile-header__left">
+          <div class="page-mobile-header__left__item">
+            <button data-js-event="sideMenu">
+              <i class="icon material-icons" style="font-size:34px;">menu</i>
+            </button>
+          </div>
+          <div class="page-mobile-header__left__item page-mobile-header__left__item--hide">
+            <button data-js-event="mobileSearch">
+              <i class="icon material-icons" style="font-size:30px;">search</i>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Header :: Center -->
+        <div class="page-mobile-header__center">
+          <div class="comp-logo">
+            <a href="/">
+              <img src="/build/images/siteimages/logo-2x.png" alt="ALT_HERE">
+            </a>
+          </div>
+        </div>
+        <!-- Mobile Header :: Right -->
+        <div class="page-mobile-header__right">
+          <div class="page-mobile-header__right__item  page-mobile-header__left__item--hide">
+            <a href="HREF_HERE">
+              <i class="icon material-icons" style="font-size:30px;">person</i>
+            </a>
+          </div>
+          <div class="page-mobile-header__right__item">
+            <a href="HREF_HERE">
+              <i class="icon material-icons" style="font-size:28px;">shopping_basket</i>
+            </a>
+          </div>
+        </div>
+      </div><!-- end .page-mobile-header -->
+
+      <!-- Search :: Mobile -->
+      <div class="page-mobile-search" aria-hidden="true" data-js-target="mobileSearch">
+        <!-- Comp :: Search -->
+        <div class="comp-header-search">
+          <form role="search" action="ACTION_HERE" method="GET" novalidate="novalidate" accept-charset="UTF-8">
+            <div class="obj-form-field">
+              <input type="text" name="query" placeholder="Search The Site" value="<?php echo (isset($_GET['query'])) ? $_GET['query'] : '' ?>">
+              <button type="submit" class="btn btn--large btn--common"><i class="icon material-icons">search</i></button>
+            </div>
+          </form>
+        </div>
+      </div><!-- end .page-mobile-search -->
+    </div><!-- .page-mobile-wrapper -->
 
 		<!-- Header :: Desktop -->
 		<header class="page-header" role="banner">
