@@ -78,12 +78,13 @@ window._ = require('underscore')
 | Loads Axios and assigns to `Axios` var.
 |
 */
-// window.Axios = require('axios')
-// window.Axios.defaults.baseURL = window.config.baseURL
-// window.Axios.defaults.headers.common = {
-//   'X-CSRF-TOKEN': window.config.csrfToken,
-//   'X-Requested-With': 'XMLHttpRequest'
-// }
+require('es6-promise/auto')
+window.Axios = require('axios')
+window.Axios.defaults.baseURL = window.config.baseURL
+window.Axios.defaults.headers.common = {
+  'X-CSRF-TOKEN': window.config.csrfToken,
+  'X-Requested-With': 'XMLHttpRequest'
+}
 
 /*
 |--------------------------------------------------------------------------

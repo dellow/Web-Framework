@@ -34,7 +34,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 h1, .h1 {
-  @include nudge(margin, ($h1_mg / 2) 0 $h1_mg);
   @include scale(font-size, $h1,
     $tablet_l (($h1 / 100) * 90),
     $tablet_p (($h1 / 100) * 85),
@@ -51,7 +50,6 @@ h1, .h1 {
   );
 }
 h2, .h2 {
-  @include nudge(margin, ($h2_mg / 2) 0 $h2_mg);
   @include scale(font-size, $h2,
     $tablet_l (($h2 / 100) * 90),
     $tablet_p (($h2 / 100) * 85),
@@ -68,7 +66,6 @@ h2, .h2 {
   );
 }
 h3, .h3 {
-  @include nudge(margin, ($h3_mg / 2) 0 $h3_mg);
   @include scale(font-size, $h3,
     $tablet_l (($h3 / 100) * 90),
     $tablet_p (($h3 / 100) * 85),
@@ -85,7 +82,6 @@ h3, .h3 {
   );
 }
 h4, .h4 {
-  @include nudge(margin, ($h4_mg / 2) 0 $h4_mg);
   @include scale(font-size, $h4,
     $tablet_l (($h4 / 100) * 90),
     $tablet_p (($h4 / 100) * 85),
@@ -102,7 +98,6 @@ h4, .h4 {
   );
 }
 h5, .h5 {
-  @include nudge(margin, ($h5_mg / 2) 0 $h5_mg);
   @include scale(font-size, $h5,
     $tablet_l (($h5 / 100) * 90),
     $tablet_p (($h5 / 100) * 85),
@@ -119,7 +114,6 @@ h5, .h5 {
   );
 }
 h6, .h6 {
-  @include nudge(margin, ($h6_mg / 2) 0 $h6_mg);
   @include scale(font-size, $h6,
     $tablet_l (($h6 / 100) * 90),
     $tablet_p (($h6 / 100) * 85),
@@ -220,6 +214,24 @@ blockquote, dl, ol, p, pre, ul {
     cite {
       font-weight: $bold;
     }
+  }
+  h1, .h1 {
+    @include nudge(margin, ($h1_mg / 2) 0 $h1_mg);
+  }
+  h2, .h2 {
+    @include nudge(margin, ($h2_mg / 2) 0 $h2_mg);
+  }
+  h3, .h3 {
+    @include nudge(margin, ($h3_mg / 2) 0 $h3_mg);
+  }
+  h4, .h4 {
+    @include nudge(margin, ($h4_mg / 2) 0 $h4_mg);
+  }
+  h5, .h5 {
+    @include nudge(margin, ($h5_mg / 2) 0 $h5_mg);
+  }
+  h6, .h6 {
+    @include nudge(margin, ($h6_mg / 2) 0 $h6_mg);
   }
 }
 

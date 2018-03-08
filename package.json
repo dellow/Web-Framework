@@ -28,6 +28,7 @@
     "autotrack": "^1.1.0",
     "axios": "^0.16.2",
     "browsernizr": "*",
+    "es6-promise": "^4.2.4",
     "jquery": "*",
     "jquery-pjax": "^2.0.1",
     "navigo": "^5.2.0",

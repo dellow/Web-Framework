@@ -17,15 +17,13 @@ class MenusDesktop {
    * @version 1.0.0
    * @access public
   **/
-  constructor (settings) {
+  constructor () {
     // Simple counter.
     this.counter = 0
     // Settings for the class.
-    let defaultSettings = {
+    this._settings = {
       bleedThreshold: 25
     }
-    // Merge settings.
-    this._settings = Object.assign(defaultSettings, settings)
     // Dom elements for the class.
     this._dom = {
       menu: $('[data-menu="desktop"]')
@@ -93,7 +91,7 @@ class MenusDesktop {
       if (item.exclude.indexOf('desktop') === -1) {
         return `
           <li class="${cssClasses}" role="menuitem">
-            <a href="${item.href}"><span>${item.title}</span></a>
+            <a href="${item.href}" target="${(item.target) ? item.target : '_self'}"><span>${item.title}</span></a>
             ${childMenu.HTML}
           </li>
         `
@@ -134,7 +132,7 @@ class MenusDesktop {
 
           return `
             <li class="${cssClasses}" role="menuitem">
-              <a href="${item.href}"><span>${item.title}</span></a>
+              <a href="${item.href}" target="${(item.target) ? item.target : '_self'}"><span>${item.title}</span></a>
               ${childMenu.HTML}
             </li>
           `
@@ -147,17 +145,32 @@ class MenusDesktop {
         if (item.exclude.indexOf('desktop') === -1) {
           return `
             <li role="menuitem">
-              <a href="${item.href}"><span>${item.title}</span></a>
+              <a href="${item.href}" target="${(item.target) ? item.target : '_self'}"><span>${item.title}</span></a>
             </li>
           `
         }
       })
 
+      let menuChunks = []
+      while (thisMenu.length > 0) {
+        menuChunks.push(thisMenu.splice(0, 3))
+      }
+
       HTML = `
         <div class="mega-menu">
-          <ul role="menu">
-            ` + thisMenu.join('') + `
-          </ul>
+          <div class="mega-menu__container">
+            ${menuChunks.map((menu) => {
+              return `
+                <div class="mega-menu__container__col">
+                  <div class="mega-menu__container__col__single">
+                    <ul role="menu">
+                      ` + menu.join('') + `
+                    </ul>
+                  </div>
+                </div>
+              `
+            }).join('')}
+          </div>
         </div>
       `
     } else if (type === 'mega-titles' && Object.keys(menus).length) {
@@ -166,7 +179,7 @@ class MenusDesktop {
           if (item.exclude.indexOf('desktop') === -1) {
             return `
               <li role="menuitem">
-                <a href="${item.href}"><span>${item.title}</span></a>
+                <a href="${item.href}" target="${(item.target) ? item.target : '_self'}"><span>${item.title}</span></a>
               </li>
             `
           }

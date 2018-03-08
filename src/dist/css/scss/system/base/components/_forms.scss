@@ -97,21 +97,17 @@ select, .select {
 }
 
 .checkbox {
-	margin-right: 1em;
   position: relative;
   display: inline-block;
   white-space: nowrap;
-  line-height: 1;
 	label {
 		min-width: calc(1em + 2px);
-    margin: 0;
+    margin: 0 !important;
 		position: initial;
     display: inline-block;
-    text-indent: 1.5em;
+		vertical-align: middle;
 		span {
-			margin-left: 3px;
-			position: relative;
-    	top: -4px;
+			vertical-align: top;
 		}
 		&:before, &:after {
 			width: calc(1em + 2px);
@@ -119,17 +115,16 @@ select, .select {
 	    border: 1px solid transparent;
     	border-radius: 20%;
 			content: '';
-	    display: block;
-	    box-sizing: border-box;
-	    position: absolute;
-	    left: 0; top: calc((0% - (100% - 1em)) - 8%);
-	    z-index: 0;
+	    display: inline-block;
 	    background-color: transparent;
 		}
 		&:before {
+			margin-right: 8px;
     	border-color: color(grey);
 		}
 		&:after {
+			position: absolute;
+			left: 0; top: 0;
     	transform: scale(.7);
 		}
 	}
