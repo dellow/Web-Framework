@@ -19,17 +19,6 @@ require('./config')
 
 /*
 |--------------------------------------------------------------------------
-| Modernizr
-|--------------------------------------------------------------------------
-|
-| (via Browsernizr) (check browsernizr/test/** for tests)
-|
-*/
-// require('browsernizr/test/css/transitions')
-window.Modernizr = require('browsernizr')
-
-/*
-|--------------------------------------------------------------------------
 | jQuery
 |--------------------------------------------------------------------------
 |
@@ -41,34 +30,13 @@ window.$ = require('jquery')
 
 /*
 |--------------------------------------------------------------------------
-| Underscore
+| Lodash
 |--------------------------------------------------------------------------
 |
-| Loads Underscore and assigns to `_` var.
+| Loads Lodash and assigns to `_` var.
 |
 */
-window._ = require('underscore')
-
-/*
-|--------------------------------------------------------------------------
-| Handlebars
-|--------------------------------------------------------------------------
-|
-| Loads Handlebars and assigns to `Handlebars` var.
-|
-*/
-// window.Handlebars = require('handlebars')
-
-/*
-|--------------------------------------------------------------------------
-| React
-|--------------------------------------------------------------------------
-|
-| Loads React and React DOM and assigns to `React` and 'ReactDOM' vars.
-|
-*/
-// window.React = require('react')
-// window.ReactDOM = require('react-dom')
+// window._ = require('lodash')
 
 /*
 |--------------------------------------------------------------------------

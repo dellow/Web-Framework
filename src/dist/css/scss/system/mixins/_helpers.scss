@@ -92,41 +92,30 @@
   $grid_selector     : '';
   $flex_grid_selector: '';
 
-  @if($all == false){
-    $grid_selector: '> .grid, &.grid';
+  @if ($all == false){
+    $flex_grid_selector: '> .flex-grid, &.flex-grid, > .grid, &.grid';
   }
   @else{
-    $grid_selector: '.grid, &.grid';
-  }
-  #{$grid_selector} {
-    $value: px-to-rem($gutterValue * $mn);
-    width: calc(100% + #{$value});
-    @include nudge(margin-top, -$gutterValue);
-    @include nudge(left, -$gutterValue);
-    > [class*="col-"] {
-      @if($col){
-        width: $col;
-      }
-      @include nudge(padding, $gutterValue 0 0 $gutterValue);
-    }
+    $flex_grid_selector: '.flex-grid, &.flex-grid, .grid, &.grid';
   }
 
-  @if($all == false){
-    $flex_grid_selector: '> .flex-grid, &.flex-grid';
-  }
-  @else{
-    $flex_grid_selector: '.flex-grid, &.flex-grid';
-  }
   #{$flex_grid_selector} {
     $value: px-to-rem($gutterValue * $mn);
     width: calc(100% + #{$value});
-    @include nudge(margin-top, -$gutterValue);
+  	display: flex;
+  	flex-direction: row;
+  	flex-wrap: wrap;
+  	position: relative;
     @include nudge(left, -$gutterValue);
     > [class*="col-"] {
-      @if($col){
+      @if ($col){
+        $colCount: round(100 / strip-unit($col));
         width: $col;
+        &:nth-last-child(-n+#{$colCount}) { // Get entire last row.
+          padding-bottom: 0;
+        }
       }
-      @include nudge(padding, $gutterValue 0 0 $gutterValue);
+      @include nudge(padding, 0 0 $gutterValue $gutterValue);
     }
   }
 }

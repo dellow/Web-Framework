@@ -28,7 +28,7 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js'],
     alias: {
       classes: path.resolve(__dirname, './src/dist/js/app/classes'),
       routes: path.resolve(__dirname, './src/dist/js/app/routes')
@@ -36,11 +36,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.jsx?/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader'
-      },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract([

@@ -4,23 +4,11 @@
 // ==========================================================================
 
 
-// -- Grid > Flexbox -- //
-.flex-grid {
-  $value: px-to-rem($gutter * $mn);
-  width: calc(100% + #{$value});
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-  @include nudge(margin-top, -$gutter);
-	position: relative;
-  @include nudge(left, -$gutter);
-	[class*="col-"] {
-		width: $col_1;
-    @include nudge(padding, $gutter 0 0 $gutter);
-	}
+// -- Grid -- //
+.grid, .flex-grid {
+  @include modify-grid($gutter);
 	&--no-gutter {
 		width: $col_1;
-		margin-top: 0;
 		left: 0;
 		[class*="col-"] {
 			padding: 0;
@@ -29,57 +17,13 @@
   &--center {
     justify-content: center;
   }
-	&--center {
-		justify-content: center;
-	}
 	@each $key, $value in $col_array {
 		.#{$key} {
+      $colCount: round(100 / strip-unit($value));
 			width: $value;
-		}
-		&--no-gutter .#{$key} {
-			width: $value;
-		}
-	}
-}
-
-
-// ----------------------------------------------------------------------- //
-
-
-// -- Grid > Float -- //
-.float-grid {
-  @extend %cf;
-  $value: px-to-rem($gutter * $mn);
-  width: calc(100% + #{$value});
-  @include nudge(margin-top, -$gutter);
-	position: relative;
-  @include nudge(left, -$gutter);
-	[class*="col-"] {
-		width: $col_1;
-    @include nudge(padding, $gutter 0 0 $gutter);
-		float: left;
-	}
-	&--no-gutter {
-		width: $col_1;
-		margin-top: 0;
-		left: 0;
-		[class*="col-"] {
-			padding: 0;
-		}
-	}
-	&--bricked {
-		display: inline-block;
-		letter-spacing: -4px; // Hack to prevent negative margin having weird effects
-		[class*="col-"] {
-			float: none;
-			display: inline-block;
-			vertical-align: top;
-			letter-spacing: normal;
-		}
-	}
-	@each $key, $value in $col_array {
-		.#{$key} {
-			width: $value
+      &:nth-last-child(-n+#{$colCount}) { // Get entire last row.
+        padding-bottom: 0 !important;
+      }
 		}
 		&--no-gutter .#{$key} {
 			width: $value;
