@@ -184,10 +184,6 @@ label, .label {
   }
 }
 
-button[type="submit"] {
-  border-radius: $base_border_radius;
-}
-
 fieldset {
 	@include nudge(margin-bottom, 1);
   &:last-child {

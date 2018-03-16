@@ -93,10 +93,10 @@
   $flex_grid_selector: '';
 
   @if ($all == false){
-    $flex_grid_selector: '> .flex-grid, &.flex-grid, > .grid, &.grid';
+    $flex_grid_selector: '> .flex-grid, &.flex-grid';
   }
   @else{
-    $flex_grid_selector: '.flex-grid, &.flex-grid, .grid, &.grid';
+    $flex_grid_selector: '.flex-grid, &.flex-grid';
   }
 
   #{$flex_grid_selector} {

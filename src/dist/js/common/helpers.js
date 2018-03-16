@@ -170,15 +170,18 @@
   **/
   Helpers.parseURLParams = function (url) {
     // Check if URL contains a ?.
-    if (url.indexOf('?') !== -1) {
+    if (url && url.indexOf('?') !== -1) {
       // Split URL at ?
-      var urlParsed = url.split('?')[1]
-      var urlParams = (!this.isEmpty(urlParsed)) ? urlParsed : false
+      let urlSplit = url.split('?')
+      let urlParsed = urlSplit[1]
+      let urlParams = (!this.isEmpty(urlParsed)) ? urlParsed : false
 
-      return (urlParams) ? JSON.parse('{"' + decodeURI(urlParams).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}') : false
-    } else {
-      return {}
+      if (urlParams) {
+        return  {url: urlSplit[0], params: JSON.parse('{"' + decodeURI(urlParams).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')}
+      }
     }
+
+    return false
   }
 
   /**
