@@ -1,5 +1,9 @@
 # Web Framework Changelog
 
+__5.0.0__:
+* Added a new CSS framework based on Tailwind.
+* Many fixes and improvements.
+
 __4.0.0__:
 * Removed Gulp completely. Now uses Webpack for JS and CSS compilation.
 
