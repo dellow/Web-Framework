@@ -1,0 +1,25 @@
+/* ==========================================================================
+  Base > All
+  Imports all the partials.
+========================================================================== */
+@import
+	// Core
+	'reset',
+	'placeholders',
+	'utility-classes',
+	'misc',
+	'global',
+	'core',
+	'objects',
+	'typeset',
+	// Components
+	'components/alerts',
+	'components/buttons',
+	'components/menus',
+	'components/grids',
+	'components/slabs',
+	'components/tables',
+	'components/forms',
+	// Misc
+	'fixes',
+	'print';
