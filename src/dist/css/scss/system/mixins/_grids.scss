@@ -1,0 +1,46 @@
+// ==========================================================================
+// Mixins > Grids
+// Grid related mixins.
+// ==========================================================================
+
+
+// ---
+// modify-grid
+// Temporarily modifies the grid system
+//
+// .foo {@include modify-grid(2, $col-1-2);}
+// ---
+@mixin modify-grid($gutterValue, $col: false, $all: false){
+  $grid_selector     : '';
+  $flex_grid_selector: '';
+
+  @if ($all == false){
+    $flex_grid_selector: '> .flex-grid, &.flex-grid';
+  }
+  @else{
+    $flex_grid_selector: '.flex-grid, &.flex-grid';
+  }
+
+  #{$flex_grid_selector} {
+    $value: px-to-rem($gutterValue * $mn);
+    width: calc(100% + #{$value});
+  	display: flex;
+  	flex-direction: row;
+  	flex-wrap: wrap;
+  	position: relative;
+    @include nudge(left, -$gutterValue);
+    > [class*="col-"] {
+      @if ($col){
+        $colCount: round(100 / strip-unit($col));
+        width: $col;
+        &:nth-last-child(-n+#{$colCount}) { // Get entire last row.
+          padding-bottom: 0;
+        }
+      }
+      @include nudge(padding, 0 0 $gutterValue $gutterValue);
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //

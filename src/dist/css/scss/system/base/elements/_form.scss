@@ -1,0 +1,182 @@
+// ==========================================================================
+// Base > Elements > Form
+// Styling for elements within a form tag.
+// ==========================================================================
+
+
+input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+	width: 100%;
+	@include nudge(padding, 0.25);
+	border: 1px solid color(grey);
+  border-radius: $def_border_radius;
+	display: inline-block;
+	@include scale(font-size, 14px);
+	background: color(white);
+	transition: border-color $animation ease;
+	&:hover {
+		border-color: darken(color(grey), 12.5%);
+	}
+	&:focus {
+		border-color: darken(color(grey), 25%);
+	}
+	&[disabled] {
+		&, &:hover, &:focus {
+			border-color: color(grey);
+			color: darken(color(grey), 15%);
+			background: lighten(color(grey), 10%);
+		}
+	}
+	// Placeholders.
+	&::-webkit-input-placeholder {
+		color: color(grey, medium);
+	}
+	&::-moz-placeholder {
+		color: color(grey, medium);
+	}
+	&:-moz-placeholder {
+		color: color(grey, medium);
+	}
+	&:-ms-input-placeholder {
+		color: color(grey, medium);
+	}
+	&::placeholder {
+		color: color(grey, medium);
+	}
+}
+
+input:not([type="radio"]):not([type="checkbox"]), select {
+	height: $forms_field_height;
+}
+
+select, .select {
+	+ select, + .select {
+		@include nudge(margin-left, 0.5);
+	}
+}
+
+.select {
+	width: 100%;
+	position: relative;
+	display: inline-block;
+	vertical-align: bottom;
+	select {
+		@include nudge(padding, 8px 2em 8px 0.25);
+		appearance: none;
+	}
+	&:before {
+		width: 2em;
+		margin-top: -8px;
+    position: absolute;
+    top: 50%; right: 0;
+    content: '\25bc';
+    pointer-events: none;
+    color: color(grey);
+    line-height: 1;
+    text-align: center;
+    transform: scale(0.84, 0.42);
+		transition: color $animation ease;
+	}
+	&:hover {
+		&:before {
+			color: darken(color(grey), 12.5%);
+		}
+	}
+}
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+	label {
+		min-width: calc(1em + 2px);
+    margin: 0 !important;
+		position: initial;
+    display: inline-block;
+		vertical-align: middle;
+		span {
+			vertical-align: top;
+		}
+		&:before, &:after {
+			width: calc(1em + 2px);
+			height: calc(1em + 2px);
+	    border: 1px solid transparent;
+    	border-radius: 20%;
+			content: '';
+	    display: inline-block;
+	    background-color: transparent;
+		}
+		&:before {
+			margin-right: 8px;
+    	border-color: color(grey);
+		}
+		&:after {
+			position: absolute;
+			left: 0; top: 0;
+    	transform: scale(.7);
+		}
+	}
+	input[type="checkbox"], input[type="radio"] {
+		width: 100%;
+		height: 100%;
+		min-width: 1em;
+    margin: 0;
+    padding: 0;
+		position: absolute;
+    left: 0; top: 0;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+		&:checked {
+			+ label {
+				&:after {
+					background-color: #53c7a8 !important;
+				}
+			}
+		}
+	}
+	&:hover {
+		input[type="checkbox"], input[type="radio"] {
+			+ label {
+				&:before {
+		    	border-color: darken(color(grey), 12.5%);
+				}
+			}
+			&:checked {
+				+ label {
+					&:before {
+			    	border-color: color(grey); // This prevents checked boxes from changing border colour on hover.
+					}
+				}
+			}
+		}
+	}
+}
+
+textarea {
+	min-height: 100px;
+}
+
+label, .label {
+	display: inline-block;
+	font-weight: bold;
+  line-height: 1.2;
+	span {
+		font-weight: normal;
+	}
+	abbr {
+		color: color(red);
+	}
+  input[type="checkbox"], input[type="radio"] {
+    @include nudge(margin, 0 0.25 0 0);
+  }
+}
+
+fieldset {
+	@include nudge(margin-bottom, 1);
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+// ----------------------------------------------------------------------- //

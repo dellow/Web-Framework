@@ -1,0 +1,32 @@
+@if $switch_utility_font_size == true {
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'font-size';
+$maxSize: 60;
+
+
+@while $maxSize > 0 {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    $percentage: ($value / 1400) * 100;
+    .#{$key}\:#{$property + "-" + $maxSize} {
+      @include respond-to($value){
+        #{$property}: #{($maxSize / 100 * $percentage) + px};
+      }
+    }
+  }
+  // All screens.
+  .#{$property + "-" + $maxSize} {
+    #{$property}: #{$maxSize + px};
+  }
+
+  $maxSize: $maxSize - 1;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}

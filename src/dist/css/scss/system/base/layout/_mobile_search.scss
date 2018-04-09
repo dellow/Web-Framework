@@ -1,0 +1,22 @@
+// ==========================================================================
+// Base > Layout > Mobile Search
+// Styles for mobile search.
+// ==========================================================================
+
+
+.layout-mobile-search {
+  height: 65px;
+  @include nudge(padding, 0 0.5);
+  background: #f5f5f5;
+  transition: all 250ms cubic-bezier(.645, .045, .45, 1);
+  .comp-header-search {
+    form {
+      button {
+        @include nudge(padding, 0 0.5);
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //

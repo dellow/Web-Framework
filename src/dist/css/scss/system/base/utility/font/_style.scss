@@ -1,0 +1,30 @@
+@if $switch_utility_font_style == true {
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'font-weight';
+$declarations: ('normal', 'italic', 'oblique');
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value){
+        #{$property}: unquote($declaration);
+      }
+    }
+  }
+  // All screens.
+  .#{$property + "-" + $declaration} {
+    #{$property}: unquote($declaration);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}

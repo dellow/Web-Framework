@@ -1,0 +1,30 @@
+@if $switch_utility_background_size == true {
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'background-size';
+$declarations: ('cover', 'contain', 'auto');
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value){
+        #{$property}: unquote($declaration);
+      }
+    }
+  }
+  // All screens.
+  .#{$property + "-" + $declaration} {
+    #{$property}: unquote($declaration);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}

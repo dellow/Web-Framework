@@ -8,9 +8,11 @@ $theme: 'web'; // We can't actually use variables in @import declarations becaus
 // System Mixins.
 @import 'system/mixins/#bootstrap';
 // Base vars.
-@import 'system/base/vars';
+@import 'system/base/#vars';
 // Theme vars.
-@import 'themes/web/vars';
+@import 'themes/web/#vars';
+// Theme switches.
+@import 'themes/web/#switches';
 // Base styles.
 @import 'system/base/#bootstrap';
 // Theme styles.

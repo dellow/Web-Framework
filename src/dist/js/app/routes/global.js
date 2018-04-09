@@ -7,12 +7,8 @@
  *
 **/
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-
 import Menus from '../classes/global/menus'
 import Email from '../classes/global/email'
-import FormsNewsletter from '../classes/forms/newsletter'
 
 ;(function (Module, window) {
 
@@ -39,8 +35,6 @@ import FormsNewsletter from '../classes/forms/newsletter'
     Menus.init()
     // Init Email.
     Email.init()
-    // Init newsletter form.
-    this.subscriberForm()
   }
 
   /**
@@ -76,23 +70,6 @@ import FormsNewsletter from '../classes/forms/newsletter'
         return $('[data-js-target="mobileSearch"]').toggleClass('active')
       }
     })
-  }
-
-  /**
-   * subscriberForm
-   * NULLED.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-   * @access public
-  **/
-  Module.prototype.subscriberForm = function () {
-    // Cache element.
-    let $el = $('[data-js-target="subscriberForm"]')
-    // React render method.
-    if ($el.length) {
-      ReactDOM.render(<FormsNewsletter placeholder={$el.data('react-placeholder')} />, $el[0])
-    }
   }
 
   // Export

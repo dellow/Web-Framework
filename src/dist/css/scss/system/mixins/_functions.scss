@@ -1,0 +1,100 @@
+// ==========================================================================
+// Mixins > Functions
+// Functions that aid development or other mixins.
+// ==========================================================================
+
+
+// ---
+// color
+// Gets color and tone from map.
+//
+// .foo {@include color(red, base);}
+// ---
+@function color($color, $tone: 'base') {
+  @if map-has-key($colors, $color) {
+    @return map-get(map-get($colors, $color), $tone);
+  }
+  @else {
+    @return #6cff00;
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// percentage
+// Takes a given value in PX and returns a percentage of it.
+//
+// .foo {@include percentage(500px, 50%);}
+// .foo {@include percentage(500, 50);}
+// ---
+@function percentage($value, $percentage) {
+  $newValue: (strip-unit($value) / 100) * strip-unit($percentage);
+
+  @return #{$newValue + px};
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// strip-unit
+// Simply strips the unit from any string.
+// ---
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// str-replace
+// String replace
+// ---
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// px-to-rem
+// Takes a single value or a list of values and replaces px units with rem
+// Zero values will remain 0.
+// Non-px values will not be modified.
+// You can return an em value by passing the $unit var as 'em'
+// ---
+@function px-to-rem($px, $unit: rem) {
+  $return: ();
+
+  @each $var in $px {
+    @if type-of($var) == 'number' and unit($var) == 'px' and abs($var) > 0 {
+      $return: append($return, #{$var/16px+$unit}, space);
+    }
+    @else {
+      $return: append($return, $var, space);
+    }
+  }
+
+  @return $return;
+}
+
+
+// ----------------------------------------------------------------------- //

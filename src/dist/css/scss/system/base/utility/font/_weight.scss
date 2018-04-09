@@ -1,0 +1,30 @@
+@if $switch_utility_font_weight == true {
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'font-weight';
+$declarations: ('extrabold', 'bold', 'semibold', 'medium', 'normal', 'light', 'thin');
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value){
+        #{$property}: unquote($declaration);
+      }
+    }
+  }
+  // All screens.
+  .#{$property + "-" + $declaration} {
+    #{$property}: unquote($declaration);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}

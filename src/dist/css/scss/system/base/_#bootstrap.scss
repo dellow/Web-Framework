@@ -1,28 +1,42 @@
 // ==========================================================================
-// Base > All
+// Base > Bootstrap
 // Imports all the partials.
 // ==========================================================================
 
 
 @import
-	// Core
-	'reset',
-	'placeholders',
-	'utility-classes',
-	'misc',
-	'global',
-	'core',
-	'objects',
-	'typeset',
-	// Components
-	'components/alerts',
-	'components/side-panel',
-	'components/buttons',
-	'components/menus',
-	'components/grids',
-	'components/slabs',
-	'components/tables',
-	'components/forms',
-	// Misc
-	'fixes',
-	'print';
+	'core/preflight',
+	'core/core',
+	'core/print',
+	'core/objects',
+	'core/typeset',
+	'elements/alert',
+	'elements/btn',
+	'elements/form',
+	'elements/grid',
+	'elements/slab',
+	'elements/table',
+	'layout/body',
+	'layout/header',
+	'layout/mobile_header',
+	'layout/mobile_search',
+	'layout/mobile_wrapper',
+	'utility/background/color',
+	'utility/background/repeat',
+	'utility/background/size',
+	'utility/misc/cols',
+	'utility/misc/display',
+	'utility/misc/flex',
+	'utility/misc/float',
+	'utility/misc/overflow',
+	'utility/misc/opacity',
+	'utility/misc/vertical-align',
+	'utility/misc/z-index',
+	'utility/text/decoration',
+	'utility/text/color',
+	'utility/text/align',
+	'utility/text/white-space',
+	'utility/text/transform',
+	'utility/font/size',
+	'utility/font/style',
+	'utility/font/weight';

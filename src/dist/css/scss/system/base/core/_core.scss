@@ -1,0 +1,95 @@
+// ==========================================================================
+// Base > Core > Core
+// Important classes that are imperative to the framework
+// ==========================================================================
+
+
+// -- Body -- //
+body {
+  &:before, &:after {
+    display: none;
+  }
+  &:after {
+    content: "" + strip-unit(map-get($screens, 'md')); // Output the mobile menu size.
+  }
+  // Responsive
+  @include respond-to-range(small){
+    &:before {
+      content: "small";
+    }
+  }
+  @include respond-to-range(medium){
+    &:before {
+      content: "medium";
+    }
+  }
+  @include respond-to-range(large){
+    &:before {
+      content: "large";
+    }
+  }
+  @include respond-to-range(extra-large){
+    &:before {
+      content: "extra-large";
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// -- Container -- //
+.container {
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+  &--usmall {
+    max-width: 320px;
+  }
+  &--vsmall {
+    max-width: 440px;
+  }
+  &--small {
+    max-width: 768px;
+  }
+  &--medium {
+    max-width: 960px;
+  }
+  &--large {
+    max-width: 1024px;
+  }
+  &--wide {
+    max-width: map-get($screens, 'xl');
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.side {
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.page {
+  &, &:before {
+    transition: all $animation cubic-bezier(.645, .045, .45, 1);
+  }
+  &:before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: rgba(29, 29, 31, 0);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //

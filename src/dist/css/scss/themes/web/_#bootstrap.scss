@@ -1,27 +1,22 @@
 // ==========================================================================
-// Site > All
+// Web > Bootstrap
 // Imports all the partials.
 // ==========================================================================
+
 @import
-		// Core
-		'icons',
-		'typeset',
-		'global',
-		'objects',
-		// Components
-		'components/global',
-		'components/buttons',
-		'components/forms',
-		'components/menus',
-		// Templates
-		'templates/tpl',
-		// Misc
+		'core/typeset',
+		'core/objects',
+		'core/print',
+		'core/fixes',
+		'layout/header',
+		'layout/main',
+		'layout/footer',
+		'components/btn',
+		'components/form',
 		'misc/validation',
 		'misc/wordpress',
-		// Fixes & Hacks
-		'fixes';
+		'global';
 
 // Vendor
 // @import 'vendor/slick';
-@import 'vendor/socicon';
-// @import 'vendor/tooltipster';
+// @import 'vendor/socicon';

@@ -1,0 +1,28 @@
+@if $switch_utility_text_color == true {
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'color';
+
+
+@each $color, $hex in $colors {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:bg-#{$property}-#{$color} {
+      @include respond-to($value){
+        #{$property}: color($color);
+      }
+    }
+  }
+  .text-#{$property}-#{$color} {
+    #{$property}: color($color);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}

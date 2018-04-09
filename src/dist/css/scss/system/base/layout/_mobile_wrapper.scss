@@ -1,10 +1,13 @@
 // ==========================================================================
-// Web > Global
-// Styles that are across the board and not specific to any single partial.
+// Base > Layout > Mobile Wrapper
+// Styles for mobile wrapper.
 // ==========================================================================
 
 
-// CSS Declaration.
+.layout-mobile-wrapper {
+  box-shadow: none;
+  transition: box-shadow 250ms cubic-bezier(.645, .045, .45, 1);
+}
 
 
 // ----------------------------------------------------------------------- //

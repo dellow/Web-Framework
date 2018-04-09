@@ -1,0 +1,125 @@
+@if $switch_utility_misc_flex == true {
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'flex';
+$declarations: ('0', '1');
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value){
+        #{$property}: unquote($declaration);
+      }
+    }
+  }
+  // All screens.
+  .#{$property + "-" + $declaration} {
+    #{$property}: unquote($declaration);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'flex-direction';
+$declarations: ('row', 'column');
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value){
+        #{$property}: unquote($declaration);
+      }
+    }
+  }
+  // All screens.
+  .#{$property + "-" + $declaration} {
+    #{$property}: unquote($declaration);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'align-items';
+$declarations: ('flex-start', 'center', 'flex-end');
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value){
+        #{$property}: unquote($declaration);
+      }
+    }
+  }
+  // All screens.
+  .#{$property + "-" + $declaration} {
+    #{$property}: unquote($declaration);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'justify-content';
+$declarations: ('flex-start', 'center', 'flex-end');
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value){
+        #{$property}: unquote($declaration);
+      }
+    }
+  }
+  // All screens.
+  .#{$property + "-" + $declaration} {
+    #{$property}: unquote($declaration);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'order';
+$maxSize: 10;
+
+
+@while $maxSize > 0 {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    $percentage: ($value / 1400) * 100;
+    .#{$key}\:#{$property + "-" + $maxSize} {
+      @include respond-to($value){
+        #{$property}: #{($maxSize / 100 * $percentage) + px};
+      }
+    }
+  }
+  // All screens.
+  .#{$property + "-" + $maxSize} {
+    #{$property}: #{$maxSize + px};
+  }
+
+  $maxSize: $maxSize - 1;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}
