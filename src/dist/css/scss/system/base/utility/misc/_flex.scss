@@ -21,6 +21,12 @@ $declarations: ('0', '1');
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
   }
+  // Children.
+  .#{$property + "-" + $declaration}\:children {
+    * {
+      #{$property}: unquote($declaration);
+    }
+  }
 }
 
 
@@ -43,6 +49,12 @@ $declarations: ('row', 'column');
   // All screens.
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
+  }
+  // Children.
+  .#{$property + "-" + $declaration}\:children {
+    * {
+      #{$property}: unquote($declaration);
+    }
   }
 }
 
@@ -67,6 +79,12 @@ $declarations: ('flex-start', 'center', 'flex-end');
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
   }
+  // Children.
+  .#{$property + "-" + $declaration}\:children {
+    * {
+      #{$property}: unquote($declaration);
+    }
+  }
 }
 
 
@@ -89,6 +107,12 @@ $declarations: ('flex-start', 'center', 'flex-end');
   // All screens.
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
+  }
+  // Children.
+  .#{$property + "-" + $declaration}\:children {
+    * {
+      #{$property}: unquote($declaration);
+    }
   }
 }
 

@@ -21,6 +21,12 @@ $declarations: ('absolute', 'fixed', 'relative');
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
   }
+  // Children.
+  .#{$property + "-" + $declaration}\:children {
+    * {
+      #{$property}: unquote($declaration);
+    }
+  }
 }
 
 

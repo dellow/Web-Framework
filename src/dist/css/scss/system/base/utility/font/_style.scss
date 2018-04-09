@@ -21,6 +21,12 @@ $declarations: ('normal', 'italic', 'oblique');
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
   }
+  // Children.
+  .#{$property + "-" + $declaration}\:children {
+    * {
+      #{$property}: unquote($declaration);
+    }
+  }
 }
 
 

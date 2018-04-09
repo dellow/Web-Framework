@@ -21,6 +21,12 @@ $declarations: ('uppercase', 'lowercase', 'capitalize');
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
   }
+  // Children.
+  .#{$property + "-" + $declaration}\:children {
+    * {
+      #{$property}: unquote($declaration);
+    }
+  }
 }
 
 

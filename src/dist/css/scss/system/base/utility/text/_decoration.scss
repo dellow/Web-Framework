@@ -21,6 +21,12 @@ $declarations: ('overline', 'line-through', 'underline');
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
   }
+  // Children.
+  .#{$property + "-" + $declaration}\:children {
+    * {
+      #{$property}: unquote($declaration);
+    }
+  }
 }
 
 
