@@ -1,5 +1,8 @@
 # Web Framework Changelog
 
+__4.0.1__:
+* Added margin and padding utilities.
+
 __4.0.0__:
 * Removed Gulp completely. Now uses Webpack for JS and CSS compilation.
 * Added a new CSS framework based on Tailwind.

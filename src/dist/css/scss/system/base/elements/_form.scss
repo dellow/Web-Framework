@@ -54,6 +54,36 @@ select, .select {
 	}
 }
 
+textarea {
+	min-height: 100px;
+}
+
+label, .label {
+	display: inline-block;
+	font-weight: bold;
+  line-height: 1.2;
+	span {
+		font-weight: normal;
+	}
+	abbr {
+		color: color(red);
+	}
+  input[type="checkbox"], input[type="radio"] {
+    @include nudge(margin, 0 0.25 0 0);
+  }
+}
+
+fieldset {
+	@include nudge(margin-bottom, 1);
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+button {
+  border-radius: $def_border_radius;
+}
+
 .select {
 	width: 100%;
 	position: relative;
@@ -150,32 +180,6 @@ select, .select {
 			}
 		}
 	}
-}
-
-textarea {
-	min-height: 100px;
-}
-
-label, .label {
-	display: inline-block;
-	font-weight: bold;
-  line-height: 1.2;
-	span {
-		font-weight: normal;
-	}
-	abbr {
-		color: color(red);
-	}
-  input[type="checkbox"], input[type="radio"] {
-    @include nudge(margin, 0 0.25 0 0);
-  }
-}
-
-fieldset {
-	@include nudge(margin-bottom, 1);
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 
 

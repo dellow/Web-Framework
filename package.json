@@ -1,6 +1,6 @@
 {
   "name": "web-framework",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web applications. Builds JS and CSS with Webpack.",
   "license": "MIT",
   "devDependencies": {

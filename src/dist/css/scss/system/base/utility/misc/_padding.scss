@@ -1,0 +1,33 @@
+@if $switch_utility_misc_padding == true {
+
+
+// ----------------------------------------------------------------------- //
+
+
+$properties: ('padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left');
+$declarations: ('0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5', '5.5', '6', '6.5', '7', '7.5');
+
+
+@each $property in $properties {
+  @each $declaration in $declarations {
+    $declarationClass: str-replace($declaration, '.', '-');
+    // Responsive screens.
+    @each $key, $value in $screens {
+      .#{$key}\:#{$property + "-" + $declarationClass} {
+        @include respond-to($value){
+          @include nudge(#{$property}, number(unquote($declaration)));
+        }
+      }
+    }
+    // All screens.
+    .#{$property + "-" + $declaration} {
+      @include nudge(#{$property}, number(unquote($declaration)));
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}
