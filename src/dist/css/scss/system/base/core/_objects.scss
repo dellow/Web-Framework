@@ -194,4 +194,83 @@
 }
 
 
+/* ----------------------------------------------------------------------- */
+
+
+.obj-alert {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: $zindex-10;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: opacity $animation ease;
+  &.active {
+    opacity: 1;
+  }
+  &__window {
+    max-width: 500px;
+  	min-width: 300px;
+		border-radius: $def_border_radius;
+		display: flex;
+		flex-direction: column;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
+    background: color(white);
+    &__header {
+      padding: 10px 12px;
+	    border-bottom: 1px solid #e5e5e5;
+	    border-radius: $def_border_radius $def_border_radius 0 0;
+	    color: #4e5665;
+	    font-weight: bold;
+	    line-height: 19px;
+	    text-shadow: 0 1px 0 color(white);
+	    background: #f5f6f7;
+    }
+    &__main {
+      padding: 10px 12px;
+			flex: 1;
+      @include scale(font-size, 14px);
+	    background: color(white);
+    }
+    &__footer {
+      padding: 10px 12px;
+	    border-top: 1px solid #e9eaed;
+	    text-align: right;
+    }
+		button {
+			padding: 0 8px;
+	    border: 1px solid;
+	    border-radius: $def_border_radius;
+	    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	    box-sizing: content-box;
+	    position: relative;
+	    vertical-align: middle;
+	    cursor: pointer;
+	    line-height: 20px;
+	    font-weight: bold;
+	    font-size: 13px;
+	    text-align: center;
+	    white-space: nowrap;
+	    background-clip: padding-box;
+			&.positive {
+		    border-color: #435a8b #3c5488 #334c83 !important;
+		    color: color(white);
+		    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+		    background: #4e69a2;
+			}
+			&.negative {
+				border-color: #cdced0 #c5c6c8 #b6b7b9 !important;
+		    color: #4e5665;
+		    text-shadow: 0 1px 0 color(white);
+		    background: #f6f7f8;
+			}
+		}
+  }
+}
+
+
 // ----------------------------------------------------------------------- //

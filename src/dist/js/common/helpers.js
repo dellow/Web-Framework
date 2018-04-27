@@ -38,17 +38,6 @@
   }
 
   /**
-   * isPhantom
-   * Checks if user is PhantomJS.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  Helpers.isPhantom = function () {
-    return (/PhantomJS/.test(window.navigator.userAgent))
-  }
-
-  /**
    * throw
    * Throws a custom error.
    *
@@ -138,30 +127,6 @@
   }
 
   /**
-   * ajax
-   * Returns a simple Ajax request. Should use the result with a promise.
-   * Will automatically parse any URL parameters and place them in the JSON
-   * body instead.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  */
-  Helpers.ajax = function (url, data, type, dataType) {
-    var _this = this
-
-    return $.ajax({
-      url: url,
-      type: (!_this.isEmpty(type)) ? type : 'GET',
-      dataType: (!_this.isEmpty(dataType)) ? dataType : 'JSON',
-      data: $.extend({}, {ajaxrequest: true}, this.parseURLParams(url), (data || {})),
-      beforeSend: function (jqXHR, settings) {
-        // Log full URL.
-        this.log((settings.data) ? settings.url + '?' + settings.data : settings.url)
-      }
-    })
-  }
-
-  /**
    * parseURLParams
    * Converts the URL parameters into an object.
    *
@@ -240,6 +205,22 @@
   }
 
   /**
+  * cssSafeName
+  * Make string safe for CSS class.
+  *
+  * @since 1.0.0
+  * @version 1.0.0
+  **/
+  Helpers.cssSafeName = function (string) {
+    return string.replace(/[^a-z0-9]/g, function(s) {
+      var c = s.charCodeAt(0)
+      if (c == 32) return '-'
+      if (c >= 65 && c <= 90) return '_' + s.toLowerCase()
+      return '__' + ('000' + c.toString(16)).slice(-4)
+    })
+  }
+
+  /**
    * isInt
    * Checks var is integer.
    *
@@ -270,6 +251,110 @@
   **/
   Helpers.updateURL = function (key, value) {
     window.history.pushState(null, null, this.updateURLParameter(window.location.href, key, encodeURIComponent(value)))
+  }
+
+  /**
+  * isAlphanumeric
+  * Check string is alphanumeric.
+  *
+  * @since 1.0.0
+  * @version 1.0.0
+  **/
+  Helpers.isAlphanumeric = function (e) {
+    // Regex to allow letters, numbers and spaces.
+    let regex = new RegExp(/^[a-z\d\-_\s]+$/i)
+    // Check character code.
+    let str = String.fromCharCode(!e.charCode ? e.which : e.charCode)
+
+    return (e.keyCode === 8 || e.target.value === '' || regex.test(str))
+  }
+
+  /**
+  * alert
+  * Customised alert().
+  *
+  * @since 1.0.0
+  * @version 1.0.0
+  **/
+  Helpers.alert = function (title, body) {
+    // Check for an existing modal.
+    if ($('.obj-alert').length) $('.obj-alert').remove()
+
+    // Define modal.
+    const tpl = `<div class="obj-alert">
+      <div class="obj-alert__window">
+        <div class="obj-alert__window__header">
+          <div class="obj-alert__window__header__title">` + title + `</div>
+        </div>
+        <div class="obj-alert__window__main">
+          ` + body + `
+        </div>
+        <div class="obj-alert__window__footer">
+          <button class="positive" data-close>Okay</button>
+        </div>
+      </div>
+    </div>`
+    // Get 10% of document height.
+    let docHeight = ($(window).height() / 100) * 10
+    // Add to body.
+    $('body').append(tpl)
+    // Set maxium height.
+    $('.obj-alert__window').css({'maxHeight': ($(window).height() - docHeight)})
+    // Wait and show modal.
+    setTimeout(() => {
+      $('.obj-alert').addClass('active')
+    }, 50)
+    // Click events.
+    $('[data-close]').on('click', () => {
+      $('.obj-alert').remove()
+    })
+  }
+
+  /**
+  * confirm
+  * Customised confirm().
+  *
+  * @since 1.0.0
+  * @version 1.0.0
+  **/
+  Helpers.confirm = function (title, body, confirmCallback, refuteCallback) {
+    // Check for an existing modal.
+    if ($('.obj-alert').length) $('.obj-alert').remove()
+
+    // Define modal.
+    const tpl = `<div class="obj-alert">
+      <div class="obj-alert__window">
+        <div class="obj-alert__window__header">
+          <div class="obj-alert__window__header__title">` + title + `</div>
+        </div>
+        <div class="obj-alert__window__main">
+          ` + body + `
+        </div>
+        <div class="obj-alert__window__footer">
+          <button class="positive" data-confirm>Yes</button>
+          <button class="negative" data-refute>No</button>
+        </div>
+      </div>
+    </div>`
+    // Get 10% of document height.
+    let docHeight = ($(window).height() / 100) * 10
+    // Add to body.
+    $('body').append(tpl)
+    // Set maxium height.
+    $('.obj-alert__window').css({'maxHeight': ($(window).height() - docHeight)})
+    // Wait and show modal.
+    setTimeout(() => {
+      $('.obj-alert').addClass('active')
+    }, 50)
+    // Click events.
+    $('[data-confirm]').on('click', () => {
+      $('.obj-alert').remove()
+      if (confirmCallback) confirmCallback()
+    })
+    $('[data-refute]').on('click', () => {
+      $('.obj-alert').remove()
+      if (refuteCallback) refuteCallback()
+    })
   }
 
   // Export
