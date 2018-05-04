@@ -156,6 +156,13 @@ button {
     z-index: 2;
     opacity: 0;
     cursor: pointer;
+		&:disabled {
+			+ label {
+				&:after {
+					background-color: #f1f1f1 !important;
+				}
+			}
+		}
 		&:checked {
 			+ label {
 				&:after {
