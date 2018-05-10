@@ -23,7 +23,7 @@ $declarations: ('0', '1');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }
@@ -52,7 +52,7 @@ $declarations: ('row', 'column');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }
@@ -81,7 +81,7 @@ $declarations: ('flex-start', 'center', 'flex-end');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }
@@ -110,7 +110,7 @@ $declarations: ('flex-start', 'center', 'flex-end');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

@@ -23,7 +23,7 @@ $declarations: ('hidden', 'visible');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

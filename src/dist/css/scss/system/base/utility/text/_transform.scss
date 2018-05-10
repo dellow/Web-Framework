@@ -23,7 +23,7 @@ $declarations: ('uppercase', 'lowercase', 'capitalize');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

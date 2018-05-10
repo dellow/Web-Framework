@@ -23,7 +23,7 @@ $declarations: ('repeat', 'no-repeat');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

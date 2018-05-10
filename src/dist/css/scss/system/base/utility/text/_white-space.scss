@@ -23,7 +23,7 @@ $declarations: ('no-wrap', 'normal');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

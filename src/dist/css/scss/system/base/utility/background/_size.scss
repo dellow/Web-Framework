@@ -23,7 +23,7 @@ $declarations: ('cover', 'contain', 'auto');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

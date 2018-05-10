@@ -18,10 +18,22 @@ $declarations: ('0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5', '5.5
           @include nudge(#{$property}, number(unquote($declaration)));
         }
       }
+      // Children.
+      .#{$key}\:#{$property + "-" + $declarationClass}\:children {
+        > * {
+          @include nudge(#{$property}, number(unquote($declaration)));
+        }
+      }
     }
     // All screens.
-    .#{$property + "-" + $declaration} {
+    .#{$property + "-" + $declarationClass} {
       @include nudge(#{$property}, number(unquote($declaration)));
+    }
+    // Children.
+    .#{$property + "-" + $declarationClass}\:children {
+      > * {
+        @include nudge(#{$property}, number(unquote($declaration)));
+      }
     }
   }
 }

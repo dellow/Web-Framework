@@ -23,7 +23,7 @@ $declarations: ('overline', 'line-through', 'underline');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

@@ -23,7 +23,7 @@ $declarations: ('left', 'center', 'right');
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

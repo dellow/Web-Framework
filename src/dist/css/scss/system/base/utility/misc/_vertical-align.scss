@@ -23,7 +23,7 @@ $declarations: ('baseline', 'sub', 'super', 'top', 'text-top', 'middle', 'bottom
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

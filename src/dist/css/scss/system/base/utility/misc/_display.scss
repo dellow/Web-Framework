@@ -23,7 +23,7 @@ $declarations: ('inline', 'inline-block', 'block', 'flex', 'grid', 'table', 'non
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }

@@ -23,7 +23,7 @@ $declarations: ('extrabold', 'bold', 'semibold', 'medium', 'normal', 'light', 't
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
     }
   }
