@@ -15,9 +15,19 @@ $property: 'color';
         #{$property}: color($color);
       }
     }
+    .hover\:#{$key}\:text-#{$property}-#{$color} {
+      &:hover {
+        #{$property}: color($color);
+      }
+    }
   }
   .text-#{$property}-#{$color} {
     #{$property}: color($color);
+  }
+  .hover\:text-#{$property}-#{$color} {
+    &:hover {
+      #{$property}: color($color);
+    }
   }
 }
 
