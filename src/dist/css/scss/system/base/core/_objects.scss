@@ -112,73 +112,6 @@
 // ----------------------------------------------------------------------- //
 
 
-.obj-modal {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0; left: 0;
-  z-index: $zindex-10;
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.25);
-  transition: opacity $animation ease;
-  @include respond-to(map-get($screens, 'md') + 1, null, true){
-    display: block;
-    background: color(white)
-  }
-  &.active {
-    opacity: 1;
-  }
-  &__window {
-  	min-width: 400px;
-    margin-top: -20%;
-    border-radius: $def_border_radius;
-    box-shadow: 0 0 3px rgba(color(black), 0.4);
-    text-align: center;
-  	backface-visibility: hidden;
-    background: color(white);
-    &__header {
-      @include nudge(padding, 0.5);
-      border-bottom: 1px solid #EEEEEE;
-      @include scale(font-size, 20px);
-      @include respond-to(map-get($screens, 'md') + 1, null, true){
-        border: 0;
-      }
-    }
-    &__main {
-      @include nudge(padding, 1);
-    }
-    &__footer {
-      @include nudge(padding, 0.5);
-      border-top: 1px solid #EEEEEE;
-      @include respond-to(map-get($screens, 'md') + 1, null, true){
-        border: 0;
-      }
-      button {
-        @include scale(font-size, 14px);
-      }
-    }
-    @include respond-to(map-get($screens, 'md') + 1, null, true){
-      width: 100% !important;
-      height: 100% !important;
-      min-width: 0 !important;
-      max-height: none !important;
-      margin-top: 0;
-      border-radius: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-}
-
-
-// ----------------------------------------------------------------------- //
-
-
 .obj-embed-container {
   max-width: 100%;
   height: 0;
@@ -197,7 +130,7 @@
 /* ----------------------------------------------------------------------- */
 
 
-.obj-alert {
+.obj-alert, .obj-modal {
   width: 100%;
   height: 100%;
   display: flex;
@@ -213,17 +146,36 @@
     opacity: 1;
   }
   &__window {
-    max-width: 500px;
-  	min-width: 300px;
+    max-width: 550px;
+  	min-width: 350px;
 		border-radius: $def_border_radius;
 		display: flex;
 		flex-direction: column;
+    overflow: hidden;
     box-shadow: 0 2px 26px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
     background: color(white);
+    &.large {
+  	  min-width: 500px;
+    }
+    &.full {
+      width: 100% !important; // Overwrite the JS.
+      height: 100% !important; // Overwrite the JS.
+  	  max-width: none !important; // Overwrite the JS.
+  	  min-width: 0 !important; // Overwrite the JS.
+  	  max-height: none !important; // Overwrite the JS.
+  	  min-height: 0 !important; // Overwrite the JS.
+      border-radius: 0;
+      .obj-alert__window__main {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include scale(font-size, 18px);
+      }
+    }
     &__header {
       padding: 10px 12px;
 	    border-bottom: 1px solid #e5e5e5;
-	    border-radius: $def_border_radius $def_border_radius 0 0;
 	    color: #4e5665;
 	    font-weight: bold;
 	    line-height: 19px;
@@ -244,7 +196,6 @@
 		button {
 			padding: 0 8px;
 	    border: 1px solid;
-	    border-radius: $def_border_radius;
 	    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 	    box-sizing: content-box;
 	    position: relative;

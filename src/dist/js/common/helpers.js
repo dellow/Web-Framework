@@ -270,6 +270,39 @@
   }
 
   /**
+   * splitArrayIntoChunks
+   * Updates the URL.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Helpers.splitArrayIntoChunks = function (arr, n) {
+    var rest = arr.length % n,
+        restUsed = rest,
+        partLength = Math.floor(arr.length / n),
+        result = []
+
+    for (var i = 0; i < arr.length; i += partLength) {
+      var end = partLength + i,
+          add = false
+
+      if (rest !== 0 && restUsed) {
+        end++
+        restUsed--
+        add = true
+      }
+
+      result.push(arr.slice(i, end))
+
+      if (add) {
+        i++
+      }
+    }
+
+    return result
+  }
+
+  /**
   * alert
   * Customised alert().
   *
@@ -355,6 +388,45 @@
       $('.obj-alert').remove()
       if (refuteCallback) refuteCallback()
     })
+  }
+
+  /**
+  * modal
+  * Modal window.
+  *
+  * @since 1.0.0
+  * @version 1.0.0
+  **/
+  Helpers.modal = function (body, type, destroy) {
+    // Check for an existing modal.
+    if ($('.obj-modal').length) $('.obj-modal__window').remove()
+    // Check for destroy.
+    if (destroy) return $('.obj-modal').remove()
+
+    // Set the type of size modal.
+    type = (!type) ? '' : type
+    // Define wrapper.
+    const wrapper = `<div class="obj-modal"></div>`
+    // Define modal
+    const modal = `<div class="obj-modal__window">
+      <div class="obj-modal__window__main">
+        <div class="page__content text-align-center">` + body + `</div>
+      </div>
+    </div>`
+    // Get 10% of document height.
+    let docHeight = ($(window).height() / 100) * 10
+    // Add to body.
+    if (!$('.obj-modal').length) {
+      $('body').append(wrapper)
+    }
+    // Add to wrapper.
+    $('.obj-modal').append(modal)
+    // Set maxium height.
+    $('.obj-modal__window').addClass(type).css({'maxHeight': ($(window).height() - docHeight)})
+    // Wait and show modal.
+    setTimeout(() => {
+      $('.obj-modal').addClass('active')
+    }, 50)
   }
 
   // Export

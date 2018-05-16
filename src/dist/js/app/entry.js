@@ -116,24 +116,41 @@ import Navigo from 'navigo'
   **/
   App.prototype.preloaders = {
     svgs: {
-      spinner: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="display:block; enable-background:new 0 0 50 50;" xml:space="preserve"><path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg>'
+      spinner: (width, height, color) => {
+        width = (width) ? width : 25
+        height = (height) ? height : 25
+        color = (color) ? color : '#000'
+        return '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="' + width + '" height="' + height + '" fill="' + color + '" viewBox="0 0 50 50" style="display:block;enable-background:new 0 0 50 50;" xml:space="preserve"><path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg>'
+      },
+      circle: (width, height, color) => {
+        width = (width) ? width : 25
+        height = (height) ? height : 25
+        color = (color) ? color : '#000'
+        return '<svg width="' + width + '" height="' + height + '" stroke="' + color + '" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(1 1)" stroke-width="2"><circle stroke-opacity=".5" cx="18" cy="18" r="18"/><path d="M36 18c0-9.94-8.06-18-18-18"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></g></svg>'
+      },
+      tick: (width, height, color) => {
+        width = (width) ? width : 25
+        height = (height) ? height : 25
+        color = (color) ? color : '#8ac38b'
+        return '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="' + width + '" height="' + height + '" viewBox="0 0 100 100" enable-background="new 0 0 ' + width + ' ' + height + '" xml:space="preserve"><polyline class="check" fill="none" stroke="' + color + '" stroke-width="10" stroke-miterlimit="20" points="15,60 40,80 85,20" /></svg>'
+      }
     },
     overlay: function ($el, message, destroy) {
       // Are we destroying?
       if (destroy) {
-        // Guard :: Check element has 'u-preloading' class.
-        if (!$el.length || !$el.hasClass('u-preloading')) return
+        // Guard :: Check element has 'js-preloading' class.
+        if (!$el.length || !$el.hasClass('js-preloading')) return
 
         // Remove overlay.
         $('.u-overlay', $el).remove()
         // Remove class.
-        $el.removeClass('u-preloading')
+        $el.removeClass('js-preloading')
       }
 
       // Are we creating?
       if (!destroy) {
-        // Guard :: Check element has 'u-preloading' class.
-        if (!$el.length || $el.hasClass('u-preloading')) return
+        // Guard :: Check element has 'js-preloading' class.
+        if (!$el.length || $el.hasClass('js-preloading')) return
 
         // Set message.
         message = (message) ? message : 'Loading...'
@@ -143,13 +160,13 @@ import Navigo from 'navigo'
         let $preloader = $(`
           <div class="u-overlay">
             <div class="u-overlay__body">
-              <div>` + this.svgs.spinner + `</div>
+              <div>` + this.svgs.spinner() + `</div>
               <div>` + message + `</div>
             </div>
           </div>
         `)
         // Apply overlay.
-        $el.prepend($preloader).addClass('u-preloading')
+        $el.prepend($preloader).addClass('js-preloading')
       }
     },
     button: function ($el, destroy) {
@@ -158,8 +175,8 @@ import Navigo from 'navigo'
         let $btn = $(btn)
         // Are we destroying?
         if (destroy) {
-          // Guard :: Check element has 'u-preloading' class.
-          if (!$btn.length || !$btn.hasClass('u-preloading')) return
+          // Guard :: Check element has 'js-preloading' class.
+          if (!$btn.length || !$btn.hasClass('js-preloading')) return
 
           // Get storage ID.
           let uid = $btn.attr('data-content-id')
@@ -170,15 +187,15 @@ import Navigo from 'navigo'
           // Remove preloader and content ID.
           $btn.html(content).removeAttr('data-content-id')
           // Remove class.
-          $btn.removeClass('u-preloading')
+          $btn.removeClass('js-preloading')
           // Reset styles.
           $btn.css({'width': '', 'height': '', 'position': ''})
         }
 
         // Are we creating?
         if (!destroy) {
-          // Guard :: Check element has 'u-preloading' class.
-          if (!$btn.length || $btn.hasClass('u-preloading')) return
+          // Guard :: Check element has 'js-preloading' class.
+          if (!$btn.length || $btn.hasClass('js-preloading')) return
 
           // Get button content.
           let content = JSON.stringify($btn.html())
@@ -187,7 +204,7 @@ import Navigo from 'navigo'
           // Store content.
           window.config.contentStrings[uid] = content
           // Create preloader.
-          let $preloader = $(this.svgs.spinner).css({'fill': '#FFFFFF'}).hide()
+          let $preloader = $(this.svgs.spinner()).css({'fill': '#FFFFFF'}).hide()
           // Disable the button.
           $btn.addClass('btn--disabled')
           // Add button styles.
@@ -195,7 +212,7 @@ import Navigo from 'navigo'
           // Add preloader and content ID.
           $btn.html($preloader).attr('data-content-id', uid)
           // Add class.
-          $btn.addClass('u-preloading')
+          $btn.addClass('js-preloading')
           // Add preloader styles.
           $preloader.css({'position': 'absolute', 'top': '50%', 'left': '50%', 'margin-left': -$preloader.outerWidth() / 2, 'margin-top': -$preloader.outerHeight() / 2}).show()
         }
