@@ -246,4 +246,20 @@
 }
 
 
+/* ----------------------------------------------------------------------- */
+
+
+.obj-modal-preloader {
+	@include nudge(padding, 1);
+	text-align: center;
+	&__preloader {
+		@include nudge(margin-bottom, 0.45);
+	}
+	&__message {
+		font-weight: bold;
+		@include scale(font-size, 16px);
+	}
+}
+
+
 // ----------------------------------------------------------------------- //
