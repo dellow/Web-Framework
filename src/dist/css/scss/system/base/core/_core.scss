@@ -4,6 +4,29 @@
 // ==========================================================================
 
 
+html {
+  &.page-flex {
+    &, body {
+      height: 100%;
+    }
+    .page {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      .layout-main {
+        flex: 1;
+      }
+      .layout-footer {
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
 // -- Body -- //
 body {
   &:before, &:after {
@@ -86,6 +109,8 @@ body {
   &:before {
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0; left: 0;
     content: '';
     background: rgba(29, 29, 31, 0);
   }
