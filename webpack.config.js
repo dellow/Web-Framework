@@ -17,6 +17,7 @@ const WebpackCleanPlugin = require('webpack-clean')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 
 module.exports = {
+  mode: 'development',
   entry: {
     'js/app': path.resolve(__dirname, './src/dist/js/app/entry.js'),
     'js/common': path.resolve(__dirname, './src/dist/js/common/entry.js'),

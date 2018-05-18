@@ -17,7 +17,7 @@
    * @version 1.0.0
   **/
   Helpers.log = function (message, type, alertlog) {
-    if (process.env.NODE_ENV !== 'production' && !this.isPhantom()) {
+    if (process.env.NODE_ENV !== 'production') {
       alertlog = (typeof alertlog === 'undefined')
       if (typeof console === 'undefined' || typeof console.log === 'undefined') {
         if (alertlog) {

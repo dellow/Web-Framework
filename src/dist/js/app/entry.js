@@ -65,37 +65,6 @@ import Navigo from 'navigo'
    * @version 1.0.0
   **/
   App.prototype.plugins = {
-    modal: (title, body, btn) => {
-      // Guard :: Check for a modal.
-      if ($('.obj-modal').length) return
-
-      // Define modal
-      const tpl = `<div class="obj-modal">
-        <div class="obj-modal__window">
-          <div class="obj-modal__window__header">` + title + `</div>
-          <div class="obj-modal__window__main">
-            <div class="page__content">` + body + `</div>
-          </div>
-          <div class="obj-modal__window__footer">
-            <button class="btn btn--common btn--medium" data-js-event="closeModal">` + btn + `</button>
-          </div>
-        </div>
-      </div>`
-      // Get 10% of document height.
-      let docHeight = ($(window).height() / 100) * 10
-      // Add to body.
-      $('body').append(tpl)
-      // Set maxium height.
-      $('.obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
-      // Wait and show modal.
-      setTimeout(() => {
-        $('.obj-modal').addClass('active')
-      }, 50)
-      // Click events.
-      $('[data-js-event="closeModal"]').on('click', () => {
-        $('.obj-modal').remove()
-      })
-    },
     sliders: (el, options) => {
       // DOM check.
       if (!el.length) return
@@ -133,40 +102,6 @@ import Navigo from 'navigo'
         height = (height) ? height : 25
         color = (color) ? color : '#8ac38b'
         return '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="' + width + '" height="' + height + '" viewBox="0 0 100 100" enable-background="new 0 0 ' + width + ' ' + height + '" xml:space="preserve"><polyline class="check" fill="none" stroke="' + color + '" stroke-width="10" stroke-miterlimit="20" points="15,60 40,80 85,20" /></svg>'
-      }
-    },
-    overlay: function ($el, message, destroy) {
-      // Are we destroying?
-      if (destroy) {
-        // Guard :: Check element has 'js-preloading' class.
-        if (!$el.length || !$el.hasClass('js-preloading')) return
-
-        // Remove overlay.
-        $('.u-overlay', $el).remove()
-        // Remove class.
-        $el.removeClass('js-preloading')
-      }
-
-      // Are we creating?
-      if (!destroy) {
-        // Guard :: Check element has 'js-preloading' class.
-        if (!$el.length || $el.hasClass('js-preloading')) return
-
-        // Set message.
-        message = (message) ? message : 'Loading...'
-        // Add styles.
-        $el.css({'position': 'relative'})
-        // Create preloader.
-        let $preloader = $(`
-          <div class="u-overlay">
-            <div class="u-overlay__body">
-              <div>` + this.svgs.spinner() + `</div>
-              <div>` + message + `</div>
-            </div>
-          </div>
-        `)
-        // Apply overlay.
-        $el.prepend($preloader).addClass('js-preloading')
       }
     },
     button: function ($el, destroy) {
