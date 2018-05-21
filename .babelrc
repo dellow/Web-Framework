@@ -1,5 +1,5 @@
 {
   "ignore": "/(bower_components)|(node_modules)/",
   "presets": ["es2015", "stage-1"],
-  "plugins": ["syntax-decorators", "transform-decorators", "add-module-exports"]
+  "plugins": ["syntax-decorators", "add-module-exports"]
 }

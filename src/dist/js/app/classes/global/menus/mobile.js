@@ -114,21 +114,21 @@ class MenusMobile {
     let socialMenuHTML = ($('[data-menu="social"]').length) ? $('[data-menu="social"]')[0].outerHTML : ''
 
     return `
-      <aside class="comp-side-panel" data-menu="mobile">
-        <div class="comp-side-panel__scrollable">
-          <div class="comp-side-panel__menu n">
+      <aside class="layout-mobile-menu" data-menu="mobile">
+        <div class="layout-mobile-menu__scrollable">
+          <div class="layout-mobile-menu__menu n">
             ` + menuHTML + `
           </div>
-          <div class="comp-side-panel__spacer a"></div>
-          <div class="comp-side-panel__social n">
+          <div class="layout-mobile-menu__spacer a"></div>
+          <div class="layout-mobile-menu__social n">
             ` + socialMenuHTML + `
           </div>
-          <div class="comp-side-panel__user">
-            <div class="comp-side-panel__user__header a">
+          <div class="layout-mobile-menu__user">
+            <div class="layout-mobile-menu__user__header a">
               ${(window.config.user) ? '<span>Hi ' + window.config.user.first_name + '</span>' : '<span>Welcome</span>' }
               ${(window.config.user) ? '<span><a href="/logout">Logout</a></span>' : '<span><a href="/register">Register</a></span>' }
             </div>
-            <div class="comp-side-panel__user__body n">
+            <div class="layout-mobile-menu__user__body n">
               <ul role="menu">
                 <li role="menuitem">
                   <a href="/account">
@@ -156,15 +156,15 @@ class MenusMobile {
                 </li>
               </ul>
             </div>
-            <div class="comp-side-panel__user__tabs a">
-              <div class="comp-side-panel__user__tabs__single">
-                <div class="comp-side-panel__user__tabs__single__header">
+            <div class="layout-mobile-menu__user__tabs a">
+              <div class="layout-mobile-menu__user__tabs__single">
+                <div class="layout-mobile-menu__user__tabs__single__header">
                   <button data-js-event="toggleMenuTab">
                     <span>Help &amp; Information</span>
                     <span><i class="icon material-icons"></i></span>
                   </button>
                 </div>
-                <div class="comp-side-panel__user__tabs__single__body">
+                <div class="layout-mobile-menu__user__tabs__single__body">
                   <ul role="menu">
                     <li role="menuitem"><a href="/returns">Returns</a></li>
                     <li role="menuitem"><a href="/delivery-information">Delivery Information</a></li>
@@ -172,14 +172,14 @@ class MenusMobile {
                   </ul>
                 </div>
               </div>
-              <div class="comp-side-panel__user__tabs__single">
-                <div class="comp-side-panel__user__tabs__single__header">
+              <div class="layout-mobile-menu__user__tabs__single">
+                <div class="layout-mobile-menu__user__tabs__single__header">
                   <button data-js-event="toggleMenuTab">
                     <span>About Us</span>
                     <span><i class="icon material-icons"></i></span>
                   </button>
                 </div>
-                <div class="comp-side-panel__user__tabs__single__body">
+                <div class="layout-mobile-menu__user__tabs__single__body">
                   <ul role="menu">
                     <li role="menuitem"><a href="/blog">Our Blog</a></li>
                     <li role="menuitem"><a href="/about-us">Our Story</a></li>
@@ -188,14 +188,14 @@ class MenusMobile {
                   </ul>
                 </div>
               </div>
-              <div class="comp-side-panel__user__tabs__single">
-                <div class="comp-side-panel__user__tabs__single__header">
+              <div class="layout-mobile-menu__user__tabs__single">
+                <div class="layout-mobile-menu__user__tabs__single__header">
                   <button data-js-event="toggleMenuTab">
                     <span>More From Us</span>
                     <span><i class="icon material-icons"></i></span>
                   </button>
                 </div>
-                <div class="comp-side-panel__user__tabs__single__body">
+                <div class="layout-mobile-menu__user__tabs__single__body">
                   <ul role="menu">
                     <li role="menuitem"><a href="/link">Link #1</a></li>
                     <li role="menuitem"><a href="/link">Link #2</a></li>
@@ -206,11 +206,11 @@ class MenusMobile {
               </div>
             </div>
           </div>
-          <div class="comp-side-panel__footer d">
-            <div class="comp-side-panel__footer__left">
+          <div class="layout-mobile-menu__footer d">
+            <div class="layout-mobile-menu__footer__left">
               &copy; ` + (new Date()).getFullYear() + ` ` + window.config.name + `
             </div>
-            <div class="comp-side-panel__footer__right">
+            <div class="layout-mobile-menu__footer__right">
               <a href="/privacy-policy">Privacy Policy</a>
               &nbsp; | &nbsp;
               <a href="/terms-conditions">T&Cs</a>
@@ -248,10 +248,10 @@ class MenusMobile {
     })
 
     return `
-      <div class="comp-side-panel__menu__header">
+      <div class="layout-mobile-menu__menu__header">
         Menu
       </div>
-      <div class="comp-side-panel__menu__body">
+      <div class="layout-mobile-menu__menu__body">
         <ul class="menu-mobile" role="menu">
         ` + thisMenu.join('') + `
         </ul>

@@ -17,26 +17,30 @@ const WebpackCleanPlugin = require('webpack-clean')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 
 module.exports = {
-  mode: 'development',
   entry: {
-    'js/app': path.resolve(__dirname, './src/dist/js/app/entry.js'),
-    'js/common': path.resolve(__dirname, './src/dist/js/common/entry.js'),
-    'css/app': path.resolve(__dirname, './src/dist/css/scss/entry.scss')
+    'js/app': path.resolve(__dirname, './src/content/themes/surepress/dist/js/app/entry.js'),
+    'js/common': path.resolve(__dirname, './src/content/themes/surepress/dist/js/common/entry.js'),
+    'css/app': path.resolve(__dirname, './src/content/themes/surepress/dist/css/scss/entry.scss')
   },
   output: {
-    path: path.resolve(__dirname, './src/build'),
+    path: path.resolve(__dirname, './src/content/themes/surepress/build'),
     filename: '[name].js'
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
     alias: {
-      classes: path.resolve(__dirname, './src/dist/js/app/classes'),
-      routes: path.resolve(__dirname, './src/dist/js/app/routes')
+      classes: path.resolve(__dirname, './src/content/themes/surepress/dist/js/app/classes'),
+      routes: path.resolve(__dirname, './src/content/themes/surepress/dist/js/app/routes')
     }
   },
   module: {
     rules: [
+      {
+        test: /\.jsx?/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader'
+      },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract([
