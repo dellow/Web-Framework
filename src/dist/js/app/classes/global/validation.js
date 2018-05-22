@@ -18,8 +18,8 @@ class Validation {
    * @access public
   **/
   init ($el, settings) {
-    // Settings for this class.
-    let defaultSettings = {
+    // Settings for this module.
+    this._settings = {
       defaultSuccess: 'Looks good.',
       validationType: 'server', // 'server' or 'client'
       failIfFieldNotFound: false,
@@ -35,6 +35,8 @@ class Validation {
         }
       }
     }
+    // Merge settings.
+    this._settings = Object.assign(this._settings, settings)
     // DOM elements for this module.
     this._dom = {
       form: $el
@@ -43,8 +45,6 @@ class Validation {
     this.state = {
       formSubmitted: false
     }
-    // Merge settings.
-    this._settings = Object.assign(defaultSettings, settings)
 
     // Guard :: Check for rules object.
     if (this._settings.validationType === 'client' && (typeof rules === 'undefined' || rules === null)) return
@@ -127,7 +127,6 @@ class Validation {
   startServerSideValidation () {
     // Ajax request.
     window.Axios.post(this.$form.attr('action'), this.$form.serialize()).then((res) => {
-      console.log(res)
       // Clear current errors.
       this.reset()
       // Check status and error object.
@@ -136,15 +135,20 @@ class Validation {
         window.Helpers.log('Validation.js - Errors found in form')
         // Remove preloaders.
         this.destroyPreloaders()
+        // Create counter.
+        let counter = 0
         // Loop through the returned data.
         for (let key in res.data.payload) {
           // Get element.
           let $element = this._findDomElement(key)
+          // Is first error.
+          let isFirstError = (counter === 0)
           // Check element.
           if ($element) {
             // Highlight fields.
-            this.highlightDomElementError($element, res.data.payload[key])
+            this.highlightDomElementError($element, res.data.payload[key], isFirstError)
           }
+          counter++
         }
       } else if (res.status === 200 && res.data.type === 'redirect') { // This might be error or success.
         // Redirect.
@@ -336,7 +340,7 @@ class Validation {
    * @version 1.0.0
    * @access public
   **/
-  highlightDomElementError ($el, firstError) {
+  highlightDomElementError ($el, errorMessage, isFirstError) {
     // Add error to field.
     $el.addClass('validation-field-error')
     // Set message location.
@@ -349,7 +353,16 @@ class Validation {
       $messageLocation = $el.parent()
     }
     // Append a message to the dom.
-    $messageLocation.after('<div class="validation-message error">' + firstError + '</div>')
+    $messageLocation.after('<div class="validation-message error">' + errorMessage + '</div>')
+    // Check for first error.
+    if (isFirstError) {
+      // Scroll body to element.
+      $('html, body').animate({
+        scrollTop: $messageLocation.offset().top - 20
+      }, 750)
+      // Focus on element.
+      $messageLocation.focus()
+    }
   }
 
   /**

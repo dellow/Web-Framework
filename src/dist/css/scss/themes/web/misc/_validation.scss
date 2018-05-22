@@ -29,7 +29,6 @@ form {
     top: 0; left: 100%;
     font-size: 13px;
     line-height: 1.4;
-		background: color(white);
     &:before {
       font-family: 'Material Icons';
       font-weight: normal;
@@ -74,21 +73,6 @@ form {
 		label {
 			color: color(alerts, error) !important;
 		}
-		&::-webkit-input-placeholder, ::-webkit-input-placeholder {
-			color: color(alerts, error) !important;
-		}
-		&::-moz-placeholder, ::-moz-placeholder {
-			color: color(alerts, error) !important;
-		}
-		&:-moz-placeholder, :-moz-placeholder {
-			color: color(alerts, error) !important;
-		}
-		&:-ms-input-placeholder, :-ms-input-placeholder {
-			color: color(alerts, error) !important;
-		}
-		&::placeholder, ::placeholder {
-			color: color(alerts, error) !important;
-		}
 	}
 
 	// Inputs
@@ -100,6 +84,22 @@ form {
 			&:focus {
 				background-color: lighten(color(alerts, error), 35%) !important;
 			}
+			// Placeholders.
+			&::-webkit-input-placeholder {
+				color: color(alerts, error) !important;
+			}
+			&::-moz-placeholder {
+				color: color(alerts, error) !important;
+			}
+			&:-moz-placeholder {
+				color: color(alerts, error) !important;
+			}
+			&:-ms-input-placeholder {
+				color: color(alerts, error) !important;
+			}
+			&::placeholder {
+				color: color(alerts, error) !important;
+			}
 		}
 		&.validation-field-status {
 			color: color(alerts, status) !important;
@@ -107,6 +107,22 @@ form {
 			background-color: lighten(color(alerts, status), 40%) !important;
 			&:focus {
 				background-color: lighten(color(alerts, status), 35%) !important;
+			}
+			// Placeholders.
+			&::-webkit-input-placeholder {
+				color: color(alerts, status) !important;
+			}
+			&::-moz-placeholder {
+				color: color(alerts, status) !important;
+			}
+			&:-moz-placeholder {
+				color: color(alerts, status) !important;
+			}
+			&:-ms-input-placeholder {
+				color: color(alerts, status) !important;
+			}
+			&::placeholder {
+				color: color(alerts, status) !important;
 			}
 		}
 		&.validation-field-success {
@@ -116,6 +132,22 @@ form {
 			&:focus {
 				background-color: lighten(color(alerts, success), 35%) !important;
 			}
+			// Placeholders.
+			&::-webkit-input-placeholder {
+				color: color(alerts, success) !important;
+			}
+			&::-moz-placeholder {
+				color: color(alerts, success) !important;
+			}
+			&:-moz-placeholder {
+				color: color(alerts, success) !important;
+			}
+			&:-ms-input-placeholder {
+				color: color(alerts, success) !important;
+			}
+			&::placeholder {
+				color: color(alerts, success) !important;
+			}
 		}
 		&.validation-field-warning {
 			color: color(alerts, warning) !important;
@@ -123,6 +155,22 @@ form {
 			background-color: lighten(color(alerts, warning), 40%) !important;
 			&:focus {
 				background-color: lighten(color(alerts, warning), 35%) !important;
+			}
+			// Placeholders.
+			&::-webkit-input-placeholder {
+				color: color(alerts, warning) !important;
+			}
+			&::-moz-placeholder {
+				color: color(alerts, warning) !important;
+			}
+			&:-moz-placeholder {
+				color: color(alerts, warning) !important;
+			}
+			&:-ms-input-placeholder {
+				color: color(alerts, warning) !important;
+			}
+			&::placeholder {
+				color: color(alerts, warning) !important;
 			}
 		}
 	}
