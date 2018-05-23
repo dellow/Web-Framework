@@ -16,22 +16,27 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WebpackCleanPlugin = require('webpack-clean')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 
+const entry = {
+  'js/app': path.resolve(__dirname, './src/dist/js/app/entry.js'),
+  'js/app.min': path.resolve(__dirname, './src/dist/js/app/entry.js'),
+  'js/common': path.resolve(__dirname, './src/dist/js/common/entry.js'),
+  'js/common.min': path.resolve(__dirname, './src/dist/js/common/entry.js'),
+  'css/app': path.resolve(__dirname, './src/dist/css/scss/entry.scss'),
+  'css/app.min': path.resolve(__dirname, './src/dist/css/scss/entry.scss')
+}
+
 module.exports = {
-  entry: {
-    'js/app': path.resolve(__dirname, './src/content/themes/surepress/dist/js/app/entry.js'),
-    'js/common': path.resolve(__dirname, './src/content/themes/surepress/dist/js/common/entry.js'),
-    'css/app': path.resolve(__dirname, './src/content/themes/surepress/dist/css/scss/entry.scss')
-  },
+  entry: entry,
   output: {
-    path: path.resolve(__dirname, './src/content/themes/surepress/build'),
+    path: path.resolve(__dirname, './src/build'),
     filename: '[name].js'
   },
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx'],
     alias: {
-      classes: path.resolve(__dirname, './src/content/themes/surepress/dist/js/app/classes'),
-      routes: path.resolve(__dirname, './src/content/themes/surepress/dist/js/app/routes')
+      classes: path.resolve(__dirname, './src/dist/js/app/classes'),
+      routes: path.resolve(__dirname, './src/dist/js/app/routes')
     }
   },
   module: {
@@ -72,9 +77,17 @@ module.exports = {
       allChunks: true
     }),
     new WebpackCleanPlugin([
-      './src/build/css/app.js' // Remove errand .js files in the CSS build.
+      './src/build/css/app.js',
+      './src/build/css/app.min.js'
     ]),
     new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      include: [
+        /\.min\.js$/,
+        /\.min\.css$/
+      ],
+      minimize: true
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
