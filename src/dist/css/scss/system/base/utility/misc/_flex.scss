@@ -9,14 +9,6 @@ $declarations: ('0', '1');
 
 
 @each $declaration in $declarations {
-  // Responsive screens.
-  @each $key, $value in $screens {
-    .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value){
-        #{$property}: unquote($declaration);
-      }
-    }
-  }
   // All screens.
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
@@ -25,6 +17,18 @@ $declarations: ('0', '1');
   .#{$property + "-" + $declaration}\:children {
     > * {
       #{$property}: unquote($declaration);
+    }
+  }
+}
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value, null, false) {
+        #{$property}: unquote($declaration);
+      }
     }
   }
 }
@@ -38,14 +42,6 @@ $declarations: ('row', 'column');
 
 
 @each $declaration in $declarations {
-  // Responsive screens.
-  @each $key, $value in $screens {
-    .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value){
-        #{$property}: unquote($declaration);
-      }
-    }
-  }
   // All screens.
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
@@ -54,6 +50,18 @@ $declarations: ('row', 'column');
   .#{$property + "-" + $declaration}\:children {
     > * {
       #{$property}: unquote($declaration);
+    }
+  }
+}
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value, null, false) {
+        #{$property}: unquote($declaration);
+      }
     }
   }
 }
@@ -67,14 +75,6 @@ $declarations: ('flex-start', 'center', 'flex-end');
 
 
 @each $declaration in $declarations {
-  // Responsive screens.
-  @each $key, $value in $screens {
-    .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value){
-        #{$property}: unquote($declaration);
-      }
-    }
-  }
   // All screens.
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
@@ -83,6 +83,18 @@ $declarations: ('flex-start', 'center', 'flex-end');
   .#{$property + "-" + $declaration}\:children {
     > * {
       #{$property}: unquote($declaration);
+    }
+  }
+}
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value, null, false) {
+        #{$property}: unquote($declaration);
+      }
     }
   }
 }
@@ -96,14 +108,6 @@ $declarations: ('flex-start', 'center', 'flex-end');
 
 
 @each $declaration in $declarations {
-  // Responsive screens.
-  @each $key, $value in $screens {
-    .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value){
-        #{$property}: unquote($declaration);
-      }
-    }
-  }
   // All screens.
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
@@ -117,6 +121,18 @@ $declarations: ('flex-start', 'center', 'flex-end');
 }
 
 
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value, null, false) {
+        #{$property}: unquote($declaration);
+      }
+    }
+  }
+}
+
+
 // ----------------------------------------------------------------------- //
 
 
@@ -125,18 +141,24 @@ $maxSize: 10;
 
 
 @while $maxSize > 0 {
+  // All screens.
+  .#{$property + "-" + $maxSize} {
+    #{$property}: #{$maxSize};
+  }
+
+  $maxSize: $maxSize - 1;
+}
+
+
+@while $maxSize > 0 {
   // Responsive screens.
   @each $key, $value in $screens {
     $percentage: ($value / 1400) * 100;
     .#{$key}\:#{$property + "-" + $maxSize} {
-      @include respond-to($value){
-        #{$property}: #{($maxSize / 100 * $percentage) + px};
+      @include respond-to($value, null, false) {
+        #{$property}: #{($maxSize / 100 * $percentage)};
       }
     }
-  }
-  // All screens.
-  .#{$property + "-" + $maxSize} {
-    #{$property}: #{$maxSize + px};
   }
 
   $maxSize: $maxSize - 1;

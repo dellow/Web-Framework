@@ -8,10 +8,22 @@ $property: 'color';
 
 
 @each $color, $hex in $colors {
+  .text-#{$property}-#{$color} {
+    #{$property}: color($color);
+  }
+  .hover\:text-#{$property}-#{$color} {
+    &:hover {
+      #{$property}: color($color);
+    }
+  }
+}
+
+
+@each $color, $hex in $colors {
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:text-#{$property}-#{$color} {
-      @include respond-to($value){
+      @include respond-to($value, null, false) {
         #{$property}: color($color);
       }
     }
@@ -19,14 +31,6 @@ $property: 'color';
       &:hover {
         #{$property}: color($color);
       }
-    }
-  }
-  .text-#{$property}-#{$color} {
-    #{$property}: color($color);
-  }
-  .hover\:text-#{$property}-#{$color} {
-    &:hover {
-      #{$property}: color($color);
     }
   }
 }

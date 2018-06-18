@@ -74,6 +74,11 @@ body.js-panel-open {
       font-weight: bold;
       text-transform: uppercase;
     }
+    &__body {
+      li {
+        display: block;
+      }
+    }
   }
   &__spacer {
     @include nudge(padding, 0.35 0);

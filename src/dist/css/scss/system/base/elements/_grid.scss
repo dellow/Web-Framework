@@ -64,7 +64,7 @@
 		.#{$key} {
       $colCount: round(100 / strip-unit($value));
       &:nth-last-child(-n+#{$colCount}) { // Get entire last row.
-        padding-bottom: 0 !important;
+        padding-bottom: 0;
       }
 		}
 	}

@@ -8,16 +8,20 @@ $property: 'color';
 
 
 @each $color, $hex in $colors {
+  .bg-#{$property}-#{$color} {
+    #{"background-" + $property}: color($color);
+  }
+}
+
+
+@each $color, $hex in $colors {
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:bg-#{$property}-#{$color} {
-      @include respond-to($value){
+      @include respond-to($value, null, false) {
         #{"background-" + $property}: color($color);
       }
     }
-  }
-  .bg-#{$property}-#{$color} {
-    #{"background-" + $property}: color($color);
   }
 }
 

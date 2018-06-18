@@ -48,29 +48,7 @@ class MenusDesktop {
     // Guard :: Check element exists.
     if (!$('[data-menu="desktop"]').length) return
 
-    // Start events.
-    this.events()
-  }
-
-  /**
-   * events
-   * NULLED.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-   * @access public
-  **/
-  events () {
-    // Extend the events system.
-    window.Events.extend({
-      events: {
-        'ready null': 'applyMenu',
-        'resize null': 'applyMenu'
-      },
-      applyMenu: () => {
-        return this._dom.menu.empty().append(this.getMenuHTML())
-      }
-    })
+    return this._dom.menu.empty().append(this.getMenuHTML())
   }
 
   /**
@@ -112,7 +90,7 @@ class MenusDesktop {
   buildChildMenuHTML (type, menus) {
     let HTML = ''
 
-    if (!type || type === 'auto') {
+    if (!window.Helpers.isEmpty(menus) && (!type || type === 'auto')) {
       if (menus instanceof Array && menus.length < 6) {
         type = 'sub'
       } else if (menus instanceof Array && menus.length >= 6) {

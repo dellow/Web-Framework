@@ -10,16 +10,15 @@ $maxSize: 60;
 @while $maxSize > 0 {
   // Responsive screens.
   @each $key, $value in $screens {
-    $percentage: ($value / 1400) * 100;
     .#{$key}\:#{$property + "-" + $maxSize} {
-      @include respond-to($value){
-        #{$property}: #{($maxSize / 100 * $percentage) + px};
+      @include respond-to($value, null, false) {
+        #{$property}: #{$maxSize}px;
       }
     }
   }
   // All screens.
   .#{$property + "-" + $maxSize} {
-    #{$property}: #{$maxSize + px};
+    #{$property}: #{$maxSize}px;
   }
 
   $maxSize: $maxSize - 1;
