@@ -23,7 +23,7 @@ $property: 'color';
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:text-#{$property}-#{$color} {
-      @include respond-to($value, null, false) {
+      @include respond-to($value) {
         #{$property}: color($color);
       }
     }

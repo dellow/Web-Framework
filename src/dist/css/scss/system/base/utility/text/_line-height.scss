@@ -22,7 +22,7 @@ $declarations: ('1', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7', '1.8', '1.
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declarationClass} {
-      @include respond-to($value, null, false) {
+      @include respond-to($value) {
         #{$property}: unquote($declaration);
       }
     }

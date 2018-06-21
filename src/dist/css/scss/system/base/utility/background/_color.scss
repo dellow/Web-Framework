@@ -18,7 +18,7 @@ $property: 'color';
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:bg-#{$property}-#{$color} {
-      @include respond-to($value, null, false) {
+      @include respond-to($value) {
         #{"background-" + $property}: color($color);
       }
     }

@@ -26,7 +26,7 @@ $declarations: ('extrabold', 'bold', 'semibold', 'medium', 'normal', 'light', 't
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value, null, false) {
+      @include respond-to($value) {
         #{$property}: unquote($declaration);
       }
     }
