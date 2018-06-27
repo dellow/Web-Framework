@@ -8,6 +8,12 @@
 // Defaults
 // ---
 $mn                : 24px !default;
+$container_default : 1180px !default;
+$container_usmall  : 320px !default;
+$container_vsmall  : 440px !default;
+$container_small   : 768px !default;
+$container_medium  : 960px !default;
+$container_large   : 1024px !default;
 $gutter            : 0.5 !default;
 $animation         : 300ms !default;
 $def_border_radius : 2px !default;

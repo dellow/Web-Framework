@@ -9,6 +9,7 @@
 
 import Menus from '../classes/global/menus'
 import Email from '../classes/global/email'
+import FormsNewsletter from '../classes/forms/newsletter'
 
 ;(function (Module, window) {
 
@@ -35,6 +36,8 @@ import Email from '../classes/global/email'
     Menus.init()
     // Init Email.
     Email.init()
+    // Init newsletter form.
+    FormsNewsletter.init()
   }
 
   /**

@@ -66,23 +66,23 @@ body {
 // -- Container -- //
 .container {
   width: 90%;
-  max-width: 1180px;
+  max-width: $container_default;
   margin: 0 auto;
   position: relative;
   &--usmall {
-    max-width: 320px;
+    max-width: $container_usmall;
   }
   &--vsmall {
-    max-width: 440px;
+    max-width: $container_vsmall;
   }
   &--small {
-    max-width: 768px;
+    max-width: $container_small;
   }
   &--medium {
-    max-width: 960px;
+    max-width: $container_medium;
   }
   &--large {
-    max-width: 1024px;
+    max-width: $container_large;
   }
   &--wide {
     max-width: map-get($screens, 'xl');
