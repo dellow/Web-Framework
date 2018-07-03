@@ -12,6 +12,18 @@
 }
 
 
+@each $colKey, $colValue in $col_array {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$colKey} {
+      @include respond-to($value) {
+        width: $colValue;
+      }
+    }
+  }
+}
+
+
 // ----------------------------------------------------------------------- //
 
 
