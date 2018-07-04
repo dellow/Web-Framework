@@ -8,6 +8,16 @@ $maxSize: 60;
 
 
 @while $maxSize > 0 {
+  // All screens.
+  .#{$property + "-" + $maxSize} {
+    #{$property}: #{$maxSize}px;
+  }
+
+  $maxSize: $maxSize - 1;
+}
+
+
+@while $maxSize > 0 {
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $maxSize} {
@@ -15,10 +25,6 @@ $maxSize: 60;
         #{$property}: #{$maxSize}px;
       }
     }
-  }
-  // All screens.
-  .#{$property + "-" + $maxSize} {
-    #{$property}: #{$maxSize}px;
   }
 
   $maxSize: $maxSize - 1;
