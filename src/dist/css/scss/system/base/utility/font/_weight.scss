@@ -5,7 +5,7 @@
 
 
 $property: 'font-weight';
-$declarations: ('extrabold', 'bold', 'semibold', 'medium', 'normal', 'light', 'thin');
+$declarations: ('900', '700', '500', '400', '200', '100', 'bold', 'normal');
 
 
 @each $declaration in $declarations {
