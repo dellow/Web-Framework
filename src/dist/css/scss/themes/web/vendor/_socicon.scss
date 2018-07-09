@@ -346,7 +346,7 @@
   }
 }
 .socicon-snapchat {
-  &--color {
+  &.socicon--color {
     color: color(social, snapchat);
   }
   &:before {
@@ -354,7 +354,7 @@
   }
 }
 .socicon-twitter {
-  &--color {
+  &.socicon--color {
     color: color(social, twitter);
   }
   &:before {
@@ -362,7 +362,7 @@
   }
 }
 .socicon-facebook {
-  &--color {
+  &.socicon--color {
     color: color(social, facebook);
   }
   &:before {
@@ -370,7 +370,7 @@
   }
 }
 .socicon-googleplus {
-  &--color {
+  &.socicon--color {
     color: color(social, google);
   }
   &:before {
@@ -378,7 +378,7 @@
   }
 }
 .socicon-pinterest {
-  &--color {
+  &.socicon--color {
     color: color(social, pinterest);
   }
   &:before {
@@ -386,7 +386,7 @@
   }
 }
 .socicon-foursquare {
-  &--color {
+  &.socicon--color {
     color: color(social, foursquare);
   }
   &:before {
@@ -414,7 +414,7 @@
   }
 }
 .socicon-linkedin {
-  &--color {
+  &.socicon--color {
     color: color(social, linkedin);
   }
   &:before {
@@ -702,7 +702,7 @@
   }
 }
 .socicon-instagram {
-  &--color {
+  &.socicon--color {
     color: color(social, instagram);
   }
   &:before {
