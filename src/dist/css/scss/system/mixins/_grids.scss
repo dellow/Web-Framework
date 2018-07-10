@@ -24,20 +24,18 @@
   #{$flex_grid_selector} {
     $value: px-to-rem($gutterValue * $mn);
     width: calc(100% + #{$value});
+    @include nudge(margin-top, -$gutterValue);
   	display: flex;
   	flex-direction: row;
   	flex-wrap: wrap;
+    overflow: auto;
   	position: relative;
     @include nudge(left, -$gutterValue);
+  	&--no-gutter {
+  		width: 100%;
+  	}
     > [class*="col-"] {
-      @if ($col){
-        $colCount: round(100 / strip-unit($col));
-        width: $col;
-        &:nth-last-child(-n+#{$colCount}) { // Get entire last row.
-          padding-bottom: 0;
-        }
-      }
-      @include nudge(padding, 0 0 $gutterValue $gutterValue);
+      @include nudge(padding, $gutterValue 0 0 $gutterValue);
     }
   }
 }

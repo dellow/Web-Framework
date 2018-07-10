@@ -52,6 +52,7 @@
 .flex-grid {
   @include modify-grid($gutter);
 	&--no-gutter {
+		margin-top: 0 !important;
 		left: 0 !important;
 		[class*="col-"] {
 			padding: 0 !important;
@@ -60,14 +61,6 @@
   &--center {
     justify-content: center;
   }
-	@each $key, $value in $col_array {
-		.#{$key} {
-      $colCount: round(100 / strip-unit($value));
-      &:nth-last-child(-n+#{$colCount - 1}) { // Get entire last row.
-        padding-bottom: 0;
-      }
-		}
-	}
 }
 
 
