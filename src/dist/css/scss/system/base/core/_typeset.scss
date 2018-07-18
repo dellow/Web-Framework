@@ -119,9 +119,8 @@ kbd {
 
 
 .page__content {
-  $marginSpacing: 1;
   blockquote, dl, ol, p, pre, ul, img, figure, table, .obj-embed-container {
-    @include nudge(margin-top, $marginSpacing);
+    @include nudge(margin-top, $contentmargin);
     img { // No margin on inner images.
       margin: 0;
     }
@@ -132,7 +131,7 @@ kbd {
   ul, ol {
     margin-left: 1.2em;
     li {
-      @include nudge(margin-bottom, ($marginSpacing / 100 * 2));
+      @include nudge(margin-bottom, ($contentmargin / 100 * 2));
     }
     ul, ol {
       margin-left: 1.2em;
@@ -144,12 +143,12 @@ kbd {
   }
   dl {
     dd {
-      @include nudge(margin-bottom, ($marginSpacing / 100 * 2));
+      @include nudge(margin-bottom, ($contentmargin / 100 * 2));
       @include nudge(text-indent, 1);
     }
   }
   blockquote {
-    @include nudge(padding, 0 ($marginSpacing * 3));
+    @include nudge(padding, 0 ($contentmargin * 3));
     p {
       font-style: italic;
       font-family: $serif;
