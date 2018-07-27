@@ -313,7 +313,7 @@ class MenusMobile {
    * @access public
   **/
   open () {
-    return $('body').addClass('js-panel-open u-noscroll')
+    return $('body').addClass('js-panel-open noscroll')
   }
 
   /**
@@ -325,7 +325,7 @@ class MenusMobile {
    * @access public
   **/
   close () {
-    return $('body').removeClass('js-panel-open u-noscroll')
+    return $('body').removeClass('js-panel-open noscroll')
   }
 
   /**
