@@ -23,7 +23,6 @@
     "webpack-clean": "^1.0.0"
   },
   "dependencies": {
-    "autotrack": "^1.1.0",
     "axios": "^0.16.2",
     "es6-promise": "^4.2.4",
     "jquery": "*",
@@ -33,7 +32,8 @@
     "slick-carousel": "*",
     "sticky-kit": "*",
     "store": "^2.0.12",
-    "verbal-expressions": "*"
+    "verbal-expressions": "*",
+    "vue": "^2.5.16"
   },
   "config": {
     "dirSCSS": "./src/dist/css/scss/",

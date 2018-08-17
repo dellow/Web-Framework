@@ -60,7 +60,7 @@ class FormsNewsletter {
   vmNewsletterComponent () {
     const _this = this
 
-    return new Vue({
+    return new window.Vue({
       el: '[data-vue="newsletterForm"]',
       data: {
         hasErrors: false,
