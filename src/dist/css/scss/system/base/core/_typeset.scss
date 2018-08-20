@@ -121,10 +121,7 @@ kbd {
 .page__content {
   blockquote, dl, ol, p, pre, ul, img, figure, table, .obj-embed-container {
     @include nudge(margin-top, $contentmargin);
-    img { // No margin on inner images.
-      margin: 0;
-    }
-    &:first-child {
+    img, &:first-child {
       margin-top: 0;
     }
   }
