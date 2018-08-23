@@ -170,9 +170,9 @@ $declarations: ('flex-start', 'center', 'flex-end');
 
 
 $property: 'order';
+
+
 $maxSize: 10;
-
-
 @while $maxSize > 0 {
   // All screens.
   .#{$property + "-" + $maxSize} {
@@ -183,13 +183,13 @@ $maxSize: 10;
 }
 
 
+$maxSize: 10;
 @while $maxSize > 0 {
   // Responsive screens.
   @each $key, $value in $screens {
-    $percentage: ($value / 1400) * 100;
     .#{$key}\:#{$property + "-" + $maxSize} {
       @include respond-to($value) {
-        #{$property}: #{($maxSize / 100 * $percentage)};
+        #{$property}: #{$maxSize};
       }
     }
   }
