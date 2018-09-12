@@ -61,6 +61,7 @@ class MenusMobile {
         'ready null': 'applyMenu',
         'resize null': 'applyMenu',
         'document mouseup': 'outsideClick',
+        'document touchstart': 'outsideClickIos',
         'keycode 27': 'closeMenu',
         'click [data-js-event="sideMenu"]': 'openMenu',
         'click [data-menu="mobile"] a': 'linkClicked',
@@ -74,6 +75,11 @@ class MenusMobile {
       },
       outsideClick: (e) => {
         if (!this._dom.wrapper.is(e[0].target) && this._dom.wrapper.has(e[0].target).length === 0) {
+          return this.close()
+        }
+      },
+      outsideClickIos: (e) => {
+        if (!$(e[0].target).closest('.side').length) {
           return this.close()
         }
       },
