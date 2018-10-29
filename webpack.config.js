@@ -42,9 +42,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader'
+        test: /\.vue$/,
+        loader: 'vue-loader'
       },
       {
         test: /\.scss$/,
