@@ -6,7 +6,7 @@
 $property: 'font-size';
 
 
-$maxSize: 60;
+$maxSize: 70;
 @while $maxSize > 0 {
   // All screens.
   .#{$property + "-" + $maxSize} {
@@ -17,7 +17,7 @@ $maxSize: 60;
 }
 
 
-$maxSize: 60;
+$maxSize: 70;
 @while $maxSize > 0 {
   // Responsive screens.
   @each $key, $value in $screens {
