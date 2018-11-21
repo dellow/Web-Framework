@@ -7,7 +7,6 @@
 input:not([type="radio"]):not([type="checkbox"]), select, textarea {
 	@include nudge(padding, 0.25);
 	border: 1px solid color(grey);
-  border-radius: $def_border_radius;
 	display: inline-block;
 	@include scale(font-size, 14px);
 	background: color(white);
@@ -77,10 +76,6 @@ fieldset {
   &:last-child {
     margin-bottom: 0;
   }
-}
-
-button {
-  border-radius: $def_border_radius;
 }
 
 .select {
