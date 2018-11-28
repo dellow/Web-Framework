@@ -2,7 +2,7 @@
 *
 * Module > Test
 *
-* Copyright 2018, Awesome Jobs
+* Copyright 2019, Awesome Jobs
 * Some information on the license.
 *
 **/

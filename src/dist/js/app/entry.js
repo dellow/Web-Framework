@@ -2,14 +2,18 @@
  *
  * App Entry Point
  *
- * Copyright 2018, Author Name
+ * Copyright 2019, Author Name
  * Some information on the license.
  *
 **/
 
 import Navigo from 'navigo'
 
-;(function (App, window) {
+import RouteGlobal from './routes/global'
+import RouteHome from './routes/home'
+
+;(function (App, window) 
+{
 
   /**
    * App
@@ -18,31 +22,30 @@ import Navigo from 'navigo'
    * @since 1.0.0
    * @version 1.0.0
   **/
-  App = function () {
+  App = function() 
+  {
     // Create object to store strings.
     window.config.contentStrings = window.config.contentStrings || {}
   }
 
   /**
-   * _settings
    * Settings for this module.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
   App.prototype._settings = {
     usePjax: false
   }
 
   /**
-   * init
    * Module init method.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  App.prototype.init = function () {
+  App.prototype.init = function() 
+  {
     if (this._settings.usePjax) {
       // Get plugin.
       require('jquery-pjax')
@@ -58,7 +61,6 @@ import Navigo from 'navigo'
   }
 
   /**
-   * plugins
    * Module plugins method.
    *
    * @since 1.0.0
@@ -77,7 +79,6 @@ import Navigo from 'navigo'
   }
 
   /**
-   * preloaders
    * Preloader methods.
    *
    * @since 1.0.0
@@ -104,7 +105,8 @@ import Navigo from 'navigo'
         return '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="' + width + '" height="' + height + '" viewBox="0 0 100 100" enable-background="new 0 0 ' + width + ' ' + height + '" xml:space="preserve"><polyline class="check" fill="none" stroke="' + color + '" stroke-width="10" stroke-miterlimit="20" points="15,60 40,80 85,20" /></svg>'
       }
     },
-    button: function ($el, destroy) {
+    button: function($el, destroy) 
+    {
       $el.each((index, btn) => {
         // Set button.
         let $btn = $(btn)
@@ -156,42 +158,42 @@ import Navigo from 'navigo'
   }
 
   /**
-   * bootstrap
    * Module bootstrap method.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  App.prototype.bootstrap = function () {
+  App.prototype.bootstrap = function() 
+  {
     // Remove 'no-js' class from html.
     $('html').removeClass('no-js').addClass('js')
   }
 
   /**
-   * routes
    * Module routes method.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  App.prototype.routes = function () {
+  App.prototype.routes = function() 
+  {
     // Init Routing.
     window.Router = new Navigo(location.protocol + '//' + location.host, false)
     // Start global route controller init method.
-    require('./routes/global').init()
-    // Start global route controller events method.
-    require('./routes/global').events()
+    RouteGlobal.init()
+    // Start global route controller listeners method.
+    RouteGlobal.listeners()
     // Router.
     window.Router.on({
       '/': () => {
         // Log it.
         window.Helpers.log('Route Loaded: home', '#E19F12')
         // Get route controller.
-        let c = require('./routes/home')
+        let c = RouteHome
         // Check for an init method.
         if (typeof c.init === 'function') c.init()
-        // Check for an events method.
-        if (typeof c.events === 'function') c.events()
+        // Check for an listeners method.
+        if (typeof c.listeners === 'function') c.events()
       }
     }).resolve()
   }

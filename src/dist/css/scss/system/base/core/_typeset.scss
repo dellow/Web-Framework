@@ -118,7 +118,7 @@ kbd {
 // ----------------------------------------------------------------------- //
 
 
-.page__content {
+.layout-content {
   blockquote, dl, ol, p, pre, ul, img, figure, table, .obj-embed-container {
     @include nudge(margin-top, $contentmargin);
     img, &:first-child {

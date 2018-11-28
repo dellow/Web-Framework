@@ -8,7 +8,6 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
 	@include nudge(padding, 0.25);
 	border: 1px solid color(grey);
 	display: inline-block;
-	@include scale(font-size, 14px);
 	background: color(white);
 	transition: border-color $animation ease;
 	&:hover {

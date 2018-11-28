@@ -2,7 +2,7 @@
  *
  * Class
  *
- * Copyright 2017, SureCommerce
+ * Copyright 2019, SureCommerce
  * Some information on the license.
  *
 **/
