@@ -10,7 +10,6 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WebpackCleanPlugin = require('webpack-clean')
@@ -54,9 +53,11 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => {
-                return [autoprefixer]
-              }
+              ident: 'postcss',
+              plugins: (loader) => [
+                require('autoprefixer')(),
+                require('cssnano')()
+              ]
             }
           },
           {
