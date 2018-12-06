@@ -7,6 +7,20 @@
 $property: 'color';
 
 
+.text-color-alerts-error {
+  color: color(alerts, error);
+}
+.text-color-alerts-status {
+  color: color(alerts, status);
+}
+.text-color-alerts-success {
+  color: color(alerts, success);
+}
+.text-color-alerts-warning {
+  color: color(alerts, warning);
+}
+
+
 @each $color, $hex in $colors {
   .text-#{$property}-#{$color} {
     #{$property}: color($color);
@@ -36,21 +50,8 @@ $property: 'color';
 }
 
 
-.text-color-success {
-  color: color(alerts, success);
-}
-.text-color-status {
-  color: color(alerts, status);
-}
-.text-color-success {
-  color: color(alerts, success);
-}
-.text-color-warning {
-  color: color(alerts, warning);
-}
-
-
 // ----------------------------------------------------------------------- //
 
 
 }
+  
