@@ -18,76 +18,13 @@
 // ----------------------------------------------------------------------- //
 
 
-.obj-form-field {
-  @include nudge(margin-bottom, 0.75);
-  position: relative;
-  &__container {
-    display: flex;
-    * {
-      @include nudge(margin-left, 0.5);
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-  }
-  &__error {
-    width: 100%;
-    @include nudge(margin-top, 0.25);
-    @include scale(font-size, 14px);
-    color: color(alerts, error);
-  }
-  &__note {
-    @include scale(font-size, 13px);
-    color: darken(color(grey), 15%);
-  }
-  &__button {
-    @include nudge(margin-top, 0.25);
-    @include scale(font-size, 13px);
-    a, button {
-      color: inherit;
-      font-weight: bold;
-    }
-  }
-  p {
-    @include nudge(margin-bottom, 0.5);
-  }
-  ul {
-    &.cols {
-      li {
-        width: 50%;
-        float: left;
-      }
-    }
-    li {
-      margin-bottom: 3px;
-      list-style: none;
-      @include scale(font-size, 15px);
-    }
-  }
-  &:last-child {
-    margin-bottom: 0;
-  }
-  input:not([type="radio"]):not([type="checkbox"]), .input, select, .select, textarea, .textarea, .obj-form-field__container {
-    + .obj-form-field__note {
-      @include nudge(margin-top, 0.25);
-    }
-  }
-}
-
-
-// ----------------------------------------------------------------------- //
-
-
 .obj-email-suggestion {
 	width: 275px;
-	margin: 6px 0 0 10px;
   display: flex;
   position: absolute;
-  top: 0; left: 100%;
+  top: calc(100% + 6px); left: 0;
   font-size: 13px;
-  line-height: 1.4;
   white-space: nowrap;
-  background: color(white);
   &:before {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -153,6 +90,7 @@
     max-height: none !important; // Overwrite the JS.
     min-height: 0 !important; // Overwrite the JS.
     border-radius: 0;
+    position: relative;
 		display: flex;
 		flex-direction: column;
     overflow: hidden;
@@ -185,7 +123,7 @@
   		border-radius: $def_border_radius;
     }
     &__header {
-      padding: 10px 12px;
+      padding: 15px 12px;
 	    border-bottom: 1px solid #e5e5e5;
 	    color: #4e5665;
 	    font-weight: bold;
@@ -196,34 +134,35 @@
     &__main {
       width: 100%;
       height: 100%;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      @include scale(font-size, 18px);
-      @include respond-to(map-get($screens, 'md') + 1){
-        width: auto;
-        height: auto;
-        padding: 10px 12px;
-  			flex: 1;
-        @include scale(font-size, 14px);
-  	    background: color(white);
-      }
+      padding: 15px 12px;
     }
     &__footer {
-      padding: 10px 12px;
+      padding: 15px 12px;
 	    border-top: 1px solid #e9eaed;
 	    text-align: right;
     }
+    &__close {
+      position: absolute;
+      top: 7px; right: 0;
+      button {
+        border: 0 !important;
+        box-shadow: none !important;
+        color: #afafaf;
+        &:hover {
+          color: darken(#afafaf, 10%);
+        }
+      }
+    }
 		button {
-			padding: 0 8px;
-	    border: 1px solid;
+			padding: 1px 15px;
+      border: 1px solid;
+      border-radius: 3px;
 	    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 	    box-sizing: content-box;
 	    position: relative;
 	    vertical-align: middle;
 	    cursor: pointer;
-	    line-height: 20px;
+	    line-height: 18px;
 	    font-weight: bold;
 	    font-size: 13px;
 	    text-align: center;
