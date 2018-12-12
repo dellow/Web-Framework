@@ -4,11 +4,10 @@
 // ==========================================================================
 
 
-input:not([type="radio"]):not([type="checkbox"]), select, textarea {
-	@include nudge(padding, 0.25);
+input:not([type="radio"]):not([type="checkbox"]), select, textarea, .iframe-field {
+	@include nudge(padding, 0.25 0.35);
 	border: 1px solid color(grey);
 	display: inline-block;
-	@include scale(font-size, 14px);
 	background: color(white);
 	transition: border-color $animation ease;
 	&:hover {
@@ -42,7 +41,7 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
 	}
 }
 
-input:not([type="radio"]):not([type="checkbox"]), select {
+input:not([type="radio"]):not([type="checkbox"]), select, .iframe-field {
 	height: $forms_field_height;
 }
 
@@ -75,6 +74,10 @@ fieldset {
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.iframe-field {
+	width: 100%;
 }
 
 .select {

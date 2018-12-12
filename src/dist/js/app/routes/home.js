@@ -7,8 +7,6 @@
  *
 **/
 
-import Tabs from '../classes/global/tabs'
-
 class Route 
 {
 
@@ -30,7 +28,6 @@ class Route
   **/
   init() 
   {
-    Tabs.init()
   }
 
 }

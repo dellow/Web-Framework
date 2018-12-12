@@ -103,14 +103,6 @@
   &--7-5 {
     @include modify-grid(7.5);
   }
-	@each $key, $value in $col_array {
-		.#{$key} {
-      $colCount: round(100 / strip-unit($value));
-      &:nth-last-child(-n+#{$colCount - 1}) { // Get entire last row.
-        padding-bottom: 0;
-      }
-		}
-	}
 }
 
 
