@@ -7,17 +7,17 @@
  *
 **/
 
-class MenusDesktop {
+class MenusDesktop 
+{
 
   /**
-   * constructor
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  constructor () {
+  constructor() 
+  {
     // Simple counter.
     this.counter = 0
     // Settings for the class.
@@ -37,14 +37,13 @@ class MenusDesktop {
   }
 
   /**
-   * init
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  init () {
+  init() 
+  {
     // Guard :: Check element exists.
     if (!$('[data-menu="desktop"]').length) return
 
@@ -52,14 +51,13 @@ class MenusDesktop {
   }
 
   /**
-   * buildMenuHTML
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  buildMenuHTML (menus) {
+  buildMenuHTML(menus) 
+  {
     let HTML = menus.map((item, i) => {
       // Get child menu.
       let childMenu = this.buildChildMenuHTML(item.type, item.children)
@@ -80,14 +78,13 @@ class MenusDesktop {
   }
 
   /**
-   * buildChildMenuHTML
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  buildChildMenuHTML (type, menus) {
+  buildChildMenuHTML(type, menus) 
+  {
     let HTML = ''
 
     if (!window.Helpers.isEmpty(menus) && (!type || type === 'auto')) {
@@ -189,14 +186,13 @@ class MenusDesktop {
   }
 
   /**
-   * getMenuHTML
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  getMenuHTML () {
+  getMenuHTML() 
+  {
     // Number of menu items.
     let menuItemsCount = this.state.primaryMenu.length
     // Set default HTML view.
@@ -242,14 +238,13 @@ class MenusDesktop {
   }
 
   /**
-   * _moreItemMenu
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  _moreItemMenu () {
+  _moreItemMenu() 
+  {
     // Update state.
     this.state.moreExists = true
 
@@ -264,14 +259,13 @@ class MenusDesktop {
   }
 
   /**
-   * _hasExceededBoundary
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  _hasExceededBoundary ($menu) {
+  _hasExceededBoundary($menu) 
+  {
     // Get total width of menu contents.
     let totalWidth = this._calculateMenuTotalWidth($menu) + this._settings.bleedThreshold // Bleed threshold, just to make sure.
     // Get menu boundary.
@@ -284,14 +278,13 @@ class MenusDesktop {
   }
 
   /**
-   * _calculateMenuTotalWidth
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  _calculateMenuTotalWidth ($menu) {
+  _calculateMenuTotalWidth($menu) 
+  {
     // Set default width.
     let width = 0;
     // Calculate width of children.
@@ -303,14 +296,13 @@ class MenusDesktop {
   }
 
   /**
-   * _calculateMenuBoundary
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  _calculateMenuBoundary () {
+  _calculateMenuBoundary() 
+  {
     return this._dom.menu.width()
   }
 

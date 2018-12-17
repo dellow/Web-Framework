@@ -48,6 +48,22 @@ $property: 'color';
     }
   }
 }
+  
+  
+[class*=text-color] {
+  &.error {
+    color: color(alerts, error);
+  }
+  &.status {
+    color: color(alerts, status);
+  }
+  &.success {
+    color: color(alerts, success);
+  }
+  &.warning {
+    color: color(alerts, warning);
+  }
+}
 
 
 // ----------------------------------------------------------------------- //

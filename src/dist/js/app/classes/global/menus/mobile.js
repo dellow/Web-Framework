@@ -7,17 +7,17 @@
  *
 **/
 
-class MenusMobile {
+class MenusMobile 
+{
 
   /**
-   * constructor
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  constructor () {
+  constructor() 
+  {
     // Settings for the class.
     this._settings = {
     }
@@ -34,27 +34,25 @@ class MenusMobile {
   }
 
   /**
-   * init
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  init () {
+  init() 
+  {
     // Start events.
     this.events()
   }
 
   /**
-   * events
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  events () {
+  events() 
+  {
     // Extend the events system.
     window.Events.extend({
       events: {
@@ -106,14 +104,13 @@ class MenusMobile {
   }
 
   /**
-   * buildPanelHTML
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  buildPanelHTML () {
+  buildPanelHTML() 
+  {
     // Get menu HTML.
     let menuHTML = this.buildMenuHTML(this.state.primaryMenu)
     // Get social menu.
@@ -228,14 +225,13 @@ class MenusMobile {
   }
 
   /**
-   * buildMenuHTML
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  buildMenuHTML (menus) {
+  buildMenuHTML(menus) 
+  {
     // Update state.
     this.state.menuCreated = true
     // Loop through menus.
@@ -266,14 +262,13 @@ class MenusMobile {
   }
 
   /**
-   * buildChildMenuHTML
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  buildChildMenuHTML (menus) {
+  buildChildMenuHTML(menus) 
+  {
     let HTML = ''
 
     if (!window.Helpers.isEmpty(menus)) {
@@ -311,36 +306,32 @@ class MenusMobile {
   }
 
   /**
-   * open
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  open () {
+  open() 
+  {
     return $('body').addClass('js-panel-open noscroll')
   }
 
   /**
-   * close
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  close () {
+  close() 
+  {
     return $('body').removeClass('js-panel-open noscroll')
   }
 
   /**
-   * toggleSub
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
   toggleSub ($el) {
     return $el.toggle()

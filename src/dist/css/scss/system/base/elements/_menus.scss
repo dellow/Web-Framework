@@ -25,10 +25,16 @@
     display: none;
     position: absolute;
     left: 0; top: 100%;
-    z-index: $zindex-1;
+    z-index: $zindex-5;
+    text-align: left;
     li {
       display: block;
       white-space: nowrap;
+      a {
+        &:hover {
+          color: color(copy, link);
+        }
+      }
     }
     .sub-menu {
       left: 100%;

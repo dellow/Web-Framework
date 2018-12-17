@@ -2,44 +2,50 @@
  *
  * Class
  *
- * Copyright 2019, SureCommerce
+ * Copyright 2019, Author Name
  * Some information on the license.
  *
 **/
 
-class FormsNewsletter {
+class FormsNewsletter 
+{
 
   /**
-   * constructor
    * Constructor for this class.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  constructor () {
+  constructor() 
+  {
   }
 
   /**
-   * init
    * Registers methods.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  init () {
+  init() 
+  {
+    // Guard :: Check element exists.
+    if (!$('[data-vue="newsletterForm"]').length) {
+      return
+    }
+
     this.events()
     this.vmNewsletter = this.vmNewsletterComponent()
   }
 
   /**
-   * events
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  events () {
+  events() 
+  {
     // Extend the events system.
     window.Events.extend({
       events: {
@@ -51,13 +57,13 @@ class FormsNewsletter {
   }
 
   /**
-   * vmNewsletterComponent
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  vmNewsletterComponent () {
+  vmNewsletterComponent() 
+  {
     const _this = this
 
     return new window.Vue({
@@ -68,7 +74,8 @@ class FormsNewsletter {
         feedback: ''
       },
       methods: {
-        submitForm () {
+        submitForm() 
+        {
           // Make ajax request.
           window.Axios.get('/core/wp-admin/admin-ajax.php?action=sp_subscribe_user', {params: {email: this.emailaddress}}).then((res) => {
             // Check response is valid.

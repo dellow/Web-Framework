@@ -45,17 +45,18 @@ const domains = [
   'zoho.com'
 ]
 
-class Email {
+class Email 
+{
 
   /**
-   * init
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  init (settings) {
+  init(settings) 
+  {
     // Settings for this class.
     let defaultSettings = {
       typingTimer: null,
@@ -69,14 +70,14 @@ class Email {
   }
 
   /**
-   * events
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  events () {
+  events() 
+  {
     // Extend the events system.
     window.Events.extend({
       events: {
@@ -122,14 +123,14 @@ class Email {
   }
 
   /**
-   * renderMatch
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  renderMatch () {
+  renderMatch()
+  {
     // Set button.
     let $btn = '<button data-js-event="selectEmail">' + this.emailMatch + '</button>'
     // Check for a suggestion.
@@ -141,14 +142,14 @@ class Email {
   }
 
   /**
-   * getMatch
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  getMatch (email) {
+  getMatch(email) 
+  {
     var limit = 99
     var email = email.split('@')
 
@@ -171,14 +172,14 @@ class Email {
   }
 
   /**
-   * levenshteinDistance
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  levenshteinDistance (a, b) {
+  levenshteinDistance(a, b) 
+  {
     var c = 0
     var d = 0
     var e = 0
@@ -219,14 +220,14 @@ class Email {
   }
 
   /**
-   * _clearSuggester
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
    * @access public
   **/
-  _clearSuggester () {
+  _clearSuggester() 
+  {
     // Remove suggester.
     $('.obj-email-suggestion').remove()
   }
