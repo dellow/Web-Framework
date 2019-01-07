@@ -61,6 +61,12 @@
   &--center {
     justify-content: center;
   }
+  &--0-25 {
+    @include modify-grid(0.25);
+  }
+  &--0-5 {
+    @include modify-grid(0.5);
+  }
   &--1 {
     @include modify-grid(1);
   }
