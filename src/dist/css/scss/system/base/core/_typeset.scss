@@ -124,6 +124,9 @@ kbd {
   article {
     blockquote, dl, ol, p, pre, ul, figure, table, .obj-embed-container {
       @include nudge(margin-bottom, $contentmargin);
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     h1, .h1 {
       @include nudge(margin, $font_h1_mg 0 ($font_h1_mg / 2));
