@@ -2,7 +2,7 @@
  *
  * Module
  *
- * Copyright 2016, Author Name
+ * Copyright 2019, Author Name
  * Some information on the license.
  *
 **/
@@ -10,28 +10,27 @@
 import MenusDesktop from './desktop'
 import MenusMobile from './mobile'
 
-class Menus {
+class Menus 
+{
 
   /**
-   * constructor
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  constructor () {
+  constructor() 
+  {
   }
 
   /**
-   * init
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  init () {
+  init() 
+  {
     // Guard :: Make sure there is a menus property.
     if (!window.config.hasOwnProperty('menus')) return
 

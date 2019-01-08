@@ -5,7 +5,24 @@
 
 
 $properties: ('padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left');
-$declarations: ('0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5', '5.5', '6', '6.5', '7', '7.5');
+$declarations: ('10', '9.5', '9', '8.5', '8', '7.5', '7', '6.5', '6', '5.5', '5', '4.5', '4', '3.5', '3', '2.5', '2', '1.5', '1', '0.75', '0.5', '0.25', '0');
+
+
+@each $property in $properties {
+  @each $declaration in $declarations {
+    $declarationClass: str-replace($declaration, '.', '-');
+    // All screens.
+    .#{$property + "-" + $declarationClass} {
+      @include nudge(#{$property}, number(unquote($declaration)));
+    }
+    // Children.
+    .#{$property + "-" + $declarationClass}\:children {
+      > * {
+        @include nudge(#{$property}, number(unquote($declaration)));
+      }
+    }
+  }
+}
 
 
 @each $property in $properties {
@@ -14,14 +31,16 @@ $declarations: ('0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5', '5.5
     // Responsive screens.
     @each $key, $value in $screens {
       .#{$key}\:#{$property + "-" + $declarationClass} {
-        @include respond-to($value){
+        @include respond-to($value) {
           @include nudge(#{$property}, number(unquote($declaration)));
         }
       }
-    }
-    // All screens.
-    .#{$property + "-" + $declaration} {
-      @include nudge(#{$property}, number(unquote($declaration)));
+      // Children.
+      .#{$key}\:#{$property + "-" + $declarationClass}\:children {
+        > * {
+          @include nudge(#{$property}, number(unquote($declaration)));
+        }
+      }
     }
   }
 }

@@ -10,9 +10,6 @@
 .validation-alternative-email {
 	cursor: pointer;
 }
-.validation-form-success {
-	display: none;
-}
 
 
 // ----------------------------------------------------------------------- //
@@ -20,140 +17,128 @@
 
 form {
 
-	// Messages.
-	.validation-message {
-		@include scale(width, 275px);
-		margin: 6px 0 0 10px;
-    display: flex;
-    position: absolute;
-    top: 0; left: 100%;
-    font-size: 13px;
-    line-height: 1.4;
-		background: color(white);
-    &:before {
-      font-family: 'Material Icons';
-      font-weight: normal;
-      font-style: normal;
-      font-size: 24px;
-      line-height: 0.8;
-      letter-spacing: normal;
-      text-transform: none;
-      display: inline-block;
-      white-space: nowrap;
-      word-wrap: normal;
-      direction: ltr;
-      font-feature-settings: 'liga';
-      font-smoothing: antialiased;
-	    margin: 2px 6px 0 0;
-    	vertical-align: middle;
-	    font-weight: bold;
-    }
-		&.error {
-    	color: color(alerts, error);
-			&:before {
-    	  content: 'clear';
-			}
-		}
-		&.success {
-    	color: color(alerts, success);
-			&:before {
-    	  content: 'done';
-			}
-		}
-	}
-
-	// Fieldsets
-	.validation-fieldset-has-errors {
-		border-color: lighten(color(alerts, error), 30%) !important;
-		background-color: lighten(color(alerts, error), 45%) !important;
-	}
-
-	// Fields.
-	.validation-field-has-errors {
-		// Labels
-		label {
-			color: color(alerts, error) !important;
-		}
-		&::-webkit-input-placeholder, ::-webkit-input-placeholder {
-			color: color(alerts, error) !important;
-		}
-		&::-moz-placeholder, ::-moz-placeholder {
-			color: color(alerts, error) !important;
-		}
-		&:-moz-placeholder, :-moz-placeholder {
-			color: color(alerts, error) !important;
-		}
-		&:-ms-input-placeholder, :-ms-input-placeholder {
-			color: color(alerts, error) !important;
-		}
-		&::placeholder, ::placeholder {
-			color: color(alerts, error) !important;
-		}
-	}
-
 	// Inputs
-	input, .input, select, textarea, .field-container {
-		&.validation-field-error {
+	input, .input, select, textarea {
+		&.validation-input-error {
 			color: color(alerts, error) !important;
 			border-color: lighten(color(alerts, error), 25%) !important;
 			background-color: lighten(color(alerts, error), 40%) !important;
 			&:focus {
 				background-color: lighten(color(alerts, error), 35%) !important;
 			}
+			// Placeholders.
+			&::-webkit-input-placeholder {
+				color: color(alerts, error) !important;
+			}
+			&::-moz-placeholder {
+				color: color(alerts, error) !important;
+			}
+			&:-moz-placeholder {
+				color: color(alerts, error) !important;
+			}
+			&:-ms-input-placeholder {
+				color: color(alerts, error) !important;
+			}
+			&::placeholder {
+				color: color(alerts, error) !important;
+			}
 		}
-		&.validation-field-status {
+		&.validation-input-status {
 			color: color(alerts, status) !important;
 			border-color: lighten(color(alerts, status), 25%) !important;
 			background-color: lighten(color(alerts, status), 40%) !important;
 			&:focus {
 				background-color: lighten(color(alerts, status), 35%) !important;
 			}
+			// Placeholders.
+			&::-webkit-input-placeholder {
+				color: color(alerts, status) !important;
+			}
+			&::-moz-placeholder {
+				color: color(alerts, status) !important;
+			}
+			&:-moz-placeholder {
+				color: color(alerts, status) !important;
+			}
+			&:-ms-input-placeholder {
+				color: color(alerts, status) !important;
+			}
+			&::placeholder {
+				color: color(alerts, status) !important;
+			}
 		}
-		&.validation-field-success {
+		&.validation-input-success {
 			color: color(alerts, success) !important;
 			border-color: lighten(color(alerts, success), 25%) !important;
 			background-color: lighten(color(alerts, success), 40%) !important;
 			&:focus {
 				background-color: lighten(color(alerts, success), 35%) !important;
 			}
+			// Placeholders.
+			&::-webkit-input-placeholder {
+				color: color(alerts, success) !important;
+			}
+			&::-moz-placeholder {
+				color: color(alerts, success) !important;
+			}
+			&:-moz-placeholder {
+				color: color(alerts, success) !important;
+			}
+			&:-ms-input-placeholder {
+				color: color(alerts, success) !important;
+			}
+			&::placeholder {
+				color: color(alerts, success) !important;
+			}
 		}
-		&.validation-field-warning {
+		&.validation-input-warning {
 			color: color(alerts, warning) !important;
 			border-color: lighten(color(alerts, warning), 25%) !important;
 			background-color: lighten(color(alerts, warning), 40%) !important;
 			&:focus {
 				background-color: lighten(color(alerts, warning), 35%) !important;
 			}
+			// Placeholders.
+			&::-webkit-input-placeholder {
+				color: color(alerts, warning) !important;
+			}
+			&::-moz-placeholder {
+				color: color(alerts, warning) !important;
+			}
+			&:-moz-placeholder {
+				color: color(alerts, warning) !important;
+			}
+			&:-ms-input-placeholder {
+				color: color(alerts, warning) !important;
+			}
+			&::placeholder {
+				color: color(alerts, warning) !important;
+			}
 		}
 	}
 
 	// Custom selects.
 	.select {
-		&.validation-field-error {
+		&.validation-input-error {
 			&:before {
 				color: lighten(color(alerts, error), 15%) !important;
 			}
 		}
-		&.validation-field-status {
+		&.validation-input-status {
 			&:before {
 				color: lighten(color(alerts, status), 15%) !important;
 			}
 		}
-		&.validation-field-success {
+		&.validation-input-success {
 			&:before {
 				color: lighten(color(alerts, success), 15%) !important;
 			}
 		}
-		&.validation-field-warning {
+		&.validation-input-warning {
 			&:before {
 				color: lighten(color(alerts, warning), 15%) !important;
 			}
 		}
-	}
-
-	// Fieldsets
-	fieldset {
-		border: 1px solid transparent;
 	}
 }
 

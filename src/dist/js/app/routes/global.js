@@ -2,50 +2,52 @@
  *
  * Route
  *
- * Copyright 2018, Author Name
+ * Copyright 2019, Author Name
  * Some information on the license.
  *
 **/
 
 import Menus from '../classes/global/menus'
 import Email from '../classes/global/email'
+import FormsNewsletter from '../classes/forms/newsletter'
 
-;(function (Module, window) {
+class Route 
+{
 
   /**
-   * Module
-   * Constructor for this module.
+   * Constructor for this class.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Module = function () {
+  constructor() 
+  {
   }
 
   /**
-   * init
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  Module.prototype.init = function () {
+  init() 
+  {
     // Init Menus.
     Menus.init()
     // Init Email.
     Email.init()
+    // Init newsletter form.
+    FormsNewsletter.init()
   }
 
   /**
-   * events
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  Module.prototype.events = function () {
+  listeners() 
+  {
     // Extend the events system.
     window.Events.extend({
       events: {
@@ -60,10 +62,10 @@ import Email from '../classes/global/email'
           let scrollTop = $(document).scrollTop()
 
           if (scrollTop > height) {
-            return $('body').addClass('js-scrolled-past-header').css({'padding-top': height})
+            return $('body').addClass('js-scrolled-past-header').css({ 'padding-top': height })
           }
 
-          return $('body').removeClass('js-scrolled-past-header').css({'padding-top': ''})
+          return $('body').removeClass('js-scrolled-past-header').css({ 'padding-top': '' })
         }
       },
       toggleSearchBox: function (e) {
@@ -72,7 +74,9 @@ import Email from '../classes/global/email'
     })
   }
 
-  // Export
-  module.exports = new Module()
+}
 
-}(function () {}, window))
+const RouteClass = new Route()
+
+// Export
+export default RouteClass

@@ -28,9 +28,6 @@ body {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   font-weight: bold;
-  &:first-child {
-    margin-top: 0;
-  }
 }
 h1, .h1 {
   @include scale(font-size, $font_h1);
@@ -91,11 +88,16 @@ p {
   }
 }
 code {
-  font-weight: regular;
+  @include nudge(padding, 0.25);
+  border: 1px solid color(grey);
+  font-weight: normal;
   font-family: $monospaced;
   white-space: pre-wrap;
   word-wrap: break-word;
   tab-size: 4;
+  border-radius: 2px;
+  font-size: 90%;
+  background: color(grey, light);
 }
 pre {
   @include nudge(padding, 0.5 0.75);
@@ -118,21 +120,49 @@ kbd {
 // ----------------------------------------------------------------------- //
 
 
-.page__content {
-  $marginSpacing: 1;
-  blockquote, dl, ol, p, pre, ul, img, figure, table, .obj-embed-container {
-    @include nudge(margin-top, $marginSpacing);
-    img { // No margin on inner images.
-      margin: 0;
+.layout-content {
+  article {
+    blockquote, dl, ol, p, pre, ul, figure, table, .obj-embed-container {
+      @include nudge(margin-bottom, $contentmargin);
     }
-    &:first-child {
-      margin-top: 0;
+    h1, .h1 {
+      @include nudge(margin, $font_h1_mg 0 ($font_h1_mg / 2));
+    }
+    h2, .h2 {
+      @include nudge(margin, $font_h2_mg 0 ($font_h2_mg / 2));
+    }
+    h3, .h3 {
+      @include nudge(margin, $font_h3_mg 0 ($font_h3_mg / 2));
+    }
+    h4, .h4 {
+      @include nudge(margin, $font_h4_mg 0 ($font_h4_mg / 2));
+    }
+    h5, .h5 {
+      @include nudge(margin, $font_h5_mg 0 ($font_h5_mg / 2));
+    }
+    h6, .h6 {
+      @include nudge(margin, $font_h6_mg 0 ($font_h6_mg / 2));
+    }
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+  figure {
+    > img {
+      display: block;
+    }
+    figcaption {
+      margin: 10px;
+      font-size: 90%;
+      font-style: italic;
     }
   }
   ul, ol {
     margin-left: 1.2em;
     li {
-      @include nudge(margin-bottom, ($marginSpacing / 100 * 2));
+      @include nudge(margin-bottom, ($contentmargin / 100 * 2));
     }
     ul, ol {
       margin-left: 1.2em;
@@ -144,12 +174,12 @@ kbd {
   }
   dl {
     dd {
-      @include nudge(margin-bottom, ($marginSpacing / 100 * 2));
+      @include nudge(margin-bottom, ($contentmargin / 100 * 2));
       @include nudge(text-indent, 1);
     }
   }
   blockquote {
-    @include nudge(padding, 0 ($marginSpacing * 3));
+    @include nudge(padding, 0 ($contentmargin * 3));
     p {
       font-style: italic;
       font-family: $serif;
@@ -159,28 +189,13 @@ kbd {
       &:after {
         content: close-quote;
       }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     cite {
       font-weight: bold;
     }
-  }
-  h1, .h1 {
-    @include nudge(margin, ($font_h1_mg / 2) 0 $font_h1_mg);
-  }
-  h2, .h2 {
-    @include nudge(margin, ($font_h2_mg / 2) 0 $font_h2_mg);
-  }
-  h3, .h3 {
-    @include nudge(margin, ($font_h3_mg / 2) 0 $font_h3_mg);
-  }
-  h4, .h4 {
-    @include nudge(margin, ($font_h4_mg / 2) 0 $font_h4_mg);
-  }
-  h5, .h5 {
-    @include nudge(margin, ($font_h5_mg / 2) 0 $font_h5_mg);
-  }
-  h6, .h6 {
-    @include nudge(margin, ($font_h6_mg / 2) 0 $font_h6_mg);
   }
 }
 

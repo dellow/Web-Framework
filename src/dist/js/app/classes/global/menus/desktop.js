@@ -2,22 +2,22 @@
  *
  * Module
  *
- * Copyright 2016, Author Name
+ * Copyright 2019, Author Name
  * Some information on the license.
  *
 **/
 
-class MenusDesktop {
+class MenusDesktop 
+{
 
   /**
-   * constructor
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  constructor () {
+  constructor() 
+  {
     // Simple counter.
     this.counter = 0
     // Settings for the class.
@@ -37,51 +37,27 @@ class MenusDesktop {
   }
 
   /**
-   * init
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  init () {
+  init() 
+  {
     // Guard :: Check element exists.
     if (!$('[data-menu="desktop"]').length) return
 
-    // Start events.
-    this.events()
+    return this._dom.menu.empty().append(this.getMenuHTML())
   }
 
   /**
-   * events
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  events () {
-    // Extend the events system.
-    window.Events.extend({
-      events: {
-        'ready null': 'applyMenu',
-        'resize null': 'applyMenu'
-      },
-      applyMenu: () => {
-        return this._dom.menu.empty().append(this.getMenuHTML())
-      }
-    })
-  }
-
-  /**
-   * buildMenuHTML
-   * NULLED.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-   * @access public
-  **/
-  buildMenuHTML (menus) {
+  buildMenuHTML(menus) 
+  {
     let HTML = menus.map((item, i) => {
       // Get child menu.
       let childMenu = this.buildChildMenuHTML(item.type, item.children)
@@ -102,17 +78,16 @@ class MenusDesktop {
   }
 
   /**
-   * buildChildMenuHTML
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  buildChildMenuHTML (type, menus) {
+  buildChildMenuHTML(type, menus) 
+  {
     let HTML = ''
 
-    if (!type || type === 'auto') {
+    if (!window.Helpers.isEmpty(menus) && (!type || type === 'auto')) {
       if (menus instanceof Array && menus.length < 6) {
         type = 'sub'
       } else if (menus instanceof Array && menus.length >= 6) {
@@ -211,14 +186,13 @@ class MenusDesktop {
   }
 
   /**
-   * getMenuHTML
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  getMenuHTML () {
+  getMenuHTML() 
+  {
     // Number of menu items.
     let menuItemsCount = this.state.primaryMenu.length
     // Set default HTML view.
@@ -264,14 +238,13 @@ class MenusDesktop {
   }
 
   /**
-   * _moreItemMenu
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  _moreItemMenu () {
+  _moreItemMenu() 
+  {
     // Update state.
     this.state.moreExists = true
 
@@ -286,14 +259,13 @@ class MenusDesktop {
   }
 
   /**
-   * _hasExceededBoundary
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  _hasExceededBoundary ($menu) {
+  _hasExceededBoundary($menu) 
+  {
     // Get total width of menu contents.
     let totalWidth = this._calculateMenuTotalWidth($menu) + this._settings.bleedThreshold // Bleed threshold, just to make sure.
     // Get menu boundary.
@@ -306,14 +278,13 @@ class MenusDesktop {
   }
 
   /**
-   * _calculateMenuTotalWidth
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  _calculateMenuTotalWidth ($menu) {
+  _calculateMenuTotalWidth($menu) 
+  {
     // Set default width.
     let width = 0;
     // Calculate width of children.
@@ -325,14 +296,13 @@ class MenusDesktop {
   }
 
   /**
-   * _calculateMenuBoundary
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  _calculateMenuBoundary () {
+  _calculateMenuBoundary() 
+  {
     return this._dom.menu.width()
   }
 

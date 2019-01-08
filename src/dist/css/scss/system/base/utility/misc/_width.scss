@@ -1,0 +1,84 @@
+@if $switch_utility_misc_width == true {
+
+
+// ----------------------------------------------------------------------- //
+
+
+// All screens.
+.width-1 {
+  width: 100%;
+}
+.width-3-4 {
+  width: 75%;
+}
+.width-1-2 {
+  width: 50%;
+}
+.width-1-4 {
+  width: 25%;
+}
+
+.width-1vh {
+  width: 100vh;
+}
+.width-3-4vh {
+  width: 75vh;
+}
+.width-1-2vh {
+  width: 50vh;
+}
+.width-1-4vh {
+  width: 25vh;
+}
+
+
+// Responsive screens.
+@each $key, $value in $screens {
+  .#{$key}\:width-1 {
+    @include respond-to($value) {
+      width: 100%;
+    }
+  }
+  .#{$key}\:width-3-4 {
+    @include respond-to($value) {
+      width: 75%;
+    }
+  }
+  .#{$key}\:width-1-2 {
+    @include respond-to($value) {
+      width: 50%;
+    }
+  }
+  .#{$key}\:width-1-4 {
+    @include respond-to($value) {
+      width: 25%;
+    }
+  }
+
+  .#{$key}\:width-1vh {
+    @include respond-to($value) {
+      width: 100vh;
+    }
+  }
+  .#{$key}\:width-3-4vh {
+    @include respond-to($value) {
+      width: 75vh;
+    }
+  }
+  .#{$key}\:width-1-2vh {
+    @include respond-to($value) {
+      width: 50vh;
+    }
+  }
+  .#{$key}\:width-1-4vh {
+    @include respond-to($value) {
+      width: 25vh;
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}

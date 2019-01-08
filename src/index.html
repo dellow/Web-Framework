@@ -66,16 +66,6 @@ window.config = {
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date
 // GA Account ID.
 ga('create', 'UA-XXXXXXXX-1', 'auto')
-// Require: Display features.
-ga('require', 'cleanUrlTracker')
-ga('require', 'eventTracker')
-ga('require', 'impressionTracker')
-ga('require', 'mediaQueryTracker')
-ga('require', 'outboundFormTracker')
-ga('require', 'outboundLinkTracker')
-ga('require', 'pageVisibilityTracker')
-ga('require', 'socialWidgetTracker')
-ga('require', 'urlChangeTracker')
 // GA Page View.
 ga('send', 'pageview', {
   'dimension1': (typeof(WURFL) !== 'undefined') ? WURFL.complete_device_name : null,
@@ -254,7 +244,6 @@ ga('send', 'pageview', {
   </div><!-- end .page -->
 
 	<!-- JavaScript Assets -->
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="build/js/common.js"></script>
   <script src="build/js/app.js"></script>
 </body>

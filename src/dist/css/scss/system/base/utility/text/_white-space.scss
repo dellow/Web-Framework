@@ -9,22 +9,26 @@ $declarations: ('no-wrap', 'normal');
 
 
 @each $declaration in $declarations {
-  // Responsive screens.
-  @each $key, $value in $screens {
-    .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value){
-        #{$property}: unquote($declaration);
-      }
-    }
-  }
   // All screens.
   .#{$property + "-" + $declaration} {
     #{$property}: unquote($declaration);
   }
   // Children.
   .#{$property + "-" + $declaration}\:children {
-    * {
+    > * {
       #{$property}: unquote($declaration);
+    }
+  }
+}
+
+
+@each $declaration in $declarations {
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:#{$property + "-" + $declaration} {
+      @include respond-to($value) {
+        #{$property}: unquote($declaration);
+      }
     }
   }
 }

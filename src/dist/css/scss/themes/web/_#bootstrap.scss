@@ -11,12 +11,13 @@
 		'layout/header',
 		'layout/main',
 		'layout/footer',
-		'components/btn',
-		'components/form',
+		'elements/btn',
+		'elements/form',
 		'misc/validation',
 		'misc/wordpress',
 		'global';
 
 // Vendor
-// @import 'vendor/slick';
-// @import 'vendor/socicon';
+@import 'vendor/slick';
+@import 'vendor/socicon';
+@import 'vendor/vue';

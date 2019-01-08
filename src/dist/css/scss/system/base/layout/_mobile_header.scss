@@ -10,16 +10,28 @@
   position: relative;
   z-index: $zindex-2;
   display: flex;
+  &__left, &__right, &__logo {
+    display: flex;
+    align-items: center;
+  }
   &__logo {
+    flex: 1;
+    justify-content: center;
     text-align: center;
     transition: all 250ms cubic-bezier(.645, .045, .45, 1);
+    img {
+      max-width: 220px;
+      @include respond-to(map-get($screens, 'md')) {
+        max-width: 300px;
+      }
+    }
   }
   &__left, &__right {
+    width: 90px;
     @include nudge(padding, 0 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1;
     &__item {
       flex: 1;
       transition: all 250ms cubic-bezier(.645, .045, .45, 1);

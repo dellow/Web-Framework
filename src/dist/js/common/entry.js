@@ -2,7 +2,7 @@
  *
  * Common Entry Point
  *
- * Copyright 2018, Author Name
+ * Copyright 2019, Author Name
  * Some information on the license.
  *
 **/
@@ -36,7 +36,17 @@ window.$ = require('jquery')
 | Loads Lodash and assigns to `_` var.
 |
 */
-// window._ = require('lodash')
+window._ = require('lodash')
+
+/*
+|--------------------------------------------------------------------------
+| Vue
+|--------------------------------------------------------------------------
+|
+| Loads Vue and assigns to `Vue` var.
+|
+*/
+window.Vue = require('vue/dist/vue.common.js')
 
 /*
 |--------------------------------------------------------------------------
@@ -83,13 +93,3 @@ window.Helpers = require('./helpers')
 |
 */
 window.Breakpoint = require('./breakpoint')
-
-/*
-|--------------------------------------------------------------------------
-| Autotrack
-|--------------------------------------------------------------------------
-|
-| Loads Google Autotrack for analytics.
-|
-*/
-require('autotrack')

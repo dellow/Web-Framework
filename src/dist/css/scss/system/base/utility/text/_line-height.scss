@@ -1,31 +1,27 @@
-@if $switch_utility_misc_float == true {
+@if $switch_utility_text_line_height == true {
 
 
 // ----------------------------------------------------------------------- //
 
 
-$property: 'float';
-$declarations: ('left', 'right');
+$property: 'line-height';
+$declarations: ('1', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7', '1.8', '1.9', '2');
 
 
 @each $declaration in $declarations {
+  $declarationClass: str-replace($declaration, '.', '-');
   // All screens.
-  .#{$property + "-" + $declaration} {
+  .#{$property + "-" + $declarationClass} {
     #{$property}: unquote($declaration);
-  }
-  // Children.
-  .#{$property + "-" + $declaration}\:children {
-    > * {
-      #{$property}: unquote($declaration);
-    }
   }
 }
 
 
 @each $declaration in $declarations {
+  $declarationClass: str-replace($declaration, '.', '-');
   // Responsive screens.
   @each $key, $value in $screens {
-    .#{$key}\:#{$property + "-" + $declaration} {
+    .#{$key}\:#{$property + "-" + $declarationClass} {
       @include respond-to($value) {
         #{$property}: unquote($declaration);
       }

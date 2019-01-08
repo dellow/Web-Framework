@@ -18,76 +18,13 @@
 // ----------------------------------------------------------------------- //
 
 
-.obj-form-field {
-  @include nudge(margin-bottom, 0.75);
-  position: relative;
-  &__container {
-    display: flex;
-    * {
-      @include nudge(margin-left, 0.5);
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-  }
-  &__error {
-    width: 100%;
-    @include nudge(margin-top, 0.25);
-    @include scale(font-size, 14px);
-    color: color(alerts, error);
-  }
-  &__note {
-    @include scale(font-size, 13px);
-    color: darken(color(grey), 15%);
-  }
-  &__button {
-    @include nudge(margin-top, 0.25);
-    @include scale(font-size, 13px);
-    a, button {
-      color: inherit;
-      font-weight: bold;
-    }
-  }
-  p {
-    @include nudge(margin-bottom, 0.5);
-  }
-  ul {
-    &.cols {
-      li {
-        width: 50%;
-        float: left;
-      }
-    }
-    li {
-      margin-bottom: 3px;
-      list-style: none;
-      @include scale(font-size, 15px);
-    }
-  }
-  &:last-child {
-    margin-bottom: 0;
-  }
-  input:not([type="radio"]):not([type="checkbox"]), .input, select, .select, textarea, .textarea, .obj-form-field__container {
-    + .obj-form-field__note {
-      @include nudge(margin-top, 0.25);
-    }
-  }
-}
-
-
-// ----------------------------------------------------------------------- //
-
-
 .obj-email-suggestion {
 	width: 275px;
-	margin: 6px 0 0 10px;
   display: flex;
   position: absolute;
-  top: 0; left: 100%;
+  top: calc(100% + 6px); left: 0;
   font-size: 13px;
-  line-height: 1.4;
   white-space: nowrap;
-  background: color(white);
   &:before {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -112,73 +49,6 @@
 // ----------------------------------------------------------------------- //
 
 
-.obj-modal {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0; left: 0;
-  z-index: $zindex-10;
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.25);
-  transition: opacity $animation ease;
-  @include respond-to(map-get($screens, 'md') + 1, null, true){
-    display: block;
-    background: color(white)
-  }
-  &.active {
-    opacity: 1;
-  }
-  &__window {
-  	min-width: 400px;
-    margin-top: -20%;
-    border-radius: $def_border_radius;
-    box-shadow: 0 0 3px rgba(color(black), 0.4);
-    text-align: center;
-  	backface-visibility: hidden;
-    background: color(white);
-    &__header {
-      @include nudge(padding, 0.5);
-      border-bottom: 1px solid #EEEEEE;
-      @include scale(font-size, 20px);
-      @include respond-to(map-get($screens, 'md') + 1, null, true){
-        border: 0;
-      }
-    }
-    &__main {
-      @include nudge(padding, 1);
-    }
-    &__footer {
-      @include nudge(padding, 0.5);
-      border-top: 1px solid #EEEEEE;
-      @include respond-to(map-get($screens, 'md') + 1, null, true){
-        border: 0;
-      }
-      button {
-        @include scale(font-size, 14px);
-      }
-    }
-    @include respond-to(map-get($screens, 'md') + 1, null, true){
-      width: 100% !important;
-      height: 100% !important;
-      min-width: 0 !important;
-      max-height: none !important;
-      margin-top: 0;
-      border-radius: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-}
-
-
-// ----------------------------------------------------------------------- //
-
-
 .obj-embed-container {
   max-width: 100%;
   height: 0;
@@ -191,6 +61,143 @@
     position: absolute;
     top: 0; left: 0;
   }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.obj-alert, .obj-modal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: $zindex-10;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: opacity $animation ease;
+  &.active {
+    opacity: 1;
+  }
+  &__window {
+    width: 100% !important; // Overwrite the JS.
+    height: 100% !important; // Overwrite the JS.
+    max-width: none !important; // Overwrite the JS.
+    min-width: 0 !important; // Overwrite the JS.
+    max-height: none !important; // Overwrite the JS.
+    min-height: 0 !important; // Overwrite the JS.
+    border-radius: 0;
+    position: relative;
+		display: flex;
+		flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
+    background: color(white);
+    &.large {
+  	  min-width: 500px;
+    }
+    &.full {
+      width: 100% !important; // Overwrite the JS.
+      height: 100% !important; // Overwrite the JS.
+  	  max-width: none !important; // Overwrite the JS.
+  	  min-width: 0 !important; // Overwrite the JS.
+  	  max-height: none !important; // Overwrite the JS.
+  	  min-height: 0 !important; // Overwrite the JS.
+      border-radius: 0;
+      .obj-alert__window__main {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include scale(font-size, 18px);
+      }
+    }
+    @include respond-to(map-get($screens, 'md') + 1){
+      width: auto !important; // Overwrite the JS.
+      height: auto !important; // Overwrite the JS.
+      max-width: 550px !important; // Overwrite the JS.
+    	min-width: 350px !important; // Overwrite the JS.
+  		border-radius: $def_border_radius;
+    }
+    &__header {
+      padding: 15px 12px;
+	    border-bottom: 1px solid #e5e5e5;
+	    color: #4e5665;
+	    font-weight: bold;
+	    line-height: 19px;
+	    text-shadow: 0 1px 0 color(white);
+	    background: #f5f6f7;
+    }
+    &__main {
+      width: 100%;
+      height: 100%;
+      padding: 15px 12px;
+    }
+    &__footer {
+      padding: 15px 12px;
+	    border-top: 1px solid #e9eaed;
+	    text-align: right;
+    }
+    &__close {
+      position: absolute;
+      top: 7px; right: 0;
+      button {
+        border: 0 !important;
+        box-shadow: none !important;
+        color: #afafaf;
+        &:hover {
+          color: darken(#afafaf, 10%);
+        }
+      }
+    }
+		button {
+			padding: 1px 15px;
+      border: 1px solid;
+      border-radius: 3px;
+	    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	    box-sizing: content-box;
+	    position: relative;
+	    vertical-align: middle;
+	    cursor: pointer;
+	    line-height: 18px;
+	    font-weight: bold;
+	    font-size: 13px;
+	    text-align: center;
+	    white-space: nowrap;
+	    background-clip: padding-box;
+			&.positive {
+		    border-color: #435a8b #3c5488 #334c83 !important;
+		    color: color(white);
+		    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+		    background: #4e69a2;
+			}
+			&.negative {
+				border-color: #cdced0 #c5c6c8 #b6b7b9 !important;
+		    color: #4e5665;
+		    text-shadow: 0 1px 0 color(white);
+		    background: #f6f7f8;
+			}
+		}
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+.obj-modal-preloader {
+	@include nudge(padding, 1);
+	text-align: center;
+	&__preloader {
+		@include nudge(margin-bottom, 0.45);
+	}
+	&__message {
+		font-weight: bold;
+		@include scale(font-size, 16px);
+	}
 }
 
 

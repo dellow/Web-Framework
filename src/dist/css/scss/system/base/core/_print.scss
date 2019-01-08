@@ -14,14 +14,6 @@
   a, a:visited {
     text-decoration: underline;
   }
-  a[href]:after {
-    content: " (" attr(href) ")";
-    font-size: 12px;
-  }
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-    font-size: 12px;
-  }
   a[href^="javascript:"]:after, a[href^="#"]:after {
     content: "";
   }
@@ -47,5 +39,8 @@
   }
   h2, h3 {
     page-break-after: avoid;
+  }
+  .alert, .navigation {
+    display: none;
   }
 }

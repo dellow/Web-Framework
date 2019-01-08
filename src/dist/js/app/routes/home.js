@@ -2,55 +2,37 @@
  *
  * Route
  *
- * Copyright 2018, Author Name
+ * Copyright 2019, Author Name
  * Some information on the license.
  *
 **/
 
-;(function (Module, window) {
+class Route 
+{
 
   /**
-   * Module
-   * Constructor for this module.
+   * Constructor for this class.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Module = function () {
+  constructor() 
+  {
   }
 
   /**
-   * init
    * NULLED.
    *
    * @since 1.0.0
    * @version 1.0.0
-   * @access public
   **/
-  Module.prototype.init = function () {
+  init() 
+  {
   }
 
-  /**
-   * events
-   * NULLED.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-   * @access public
-  **/
-  Module.prototype.events = function () {
-    // Extend the events system.
-    window.Events.extend({
-      events: {
-        'click [data-js-event="someMethod"]': 'someMethod'
-      },
-      someMethod: (e) => {
-        e[0].preventDefault()
-      }
-    })
-  }
+}
 
-  // Export
-  module.exports = new Module()
+const RouteClass = new Route()
 
-}(function () {}, window))
+// Export
+export default RouteClass

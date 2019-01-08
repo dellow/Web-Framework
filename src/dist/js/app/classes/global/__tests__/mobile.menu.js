@@ -1,10 +1,10 @@
 /**
-*
-* Module > Test
-*
-* Copyright 2018, Awesome Jobs
-* Some information on the license.
-*
+ *
+ * Module > Test
+ *
+ * Copyright 2019, Author Name
+ * Some information on the license.
+ * 
 **/
 
 import MobileMenu from '../mobile.menu'
