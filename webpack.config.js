@@ -2,12 +2,13 @@
  *
  * Wepback > Config
  *
- * Copyright 2017, Author Name
+ * Copyright 2019, Author Name
  * Some information on the license.
  *
 **/
 
-const fs = require('fs')
+const srcPath = './src/'
+
 const path = require('path')
 const webpack = require('webpack')
 
@@ -16,26 +17,25 @@ const WebpackCleanPlugin = require('webpack-clean')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 
 const entry = {
-  'js/app': path.resolve(__dirname, './src/dist/js/app/entry.js'),
-  'js/app.min': path.resolve(__dirname, './src/dist/js/app/entry.js'),
-  'js/common': path.resolve(__dirname, './src/dist/js/common/entry.js'),
-  'js/common.min': path.resolve(__dirname, './src/dist/js/common/entry.js'),
-  'css/app': path.resolve(__dirname, './src/dist/css/scss/entry.scss'),
-  'css/app.min': path.resolve(__dirname, './src/dist/css/scss/entry.scss')
+  'js/app': path.resolve(__dirname, srcPath + 'dist/js/app/entry.js'),
+  'js/common': path.resolve(__dirname, srcPath + 'dist/js/common/entry.js'),
+  'css/theme': path.resolve(__dirname, srcPath + 'dist/css/scss/entry-theme.scss'),
+  'css/base': path.resolve(__dirname, srcPath + 'dist/css/scss/entry-base.scss'),
+  'css/utility': path.resolve(__dirname, srcPath + 'dist/css/scss/entry-utility.scss')
 }
 
 module.exports = {
   entry: entry,
   output: {
-    path: path.resolve(__dirname, './src/build'),
+    path: path.resolve(__dirname, srcPath + 'build'),
     filename: '[name].js'
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js'],
     alias: {
-      classes: path.resolve(__dirname, './src/dist/js/app/classes'),
-      routes: path.resolve(__dirname, './src/dist/js/app/routes')
+      classes: path.resolve(__dirname, srcPath + 'dist/js/app/classes'),
+      routes: path.resolve(__dirname, srcPath + 'dist/js/app/routes')
     }
   },
   module: {
@@ -77,17 +77,18 @@ module.exports = {
       allChunks: true
     }),
     new WebpackCleanPlugin([
-      './src/build/css/app.js',
-      './src/build/css/app.min.js'
+      srcPath + 'build/css/base.js',
+      srcPath + 'build/css/theme.js',
+      srcPath + 'build/css/utility.js'
     ]),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      include: [
-        /\.min\.js$/,
-        /\.min\.css$/
-      ],
-      minimize: true
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   include: [
+    //     /\.min\.js$/,
+    //     /\.min\.css$/
+    //   ],
+    //   minimize: true
+    // }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)

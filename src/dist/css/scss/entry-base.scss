@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+// Mixins.
+@import 'mixins/#bootstrap';
+// Base vars.
+@import 'base/#vars';
+// App vars.
+@import '#vars';
+// App switches.
+@import '#switches';
+// Base styles.
+@import 'base/#bootstrap';
