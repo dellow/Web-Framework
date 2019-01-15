@@ -154,8 +154,10 @@ import RouteHome from './routes/home'
         return '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="' + width + '" height="' + height + '" viewBox="0 0 100 100" enable-background="new 0 0 ' + width + ' ' + height + '" xml:space="preserve"><polyline class="check" fill="none" stroke="' + color + '" stroke-width="10" stroke-miterlimit="20" points="15,60 40,80 85,20" /></svg>'
       }
     },
-    button: function($el, destroy) 
+    button: function($el, destroy, color) 
     {
+      color = (color) ? color : '#FFFFFF'
+
       $el.each((index, btn) => {
         // Set button.
         let $btn = $(btn)
@@ -190,7 +192,7 @@ import RouteHome from './routes/home'
           // Store content.
           window.config.contentStrings[uid] = content
           // Create preloader.
-          let $preloader = $(this.svgs.spinner()).css({'fill': '#FFFFFF'}).hide()
+          let $preloader = $(this.svgs.spinner()).css({'fill': color}).hide()
           // Disable the button.
           $btn.addClass('btn--disabled')
           // Add button styles.
