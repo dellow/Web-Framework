@@ -83,23 +83,20 @@ fieldset {
 .select {
 	position: relative;
 	display: inline-block;
-	vertical-align: bottom;
 	select {
 		width: 100%;
-		@include nudge(padding, 8px 2em 8px 0.25);
+		padding: 8px 30px 8px 8px;
 		appearance: none;
 	}
 	&:before {
-		width: 2em;
-		margin-top: -8px;
+		@extend .material-icons;
+		height: 24px;
     position: absolute;
-    top: 50%; right: 0;
-    content: '\25bc';
+		top: 12%; right: 3px;		
+    content: 'keyboard_arrow_down';
     pointer-events: none;
     color: color(grey);
     line-height: 1;
-    text-align: center;
-    transform: scale(0.84, 0.42);
 		transition: color $animation ease;
 	}
 	&:hover {
@@ -120,6 +117,7 @@ fieldset {
     display: inline-block;
 		vertical-align: middle;
 		span {
+			margin-left: 8px;
 			vertical-align: top;
 		}
 		&:before, &:after {
@@ -132,7 +130,6 @@ fieldset {
 	    background-color: transparent;
 		}
 		&:before {
-			margin-right: 8px;
     	border-color: color(grey);
 		}
 		&:after {
