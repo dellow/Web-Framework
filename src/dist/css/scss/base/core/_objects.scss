@@ -67,6 +67,7 @@
 /* ----------------------------------------------------------------------- */
 
 
+
 .obj-alert, .obj-modal {
   width: 100%;
   height: 100%;
@@ -77,18 +78,33 @@
   top: 0; left: 0;
   z-index: $zindex-10;
   opacity: 0;
+  pointer-events: none;
   background: rgba(color(white), 0.5);
   transition: opacity $animation ease;
   &.active {
     opacity: 1;
+    pointer-events: all;
+  }
+  &.full {
+    &.obj-alert, &.obj-modal {
+      &__window {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        &__main {
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+        }
+      }
+    }
   }
   &__window {
-    width: 100% !important; // Overwrite the JS.
-    height: 100% !important; // Overwrite the JS.
-    max-width: none !important; // Overwrite the JS.
-    min-width: 0 !important; // Overwrite the JS.
-    max-height: none !important; // Overwrite the JS.
-    min-height: 0 !important; // Overwrite the JS.
+    max-width: 650px;
+    min-width: 300px;
+    min-height: 100px;
     border-radius: 0;
     position: relative;
 		display: flex;
@@ -96,37 +112,13 @@
     overflow: hidden;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
     background: color(white);
-    &.large {
-  	  min-width: 500px;
-    }
-    &.full {
-      width: 100% !important; // Overwrite the JS.
-      height: 100% !important; // Overwrite the JS.
-  	  max-width: none !important; // Overwrite the JS.
-  	  min-width: 0 !important; // Overwrite the JS.
-  	  max-height: none !important; // Overwrite the JS.
-  	  min-height: 0 !important; // Overwrite the JS.
-      border-radius: 0;
-      .obj-alert__window__main {
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        @include scale(font-size, 18px);
-      }
-    }
-    @include respond-to(map-get($screens, 'md') + 1){
-      width: auto !important; // Overwrite the JS.
-      height: auto !important; // Overwrite the JS.
-      max-width: 550px !important; // Overwrite the JS.
-    	min-width: 350px !important; // Overwrite the JS.
-  		border-radius: $def_border_radius;
-    }
     &__header {
       padding: 20px 20px 0 20px;
-	    color: #494e58;
-	    font-weight: bold;
-      font-size: 20px;
+      &__title {
+        color: #494e58;
+        font-weight: bold;
+        font-size: 20px;
+      }
     }
     &__main {
       width: 100%;
@@ -140,15 +132,19 @@
       background: #f3f4f5;
     }
     &__close {
+      @extend .material-icons;
       position: absolute;
-      top: 7px; right: 0;
-      button {
-        border: 0 !important;
-        box-shadow: none !important;
-        color: #afafaf;
-        &:hover {
-          color: darken(#afafaf, 10%);
-        }
+      top: 6px; right: 6px;
+      z-index: $zindex-2;
+      cursor: pointer;
+      text-align: center;    
+      color: #b7b7b7;
+      transition: color $animation ease;
+      &:after {
+        content: 'clear';
+      }
+      &:hover {
+        color: #797979;
       }
     }
 		button {

@@ -6,6 +6,7 @@
 
 input:not([type="radio"]):not([type="checkbox"]), select, textarea, .iframe-field {
 	@include nudge(padding, 0.25 0.35);
+	border-radius: $forms_border_radius;
 	border: 1px solid color(grey);
 	display: inline-block;
 	background: color(white);
@@ -45,12 +46,6 @@ input:not([type="radio"]):not([type="checkbox"]), select, .iframe-field {
 	height: $forms_field_height;
 }
 
-select, .select {
-	+ select, + .select {
-		@include nudge(margin-left, 0.5);
-	}
-}
-
 textarea {
 	min-height: 175px;
 }
@@ -86,15 +81,18 @@ fieldset {
 	select {
 		width: 100%;
 		padding: 8px 30px 8px 8px;
+		border-radius: $forms_border_radius;
 		appearance: none;
 	}
 	&:before {
 		@extend .material-icons;
-		height: 24px;
+		height: 100%;
     position: absolute;
-		top: 12%; right: 3px;		
+		top: 0; right: 3px;		
     content: 'keyboard_arrow_down';
-    pointer-events: none;
+		pointer-events: none;
+		display: flex;
+		align-items: center;
     color: color(grey);
     line-height: 1;
 		transition: color $animation ease;
