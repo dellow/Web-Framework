@@ -119,8 +119,6 @@ fieldset {
 			vertical-align: top;
 		}
 		&:before, &:after {
-			width: calc(1em + 2px);
-			height: calc(1em + 2px);
 	    border: 1px solid transparent;
     	border-radius: 20%;
 			content: '';
@@ -128,12 +126,15 @@ fieldset {
 	    background-color: transparent;
 		}
 		&:before {
+			width: calc(1em + 2px);
+			height: calc(1em + 2px);
     	border-color: color(grey);
 		}
 		&:after {
+			width: calc(1em - 2px);
+			height: calc(1em - 2px);
 			position: absolute;
-			left: 0; top: 12%;
-    	transform: scale(.7);
+			left: 2px; top: 4px;
 		}
 	}
 	input[type="checkbox"], input[type="radio"] {
