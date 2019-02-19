@@ -33,9 +33,9 @@
 <!-- ============================================================================== -->
 <!--                                                                         STYLES -->
 <!-- ============================================================================== -->
-<link rel="stylesheet" href="build/css/utility.css" media="all">
-<link rel="stylesheet" href="build/css/base.css" media="all">
-<link rel="stylesheet" href="build/css/theme.css" media="all">
+<link rel="stylesheet" href="/build/css/utility.css" media="all">
+<link rel="stylesheet" href="/build/css/base.css" media="all">
+<link rel="stylesheet" href="/build/css/theme.css" media="all">
 <!-- ============================================================================== -->
 <!--                                                                          ICONS -->
 <!-- ============================================================================== -->
@@ -84,56 +84,55 @@ ga('send', 'pageview', {
 
     <!-- Mobile :: Wrapper -->
     <div class="layout-mobile-wrapper">
+
       <!-- Header :: Mobile -->
-      <div class="layout-mobile-header" aria-hidden="true">
+      <div class="layout-mobile-header padding-0-25 display-flex align-items-center justify-content-center text-align-center" aria-hidden="true">
         <!-- Mobile Header :: Left -->
-        <div class="layout-mobile-header__left">
-          <div class="layout-mobile-header__left__item">
-            <button data-js-event="sideMenu">
-              <i class="icon material-icons" style="font-size:34px;">menu</i>
-            </button>
-          </div>
-          <div class="layout-mobile-header__left__item layout-mobile-header__left__item--hide">
-            <button data-js-event="mobileSearch">
-              <i class="icon material-icons" style="font-size:30px;">search</i>
-            </button>
-          </div>
+        <div class="col-1-6">
+          <button data-js-event="sideMenu">
+            <i class="icon material-icons" style="font-size:40px;">menu</i>
+          </button>
+        </div>
+        <div class="col-1-6">
+          <button>
+            <i class="icon material-icons" style="font-size:36px;">search</i>
+          </button>
         </div>
         <!-- Mobile Header :: Center -->
-        <div class="layout-mobile-header__center">
+        <div class="col-2-6">
           <div class="comp-logo">
             <a href="/">
-              <img src="/build/images/siteimages/logo-2x.png" alt="ALT_HERE">
+              <img src="/build/images/siteimages/logo-mobile-2x.png" alt="ALT_HERE" width="67">
             </a>
           </div>
         </div>
         <!-- Mobile Header :: Right -->
-        <div class="layout-mobile-header__right">
-          <div class="layout-mobile-header__right__item  layout-mobile-header__left__item--hide">
-            <a href="HREF_HERE">
-              <i class="icon material-icons" style="font-size:30px;">person</i>
-            </a>
-          </div>
-          <div class="layout-mobile-header__right__item">
-            <a href="HREF_HERE">
-              <i class="icon material-icons" style="font-size:28px;">shopping_basket</i>
-            </a>
-          </div>
+        <div class="col-1-6">
+          <a href="HREF_HERE">
+            <i class="icon material-icons" style="font-size:36px;">person</i>
+          </a>
+        </div>
+        <div class="col-1-6">
+          <a href="HREF_HERE">
+            <i class="icon material-icons" style="font-size:30px;">shopping_basket</i>
+          </a>
         </div>
       </div><!-- end .layout-mobile-header -->
 
       <!-- Search :: Mobile -->
-      <div class="layout-mobile-search overflow-hidden position-relative z-index-1 display-flex lg:display-none align-items-center justify-content-center" aria-hidden="true" data-js-target="mobileSearch">
+      <div class="padding-0-5 overflow-hidden position-relative z-index-1 display-none" style="background:#f5f5f5;" aria-hidden="true">
         <!-- Comp :: Search -->
-        <div class="comp-header-search col-1">
-          <form role="search" action="ACTION_HERE" method="GET" novalidate="novalidate" accept-charset="UTF-8">
-            <div class="obj-form-field obj-form-field__container">
-              <input type="text" name="query" class="flex-1" placeholder="Search The Site" value="">
-              <button type="submit" class="btn btn--large btn--common"><i class="icon material-icons">search</i></button>
+        <div class="comp-header-search">
+          <!-- Form -->
+          <form role="search" class="form width-1" action="ACTION_HERE" method="GET" novalidate="novalidate" accept-charset="UTF-8">
+            <div class="display-flex">
+              <input type="text" name="query" class="flex-1 margin-right-0-25" placeholder="Search The Site" value="">
+              <button type="submit" class="btn btn--common" style="height:40px;padding:0 10px;"><i class="icon material-icons" style="height:24px;">search</i></button>
             </div>
           </form>
         </div>
-      </div><!-- end .layout-mobile-search -->
+      </div>
+      
     </div><!-- .layout-mobile-wrapper -->
 
 		<!-- Header :: Desktop -->
@@ -246,7 +245,7 @@ ga('send', 'pageview', {
   </div><!-- end .page -->
 
 	<!-- JavaScript Assets -->
-  <script src="build/js/common.js"></script>
-  <script src="build/js/app.js"></script>
+  <script src="/build/js/common.js"></script>
+  <script src="/build/js/app.js"></script>
 </body>
 </html>

@@ -54,7 +54,8 @@ class Route
         'scroll null': 'scrollable',
         'click [data-js-event="mobileSearch"]': 'toggleSearchBox'
       },
-      scrollable: (e) => {
+      scrollable: (e) => 
+      {
         if (window.Breakpoint.current === 'mobile') {
           // Cache page header height.
           let height = Math.round($('.page-mobile-wrapper').height())
@@ -68,7 +69,8 @@ class Route
           return $('body').removeClass('js-scrolled-past-header').css({ 'padding-top': '' })
         }
       },
-      toggleSearchBox: function (e) {
+      toggleSearchBox: (e) => 
+      {
         return $('[data-js-target="mobileSearch"]').toggleClass('active')
       }
     })
