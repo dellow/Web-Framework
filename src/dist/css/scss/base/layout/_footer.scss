@@ -1,12 +1,12 @@
 // ==========================================================================
-// Base > Layout > Mobile Wrapper
-// Styles for mobile wrapper.
+// Base > Layout > Header
+// Styles for page header.
 // ==========================================================================
 
 
-.layout-mobile-wrapper {
-  @include respond-to(map-get($screens, 'md') + 1){
-    display: none; // Hide by default.
+.layout-header {
+  @include respond-to(map-get($screens, 'md'), null, false){
+    display: none;
   }
 }
 

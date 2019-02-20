@@ -7,6 +7,7 @@
  *
 **/
 
+import Events from '../classes/base/events'
 import Menus from '../classes/global/menus'
 import Email from '../classes/global/email'
 import FormsNewsletter from '../classes/forms/newsletter'
@@ -49,31 +50,45 @@ class Route
   listeners() 
   {
     // Extend the events system.
-    window.Events.extend({
+    (new Events).extendEvents({
       events: {
-        'scroll null': 'scrollable',
-        'click [data-js-event="mobileSearch"]': 'toggleSearchBox'
-      },
-      scrollable: (e) => 
-      {
-        if (window.Breakpoint.current === 'mobile') {
-          // Cache page header height.
-          let height = Math.round($('.page-mobile-wrapper').height())
-          // Cache scroll top.
-          let scrollTop = $(document).scrollTop()
-
-          if (scrollTop > height) {
-            return $('body').addClass('js-scrolled-past-header').css({ 'padding-top': height })
-          }
-
-          return $('body').removeClass('js-scrolled-past-header').css({ 'padding-top': '' })
-        }
-      },
-      toggleSearchBox: (e) => 
-      {
-        return $('[data-js-target="mobileSearch"]').toggleClass('active')
+        'scroll null': this.scrollable.bind(this),
+        'click [data-js-event="mobileSearch"]': this.toggleSearchBox.bind(this)
       }
     })
+  }
+
+  /**
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  scrollable(e) 
+  {
+    if (window.Breakpoint.current === 'mobile') {
+      // Cache page header height.
+      let height = Math.round($('.page-mobile-wrapper').height())
+      // Cache scroll top.
+      let scrollTop = $(document).scrollTop()
+
+      if (scrollTop > height) {
+        return $('body').addClass('js-scrolled-past-header').css({ 'padding-top': height })
+      }
+
+      return $('body').removeClass('js-scrolled-past-header').css({ 'padding-top': '' })
+    }
+  }
+
+  /**
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  toggleSearchBox(e) 
+  {
+    return $('[data-js-target="mobileSearch"]').toggleClass('active')
   }
 
 }
