@@ -116,6 +116,11 @@ body {
   &--wide {
     max-width: map-get($screens, 'xl');
   }
+  &--mobile-full {
+    @include respond-to(0px, map-get($screens, 'md')){
+      width: 100%;
+    }
+  }
 }
 
 

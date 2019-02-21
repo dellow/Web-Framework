@@ -61,77 +61,22 @@
   &--center {
     justify-content: center;
   }
-  &--0-25 {
-    @include modify-grid(0.25);
+}
+
+$declarations: ('7.75', '7.5', '7', '6.75', '6.5', '6', '5.75', '5.5', '5', '4.75', '4.5', '4', '3.75', '3.5', '3', '2.75', '2.5', '2', '1.75', '1.5', '1', '0.75', '0.5', '0.25', '0');
+@each $declaration in $declarations {
+  $declarationClass: str-replace($declaration, '.', '-');
+  // All screens.
+  .flex-grid--#{$declarationClass} {
+     @include modify-grid(number(unquote($declaration)));
   }
-  &--0-5 {
-    @include modify-grid(0.5);
-  }
-  &--0-75 {
-    @include modify-grid(0.75);
-  }
-  &--1 {
-    @include modify-grid(1);
-  }
-  &--1-5 {
-    @include modify-grid(1.5);
-  }
-  &--1-75 {
-    @include modify-grid(1.75);
-  }
-  &--2 {
-    @include modify-grid(2);
-  }
-  &--2-5 {
-    @include modify-grid(2.5);
-  }
-  &--2-75 {
-    @include modify-grid(2.75);
-  }
-  &--3 {
-    @include modify-grid(3);
-  }
-  &--3-5 {
-    @include modify-grid(3.5);
-  }
-  &--3-75 {
-    @include modify-grid(3.75);
-  }
-  &--4 {
-    @include modify-grid(4);
-  }
-  &--4-5 {
-    @include modify-grid(4.5);
-  }
-  &--4-75 {
-    @include modify-grid(4.75);
-  }
-  &--5 {
-    @include modify-grid(5);
-  }
-  &--5-5 {
-    @include modify-grid(5.5);
-  }
-  &--5-75 {
-    @include modify-grid(5.75);
-  }
-  &--6 {
-    @include modify-grid(6);
-  }
-  &--6-5 {
-    @include modify-grid(6.5);
-  }
-  &--6-75 {
-    @include modify-grid(6.75);
-  }
-  &--7 {
-    @include modify-grid(7);
-  }
-  &--7-5 {
-    @include modify-grid(7.5);
-  }
-  &--7-75 {
-    @include modify-grid(7.75);
+  // Responsive screens.
+  @each $key, $value in $screens {
+    .#{$key}\:flex-grid--#{$declarationClass} {
+      @include respond-to($value) {
+        @include modify-grid(number(unquote($declaration)));
+      }
+    }
   }
 }
 

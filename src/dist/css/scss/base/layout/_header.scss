@@ -5,7 +5,7 @@
 
 
 .layout-header {
-  @include respond-to(map-get($screens, 'md'), null, false){
+  @include respond-to(map-get($screens, 'md'), null, false) {
     display: none;
   }
 }

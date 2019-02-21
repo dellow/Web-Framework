@@ -40,6 +40,11 @@
 
 
 .btn {
+  &--form {
+    height: $forms_field_height;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
   &--small {
     @include nudge(padding, 0.25 0.75);
   }

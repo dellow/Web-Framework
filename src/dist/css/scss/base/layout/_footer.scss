@@ -1,11 +1,11 @@
 // ==========================================================================
-// Base > Layout > Header
-// Styles for page header.
+// Base > Layout > Footer
+// Styles for page footer.
 // ==========================================================================
 
 
-.layout-header {
-  @include respond-to(map-get($screens, 'md'), null, false){
+.layout-footer {
+  @include respond-to(map-get($screens, 'md'), null, false) {
     display: none;
   }
 }
