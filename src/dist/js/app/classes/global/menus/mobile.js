@@ -220,7 +220,7 @@ class MenusMobile
             </div>
           </div>
         </div>
-      </aisde>
+      </aside>
     `
   }
 
