@@ -1,11 +1,11 @@
 // ==========================================================================
-// Base > Layout > Mobile Menu
+// Base > Elements > Flyouts
 // Styles for mobile menu.
 // ==========================================================================
 
 
 body.js-panel-open {
-  .layout-mobile-menu {
+  .flyout-mobile-menu {
     height: 100%;
     transform: translate3d(0, 0, 0);
     &__scrollable {
@@ -34,7 +34,7 @@ body.js-panel-open {
 // ----------------------------------------------------------------------- //
 
 
-.layout-mobile-menu {
+.flyout-mobile-menu {
   $textColor: color(black);
   $backgroundColorNormal: color(white);
   $backgroundColorAlt: #eeeeee;
@@ -170,7 +170,7 @@ body.js-panel-open {
           }
         }
         &.active {
-          .layout-mobile-menu__user__tabs__single {
+          .flyout-mobile-menu__user__tabs__single {
             &__header {
               button {
                 .icon {
