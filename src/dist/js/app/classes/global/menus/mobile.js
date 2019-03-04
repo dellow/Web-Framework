@@ -29,7 +29,7 @@ class MenusMobile
     // State for the class.
     this.state = {
       menuCreated: false,
-      primaryMenu: JSON.parse(JSON.stringify(window.config.menus.primary))
+      mobileMenu: JSON.parse(JSON.stringify(window.config.menus.primary))
     }
   }
 
@@ -112,7 +112,7 @@ class MenusMobile
   buildPanelHTML() 
   {
     // Get menu HTML.
-    let menuHTML = this.buildMenuHTML(this.state.primaryMenu)
+    let menuHTML = this.buildMenuHTML(this.state.mobileMenu)
     // Get social menu.
     let socialMenuHTML = ($('[data-menu="social"]').length) ? $('[data-menu="social"]')[0].outerHTML : ''
 
