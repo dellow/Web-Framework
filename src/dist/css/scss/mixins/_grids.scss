@@ -14,10 +14,9 @@
   $grid_selector     : '';
   $flex_grid_selector: '';
 
-  @if ($all == false){
+  @if ($all == false) {
     $flex_grid_selector: '> .flex-grid, &.flex-grid';
-  }
-  @else{
+  } @else {
     $flex_grid_selector: '.flex-grid, &.flex-grid';
   }
 
@@ -34,6 +33,9 @@
   		width: 100%;
   	}
     > [class*="col-"] {
+      @if ($col) {
+        width: $col;
+      }
       @include nudge(padding, $gutterValue 0 0 $gutterValue);
     }
   }

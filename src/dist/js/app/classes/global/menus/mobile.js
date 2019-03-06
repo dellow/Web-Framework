@@ -29,7 +29,7 @@ class MenusMobile
     // State for the class.
     this.state = {
       menuCreated: false,
-      mobileMenu: JSON.parse(JSON.stringify(window.config.menus.primary))
+      mobileMenu: JSON.parse(JSON.stringify(window.config.menus.mobile))
     }
   }
 

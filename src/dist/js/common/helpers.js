@@ -7,7 +7,8 @@
  *
 **/
 
-;(function (Helpers, window) {
+;(function(Helpers, window) 
+{
 
   /**
    * log
@@ -16,7 +17,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.log = function (message, type, alertlog) {
+  Helpers.log = function(message, type, alertlog) 
+  {
     if (process.env.NODE_ENV !== 'production') {
       alertlog = (typeof alertlog === 'undefined')
       if (typeof console === 'undefined' || typeof console.log === 'undefined') {
@@ -44,7 +46,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.throw = function (msg) {
+  Helpers.throw = function(msg) 
+  {
     throw new Error(msg)
   }
 
@@ -55,7 +58,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.breakpoint = function (breakpoint) {
+  Helpers.breakpoint = function(breakpoint) 
+  {
     return (window.innerWidth <= breakpoint)
   }
 
@@ -66,7 +70,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.mhe = function (el) {
+  Helpers.mhe = function(el) 
+  {
     // Clone element.
     var clone = el.clone()
     // Add to DOM in place and measure height.
@@ -84,7 +89,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.isEmpty = function (value) {
+  Helpers.isEmpty = function(value) 
+  {
     return (value === undefined || value === null || value === '' || value.length === 0)
   }
 
@@ -97,21 +103,23 @@
    *
    * $(window).on('resize', Module.test)
    *
-   * Module.test = window.Helpers.debounce(function () {
+   * Module.test = window.Helpers.debounce(function() {
    *     console.log('This has been debounced')
    * }, 250)
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.debounce = function (func, wait, immediate) {
+  Helpers.debounce = function(func, wait, immediate) 
+  {
     var timeout
 
-    return function () {
+    return function() {
       var _this = this
       var args = arguments
 
-      var later = function () {
+      var later = function() 
+      {
         timeout = null
         if (!immediate) {
           func.apply(_this, args)
@@ -133,7 +141,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.parseURLParams = function (url) {
+  Helpers.parseURLParams = function(url) 
+  {
     // Check if URL contains a ?.
     if (url && url.indexOf('?') !== -1) {
       // Split URL at ?
@@ -156,7 +165,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.parseParamObject = function (obj) {
+  Helpers.parseParamObject = function(obj) 
+  {
     let str = ''
     for (let key in obj) {
       if (str != '') {
@@ -177,7 +187,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.decodeEntities = function (string) {
+  Helpers.decodeEntities = function(string) 
+  {
     // Create pseudo element.
     var pseudo = document.createElement('textarea')
     // Decode.
@@ -193,7 +204,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateURLParameter = function (uri, key, value) {
+  Helpers.updateURLParameter = function(uri, key, value) 
+  {
     let re = new RegExp('([?&])' + key + '=.*?(&|$)', 'i')
     let separator = uri.indexOf('?') !== -1 ? '&' : '?'
 
@@ -211,7 +223,8 @@
   * @since 1.0.0
   * @version 1.0.0
   **/
-  Helpers.cssSafeName = function (string) {
+  Helpers.cssSafeName = function(string) 
+  {
     return string.replace(/[^a-z0-9]/g, function(s) {
       var c = s.charCodeAt(0)
       if (c == 32) return '-'
@@ -227,7 +240,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.isInt = function (n) {
+  Helpers.isInt = function(n) 
+  {
     return n === +n && n === (n|0)
   }
 
@@ -238,7 +252,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.guid = function () {
+  Helpers.guid = function() 
+  {
     return Math.random().toString(36).substr(2, 9)
   }
 
@@ -249,7 +264,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateURL = function (key, value) {
+  Helpers.updateURL = function(key, value) 
+  {
     window.history.pushState(null, null, this.updateURLParameter(window.location.href, key, encodeURIComponent(value)))
   }
 
@@ -260,7 +276,8 @@
   * @since 1.0.0
   * @version 1.0.0
   **/
-  Helpers.isAlphanumeric = function (e) {
+  Helpers.isAlphanumeric = function(e) 
+  {
     // Regex to allow letters, numbers and spaces.
     let regex = new RegExp(/^[a-z\d\-_\s]+$/i)
     // Check character code.
@@ -276,7 +293,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.splitArrayIntoChunks = function (arr, n) {
+  Helpers.splitArrayIntoChunks = function(arr, n) 
+  {
     var rest = arr.length % n,
         restUsed = rest,
         partLength = Math.floor(arr.length / n),
@@ -309,7 +327,8 @@
   * @since 1.0.0
   * @version 1.0.0
   **/
-  Helpers.alert = function (title, body) {
+  Helpers.alert = function(title, body) 
+  {
     // Check for an existing modal.
     if ($('.obj-alert').length) $('.obj-alert').remove()
 
@@ -350,7 +369,8 @@
   * @since 1.0.0
   * @version 1.0.0
   **/
-  Helpers.confirm = function (title, body, confirmCallback, refuteCallback) {
+  Helpers.confirm = function(title, body, confirmCallback, refuteCallback) 
+  {
     // Check for an existing modal.
     if ($('.obj-alert').length) $('.obj-alert').remove()
 
@@ -397,7 +417,8 @@
   * @since 1.0.0
   * @version 1.0.0
   **/
-  Helpers.modal = function (body, type, destroy) {
+  Helpers.modal = function(body, type, destroy) 
+  {
     // Check for an existing modal.
     if ($('.obj-modal').length) $('.obj-modal__window').remove()
     // Check for destroy.
@@ -431,4 +452,5 @@
 
   // Export
   module.exports = Helpers
+
 }({}, window))
