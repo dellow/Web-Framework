@@ -19,6 +19,9 @@ $property: 'color';
 .text-color-alerts-warning {
   color: color(alerts, warning);
 }
+.text-color-inherit {
+  color: inherit;
+}
 
 
 @each $color, $hex in $colors {

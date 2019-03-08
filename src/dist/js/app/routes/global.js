@@ -73,10 +73,10 @@ class Route
       let scrollTop = $(document).scrollTop()
 
       if (scrollTop > height) {
-        return $('body').addClass('js-scrolled-past-header').css({ 'padding-top': height })
+        return $('body').addClass('js-scrolled-past-header').css({'padding-top': height})
       }
 
-      return $('body').removeClass('js-scrolled-past-header').css({ 'padding-top': '' })
+      return $('body').removeClass('js-scrolled-past-header').css({'padding-top': ''})
     }
   }
 

@@ -19,6 +19,7 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 const entry = {
   'js/app': path.resolve(__dirname, srcPath + 'dist/js/app/entry.js'),
   'js/common': path.resolve(__dirname, srcPath + 'dist/js/common/entry.js'),
+  'css/fonts': path.resolve(__dirname, srcPath + 'dist/css/scss/entry-fonts.scss'),
   'css/theme': path.resolve(__dirname, srcPath + 'dist/css/scss/entry-theme.scss'),
   'css/base': path.resolve(__dirname, srcPath + 'dist/css/scss/entry-base.scss'),
   'css/utility': path.resolve(__dirname, srcPath + 'dist/css/scss/entry-utility.scss')
@@ -84,6 +85,7 @@ module.exports = {
       allChunks: true
     }),
     new WebpackCleanPlugin([
+      srcPath + 'build/css/fonts.js',
       srcPath + 'build/css/base.js',
       srcPath + 'build/css/theme.js',
       srcPath + 'build/css/utility.js'

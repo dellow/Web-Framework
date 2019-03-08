@@ -29,16 +29,6 @@ import RouteHome from './routes/home'
   }
 
   /**
-   * Settings for this module.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  App.prototype._settings = {
-    usePjax: false
-  }
-
-  /**
    * Module init method.
    *
    * @since 1.0.0
@@ -46,14 +36,6 @@ import RouteHome from './routes/home'
   **/
   App.prototype.init = function() 
   {
-    if (this._settings.usePjax) {
-      // Get plugin.
-      require('jquery-pjax')
-      // Start Pjax.
-      $(document).pjax('a', '.page-main')
-      // Run routes on update.
-      $('.page-main').on('pjax:end', this.routes.bind(this))
-    }
     // Run bootstrap.
     this.bootstrap()
     // Run routes.
@@ -67,55 +49,6 @@ import RouteHome from './routes/home'
    * @version 1.0.0
   **/
   App.prototype.plugins = {
-    modal: (title, body, btn, destroy) => {
-      // Check for an existing modal.
-      if ($('.obj-modal').length) $('.obj-modal').remove()
-      // Check for destroy.
-      if (destroy) return $('.obj-modal').remove()
-
-      // Define wrapper.
-      const wrapper = `<div class="obj-modal"></div>`
-      // Define modal
-      const modal = `<div class="obj-modal__window">
-        <div class="obj-modal__window__main">
-          <div class="layout-content">` + body + `</div>
-        </div>
-      </div>`
-      // Get 10% of document height.
-      let docHeight = ($(window).height() / 100) * 10
-      // Add to body.
-      if (!$('.obj-modal').length) {
-        $('body').append(wrapper)
-      }
-      // Add to wrapper.
-      $('.obj-modal').empty().append(modal)
-      // Set maxium height.
-      $('.obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
-      // Add title.
-      if (title) {
-        $('.obj-modal__window').prepend(`
-          <div class="obj-modal__window__header">
-            <div class="obj-modal__window__header__title">` + title + `</div>
-          </div>
-        `)
-      }
-      // Add btn.
-      if (btn) {
-        $('.obj-modal__window').append(`
-          <div class="obj-modal__window__footer">
-            <button class="btn btn--common btn--small" data-js-event="closeModal">` + btn + `</button>
-          </div>
-        `)
-      }
-      // Wait and show modal.
-      setTimeout(() => {
-        $('.obj-modal').addClass('active')
-      }, 50)
-      // Click events.
-      $('[data-js-event="closeModal"]').on('click', () => {
-        $('.obj-modal').remove()
-      })
-    },
     sliders: (el, options) => {
       // DOM check.
       if (!el.length) return

@@ -30,28 +30,22 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: bold;
 }
 h1, .h1 {
-  @include scale(font-size, $font_h1);
-  @include scale(line-height, $font_h1_lh);
+  font-size: $font_h1;
 }
 h2, .h2 {
-  @include scale(font-size, $font_h2);
-  @include scale(line-height, $font_h2_lh);
+  font-size: $font_h2;
 }
 h3, .h3 {
-  @include scale(font-size, $font_h3);
-  @include scale(line-height, $font_h3_lh);
+  font-size: $font_h3;
 }
 h4, .h4 {
-  @include scale(font-size, $font_h4);
-  @include scale(line-height, $font_h4_lh);
+  font-size: $font_h4;
 }
 h5, .h5 {
-  @include scale(font-size, $font_h5);
-  @include scale(line-height, $font_h5_lh);
+  font-size: $font_h5;
 }
 h6, .h6 {
-  @include scale(font-size, $font_h6);
-  @include scale(line-height, $font_h6_lh);
+  font-size: $font_h6;
 }
 
 
@@ -130,21 +124,27 @@ kbd {
     }
     h1, .h1 {
       @include nudge(margin, $font_h1_mg 0 ($font_h1_mg / 2));
+      line-height: $font_h1_lh;
     }
     h2, .h2 {
       @include nudge(margin, $font_h2_mg 0 ($font_h2_mg / 2));
+      line-height: $font_h2_lh;
     }
     h3, .h3 {
       @include nudge(margin, $font_h3_mg 0 ($font_h3_mg / 2));
+      line-height: $font_h3_lh;
     }
     h4, .h4 {
       @include nudge(margin, $font_h4_mg 0 ($font_h4_mg / 2));
+      line-height: $font_h4_lh;
     }
     h5, .h5 {
       @include nudge(margin, $font_h5_mg 0 ($font_h5_mg / 2));
+      line-height: $font_h5_lh;
     }
     h6, .h6 {
       @include nudge(margin, $font_h6_mg 0 ($font_h6_mg / 2));
+      line-height: $font_h6_lh;
     }
     h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
       &:first-child {

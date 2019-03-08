@@ -31,6 +31,7 @@
 <!-- ============================================================================== -->
 <!--                                                                         STYLES -->
 <!-- ============================================================================== -->
+<link rel="stylesheet" href="/build/css/fonts.css" media="all">
 <link rel="stylesheet" href="/build/css/utility.css" media="all">
 <link rel="stylesheet" href="/build/css/base.css" media="all">
 <link rel="stylesheet" href="/build/css/theme.css" media="all">
@@ -65,7 +66,6 @@ window.config = {
 <!-- ============================================================================== -->
 <!--                                                                      ANALYTICS -->
 <!-- ============================================================================== -->
-<script src="//wurfl.io/wurfl.js"></script>
 <script src="//www.google-analytics.com/analytics.js" async></script>
 <script>
 // Google Autotrack - https://github.com/googleanalytics/autotrack
@@ -137,6 +137,7 @@ ga('send', 'pageview')
 
 		<!-- Header :: Desktop -->
 		<header class="layout-header" role="banner">
+      <!-- Container -->
       <div class="container">
         <!-- Comp :: Primary Navigation -->
         <div class="comp-primary-navigation">
@@ -157,7 +158,7 @@ ga('send', 'pageview')
             </ul>
           </nav>
         </div><!-- end .comp-primary-navigation -->
-      </div>
+      </div><!-- end .container -->
     </header><!-- end .layout-header -->
 
 		<!-- Main -->
@@ -241,7 +242,7 @@ ga('send', 'pageview')
     <!-- Mobile :: Wrapper -->
     <div class="layout-mobile-wrapper">
       <!-- Footer :: Mobile -->
-      <div class="layout-mobile-footer padding-top-1 padding-bottom-1 bg-color-black" aria-hidden="true">
+      <div class="layout-mobile-footer" aria-hidden="true">
       </div>
     </div><!-- end .layout-mobile-header -->
 

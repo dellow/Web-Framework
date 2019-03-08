@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
-// Theme Fonts.
-@import 'themes/web/fonts';
 // Mixins.
 @import 'mixins/#bootstrap';
 // Base vars.
 @import 'base/#vars';
-// App vars.
-@import '#vars';
+// Theme vars.
+@import 'themes/web/#vars';
 // App switches.
 @import '#switches';
 // Theme styles.
