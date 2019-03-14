@@ -5,6 +5,9 @@
 
 
 // All screens.
+.width-auto {
+  width: auto;
+}
 .width-1 {
   width: 100%;
 }
@@ -40,6 +43,11 @@
 
 // Responsive screens.
 @each $key, $value in $screens {
+  .#{$key}\:width-auto {
+    @include respond-to($value) {
+      width: auto;
+    }
+  }
   .#{$key}\:width-1 {
     @include respond-to($value) {
       width: 100%;

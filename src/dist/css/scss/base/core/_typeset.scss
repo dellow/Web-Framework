@@ -81,6 +81,23 @@ p {
     color: color(green);
   }
 }
+blockquote {
+  p {
+    font-style: italic;
+    &:before {
+      content: open-quote;
+    }
+    &:after {
+      content: close-quote;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  cite {
+    font-style: normal;
+  }
+}
 code {
   @include nudge(padding, 0.25);
   border: 1px solid color(grey);
@@ -183,22 +200,6 @@ kbd {
   }
   blockquote {
     @include nudge(padding, 0 ($contentmargin * 3));
-    p {
-      font-style: italic;
-      font-family: $serif;
-      &:before {
-        content: open-quote;
-      }
-      &:after {
-        content: close-quote;
-      }
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-    cite {
-      font-weight: bold;
-    }
   }
 }
 

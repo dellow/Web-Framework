@@ -4,11 +4,7 @@
 // ==========================================================================
 
 
-.layout-mobile-wrapper {
-  @include respond-to(map-get($screens, 'md') + 1){
-    display: none; // Hide by default.
-  }
-}
+// CSS Declaration.
 
 
 // ----------------------------------------------------------------------- //

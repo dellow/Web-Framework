@@ -5,6 +5,9 @@
 
 
 // All screens.
+.height-auto {
+  height: auto;
+}
 .height-1 {
   height: 100%;
 }
@@ -34,6 +37,11 @@
 
 // Responsive screens.
 @each $key, $value in $screens {
+  .#{$key}\:height-auto {
+    @include respond-to($value) {
+      height: auto;
+    }
+  }
   .#{$key}\:height-1 {
     @include respond-to($value) {
       height: 100%;

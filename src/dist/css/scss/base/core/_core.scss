@@ -94,8 +94,9 @@ body {
 
 // -- Container -- //
 .container {
-  width: 90%;
-  max-width: $container_default;
+  width: 100%;
+  max-width: calc(#{$container_default} + (#{$mn} * 2));
+  @include nudge(padding, 0 1);
   margin: 0 auto;
   position: relative;
   &--usmall {
@@ -113,12 +114,9 @@ body {
   &--large {
     max-width: $container_large;
   }
-  &--wide {
-    max-width: map-get($screens, 'xl');
-  }
   &--mobile-full {
     @include respond-to(0px, map-get($screens, 'md')){
-      width: 100%;
+      @include nudge(padding, 0);
     }
   }
 }
