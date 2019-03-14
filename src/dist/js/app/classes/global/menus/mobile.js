@@ -117,21 +117,21 @@ class MenusMobile
     let socialMenuHTML = ($('[data-menu="social"]').length) ? $('[data-menu="social"]')[0].outerHTML : ''
 
     return `
-      <aside class="flyout-mobile-menu" data-menu="mobile">
-        <div class="flyout-mobile-menu__scrollable">
-          <div class="flyout-mobile-menu__menu n">
+      <aside class="flyout-menu" data-menu="mobile">
+        <div class="flyout-menu__scrollable">
+          <div class="flyout-menu__menu n">
             ` + menuHTML + `
           </div>
-          <div class="flyout-mobile-menu__spacer a"></div>
-          <div class="flyout-mobile-menu__social n">
+          <div class="flyout-menu__spacer a"></div>
+          <div class="flyout-menu__social n">
             ` + socialMenuHTML + `
           </div>
-          <div class="flyout-mobile-menu__user">
-            <div class="flyout-mobile-menu__user__header a">
+          <div class="flyout-menu__user">
+            <div class="flyout-menu__user__header a">
               ${(window.config.user) ? '<span>Hi ' + window.config.user.first_name + '</span>' : '<span>Welcome</span>' }
               ${(window.config.user) ? '<span><a href="/logout">Logout</a></span>' : '<span><a href="/register">Register</a></span>' }
             </div>
-            <div class="flyout-mobile-menu__user__body n">
+            <div class="flyout-menu__user__body n">
               <ul role="menu">
                 <li role="menuitem">
                   <a href="/account">
@@ -159,15 +159,15 @@ class MenusMobile
                 </li>
               </ul>
             </div>
-            <div class="flyout-mobile-menu__user__tabs a">
-              <div class="flyout-mobile-menu__user__tabs__single">
-                <div class="flyout-mobile-menu__user__tabs__single__header">
+            <div class="flyout-menu__user__tabs a">
+              <div class="flyout-menu__user__tabs__single">
+                <div class="flyout-menu__user__tabs__single__header">
                   <button data-js-event="toggleMenuTab">
                     <span>Help &amp; Information</span>
                     <span><i class="icon material-icons"></i></span>
                   </button>
                 </div>
-                <div class="flyout-mobile-menu__user__tabs__single__body">
+                <div class="flyout-menu__user__tabs__single__body">
                   <ul role="menu">
                     <li role="menuitem"><a href="/returns">Returns</a></li>
                     <li role="menuitem"><a href="/delivery-information">Delivery Information</a></li>
@@ -175,14 +175,14 @@ class MenusMobile
                   </ul>
                 </div>
               </div>
-              <div class="flyout-mobile-menu__user__tabs__single">
-                <div class="flyout-mobile-menu__user__tabs__single__header">
+              <div class="flyout-menu__user__tabs__single">
+                <div class="flyout-menu__user__tabs__single__header">
                   <button data-js-event="toggleMenuTab">
                     <span>About Us</span>
                     <span><i class="icon material-icons"></i></span>
                   </button>
                 </div>
-                <div class="flyout-mobile-menu__user__tabs__single__body">
+                <div class="flyout-menu__user__tabs__single__body">
                   <ul role="menu">
                     <li role="menuitem"><a href="/blog">Our Blog</a></li>
                     <li role="menuitem"><a href="/about-us">Our Story</a></li>
@@ -191,14 +191,14 @@ class MenusMobile
                   </ul>
                 </div>
               </div>
-              <div class="flyout-mobile-menu__user__tabs__single">
-                <div class="flyout-mobile-menu__user__tabs__single__header">
+              <div class="flyout-menu__user__tabs__single">
+                <div class="flyout-menu__user__tabs__single__header">
                   <button data-js-event="toggleMenuTab">
                     <span>More From Us</span>
                     <span><i class="icon material-icons"></i></span>
                   </button>
                 </div>
-                <div class="flyout-mobile-menu__user__tabs__single__body">
+                <div class="flyout-menu__user__tabs__single__body">
                   <ul role="menu">
                     <li role="menuitem"><a href="/link">Link #1</a></li>
                     <li role="menuitem"><a href="/link">Link #2</a></li>
@@ -209,11 +209,11 @@ class MenusMobile
               </div>
             </div>
           </div>
-          <div class="flyout-mobile-menu__footer d">
-            <div class="flyout-mobile-menu__footer__left">
+          <div class="flyout-menu__footer d">
+            <div class="flyout-menu__footer__left">
               &copy; ` + (new Date()).getFullYear() + ` ` + window.config.name + `
             </div>
-            <div class="flyout-mobile-menu__footer__right">
+            <div class="flyout-menu__footer__right">
               <a href="/privacy-policy">Privacy Policy</a>
               &nbsp; | &nbsp;
               <a href="/terms-conditions">T&Cs</a>
@@ -250,10 +250,10 @@ class MenusMobile
     })
 
     return `
-      <div class="flyout-mobile-menu__menu__header">
+      <div class="flyout-menu__menu__header">
         Menu
       </div>
-      <div class="flyout-mobile-menu__menu__body">
+      <div class="flyout-menu__menu__body">
         <ul class="menu-mobile" role="menu">
         ` + thisMenu.join('') + `
         </ul>

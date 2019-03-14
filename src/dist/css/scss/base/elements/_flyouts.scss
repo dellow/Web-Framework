@@ -5,7 +5,7 @@
 
 
 body.js-panel-open {
-  .flyout-mobile-menu {
+  .flyout-menu {
     height: 100%;
     transform: translate3d(0, 0, 0);
     &__scrollable {
@@ -34,7 +34,7 @@ body.js-panel-open {
 // ----------------------------------------------------------------------- //
 
 
-.flyout-mobile-menu {
+.flyout-menu {
   $textColor: color(black);
   $backgroundColorNormal: color(white);
   $backgroundColorAlt: #eeeeee;
@@ -170,7 +170,7 @@ body.js-panel-open {
           }
         }
         &.active {
-          .flyout-mobile-menu__user__tabs__single {
+          .flyout-menu__user__tabs__single {
             &__header {
               button {
                 .icon {
