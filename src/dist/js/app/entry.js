@@ -38,6 +38,8 @@ import RouteHome from './routes/home'
   {
     // Run bootstrap.
     this.bootstrap()
+    // Configure Axios.
+    this.Axios.bootstrap()
     // Run routes.
     this.routes()
   }
@@ -142,6 +144,45 @@ import RouteHome from './routes/home'
   }
 
   /**
+   * Configure Axios.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  App.prototype.Axios = {
+    bootstrap: function()
+    {
+      // Set config.
+      this.defaultHeaders = window.Axios.defaults.headers.common = {
+        'baseURL': window.config.baseURL || '/',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+      // Logs the URL on every request.
+      window.Axios.interceptors.request.use((config) => {
+        // Log it.
+        window.Helpers.log(config.url + window.Helpers.parseParamObject(config.params))
+
+        return config
+      })
+      // Log it.
+      window.Helpers.log('Ajax authenticated.')
+    },
+    prepareForOutgoingRequest: function()
+    {
+      // Create Axios instance.
+      let axiosInstance = window.Axios.create()
+      // Remove headers.
+      axiosInstance.defaults.headers.common = {}
+
+      return axiosInstance
+    },
+    resetHeaders: function()
+    {
+      window.Axios.defaults.headers.common = this.defaultHeaders
+    }
+  }
+
+  /**
    * Module bootstrap method.
    *
    * @since 1.0.0
@@ -177,7 +218,7 @@ import RouteHome from './routes/home'
         // Check for an init method.
         if (typeof c.init === 'function') c.init()
         // Check for an listeners method.
-        if (typeof c.listeners === 'function') c.events()
+        if (typeof c.listeners === 'function') c.listeners()
       }
     }).resolve()
   }

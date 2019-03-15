@@ -58,11 +58,6 @@ window.Vue = require('vue/dist/vue.common.js')
 */
 require('es6-promise/auto')
 window.Axios = require('axios')
-window.Axios.defaults.baseURL = window.config.baseURL
-window.Axios.defaults.headers.common = {
-  'X-CSRF-TOKEN': window.config.csrfToken,
-  'X-Requested-With': 'XMLHttpRequest'
-}
 
 /*
 |--------------------------------------------------------------------------
