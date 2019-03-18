@@ -109,45 +109,22 @@ fieldset {
   display: inline-block;
   white-space: nowrap;
 	label {
-		min-width: calc(1em + 2px);
-    margin: 0 !important;
-		position: initial;
-    display: inline-block;
+		width: 17px;
+		height: 17px;
+		border-radius: 3px;
+		border: 2px solid #b3b3b3;
+		position: relative;
+		display: inline-block;
 		vertical-align: middle;
-		span {
-			margin-left: 8px;
-			vertical-align: top;
-		}
-		&:before, &:after {
-	    border: 1px solid transparent;
-    	border-radius: 20%;
-			content: '';
-	    display: inline-block;
-	    background-color: transparent;
-		}
-		&:before {
-			width: calc(1em + 2px);
-			height: calc(1em + 2px);
-    	border-color: color(grey);
-		}
-		&:after {
-			width: calc(1em - 2px);
-			height: calc(1em - 2px);
-			position: absolute;
-			left: 2px; top: 4px;
-		}
+		cursor: pointer;
 	}
-	input[type="checkbox"], input[type="radio"] {
-		width: 100%;
-		height: 100%;
-		min-width: 1em;
-    margin: 0;
-    padding: 0;
+	input[type="checkbox"], input[type="radio"] {top: 0;
+		width: 0;
+		height: 0;
+		opacity: 0;
 		position: absolute;
-    left: 0; top: 0;
-    z-index: 2;
-    opacity: 0;
-    cursor: pointer;
+		left: 0;
+		visibility: hidden;
 		&:disabled {
 			+ label {
 				&:after {
@@ -157,26 +134,15 @@ fieldset {
 		}
 		&:checked {
 			+ label {
-				&:after {
-					background-color: #53c7a8 !important;
-				}
+				border-color: #5a68ca;
+				background: #5a68ca url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSIyMCA2IDkgMTcgNCAxMiI+PC9wb2x5bGluZT48L3N2Zz4=) center no-repeat;
+				background-size: 75%;
 			}
 		}
 	}
 	&:hover {
-		input[type="checkbox"], input[type="radio"] {
-			+ label {
-				&:before {
-		    	border-color: darken(color(grey), 12.5%);
-				}
-			}
-			&:checked {
-				+ label {
-					&:before {
-			    	border-color: color(grey); // This prevents checked boxes from changing border colour on hover.
-					}
-				}
-			}
+		label {
+			border-color: #929292;
 		}
 	}
 }
