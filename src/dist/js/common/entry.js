@@ -78,13 +78,3 @@ window.Events = require('./events')
 |
 */
 window.Helpers = require('./helpers')
-
-/*
-|--------------------------------------------------------------------------
-| Breakpoint
-|--------------------------------------------------------------------------
-|
-| Returns information on the current window breakpoint.
-|
-*/
-window.Breakpoint = require('./breakpoint')
