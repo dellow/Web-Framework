@@ -8,8 +8,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="preload" href="//www.google-analytics.com/analytics.js" as="script">
-<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="preload" href="//www.googletagmanager.com/gtag/js" as="script">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
 <title>Web Framework</title>
 <!-- ============================================================================== -->
 <!--                                                                           META -->
@@ -66,16 +66,14 @@ window.config = {
 <!-- ============================================================================== -->
 <!--                                                                      ANALYTICS -->
 <!-- ============================================================================== -->
-<script src="//www.google-analytics.com/analytics.js" async></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-1"></script>
 <script>
-// Google Autotrack - https://github.com/googleanalytics/autotrack
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date
-// GA Account ID.
-ga('create', 'UA-XXXXXXXX-1', 'auto')
-// Settings.
-ga('set', 'anonymizeIp', true)
-// GA Page View.
-ga('send', 'pageview')
+  window.dataLayer = window.dataLayer || []
+  function gtag(){dataLayer.push(arguments)}
+  gtag('js', new Date())
+  gtag('config', 'UA-XXXXXXXX-1', { 
+    anonymize_ip: true 
+  })
 </script>
 </head>
 <body>
