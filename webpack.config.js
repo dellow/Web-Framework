@@ -76,6 +76,7 @@ module.exports = (env, argv) => {
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]?[hash]', // Name of the file.
+            publicPath: '/build/', // Path in the CSS file.
             context: distPath // Context removal.
           }
         }
