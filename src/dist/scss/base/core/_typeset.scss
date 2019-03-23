@@ -81,23 +81,6 @@ p {
     color: color(green);
   }
 }
-blockquote {
-  p {
-    font-style: italic;
-    &:before {
-      content: open-quote;
-    }
-    &:after {
-      content: close-quote;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  cite {
-    font-style: normal;
-  }
-}
 code {
   @include nudge(padding, 0.25);
   border: 1px solid color(grey);
@@ -140,27 +123,27 @@ kbd {
       }
     }
     h1, .h1 {
-      @include nudge(margin, $font_h1_mg 0 ($font_h1_mg / 2));
+      @include nudge(margin, $font_h1_mg);
       line-height: $font_h1_lh;
     }
     h2, .h2 {
-      @include nudge(margin, $font_h2_mg 0 ($font_h2_mg / 2));
+      @include nudge(margin, $font_h2_mg);
       line-height: $font_h2_lh;
     }
     h3, .h3 {
-      @include nudge(margin, $font_h3_mg 0 ($font_h3_mg / 2));
+      @include nudge(margin, $font_h3_mg);
       line-height: $font_h3_lh;
     }
     h4, .h4 {
-      @include nudge(margin, $font_h4_mg 0 ($font_h4_mg / 2));
+      @include nudge(margin, $font_h4_mg);
       line-height: $font_h4_lh;
     }
     h5, .h5 {
-      @include nudge(margin, $font_h5_mg 0 ($font_h5_mg / 2));
+      @include nudge(margin, $font_h5_mg);
       line-height: $font_h5_lh;
     }
     h6, .h6 {
-      @include nudge(margin, $font_h6_mg 0 ($font_h6_mg / 2));
+      @include nudge(margin, $font_h6_mg);
       line-height: $font_h6_lh;
     }
     h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -200,6 +183,22 @@ kbd {
   }
   blockquote {
     @include nudge(padding, 0 ($contentmargin * 3));
+    p {
+      font-style: italic;
+      font-family: $serif;
+      &:before {
+        content: open-quote;
+      }
+      &:after {
+        content: close-quote;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    cite {
+      font-weight: bold;
+    }
   }
 }
 
