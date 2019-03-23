@@ -85,6 +85,9 @@ body {
   &--large {
     max-width: calc(#{$container_large} + (#{$mn} * 2));
   }
+  &--wide {
+    max-width: calc(#{$container_wide} + (#{$mn} * 2));
+  }
   &--mobile-full {
     @include respond-to(0px, map-get($screens, 'md')){
       @include nudge(padding, 0);
