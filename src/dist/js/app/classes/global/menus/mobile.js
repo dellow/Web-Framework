@@ -28,6 +28,7 @@ class MenusMobile
     }
     // State for the class.
     this.state = {
+      menuOpen: false,
       menuCreated: false,
       mobileMenu: JSON.parse(JSON.stringify(window.config.menus.mobile))
     }
@@ -61,7 +62,7 @@ class MenusMobile
         'document mouseup': 'outsideClick',
         'document touchstart': 'outsideClickIos',
         'keycode 27': 'closeMenu',
-        'click [data-js-event="sideMenu"]': 'openMenu',
+        'click [data-js-event="sideMenu"]': 'toggleMenu',
         'click [data-menu="mobile"] a': 'linkClicked',
         'click [data-js-event="toggleMenuTab"]': 'toggleTabs'
       },
@@ -80,6 +81,13 @@ class MenusMobile
         if (!$(e[0].target).closest('.side').length) {
           return this.close()
         }
+      },
+      toggleMenu: (e) => {
+        if (this.state.menuOpen) {
+          return this.close()
+        }
+
+        return this.open()
       },
       openMenu: (e) => {
         return this.open()
@@ -313,6 +321,9 @@ class MenusMobile
   **/
   open() 
   {
+    // Update state.
+    this.state.menuOpen = true
+
     return $('body').addClass('js-panel-open')
   }
 
@@ -324,6 +335,9 @@ class MenusMobile
   **/
   close() 
   {
+    // Update state.
+    this.state.menuOpen = false
+
     return $('body').removeClass('js-panel-open')
   }
 

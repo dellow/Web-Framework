@@ -10,13 +10,6 @@ body.js-panel-open {
     height: 100%;
     z-index: $zindex-5;
     transform: translate3d(0, 0, 0);
-    &__scrollable {
-      height: 100%;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-    }
   }
   .page {
     pointer-events: none;
@@ -61,6 +54,13 @@ body.js-panel-open {
   }
   .d {
     background: $backgroundColorDark;
+  }
+  &__scrollable {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
   }
   &__menu {
     @include nudge(padding, 1 0.75);
