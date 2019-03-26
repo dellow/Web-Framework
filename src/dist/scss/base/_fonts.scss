@@ -10,6 +10,21 @@
 	white-space: nowrap;
 	word-wrap: normal;
 	direction: ltr;
-	font-feature-settings: 'liga';
-	font-smoothing: antialiased;
+	-webkit-font-feature-settings: 'liga';
+	-webkit-font-smoothing: antialiased;
+}
+
+.icofont { // This is just so we can @extend into pseudo classes like on the .select
+	font-family: 'IcoFont' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	line-height: 1;
+	-webkit-font-feature-settings: "liga";
+	-webkit-font-smoothing: antialiased;
 }

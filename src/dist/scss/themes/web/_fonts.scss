@@ -25,6 +25,20 @@
 
 
 @font-face {
+  font-family: 'IcoFont';
+  font-weight: normal;
+  font-style: 'Regular';
+  src: url(../fonts/icofont/icofont.woff) format('woff'),
+       url(../fonts/icofont/icofont.ttf) format('truetype'),
+       url(../fonts/icofont/icofont.eot),
+       url(../fonts/icofont/icofont.eot?#iefix) format('embedded-opentype');
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+@font-face {
   font-family: 'Circular Std';
   font-weight: 400;
   font-style: normal;
