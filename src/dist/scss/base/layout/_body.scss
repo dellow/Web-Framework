@@ -2,39 +2,3 @@
 // Base > Layout > Body
 // Styles for body.
 // ==========================================================================
-
-
-body {
-  &.js-scrolled-past-header {
-    .layout-mobile-wrapper {
-      width: 100%;
-      position: fixed;
-      left: 0; top: 0;
-      z-index: $zindex-10;
-      box-shadow: 0 2px 5px rgba(color(black), 0.25);
-    }
-    .layout-mobile-search {
-      height: 0;
-      &.active {
-        height: 65px !important;
-      }
-    }
-    .layout-mobile-header {
-      &__left, &__right {
-        &__item {
-          @include nudge(margin, 0 0.25);
-          transform: scale(0.85);
-          &--hide {
-            display: block;
-          }
-        }
-      }
-      &__logo {
-        width: 35%;
-      }
-    }
-  }
-}
-
-
-// ----------------------------------------------------------------------- //
