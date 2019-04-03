@@ -85,16 +85,17 @@ fieldset {
 		appearance: none;
 	}
 	&:before {
-		@extend .material-icons;
+		@extend .icofont;
 		height: 100%;
     position: absolute;
-		top: 0; right: 3px;		
-    content: 'keyboard_arrow_down';
+		top: 0; right: 5px;		
+    content: "\eab2";
 		pointer-events: none;
 		display: flex;
 		align-items: center;
     color: color(grey);
     line-height: 1;
+		font-size: 20px;
 		transition: color $animation ease;
 	}
 	&:hover {
