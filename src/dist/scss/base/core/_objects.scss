@@ -130,7 +130,6 @@
       background: #f3f4f5;
     }
     &__close {
-      @extend .material-icons;
       position: absolute;
       top: 6px; right: 6px;
       z-index: $zindex-2;
@@ -139,7 +138,9 @@
       color: #b7b7b7;
       transition: color $animation ease;
       &:after {
-        content: 'clear';
+        @extend .icofont;
+        content: '\eee4';
+        font-size: 22px;
       }
       &:hover {
         color: #797979;
