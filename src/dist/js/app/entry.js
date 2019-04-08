@@ -89,57 +89,69 @@ import RouteHome from './routes/home'
         return '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="' + width + '" height="' + height + '" viewBox="0 0 100 100" enable-background="new 0 0 ' + width + ' ' + height + '" xml:space="preserve"><polyline class="check" fill="none" stroke="' + color + '" stroke-width="10" stroke-miterlimit="20" points="15,60 40,80 85,20" /></svg>'
       }
     },
-    button: function($el, destroy, color) 
+    button: function ($el, destroy, color, svg, width, height) 
     {
       color = (color) ? color : '#FFFFFF'
+      svg = (svg) ? svg : 'default'
+      width = (width) ? width : 25
+      height = (height) ? height : 25
 
-      $el.each((index, btn) => {
-        // Set button.
-        let $btn = $(btn)
-        // Are we destroying?
-        if (destroy) {
-          // Guard :: Check element has 'js-preloading' class.
-          if (!$btn.length || !$btn.hasClass('js-preloading')) return
+      // Are we destroying?
+      if (destroy) {
+        // Guard :: Check element has 'js-preloading' class.
+        if (!$el.length || !$el.hasClass('js-preloading')) return
 
-          // Get storage ID.
-          let uid = $btn.attr('data-content-id')
-          // Get content from storage.
-          let content = JSON.parse(window.config.contentStrings[uid])
-          // Renable the button.
-          $btn.removeClass('btn--disabled')
-          // Remove preloader and content ID.
-          $btn.html(content).removeAttr('data-content-id')
-          // Remove class.
-          $btn.removeClass('js-preloading')
-          // Reset styles.
-          $btn.css({'width': '', 'height': '', 'position': ''})
-        }
-
-        // Are we creating?
-        if (!destroy) {
-          // Guard :: Check element has 'js-preloading' class.
-          if (!$btn.length || $btn.hasClass('js-preloading')) return
-
-          // Get button content.
-          let content = JSON.stringify($btn.html())
-          // Create a storage ID.
-          let uid = window.Helpers.guid()
-          // Store content.
-          window.config.contentStrings[uid] = content
-          // Create preloader.
-          let $preloader = $(this.svgs.spinner()).css({'fill': color}).hide()
-          // Disable the button.
-          $btn.addClass('btn--disabled')
-          // Add button styles.
-          $btn.css({'width': $btn.outerWidth(), 'height': $btn.outerHeight(), 'position': 'relative'})
-          // Add preloader and content ID.
-          $btn.html($preloader).attr('data-content-id', uid)
-          // Add class.
-          $btn.addClass('js-preloading')
-          // Add preloader styles.
-          $preloader.css({'position': 'absolute', 'top': '50%', 'left': '50%', 'margin-left': -$preloader.outerWidth() / 2, 'margin-top': -$preloader.outerHeight() / 2}).show()
-        }
-      })
+        // Get storage ID.
+        let uid = $el.attr('data-content-id')
+        // Get content from storage.
+        let content = JSON.parse(window.config.contentStrings[uid])
+        // Renable the button.
+        $el.removeClass('btn--disabled')
+        // Remove preloader and content ID.
+        $el.html(content).removeAttr('data-content-id')
+        // Remove class.
+        $el.removeClass('js-preloading')
+        // Reset styles.
+        $el.css({
+          'width': '', 
+          'height': '', 
+          'position': '',
+          'box-sizing': ''
+        })
+      } else {
+        $el.each((index, btn) => {
+          setTimeout(() => {
+            // Set button.
+            let $btn = $(btn)
+            // Guard :: Check element has 'js-preloading' class.
+            if (!$btn.length || $btn.hasClass('js-preloading')) return
+  
+            // Get button content.
+            let content = JSON.stringify($btn.html())
+            // Create a storage ID.
+            let uid = window.Helpers.guid()
+            // Store content.
+            window.config.contentStrings[uid] = content
+            // Create preloader.
+            let $preloader = $(this.svgs[svg](width, height, color)).hide()
+            // Disable the button.
+            $btn.addClass('btn--disabled')
+            // Add button styles.
+            $btn.css({
+              'width': $btn.outerWidth(), 
+              'height': $btn.outerHeight(), 
+              'position': 'relative',
+              'box-sizing': 'border-box'
+            })
+            // Add preloader and content ID.
+            $btn.html($preloader).attr('data-content-id', uid)
+            // Add class.
+            $btn.addClass('js-preloading')
+            // Add preloader styles.
+            $preloader.css({'position': 'absolute', 'top': '50%', 'left': '50%', 'margin-left': -$preloader.outerWidth() / 2, 'margin-top': -$preloader.outerHeight() / 2}).show()
+          })
+        })
+      }
     }
   }
 
