@@ -7,8 +7,8 @@
  *
 **/
 
-;(function (Events, window) {
-  'use strict'
+;(function(Events, window) 
+{
 
   /**
    * Events
@@ -17,7 +17,8 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Events = function () {
+  Events = function() 
+  {
   }
 
   /**
@@ -29,17 +30,20 @@
   **/
   Events.prototype = {
     events: {},
-    extend: function (args) {
+    extend: function(args) 
+    {
       // Extend.
       var extension = $.extend({}, this, args)
       // Setup events.
-      $.each(extension.events, function (name, callback) {
+      $.each(extension.events, function(name, callback) 
+      {
         extension.register(name, callback)
       })
 
       return extension
     },
-    register: function (name, callback) {
+    register: function(name, callback) 
+    {
       var _this = this
 
       // Cache event.
@@ -49,31 +53,26 @@
       // Check event type.
       if (event === 'load' || event === 'scroll' || event === 'resize') {
         // Add event.
-        $(window).on(event, function (e) {
+        $(window).on(event, function(e) 
+        {
           // Add $el to event object
           e.$el = $(this)
-          // Event
-          if (typeof _this.event === 'function') {
-            e = _this.event(e)
-          }
           // Callback
           _this[callback]([e])
         })
       } else if (event === 'document') {
         // Add event.
-        $(document).on(selector, function (e) {
+        $(document).on(selector, function(e) 
+        {
           // Add $el to event object
           e.$el = $(this)
-          // Event
-          if (typeof _this.event === 'function') {
-            e = _this.event(e)
-          }
           // Callback
           _this[callback]([e])
         })
       } else if (event === 'keycode') {
         // Add event.
-        $(document).on('keyup', function (e) {
+        $(document).on('keyup', function(e) 
+        {
           if (e.keyCode === parseInt(selector)) {
             // Callback
             _this[callback]([e])
@@ -81,23 +80,17 @@
         })
       } else if (event === 'ready') {
         // Add event.
-        $(function () {
-          // Event
-          if (typeof _this.event === 'function') {
-            e = _this.event(e)
-          }
+        $(function() 
+        {
           // Callback
           _this[callback]()
         })
       } else {
         // Add event.
-        $(document).on(event, selector, function (e) {
+        $(document).on(event, selector, function(e) 
+        {
           // Add $el to event object
           e.$el = $(this)
-          // Event
-          if (typeof _this.event === 'function') {
-            e = _this.event(e)
-          }
           // Callback
           _this[callback]([e])
         })
@@ -107,4 +100,5 @@
 
   // Export
   module.exports = new Events()
-}(window.Events = window.Events || function () {}, window))
+
+}(window.Events = window.Events || function() {}, window))

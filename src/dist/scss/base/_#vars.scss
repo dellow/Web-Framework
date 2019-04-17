@@ -148,6 +148,7 @@ $base_colors: (
   ),
   copy: (
     body  : #5f5659,
+    btns  : #C4122F,
     link  : #C4122F,
     hover : darken(#C4122F, 10%),
     active: darken(#C4122F, 20%)
@@ -167,7 +168,7 @@ $social_colors: (
     flickr    : #ff0084,
     foursquare: #0072b1,
     google    : #dd4b39,
-    instagram : #517fa4,
+    instagram : #d00085,
     linkedin  : #007bb6,
     pinterest : #cb2027,
     quora     : #a82400,
@@ -176,7 +177,7 @@ $social_colors: (
     twitter   : #00aced,
     vimeo     : #aad450,
     vine      : #00bf8f,
-    youtube   : #bb0000
+    youtube   : #ff0000
   )
 ) !default;
 

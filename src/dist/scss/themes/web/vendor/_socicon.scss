@@ -457,6 +457,9 @@
   }
 }
 .socicon-youtube {
+  &.socicon--color {
+    color: color(social, youtube);
+  }
   &:before {
     content: "\e051";
   }

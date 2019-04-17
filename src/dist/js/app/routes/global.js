@@ -36,9 +36,9 @@ class Route
     // Init Menus.
     Menus.init()
     // Init Email.
-    Email.init()
+    // Email.init()
     // Init newsletter form.
-    FormsNewsletter.init()
+    // FormsNewsletter.init()
   }
 
   /**
@@ -52,8 +52,7 @@ class Route
     // Extend the events system.
     (new Events).extendEvents({
       events: {
-        'scroll null': this.scrollable.bind(this),
-        'click [data-js-event="mobileSearch"]': this.toggleSearchBox.bind(this)
+        'click [data-js-event="exampleEvent"]': this.exampleEvent.bind(this)
       }
     })
   }
@@ -64,31 +63,10 @@ class Route
    * @since 1.0.0
    * @version 1.0.0
   **/
-  scrollable(e) 
+  exampleEvent(e) 
   {
-    if (window.Breakpoint.current === 'mobile') {
-      // Cache page header height.
-      let height = Math.round($('.page-mobile-wrapper').height())
-      // Cache scroll top.
-      let scrollTop = $(document).scrollTop()
-
-      if (scrollTop > height) {
-        return $('body').addClass('js-scrolled-past-header').css({'padding-top': height})
-      }
-
-      return $('body').removeClass('js-scrolled-past-header').css({'padding-top': ''})
-    }
-  }
-
-  /**
-   * NULLED.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  toggleSearchBox(e) 
-  {
-    return $('[data-js-target="mobileSearch"]').toggleClass('active')
+    console.log(e)
+    e[0].preventDefault()
   }
 
 }
