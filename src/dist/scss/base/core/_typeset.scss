@@ -82,7 +82,7 @@ p {
   }
 }
 code {
-  @include nudge(padding, 0.25);
+  padding: 1px 3px;
   border: 1px solid color(grey);
   font-weight: normal;
   font-family: $monospaced;
