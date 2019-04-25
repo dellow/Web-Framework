@@ -146,9 +146,6 @@ body.js-panel-open {
             }
             .icon {
               font-size: 19px;
-              &:after {
-                content: 'add';
-              }
             }
           }
         }
@@ -168,15 +165,6 @@ body.js-panel-open {
         }
         &.active {
           .flyout-menu__user__tabs__single {
-            &__header {
-              button {
-                .icon {
-                  &:after {
-                    content: 'remove';
-                  }
-                }
-              }
-            }
             &__body {
               display: block;
             }

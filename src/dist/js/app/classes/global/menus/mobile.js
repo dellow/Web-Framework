@@ -143,25 +143,25 @@ class MenusMobile
               <ul role="menu">
                 <li role="menuitem">
                   <a href="/account">
-                    <i class="icon material-icons">person</i>
+                    <i class="icon icofont-user"></i>
                     <span>My Account</span>
                   </a>
                 </li>
                 <li role="menuitem">
                   <a href="/account/orders">
-                    <i class="icon material-icons">shopping_cart</i>
+                    <i class="icon icofont-cart"></i>
                     <span>My Orders</span>
                   </a>
                 </li>
                 <li role="menuitem">
                   <a href="/account/wishlist">
-                    <i class="icon material-icons">favorite_border</i>
+                    <i class="icon icofont-heart-alt"></i>
                     <span>My Favourites</span>
                   </a>
                 </li>
                 <li role="menuitem">
                   <a href="/returns">
-                    <i class="icon material-icons">undo</i>
+                    <i class="icon icofont-undo"></i>
                     <span>Returns Information</span>
                   </a>
                 </li>
@@ -172,7 +172,7 @@ class MenusMobile
                 <div class="flyout-menu__user__tabs__single__header">
                   <button data-js-event="toggleMenuTab">
                     <span>Help &amp; Information</span>
-                    <span><i class="icon material-icons"></i></span>
+                    <span><i class="icon icofont-plus"></i></span>
                   </button>
                 </div>
                 <div class="flyout-menu__user__tabs__single__body">
@@ -187,7 +187,7 @@ class MenusMobile
                 <div class="flyout-menu__user__tabs__single__header">
                   <button data-js-event="toggleMenuTab">
                     <span>About Us</span>
-                    <span><i class="icon material-icons"></i></span>
+                    <span><i class="icon icofont-plus"></i></span>
                   </button>
                 </div>
                 <div class="flyout-menu__user__tabs__single__body">
@@ -203,7 +203,7 @@ class MenusMobile
                 <div class="flyout-menu__user__tabs__single__header">
                   <button data-js-event="toggleMenuTab">
                     <span>More From Us</span>
-                    <span><i class="icon material-icons"></i></span>
+                    <span><i class="icon icofont-plus"></i></span>
                   </button>
                 </div>
                 <div class="flyout-menu__user__tabs__single__body">

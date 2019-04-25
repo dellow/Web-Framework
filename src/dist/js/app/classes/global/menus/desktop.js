@@ -30,7 +30,7 @@ class MenusDesktop
     }
     // State for the class.
     this.state = {
-      primaryMenu: JSON.parse(JSON.stringify(window.config.menus.primary)),
+      primaryMenu: (window.config.menus.primary) ? JSON.parse(JSON.stringify(window.config.menus.primary)) : [],
       moreChildren: [],
       moreExists: false
     }
