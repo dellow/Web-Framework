@@ -285,28 +285,41 @@
   }
 
   /**
-   * Return error.
+   * Returns an error message from an error response/object.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.error = function(error) 
+  Helpers.error = function(error, logIt) 
   {
+    let errorMsg = null
+
     if (error.response) {
       // The request was made and the server responded with a status code that falls out of the range of 2xx.
-      // console.log(error.response.status)
-      // console.log(error.response.headers)
-      return error.response.data
+      if (typeof error.response.data === 'string') {
+        errorMsg = error.response.data
+      } else {
+        return this.error(error.response.data, logIt)
+      }
     } else if (error.request) {
       // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js.
-      return error.request
+      errorMsg = error.request
+    } else if (error.msg) {
+      // The request has a msg property.
+      errorMsg = error.msg
     } else if (error.message) {
       // The request has a message property.
-      return error.message
-    } else {
+      errorMsg = error.message
+    } else if (typeof error === 'string') {
       // Something happened in setting up the request that triggered an Error.
-      return error.message
+      errorMsg = error
     }
+
+    if (logIt) {
+      this.log(errorMsg, 'negative')
+    }
+
+    return errorMsg
   }
 
   /**
@@ -352,7 +365,7 @@
   Helpers.alert = function(title, body, closeCallback) 
   {
     // Check body is string.
-    if (typeof body !== 'string' || !(body instanceof String)) {
+    if (typeof body !== 'string') {
       throw new Error('body var is not a string, could not be sent to alert.')
     }
     // Check for existing modals and close.
