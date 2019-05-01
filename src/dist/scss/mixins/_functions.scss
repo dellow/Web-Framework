@@ -93,14 +93,13 @@
 }
 
 
-///
-/// Add `$unit` to `$value`
-///
-/// @param {Number} $value - Value to add unit to
-/// @param {String} $unit - String representation of the unit
-///
-/// @return {Number} - `$value` expressed in `$unit`
-///
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// to-length
+// NULLED.
+// ---
 @function to-length($value, $unit) {
   $units: ('px': 1px, 'cm': 1cm, 'mm': 1mm, '%': 1%, 'ch': 1ch, 'pc': 1pc, 'in': 1in, 'em': 1em, 'rem': 1rem, 'pt': 1pt, 'ex': 1ex, 'vw': 1vw, 'vh': 1vh, 'vmin': 1vmin, 'vmax': 1vmax);
 
@@ -157,3 +156,162 @@
 
 
 // ----------------------------------------------------------------------- //
+
+
+// ---
+// is-list
+// Determines whether an argument is a list type
+// ---
+@function is-list($arg) {
+    @return type-of($arg) == 'list' or type-of($arg) == 'arglist';
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// contains
+// Determines if a value is a member of a list
+// ---
+@function contains($list, $value) {
+    @if not is-list($list) {
+        @warn 'argument error: #{$list}';
+        @return 'error';
+    }
+    // index() returns either the index number or false if not found
+    // in Sass number doesn't automatically converts to boolean...
+    // so here it use type-of() to see if the return value is a number
+    @return type-of(index($list, $value)) == 'number';
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// separator
+// Returns which separator the list uses
+// ---
+@function separator($list) {
+    // not a list: just a value
+    @if length($list) == 1 {
+        @return null;
+    }
+    $list_comma: ();
+    $list_space: ();
+    @each $item in $list {
+        // append() doesn't flatten lists
+        $list_comma: append($list_comma, $item, comma);
+        $list_space: append($list_space, $item, space);
+    }
+    @if $list == $list_comma {
+        @return 'comma';
+    }
+    @else if $list == $list_space {
+        @return 'space';
+    }
+    @else {
+        @return 'error'; // something goes wrong in the code...
+    }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// reverse
+// Make a copy of a list in reversed order
+// ---
+@function reverse($list, $separator: auto) {
+    // not a list: just a value
+    @if not is-list($list) {
+        @return $list;
+    }
+    // choose separator for the reversed list
+    // user preference is the highest, then the original separator, lastly space
+    @if not has($separator, (space comma)) {
+        $separator_orig: separator($list);
+        @if has($separator_orig, (space comma)) {
+            $separator: $separator_orig;
+        }
+        @else {
+            $separator: space;
+        }
+    }
+    $i: length($list);
+    $result: ();
+    @while $i > 0 {
+        $result: append($result, nth($list, $i), $separator);
+        $i: $i - 1;
+    }
+    @return $result;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// at
+// Returns the item at given index
+// ---
+@function at($list, $index) {
+    $idx: if($index < 0, length($list) + 1 + $index, $index);
+    @return nth($list, $idx);
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// prepend
+// Prepend an item to the list
+// ---
+@function prepend($list, $value, $separator: auto) {
+    @if not has($separator, (space comma)) {
+        $separator_orig: separator($list);
+        @if has($separator_orig, (space comma)) {
+            $separator: $separator_orig;
+        }
+        @else {
+            $separator: space;
+        }
+    }
+    // if $value is a list containing more than one item
+    @if length($value) > 1 {
+        $value: append((), $value);
+    }
+    @return join($value, $list, $separator);
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// delete-at
+// Delete the item at given index, which can be nagative
+// ---
+@function delete-at($list, $index) {
+    $length: length($list);
+    // convert negative index to positive index
+    $idx: if($index < 0, $length + 1 + $index, $index);
+    // index out of range
+    @if $idx <= 0 or $idx > $length {
+        @warn 'index out of range: #{$index}';
+        @return $list;
+    }
+    // create a new list
+    $result: ();
+    $i: 1;
+    @while $i <= $length {
+        @if $i != $index {
+            $result: append($result, nth($list, $i));
+        }
+        $i: $i + 1;
+    }
+    @return $result;
+}
