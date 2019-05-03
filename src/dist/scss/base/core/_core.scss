@@ -66,27 +66,15 @@ body {
 // -- Container -- //
 .container {
   width: 100%;
-  max-width: calc(#{$container_default} + (#{$mn} * 2));
+  max-width: calc(#{map-get($containers, 'default')} + (#{$mn} * 2));
   @include nudge(padding, 0 1);
   margin: 0 auto;
   position: relative;
-  &--usmall {
-    max-width: calc(#{$container_usmall} + (#{$mn} * 2));
-  }
-  &--vsmall {
-    max-width: calc(#{$container_vsmall} + (#{$mn} * 2));
-  }
-  &--small {
-    max-width: calc(#{$container_small} + (#{$mn} * 2));
-  }
-  &--medium {
-    max-width: calc(#{$container_medium} + (#{$mn} * 2));
-  }
-  &--large {
-    max-width: calc(#{$container_large} + (#{$mn} * 2));
-  }
-  &--wide {
-    max-width: calc(#{$container_wide} + (#{$mn} * 2));
+  // Responsive screens.
+  @each $key, $value in $containers {
+    &--#{$key} {
+      max-width: calc(#{$value} + (#{$mn} * 2));
+    }
   }
   &--mobile-full {
     @include respond-to(0px, map-get($screens, 'md')){

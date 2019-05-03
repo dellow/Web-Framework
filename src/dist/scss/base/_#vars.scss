@@ -8,13 +8,6 @@
 // Defaults
 // ---
 $mn                : 24px !default;
-$container_default : 1280px !default;
-$container_usmall  : 320px !default;
-$container_vsmall  : 568px !default;
-$container_small   : 768px !default;
-$container_medium  : 960px !default;
-$container_large   : 1024px !default;
-$container_wide    : 1400px !default;
 $gutter            : 0.5 !default;
 $animation         : 300ms !default;
 $contentmargin     : 1 !default;
@@ -39,14 +32,31 @@ $forms_border_radius: 0px !default;
 
 
 // ---
-// Screen Sizes
+// Screen Sizes.
 // ---
 $screens: (
   vm: 320px,
   sm: 411px,
   md: 768px,
-  lg: 1024px,
+  lg: 992px,
   xl: 1440px
+) !default;
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Containers.
+// ---
+$containers: (
+  default: 1280px,
+  usmall: 320px,
+  vsmall: 568px,
+  small: 728px,
+  medium: 960px,
+  large: 1024px,
+  wide: 1400px
 ) !default;
 
 
