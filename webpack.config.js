@@ -9,6 +9,7 @@
 
 const srcPath = './src/'
 const distPath = './src/dist/'
+const buildPath = '/build/'
 
 const path = require('path')
 const webpack = require('webpack')
@@ -87,7 +88,7 @@ module.exports = (env, argv) => {
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]?[hash]', // Name of the file.
-            publicPath: '/build/', // Path in the CSS file.
+            publicPath: buildPath, // Path in the CSS file.
             context: distPath // Context removal.
           }
         }
