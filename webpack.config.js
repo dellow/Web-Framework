@@ -48,15 +48,26 @@ module.exports = (env, argv) => {
           loader: 'vue-loader'
         },
         {
-          test: /\.css$/,
+          test: /\.vue-scss/,
           use: [
             'vue-style-loader',
-            'css-loader'
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: (loader) => [
+                  require('autoprefixer')()
+                ]
+              }
+            },
+            'sass-loader'
           ]
         },
         {
           test: /\.scss$/,
           use: [
+            'vue-style-loader',
             MiniCssExtractPlugin.loader,
             'css-loader',
             {
