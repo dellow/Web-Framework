@@ -1,5 +1,4 @@
 {
-  "ignore": "/(bower_components)|(node_modules)/",
   "plugins": [
     "transform-es2015-modules-commonjs"
   ]
