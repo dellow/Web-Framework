@@ -5,7 +5,7 @@
 
 
 $property: 'position';
-$declarations: ('absolute', 'fixed', 'relative');
+$declarations: ('absolute', 'fixed', 'relative', 'sticky');
 
 
 @each $declaration in $declarations {
