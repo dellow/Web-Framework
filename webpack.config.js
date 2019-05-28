@@ -9,7 +9,7 @@
 
 const srcPath = './src/'
 const distPath = './src/dist/'
-const buildPath = '/build/'
+const buildPath = './src/build/'
 
 const path = require('path')
 const webpack = require('webpack')
@@ -31,7 +31,7 @@ module.exports = (env, argv) => {
       'css/utility': path.resolve(__dirname, distPath + 'scss/entry-utility.scss')
     },
     output: {
-      path: path.resolve(__dirname, srcPath + 'build'),
+      path: path.resolve(__dirname, buildPath),
       filename: '[name].js'
     },
     resolve: {
@@ -112,10 +112,10 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin(),
       new VueLoaderPlugin(),
       new WebpackCleanPlugin([
-        srcPath + 'build/css/fonts.js',
-        srcPath + 'build/css/base.js',
-        srcPath + 'build/css/theme.js',
-        srcPath + 'build/css/utility.js'
+        buildPath + 'css/fonts.js',
+        buildPath + 'css/base.js',
+        buildPath + 'css/theme.js',
+        buildPath + 'css/utility.js'
       ]),
       new WebpackBuildNotifierPlugin({
         title: 'Webpack',
