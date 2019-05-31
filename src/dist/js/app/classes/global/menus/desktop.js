@@ -249,7 +249,7 @@ class MenusDesktop
     this.state.moreExists = true
 
     return {
-      title: 'More<i class="icon material-icons">keyboard_arrow_down</i>',
+      title: 'More<i class="icofont-simple-down"></i>',
       href: '#',
       className: 'nav-more',
       children: this.state.moreChildren,
