@@ -252,14 +252,15 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.decodeEntities = function(string) 
+  Helpers.decodeEntities = function(val) 
   {
-    // Create pseudo element.
-    let pseudo = document.createElement('textarea')
-    // Decode.
-    pseudo.innerHTML = string
+    const he = require('he')
+    
+    if (val) {
+      return he.decode(val)
+    }
 
-    return pseudo.value
+    return val
   }
 
   /**
@@ -575,7 +576,6 @@
   }
 
   /**
-   * isUserLocated
    * Checks if a user is located in localStorage.
    *
    * @since 1.0.0
@@ -622,6 +622,71 @@
       '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
 
     return !!pattern.test(str);
+  }
+
+  /**
+   * Converts bytes to human readable format.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Helpers.humanFileSize = function(bytes, si) 
+  {
+    var thresh = si ? 1000 : 1024
+    if(Math.abs(bytes) < thresh) {
+        return bytes + ' B'
+    }
+    var units = si
+        ? ['kB','MB','GB','TB','PB','EB','ZB','YB']
+        : ['KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB']
+    var u = -1
+    do {
+        bytes /= thresh
+        ++u
+    } while(Math.abs(bytes) >= thresh && u < units.length - 1)
+
+    return bytes.toFixed(1)+' '+units[u]
+  }
+
+  /**
+   * Converts meters to miles.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Helpers.convertToMiles = function(meters, withText)
+  {
+    return (meters * 0.000621371192).toFixed(2) + ((withText) ? ' miles' : '')
+  }
+
+  /**
+   * Converts meters to km.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Helpers.convertToKm = function(meters, withText)
+  {
+    return (meters / 1000).toFixed(2) + ((withText) ? ' km' : '')
+  }
+
+  /**
+   * Uses haversine formula to get distance between points.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Helpers.getDistance = function(p1, p2) 
+  {
+    // Rad function.
+    var rad = function(x) { return x * Math.PI / 180 }
+
+    let dLat = rad(p2.lat() - p1.lat())
+    let dLong = rad(p2.lng() - p1.lng())
+    let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) * Math.sin(dLong / 2) * Math.sin(dLong / 2)
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+
+    return 6378137 * c
   }
 
   // Export
