@@ -1,56 +1,55 @@
 /**
  *
- * App Entry Point
+ * Entry Point
  *
  * Copyright 2019, Author Name
  * Some information on the license.
  *
 **/
 
-import Navigo from 'navigo'
+// Create object to store strings.
+const contentStrings = {}
 
-import RouteGlobal from './routes/global'
-import RouteHome from './routes/home'
-
-;(function (App, window) 
-{
-
-  /**
-   * App
-   * Constructor for App.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  App = function() 
-  {
-    // Create object to store strings.
-    window.config.contentStrings = window.config.contentStrings || {}
-  }
-
-  /**
-   * Module init method.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  App.prototype.init = function() 
-  {
-    // Run bootstrap.
-    this.bootstrap()
+const _this = module.exports = {
+  init: () => {
+    // Remove 'no-js' class from html.
+    $('html').removeClass('no-js').addClass('js')
     // Configure Axios.
-    this.Axios.bootstrap()
-    // Run routes.
-    this.routes()
-  }
+    _this.Axios.bootstrap()
+  },
+  Axios: {
+    bootstrap: function()
+    {
+      // Set config.
+      this.defaultHeaders = window.Axios.defaults.headers.common = {
+        'baseURL': window.config.baseURL || '/',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+      // Logs the URL on every request.
+      window.Axios.interceptors.request.use((config) => {
+        // Log it.
+        window.Helpers.log(config.url + window.Helpers.parseParamObject(config.params))
 
-  /**
-   * Module plugins method.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  App.prototype.plugins = {
+        return config
+      })
+      // Log it.
+      window.Helpers.log('Ajax authenticated.')
+    },
+    prepareForOutgoingRequest: function()
+    {
+      // Create Axios instance.
+      let axiosInstance = window.Axios.create()
+      // Remove headers.
+      axiosInstance.defaults.headers.common = {}
+
+      return axiosInstance
+    },
+    resetHeaders: function()
+    {
+      window.Axios.defaults.headers.common = this.defaultHeaders
+    }
+  },
+  plugins: {
     sliders: (el, options) => {
       // DOM check.
       if (!el.length) return
@@ -60,15 +59,8 @@ import RouteHome from './routes/home'
       // Init plugin.
       return el.slick(options)
     }
-  }
-
-  /**
-   * Preloader methods.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  App.prototype.preloaders = {
+  },
+  preloaders: {
     svgs: {
       spinner: (width, height, color) => {
         width = (width) ? width : 25
@@ -104,7 +96,7 @@ import RouteHome from './routes/home'
         // Get storage ID.
         let uid = $el.attr('data-content-id')
         // Get content from storage.
-        let content = JSON.parse(window.config.contentStrings[uid])
+        let content = JSON.parse(contentStrings[uid])
         // Renable the button.
         $el.removeClass('btn--disabled')
         // Remove preloader and content ID.
@@ -131,7 +123,7 @@ import RouteHome from './routes/home'
             // Create a storage ID.
             let uid = window.Helpers.guid()
             // Store content.
-            window.config.contentStrings[uid] = content
+            contentStrings[uid] = content
             // Create preloader.
             let $preloader = $(this.svgs[svg](width, height, color)).hide()
             // Disable the button.
@@ -154,91 +146,4 @@ import RouteHome from './routes/home'
       }
     }
   }
-
-  /**
-   * Configure Axios.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  App.prototype.Axios = {
-    bootstrap: function()
-    {
-      // Set config.
-      this.defaultHeaders = window.Axios.defaults.headers.common = {
-        'baseURL': window.config.baseURL || '/',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-      // Logs the URL on every request.
-      window.Axios.interceptors.request.use((config) => {
-        // Log it.
-        window.Helpers.log(config.url + window.Helpers.parseParamObject(config.params))
-
-        return config
-      })
-      // Log it.
-      window.Helpers.log('Ajax authenticated.')
-    },
-    prepareForOutgoingRequest: function()
-    {
-      // Create Axios instance.
-      let axiosInstance = window.Axios.create()
-      // Remove headers.
-      axiosInstance.defaults.headers.common = {}
-
-      return axiosInstance
-    },
-    resetHeaders: function()
-    {
-      window.Axios.defaults.headers.common = this.defaultHeaders
-    }
-  }
-
-  /**
-   * Module bootstrap method.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  App.prototype.bootstrap = function() 
-  {
-    // Remove 'no-js' class from html.
-    $('html').removeClass('no-js').addClass('js')
-  }
-
-  /**
-   * Module routes method.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  App.prototype.routes = function() 
-  {
-    // Init Routing.
-    window.Router = new Navigo(location.protocol + '//' + location.host, false)
-    // Start global route controller init method.
-    RouteGlobal.init()
-    // Start global route controller listeners method.
-    RouteGlobal.listeners()
-    // Router.
-    window.Router.on({
-      '/': () => {
-        // Log it.
-        window.Helpers.log('Route Loaded: home', '#E19F12')
-        // Get route controller.
-        let c = RouteHome
-        // Check for an init method.
-        if (typeof c.init === 'function') c.init()
-        // Check for an listeners method.
-        if (typeof c.listeners === 'function') c.listeners()
-      }
-    }).resolve()
-  }
-
-  // Export
-  window.App = new App()
-
-}(window.App = window.App || function () {}, window))
-
-// Start.
-window.App.init()
+}

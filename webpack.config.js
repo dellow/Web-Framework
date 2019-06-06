@@ -23,7 +23,7 @@ const WebpackCleanPlugin = require('webpack-clean')
 module.exports = (env, argv) => {  
   return {
     entry: {
-      'js/app': path.resolve(__dirname, distPath + 'js/app/entry.js'),
+      'js/site': path.resolve(__dirname, distPath + 'js/entry.js'),
       'js/common': path.resolve(__dirname, distPath + 'js/common/entry.js'),
       'css/fonts': path.resolve(__dirname, distPath + 'scss/entry-fonts.scss'),
       'css/theme': path.resolve(__dirname, distPath + 'scss/entry-theme.scss'),
@@ -38,8 +38,6 @@ module.exports = (env, argv) => {
       modules: ['node_modules'],
       extensions: ['.js'],
       alias: {
-        classes: path.resolve(__dirname, distPath + 'js/app/classes'),
-        routes: path.resolve(__dirname, distPath + 'js/app/routes')
       }
     },
     module: {

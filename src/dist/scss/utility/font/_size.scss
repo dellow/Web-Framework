@@ -5,30 +5,31 @@
 
 $property: 'font-size';
 
-
-$maxSize: 80;
-@while $maxSize > 0 {
+$i: 1;
+$maxSize: 100;
+@while $i < $maxSize {
   // All screens.
-  .#{$property + "-" + $maxSize} {
-    #{$property}: #{$maxSize}px;
+  .#{$property + "-" + $i} {
+    #{$property}: #{$i}px;
   }
 
-  $maxSize: $maxSize - 1;
+  $i: $i + 1;
 }
 
 
-$maxSize: 80;
-@while $maxSize > 0 {
+$i: 1;
+$maxSize: 100;
+@while $i < $maxSize {
   // Responsive screens.
   @each $key, $value in $screens {
-    .#{$key}\:#{$property + "-" + $maxSize} {
+    .#{$key}\:#{$property + "-" + $i} {
       @include respond-to($value) {
-        #{$property}: #{$maxSize}px;
+        #{$property}: #{$i}px;
       }
     }
   }
 
-  $maxSize: $maxSize - 1;
+  $i: $i + 1;
 }
 
 

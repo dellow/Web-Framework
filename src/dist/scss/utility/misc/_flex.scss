@@ -172,29 +172,31 @@ $declarations: ('flex-start', 'center', 'flex-end');
 $property: 'order';
 
 
+$i: 1;
 $maxSize: 10;
-@while $maxSize > 0 {
+@while $i < $maxSize {
   // All screens.
-  .#{$property + "-" + $maxSize} {
-    #{$property}: #{$maxSize};
+  .#{$property + "-" + $i} {
+    #{$property}: #{$i};
   }
 
-  $maxSize: $maxSize - 1;
+  $i: $i + 1;
 }
 
 
+$i: 1;
 $maxSize: 10;
-@while $maxSize > 0 {
+@while $i < $maxSize {
   // Responsive screens.
   @each $key, $value in $screens {
-    .#{$key}\:#{$property + "-" + $maxSize} {
+    .#{$key}\:#{$property + "-" + $i} {
       @include respond-to($value) {
-        #{$property}: #{$maxSize};
+        #{$property}: #{$i};
       }
     }
   }
 
-  $maxSize: $maxSize - 1;
+  $i: $i + 1;
 }
 
 
