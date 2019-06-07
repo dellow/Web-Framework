@@ -33,32 +33,10 @@ class Route
   **/
   init() 
   {
-    // Init root Vue instance and load components.
-    this.loadVue()
     // Load global methods.
     this.loadMethods()
     // Load global components.
     this.loadComponents()
-  }
-
-  /**
-   * NULLED.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  loadVue() 
-  {
-    return new window.Vue({
-      el: '[data-vue="root"]',
-      components: {
-      },
-      mounted()
-      {
-        // Log it.
-        window.Helpers.log('Vue root loaded')
-      }
-    })
   }
 
   /**

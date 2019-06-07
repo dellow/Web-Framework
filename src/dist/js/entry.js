@@ -22,5 +22,8 @@ window.App.init()
 // // Start.
 // window.SurePress.init()
 
+// Get vue.
+require('./vue')
+
 // Get router.
 require('./router')
