@@ -67,7 +67,7 @@
 // ----------------------------------------------------------------------- //
 
 
-.obj-alert, .obj-modal {
+.obj-modal {
   width: 100%;
   height: 100%;
   display: flex;
@@ -84,32 +84,14 @@
     opacity: 1;
     pointer-events: all;
   }
-  &.full {
-    &.obj-alert, &.obj-modal {
-      &__window {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-        &__main {
-          padding: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 18px;
-        }
-      }
-    }
-  }
   &__window {
-    max-width: 650px;
-    min-width: 300px;
-    min-height: 100px;
-    border-radius: 0;
+    min-width: 350px;
+    min-height: 150px;
     position: relative;
 		display: flex;
 		flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     background: color(white);
     &__header {
       padding: 20px 20px 0 20px;
@@ -127,23 +109,6 @@
       padding: 10px 20px 10px 100px;
 	    text-align: right;
       background: #f3f4f5;
-    }
-    &__close {
-      position: absolute;
-      top: 6px; right: 6px;
-      z-index: $zindex-2;
-      cursor: pointer;
-      text-align: center;    
-      color: #b7b7b7;
-      transition: color $animation ease;
-      &:after {
-        @extend .icofont;
-        content: '\eee4';
-        font-size: 22px;
-      }
-      &:hover {
-        color: #797979;
-      }
     }
 		button {
       padding: 8px 15px;
@@ -173,22 +138,6 @@
 			}
 		}
   }
-}
-
-
-// ----------------------------------------------------------------------- //
-
-
-.obj-modal-preloader {
-	@include nudge(padding, 1);
-	text-align: center;
-	&__preloader {
-		@include nudge(margin-bottom, 0.45);
-	}
-	&__message {
-		font-weight: bold;
-		@include scale(font-size, 16px);
-	}
 }
 
 
