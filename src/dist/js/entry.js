@@ -13,9 +13,9 @@ window.App = require('./app/entry')
 window.App.init()
 
 // // Get entry.
-// window.Shopify = require('./shopify/entry')
+// window.SureShopify = require('./shopify/entry')
 // // Start.
-// window.Shopify.init()
+// window.SureShopify.init()
 
 // // Get entry.
 // window.SurePress = require('./surepress/entry')
