@@ -158,7 +158,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateURLParameter = function(uri, param, value) 
+  Helpers.updateUrlParameter = function(uri, param, value) 
   {
     var re = new RegExp("[\\?&]" + param + "=([^&#]*)", "i")
     var matchString = re.exec(uri)
@@ -183,14 +183,25 @@
   }
 
   /**
-   * Updates the URL.
+   * Updates a URL parameter.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateURL = function(key, value) 
+  Helpers.updateUrlHistoryParameter = function(key, value) 
   {
-    window.history.pushState(null, null, this.updateURLParameter(window.location.href, key, encodeURIComponent(value)))
+    window.history.pushState(null, null, this.updateUrlParameter(window.location.href, key, encodeURIComponent(value)))
+  }
+
+  /**
+   * Updates a URL path.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Helpers.updateUrlPath = function(value) 
+  {
+    window.history.pushState(null, null, value)
   }
 
   /**
