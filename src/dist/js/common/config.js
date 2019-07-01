@@ -26,13 +26,3 @@ window.config = window.config || {}
 |
 */
 window.config.keys = window.config.keys || {}
-
-/*
-|--------------------------------------------------------------------------
-| ga_active
-|--------------------------------------------------------------------------
-|
-| Checks if Google Analytics is active on the page.
-|
-*/
-window.config.ga_active = (window.ga)
