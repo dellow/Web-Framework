@@ -7,7 +7,6 @@
  *
 **/
 
-const srcPath = './src/'
 const distPath = './src/dist/'
 const buildPath = './src/build/'
 
