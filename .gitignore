@@ -3,16 +3,7 @@
 # Anything directory a user can modify the contents of on the server side
 # should be ignored to prevent any overwriting issues.
 # ---------------------------------------------------------------------------------
-.sass-cache/
-.vagrant/
-# .editorconfig
-karma/
-nightwatch/
-bower_components/
 node_modules/
-**/logs/
-
-
 
 # ---------------------------------------------------------------------------------
 # FILES
@@ -20,12 +11,8 @@ node_modules/
 # details should be ignored to prevent unauthorised access.
 # ---------------------------------------------------------------------------------
 commands/release.sh
-package-lock.json
-**/.htaccess
 **/robots.txt
 **/*.log
-
-
 
 # ---------------------------------------------------------------------------------
 # EXCEPTIONS
