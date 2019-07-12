@@ -7,12 +7,13 @@
  *
 **/
 
-const distPath = './src/dist/'
-const buildPath = './src/build/'
+// Defaults.
+const distDirectoryPath = './src/dist/'
+const buildDirectoryPath = './src/build/'
+const buildPublicPath = '/build/'
 
+// Config.
 const path = require('path')
-const webpack = require('webpack')
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -22,15 +23,15 @@ const WebpackCleanPlugin = require('webpack-clean')
 module.exports = (env, argv) => {  
   return {
     entry: {
-      'js/site': path.resolve(__dirname, distPath + 'js/entry.js'),
-      'js/common': path.resolve(__dirname, distPath + 'js/common/entry.js'),
-      'css/fonts': path.resolve(__dirname, distPath + 'scss/entry-fonts.scss'),
-      'css/theme': path.resolve(__dirname, distPath + 'scss/entry-theme.scss'),
-      'css/base': path.resolve(__dirname, distPath + 'scss/entry-base.scss'),
-      'css/utility': path.resolve(__dirname, distPath + 'scss/entry-utility.scss')
+      'js/site': path.resolve(__dirname, distDirectoryPath + 'js/entry.js'),
+      'js/common': path.resolve(__dirname, distDirectoryPath + 'js/common/entry.js'),
+      'css/fonts': path.resolve(__dirname, distDirectoryPath + 'scss/entry-fonts.scss'),
+      'css/theme': path.resolve(__dirname, distDirectoryPath + 'scss/entry-theme.scss'),
+      'css/base': path.resolve(__dirname, distDirectoryPath + 'scss/entry-base.scss'),
+      'css/utility': path.resolve(__dirname, distDirectoryPath + 'scss/entry-utility.scss')
     },
     output: {
-      path: path.resolve(__dirname, buildPath),
+      path: path.resolve(__dirname, buildDirectoryPath),
       filename: '[name].js'
     },
     resolve: {
@@ -95,8 +96,8 @@ module.exports = (env, argv) => {
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]?[hash]', // Name of the file.
-            publicPath: buildPath, // Path in the CSS file.
-            context: distPath // Context removal.
+            publicPath: buildPublicPath, // Path in the CSS file.
+            context: distDirectoryPath // Context removal.
           }
         }
       ]
@@ -119,13 +120,13 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin(),
       new VueLoaderPlugin(),
       new WebpackCleanPlugin([
-        buildPath + 'css/fonts.js',
-        buildPath + 'css/base.js',
-        buildPath + 'css/theme.js',
-        buildPath + 'css/utility.js'
+        buildDirectoryPath + '/css/fonts.js',
+        buildDirectoryPath + '/css/base.js',
+        buildDirectoryPath + '/css/theme.js',
+        buildDirectoryPath + '/css/utility.js'
       ]),
       new WebpackBuildNotifierPlugin({
-        title: 'Webpack',
+        title: 'Web Framework',
         suppressSuccess: false
       })
     ]
