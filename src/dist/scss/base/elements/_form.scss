@@ -5,6 +5,7 @@
 
 
 input:not([type="radio"]):not([type="checkbox"]), select, textarea, .iframe-field {
+	max-width: 100%;
 	@include nudge(padding, 0.25 0.35);
 	border-radius: $forms_border_radius;
 	border: 1px solid color(grey);
