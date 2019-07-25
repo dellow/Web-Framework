@@ -10,6 +10,7 @@
     "@babel/preset-env": "^7.4.4",
     "autoprefixer": "^7.2.6",
     "babel-core": "^6.26.3",
+    "babel-minify-webpack-plugin": "^0.3.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "css-loader": "^0.28.11",

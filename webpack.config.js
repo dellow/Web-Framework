@@ -16,6 +16,7 @@ const buildPublicPath = '/build/'
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 const WebpackCleanPlugin = require('webpack-clean')
@@ -117,6 +118,7 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
+      new MinifyPlugin(),
       new MiniCssExtractPlugin(),
       new VueLoaderPlugin(),
       new WebpackCleanPlugin([
