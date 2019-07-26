@@ -105,6 +105,7 @@ module.exports = (env, argv) => {
     },
     optimization: {
       minimizer: [
+        new MinifyPlugin(),
         new OptimizeCssAssetsPlugin({
           cssProcessor: require('cssnano'),
           cssProcessorPluginOptions: {
@@ -118,7 +119,6 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
-      new MinifyPlugin(),
       new MiniCssExtractPlugin(),
       new VueLoaderPlugin(),
       new WebpackCleanPlugin([
