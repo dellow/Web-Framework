@@ -1,11 +1,9 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="canonical" href="">
-<link rel="preload" href="//www.googletagmanager.com/gtag/js" as="script">
-<link rel="dns-prefetch" href="//www.googletagmanager.com">
 <title>Web Framework</title>
 <!-- ============================================================================== -->
 <!--                                                                           META -->
@@ -27,20 +25,23 @@
 <meta name="twitter:description" content="">
 <meta name="twitter:site" content="@twitterhandle">
 <meta name="twitter:creator" content="@twitterhandle">
+<meta name="twitter:url" content="">
 <meta name="twitter:image:src" content="/build/images/site/social-card-twitter.png">
 <!-- ============================================================================== -->
 <!--                                                                OPEN GRAPH TAGS -->
 <!-- ============================================================================== -->
-<meta name="og:title" property="og:title" content="Web Framework">
-<meta name="og:description" property="og:description" content="">
-<meta name="og:image" property="og:image" content="/build/images/site/social-card-general.png">
-<meta name="og:site_name" property="og:site_name" content="">
-<meta name="og:type" property="og:type" content="website">
+<meta property="og:title" content="Web Framework">
+<meta property="og:url" content="">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="/build/images/site/social-card-general.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <!-- ============================================================================== -->
 <!--                                                                    MOBILE META -->
 <!-- ============================================================================== -->
-<!-- Viewport -->
-<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <!-- Android -->
 <meta name="mobile-web-app-capable" content="yes">
 <!-- iOS -->
@@ -54,6 +55,12 @@
 <link rel="stylesheet" href="/build/css/utility.css" media="all">
 <link rel="stylesheet" href="/build/css/base.css" media="all">
 <link rel="stylesheet" href="/build/css/theme.css" media="all">
+<!-- ============================================================================== -->
+<!--                                                           CANONICAL & PRELOADS -->
+<!-- ============================================================================== -->
+<link rel="canonical" href="">
+<link rel="preload" href="//www.googletagmanager.com/gtag/js" as="script">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
 <!-- ============================================================================== -->
 <!--                                                                       FAVICONS -->
 <!-- ============================================================================== -->
@@ -74,6 +81,18 @@
 <!-- Windows 8 IE 10-->
 <meta name="msapplication-TileColor" content="#FFFFFF">
 <meta name="msapplication-TileImage" content="/build/images/site/favicon-144.png">
+<!-- ============================================================================== -->
+<!--                                                                     TAG MANGER -->
+<!-- ============================================================================== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || []
+  function gtag(){dataLayer.push(arguments)}
+  gtag('js', new Date())
+  gtag('config', 'UA-XXXXXXXX-1', { 
+    anonymize_ip: true
+  })
+</script>
 <!-- ============================================================================== -->
 <!--                                                                     JAVASCRIPT -->
 <!-- ============================================================================== -->
@@ -96,18 +115,6 @@ window.config = {
     ]
   }
 }
-</script>
-<!-- ============================================================================== -->
-<!--                                                                      ANALYTICS -->
-<!-- ============================================================================== -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || []
-  function gtag(){dataLayer.push(arguments)}
-  gtag('js', new Date())
-  gtag('config', 'UA-XXXXXXXX-1', { 
-    anonymize_ip: true 
-  })
 </script>
 </head>
 <body>
