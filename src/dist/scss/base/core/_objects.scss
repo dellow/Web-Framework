@@ -68,6 +68,20 @@
 
 
 .obj-modal {
+  &__window {
+    @include respond-to(map-get($screens, 'sm'), map-get($screens, 'md')) {
+      height: 1px; // Hack to allow children to inherit 100% height not available from min-height.
+      min-height: 400px;
+    }
+    @include respond-to(map-get($screens, 'md')) {
+      height: 1px; // Hack to allow children to inherit 100% height not available from min-height.
+      min-height: 200px;
+    }
+  }
+}
+
+
+.obj-modal, .obj-alert {
   width: 100%;
   height: 100%;
   display: flex;
@@ -98,13 +112,9 @@
     }
     @include respond-to(map-get($screens, 'sm'), map-get($screens, 'md')) {
       width: 90%;
-      height: 1px; // Hack to allow children to inherit 100% height not available from min-height.
-      min-height: 400px;
     }
     @include respond-to(map-get($screens, 'md')) {
       min-width: 500px;
-      height: 1px; // Hack to allow children to inherit 100% height not available from min-height.
-      min-height: 200px;
     }
     &__header {
       padding: 20px 20px 0 20px;

@@ -381,20 +381,20 @@
       throw new Error('body var is not a string, could not be sent to alert.')
     }
     // Check for existing modals and close.
-    if ($('.obj-modal').length) { $('.obj-modal').removeClass('active') }
+    if ($('.obj-alert').length) { $('.obj-alert').removeClass('active') }
     // Check for an existing alert and destroy.
-    if ($('.obj-modal').length && $('.obj-modal').hasClass('active')) $('.obj-modal').remove()
+    if ($('.obj-alert').length && $('.obj-alert').hasClass('active')) $('.obj-alert').remove()
 
     // Define modal
-    const tpl = `<div class="obj-modal">
-      <div class="obj-modal__window">
-        <div class="obj-modal__window__header">
-          <div class="obj-modal__window__header__title">` + title + `</div>
+    const tpl = `<div class="obj-alert">
+      <div class="obj-alert__window">
+        <div class="obj-alert__window__header">
+          <div class="obj-alert__window__header__title">` + title + `</div>
         </div>
-        <div class="obj-modal__window__main">
+        <div class="obj-alert__window__main">
           ` + body + `
         </div>
-        <div class="obj-modal__window__footer">
+        <div class="obj-alert__window__footer">
           <button class="btn positive" data-alert-close>Okay</button>
         </div>
       </div>
@@ -404,12 +404,12 @@
     // Add to body.
     $('body').append(tpl)
     // Set maxium height.
-    $('.obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
+    $('.obj-alert__window').css({'maxHeight': ($(window).height() - docHeight)})
     // Wait and show modal.
-    $('.obj-modal').addClass('active')
+    $('.obj-alert').addClass('active')
     // Click listener.
     $('[data-alert-close]').on('click', () => {
-      $('.obj-modal').remove()
+      $('.obj-alert').remove()
       if (closeCallback) closeCallback()
     })
   }
@@ -423,20 +423,20 @@
   Helpers.confirm = function(title, body, confirmCallback, refuteCallback) 
   {
     // Check for existing modals and close.
-    if ($('.obj-modal').length) { $('.obj-modal').removeClass('active') }
+    if ($('.obj-alert').length) { $('.obj-alert').removeClass('active') }
     // Check for an existing alert and destroy.
-    if ($('.obj-modal').length && $('.obj-modal').hasClass('active')) $('.obj-modal').remove()
+    if ($('.obj-alert').length && $('.obj-alert').hasClass('active')) $('.obj-alert').remove()
 
     // Define modal
-    const tpl = `<div class="obj-modal">
-      <div class="obj-modal__window">
-        <div class="obj-modal__window__header">
-          <div class="obj-modal__window__header__title">` + title + `</div>
+    const tpl = `<div class="obj-alert">
+      <div class="obj-alert__window">
+        <div class="obj-alert__window__header">
+          <div class="obj-alert__window__header__title">` + title + `</div>
         </div>
-        <div class="obj-modal__window__main">
+        <div class="obj-alert__window__main">
           ` + body + `
         </div>
-        <div class="obj-modal__window__footer">
+        <div class="obj-alert__window__footer">
           <button class="btn positive" data-confirm>Yes</button>
           <button class="btn negative" data-refute>No</button>
         </div>
@@ -447,16 +447,16 @@
     // Add to body.
     $('body').append(tpl)
     // Set maxium height.
-    $('.obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
+    $('.obj-alert__window').css({'maxHeight': ($(window).height() - docHeight)})
     // Wait and show modal.
-    $('.obj-modal').addClass('active')
+    $('.obj-alert').addClass('active')
     // Click listener.
     $('[data-confirm]').on('click', () => {
-      $('.obj-modal').remove()
+      $('.obj-alert').remove()
       if (confirmCallback) confirmCallback()
     })
     $('[data-refute]').on('click', () => {
-      $('.obj-modal').remove()
+      $('.obj-alert').remove()
       if (refuteCallback) refuteCallback()
     })
   }
