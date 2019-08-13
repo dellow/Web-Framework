@@ -33,7 +33,7 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, buildDirectoryPath),
-      filename: '[name].js'
+      filename: (argv.mode === 'production') ? '[name].min.js' : '[name].js',
     },
     resolve: {
       modules: ['node_modules'],
@@ -96,7 +96,7 @@ module.exports = (env, argv) => {
           test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
           loader: 'file-loader',
           options: {
-            name: '[path][name].[ext]?[hash]', // Name of the file.
+            name: (argv.mode === 'production') ? '[path][name].min.[ext]?[hash]' : '[path][name].[ext]?[hash]', // Name of the file.
             publicPath: buildPublicPath, // Path in the CSS file.
             context: distDirectoryPath // Context removal.
           }
@@ -123,9 +123,13 @@ module.exports = (env, argv) => {
       new VueLoaderPlugin(),
       new WebpackCleanPlugin([
         buildDirectoryPath + '/css/fonts.js',
+        buildDirectoryPath + '/css/fonts.min.js',
         buildDirectoryPath + '/css/base.js',
+        buildDirectoryPath + '/css/base.min.js',
         buildDirectoryPath + '/css/theme.js',
-        buildDirectoryPath + '/css/utility.js'
+        buildDirectoryPath + '/css/theme.min.js',
+        buildDirectoryPath + '/css/utility.js',
+        buildDirectoryPath + '/css/utility.min.js',
       ]),
       new WebpackBuildNotifierPlugin({
         title: 'Web Framework',
