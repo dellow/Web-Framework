@@ -96,7 +96,7 @@ module.exports = (env, argv) => {
           test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
           loader: 'file-loader',
           options: {
-            name: (argv.mode === 'production') ? '[path][name].min.[ext]?[hash]' : '[path][name].[ext]?[hash]', // Name of the file.
+            name: '[path][name].[ext]?[hash]', // Name of the file.
             publicPath: buildPublicPath, // Path in the CSS file.
             context: distDirectoryPath // Context removal.
           }
@@ -119,7 +119,9 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin({
+        filename: (argv.mode === 'production') ? '[name].min.css' : '[name].css',
+      }),
       new VueLoaderPlugin(),
       new WebpackCleanPlugin([
         buildDirectoryPath + '/css/fonts.js',
