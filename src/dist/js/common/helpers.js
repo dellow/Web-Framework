@@ -19,7 +19,7 @@
   Helpers.log = function(message, type, alertlog) 
   {
     // Guard :: Check environment.
-    if ((window.config && window.config.env === 'production')) {
+    if (process.env.NODE_ENV === 'production') {
       return
     }
 
@@ -183,25 +183,35 @@
   }
 
   /**
-   * Updates a URL parameter.
+   * Updates a URL parameter with or without history.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateUrlHistoryParameter = function(key, value) 
+  Helpers.changeUrlParameterState = function(uri, key, value, history) 
   {
-    window.history.pushState(null, null, this.updateUrlParameter(window.location.href, key, encodeURIComponent(value)))
+    let update = this.updateUrlParameter(uri, key, encodeURIComponent(value))
+
+    if (history) {
+      window.history.pushState(null, null, update)
+    } else {
+      window.history.replaceState(null, null, update)
+    }
   }
 
   /**
-   * Updates a URL path.
+   * Updates a URL path with or without history.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateUrlPath = function(value) 
+  Helpers.changeUrlPathState = function(value, history) 
   {
-    window.history.pushState(null, null, value)
+    if (history) {
+      window.history.pushState(null, null, value)
+    } else {
+      window.history.replaceState(null, null, value)
+    }
   }
 
   /**
