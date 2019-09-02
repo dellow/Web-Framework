@@ -70,11 +70,9 @@
 .obj-modal {
   &__window {
     @include respond-to(map-get($screens, 'sm'), map-get($screens, 'md')) {
-      height: 1px; // Hack to allow children to inherit 100% height not available from min-height.
       min-height: 400px;
     }
     @include respond-to(map-get($screens, 'md')) {
-      height: 1px; // Hack to allow children to inherit 100% height not available from min-height.
       min-height: 200px;
     }
   }
