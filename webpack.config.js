@@ -29,7 +29,7 @@ module.exports = (env, argv) => {
       'css/fonts': path.resolve(__dirname, distDirectoryPath + 'scss/entry-fonts.scss'),
       'css/theme': path.resolve(__dirname, distDirectoryPath + 'scss/entry-theme.scss'),
       'css/base': path.resolve(__dirname, distDirectoryPath + 'scss/entry-base.scss'),
-      'css/utility': path.resolve(__dirname, distDirectoryPath + 'scss/entry-utility.scss')
+      'css/utility': path.resolve(__dirname, distDirectoryPath + 'scss/entry-utility.scss'),
     },
     output: {
       path: path.resolve(__dirname, buildDirectoryPath),
@@ -39,7 +39,7 @@ module.exports = (env, argv) => {
       modules: ['node_modules'],
       extensions: ['.js'],
       alias: {
-      }
+      },
     },
     module: {
       rules: [
@@ -49,13 +49,13 @@ module.exports = (env, argv) => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
-          }
+              presets: ['@babel/preset-env'],
+            },
+          },
         },
         {
           test: /\.vue$/,
-          loader: 'vue-loader'
+          loader: 'vue-loader',
         },
         {
           test: /\.vue-scss/,
@@ -67,12 +67,12 @@ module.exports = (env, argv) => {
               options: {
                 ident: 'postcss',
                 plugins: (loader) => [
-                  require('autoprefixer')()
-                ]
-              }
+                  require('autoprefixer')(),
+                ],
+              },
             },
-            'sass-loader'
-          ]
+            'sass-loader',
+          ],
         },
         {
           test: /\.scss$/,
@@ -85,12 +85,12 @@ module.exports = (env, argv) => {
               options: {
                 ident: 'postcss',
                 plugins: (loader) => [
-                  require('autoprefixer')()
-                ]
-              }
+                  require('autoprefixer')(),
+                ],
+              },
             },
             'sass-loader'
-          ]
+          ],
         },
         {
           test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
@@ -98,10 +98,10 @@ module.exports = (env, argv) => {
           options: {
             name: '[path][name].[ext]?[hash]', // Name of the file.
             publicPath: buildPublicPath, // Path in the CSS file.
-            context: distDirectoryPath // Context removal.
-          }
-        }
-      ]
+            context: distDirectoryPath, // Context removal.
+          },
+        },
+      ],
     },
     optimization: {
       minimizer: [
@@ -111,12 +111,12 @@ module.exports = (env, argv) => {
           cssProcessorPluginOptions: {
             preset: ['default', { 
               discardComments: { 
-                removeAll: true 
-              } 
-            }]
-          }
-        })
-      ]
+                removeAll: true ,
+              },
+            }],
+          },
+        }),
+      ],
     },
     plugins: [
       new MiniCssExtractPlugin({
@@ -135,8 +135,8 @@ module.exports = (env, argv) => {
       ]),
       new WebpackBuildNotifierPlugin({
         title: 'Web Framework',
-        suppressSuccess: false
-      })
-    ]
+        suppressSuccess: false,
+      }),
+    ],
   }
 }
