@@ -21,7 +21,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 const WebpackCleanPlugin = require('webpack-clean')
 
-module.exports = (env, argv) => {  
+module.exports = (env, argv) => {
   return {
     entry: {
       'js/site': path.resolve(__dirname, distDirectoryPath + 'js/entry.js'),
@@ -41,13 +41,29 @@ module.exports = (env, argv) => {
       alias: {
       },
     },
+    stats: {
+      colors: true,
+      hash: false,
+      version: false,
+      timings: false,
+      assets: false,
+      chunks: false,
+      modules: false,
+      reasons: false,
+      children: false,
+      source: false,
+      errors: false,
+      errorDetails: false,
+      warnings: false,
+      publicPath: false,
+    },
     module: {
       rules: [
         {
           test: /\.m?js$/,
           exclude: /(node_modules)/,
           use: {
-            loader: 'babel-loader',
+            loader: 'babel-loader?cacheDirectory',
             options: {
               presets: ['@babel/preset-env'],
             },
@@ -55,10 +71,12 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.vue$/,
+          exclude: /node_modules/,
           loader: 'vue-loader',
         },
         {
           test: /\.vue-scss/,
+          exclude: /node_modules/,
           use: [
             'vue-style-loader',
             'css-loader',
@@ -76,6 +94,7 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.scss$/,
+          exclude: /node_modules/,
           use: [
             'vue-style-loader',
             MiniCssExtractPlugin.loader,
@@ -94,6 +113,7 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+          exclude: /node_modules/,
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]?[hash]', // Name of the file.
@@ -109,8 +129,8 @@ module.exports = (env, argv) => {
         new OptimizeCssAssetsPlugin({
           cssProcessor: require('cssnano'),
           cssProcessorPluginOptions: {
-            preset: ['default', { 
-              discardComments: { 
+            preset: ['default', {
+              discardComments: {
                 removeAll: true ,
               },
             }],

@@ -52,6 +52,7 @@
     "vue": "^2.5.17"
   },
   "scripts": {
+    "build:all": "webpack --mode production && webpack --mode development",
     "build:development": "webpack --mode development",
     "build:production": "webpack --mode production",
     "test": "jest --verbose",
