@@ -391,20 +391,22 @@
       throw new Error('body var is not a string, could not be sent to alert.')
     }
     // Check for existing modals and close.
-    if ($('.obj-alert').length) { $('.obj-alert').removeClass('active') }
+    if ($('.obj-modal').length) { $('.obj-modal').removeClass('active') }
     // Check for an existing alert and destroy.
-    if ($('.obj-alert').length && $('.obj-alert').hasClass('active')) $('.obj-alert').remove()
+    if ($('.obj-modal').length && $('.obj-modal').hasClass('active')) $('.obj-modal').remove()
 
+    // Create an ID.
+    const ID = this.guid()
     // Define modal
-    const tpl = `<div class="obj-alert">
-      <div class="obj-alert__window">
-        <div class="obj-alert__window__header">
-          <div class="obj-alert__window__header__title">` + title + `</div>
+    const tpl = `<div id="modal-` + ID + `" class="obj-modal">
+      <div class="obj-modal__window">
+        <div class="obj-modal__window__header">
+          <div class="obj-modal__window__header__title">` + title + `</div>
         </div>
-        <div class="obj-alert__window__main">
+        <div class="obj-modal__window__main">
           ` + body + `
         </div>
-        <div class="obj-alert__window__footer">
+        <div class="obj-modal__window__footer">
           <button class="btn positive" data-alert-close>Okay</button>
         </div>
       </div>
@@ -414,12 +416,12 @@
     // Add to body.
     $('body').append(tpl)
     // Set maxium height.
-    $('.obj-alert__window').css({'maxHeight': ($(window).height() - docHeight)})
+    $('#modal-' + ID + ' .obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
     // Wait and show modal.
-    $('.obj-alert').addClass('active')
+    $('#modal-' + ID).addClass('active')
     // Click listener.
     $('[data-alert-close]').on('click', () => {
-      $('.obj-alert').remove()
+      $('#modal-' + ID).remove()
       if (closeCallback) closeCallback()
     })
   }
@@ -433,20 +435,22 @@
   Helpers.confirm = function(title, body, confirmCallback, refuteCallback)
   {
     // Check for existing modals and close.
-    if ($('.obj-alert').length) { $('.obj-alert').removeClass('active') }
+    if ($('.obj-modal').length) { $('.obj-modal').removeClass('active') }
     // Check for an existing alert and destroy.
-    if ($('.obj-alert').length && $('.obj-alert').hasClass('active')) $('.obj-alert').remove()
+    if ($('.obj-modal').length && $('.obj-modal').hasClass('active')) $('.obj-modal').remove()
 
+    // Create an ID.
+    const ID = this.guid()
     // Define modal
-    const tpl = `<div class="obj-alert">
-      <div class="obj-alert__window">
-        <div class="obj-alert__window__header">
-          <div class="obj-alert__window__header__title">` + title + `</div>
+    const tpl = `<div id="modal-` + ID + `" class="obj-modal">
+      <div class="obj-modal__window">
+        <div class="obj-modal__window__header">
+          <div class="obj-modal__window__header__title">` + title + `</div>
         </div>
-        <div class="obj-alert__window__main">
+        <div class="obj-modal__window__main">
           ` + body + `
         </div>
-        <div class="obj-alert__window__footer">
+        <div class="obj-modal__window__footer">
           <button class="btn positive" data-confirm>Yes</button>
           <button class="btn negative" data-refute>No</button>
         </div>
@@ -457,16 +461,16 @@
     // Add to body.
     $('body').append(tpl)
     // Set maxium height.
-    $('.obj-alert__window').css({'maxHeight': ($(window).height() - docHeight)})
+    $('#modal-' + ID + ' .obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
     // Wait and show modal.
-    $('.obj-alert').addClass('active')
+    $('#modal-' + ID).addClass('active')
     // Click listener.
     $('[data-confirm]').on('click', () => {
-      $('.obj-alert').remove()
+      $('#modal-' + ID).remove()
       if (confirmCallback) confirmCallback()
     })
     $('[data-refute]').on('click', () => {
-      $('.obj-alert').remove()
+      $('#modal-' + ID).remove()
       if (refuteCallback) refuteCallback()
     })
   }
