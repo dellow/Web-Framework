@@ -26,10 +26,8 @@ module.exports = (env, argv) => {
     entry: {
       'js/site': path.resolve(__dirname, distDirectoryPath + 'js/entry.js'),
       'js/common': path.resolve(__dirname, distDirectoryPath + 'js/common/entry.js'),
-      'css/fonts': path.resolve(__dirname, distDirectoryPath + 'scss/entry-fonts.scss'),
-      'css/theme': path.resolve(__dirname, distDirectoryPath + 'scss/entry-theme.scss'),
-      'css/base': path.resolve(__dirname, distDirectoryPath + 'scss/entry-base.scss'),
-      'css/utility': path.resolve(__dirname, distDirectoryPath + 'scss/entry-utility.scss'),
+      'css/theme': path.resolve(__dirname, distDirectoryPath + 'scss/theme/entry.scss'),
+      'css/utility': path.resolve(__dirname, distDirectoryPath + 'scss/framework/utility/entry.scss'),
     },
     output: {
       path: path.resolve(__dirname, buildDirectoryPath),
@@ -52,7 +50,7 @@ module.exports = (env, argv) => {
       reasons: false,
       children: false,
       source: false,
-      errors: false,
+      errors: true,
       errorDetails: false,
       warnings: false,
       publicPath: false,

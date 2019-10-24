@@ -1,0 +1,195 @@
+
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+body {
+  padding-top: 55px;
+  @include respond-to(screen('md')) {
+    padding-top: 0;
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.container {
+  &--vwide {
+    max-width: calc(1600px + (#{$mn} * 2));
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+::selection {
+  color: color(white);
+  background: color(red1);
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.u-border {
+  border: 1px solid #eeeeee;
+}
+.u-border-top {
+  border-top: 1px solid #eeeeee;
+}
+.u-border-right {
+  border-right: 1px solid #eeeeee;
+}
+.u-border-bottom {
+  border-bottom: 1px solid #eeeeee;
+}
+.u-border-left {
+  border-left: 1px solid #eeeeee;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.bg-color-white-fade-to-grey1 {
+  background: linear-gradient(to bottom, color(white) 40%, color(grey1) 100%);
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.u-reduce-letter-spacing--small {
+  letter-spacing: -0.025em;
+}
+.u-reduce-letter-spacing--large {
+  letter-spacing: -0.05em;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.u-text-shadow {
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.u-skew-up-right {
+  $deg: 1;
+  transform:skewY(-#{$deg}deg);
+  > div {
+    transform:skewY(#{$deg}deg);
+  }
+}
+.u-skew-up-left {
+  $deg: 1;
+  transform:skewY(#{$deg}deg);
+  > div {
+    transform:skewY(-#{$deg}deg);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.g-map-label {
+  padding: 3px 7px;
+  border-radius: 2px;
+  opacity: 1 !important;
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.05);
+  background: rgba(255,255,255,0.7);
+  &.small {
+    font-size: 10px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  &.normal {
+    max-width: 150px;
+    line-height: 1.3;
+    font-size: 11px;
+  }
+  &.large {
+    padding: 10px;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.menu-account {
+  li {
+    display: block;
+    a {
+      color: #767676;
+      &:hover, &.active {
+        color: color(black);
+      }
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+  > li {
+    @include nudge(margin-bottom, 0.75);
+    > div {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  ul {
+    @include nudge(margin-bottom, 0.15);
+    > li {
+      > a {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
+
+// This remove the 'Powered By Google' note in the autocomplete dropdown.
+.pac-container:after {
+  height: 0px;
+  background-image: none !important;
+}
+.pac-item {
+  padding: 8px 10px;
+}
+
+
+/* ----------------------------------------------------------------------- */

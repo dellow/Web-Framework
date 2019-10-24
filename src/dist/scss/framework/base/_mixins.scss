@@ -1,0 +1,226 @@
+
+
+// ---
+// nudge
+// Primarily for use with Margin and Padding. Outputs an even spacing based on the Magic Number
+// in REM units with a PX fallback for legacy browsers.
+// Any value supplied will be multipled by the Magic Number. If the value is supplied with a
+// PX value it will be left as is.
+//
+// @uses px-to-rem()
+// @uses $mn
+//
+// .foo {@include nudge(margin, 1 1.5 2 1);}
+// ---
+@mixin nudge($selector, $sizes){
+  $rem_sizes: ();
+  $px_sizes: ();
+
+  @each $size in $sizes {
+    @if $size == "auto" {
+      $rem_sizes: append($rem_sizes, auto);
+      $px_sizes : append($px_sizes, auto);
+    }
+    @else if unit($size) != "" {
+      $rem_sizes: append($rem_sizes, $size);
+      $px_sizes : append($px_sizes, $size);
+    }
+    @else {
+      $rem_sizes: append($rem_sizes, px-to-rem($size * $mn));
+      $px_sizes : append($px_sizes, $size * $mn);
+    }
+  }
+
+  #{$selector}: $px_sizes;
+  #{$selector}: $rem_sizes;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// modify-grid
+// Changes a grid.
+//
+// .foo {@include modify-grid(2);}
+// ---
+@mixin modify-grid($gutterValue, $col: false, $all: false){
+  $grid_selector     : '';
+  $flex_grid_selector: '';
+
+  @if ($all == false) {
+    $flex_grid_selector: '> .flex-grid, &.flex-grid';
+  } @else {
+    $flex_grid_selector: '.flex-grid, &.flex-grid';
+  }
+
+  #{$flex_grid_selector} {
+    $value: px-to-rem($gutterValue * $mn);
+    width: calc(100% + #{$value});
+    @include nudge(margin-top, -$gutterValue);
+  	display: flex;
+  	flex-direction: row;
+  	flex-wrap: wrap;
+  	position: relative;
+    @include nudge(left, -$gutterValue);
+  	&--no-gutter {
+  		width: 100%;
+  	}
+    &--full-height {
+      height: calc(100% + #{$value});
+    }
+    > [class*="col-"] {
+      @if ($col) {
+        width: $col;
+      }
+      @include nudge(padding, $gutterValue 0 0 $gutterValue);
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// slab
+// Set's a consistent slab size.
+//
+// .foo {@include slab(2);}
+// ---
+@mixin slab($size, $modifier: false, $responsive: false){
+  @if($responsive){
+    // Desktop.
+    @include respond-to-range(desktop){
+      @if($modifier == 'ntp'){
+        @include nudge(padding-bottom, $size);
+      }
+      @else if($modifier == 'nbp'){
+        @include nudge(padding-top, $size);
+      }
+      @else {
+        @include nudge(padding-top, $size);
+        @include nudge(padding-bottom, $size);
+      }
+    }
+    // Tablet.
+    @include respond-to-range(tablet){
+      @if($modifier == 'ntp'){
+        @include nudge(padding-bottom, ($size / 2));
+      }
+      @else if($modifier == 'nbp'){
+        @include nudge(padding-top, ($size / 2));
+      }
+      @else {
+        @include nudge(padding-top, ($size / 2));
+        @include nudge(padding-bottom, ($size / 2));
+      }
+    }
+    // Mobile.
+    @include respond-to-range(mobile){
+      @if($modifier == 'ntp'){
+        @include nudge(padding-bottom, ($size / 2));
+      }
+      @else if($modifier == 'nbp'){
+        @include nudge(padding-top, ($size / 2));
+      }
+      @else {
+        @include nudge(padding-top, ($size / 2));
+        @include nudge(padding-bottom, ($size / 2));
+      }
+    }
+  }
+  @else {
+    @if($modifier == 'ntp'){
+      @include nudge(padding-bottom, $size);
+    }
+    @else if($modifier == 'nbp'){
+      @include nudge(padding-top, $size);
+    }
+    @else {
+      @include nudge(padding-top, $size);
+      @include nudge(padding-bottom, $size);
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// scale
+// Scale any property.
+//
+// .foo {@include scale(font-size, 20px, 960px 18px, 860px 16px);}
+// ---
+@mixin scale($selector, $default, $breakpoints...) {
+  #{$selector}: $default;
+  @each $breakpoint in $breakpoints {
+    @include respond-to(nth($breakpoint, 1)) {
+      #{$selector}: nth($breakpoint, 2);
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// respond-to
+// Responsive breakpoints.
+//
+// @include respond-to(768px){.foo {display: block;}}
+// ---
+@mixin respond-to($breakpoint1, $breakpoint2: null, $mobileFirst: true) {
+  @if($breakpoint2 != null) {
+    @media only screen and (min-width: $breakpoint1) and (max-width: $breakpoint2) {
+      @content
+    };
+  }
+  @else{
+    // If $mobileFirst is set to true use min-width.
+    $operator: if($mobileFirst, 'min-width', 'max-width');
+    @media only screen and ($operator: $breakpoint1) {
+      @content
+    };
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// respond-to-range
+// Responsive breakpoints.
+//
+// @include respond-to-range(mobile){.foo {display: block;}}
+// ---
+@mixin respond-to-range($range) {
+  @if($range == small) {
+    @media only screen and (min-width: 0) and (max-width: (map-get($screens, 'sm') - 1)) {
+      @content
+    };
+  }
+  @else if($range == medium) {
+    @media only screen and (min-width: (map-get($screens, 'sm'))) and (max-width: (map-get($screens, 'md') - 1)) {
+      @content
+    };
+  }
+  @else if($range == large) {
+    @media only screen and (min-width: (map-get($screens, 'md'))) and (max-width: (map-get($screens, 'lg') - 1)) {
+      @content
+    };
+  }
+  @else if($range == extra-large) {
+    @media only screen and (min-width: (map-get($screens, 'lg'))) {
+      @content
+    };
+  }
+}
+
+
+// ----------------------------------------------------------------------- //

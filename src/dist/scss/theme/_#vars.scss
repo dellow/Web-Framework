@@ -1,0 +1,378 @@
+
+
+// ---
+// Defaults
+// ---
+$mn                : 24px;
+$gutter            : 0.5;
+$animation         : 300ms;
+$contentmargin     : 1;
+$def_border_radius : 2px;
+$def_color_odd     : #EDEDED;
+$def_color_even    : #F4F4F4;
+$def_border_color  : #d6d6d6;
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Widths & Heights.
+// ---
+$side_panel_width: 300px;
+$forms_field_height: 40px;
+$forms_border_radius: 0px;
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Screen Sizes.
+// ---
+$screens: (
+  vm: 320px,
+  sm: 375px,
+  md: 768px,
+  lg: 992px,
+  xl: 1440px
+);
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Containers.
+// ---
+$containers: (
+  default: 1280px,
+  usmall: 320px,
+  vsmall: 568px,
+  small: 728px,
+  medium: 960px,
+  large: 1024px,
+  wide: 1400px
+);
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Typeset
+// ---
+// General.
+$font_size_base  : 16px;
+$line_height_base: 1.62;
+
+// Headings.
+$font_h1    : 42px;
+$font_h1_lh : 1.225;
+$font_h1_mg : 1 0 1;
+// --
+$font_h2    : 34px;
+$font_h2_lh : 1.225;
+$font_h2_mg : 1 0 1;
+// --
+$font_h3    : 28px;
+$font_h3_lh : 1.225;
+$font_h3_mg : 1 0 1;
+// --
+$font_h4    : 20px;
+$font_h4_lh : 1.37;
+$font_h4_mg : 1 0 1;
+// --
+$font_h5    : 18px;
+$font_h5_lh : 1.37;
+$font_h5_mg : 1 0 1;
+// --
+$font_h6    : 16px;
+$font_h6_lh : 1.225;
+$font_h6_mg : 1 0 1;
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Font Faces
+// ---
+$circular       : 'Circular Std';
+$inter          : 'Inter';
+$monospaced     : 'source-code-pro', monospace;
+$serif          : Georgia;
+$sans_serif     : $circular;
+
+$font_face_base : $circular, 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Colors
+// ---
+
+// Base
+$base_colors: (
+  black: (
+    base: #000000
+  ),
+  white: (
+    base: #FFFFFF
+  ),
+  grey: (
+    base: #DDDDDD,
+    light: lighten(#DDDDDD, 10%),
+    dark : darken(#DDDDDD, 10%)
+  ),
+  blue: (
+    base : #3498DB,
+    light: lighten(#3498DB, 10%),
+    dark : darken(#3498DB, 10%)
+  ),
+  green: (
+    base : #2ECC71,
+    light: lighten(#2ECC71, 10%),
+    dark : darken(#2ECC71, 10%)
+  ),
+  orange: (
+    base : #E67E22,
+    light: lighten(#E67E22, 10%),
+    dark : darken(#E67E22, 10%)
+  ),
+  red: (
+    base : #C4122f,
+    light: lighten(#C4122f, 10%),
+    dark : darken(#C4122f, 10%)
+  ),
+  yellow: (
+    base : #F1C40F,
+    light: lighten(#F1C40F, 10%),
+    dark : darken(#F1C40F, 10%)
+  ),
+  copy: (
+    body  : #5f5659,
+    link  : #C4122F,
+    hover : darken(#C4122F, 10%),
+    active: darken(#C4122F, 20%)
+  ),
+  alerts: (
+    error: #f94139,
+    status: #3a87ad,
+    success: #33c25c,
+    warning: #c09853
+  )
+);
+
+// Social
+$social_colors: (
+  social: (
+    facebook  : #3b5998,
+    flickr    : #ff0084,
+    foursquare: #0072b1,
+    google    : #dd4b39,
+    instagram : #d00085,
+    linkedin  : #007bb6,
+    pinterest : #cb2027,
+    quora     : #a82400,
+    snapchat  : #fffc00,
+    tumblr    : #32506d,
+    twitter   : #00aced,
+    vimeo     : #aad450,
+    vine      : #00bf8f,
+    youtube   : #ff0000
+  )
+);
+
+// Site
+$site_colors: ();
+
+// Merge
+$framework_colors: map-merge($base_colors, $social_colors);
+$colors: map-merge($framework_colors, $site_colors);
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Z-Index Scale
+// ---
+$zindex-1 : 100;
+$zindex-2 : 200;
+$zindex-3 : 300;
+$zindex-4 : 400;
+$zindex-5 : 500;
+$zindex-6 : 600;
+$zindex-7 : 700;
+$zindex-8 : 800;
+$zindex-9 : 900;
+$zindex-10: 1000;
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
+// Column Sizes
+// ---
+$col_1   : (100% / 1);
+$col_1-2 : (100% / 2);
+$col_1-3 : (100% / 3);
+$col_1-4 : (100% / 4);
+$col_1-5 : (100% / 5);
+$col_1-6 : (100% / 6);
+$col_1-7 : (100% / 7);
+$col_1-8 : (100% / 8);
+$col_1-9 : (100% / 9);
+$col_1-10: (100% / 10);
+$col_1-11: (100% / 11);
+$col_1-12: (100% / 12);
+$col_1-13: (100% / 13);
+$col_1-14: (100% / 14);
+$col_1-15: (100% / 15);
+$col_1-16: (100% / 16);
+
+// Column array
+$col_array: (
+  col-1    : $col_1,
+  col-1-2  : ($col_1-2 * 1),
+
+  col-1-3  : ($col_1-3 * 1),
+  col-2-3  : ($col_1-3 * 2),
+
+  col-1-4  : ($col_1-4 * 1),
+  col-2-4  : ($col_1-4 * 2),
+  col-3-4  : ($col_1-4 * 3),
+
+  col-1-5  : ($col_1-5 * 1),
+  col-2-5  : ($col_1-5 * 2),
+  col-3-5  : ($col_1-5 * 3),
+  col-4-5  : ($col_1-5 * 4),
+
+  col-1-6  : ($col_1-6 * 1),
+  col-2-6  : ($col_1-6 * 2),
+  col-3-6  : ($col_1-6 * 3),
+  col-4-6  : ($col_1-6 * 4),
+  col-5-6  : ($col_1-6 * 5),
+
+  col-1-7  : ($col_1-7 * 1),
+  col-2-7  : ($col_1-7 * 2),
+  col-3-7  : ($col_1-7 * 3),
+  col-4-7  : ($col_1-7 * 4),
+  col-5-7  : ($col_1-7 * 5),
+  col-6-7  : ($col_1-7 * 6),
+
+  col-1-8  : ($col_1-8 * 1),
+  col-2-8  : ($col_1-8 * 2),
+  col-3-8  : ($col_1-8 * 3),
+  col-4-8  : ($col_1-8 * 4),
+  col-5-8  : ($col_1-8 * 5),
+  col-6-8  : ($col_1-8 * 6),
+  col-7-8  : ($col_1-8 * 7),
+
+  col-1-9  : ($col_1-9 * 1),
+  col-2-9  : ($col_1-9 * 2),
+  col-3-9  : ($col_1-9 * 3),
+  col-4-9  : ($col_1-9 * 4),
+  col-5-9  : ($col_1-9 * 5),
+  col-6-9  : ($col_1-9 * 6),
+  col-7-9  : ($col_1-9 * 7),
+  col-8-9  : ($col_1-9 * 8),
+
+  col-1-10 : ($col_1-10 * 1),
+  col-2-10 : ($col_1-10 * 2),
+  col-3-10 : ($col_1-10 * 3),
+  col-4-10 : ($col_1-10 * 4),
+  col-5-10 : ($col_1-10 * 5),
+  col-6-10 : ($col_1-10 * 6),
+  col-7-10 : ($col_1-10 * 7),
+  col-8-10 : ($col_1-10 * 8),
+  col-9-10 : ($col_1-10 * 9),
+
+  col-1-11 : ($col_1-11 * 1),
+  col-2-11 : ($col_1-11 * 2),
+  col-3-11 : ($col_1-11 * 3),
+  col-4-11 : ($col_1-11 * 4),
+  col-5-11 : ($col_1-11 * 5),
+  col-6-11 : ($col_1-11 * 6),
+  col-7-11 : ($col_1-11 * 7),
+  col-8-11 : ($col_1-11 * 8),
+  col-9-11 : ($col_1-11 * 9),
+  col-10-11: ($col_1-11 * 10),
+
+  col-1-12 : ($col_1-12 * 1),
+  col-2-12 : ($col_1-12 * 2),
+  col-3-12 : ($col_1-12 * 3),
+  col-4-12 : ($col_1-12 * 4),
+  col-5-12 : ($col_1-12 * 5),
+  col-6-12 : ($col_1-12 * 6),
+  col-7-12 : ($col_1-12 * 7),
+  col-8-12 : ($col_1-12 * 8),
+  col-9-12 : ($col_1-12 * 9),
+  col-10-12: ($col_1-12 * 10),
+  col-11-12: ($col_1-12 * 11),
+
+  col-1-13 : ($col_1-13 * 1),
+  col-2-13 : ($col_1-13 * 2),
+  col-3-13 : ($col_1-13 * 3),
+  col-4-13 : ($col_1-13 * 4),
+  col-5-13 : ($col_1-13 * 5),
+  col-6-13 : ($col_1-13 * 6),
+  col-7-13 : ($col_1-13 * 7),
+  col-8-13 : ($col_1-13 * 8),
+  col-9-13 : ($col_1-13 * 9),
+  col-10-13: ($col_1-13 * 10),
+  col-11-13: ($col_1-13 * 11),
+  col-12-13: ($col_1-13 * 12),
+
+  col-1-14 : ($col_1-14 * 1),
+  col-2-14 : ($col_1-14 * 2),
+  col-3-14 : ($col_1-14 * 3),
+  col-4-14 : ($col_1-14 * 4),
+  col-5-14 : ($col_1-14 * 5),
+  col-6-14 : ($col_1-14 * 6),
+  col-7-14 : ($col_1-14 * 7),
+  col-8-14 : ($col_1-14 * 8),
+  col-9-14 : ($col_1-14 * 9),
+  col-10-14: ($col_1-14 * 10),
+  col-11-14: ($col_1-14 * 11),
+  col-12-14: ($col_1-14 * 12),
+  col-13-14: ($col_1-14 * 13),
+
+  col-1-15 : ($col_1-15 * 1),
+  col-2-15 : ($col_1-15 * 2),
+  col-3-15 : ($col_1-15 * 3),
+  col-4-15 : ($col_1-15 * 4),
+  col-5-15 : ($col_1-15 * 5),
+  col-6-15 : ($col_1-15 * 6),
+  col-7-15 : ($col_1-15 * 7),
+  col-8-15 : ($col_1-15 * 8),
+  col-9-15 : ($col_1-15 * 9),
+  col-10-15: ($col_1-15 * 10),
+  col-11-15: ($col_1-15 * 11),
+  col-12-15: ($col_1-15 * 12),
+  col-13-15: ($col_1-15 * 13),
+  col-14-15: ($col_1-15 * 14),
+
+  col-1-16 : ($col_1-16 * 1),
+  col-2-16 : ($col_1-16 * 2),
+  col-3-16 : ($col_1-16 * 3),
+  col-4-16 : ($col_1-16 * 4),
+  col-5-16 : ($col_1-16 * 5),
+  col-6-16 : ($col_1-16 * 6),
+  col-7-16 : ($col_1-16 * 7),
+  col-8-16 : ($col_1-16 * 8),
+  col-9-16 : ($col_1-16 * 9),
+  col-10-16: ($col_1-16 * 10),
+  col-11-16: ($col_1-16 * 11),
+  col-12-16: ($col_1-16 * 12),
+  col-13-16: ($col_1-16 * 13),
+  col-14-16: ($col_1-16 * 14),
+  col-15-16: ($col_1-16 * 15)
+);
+
+
+// ----------------------------------------------------------------------- //

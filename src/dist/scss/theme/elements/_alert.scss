@@ -1,0 +1,61 @@
+
+
+.alert {
+  &.box {
+    border: 1px solid;
+    position: relative;
+    background: color(white);
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted;
+      &:hover {
+        color: inherit;
+        border-bottom-style: solid;
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+.alert {
+  &.error {
+    color: color(alerts, error);
+  }
+  &.box.error {
+    border-color: color(alerts, error);
+  }
+}
+
+.alert {
+  &.status {
+    color: color(alerts, status);
+  }
+  &.box.status {
+    border-color: color(alerts, status);
+  }
+}
+
+.alert {
+  &.success {
+    color: color(alerts, success);
+  }
+  &.box.success {
+    border-color: color(alerts, success);
+  }
+}
+
+.alert {
+  &.warning {
+    color: color(alerts, warning);
+  }
+  &.box.warning {
+    border-color: color(alerts, warning);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
