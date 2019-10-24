@@ -8,11 +8,8 @@
 **/
 
 import Events from '../classes/base/events'
-import Menus from '../classes/global/menus'
-import Email from '../classes/global/email'
-import FormsNewsletter from '../classes/forms/newsletter'
 
-class Route 
+class Route
 {
 
   /**
@@ -21,7 +18,7 @@ class Route
    * @since 1.0.0
    * @version 1.0.0
   **/
-  constructor() 
+  constructor()
   {
   }
 
@@ -31,21 +28,7 @@ class Route
    * @since 1.0.0
    * @version 1.0.0
   **/
-  init() 
-  {
-    // Load global methods.
-    this.loadMethods()
-    // Load global components.
-    this.loadComponents()
-  }
-
-  /**
-   * NULLED.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  loadMethods() 
+  init()
   {
   }
 
@@ -55,28 +38,13 @@ class Route
    * @since 1.0.0
    * @version 1.0.0
   **/
-  loadComponents() 
-  {
-    // Init Menus.
-    Menus.init()
-    // Init Email.
-    // Email.init()
-    // Init newsletter form.
-    // FormsNewsletter.init()
-  }
-
-  /**
-   * NULLED.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  listeners() 
+  listeners()
   {
     // Extend the events system.
     (new Events).extendEvents({
       events: {
-        'click [data-js-event="exampleEvent"]': this.exampleEvent.bind(this)
+        'click [data-js-toggle]': this.toggleElement.bind(this),
+        'click [data-js-event="exampleEvent"]': this.exampleEvent.bind(this),
       }
     })
   }
@@ -87,7 +55,38 @@ class Route
    * @since 1.0.0
    * @version 1.0.0
   **/
-  exampleEvent(e) 
+  toggleElement(e)
+  {
+    e[0].preventDefault()
+
+    // Cache trigger.
+    const $trigger = $(e[0].currentTarget)
+    // Get data value.
+    const $dataValue = $trigger.data('js-toggle')
+
+    if ($dataValue) {
+      // Parse all values.
+      const values = $dataValue.split('|')
+      // Loop through values.
+      for (let i = 0, ii = values.length; i < ii; i++) {
+        if ($('.' + values[i]).length) {
+          if ($('.' + values[i]).hasClass('js-active')) {
+            $('.' + values[i]).removeClass('js-active')
+          } else {
+            $('.' + values[i]).addClass('js-active')
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * NULLED.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  exampleEvent(e)
   {
     console.log(e)
     e[0].preventDefault()

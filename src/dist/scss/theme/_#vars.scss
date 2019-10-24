@@ -5,7 +5,7 @@
 // ---
 $mn                : 24px;
 $gutter            : 0.5;
-$animation         : 300ms;
+$animation         : 250ms;
 $contentmargin     : 1;
 $def_border_radius : 2px;
 $def_color_odd     : #EDEDED;
@@ -35,7 +35,7 @@ $screens: (
   sm: 375px,
   md: 768px,
   lg: 992px,
-  xl: 1440px
+  xl: 1440px,
 );
 
 
@@ -52,7 +52,7 @@ $containers: (
   small: 728px,
   medium: 960px,
   large: 1024px,
-  wide: 1400px
+  wide: 1400px,
 );
 
 
@@ -117,53 +117,53 @@ $font_face_base : $circular, 'Helvetica Neue', 'Calibri Light', Roboto, sans-ser
 // Base
 $base_colors: (
   black: (
-    base: #000000
+    base: #000000,
   ),
   white: (
-    base: #FFFFFF
+    base: #FFFFFF,
   ),
   grey: (
     base: #DDDDDD,
     light: lighten(#DDDDDD, 10%),
-    dark : darken(#DDDDDD, 10%)
+    dark : darken(#DDDDDD, 10%),
   ),
   blue: (
     base : #3498DB,
     light: lighten(#3498DB, 10%),
-    dark : darken(#3498DB, 10%)
+    dark : darken(#3498DB, 10%),
   ),
   green: (
     base : #2ECC71,
     light: lighten(#2ECC71, 10%),
-    dark : darken(#2ECC71, 10%)
+    dark : darken(#2ECC71, 10%),
   ),
   orange: (
     base : #E67E22,
     light: lighten(#E67E22, 10%),
-    dark : darken(#E67E22, 10%)
+    dark : darken(#E67E22, 10%),
   ),
   red: (
     base : #C4122f,
     light: lighten(#C4122f, 10%),
-    dark : darken(#C4122f, 10%)
+    dark : darken(#C4122f, 10%),
   ),
   yellow: (
     base : #F1C40F,
     light: lighten(#F1C40F, 10%),
-    dark : darken(#F1C40F, 10%)
+    dark : darken(#F1C40F, 10%),
   ),
   copy: (
     body  : #5f5659,
     link  : #C4122F,
     hover : darken(#C4122F, 10%),
-    active: darken(#C4122F, 20%)
+    active: darken(#C4122F, 20%),
   ),
   alerts: (
     error: #f94139,
     status: #3a87ad,
     success: #33c25c,
-    warning: #c09853
-  )
+    warning: #c09853,
+  ),
 );
 
 // Social

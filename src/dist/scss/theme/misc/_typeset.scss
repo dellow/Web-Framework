@@ -7,11 +7,8 @@ html {
 }
 
 body {
-  font-size: $font_size_base;
+  font-size: calc(0.2vw + #{$font_size_base});
   line-height: $line_height_base;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: "liga" on;
   font-family: $font_face_base;
   word-wrap: break-word;
   color: color(copy, body);
@@ -26,31 +23,24 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: bold;
   letter-spacing: -0.035em;
 }
+
 h1, .h1 {
-  font-size: $font_h1;
+  font-size: calc(2.07vw + #{$font_h1});
 }
 h2, .h2 {
-  font-size: $font_h2;
+  font-size: calc(2.07vw + #{$font_h2});
 }
 h3, .h3 {
-  font-size: $font_h3;
+  font-size: calc(2.07vw + #{$font_h3});
 }
 h4, .h4 {
-  font-size: $font_h4;
+  font-size: calc(2.07vw + #{$font_h4});
 }
 h5, .h5 {
-  font-size: $font_h5;
+  font-size: calc(2.07vw + #{$font_h5});
 }
 h6, .h6 {
-  font-size: $font_h6;
-}
-
-
-// ----------------------------------------------------------------------- //
-
-
-p, li, dd {
-  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  font-size: calc(2.07vw + #{$font_h6});
 }
 
 
@@ -106,50 +96,48 @@ kbd {
 
 
 .layout-content {
-  article {
-    a, button {
-      color: color(copy, link);
-      &:hover {
-        color: color(copy, hover);
-      }
-      &:active {
-        color: color(copy, active);
-      }
+  h1, .h1 {
+    @include nudge(margin, $font_h1_mg);
+    line-height: $font_h1_lh;
+  }
+  h2, .h2 {
+    @include nudge(margin, $font_h2_mg);
+    line-height: $font_h2_lh;
+  }
+  h3, .h3 {
+    @include nudge(margin, $font_h3_mg);
+    line-height: $font_h3_lh;
+  }
+  h4, .h4 {
+    @include nudge(margin, $font_h4_mg);
+    line-height: $font_h4_lh;
+  }
+  h5, .h5 {
+    @include nudge(margin, $font_h5_mg);
+    line-height: $font_h5_lh;
+  }
+  h6, .h6 {
+    @include nudge(margin, $font_h6_mg);
+    line-height: $font_h6_lh;
+  }
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    &:first-child {
+      margin-top: 0;
     }
-    blockquote, dl, ol, p, pre, ul, figure, table, .obj-embed-container {
-      @include nudge(margin-bottom, $contentmargin);
-      &:last-child {
-        margin-bottom: 0;
-      }
+  }
+  blockquote, dl, ol, p, pre, ul, figure, table, .obj-embed-container {
+    @include nudge(margin-bottom, $contentmargin);
+    &:last-child {
+      margin-bottom: 0;
     }
-    h1, .h1 {
-      @include nudge(margin, $font_h1_mg);
-      line-height: $font_h1_lh;
+  }
+  a, button {
+    color: color(copy, link);
+    &:hover {
+      color: color(copy, hover);
     }
-    h2, .h2 {
-      @include nudge(margin, $font_h2_mg);
-      line-height: $font_h2_lh;
-    }
-    h3, .h3 {
-      @include nudge(margin, $font_h3_mg);
-      line-height: $font_h3_lh;
-    }
-    h4, .h4 {
-      @include nudge(margin, $font_h4_mg);
-      line-height: $font_h4_lh;
-    }
-    h5, .h5 {
-      @include nudge(margin, $font_h5_mg);
-      line-height: $font_h5_lh;
-    }
-    h6, .h6 {
-      @include nudge(margin, $font_h6_mg);
-      line-height: $font_h6_lh;
-    }
-    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-      &:first-child {
-        margin-top: 0;
-      }
+    &:active {
+      color: color(copy, active);
     }
   }
   figure {

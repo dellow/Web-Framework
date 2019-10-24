@@ -142,10 +142,6 @@ module.exports = (env, argv) => {
       }),
       new VueLoaderPlugin(),
       new WebpackCleanPlugin([
-        buildDirectoryPath + '/css/fonts.js',
-        buildDirectoryPath + '/css/fonts.min.js',
-        buildDirectoryPath + '/css/base.js',
-        buildDirectoryPath + '/css/base.min.js',
         buildDirectoryPath + '/css/theme.js',
         buildDirectoryPath + '/css/theme.min.js',
         buildDirectoryPath + '/css/utility.js',
