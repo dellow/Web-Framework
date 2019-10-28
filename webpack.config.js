@@ -16,48 +16,65 @@ const buildPublicPath = '/build/'
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 const WebpackCleanPlugin = require('webpack-clean')
 
-module.exports = (env, argv) => {  
+module.exports = (env, argv) => {
   return {
     entry: {
       'js/site': path.resolve(__dirname, distDirectoryPath + 'js/entry.js'),
       'js/common': path.resolve(__dirname, distDirectoryPath + 'js/common/entry.js'),
-      'css/fonts': path.resolve(__dirname, distDirectoryPath + 'scss/entry-fonts.scss'),
-      'css/theme': path.resolve(__dirname, distDirectoryPath + 'scss/entry-theme.scss'),
-      'css/base': path.resolve(__dirname, distDirectoryPath + 'scss/entry-base.scss'),
-      'css/utility': path.resolve(__dirname, distDirectoryPath + 'scss/entry-utility.scss')
+      'css/theme': path.resolve(__dirname, distDirectoryPath + 'scss/theme/entry.scss'),
+      'css/utility': path.resolve(__dirname, distDirectoryPath + 'scss/framework/utility/entry.scss'),
     },
     output: {
       path: path.resolve(__dirname, buildDirectoryPath),
-      filename: '[name].js'
+      filename: (argv.mode === 'production') ? '[name].min.js' : '[name].js',
     },
     resolve: {
       modules: ['node_modules'],
       extensions: ['.js'],
       alias: {
-      }
+      },
+    },
+    stats: {
+      colors: true,
+      hash: false,
+      version: false,
+      timings: false,
+      assets: false,
+      chunks: false,
+      modules: false,
+      reasons: false,
+      children: false,
+      source: false,
+      errors: true,
+      errorDetails: false,
+      warnings: false,
+      publicPath: false,
     },
     module: {
       rules: [
         {
           test: /\.m?js$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /(node_modules)/,
           use: {
-            loader: 'babel-loader',
+            loader: 'babel-loader?cacheDirectory',
             options: {
-              presets: ['@babel/preset-env']
-            }
-          }
+              presets: ['@babel/preset-env'],
+            },
+          },
         },
         {
           test: /\.vue$/,
-          loader: 'vue-loader'
+          exclude: /node_modules/,
+          loader: 'vue-loader',
         },
         {
           test: /\.vue-scss/,
+          exclude: /node_modules/,
           use: [
             'vue-style-loader',
             'css-loader',
@@ -66,15 +83,16 @@ module.exports = (env, argv) => {
               options: {
                 ident: 'postcss',
                 plugins: (loader) => [
-                  require('autoprefixer')()
-                ]
-              }
+                  require('autoprefixer')(),
+                ],
+              },
             },
-            'sass-loader'
-          ]
+            'sass-loader',
+          ],
         },
         {
           test: /\.scss$/,
+          exclude: /node_modules/,
           use: [
             'vue-style-loader',
             MiniCssExtractPlugin.loader,
@@ -84,51 +102,55 @@ module.exports = (env, argv) => {
               options: {
                 ident: 'postcss',
                 plugins: (loader) => [
-                  require('autoprefixer')()
-                ]
-              }
+                  require('autoprefixer')(),
+                ],
+              },
             },
             'sass-loader'
-          ]
+          ],
         },
         {
           test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+          exclude: /node_modules/,
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]?[hash]', // Name of the file.
             publicPath: buildPublicPath, // Path in the CSS file.
-            context: distDirectoryPath // Context removal.
-          }
-        }
-      ]
+            context: distDirectoryPath, // Context removal.
+          },
+        },
+      ],
     },
     optimization: {
       minimizer: [
+        new MinifyPlugin(),
         new OptimizeCssAssetsPlugin({
           cssProcessor: require('cssnano'),
           cssProcessorPluginOptions: {
-            preset: ['default', { 
-              discardComments: { 
-                removeAll: true 
-              } 
-            }]
-          }
-        })
-      ]
+            preset: ['default', {
+              discardComments: {
+                removeAll: true ,
+              },
+            }],
+          },
+        }),
+      ],
     },
     plugins: [
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin({
+        filename: (argv.mode === 'production') ? '[name].min.css' : '[name].css',
+      }),
       new VueLoaderPlugin(),
       new WebpackCleanPlugin([
-        buildDirectoryPath + '/css/fonts.js',
-        buildDirectoryPath + '/css/base.js',
         buildDirectoryPath + '/css/theme.js',
-        buildDirectoryPath + '/css/utility.js'
+        buildDirectoryPath + '/css/theme.min.js',
+        buildDirectoryPath + '/css/utility.js',
+        buildDirectoryPath + '/css/utility.min.js',
       ]),
       new WebpackBuildNotifierPlugin({
         title: 'Web Framework',
-        suppressSuccess: false
-      })
-    ]
+        suppressSuccess: false,
+      }),
+    ],
   }
 }

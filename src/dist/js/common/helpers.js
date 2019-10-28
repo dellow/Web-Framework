@@ -7,7 +7,7 @@
  *
 **/
 
-;(function(Helpers, window) 
+;(function(Helpers, window)
 {
 
   /**
@@ -16,10 +16,10 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.log = function(message, type, alertlog) 
+  Helpers.log = function(message, type, alertlog)
   {
     // Guard :: Check environment.
-    if ((window.config && window.config.env === 'production')) {
+    if (process.env.NODE_ENV === 'production') {
       return
     }
 
@@ -47,7 +47,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.mhe = function(el) 
+  Helpers.mhe = function(el)
   {
     // Clone element.
     let clone = el.clone()
@@ -65,7 +65,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.isEmpty = function(value) 
+  Helpers.isEmpty = function(value)
   {
     return (value === undefined || value === null || value === '' || value.length === 0)
   }
@@ -85,7 +85,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.debounce = function(func, wait, immediate) 
+  Helpers.debounce = function(func, wait, immediate)
   {
     let timeout
 
@@ -112,7 +112,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.parseURLParams = function(url) 
+  Helpers.parseURLParams = function(url)
   {
     // Check if URL contains a ?.
     if (url && url.indexOf('?') !== -1) {
@@ -135,7 +135,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.parseParamObject = function(obj) 
+  Helpers.parseParamObject = function(obj)
   {
     let str = ''
     for (let key in obj) {
@@ -158,7 +158,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateUrlParameter = function(uri, param, value) 
+  Helpers.updateUrlParameter = function(uri, param, value)
   {
     var re = new RegExp("[\\?&]" + param + "=([^&#]*)", "i")
     var matchString = re.exec(uri)
@@ -183,25 +183,35 @@
   }
 
   /**
-   * Updates a URL parameter.
+   * Updates a URL parameter with or without history.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateUrlHistoryParameter = function(key, value) 
+  Helpers.changeUrlParameterState = function(uri, key, value, history)
   {
-    window.history.pushState(null, null, this.updateUrlParameter(window.location.href, key, encodeURIComponent(value)))
+    let update = this.updateUrlParameter(uri, key, encodeURIComponent(value))
+
+    if (history) {
+      window.history.pushState(null, null, update)
+    } else {
+      window.history.replaceState(null, null, update)
+    }
   }
 
   /**
-   * Updates a URL path.
+   * Updates a URL path with or without history.
    *
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateUrlPath = function(value) 
+  Helpers.changeUrlPathState = function(value, history)
   {
-    window.history.pushState(null, null, value)
+    if (history) {
+      window.history.pushState(null, null, value)
+    } else {
+      window.history.replaceState(null, null, value)
+    }
   }
 
   /**
@@ -210,7 +220,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.splitArrayIntoChunks = function(arr, n) 
+  Helpers.splitArrayIntoChunks = function(arr, n)
   {
     if (!arr.length) {
       return []
@@ -247,7 +257,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.cssSafeName = function(string) 
+  Helpers.cssSafeName = function(string)
   {
     return string.replace(/[^a-z0-9]/g, function(s) {
       var c = s.charCodeAt(0)
@@ -263,10 +273,10 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.decodeEntities = function(val) 
+  Helpers.decodeEntities = function(val)
   {
     const he = require('he')
-    
+
     if (val) {
       return he.decode(val)
     }
@@ -280,7 +290,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.isInt = function(n) 
+  Helpers.isInt = function(n)
   {
     return n === +n && n === (n|0)
   }
@@ -291,7 +301,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.guid = function() 
+  Helpers.guid = function()
   {
     return Math.random().toString(36).substr(2, 9)
   }
@@ -302,7 +312,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.error = function(error, logIt) 
+  Helpers.error = function(error, logIt)
   {
     let errorMsg = null
 
@@ -340,7 +350,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.randomString = function() 
+  Helpers.randomString = function()
   {
     var text = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -358,14 +368,14 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.isAlphanumeric = function(e) 
+  Helpers.isAlphanumeric = function(e)
   {
     // Regex to allow letters, numbers and spaces.
     let regex = new RegExp(/^[a-z\d\-_\s]+$/i)
     // Check character code.
     let str = String.fromCharCode(!e.charCode ? e.which : e.charCode)
 
-    return (e.keyCode === 8 || e.target.value === '' || regex.test(str))
+    return ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode === 8 || e.target.value === '' || regex.test(str))
   }
 
   /**
@@ -374,7 +384,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.alert = function(title, body, closeCallback) 
+  Helpers.alert = function(title, body, closeCallback)
   {
     // Check body is string.
     if (typeof body !== 'string') {
@@ -385,8 +395,10 @@
     // Check for an existing alert and destroy.
     if ($('.obj-modal').length && $('.obj-modal').hasClass('active')) $('.obj-modal').remove()
 
+    // Create an ID.
+    const ID = this.guid()
     // Define modal
-    const tpl = `<div class="obj-modal">
+    const tpl = `<div id="modal-` + ID + `" class="obj-modal">
       <div class="obj-modal__window">
         <div class="obj-modal__window__header">
           <div class="obj-modal__window__header__title">` + title + `</div>
@@ -404,12 +416,12 @@
     // Add to body.
     $('body').append(tpl)
     // Set maxium height.
-    $('.obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
+    $('#modal-' + ID + ' .obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
     // Wait and show modal.
-    $('.obj-modal').addClass('active')
+    $('#modal-' + ID).addClass('active')
     // Click listener.
     $('[data-alert-close]').on('click', () => {
-      $('.obj-modal').remove()
+      $('#modal-' + ID).remove()
       if (closeCallback) closeCallback()
     })
   }
@@ -420,15 +432,17 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.confirm = function(title, body, confirmCallback, refuteCallback) 
+  Helpers.confirm = function(title, body, confirmCallback, refuteCallback)
   {
     // Check for existing modals and close.
     if ($('.obj-modal').length) { $('.obj-modal').removeClass('active') }
     // Check for an existing alert and destroy.
     if ($('.obj-modal').length && $('.obj-modal').hasClass('active')) $('.obj-modal').remove()
 
+    // Create an ID.
+    const ID = this.guid()
     // Define modal
-    const tpl = `<div class="obj-modal">
+    const tpl = `<div id="modal-` + ID + `" class="obj-modal">
       <div class="obj-modal__window">
         <div class="obj-modal__window__header">
           <div class="obj-modal__window__header__title">` + title + `</div>
@@ -447,16 +461,16 @@
     // Add to body.
     $('body').append(tpl)
     // Set maxium height.
-    $('.obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
+    $('#modal-' + ID + ' .obj-modal__window').css({'maxHeight': ($(window).height() - docHeight)})
     // Wait and show modal.
-    $('.obj-modal').addClass('active')
+    $('#modal-' + ID).addClass('active')
     // Click listener.
     $('[data-confirm]').on('click', () => {
-      $('.obj-modal').remove()
+      $('#modal-' + ID).remove()
       if (confirmCallback) confirmCallback()
     })
     $('[data-refute]').on('click', () => {
-      $('.obj-modal').remove()
+      $('#modal-' + ID).remove()
       if (refuteCallback) refuteCallback()
     })
   }
@@ -467,7 +481,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.isUserLocated = function(retrieve) 
+  Helpers.isUserLocated = function(retrieve)
   {
     // Check location is set in localStorage.
     let check = (!this.isEmpty(window.localStorage['geolocation_lat']) && !this.isEmpty(window.localStorage['geolocation_lng']))
@@ -485,7 +499,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.calculatePercentageChange = function(oldNumber, newNumber) 
+  Helpers.calculatePercentageChange = function(oldNumber, newNumber)
   {
     var decreaseValue = oldNumber - newNumber
 
@@ -498,7 +512,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.isValidURL = function(str) 
+  Helpers.isValidURL = function(str)
   {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
@@ -516,7 +530,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.humanFileSize = function(bytes, si) 
+  Helpers.humanFileSize = function(bytes, si)
   {
     var thresh = si ? 1000 : 1024
     if(Math.abs(bytes) < thresh) {
@@ -562,7 +576,7 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.getDistance = function(p1, p2) 
+  Helpers.getDistance = function(p1, p2)
   {
     // Rad function.
     var rad = function(x) { return x * Math.PI / 180 }

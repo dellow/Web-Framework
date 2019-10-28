@@ -1,0 +1,26 @@
+
+
+.container {
+  width: 100%;
+  max-width: calc(#{map-get($containers, 'default')} + (#{$mn} * 2));
+  @include nudge(padding, 0 1);
+  margin: 0 auto;
+  position: relative;
+  @include respond-to(0px, screen('md')){
+    @include nudge(padding, 0 0.5);
+  }
+  // Responsive screens.
+  @each $key, $value in $containers {
+    &--#{$key} {
+      max-width: calc(#{$value} + (#{$mn} * 2));
+    }
+  }
+  &--mobile-full {
+    @include respond-to(0px, screen('md')){
+      @include nudge(padding, 0);
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //

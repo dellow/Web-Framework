@@ -1,15 +1,15 @@
 {
   "name": "web-framework",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "description": "A rapid frontend ['framework', 'wrapper', 'workflow'] for web applications. Builds JS and CSS with Webpack.",
   "license": "MIT",
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.29",
-    "autoprefixer": "^9.4.7",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "autoprefixer": "^7.2.6",
+    "autoprefixer": "^9.4.7",
     "babel-core": "^6.26.3",
+    "babel-minify-webpack-plugin": "^0.3.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "css-loader": "^0.28.11",
@@ -52,8 +52,9 @@
     "vue": "^2.5.17"
   },
   "scripts": {
-    "build": "webpack --mode development",
-    "minify": "webpack --mode production",
+    "build:all": "webpack --mode production && webpack --mode development",
+    "build:development": "webpack --mode development",
+    "build:production": "webpack --mode production",
     "test": "jest --verbose",
     "watch": "webpack --watch --mode development"
   },

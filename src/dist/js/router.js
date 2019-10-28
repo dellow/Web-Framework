@@ -19,9 +19,9 @@ GlobalAppRoute.listeners()
 
 // Define routes.
 Router.on({
-  ...require('./app/routes'), 
-  // ...require('./shopify/routes'), 
-  // ...require('./surepress/routes')
+  ...require('./app/routes'),
+  // ...require('./shopify/routes'),
+  // ...require('./surepress/routes'),
 })
 
 // Resolve routes.
