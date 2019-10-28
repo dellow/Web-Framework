@@ -6,7 +6,7 @@ table {
     width: 100%;
     border: 1px solid color(grey);
     border-top: 0;
-    border-radius: $def_border_radius;
+    border-radius: $border_radius;
     border-collapse: separate;
     border-spacing: 0;
     th {
@@ -26,10 +26,10 @@ table {
     tbody {
       tr {
         &:nth-child(even) {
-          background: $def_color_even;
+          background: $color_even;
         }
         &:nth-child(odd) {
-          background: $def_color_odd;
+          background: $color_odd;
         }
       }
     }
@@ -39,10 +39,10 @@ table {
       tr {
         th, td {
           &:nth-child(even) {
-            background: $def_color_even;
+            background: $color_even;
           }
           &:nth-child(odd) {
-            background: $def_color_odd;
+            background: $color_odd;
           }
         }
       }

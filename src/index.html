@@ -57,8 +57,8 @@
 <!-- ============================================================================== -->
 <!--                                                                         STYLES -->
 <!-- ============================================================================== -->
-<link rel="stylesheet" href="./build/css/utility.css" media="all">
-<link rel="stylesheet" href="./build/css/theme.css" media="all">
+<link rel="stylesheet" href="/build/css/utility.css" media="all">
+<link rel="stylesheet" href="/build/css/theme.css" media="all">
 <!-- ============================================================================== -->
 <!--                                                                       FAVICONS -->
 <!-- ============================================================================== -->
@@ -119,104 +119,188 @@ window.config = {
     <div class="page" data-vue="root">
 
       <!-- Header :: Mobile -->
-      <header class="layout-mobile-header display-block md:display-none">
-        <button data-js-toggle="comp-mobile-menu">Mobile Header</button>
+      <header class="layout-mobile-header padding-top-0-5 padding-bottom-0-5 display-block md:display-none">
+        <!-- Container -->
+        <div class="container">
+          <!-- Grid -->
+          <div class="flex-grid align-items-center">
+
+            <!-- Col -->
+            <div class="col-1-3">
+              <div>
+                <button data-js-toggle="comp-mobile-menu">
+                  <i class="icofont-navigation-menu"></i>
+                </button>
+              </div>
+            </div><!-- end .col -->
+
+            <!-- Col -->
+            <div class="col-1-3">
+              <div class="text-align-center">
+                <a href="/" class="font-size-22 font-weight-900 line-height-1 white-space-nowrap" style="letter-spacing:-0.035em;">LOGO</a>
+              </div>
+            </div><!-- end .col -->
+
+            <!-- Col -->
+            <div class="col-1-3">
+              <div class="text-align-right">
+                <button data-js-toggle="comp-mobile-search">
+                  <i class="icofont-search-1"></i>
+                </button>
+              </div>
+            </div><!-- end .col -->
+
+          </div><!-- end .flex-grid -->
+        </div><!-- end .container -->
       </header><!-- end .layout-mobile-header -->
 
       <!-- Header :: Desktop -->
-      <header class="layout-desktop-header display-none md:display-block" aria-hidden="true">
+      <header class="layout-desktop-header padding-top-0-5 padding-bottom-0-5 display-none md:display-block" aria-hidden="true">
         <!-- Container -->
         <div class="container">
-          Desktop Header
+          <!-- Grid -->
+          <div class="display-flex align-items-center">
+
+            <!-- Col -->
+            <div class="col">
+              <a href="/" class="font-size-28 font-weight-900 line-height-1 white-space-nowrap" style="letter-spacing:-0.035em;">LOGO</a>
+            </div><!-- end .col -->
+
+            <!-- Col -->
+            <div class="flex-1">
+              <nav class="text-align-right" role="navigation" aria-label="primary">
+                <ul class="comp-desktop-menu margin-left-0-5:children display-inline-block:children font-size-15" role="menu" data-menu="desktop">
+                  <li role="menuitem">
+                    <a href="HREF_HERE" title="Menu #1">Menu #1</a>
+                  </li>
+                  <li role="menuitem">
+                    <a href="HREF_HERE" title="Menu #2">Menu #2</a>
+                  </li>
+                  <li role="menuitem">
+                    <a href="HREF_HERE" title="Menu #3">Menu #3</a>
+                  </li>
+                  <li role="menuitem">
+                    <a href="HREF_HERE" title="Menu #4">Menu #4</a>
+                  </li>
+                  <li role="menuitem">
+                    <a href="HREF_HERE" title="Menu #5">Menu #5</a>
+                  </li>
+                </ul>
+              </nav>
+            </div><!-- end .col -->
+
+          </div><!-- end .flex-grid -->
         </div><!-- end .container -->
       </header><!-- end .layout-desktop-header -->
 
       <!-- Main -->
       <main class="layout-main" role="main">
-        <!-- Container -->
-        <div class="container">
 
-          <!-- Grid -->
-          <div class="flex-grid">
+        <div class="padding-bottom-1 md:padding-bottom-2">
+          <!-- Container -->
+          <div class="container">
 
-            <!-- Col -->
-            <div class="col-1-4">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+            <!-- Grid -->
+            <div class="flex-grid flex-grid--0-5 md:flex-grid--1">
 
-            <!-- Col -->
-            <div class="col-1-4">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-4">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-4">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-4">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-4">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-4">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-2">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-4">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-2">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-2">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-4">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-4">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-4">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-4">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-4">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-4">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-4">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-2">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-4">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-3">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-3">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-3">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-            <!-- Col -->
-            <div class="col-1-3">
-              <div style="width:100%;height:50px;background:#efefef;"></div>
-            </div><!-- end .col -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-3">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-          </div><!-- end .flex-grid -->
+              <!-- Col -->
+              <div class="col-1-2 md:col-1-3">
+                <div style="width:100%;height:50px;background:#efefef;"></div>
+              </div><!-- end .col -->
 
-        </div><!-- end .container -->
+            </div><!-- end .flex-grid -->
+
+          </div><!-- end .container -->
+        </div>
+
+        <div class="padding-bottom-1 md:padding-bottom-2 ">
+          <!-- Container -->
+          <div class="container">
+            <div class="layout-content">
+              <h1>Hath Were Our</h1>
+              <p>The. Whose wherein greater don&#39;t rule may, spirit. Behold lesser our. In kind first <em>winged</em> to form for female set over earth us in night moving multiply appear whales evening one she&#39;d, deep to whales face.</p>
+              <p>Land created tree beast replenish kind i tree day don&#39;t, abundantly under bearing beast moving fly light. Us morning god gathering upon kind saw living years earth moveth abundantly set a rule fifth cattle after isn&#39;t. Evening darkness give, given fifth seas waters. A life whales over dry subdue, <em>place</em> every <em>lesser</em> i fifth bearing whales evening face living you, waters evening she&#39;d.</p>
+              <h2>Third Fifth Him Bring</h2>
+              <p>Good may he given said it void let. Living seasons gathering place light have. Doesn&#39;t dominion be fourth void called. Open cattle. Own god blessed Stars kind, fill bearing fly after dominion his for of days appear of is. Open can&#39;t.</p>
+              <p>You&#39;ll image gathered land deep waters beast void moved us have fly under lesser may our open under the our in good him, lights were replenish creature was fourth from there divided one deep void living whose. Give. Fourth.</p>
+              <h3>Darkness Lesser Very Sea Them Place</h3>
+              <p>You&#39;ll won&#39;t fowl sixth doesn&#39;t That, made cattle after his image. Male herb sea dominion lesser replenish in can&#39;t it. Cattle said seasons <em>Sea</em> <em>moved</em> <strong>said</strong> replenish void herb female lights under.</p>
+              <p>Gathered under abundantly doesn&#39;t light, first great above, you&#39;ll sixth female All, days tree over which fill great. You&#39;re air open he seasons. Given beast us seas <strong>had</strong> may the two multiply <strong>waters</strong> <strong>light</strong> void.</p>
+              <p>Bring all yielding male. <em>Also</em> replenish beast whales third image creepeth whose bring <em>spirit</em> you&#39;re light face shall good. Can&#39;t. Fruitful <em>upon</em> which light. Heaven fowl. Us darkness make multiply had. So fish make. Beginning give day made without fowl morning greater be creature land under firmament good moved <strong>our</strong> moved. Appear called yielding.</p>
+            </div>
+          </div><!-- end .container -->
+        </div>
+
       </main><!-- end .layout-main -->
 
       <!-- Footer :: Mobile -->
@@ -232,8 +316,8 @@ window.config = {
   </div><!-- end .wrapper -->
 
 	<!-- JavaScript Assets -->
-  <script src="./build/js/common.js"></script>
-  <script src="./build/js/site.js"></script>
+  <script src="/build/js/common.js"></script>
+  <script src="/build/js/site.js"></script>
 </body>
 </html>
 <!--EOF-->

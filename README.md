@@ -1,7 +1,5 @@
 # Web Framework Readme
 
-[![Build Status](https://travis-ci.org/sdellow/web-framework.svg?branch=master)](https://travis-ci.org/sdellow/web-framework)
-[![Coverage Status](https://coveralls.io/repos/github/sdellow/web-framework/badge.svg?branch=master)](https://coveralls.io/github/sdellow/web-framework?branch=master)
 [![Dependency Status](https://david-dm.org/sdellow/web-framework.svg)](https://david-dm.org/sdellow/web-framework)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
@@ -13,16 +11,13 @@
 
 <a name="about"></a>
 ## About
-This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises Webpack as a build tool. It's also set up to work with Travis CI which will run any defined spec tests by default.
-
-[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+This is a fast Framework and/or Project Wrapper and workflow for web projects that utilises Webpack as a build tool.
 
 <a name="requirements"></a>
 ## Requirements
-The only system requirement is Node & NPM. Additionally if you want to run integration tests using Nightwatch you will need to install Selenium Standalone globally: `npm install selenium-standalone@latest -g`. All other dependencies of this Framework will be downloaded and installed when the install process is run.
+The only system requirement is Node & NPM.
 
 - [NodeJS](http://nodejs.org/)
-- [Selenium Standalone](https://www.npmjs.com/package/selenium-standalone)
 
 > __Please note:__ This should be installed before using this Framework.
 

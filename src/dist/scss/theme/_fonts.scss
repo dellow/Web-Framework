@@ -24,21 +24,6 @@
        url(../../fonts/icofont/icofont.eot?#iefix) format('embedded-opentype');
 }
 
-.icofont { // This is just so we can @extend into pseudo classes like on the .select
-	font-family: 'IcoFont' !important;
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	white-space: nowrap;
-	word-wrap: normal;
-	direction: ltr;
-	line-height: 1;
-	-webkit-font-feature-settings: "liga";
-	-webkit-font-smoothing: antialiased;
-}
-
 
 // ----------------------------------------------------------------------- //
 
@@ -221,90 +206,6 @@
        url(../../fonts/inter/Inter-BlackItalic.woff2) format('woff2'),
        url(../../fonts/inter/Inter-BlackItalic.woff) format('woff'),
        url(../../fonts/inter/Inter-BlackItalic.ttf) format('truetype');
-}
-
-
-// ----------------------------------------------------------------------- //
-
-
-@font-face {
-  font-family: 'Circular Std';
-  font-weight: 400;
-  font-style: normal;
-  src: url(../../fonts/circular/CircularStd-Book.woff) format('woff'),
-       url(../../fonts/circular/CircularStd-Book.ttf) format('truetype'),
-       url(../../fonts/circular/CircularStd-Book.eot),
-       url(../../fonts/circular/CircularStd-Book.eot?#iefix) format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Circular Std';
-  font-weight: 400;
-  font-style: italic;
-  src: url(../../fonts/circular/CircularStd-BookItalic.woff) format('woff'),
-       url(../../fonts/circular/CircularStd-BookItalic.ttf) format('truetype'),
-       url(../../fonts/circular/CircularStd-BookItalic.eot),
-       url(../../fonts/circular/CircularStd-BookItalic.eot?#iefix) format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Circular Std';
-  font-weight: 600;
-  font-style: normal;
-  src: url(../../fonts/circular/CircularStd-Medium.woff) format('woff'),
-       url(../../fonts/circular/CircularStd-Medium.ttf) format('truetype'),
-       url(../../fonts/circular/CircularStd-Medium.eot),
-       url(../../fonts/circular/CircularStd-Medium.eot?#iefix) format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Circular Std';
-  font-weight: 600;
-  font-style: italic;
-  src: url(../../fonts/circular/CircularStd-MediumItalic.woff) format('woff'),
-       url(../../fonts/circular/CircularStd-MediumItalic.ttf) format('truetype'),
-       url(../../fonts/circular/CircularStd-MediumItalic.eot),
-       url(../../fonts/circular/CircularStd-MediumItalic.eot?#iefix) format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Circular Std';
-  font-weight: 700;
-  font-style: normal;
-  src: url(../../fonts/circular/CircularStd-Bold.woff) format('woff'),
-       url(../../fonts/circular/CircularStd-Bold.ttf) format('truetype'),
-       url(../../fonts/circular/CircularStd-Bold.eot),
-       url(../../fonts/circular/CircularStd-Bold.eot?#iefix) format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Circular Std';
-  font-weight: 700;
-  font-style: italic;
-  src: url(../../fonts/circular/CircularStd-BoldItalic.woff) format('woff'),
-       url(../../fonts/circular/CircularStd-BoldItalic.ttf) format('truetype'),
-       url(../../fonts/circular/CircularStd-BoldItalic.eot),
-       url(../../fonts/circular/CircularStd-BoldItalic.eot?#iefix) format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Circular Std';
-  font-weight: 900;
-  font-style: normal;
-  src: url(../../fonts/circular/CircularStd-Black.woff) format('woff'),
-       url(../../fonts/circular/CircularStd-Black.ttf) format('truetype'),
-       url(../../fonts/circular/CircularStd-Black.eot),
-       url(../../fonts/circular/CircularStd-Black.eot?#iefix) format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Circular Std';
-  font-weight: 900;
-  font-style: italic;
-  src: url(../../fonts/circular/CircularStd-BlackItalic.woff) format('woff'),
-       url(../../fonts/circular/CircularStd-BlackItalic.ttf) format('truetype'),
-       url(../../fonts/circular/CircularStd-BlackItalic.eot),
-       url(../../fonts/circular/CircularStd-BlackItalic.eot?#iefix) format('embedded-opentype');
 }
 
 

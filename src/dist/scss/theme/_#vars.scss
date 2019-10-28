@@ -3,14 +3,14 @@
 // ---
 // Defaults
 // ---
-$mn                : 24px;
-$gutter            : 0.5;
-$animation         : 250ms;
-$contentmargin     : 1;
-$def_border_radius : 2px;
-$def_color_odd     : #EDEDED;
-$def_color_even    : #F4F4F4;
-$def_border_color  : #d6d6d6;
+$mn: 24px;
+$gutter: 0.5;
+$animation: 250ms;
+$content_margin: 1;
+$border_radius: 2px;
+$color_odd: #EDEDED;
+$color_even: #F4F4F4;
+$border_color: #d6d6d6;
 
 
 // ----------------------------------------------------------------------- //
@@ -19,9 +19,7 @@ $def_border_color  : #d6d6d6;
 // ---
 // Widths & Heights.
 // ---
-$side_panel_width: 300px;
-$forms_field_height: 40px;
-$forms_border_radius: 0px;
+$field_height: 40px;
 
 
 // ----------------------------------------------------------------------- //
@@ -63,33 +61,33 @@ $containers: (
 // Typeset
 // ---
 // General.
-$font_size_base  : 16px;
+$font_size_base: 16px;
 $line_height_base: 1.62;
 
 // Headings.
-$font_h1    : 42px;
-$font_h1_lh : 1.225;
-$font_h1_mg : 1 0 1;
+$font_h1: 32px;
+$font_h1_lh: 1.175;
+$font_h1_mg: $content_margin 0 ($content_margin / 2);
 // --
-$font_h2    : 34px;
-$font_h2_lh : 1.225;
-$font_h2_mg : 1 0 1;
+$font_h2: 24px;
+$font_h2_lh: 1.175;
+$font_h2_mg: $content_margin 0 ($content_margin / 2);
 // --
-$font_h3    : 28px;
-$font_h3_lh : 1.225;
-$font_h3_mg : 1 0 1;
+$font_h3: 20px;
+$font_h3_lh: 1.175;
+$font_h3_mg: $content_margin 0 ($content_margin / 2);
 // --
-$font_h4    : 20px;
-$font_h4_lh : 1.37;
-$font_h4_mg : 1 0 1;
+$font_h4: 16px;
+$font_h4_lh: 1.175;
+$font_h4_mg: $content_margin 0 ($content_margin / 2);
 // --
-$font_h5    : 18px;
-$font_h5_lh : 1.37;
-$font_h5_mg : 1 0 1;
+$font_h5: 14px;
+$font_h5_lh: 1.175;
+$font_h5_mg: $content_margin 0 ($content_margin / 2);
 // --
-$font_h6    : 16px;
-$font_h6_lh : 1.225;
-$font_h6_mg : 1 0 1;
+$font_h6: 12px;
+$font_h6_lh: 1.175;
+$font_h6_mg: $content_margin 0 ($content_margin / 2);
 
 
 // ----------------------------------------------------------------------- //
@@ -98,13 +96,12 @@ $font_h6_mg : 1 0 1;
 // ---
 // Font Faces
 // ---
-$circular       : 'Circular Std';
-$inter          : 'Inter';
-$monospaced     : 'source-code-pro', monospace;
-$serif          : Georgia;
-$sans_serif     : $circular;
+$inter: 'Inter';
+$monospaced: 'source-code-pro', monospace;
+$serif: Georgia;
+$sans_serif: $inter;
 
-$font_face_base : $circular, 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
+$font_face_base: $inter, 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
 
 
 // ----------------------------------------------------------------------- //
@@ -117,7 +114,7 @@ $font_face_base : $circular, 'Helvetica Neue', 'Calibri Light', Roboto, sans-ser
 // Base
 $base_colors: (
   black: (
-    base: #000000,
+    base: #222222,
   ),
   white: (
     base: #FFFFFF,
@@ -153,10 +150,10 @@ $base_colors: (
     dark : darken(#F1C40F, 10%),
   ),
   copy: (
-    body  : #5f5659,
+    body  : #000000,
     link  : #C4122F,
-    hover : darken(#C4122F, 10%),
     active: darken(#C4122F, 20%),
+    hover : #3498DB,
   ),
   alerts: (
     error: #f94139,
@@ -182,16 +179,12 @@ $social_colors: (
     twitter   : #00aced,
     vimeo     : #aad450,
     vine      : #00bf8f,
-    youtube   : #ff0000
+    youtube   : #ff0000,
   )
 );
 
-// Site
-$site_colors: ();
-
 // Merge
-$framework_colors: map-merge($base_colors, $social_colors);
-$colors: map-merge($framework_colors, $site_colors);
+$colors: map-merge($base_colors, $social_colors);
 
 
 // ----------------------------------------------------------------------- //
@@ -200,15 +193,15 @@ $colors: map-merge($framework_colors, $site_colors);
 // ---
 // Z-Index Scale
 // ---
-$zindex-1 : 100;
-$zindex-2 : 200;
-$zindex-3 : 300;
-$zindex-4 : 400;
-$zindex-5 : 500;
-$zindex-6 : 600;
-$zindex-7 : 700;
-$zindex-8 : 800;
-$zindex-9 : 900;
+$zindex-1: 100;
+$zindex-2: 200;
+$zindex-3: 300;
+$zindex-4: 400;
+$zindex-5: 500;
+$zindex-6: 600;
+$zindex-7: 700;
+$zindex-8: 800;
+$zindex-9: 900;
 $zindex-10: 1000;
 
 
@@ -218,15 +211,15 @@ $zindex-10: 1000;
 // ---
 // Column Sizes
 // ---
-$col_1   : (100% / 1);
-$col_1-2 : (100% / 2);
-$col_1-3 : (100% / 3);
-$col_1-4 : (100% / 4);
-$col_1-5 : (100% / 5);
-$col_1-6 : (100% / 6);
-$col_1-7 : (100% / 7);
-$col_1-8 : (100% / 8);
-$col_1-9 : (100% / 9);
+$col_1: (100% / 1);
+$col_1-2: (100% / 2);
+$col_1-3: (100% / 3);
+$col_1-4: (100% / 4);
+$col_1-5: (100% / 5);
+$col_1-6: (100% / 6);
+$col_1-7: (100% / 7);
+$col_1-8: (100% / 8);
+$col_1-9: (100% / 9);
 $col_1-10: (100% / 10);
 $col_1-11: (100% / 11);
 $col_1-12: (100% / 12);
@@ -371,7 +364,7 @@ $col_array: (
   col-12-16: ($col_1-16 * 12),
   col-13-16: ($col_1-16 * 13),
   col-14-16: ($col_1-16 * 14),
-  col-15-16: ($col_1-16 * 15)
+  col-15-16: ($col_1-16 * 15),
 );
 
 

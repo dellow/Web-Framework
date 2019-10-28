@@ -10,7 +10,6 @@ body {
   font-size: calc(0.2vw + #{$font_size_base});
   line-height: $line_height_base;
   font-family: $font_face_base;
-  word-wrap: break-word;
   color: color(copy, body);
 }
 
@@ -25,22 +24,22 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 
 h1, .h1 {
-  font-size: calc(2.07vw + #{$font_h1});
+  font-size: calc(1.18vw + #{$font_h1});
 }
 h2, .h2 {
-  font-size: calc(2.07vw + #{$font_h2});
+  font-size: calc(1.18vw + #{$font_h2});
 }
 h3, .h3 {
-  font-size: calc(2.07vw + #{$font_h3});
+  font-size: calc(1.18vw + #{$font_h3});
 }
 h4, .h4 {
-  font-size: calc(2.07vw + #{$font_h4});
+  font-size: calc(1.18vw + #{$font_h4});
 }
 h5, .h5 {
-  font-size: calc(2.07vw + #{$font_h5});
+  font-size: calc(1.18vw + #{$font_h5});
 }
 h6, .h6 {
-  font-size: calc(2.07vw + #{$font_h6});
+  font-size: calc(1.18vw + #{$font_h6});
 }
 
 
@@ -126,7 +125,7 @@ kbd {
     }
   }
   blockquote, dl, ol, p, pre, ul, figure, table, .obj-embed-container {
-    @include nudge(margin-bottom, $contentmargin);
+    @include nudge(margin-bottom, $content_margin);
     &:last-child {
       margin-bottom: 0;
     }
@@ -153,7 +152,7 @@ kbd {
   ul, ol {
     margin-left: 1.2em;
     li {
-      @include nudge(margin-bottom, ($contentmargin / 100 * 2));
+      @include nudge(margin-bottom, ($content_margin / 100 * 2));
     }
     ul, ol {
       margin-left: 1.2em;
@@ -165,12 +164,12 @@ kbd {
   }
   dl {
     dd {
-      @include nudge(margin-bottom, ($contentmargin / 100 * 2));
+      @include nudge(margin-bottom, ($content_margin / 100 * 2));
       @include nudge(text-indent, 1);
     }
   }
   blockquote {
-    @include nudge(padding, 0 ($contentmargin * 3));
+    @include nudge(padding, 0 ($content_margin * 3));
     p {
       font-style: italic;
       font-family: $serif;

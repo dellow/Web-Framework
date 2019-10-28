@@ -1,5 +1,12 @@
 # Web Framework Changelog
 
+__5.0.0__:
+* Reduces the base framework to just mixins as it's rarely used properly.
+* Updates to a flexbox based layout.
+* Encourages a joint functional and component based workflow.
+* Adds responsive type.
+* Many fixes and improvements.
+
 __4.0.1__:
 * Added margin and padding utilities.
 

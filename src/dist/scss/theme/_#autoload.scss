@@ -1,7 +1,13 @@
 
 
+@import 'reset';
+
+@import 'vendor/slick';
+@import 'vendor/icofont';
+@import 'vendor/socicon';
+@import 'vendor/vue';
+
 @import
-	'reset',
 	'fonts',
 	'global',
 	'misc/print',
@@ -13,7 +19,6 @@
 	'elements/btn',
 	'elements/container',
 	'elements/form',
-	'elements/flyouts',
 	'elements/grid',
 	'elements/menus',
 	'elements/img',
@@ -23,9 +28,5 @@
 	'components/mobile-menu',
 	'layout/body',
 	'layout/header',
+	'layout/main',
 	'layout/footer';
-
-@import 'vendor/slick';
-@import 'vendor/icofont';
-@import 'vendor/socicon';
-@import 'vendor/vue';
