@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-cookie-bar" v-if="!accepted">
+  <div class="vue-cookie-bar" v-if="!accepted" v-cloak>
     <div class="margin-right-0-5">
       By continuing to use this website, you consent to <a :href="url" target="_blank">our cookie policy</a>.
     </div>
@@ -42,15 +42,15 @@
 
 	export default {
     props: {
-      url: String
+      url: String,
     },
-		data() 
+		data()
 		{
       return {
 				accepted: (acceptedStorage) ? true : false,
       }
 		},
-		mounted() 
+		mounted()
 		{
     },
 		computed: {
@@ -68,6 +68,6 @@
         // Update param.
         this.accepted = true
       }
-    }
+    },
 	}
 </script>
