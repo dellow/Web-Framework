@@ -23,7 +23,7 @@ const _this = module.exports = {
       // Set config.
       this.defaultHeaders = window.Axios.defaults.headers.common = {
         'baseURL': window.config.baseURL || '/',
-        'X-Requested-With': 'XMLHttpRequest'
+        'X-Requested-With': 'XMLHttpRequest',
       }
       // Logs the URL on every request.
       window.Axios.interceptors.request.use((config) => {
@@ -81,7 +81,7 @@ const _this = module.exports = {
         return '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="' + width + '" height="' + height + '" viewBox="0 0 100 100" enable-background="new 0 0 ' + width + ' ' + height + '" xml:space="preserve"><polyline class="check" fill="none" stroke="' + color + '" stroke-width="10" stroke-miterlimit="20" points="15,60 40,80 85,20" /></svg>'
       }
     },
-    button: function ($el, destroy, color, svg, width, height) 
+    button: function ($el, destroy, color, svg, width, height)
     {
       color = (color) ? color : '#FFFFFF'
       svg = (svg) ? svg : 'default'
@@ -105,8 +105,8 @@ const _this = module.exports = {
         $el.removeClass('js-preloading')
         // Reset styles.
         $el.css({
-          'width': '', 
-          'height': '', 
+          'width': '',
+          'height': '',
           'position': '',
           'box-sizing': ''
         })
@@ -117,7 +117,7 @@ const _this = module.exports = {
             let $btn = $(btn)
             // Guard :: Check element has 'js-preloading' class.
             if (!$btn.length || $btn.hasClass('js-preloading')) return
-  
+
             // Get button content.
             let content = JSON.stringify($btn.html())
             // Create a storage ID.
@@ -130,8 +130,8 @@ const _this = module.exports = {
             $btn.addClass('btn--disabled')
             // Add button styles.
             $btn.css({
-              'width': $btn.outerWidth(), 
-              'height': $btn.outerHeight(), 
+              'width': $btn.outerWidth(),
+              'height': $btn.outerHeight(),
               'position': 'relative',
               'box-sizing': 'border-box'
             })
