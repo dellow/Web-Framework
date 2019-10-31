@@ -1,7 +1,9 @@
 <template>
-  <div class="vue-cookie-bar" v-if="!accepted" v-cloak>
+  <div class="vue-cookie-bar" v-if="!accepted">
     <div class="margin-right-0-5">
-      By continuing to use this website, you consent to <a :href="url" target="_blank">our cookie policy</a>.
+      <slot>
+        By continuing to use this website, you consent to <a :href="url" target="_blank">our cookie policy</a>.
+      </slot>
     </div>
     <div>
       <button v-on:click.prevent="acceptCookieTerms"><i class="icofont-close line-height-1 font-size-20"></i></button>
@@ -42,12 +44,12 @@
 
 	export default {
     props: {
-      url: String,
+      url: String
     },
 		data()
 		{
       return {
-				accepted: (acceptedStorage) ? true : false,
+				accepted: (acceptedStorage),
       }
 		},
 		mounted()
