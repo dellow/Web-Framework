@@ -9,6 +9,9 @@ html {
 body {
   font-size: calc(0.2vw + #{$font_size_base});
   line-height: $line_height_base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
   font-family: $font_face_base;
   color: color(copy, body);
 }
