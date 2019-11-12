@@ -91,8 +91,7 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.scss$/,
-          exclude: /node_modules/,
+          test: /\.(sa|sc|c)ss$/,
           use: [
             'vue-style-loader',
             MiniCssExtractPlugin.loader,
