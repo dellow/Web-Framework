@@ -314,34 +314,36 @@
   **/
   Helpers.error = function(error, logIt)
   {
-    let errorMsg = null
+    let errorResponse = null
 
     if (error.response) {
       // The request was made and the server responded with a status code that falls out of the range of 2xx.
-      if (typeof error.response.data === 'string') {
-        errorMsg = error.response.data
+      if (typeof error.response === 'string') {
+        errorResponse = error.response
+      } else if (typeof error.response.data === 'string' || typeof error.response.data === 'object') {
+        errorResponse = error.response.data
       } else {
         return this.error(error.response.data, logIt)
       }
     } else if (error.request) {
       // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js.
-      errorMsg = error.request
+      errorResponse = error.request
     } else if (error.msg) {
       // The request has a msg property.
-      errorMsg = error.msg
+      errorResponse = error.msg
     } else if (error.message) {
       // The request has a message property.
-      errorMsg = error.message
+      errorResponse = error.message
     } else if (typeof error === 'string') {
       // Something happened in setting up the request that triggered an Error.
-      errorMsg = error
+      errorResponse = error
     }
 
     if (logIt) {
-      this.log(errorMsg, 'negative')
+      this.log(errorResponse, 'negative')
     }
 
-    return errorMsg
+    return errorResponse
   }
 
   /**
