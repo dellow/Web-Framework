@@ -84,7 +84,7 @@ const _this = module.exports = {
     button: function ($el, destroy, color, svg, width, height)
     {
       color = (color) ? color : '#FFFFFF'
-      svg = (svg) ? svg : 'default'
+      svg = (svg) ? svg : 'spinner'
       width = (width) ? width : 25
       height = (height) ? height : 25
 
