@@ -2,11 +2,11 @@
 
 
   // ----------------------------------------------------------------------- //
-  
-  
+
+
   $property: 'color';
-  
-  
+
+
   .bg-color-alerts-error {
     background-color: color(alerts, error);
   }
@@ -19,8 +19,8 @@
   .bg-color-alerts-warning {
     background-color: color(alerts, warning);
   }
-  
-  
+
+
   @each $color, $hex in $colors {
     .bg-#{$property}-#{$color} {
        #{"background-" + $property}: color($color);
@@ -31,27 +31,27 @@
       }
     }
   }
-  
-  
+
+
   @each $color, $hex in $colors {
     .bg-#{$property}-#{$color} {
       #{"background-" + $property}: color($color);
     }
   }
-  
-  
+
+
   @each $color, $hex in $colors {
     // Responsive screens.
     @each $key, $value in $screens {
       .#{$key}\:bg-#{$property}-#{$color} {
-        @include respond-to($value) {
+        @include respond($value) {
           #{"background-" + $property}: color($color);
         }
       }
     }
   }
-  
-  
+
+
   [class*=bg-color] {
     &.error {
       background: lighten(color(alerts, error), 35%);
@@ -66,10 +66,9 @@
       background: lighten(color(alerts, warning), 35%);
     }
   }
-  
-  
+
+
   // ----------------------------------------------------------------------- //
-  
-  
+
+
   }
-  

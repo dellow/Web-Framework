@@ -52,7 +52,7 @@ module.exports = (env, argv) => {
       source: false,
       errors: true,
       errorDetails: false,
-      warnings: false,
+      warnings: true,
       publicPath: false,
     },
     module: {

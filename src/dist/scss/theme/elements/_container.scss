@@ -6,7 +6,7 @@
   @include nudge(padding, 0 1);
   margin: 0 auto;
   position: relative;
-  @include respond-to(0px, screen('md')){
+  @include respond(0px, screen('md')){
     @include nudge(padding, 0 0.5);
   }
   // Responsive screens.
@@ -16,7 +16,7 @@
     }
   }
   &--mobile-full {
-    @include respond-to(0px, screen('md')){
+    @include respond(0px, screen('md')){
       @include nudge(padding, 0);
     }
   }

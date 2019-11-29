@@ -44,48 +44,48 @@
 // Responsive screens.
 @each $key, $value in $screens {
   .#{$key}\:width-auto {
-    @include respond-to($value) {
+    @include respond($value) {
       width: auto;
     }
   }
   .#{$key}\:width-1 {
-    @include respond-to($value) {
+    @include respond($value) {
       width: 100%;
     }
   }
   .#{$key}\:width-3-4 {
-    @include respond-to($value) {
+    @include respond($value) {
       width: 75%;
     }
   }
   .#{$key}\:width-1-2 {
-    @include respond-to($value) {
+    @include respond($value) {
       width: 50%;
     }
   }
   .#{$key}\:width-1-4 {
-    @include respond-to($value) {
+    @include respond($value) {
       width: 25%;
     }
   }
 
   .#{$key}\:width-1vh {
-    @include respond-to($value) {
+    @include respond($value) {
       width: 100vh;
     }
   }
   .#{$key}\:width-3-4vh {
-    @include respond-to($value) {
+    @include respond($value) {
       width: 75vh;
     }
   }
   .#{$key}\:width-1-2vh {
-    @include respond-to($value) {
+    @include respond($value) {
       width: 50vh;
     }
   }
   .#{$key}\:width-1-4vh {
-    @include respond-to($value) {
+    @include respond($value) {
       width: 25vh;
     }
   }

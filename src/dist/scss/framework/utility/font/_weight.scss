@@ -26,7 +26,7 @@ $declarations: ('900', '800', '700', '600', '500', '400', '300', '200', '100', '
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }

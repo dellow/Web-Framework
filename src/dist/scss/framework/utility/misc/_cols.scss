@@ -16,7 +16,7 @@
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$colKey} {
-      @include respond-to($value) {
+      @include respond($value) {
         width: $colValue;
       }
     }

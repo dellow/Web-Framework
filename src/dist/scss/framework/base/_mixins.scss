@@ -86,12 +86,12 @@
 
 
 // ---
-// respond-to
+// respond
 // Responsive breakpoints.
 //
-// @include respond-to(768px){.foo {display: block;}}
+// @include respond(768px){.foo {display: block;}}
 // ---
-@mixin respond-to($breakpoint1, $breakpoint2: null, $mobileFirst: true) {
+@mixin respond($breakpoint1, $breakpoint2: null, $mobileFirst: true) {
   @if ($breakpoint2 != null) {
     @media only screen and (min-width: $breakpoint1) and (max-width: $breakpoint2) {
       @content

@@ -26,7 +26,7 @@ $declarations: ('nowrap', 'normal');
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }

@@ -26,7 +26,7 @@ $declarations: ('none', '0', '1');
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -59,7 +59,7 @@ $declarations: ('row', 'column');
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -92,7 +92,7 @@ $declarations: ('wrap', 'nowrap', 'wrap-reverse');
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -125,7 +125,7 @@ $declarations: ('flex-start', 'center', 'flex-end');
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -158,7 +158,7 @@ $declarations: ('flex-start', 'center', 'flex-end');
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -190,7 +190,7 @@ $maxSize: 10;
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $i} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: #{$i};
       }
     }

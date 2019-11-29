@@ -26,7 +26,7 @@ $declarations: ('0', '1', '2', '3', '4', '5', '10', '15', '20', '50', '100');
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: #{unquote($declaration)}px;
       }
     }

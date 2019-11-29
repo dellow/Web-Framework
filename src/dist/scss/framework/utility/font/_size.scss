@@ -23,7 +23,7 @@ $maxSize: 100;
   // Responsive screens.
   @each $key, $value in $screens {
     .#{$key}\:#{$property + "-" + $i} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: #{$i}px;
       }
     }

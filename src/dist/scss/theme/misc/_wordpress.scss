@@ -7,7 +7,7 @@
   margin: 0 1.5rem 1.5rem 0 !important;
   float: left;
   // Responsive
-  @include respond-to(screen('md')){
+  @include respond(screen('md')){
     margin-right: 0;
     float: none;
   }
@@ -16,7 +16,7 @@
   margin: 0 0 1.5rem 1.5rem !important;
   float: right;
   // Responsive
-  @include respond-to(screen('md')){
+  @include respond(screen('md')){
     margin-left: 0;
     float: none;
   }
@@ -26,19 +26,19 @@
 }
 .size-small {
   // Responsive
-  @include respond-to(screen('md')){
+  @include respond(screen('md')){
     width: 100%;
   }
 }
 .size-medium {
   // Responsive
-  @include respond-to(screen('md')){
+  @include respond(screen('md')){
     width: 100%;
   }
 }
 .size-large {
   // Responsive
-  @include respond-to(screen('md')){
+  @include respond(screen('md')){
     width: 100%;
   }
 }
