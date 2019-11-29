@@ -1,14 +1,25 @@
 
 
+body {
+  &.js-mobile-menu-open {
+    overflow: hidden;
+    position: fixed;
+    .comp-mobile-menu {
+      width: 75vw;
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
 .comp-mobile-menu {
   width: 0;
   height: 100%;
-  overflow: hidden;
+  overflow-y: scroll;
   background: #d7d7d7;
   transition: all $animation cubic-bezier(.645, .045, .45, 1);
-  &.js-active {
-    width: 75vw;
-  }
 }
 
 

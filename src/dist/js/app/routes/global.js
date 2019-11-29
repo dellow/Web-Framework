@@ -43,7 +43,7 @@ class Route
     // Extend the events system.
     (new Events).extendEvents({
       events: {
-        'click [data-js-toggle]': this.toggleElement.bind(this),
+        'click [data-js-toggle]': this.toggleBodyClass.bind(this),
         'click [data-js-event="exampleEvent"]': this.exampleEvent.bind(this),
       }
     })
@@ -55,7 +55,7 @@ class Route
    * @since 1.0.0
    * @version 1.0.0
   **/
-  toggleElement(e)
+  toggleBodyClass(e)
   {
     e[0].preventDefault()
 
@@ -69,13 +69,7 @@ class Route
       const values = $dataValue.split('|')
       // Loop through values.
       for (let i = 0, ii = values.length; i < ii; i++) {
-        if ($('.' + values[i]).length) {
-          if ($('.' + values[i]).hasClass('js-active')) {
-            $('.' + values[i]).removeClass('js-active')
-          } else {
-            $('.' + values[i]).addClass('js-active')
-          }
-        }
+        $('body').toggleClass(values[i])
       }
     }
   }
