@@ -158,28 +158,51 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateUrlParameter = function(uri, param, value)
+  Helpers.updateUrlParameter = function(url, param, paramVal)
   {
-    var re = new RegExp("[\\?&]" + param + "=([^&#]*)", "i")
-    var matchString = re.exec(uri)
-    var delimiter
-    var newString
+    let TheAnchor = null
+    let newAdditionalURL = ''
+    let tempArray = url.split('?')
+    let baseURL = tempArray[0]
+    let additionalURL = tempArray[1]
+    let temp = ''
 
-    if (!value || value === 'null' || value === 'undefined') {
-      return uri.replace(re, '')
+    if (additionalURL) {
+      let tmpAnchor = additionalURL.split('#')
+      let TheParams = tmpAnchor[0]
+
+      TheAnchor = tmpAnchor[1]
+
+      if (TheAnchor) {
+        additionalURL = TheParams
+      }
+
+      tempArray = additionalURL.split('&')
+
+      for (let i = 0, ii = tempArray.length; i < ii; i++) {
+        if (tempArray[i].split('=')[0] != param) {
+          newAdditionalURL += temp + tempArray[i]
+          temp = '&'
+        }
+      }
+    } else {
+      let tmpAnchor = baseURL.split('#')
+      let TheParams = tmpAnchor[0]
+
+      TheAnchor  = tmpAnchor[1]
+
+      if (TheParams) {
+        baseURL = TheParams
+      }
     }
 
-    if (matchString === null) {
-      // append new param
-      var hasQuestionMark = /\?/.test(uri)
-      delimiter = hasQuestionMark ? "&" : "?"
-      newString = uri + delimiter + param + "=" + value
-    } else if (matchString.length) {
-      delimiter = matchString[0].charAt(0)
-      newString = uri.replace(re, delimiter + param + "=" + value)
+    if (TheAnchor) {
+      paramVal += '#' + TheAnchor
     }
 
-    return newString
+    let rows_txt = temp + '' + param + '=' + paramVal
+
+    return baseURL + '?' + newAdditionalURL + rows_txt
   }
 
   /**
@@ -226,14 +249,14 @@
       return []
     }
 
-    var rest = arr.length % n,
-        restUsed = rest,
-        partLength = Math.floor(arr.length / n),
-        result = []
+    let rest = arr.length % n
+    let restUsed = rest
+    let partLength = Math.floor(arr.length / n)
+    let result = []
 
     for (var i = 0; i < arr.length; i += partLength) {
-      var end = partLength + i,
-          add = false
+      let end = partLength + i
+      let add = false
 
       if (rest !== 0 && restUsed) {
         end++
