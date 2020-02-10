@@ -22,9 +22,9 @@ $declarations: ('cover', 'contain', 'auto');
 }
 
 
-@each $declaration in $declarations {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $declaration in $declarations {
     .#{$key}\:#{$property + "-" + $declaration} {
       @include respond($value) {
         #{$property}: unquote($declaration);

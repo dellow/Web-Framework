@@ -22,9 +22,9 @@ $declarations: ('0', '1', '2', '3', '4', '5', '10', '15', '20', '50', '100');
 }
 
 
-@each $declaration in $declarations {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $declaration in $declarations {
     .#{$key}\:#{$property + "-" + $declaration} {
       @include respond($value) {
         #{$property}: #{unquote($declaration)}px;

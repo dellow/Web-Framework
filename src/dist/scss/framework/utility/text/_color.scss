@@ -36,9 +36,9 @@ $property: 'color';
 }
 
 
-@each $color, $hex in $colors {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $color, $hex in $colors {
     .#{$key}\:text-#{$property}-#{$color} {
       @include respond($value) {
         #{$property}: color($color);

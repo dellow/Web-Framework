@@ -5,7 +5,7 @@
 
 
 $property: 'display';
-$declarations: ('inline', 'inline-block', 'block', 'flex', 'grid', 'table', 'none');
+$declarations: ('none', 'inline', 'inline-block', 'block', 'flex', 'grid', 'table');
 
 
 @each $declaration in $declarations {
@@ -22,9 +22,9 @@ $declarations: ('inline', 'inline-block', 'block', 'flex', 'grid', 'table', 'non
 }
 
 
-@each $declaration in $declarations {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $declaration in $declarations {
     .#{$key}\:#{$property + "-" + $declaration} {
       @include respond($value) {
         #{$property}: unquote($declaration);

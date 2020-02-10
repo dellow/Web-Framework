@@ -40,9 +40,9 @@
   }
 
 
-  @each $color, $hex in $colors {
+  @each $key, $value in $screens {
     // Responsive screens.
-    @each $key, $value in $screens {
+    @each $color, $hex in $colors {
       .#{$key}\:bg-#{$property}-#{$color} {
         @include respond($value) {
           #{"background-" + $property}: color($color);
