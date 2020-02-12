@@ -1,74 +1,67 @@
-@if $switch_utility_background_repeat == true {
+@if $switch_utility_background_color == true {
 
 
-  // ----------------------------------------------------------------------- //
+// ----------------------------------------------------------------------- //
 
 
-  $property: 'color';
+$property: 'color';
 
 
-  .bg-color-alerts-error {
-    background-color: color(alerts, error);
+.bg-color-alerts-error {
+  background-color: color(alerts, error);
+}
+.bg-color-alerts-status {
+  background-color: color(alerts, status);
+}
+.bg-color-alerts-success {
+  background-color: color(alerts, success);
+}
+.bg-color-alerts-warning {
+  background-color: color(alerts, warning);
+}
+
+
+@each $color, $hex in $colors {
+  .bg-#{$property}-#{$color} {
+    #{"background-" + $property}: color($color);
   }
-  .bg-color-alerts-status {
-    background-color: color(alerts, status);
-  }
-  .bg-color-alerts-success {
-    background-color: color(alerts, success);
-  }
-  .bg-color-alerts-warning {
-    background-color: color(alerts, warning);
-  }
-
-
-  @each $color, $hex in $colors {
-    .bg-#{$property}-#{$color} {
-       #{"background-" + $property}: color($color);
-    }
-    .hover\:bg-#{$property}-#{$color} {
-      &:hover {
-         #{"background-" + $property}: color($color);
-      }
-    }
-  }
-
-
-  @each $color, $hex in $colors {
-    .bg-#{$property}-#{$color} {
+  .hover\:bg-#{$property}-#{$color} {
+    &:hover {
       #{"background-" + $property}: color($color);
     }
   }
+}
 
 
-  @each $key, $value in $screens {
-    // Responsive screens.
-    @each $color, $hex in $colors {
-      .#{$key}\:bg-#{$property}-#{$color} {
-        @include respond($value) {
-          #{"background-" + $property}: color($color);
-        }
+@each $key, $value in $screens {
+  // Responsive screens.
+  @each $color, $hex in $colors {
+    .#{$key}\:bg-#{$property}-#{$color} {
+      @include respond($value) {
+        #{"background-" + $property}: color($color);
       }
     }
   }
+}
 
 
-  [class*=bg-color] {
-    &.error {
-      background: lighten(color(alerts, error), 35%);
-    }
-    &.status {
-      background: lighten(color(alerts, status), 35%);
-    }
-    &.success {
-      background: lighten(color(alerts, success), 35%);
-    }
-    &.warning {
-      background: lighten(color(alerts, warning), 35%);
-    }
+[class*=bg-color] {
+  &.error {
+    background: lighten(color(alerts, error), 35%);
   }
-
-
-  // ----------------------------------------------------------------------- //
-
-
+  &.status {
+    background: lighten(color(alerts, status), 35%);
   }
+  &.success {
+    background: lighten(color(alerts, success), 35%);
+  }
+  &.warning {
+    background: lighten(color(alerts, warning), 35%);
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}
