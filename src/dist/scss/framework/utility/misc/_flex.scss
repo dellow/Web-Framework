@@ -190,7 +190,7 @@ $maxSize: 10;
   @while $i < $maxSize {
     .#{$key}\:#{$property + "-" + $i} {
       @include respond($value) {
-        #{$property}: #{$i}px;
+        #{$property}: #{$i};
       }
     }
     $i: $i + 1;
