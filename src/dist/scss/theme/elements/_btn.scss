@@ -1,20 +1,18 @@
 
 
 .btn {
-  border: 2px solid transparent;
   display: inline-block;
   vertical-align: top;
   color: color(white);
   text-align: center;
   line-height: 1;
+  font-family: $serif;
+  font-weight: 700;
   transition: background $animation ease, box-shadow $animation ease, color $animation ease;
   &--disabled, &[disabled] {
     opacity: 0.5;
     cursor: default;
     pointer-events: none;
-  }
-  &:hover, &:active {
-    color: color(white);
   }
 }
 

@@ -12,9 +12,9 @@
 }
 
 
-@each $colKey, $colValue in $col_array {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $colKey, $colValue in $col_array {
     .#{$key}\:#{$colKey} {
       @include respond($value) {
         width: $colValue;
