@@ -3,6 +3,8 @@
 /* Slider */
 
 .slick-slider {
+  width: 100vw !important; // These stop the slider from overflowing in a flexbox child. Don't remove.
+  min-width: 0 !important; // These stop the slider from overflowing in a flexbox child. Don't remove.
   position: relative;
   display: block;
   box-sizing: border-box;
