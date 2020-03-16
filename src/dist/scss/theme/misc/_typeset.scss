@@ -133,7 +133,7 @@ kbd {
       margin-bottom: 0;
     }
   }
-  a, button {
+  a:not(.btn), button {
     color: color(copy, link);
     &:hover {
       color: color(copy, hover);
