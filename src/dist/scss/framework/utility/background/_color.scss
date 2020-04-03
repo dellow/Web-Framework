@@ -23,11 +23,11 @@ $property: 'color';
 
 @each $color, $hex in $colors {
   .bg-#{$property}-#{$color} {
-    #{"background-" + $property}: color($color);
+    #{"background-" + $property}: var(--color-#{$color});
   }
   .hover\:bg-#{$property}-#{$color} {
     &:hover {
-      #{"background-" + $property}: color($color);
+      #{"background-" + $property}: var(--color-#{$color});
     }
   }
 }
@@ -38,7 +38,7 @@ $property: 'color';
   @each $color, $hex in $colors {
     .#{$key}\:bg-#{$property}-#{$color} {
       @include respond($value) {
-        #{"background-" + $property}: color($color);
+        #{"background-" + $property}: var(--color-#{$color});
       }
     }
   }

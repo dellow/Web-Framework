@@ -26,11 +26,11 @@ $property: 'color';
 
 @each $color, $hex in $colors {
   .text-#{$property}-#{$color} {
-    #{$property}: color($color);
+    #{$property}: var(--color-#{$color});
   }
   .hover\:text-#{$property}-#{$color} {
     &:hover {
-      #{$property}: color($color);
+      #{$property}: var(--color-#{$color});
     }
   }
 }
@@ -41,12 +41,12 @@ $property: 'color';
   @each $color, $hex in $colors {
     .#{$key}\:text-#{$property}-#{$color} {
       @include respond($value) {
-        #{$property}: color($color);
+        #{$property}: var(--color-#{$color});
       }
     }
     .hover\:#{$key}\:text-#{$property}-#{$color} {
       &:hover {
-        #{$property}: color($color);
+        #{$property}: var(--color-#{$color});
       }
     }
   }

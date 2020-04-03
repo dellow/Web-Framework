@@ -23,11 +23,11 @@ $property: 'color';
 
 @each $color, $hex in $colors {
   .border-#{$property}-#{$color} {
-    #{"border-" + $property}: color($color);
+    #{"border-" + $property}: var(--color-#{$color});
   }
   .hover\:border-#{$property}-#{$color} {
     &:hover {
-      #{"border-" + $property}: color($color);
+      #{"border-" + $property}: var(--color-#{$color});
     }
   }
 }
@@ -38,7 +38,7 @@ $property: 'color';
   @each $color, $hex in $colors {
     .#{$key}\:border-#{$property}-#{$color} {
       @include respond($value) {
-        #{"border-" + $property}: color($color);
+        #{"border-" + $property}: var(--color-#{$color});
       }
     }
   }
