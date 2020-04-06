@@ -7,17 +7,15 @@
 $property: 'color';
 
 
-.bg-color-alerts-error {
-  background-color: color(alerts, error);
-}
-.bg-color-alerts-status {
-  background-color: color(alerts, status);
-}
-.bg-color-alerts-success {
-  background-color: color(alerts, success);
-}
-.bg-color-alerts-warning {
-  background-color: color(alerts, warning);
+@each $color, $hex in map-get($colors, 'alerts') {
+  .bg-#{$property}-alerts-#{$color} {
+    #{"background-" + $property}: color('alerts', $color);
+  }
+  .hover\:bg-#{$property}-alerts-#{$color} {
+    &:hover {
+      #{"background-" + $property}: color('alerts', $color);
+    }
+  }
 }
 
 
@@ -41,22 +39,6 @@ $property: 'color';
         #{"background-" + $property}: var(--color-#{$color});
       }
     }
-  }
-}
-
-
-[class*=bg-color] {
-  &.error {
-    background: lighten(color(alerts, error), 35%);
-  }
-  &.status {
-    background: lighten(color(alerts, status), 35%);
-  }
-  &.success {
-    background: lighten(color(alerts, success), 35%);
-  }
-  &.warning {
-    background: lighten(color(alerts, warning), 35%);
   }
 }
 

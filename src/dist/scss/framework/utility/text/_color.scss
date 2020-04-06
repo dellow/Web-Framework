@@ -7,20 +7,27 @@
 $property: 'color';
 
 
-.text-color-alerts-error {
-  color: color(alerts, error);
+@each $color, $hex in map-get($colors, 'alerts') {
+  .text-#{$property}-alerts-#{$color} {
+    #{$property}: color('alerts', $color);
+  }
+  .hover\:text-#{$property}-alerts-#{$color} {
+    &:hover {
+      #{$property}: color('alerts', $color);
+    }
+  }
 }
-.text-color-alerts-status {
-  color: color(alerts, status);
-}
-.text-color-alerts-success {
-  color: color(alerts, success);
-}
-.text-color-alerts-warning {
-  color: color(alerts, warning);
-}
-.text-color-inherit {
-  color: inherit;
+
+
+@each $color, $hex in map-get($colors, 'copy') {
+  .text-#{$property}-copy-#{$color} {
+    #{$property}: color('copy', $color);
+  }
+  .hover\:text-#{$property}-copy-#{$color} {
+    &:hover {
+      #{$property}: color('copy', $color);
+    }
+  }
 }
 
 
@@ -49,22 +56,6 @@ $property: 'color';
         #{$property}: var(--color-#{$color});
       }
     }
-  }
-}
-
-
-[class*=text-color] {
-  &.error {
-    color: color(alerts, error);
-  }
-  &.status {
-    color: color(alerts, status);
-  }
-  &.success {
-    color: color(alerts, success);
-  }
-  &.warning {
-    color: color(alerts, warning);
   }
 }
 

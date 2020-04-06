@@ -7,17 +7,15 @@
 $property: 'color';
 
 
-.border-color-alerts-error {
-  border-color: color(alerts, error);
-}
-.border-color-alerts-status {
-  border-color: color(alerts, status);
-}
-.border-color-alerts-success {
-  border-color: color(alerts, success);
-}
-.border-color-alerts-warning {
-  border-color: color(alerts, warning);
+@each $color, $hex in map-get($colors, 'alerts') {
+  .border-#{$property}-alerts-#{$color} {
+    #{"border-" + $property}: color('alerts', $color);
+  }
+  .hover\:border-#{$property}-alerts-#{$color} {
+    &:hover {
+      #{"border-" + $property}: color('alerts', $color);
+    }
+  }
 }
 
 
