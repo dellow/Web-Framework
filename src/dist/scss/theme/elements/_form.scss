@@ -4,39 +4,39 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea, .iframe-fiel
 	max-width: 100%;
 	@include nudge(padding, 0.25 0.35);
 	border-radius: $border_radius;
-	border: 1px solid color(grey);
+	border: 1px solid color(grey1);
 	display: inline-block;
 	font-size: 15px;
-	background: color(white);
+	background: color(white1);
 	transition: border-color $animation ease;
 	&:hover {
-		border-color: darken(color(grey), 12.5%);
+		border-color: darken(color(grey1), 12.5%);
 	}
 	&:focus {
-		border-color: darken(color(grey), 25%);
+		border-color: darken(color(grey1), 25%);
 	}
 	&[disabled] {
 		&, &:hover, &:focus {
-			border-color: color(grey);
-			color: darken(color(grey), 15%);
-			background: lighten(color(grey), 10%);
+			border-color: color(grey1);
+			color: darken(color(grey1), 15%);
+			background: lighten(color(grey1), 10%);
 		}
 	}
 	// Placeholders.
 	&::-webkit-input-placeholder {
-		color: color(grey);
+		color: color(grey1);
 	}
 	&::-moz-placeholder {
-		color: color(grey);
+		color: color(grey1);
 	}
 	&:-moz-placeholder {
-		color: color(grey);
+		color: color(grey1);
 	}
 	&:-ms-input-placeholder {
-		color: color(grey);
+		color: color(grey1);
 	}
 	&::placeholder {
-		color: color(grey);
+		color: color(grey1);
 	}
 }
 
@@ -91,14 +91,14 @@ fieldset {
 		pointer-events: none;
 		display: flex;
 		align-items: center;
-    color: color(grey);
+    color: color(grey1);
     line-height: 1;
 		font-size: 20px;
 		transition: color $animation ease;
 	}
 	&:hover {
 		&:before {
-			color: darken(color(grey), 12.5%);
+			color: darken(color(grey1), 12.5%);
 		}
 	}
 }

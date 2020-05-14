@@ -125,10 +125,13 @@ module.exports = (env, argv) => {
         new MinifyPlugin(),
         new OptimizeCssAssetsPlugin({
           cssProcessor: require('cssnano'),
+          cssProcessorOptions: {
+            sourceMap: true
+          },
           cssProcessorPluginOptions: {
             preset: ['default', {
               discardComments: {
-                removeAll: true ,
+                removeAll: true,
               },
             }],
           },
