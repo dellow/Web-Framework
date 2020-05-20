@@ -35,7 +35,7 @@ module.exports = (env, argv) => {
     },
     resolve: {
       modules: ['node_modules'],
-      extensions: ['.js'],
+      extensions: ['*', '.js', '.vue', '.json'],
       alias: {
       },
     },
@@ -152,6 +152,7 @@ module.exports = (env, argv) => {
       new WebpackBuildNotifierPlugin({
         title: 'Web Framework',
         suppressSuccess: false,
+        successSound: false,
       }),
     ],
   }
