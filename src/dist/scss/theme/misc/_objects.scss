@@ -185,15 +185,13 @@
   &.position--left {
     &:after {
       top: 0; left: 10px;
-      align-items: center;
-      justify-content: flex-start;
+      background-position: left center;
     }
   }
   &.position--center {
     &:after {
       top: 0;
-      align-items: center;
-      justify-content: center;
+      background-position: center center;
     }
   }
 }
