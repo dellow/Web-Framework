@@ -3,7 +3,7 @@
 input:not([type="radio"]):not([type="checkbox"]), select, textarea, .iframe-field {
 	max-width: 100%;
 	@include nudge(padding, 0.25 0.35);
-	border-radius: $border_radius;
+	border-radius: $border_radius; // If non, explicitly set 0 for mobile devices
 	border: 1px solid color(grey1);
 	display: inline-block;
 	font-size: 15px;

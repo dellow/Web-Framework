@@ -27,7 +27,16 @@ html, body, .wrapper {
 // ----------------------------------------------------------------------- //
 
 
+body {
+  &.js-mobile-menu-open {
+    .side {
+      width: 85vw;
+    }
+  }
+}
 .side {
+  width: 0;
+  transition: width $animation cubic-bezier(.645, .045, .45, 1);
 }
 
 
