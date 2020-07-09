@@ -5,6 +5,7 @@
 
 $property: 'font-size';
 
+
 $i: 1;
 $maxSize: 100;
 @while $i < $maxSize {
@@ -17,19 +18,18 @@ $maxSize: 100;
 }
 
 
-$i: 1;
-$maxSize: 100;
-@while $i < $maxSize {
-  // Responsive screens.
-  @each $key, $value in $screens {
+// Responsive screens.
+@each $key, $value in $screens {
+  $i: 1;
+  $maxSize: 100;
+  @while $i < $maxSize {
     .#{$key}\:#{$property + "-" + $i} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: #{$i}px;
       }
     }
+    $i: $i + 1;
   }
-
-  $i: $i + 1;
 }
 
 

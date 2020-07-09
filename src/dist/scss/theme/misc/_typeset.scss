@@ -9,8 +9,11 @@ html {
 body {
   font-size: calc(0.2vw + #{$font_size_base});
   line-height: $line_height_base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
   font-family: $font_face_base;
-  color: color(copy, body);
+  color: color(copy, primary);
 }
 
 
@@ -20,26 +23,26 @@ body {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   font-weight: bold;
-  letter-spacing: -0.035em;
+  // letter-spacing: -0.035em;
 }
 
 h1, .h1 {
-  font-size: calc(1.18vw + #{$font_h1});
+  font-size: calc(1vw + #{$font_h1});
 }
 h2, .h2 {
-  font-size: calc(1.18vw + #{$font_h2});
+  font-size: calc(1vw + #{$font_h2});
 }
 h3, .h3 {
-  font-size: calc(1.18vw + #{$font_h3});
+  font-size: calc(1vw + #{$font_h3});
 }
 h4, .h4 {
-  font-size: calc(1.18vw + #{$font_h4});
+  font-size: calc(1vw + #{$font_h4});
 }
 h5, .h5 {
-  font-size: calc(1.18vw + #{$font_h5});
+  font-size: calc(1vw + #{$font_h5});
 }
 h6, .h6 {
-  font-size: calc(1.18vw + #{$font_h6});
+  font-size: calc(1vw + #{$font_h6});
 }
 
 
@@ -63,7 +66,7 @@ p {
 }
 code {
   padding: 1px 3px;
-  border: 1px solid color(grey);
+  border: 1px solid color(grey1);
   font-weight: normal;
   font-family: $monospaced;
   white-space: pre-wrap;
@@ -75,7 +78,7 @@ code {
 }
 pre {
   @include nudge(padding, 0.5 0.75);
-  border: 1px solid color(grey);
+  border: 1px solid color(grey1);
   position: relative;
   border-radius: 2px;
   background: color(grey, light);
@@ -84,7 +87,7 @@ kbd {
   @include nudge(padding, 0.25 0.5);
   margin: 0 0.25em;
   display: inline-block;
-  border: 1px solid color(grey);
+  border: 1px solid color(grey1);
   border-radius: 2px;
   color: color(grey, medium);
   background: color(grey, light);
@@ -130,7 +133,7 @@ kbd {
       margin-bottom: 0;
     }
   }
-  a, button {
+  a:not(.btn), button {
     color: color(copy, link);
     &:hover {
       color: color(copy, hover);

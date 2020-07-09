@@ -22,11 +22,11 @@ $declarations: ('none', '0', '1');
 }
 
 
-@each $declaration in $declarations {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $declaration in $declarations {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -55,11 +55,11 @@ $declarations: ('row', 'column');
 }
 
 
-@each $declaration in $declarations {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $declaration in $declarations {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -88,11 +88,11 @@ $declarations: ('wrap', 'nowrap', 'wrap-reverse');
 }
 
 
-@each $declaration in $declarations {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $declaration in $declarations {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -121,11 +121,11 @@ $declarations: ('flex-start', 'center', 'flex-end');
 }
 
 
-@each $declaration in $declarations {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $declaration in $declarations {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -154,11 +154,11 @@ $declarations: ('flex-start', 'center', 'flex-end');
 }
 
 
-@each $declaration in $declarations {
+@each $key, $value in $screens {
   // Responsive screens.
-  @each $key, $value in $screens {
+  @each $declaration in $declarations {
     .#{$key}\:#{$property + "-" + $declaration} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: unquote($declaration);
       }
     }
@@ -184,19 +184,17 @@ $maxSize: 10;
 }
 
 
-$i: 1;
-$maxSize: 10;
-@while $i < $maxSize {
-  // Responsive screens.
-  @each $key, $value in $screens {
+@each $key, $value in $screens {
+  $i: 1;
+  $maxSize: 10;
+  @while $i < $maxSize {
     .#{$key}\:#{$property + "-" + $i} {
-      @include respond-to($value) {
+      @include respond($value) {
         #{$property}: #{$i};
       }
     }
+    $i: $i + 1;
   }
-
-  $i: $i + 1;
 }
 
 

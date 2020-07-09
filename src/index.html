@@ -12,12 +12,6 @@
 <meta name="robots" content="INDEX, FOLLOW">
 <meta name="image" content="/build/images/site/social-card-general-1200x628.png">
 <!-- ============================================================================== -->
-<!--                                                                     SCHEMA.ORG -->
-<!-- ============================================================================== -->
-<meta itemprop="name" content="Web Framework">
-<meta itemprop="description" content="">
-<meta itemprop="image" content="/build/images/site/social-card-general-1200x628.png">
-<!-- ============================================================================== -->
 <!--                                                                  TWITTER CARDS -->
 <!-- ============================================================================== -->
 <meta name="twitter:title" content="Web Framework">
@@ -57,8 +51,8 @@
 <!-- ============================================================================== -->
 <!--                                                                         STYLES -->
 <!-- ============================================================================== -->
-<link rel="stylesheet" href="/build/css/utility.css" media="all">
 <link rel="stylesheet" href="/build/css/theme.css" media="all">
+<link rel="stylesheet" href="/build/css/utility.css" media="all">
 <!-- ============================================================================== -->
 <!--                                                                       FAVICONS -->
 <!-- ============================================================================== -->
@@ -110,8 +104,13 @@ window.config = {
 
       <!-- Comp :: Mobile Menu -->
       <div class="comp-mobile-menu">
-        This is a mobile menu.
+        This is the mobile menu.
       </div><!-- end .comp-mobile-menu -->
+
+      <!-- Comp :: Mobile Search -->
+      <div class="comp-mobile-search">
+        This is the mobile search.
+      </div><!-- end .comp-mobile-search -->
 
     </div><!-- end .side -->
 
@@ -128,7 +127,7 @@ window.config = {
             <!-- Col -->
             <div class="col-1-3">
               <div>
-                <button data-js-toggle="comp-mobile-menu">
+                <button data-js-toggle="js-mobile-menu-open">
                   <i class="icofont-navigation-menu"></i>
                 </button>
               </div>
@@ -144,7 +143,7 @@ window.config = {
             <!-- Col -->
             <div class="col-1-3">
               <div class="text-align-right">
-                <button data-js-toggle="comp-mobile-search">
+                <button data-js-toggle="js-mobile-search-open">
                   <i class="icofont-search-1"></i>
                 </button>
               </div>
@@ -312,6 +311,8 @@ window.config = {
       </footer><!-- end .layout-desktop-footer -->
 
     </div><!-- end .page -->
+
+    <cookie-bar url="HREF_HERE"></cookie-bar>
 
   </div><!-- end .wrapper -->
 

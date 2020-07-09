@@ -2,6 +2,17 @@
 
 html, body, .wrapper {
   height: 100%;
+  background: #FFFFFF;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+:root {
+  @each $color, $hex in $colors {
+    --color-#{$color}: #{color($color)};
+  }
 }
 
 
@@ -10,14 +21,22 @@ html, body, .wrapper {
 
 .wrapper {
   display: flex;
-  overflow-x: hidden;
 }
 
 
 // ----------------------------------------------------------------------- //
 
 
+body {
+  &.js-mobile-menu-open {
+    .side {
+      width: 85vw;
+    }
+  }
+}
 .side {
+  width: 0;
+  transition: width $animation cubic-bezier(.645, .045, .45, 1);
 }
 
 

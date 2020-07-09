@@ -33,53 +33,69 @@
 .height-1-4vh {
   height: 25vh;
 }
+.height-2-3vh {
+  height: 66.66vh;
+}
+.height-1-3vh {
+  height: 33.33vh;
+}
 
 
 // Responsive screens.
 @each $key, $value in $screens {
   .#{$key}\:height-auto {
-    @include respond-to($value) {
+    @include respond($value) {
       height: auto;
     }
   }
   .#{$key}\:height-1 {
-    @include respond-to($value) {
+    @include respond($value) {
       height: 100%;
     }
   }
   .#{$key}\:height-3-4 {
-    @include respond-to($value) {
+    @include respond($value) {
       height: 75%;
     }
   }
   .#{$key}\:height-1-2 {
-    @include respond-to($value) {
+    @include respond($value) {
       height: 50%;
     }
   }
   .#{$key}\:height-1-4 {
-    @include respond-to($value) {
+    @include respond($value) {
       height: 25%;
     }
   }
 
   .#{$key}\:height-1vh {
-    @include respond-to($value) {
+    @include respond($value) {
       height: 100vh;
     }
   }
+  .#{$key}\:height-1-3vh {
+    @include respond($value) {
+      height: 33.33vh;
+    }
+  }
+  .#{$key}\:height-2-3vh {
+    @include respond($value) {
+      height: 66.66vh;
+    }
+  }
   .#{$key}\:height-3-4vh {
-    @include respond-to($value) {
+    @include respond($value) {
       height: 75vh;
     }
   }
   .#{$key}\:height-1-2vh {
-    @include respond-to($value) {
+    @include respond($value) {
       height: 50vh;
     }
   }
   .#{$key}\:height-1-4vh {
-    @include respond-to($value) {
+    @include respond($value) {
       height: 25vh;
     }
   }

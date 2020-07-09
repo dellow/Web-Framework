@@ -158,28 +158,51 @@
    * @since 1.0.0
    * @version 1.0.0
   **/
-  Helpers.updateUrlParameter = function(uri, param, value)
+  Helpers.updateUrlParameter = function(url, param, paramVal)
   {
-    var re = new RegExp("[\\?&]" + param + "=([^&#]*)", "i")
-    var matchString = re.exec(uri)
-    var delimiter
-    var newString
+    let TheAnchor = null
+    let newAdditionalURL = ''
+    let tempArray = url.split('?')
+    let baseURL = tempArray[0]
+    let additionalURL = tempArray[1]
+    let temp = ''
 
-    if (!value || value === 'null' || value === 'undefined') {
-      return uri.replace(re, '')
+    if (additionalURL) {
+      let tmpAnchor = additionalURL.split('#')
+      let TheParams = tmpAnchor[0]
+
+      TheAnchor = tmpAnchor[1]
+
+      if (TheAnchor) {
+        additionalURL = TheParams
+      }
+
+      tempArray = additionalURL.split('&')
+
+      for (let i = 0, ii = tempArray.length; i < ii; i++) {
+        if (tempArray[i].split('=')[0] != param) {
+          newAdditionalURL += temp + tempArray[i]
+          temp = '&'
+        }
+      }
+    } else {
+      let tmpAnchor = baseURL.split('#')
+      let TheParams = tmpAnchor[0]
+
+      TheAnchor  = tmpAnchor[1]
+
+      if (TheParams) {
+        baseURL = TheParams
+      }
     }
 
-    if (matchString === null) {
-      // append new param
-      var hasQuestionMark = /\?/.test(uri)
-      delimiter = hasQuestionMark ? "&" : "?"
-      newString = uri + delimiter + param + "=" + value
-    } else if (matchString.length) {
-      delimiter = matchString[0].charAt(0)
-      newString = uri.replace(re, delimiter + param + "=" + value)
+    if (TheAnchor) {
+      paramVal += '#' + TheAnchor
     }
 
-    return newString
+    let rows_txt = temp + '' + param + '=' + paramVal
+
+    return baseURL + '?' + newAdditionalURL + rows_txt
   }
 
   /**
@@ -226,14 +249,14 @@
       return []
     }
 
-    var rest = arr.length % n,
-        restUsed = rest,
-        partLength = Math.floor(arr.length / n),
-        result = []
+    let rest = arr.length % n
+    let restUsed = rest
+    let partLength = Math.floor(arr.length / n)
+    let result = []
 
     for (var i = 0; i < arr.length; i += partLength) {
-      var end = partLength + i,
-          add = false
+      let end = partLength + i
+      let add = false
 
       if (rest !== 0 && restUsed) {
         end++
@@ -314,34 +337,36 @@
   **/
   Helpers.error = function(error, logIt)
   {
-    let errorMsg = null
+    let errorResponse = null
 
     if (error.response) {
       // The request was made and the server responded with a status code that falls out of the range of 2xx.
-      if (typeof error.response.data === 'string') {
-        errorMsg = error.response.data
+      if (typeof error.response === 'string') {
+        errorResponse = error.response
+      } else if (typeof error.response.data === 'string' || typeof error.response.data === 'object') {
+        errorResponse = error.response.data
       } else {
         return this.error(error.response.data, logIt)
       }
     } else if (error.request) {
       // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js.
-      errorMsg = error.request
+      errorResponse = error.request
     } else if (error.msg) {
       // The request has a msg property.
-      errorMsg = error.msg
+      errorResponse = error.msg
     } else if (error.message) {
       // The request has a message property.
-      errorMsg = error.message
+      errorResponse = error.message
     } else if (typeof error === 'string') {
       // Something happened in setting up the request that triggered an Error.
-      errorMsg = error
+      errorResponse = error
     }
 
     if (logIt) {
-      this.log(errorMsg, 'negative')
+      this.log(errorResponse, 'negative')
     }
 
-    return errorMsg
+    return errorResponse
   }
 
   /**
@@ -376,6 +401,42 @@
     let str = String.fromCharCode(!e.charCode ? e.which : e.charCode)
 
     return ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode === 8 || e.target.value === '' || regex.test(str))
+  }
+
+  /**
+   * Checks if a user is located in localStorage.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Helpers.isUserLocated = function(retrieve)
+  {
+    // Check location is set in localStorage.
+    let check = (!this.isEmpty(window.localStorage['geolocation_lat']) && !this.isEmpty(window.localStorage['geolocation_lng']))
+
+    if (retrieve) {
+      return (check) ? {latitude: window.localStorage['geolocation_lat'], longitude: window.localStorage['geolocation_lng']} : {latitude: 55.3781, longitude: 3.4360}
+    }
+
+    return check
+  }
+
+  /**
+   * Determines if a string is a valid URL.
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+  **/
+  Helpers.isValidURL = function(str)
+  {
+    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+      '(\\#[-a-z\\d_]*)?$','i') // fragment locator
+
+    return !!pattern.test(str)
   }
 
   /**
@@ -476,24 +537,6 @@
   }
 
   /**
-   * Checks if a user is located in localStorage.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  Helpers.isUserLocated = function(retrieve)
-  {
-    // Check location is set in localStorage.
-    let check = (!this.isEmpty(window.localStorage['geolocation_lat']) && !this.isEmpty(window.localStorage['geolocation_lng']))
-
-    if (retrieve) {
-      return (check) ? {latitude: window.localStorage['geolocation_lat'], longitude: window.localStorage['geolocation_lng']} : {latitude: 55.3781, longitude: 3.4360}
-    }
-
-    return check
-  }
-
-  /**
    * Calculates a percentage between two numbers.
    *
    * @since 1.0.0
@@ -504,24 +547,6 @@
     var decreaseValue = oldNumber - newNumber
 
     return (decreaseValue / oldNumber) * 100
-  }
-
-  /**
-   * Determines if a string is a valid URL.
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-  **/
-  Helpers.isValidURL = function(str)
-  {
-    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-
-    return !!pattern.test(str);
   }
 
   /**

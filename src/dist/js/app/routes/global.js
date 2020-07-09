@@ -30,6 +30,8 @@ class Route
   **/
   init()
   {
+    // Header scrolling.
+    this.headerScrolling()
   }
 
   /**
@@ -43,8 +45,7 @@ class Route
     // Extend the events system.
     (new Events).extendEvents({
       events: {
-        'click [data-js-toggle]': this.toggleElement.bind(this),
-        'click [data-js-event="exampleEvent"]': this.exampleEvent.bind(this),
+        'click [data-js-toggle]': this.toggleBodyClass.bind(this),
       }
     })
   }
@@ -55,7 +56,7 @@ class Route
    * @since 1.0.0
    * @version 1.0.0
   **/
-  toggleElement(e)
+  toggleBodyClass(e)
   {
     e[0].preventDefault()
 
@@ -69,13 +70,7 @@ class Route
       const values = $dataValue.split('|')
       // Loop through values.
       for (let i = 0, ii = values.length; i < ii; i++) {
-        if ($('.' + values[i]).length) {
-          if ($('.' + values[i]).hasClass('js-active')) {
-            $('.' + values[i]).removeClass('js-active')
-          } else {
-            $('.' + values[i]).addClass('js-active')
-          }
-        }
+        $('body').toggleClass(values[i])
       }
     }
   }
@@ -86,10 +81,50 @@ class Route
    * @since 1.0.0
    * @version 1.0.0
   **/
-  exampleEvent(e)
+  headerScrolling()
   {
-    console.log(e)
-    e[0].preventDefault()
+    window.onscroll = (() => {
+      // Set body.
+      let $body = $('body')
+      // Set buffer.
+      let headerHeight = $('.layout-desktop-header').outerHeight()
+      // Get document height.
+      let documentHeight = $(document).outerHeight()
+      // Get 1/3 of document height.
+      let documentHeightThird = documentHeight / 3
+
+      return (e) => {
+        // Cache scroll top.
+        let scrollTop = $(document).scrollTop()
+
+        // Scroll past first pixel.
+        if (scrollTop > 1) {
+          $body.addClass('js-scrolled-past-1px')
+        } else {
+          $body.removeClass('js-scrolled-past-1px')
+        }
+        // Scroll past 1st third of the document.
+        if (scrollTop > documentHeightThird) {
+          $body.addClass('js-scrolled-past-third')
+        } else {
+          $body.removeClass('js-scrolled-past-third')
+        }
+        // Scroll past desktop header.
+        if (scrollTop > headerHeight) {
+          $body.addClass('js-scrolled-past-header')
+
+          if (!$body.hasClass('js-header-fixed')) {
+            $body.css({'paddingTop': headerHeight})
+          }
+        } else {
+          $body.removeClass('js-scrolled-past-header')
+
+          if (!$body.hasClass('js-header-fixed')) {
+            $body.css({'paddingTop': ''})
+          }
+        }
+      }
+    })()
   }
 
 }

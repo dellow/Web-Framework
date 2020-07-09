@@ -1,0 +1,115 @@
+@if $switch_utility_misc_border == true {
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'color';
+
+
+@each $color, $hex in map-get($colors, 'alerts') {
+  .border-#{$property}-alerts-#{$color} {
+    #{"border-" + $property}: color('alerts', $color);
+  }
+  .hover\:border-#{$property}-alerts-#{$color} {
+    &:hover {
+      #{"border-" + $property}: color('alerts', $color);
+    }
+  }
+}
+
+
+@each $color, $hex in $colors {
+  .border-#{$property}-#{$color} {
+    #{"border-" + $property}: var(--color-#{$color});
+  }
+  .hover\:border-#{$property}-#{$color} {
+    &:hover {
+      #{"border-" + $property}: var(--color-#{$color});
+    }
+  }
+}
+
+
+@each $key, $value in $screens {
+  // Responsive screens.
+  @each $color, $hex in $colors {
+    .#{$key}\:border-#{$property}-#{$color} {
+      @include respond($value) {
+        #{"border-" + $property}: var(--color-#{$color});
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'width';
+
+
+$i: 1;
+$maxSize: 10;
+@while $i < $maxSize {
+  // All screens.
+  .border-#{$property + "-" + $i} {
+    #{"border-" + $property}: #{$i}px;
+  }
+
+  $i: $i + 1;
+}
+
+
+// Responsive screens.
+@each $key, $value in $screens {
+  $i: 1;
+  $maxSize: 10;
+  @while $i < $maxSize {
+    .#{$key}\:border-#{$property + "-" + $i} {
+      @include respond($value) {
+        #{"border-" + $property}: #{$i}px;
+      }
+    }
+    $i: $i + 1;
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'style';
+$declarations: ('none', 'dashed', 'dotted', 'double', 'groove', 'hidden', 'inset', 'revert', 'ridge', 'solid');
+
+
+@each $declaration in $declarations {
+  // All screens.
+  .border-#{$property + "-" + $declaration} {
+    #{"border-" + $property}: unquote($declaration);
+  }
+  // Children.
+  .border-#{$property + "-" + $declaration}\:children {
+    > * {
+      #{"border-" + $property}: unquote($declaration);
+    }
+  }
+}
+
+
+@each $key, $value in $screens {
+  // Responsive screens.
+  @each $declaration in $declarations {
+    .#{$key}\:border-#{$property + "-" + $declaration} {
+      @include respond($value) {
+        #{"border-" + $property}: unquote($declaration);
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}

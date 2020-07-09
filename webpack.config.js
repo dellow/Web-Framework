@@ -35,7 +35,7 @@ module.exports = (env, argv) => {
     },
     resolve: {
       modules: ['node_modules'],
-      extensions: ['.js'],
+      extensions: ['*', '.js', '.vue', '.json'],
       alias: {
       },
     },
@@ -52,7 +52,7 @@ module.exports = (env, argv) => {
       source: false,
       errors: true,
       errorDetails: false,
-      warnings: false,
+      warnings: true,
       publicPath: false,
     },
     module: {
@@ -91,8 +91,7 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.scss$/,
-          exclude: /node_modules/,
+          test: /\.(sa|sc|c)ss$/,
           use: [
             'vue-style-loader',
             MiniCssExtractPlugin.loader,
@@ -126,10 +125,13 @@ module.exports = (env, argv) => {
         new MinifyPlugin(),
         new OptimizeCssAssetsPlugin({
           cssProcessor: require('cssnano'),
+          cssProcessorOptions: {
+            sourceMap: true
+          },
           cssProcessorPluginOptions: {
             preset: ['default', {
               discardComments: {
-                removeAll: true ,
+                removeAll: true,
               },
             }],
           },
@@ -150,6 +152,7 @@ module.exports = (env, argv) => {
       new WebpackBuildNotifierPlugin({
         title: 'Web Framework',
         suppressSuccess: false,
+        successSound: false,
       }),
     ],
   }

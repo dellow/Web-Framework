@@ -26,12 +26,12 @@ $declarations: ('0', '0.25', '0.5', '0.75', '1', '1.5', '2', '2.5', '3', '3.5', 
 
 
 @each $property in $properties {
-  @each $declaration in $declarations {
-    $declarationClass: str-replace($declaration, '.', '-');
+  @each $key, $value in $screens {
     // Responsive screens.
-    @each $key, $value in $screens {
+    @each $declaration in $declarations {
+      $declarationClass: str-replace($declaration, '.', '-');
       .#{$key}\:#{$property + "-" + $declarationClass} {
-        @include respond-to($value) {
+        @include respond($value) {
           @include nudge(#{$property}, number(unquote($declaration)));
         }
       }
