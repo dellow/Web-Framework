@@ -29,6 +29,9 @@ $property: 'color';
     }
   }
 }
+.bg-#{$property}-none {
+  #{"background-" + $property}: inherit;
+}
 
 
 @each $key, $value in $screens {
@@ -38,6 +41,11 @@ $property: 'color';
       @include respond($value) {
         #{"background-" + $property}: var(--color-#{$color});
       }
+    }
+  }
+  .#{$key}\:bg-#{$property}-none {
+    @include respond($value) {
+      #{"background-" + $property}: inherit;
     }
   }
 }

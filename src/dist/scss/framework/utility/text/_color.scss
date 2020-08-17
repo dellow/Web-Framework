@@ -41,6 +41,9 @@ $property: 'color';
     }
   }
 }
+.text-#{$property}-none {
+  #{$property}: inherit;
+}
 
 
 @each $key, $value in $screens {
@@ -55,6 +58,11 @@ $property: 'color';
       &:hover {
         #{$property}: var(--color-#{$color});
       }
+    }
+  }
+  .#{$key}\:text-#{$property}-none {
+    @include respond($value) {
+      #{$property}: inherit;
     }
   }
 }
