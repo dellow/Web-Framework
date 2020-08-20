@@ -104,7 +104,7 @@ $declarations: ('wrap', 'nowrap', 'wrap-reverse');
 
 
 $property: 'align-items';
-$declarations: ('flex-start', 'center', 'flex-end');
+$declarations: ('baseline', 'flex-start', 'center', 'flex-end');
 
 
 @each $declaration in $declarations {
@@ -137,7 +137,7 @@ $declarations: ('flex-start', 'center', 'flex-end');
 
 
 $property: 'justify-content';
-$declarations: ('flex-start', 'center', 'flex-end');
+$declarations: ('baseline', 'flex-start', 'center', 'flex-end');
 
 
 @each $declaration in $declarations {
