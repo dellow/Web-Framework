@@ -5,7 +5,7 @@
 
 
 $property: 'white-space';
-$declarations: ('nowrap', 'normal');
+$declarations: ('nowrap', 'normal', 'pre');
 
 
 @each $declaration in $declarations {
