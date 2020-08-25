@@ -1,8 +1,8 @@
 
 
 .container {
-  width: 100%;
-  max-width: calc(#{map-get($containers, 'default')} + (#{$mn} * 2));
+  width: #{map-get($containers, 'default')};
+  max-width: 100vw;
   @include nudge(padding, 0 1);
   margin: 0 auto;
   position: relative;
@@ -12,7 +12,7 @@
   // Responsive screens.
   @each $key, $value in $containers {
     &--#{$key} {
-      max-width: calc(#{$value} + (#{$mn} * 2));
+      width: calc(#{$value} + (#{$mn} * 2));
     }
   }
   &--mobile-full {
