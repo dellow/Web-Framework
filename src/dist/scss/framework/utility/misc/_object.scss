@@ -1,0 +1,73 @@
+@if $switch_utility_misc_object == true {
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'fit';
+$declarations: ('none', 'fill', 'contain', 'cover', 'scale-down');
+
+
+@each $declaration in $declarations {
+  // All screens.
+  .object-#{$property + "-" + $declaration} {
+    #{"object-" + $property}: unquote($declaration);
+  }
+  // Children.
+  .object-#{$property + "-" + $declaration}\:children {
+    > * {
+      #{"object-" + $property}: unquote($declaration);
+    }
+  }
+}
+
+
+@each $key, $value in $screens {
+  // Responsive screens.
+  @each $declaration in $declarations {
+    .#{$key}\:object-#{$property + "-" + $declaration} {
+      @include respond($value) {
+        #{"object-" + $property}: unquote($declaration);
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+$property: 'position';
+$declarations: ('bottom', 'center', 'inherit', 'initial', 'left', 'revert', 'right', 'top', 'unset');
+
+
+@each $declaration in $declarations {
+  // All screens.
+  .object-#{$property + "-" + $declaration} {
+    #{"object-" + $property}: unquote($declaration);
+  }
+  // Children.
+  .object-#{$property + "-" + $declaration}\:children {
+    > * {
+      #{"object-" + $property}: unquote($declaration);
+    }
+  }
+}
+
+
+@each $key, $value in $screens {
+  // Responsive screens.
+  @each $declaration in $declarations {
+    .#{$key}\:object-#{$property + "-" + $declaration} {
+      @include respond($value) {
+        #{"object-" + $property}: unquote($declaration);
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+}
