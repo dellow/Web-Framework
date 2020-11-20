@@ -107,6 +107,11 @@ fieldset {
   position: relative;
   display: inline-block;
   white-space: nowrap;
+	&:hover {
+		label {
+			border-color: color(blue1) !important;
+		}
+	}
 	label {
 		width: 17px !important;
 		height: 17px !important;
@@ -131,15 +136,6 @@ fieldset {
 		position: absolute;
 		top: 0; left: 0;
 		visibility: hidden;
-		&:disabled {
-			+ label {
-				opacity: 0.5;
-				border-color: #b3b3b3 !important;
-				&:after {
-					background-color: #f1f1f1 !important;
-				}
-			}
-		}
 		&:checked {
 			+ label {
 				border-color: color(blue1) !important;
@@ -147,10 +143,14 @@ fieldset {
 				background-size: 75% !important;
 			}
 		}
-	}
-	&:hover {
-		label {
-			border-color: color(blue1) !important;
+		&:disabled {
+			+ label {
+				border-color: #dddddd !important;
+				background-color: #dddddd !important;
+				> span {
+					color: #dddddd !important;
+				}
+			}
 		}
 	}
 }
