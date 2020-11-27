@@ -26,6 +26,18 @@ html, body, div, p, address, blockquote, ol, ul, dd, dl, dt, fieldset, form, h1,
 
 
 // ---
+// Links & Buttons
+// Styling of links.
+// ---
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+// ----------------------------------------------------------------------- //
+
+
+// ---
 // Attributes
 // Styling of attributes.
 // ---
@@ -130,7 +142,8 @@ del {
 // ---
 input, select, textarea, button {
   font-size: inherit;
-  font-family: $font_face_base;
+  font-family: $font_face_body;
+  -webkit-appearance: none;
 }
 label, button, details, input[type="button"], input[type="submit"] {
   cursor: pointer;
@@ -144,7 +157,7 @@ button {
   overflow: visible;
   font-family: inherit;
   line-height: inherit;
-  text-align: left;
+  text-align: inherit;
   background: none;
 }
 input {
