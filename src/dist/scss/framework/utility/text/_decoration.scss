@@ -19,6 +19,12 @@ $declarations: ('overline', 'line-through', 'underline');
       #{$property}: unquote($declaration);
     }
   }
+  // Hover
+  .hover\:#{$property + "-" + $declaration} {
+    &:hover {
+      #{$property}: unquote($declaration);
+    }
+  }
 }
 
 
