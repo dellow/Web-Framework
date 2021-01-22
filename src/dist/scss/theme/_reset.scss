@@ -142,7 +142,7 @@ del {
 // ---
 input, select, textarea, button {
   font-size: inherit;
-  font-family: $font_face_body;
+  font-family: $font_face_base;
 }
 label, button, details, input[type="button"], input[type="submit"] {
   cursor: pointer;
