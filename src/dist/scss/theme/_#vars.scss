@@ -111,8 +111,7 @@ $font_face_base: $inter, 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
 // Colors
 // ---
 
-// Base
-$base_colors: (
+$colors: (
   black1: (
     base: #222222,
   ),
@@ -151,25 +150,6 @@ $base_colors: (
     warning: #c09853,
   ),
 );
-
-// Social
-$social_colors: (
-  social: (
-    facebook  : #3b5998,
-    instagram : #d00085,
-    linkedin  : #007bb6,
-    pinterest : #cb2027,
-    quora     : #a82400,
-    snapchat  : #fffc00,
-    tumblr    : #32506d,
-    twitter   : #00aced,
-    vimeo     : #aad450,
-    youtube   : #ff0000,
-  )
-);
-
-// Merge
-$colors: map-merge($base_colors, $social_colors);
 
 
 // ----------------------------------------------------------------------- //

@@ -10,8 +10,10 @@ html, body, .wrapper {
 
 
 :root {
-  @each $color, $hex in $colors {
-    --color-#{$color}: #{color($color)};
+  @each $string, $map in $colors {
+    @each $string2, $string3 in $map {
+      --color-#{$string}-#{$string2}: #{$string3};
+    }
   }
 }
 
